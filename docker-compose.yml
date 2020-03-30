@@ -1,0 +1,92 @@
+version: '3.7'
+services:
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: magazin-nginx
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - 55000:80
+    volumes:
+      - ./:/app:cached
+      - ./docker/nginx:/etc/nginx/conf.d:cached
+    links:
+      - php-fpm
+    depends_on:
+      - php-fpm
+      - db
+      - elasticsearch
+    networks:
+      - magazin
+
+  php-fpm:
+    build: docker/php-fpm
+    restart: unless-stopped
+    image: magazin
+    container_name: magazin-php
+    working_dir: /app
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/app:cached
+    links:
+      - db
+      - redis
+      - elasticsearch
+    depends_on:
+      - db
+      - elasticsearch
+    networks:
+      - magazin
+
+  db:
+    image: postgres:12.2-alpine
+    restart: unless-stopped
+    ports:
+      - 54321:5432
+    volumes:
+      - ./storage/docker/psql:/var/lib/postgresql/data:cached
+    environment:
+      POSTGRES_USER: magazin
+      POSTGRES_PASSWORD: magazin
+      POSTGRES_DB: magazin
+    networks:
+      - magazin
+
+  redis:
+    image: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 6379:6379
+    volumes:
+      - ./:/app:cached
+    networks:
+      - magazin
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - magazin
+
+networks:
+  magazin:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.111.0/28
