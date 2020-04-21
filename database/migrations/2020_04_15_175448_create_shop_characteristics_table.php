@@ -24,7 +24,7 @@ class CreateShopCharacteristicsTable extends Migration
             $table->integer('sort');
             $table->string('default');
             $table->boolean('required');
-            $table->json('variants_json');
+            $table->json('variants');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();
