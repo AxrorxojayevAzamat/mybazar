@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Entity\Brand;
 use App\Entity\Shop\Category;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -17,15 +18,17 @@ class ModelsEventServiceProvider extends ServiceProvider
     ];
     public function boot()
     {
-        /* @var Model $class */
-        foreach ($this->classes as $class) {
-            $class::creating(function ($model) {
-                $model->created_by = Carbon::now();
-                $model->updated_by = Carbon::now();
-            });
-            $class::updating(function ($model) {
-                $model->updated_by = Carbon::now();
-            });
+        if ($user = Auth::user()) {
+            /* @var Model $class */
+            foreach ($this->classes as $class) {
+                $class::creating(function ($model) use ($user) {
+                    $model->created_by = $user->id;
+                    $model->updated_by = $user->id;
+                });
+                $class::updating(function ($model) use ($user) {
+                    $model->updated_by = $user->id;
+                });
+            }
         }
     }
 }

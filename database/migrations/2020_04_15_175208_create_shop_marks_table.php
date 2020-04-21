@@ -20,7 +20,7 @@ class CreateShopMarksTable extends Migration
             $table->string('name_en');
             $table->string('slug');
             $table->string('photo');
-            $table->json('meta_json');
+            $table->json('meta_json')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();

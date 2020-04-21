@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $updated_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ *
+ * @property string $name
  */
 class Brand extends Model
 {
@@ -25,4 +28,9 @@ class Brand extends Model
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'slug',
     ];
+
+    public function name(): string
+    {
+        return LanguageHelper::getName($this);
+    }
 }

@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\Debugbar\ServiceProvider::class,
+        App\Providers\AdminLteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

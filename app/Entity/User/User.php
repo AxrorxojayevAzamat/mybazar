@@ -68,4 +68,29 @@ class User extends Authenticatable
     {
         return $this->status === self::STATUS_ACTIVE;
     }
+
+    public function isModerator(): bool
+    {
+        return $this->role === self::ROLE_MODERATOR;
+    }
+
+    public function isDealer(): bool
+    {
+        return $this->role === self::ROLE_DEALER;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isPhoneVerified(): bool
+    {
+        return $this->phone_verified;
+    }
+
+    public function isPhoneAuthEnabled(): bool
+    {
+        return (bool)$this->phone_auth;
+    }
 }

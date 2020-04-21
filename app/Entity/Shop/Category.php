@@ -2,6 +2,7 @@
 
 namespace App\Entity\Shop;
 
+use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
@@ -27,6 +28,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int $depth
  * @property Category $parent
  * @property Category[] $children
+ * @property string $name
  */
 class Category extends Model
 {
@@ -37,12 +39,17 @@ class Category extends Model
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
 
 
-    public function getLftName()
+    public function getNameAttribute(): string
+    {
+        return LanguageHelper::getName($this);
+    }
+
+    public function getLftName(): string
     {
         return 'left';
     }
 
-    public function getRgtName()
+    public function getRgtName(): string
     {
         return 'right';
     }

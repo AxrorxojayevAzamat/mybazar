@@ -22,10 +22,10 @@ class CreateShopCategoriesTable extends Migration
             $table->string('description_ru');
             $table->string('description_en');
             $table->string('slug');
-            $table->json('meta_json');
+            $table->json('meta_json')->nullable();
             $table->integer('left');
             $table->integer('right');
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();

@@ -21,11 +21,11 @@ class CreateUsersTable extends Migration
             $table->boolean('phone_verified');
             $table->string('password');
             $table->bigInteger('balance')->default(0);
-            $table->string('verify_token');
-            $table->string('phone_verify_token');
-            $table->timestamp('phone_verify_token_expire');
+            $table->string('verify_token')->nullable();
+            $table->string('phone_verify_token')->nullable();
+            $table->timestamp('phone_verify_token_expire')->nullable();
             $table->boolean('phone_auth');
-            $table->integer('role');
+            $table->string('role');
             $table->integer('status');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

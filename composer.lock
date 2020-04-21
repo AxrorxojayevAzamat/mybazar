@@ -4,8 +4,107 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3fe65e7757fe12284da08e1cca9c099",
+    "content-hash": "579a81da7d06f01a061c506f77b1ade2",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "4723bccf4321f28d9ac8ec4f8c64b785e277ba71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/4723bccf4321f28d9ac8ec4f8c64b785e277ba71",
+                "reference": "4723bccf4321f28d9ac8ec4f8c64b785e277ba71",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "http://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2020-04-01T23:06:25+00:00"
+        },
+        {
+            "name": "davejamesmiller/laravel-breadcrumbs",
+            "version": "5.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
+                "reference": "99f92a706faefb5e1816caa96e877a0184509e5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/99f92a706faefb5e1816caa96e877a0184509e5b",
+                "reference": "99f92a706faefb5e1816caa96e877a0184509e5b",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition-contracts": "^1.0",
+                "illuminate/support": ">=5.6",
+                "illuminate/view": ">=5.6",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.6",
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^7.0|^8.0",
+                "spatie/phpunit-snapshot-assertions": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Breadcrumbs": "DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DaveJamesMiller\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave James Miller",
+                    "email": "dave@davejamesmiller.com"
+                }
+            ],
+            "description": "A simple Laravel-style way to create breadcrumbs.",
+            "homepage": "https://github.com/davejamesmiller/laravel-breadcrumbs",
+            "keywords": [
+                "laravel"
+            ],
+            "abandoned": true,
+            "time": "2019-12-30T22:50:51+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -281,6 +380,50 @@
             "time": "2020-02-13T22:36:52+00:00"
         },
         {
+            "name": "facade/ignition-contracts",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-contracts.git",
+                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/f445db0fb86f48e205787b2592840dd9c80ded28",
+                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facade\\IgnitionContracts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://flareapp.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Solution contracts for Ignition",
+            "homepage": "https://github.com/facade/ignition-contracts",
+            "keywords": [
+                "contracts",
+                "flare",
+                "ignition"
+            ],
+            "time": "2019-08-30T14:06:08+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.3.0",
             "source": {
@@ -333,6 +476,60 @@
                 "trusted proxy"
             ],
             "time": "2020-02-22T01:51:47+00:00"
+        },
+        {
+            "name": "jeroennoten/laravel-adminlte",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
+                "reference": "c26da685dbab426162bd921a9b6813dba74b9d82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/c26da685dbab426162bd921a9b6813dba74b9d82",
+                "reference": "c26da685dbab426162bd921a9b6813dba74b9d82",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^3.0",
+                "laravel/framework": ">=6.0",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JeroenNoten\\LaravelAdminLte\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
+                }
+            ],
+            "description": "Easy AdminLTE integration with Laravel",
+            "keywords": [
+                "AdminLTE",
+                "admin",
+                "administrator",
+                "laravel"
+            ],
+            "time": "2020-03-27T11:13:55+00:00"
         },
         {
             "name": "kalnoy/nestedset",
@@ -1618,6 +1815,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -1674,6 +1885,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -1800,6 +2025,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -1907,6 +2146,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -2114,6 +2367,20 @@
                 "mime",
                 "mime-type"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -2171,6 +2438,20 @@
                 "ctype",
                 "polyfill",
                 "portable"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -2230,6 +2511,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-03-09T19:04:49+00:00"
         },
@@ -2293,6 +2588,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -2352,6 +2661,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -2406,6 +2729,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -2464,6 +2801,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -2974,6 +3325,74 @@
     ],
     "packages-dev": [
         {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "95c31aab33689cd4572d27038186886f4bfa63ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/95c31aab33689cd4572d27038186886f4bfa63ae",
+                "reference": "95c31aab33689cd4572d27038186886f4bfa63ae",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^5.5|^6|^7",
+                "illuminate/session": "^5.5|^6|^7",
+                "illuminate/support": "^5.5|^6|^7",
+                "maximebf/debugbar": "^1.15.1",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4|^5",
+                "symfony/finder": "^3|^4|^5"
+            },
+            "require-dev": {
+                "laravel/framework": "5.5.x"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2020-04-16T20:19:40+00:00"
+        },
+        {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.6.7",
             "source": {
@@ -3146,6 +3565,16 @@
                 "certificate",
                 "ssl",
                 "tls"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-08T08:27:21+00:00"
         },
@@ -3391,6 +3820,12 @@
             "keywords": [
                 "Xdebug",
                 "performance"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                }
             ],
             "time": "2020-03-01T12:26:26+00:00"
         },
@@ -3752,6 +4187,12 @@
                 "flare",
                 "reporting"
             ],
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/spatie",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-03-02T15:52:04+00:00"
         },
         {
@@ -3824,50 +4265,6 @@
                 "page"
             ],
             "time": "2020-03-05T12:39:07+00:00"
-        },
-        {
-            "name": "facade/ignition-contracts",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition-contracts.git",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/f445db0fb86f48e205787b2592840dd9c80ded28",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facade\\IgnitionContracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Solution contracts for Ignition",
-            "homepage": "https://github.com/facade/ignition-contracts",
-            "keywords": [
-                "contracts",
-                "flare",
-                "ignition"
-            ],
-            "time": "2019-08-30T14:06:08+00:00"
         },
         {
             "name": "filp/whoops",
@@ -4183,6 +4580,67 @@
                 "schema"
             ],
             "time": "2019-09-25T14:49:45+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.16.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "40f375504a4dd8e59f779c3f3cac524777ddcde5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/40f375504a4dd8e59f779c3f3cac524777ddcde5",
+                "reference": "40f375504a4dd8e59f779c3f3cac524777ddcde5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3|^4|^5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2020-04-16T09:05:52+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5079,6 +5537,12 @@
                 "highlight.php",
                 "syntax"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/allejo",
+                    "type": "github"
+                }
+            ],
             "time": "2020-03-02T05:59:21+00:00"
         },
         {
@@ -5936,5 +6400,6 @@
     "platform": {
         "php": "^7.2"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
