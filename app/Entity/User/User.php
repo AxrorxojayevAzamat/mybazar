@@ -31,6 +31,7 @@ class User extends Authenticatable
     public const STATUS_ACTIVE = 9;
 
     const ROLE_USER = 'user';
+    const ROLE_DEALER = 'diller';
     const ROLE_MODERATOR = 'moderator';
     const ROLE_ADMIN = 'administrator';
 
