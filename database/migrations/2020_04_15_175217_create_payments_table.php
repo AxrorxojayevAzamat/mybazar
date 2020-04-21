@@ -16,7 +16,6 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name_uz');
-            $table->string('name_uz_ki');
             $table->string('name_ru');
             $table->string('name_en');
             $table->unsignedBigInteger('created_by');

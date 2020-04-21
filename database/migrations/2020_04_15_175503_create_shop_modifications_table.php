@@ -17,7 +17,6 @@ class CreateShopModificationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->string('name_uz');
-            $table->string('name_uz_ki');
             $table->string('name_ru');
             $table->string('name_en');
             $table->string('code');

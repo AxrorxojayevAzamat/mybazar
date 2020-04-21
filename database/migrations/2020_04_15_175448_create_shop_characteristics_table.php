@@ -16,9 +16,9 @@ class CreateShopCharacteristicsTable extends Migration
         Schema::create('shop_characteristics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_uz');
-            $table->string('name_uz_ki');
             $table->string('name_ru');
             $table->string('name_en');
+            $table->unsignedBigInteger('category_id');
             $table->string('type');
             $table->boolean('main');
             $table->integer('sort');
@@ -31,6 +31,7 @@ class CreateShopCharacteristicsTable extends Migration
         });
 
         Schema::table('shop_characteristics', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('shop_categories')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });

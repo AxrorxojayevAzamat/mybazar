@@ -16,7 +16,6 @@ class CreateShopDeliveryMethodsTable extends Migration
         Schema::create('shop_delivery_methods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_uz');
-            $table->string('name_uz_ki');
             $table->string('name_ru');
             $table->string('name_en');
             $table->integer('cost');

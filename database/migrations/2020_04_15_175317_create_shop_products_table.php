@@ -16,11 +16,9 @@ class CreateShopProductsTable extends Migration
         Schema::create('shop_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_uz');
-            $table->string('name_uz_ki');
             $table->string('name_ru');
             $table->string('name_en');
             $table->string('description_uz');
-            $table->string('description_uz_ki');
             $table->string('description_ru');
             $table->string('description_en');
             $table->string('slug');
