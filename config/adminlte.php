@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>E</b>Devon',
+    'logo' => '<b>E</b>Magazin',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -193,7 +193,7 @@ return [
     |
     */
 
-    'enabled_laravel_mix' => false,
+    'enabled_laravel_mix' => true,
 
     /*
     |--------------------------------------------------------------------------

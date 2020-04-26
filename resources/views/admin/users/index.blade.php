@@ -8,7 +8,7 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>{{ trans('adminlte.username') }}</th>
+            <th>{{ trans('adminlte.user.name') }}</th>
             <th>{{ trans('adminlte.email') }}</th>
             <th>{{ trans('adminlte.status') }}</th>
         </tr>

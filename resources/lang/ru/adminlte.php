@@ -4,7 +4,6 @@ return [
     'home'                        => 'Главная',
     'full_name'                   => 'Полное имя',
     'email'                       => 'Электронная почта',
-    'username'                    => 'Имя Пользователя',
     'password'                    => 'Пароль',
     'retype_password'             => 'Подтверждение пароля',
     'remember_me'                 => 'Запомнить меня',
@@ -33,19 +32,28 @@ return [
     'delete_confirmation_message' => 'Вы уверены?',
 
     'name' => 'Название',
+    'description' => 'Описание',
     'status' => 'Состояние',
     'parent' => 'Родительский',
     'required' => 'Обязательный',
+    'created_by' => 'Добавил',
+    'updated_by' => 'Редактировал',
+    'created_at' => 'Добавлено',
+    'updated_at' => 'Редактировано',
 
     'user' => [
+        'name' => 'Имя Пользователя',
         'add' => 'Добавить пользователя',
+        'role' => 'Роль',
         'waiting' => 'В ожидании',
         'active' => 'Активный',
+        'role_user' => 'Пользователь',
+        'role_dealer' => 'Дилер',
+        'role_moderator' => 'Модератор',
+        'role_administrator' => 'Администратор',
     ],
 
     'category' => [
         'add' => 'Добавить Категорию',
     ],
-
-
 ];

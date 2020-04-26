@@ -4,7 +4,6 @@ return [
     'home'                        => 'Home',
     'full_name'                   => 'Full name',
     'email'                       => 'Email',
-    'username'                    => 'Username',
     'password'                    => 'Password',
     'retype_password'             => 'Retype password',
     'remember_me'                 => 'Remember Me',
@@ -33,14 +32,25 @@ return [
     'delete_confirmation_message' => 'Are you sure?',
 
     'name' => 'Name',
+    'description' => 'Description',
     'status' => 'Status',
     'parent' => 'Parent',
     'required' => 'Required',
+    'created_by' => 'Created by',
+    'updated_by' => 'Updated by',
+    'created_at' => 'Created at',
+    'updated_at' => 'Updated at',
 
     'user' => [
+        'name'  => 'Username',
         'add' => 'Add User',
+        'role' => 'Role',
         'waiting' => 'Waiting',
         'active' => 'Active',
+        'role_user' => 'User',
+        'role_dealer' => 'Dealer',
+        'role_moderator' => 'Moderator',
+        'role_administrator' => 'Administrator',
     ],
 
     'category' => [

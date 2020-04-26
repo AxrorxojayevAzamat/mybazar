@@ -18,9 +18,9 @@ class CreateShopCategoriesTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
-            $table->string('description_uz');
-            $table->string('description_ru');
-            $table->string('description_en');
+            $table->text('description_uz')->nullable();
+            $table->text('description_ru')->nullable();
+            $table->text('description_en')->nullable();
             $table->string('slug');
             $table->json('meta_json')->nullable();
             $table->integer('left');

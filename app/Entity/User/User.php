@@ -2,10 +2,12 @@
 
 namespace App\Entity\User;
 
+use App\Http\Requests\Admin\Users\UpdateRequest;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 /**
  * @property int $id
@@ -49,12 +51,56 @@ class User extends Authenticatable
         'phone_auth' => 'boolean',
     ];
 
+    public static function register(string $name, string $email, string $password): self
+    {
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'verify_token' => Str::uuid(),
+            'role' => self::ROLE_USER,
+            'status' => self::STATUS_WAIT,
+        ]);
+    }
+
+    public static function new($name, $email, $role, $password): self
+    {
+        return static::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'role' => $role,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function edit($name, $email, $role, $status, $password = null): void
+    {
+        $attributes = array_merge([
+            'name' => $name,
+            'email' => $email,
+            'role' => $role,
+            'status' => $status,
+        ], $password ? ['password' => bcrypt($password)] : []);
+
+        $this->update($attributes);
+    }
+
     public static function rolesList(): array
     {
         return [
-            self::ROLE_USER => 'User',
-            self::ROLE_MODERATOR => 'Moderator',
-            self::ROLE_ADMIN => 'Admin',
+            self::ROLE_USER => trans('adminlte.user.role_user'),
+            self::ROLE_DEALER => trans('adminlte.user.role_dealer'),
+            self::ROLE_MODERATOR => trans('adminlte.user.role_moderator'),
+            self::ROLE_ADMIN => trans('adminlte.user.role_administrator'),
+        ];
+    }
+
+    public static function statusesList(): array
+    {
+        return [
+            self::STATUS_WAIT => trans('adminlte.user.waiting'),
+            self::STATUS_ACTIVE => trans('adminlte.user.active'),
         ];
     }
 

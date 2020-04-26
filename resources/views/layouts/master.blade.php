@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>@yield('title_prefix', config('adminlte.title_prefix', ''))
-@yield('title', config('adminlte.title', 'AdminLTE 3'))
+@yield('title', config('adminlte.title', 'Magazin'))
 @yield('title_postfix', config('adminlte.title_postfix', ''))</title>
     @if(! config('adminlte.enabled_laravel_mix'))
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/fonts.css') }}">
     @else
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
     @endif
 
     @yield('meta_tags')
@@ -62,7 +62,8 @@
 
 @yield('adminlte_js')
 @else
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js', 'build') }}"></script>
+@yield('mix_adminlte_js')
 @endif
 
 </body>

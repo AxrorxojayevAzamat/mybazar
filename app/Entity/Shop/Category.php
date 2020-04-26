@@ -2,6 +2,7 @@
 
 namespace App\Entity\Shop;
 
+use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,8 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property Category $parent
  * @property Category[] $children
  * @property string $name
+ * @property User $createdBy
+ * @property User $updatedBy
  */
 class Category extends Model
 {
@@ -39,10 +42,17 @@ class Category extends Model
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
 
 
+    ########################################### Mutators
+
     public function getNameAttribute(): string
     {
         return LanguageHelper::getName($this);
     }
+
+    ###########################################
+
+
+    ########################################### For Nested Set
 
     public function getLftName(): string
     {
@@ -53,4 +63,21 @@ class Category extends Model
     {
         return 'right';
     }
+
+    ###########################################
+
+
+    ########################################### Relations
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    ###########################################
 }

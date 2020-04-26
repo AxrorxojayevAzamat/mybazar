@@ -30,7 +30,7 @@ class AdminLteServiceProvider extends BaseServiceProvider
 
     public function boot(Factory $view, Dispatcher $events, Repository $config)
     {
-        $this->loadViews();
+//        $this->loadViews();
 
 //        $this->loadTranslations();
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entity\User\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\CreateRequest;
+use App\Http\Requests\Admin\Users\UpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -12,57 +14,69 @@ class UserController extends Controller
 {
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::orderByDesc('id')->paginate(20);
+        $query = User::orderByDesc('id');
 
-        return view('admin.users.index', compact('users'));
+        if (!empty($value = $request->get('id'))) {
+            $query->where('id', $value);
+        }
+
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('email'))) {
+            $query->where('email', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+
+        if (!empty($value = $request->get('role'))) {
+            $query->where('role', $value);
+        }
+
+        $users = $query->paginate(20);
+
+        $statuses = User::statusesList();
+
+        $roles = User::rolesList();
+
+        return view('admin.users.index', compact('users', 'statuses', 'roles'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        $roles = User::rolesList();
+
+        return view('admin.users.create', compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-        ]);
-
-        $data['password'] = bcrypt(Str::random());
-        $data['status'] = User::STATUS_ACTIVE;
-
-        $user = User::create($data);
+        $user = User::new($request['name'], $request['email'], $request['role'], $request['password']);
 
         return redirect()->route('admin.users.show', $user);
     }
 
     public function show(User $user)
     {
-        return view('admin.users.show', compact('user'));
+        return view('admin.users.show', compact('user', 'roles'));
     }
 
     public function edit(User $user)
     {
-        $statuses = [
-            User::STATUS_WAIT => 'Waiting',
-            User::STATUS_ACTIVE => 'Active',
-        ];
+        $roles = User::rolesList();
+        $statuses = User::statusesList();
 
-        return view('admin.users.edit', compact('user', 'statuses'));
+        return view('admin.users.edit', compact('user', 'statuses', 'roles'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,id,' . $user->id,
-            'status' => ['required', 'string', Rule::in([User::STATUS_WAIT, User::STATUS_ACTIVE])],
-        ]);
-
-        $user->update($data);
+        $user->edit($request->name, $request->email, $request->role, $request->status, $request->password);
 
         return redirect()->route('admin.users.show', $user);
     }

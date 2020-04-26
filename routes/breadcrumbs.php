@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\User\User;
+use App\Entity\Shop\Category;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {

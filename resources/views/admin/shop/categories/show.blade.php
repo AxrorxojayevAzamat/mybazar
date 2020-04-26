@@ -15,12 +15,17 @@
         <tr>
             <th>ID</th><td>{{ $category->id }}</td>
         </tr>
-        <tr>
-            <th>{{ trans('adminlte.name') }}</th><td>{{ $category->name }}</td>
-        </tr>
-        <tr>
-            <th>Slug</th><td>{{ $category->slug }}</td>
-        </tr>
+        <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $category->name_uz }}</td></tr>
+        <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $category->name_ru }}</td></tr>
+        <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $category->name_en }}</td></tr>
+        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{{ $category->description_uz }}</td></tr>
+        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{{ $category->description_ru }}</td></tr>
+        <tr><th>{{ trans('adminlte.description') }} En</th><td>{{ $category->description_en }}</td></tr>
+        <tr><th>Slug</th><td>{{ $category->slug }}</td></tr>
+        <tr><th>{{ trans('adminlte.created_by') }}</th><td>{{ $category->createdBy->name }}</td></tr>
+        <tr><th>{{ trans('adminlte.updated_by') }}</th><td>{{ $category->updatedBy->name }}</td></tr>
+        <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $category->created_at }}</td></tr>
+        <tr><th>{{ trans('adminlte.updated_at') }}</th><td>{{ $category->updated_at }}</td></tr>
         <tbody>
         </tbody>
     </table>

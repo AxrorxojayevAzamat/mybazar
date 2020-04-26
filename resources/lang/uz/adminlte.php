@@ -4,7 +4,6 @@ return [
     'home'                        => 'Asosiy sahifa',
     'full_name'                   => 'To`liq ismi',
     'email'                       => 'Elektron pochtasi',
-    'username'                    => 'Foydalanuvchi Nomi',
     'password'                    => 'Parol',
     'retype_password'             => 'Parolni tasdiqlash',
     'remember_me'                 => 'Eslab qolish',
@@ -33,15 +32,26 @@ return [
     'delete_confirmation_message' => 'Ishonchingiz komilmi?',
 
     'name' => 'Nomi',
+    'description' => 'Tavsifi',
     'status' => 'Holati',
     'parent' => 'Ajdodi',
     'sort' => 'Saralanish',
     'required' => 'Majburiy',
+    'created_by' => 'Qo`shdi',
+    'updated_by' => 'Tahrirladi',
+    'created_at' => 'Qo`shilgan',
+    'updated_at' => 'Tahrirlangan',
 
     'user' => [
+        'name' => 'Foydalanuvchi Nomi',
         'add' => 'Foydalanuvchi qo`shmoq',
+        'role' => 'Roli',
         'waiting' => 'Kutish',
         'active' => 'Faol',
+        'role_user' => 'Foydalanuvchi',
+        'role_dealer' => 'Sotuvchi',
+        'role_moderator' => 'Moderator',
+        'role_administrator' => 'Administrator',
     ],
 
     'category' => [

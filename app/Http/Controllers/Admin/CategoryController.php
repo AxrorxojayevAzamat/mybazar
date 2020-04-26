@@ -46,10 +46,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $parentAttributes = $category->parentAttributes();
-        $attributes = $category->attributes()->orderBy('sort')->get();
-
-        return view('admin.shop.categories.show', compact('category', 'attributes', 'parentAttributes'));
+        return view('admin.shop.categories.show', compact('category'));
     }
 
     public function edit(Category $category)

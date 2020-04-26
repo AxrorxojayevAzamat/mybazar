@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary mr-1">Edit</a>
+        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
         <form method="POST" action="{{ route('admin.users.destroy', $user) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -17,13 +17,13 @@
             <th>ID</th><td>{{ $user->id }}</td>
         </tr>
         <tr>
-            <th>Name</th><td>{{ $user->name }}</td>
+            <th>{{ trans('adminlte.user.name') }}</th><td>{{ $user->name }}</td>
         </tr>
         <tr>
-            <th>Email</th><td>{{ $user->email }}</td>
+            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
         </tr>
         <tr>
-            <th>Status</th>
+            <th>{{ trans('adminlte.status') }}</th>
             <td>
                 @if ($user->status === \App\Entity\User\User::STATUS_WAIT)
                     <span class="badge badge-secondary">Waiting</span>
