@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entity\Shop\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -27,16 +27,15 @@ class CategoryController extends Controller
         return view('admin.shop.categories.create', compact('parents'));
     }
 
-    public function store(Request $request)
+    public function store(UpdateRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'parent' => 'nullable|integer|exists:advert_categories,id',
-        ]);
-
         $category = Category::create([
-            'name' => $request['name'],
+            'name_uz' => $request['name_uz'],
+            'name_ru' => $request['name_ru'],
+            'name_en' => $request['name_en'],
+            'description_uz' => $request['description_uz'],
+            'description_ru' => $request['description_ru'],
+            'description_en' => $request['description_en'],
             'slug' => $request['slug'],
             'parent_id' => $request['parent'],
         ]);
@@ -56,16 +55,15 @@ class CategoryController extends Controller
         return view('admin.shop.categories.edit', compact('category', 'parents'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $request, Category $category)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'parent' => 'nullable|integer|exists:advert_categories,id',
-        ]);
-
         $category->update([
-            'name' => $request['name'],
+            'name_uz' => $request['name_uz'],
+            'name_ru' => $request['name_ru'],
+            'name_en' => $request['name_en'],
+            'description_uz' => $request['description_uz'],
+            'description_ru' => $request['description_ru'],
+            'description_en' => $request['description_en'],
             'slug' => $request['slug'],
             'parent_id' => $request['parent'],
         ]);

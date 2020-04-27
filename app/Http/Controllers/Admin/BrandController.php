@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entity\Brand;
-use App\Entity\User\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\Admin\Brands\CreateRequest;
+use App\Http\Requests\Admin\Brands\UpdateRequest;
 
 class BrandController extends Controller
 {
-
-
     public function index()
     {
         $brands = Brand::orderByDesc('id')->paginate(20);
@@ -22,56 +18,49 @@ class BrandController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.brands.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+        $category = Brand::create([
+            'name_uz' => $request['name_uz'],
+            'name_ru' => $request['name_ru'],
+            'name_en' => $request['name_en'],
+            'slug' => $request['slug'],
+            'logo' => $request->logo ? $request->logo->store('images/brands', 'public') : null,
         ]);
 
-        $data['password'] = bcrypt(Str::random());
-        $data['status'] = User::STATUS_ACTIVE;
-
-        $user = User::create($data);
-
-        return redirect()->route('admin.users.show', $user);
+        return redirect()->route('admin.brands.show', $category);
     }
 
-    public function show(User $user)
+    public function show(Brand $brand)
     {
-        return view('admin.users.show', compact('user'));
+        return view('admin.brands.show', compact('brand'));
     }
 
-    public function edit(User $user)
+    public function edit(Brand $brand)
     {
-        $statuses = [
-            User::STATUS_WAIT => 'Waiting',
-            User::STATUS_ACTIVE => 'Active',
-        ];
-
-        return view('admin.users.edit', compact('user', 'statuses'));
+        return view('admin.brands.edit', compact('brand'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, Brand $brand)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,id,' . $user->id,
-            'status' => ['required', 'string', Rule::in([User::STATUS_WAIT, User::STATUS_ACTIVE])],
+        $brand->update([
+            'name_uz' => $request['name_uz'],
+            'name_ru' => $request['name_ru'],
+            'name_en' => $request['name_en'],
+            'slug' => $request['slug'],
+            'logo' => $request->logo ? $request->logo->store('brands', 'public') : null,
         ]);
 
-        $user->update($data);
-
-        return redirect()->route('admin.users.show', $user);
+        return redirect()->route('admin.brands.show', $brand);
     }
 
-    public function destroy(User $user)
+    public function destroy(Brand $brand)
     {
-        $user->delete();
+        $brand->delete();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.brands.index');
     }
 }

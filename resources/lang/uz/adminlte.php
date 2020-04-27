@@ -57,4 +57,8 @@ return [
     'category' => [
         'add' => 'Kategoriya qo`shmoq',
     ],
+
+    'brand' => [
+        'add' => 'Brend qo`shmoq',
+    ],
 ];

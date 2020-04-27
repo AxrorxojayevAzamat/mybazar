@@ -24,5 +24,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-shop-categories', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
+
+        Gate::define('manage-shop-brands', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
     }
 }

@@ -224,6 +224,12 @@ return [
             'icon' => 'fas fa-fw fa-list-alt',
             'can' => 'manage-shop-categories',
         ],
+        [
+            'text' => 'brands',
+            'url'  => 'admin/brands',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'can' => 'manage-shop-brands',
+        ],
     ],
 
     /*

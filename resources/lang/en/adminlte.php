@@ -56,4 +56,8 @@ return [
     'category' => [
         'add' => 'Add Category',
     ],
+
+    'brand' => [
+        'add' => 'Add Brand',
+    ],
 ];

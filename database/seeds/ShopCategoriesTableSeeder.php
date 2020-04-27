@@ -3,7 +3,7 @@
 use App\Entity\Shop\Category;
 use Illuminate\Database\Seeder;
 
-class ShopCategoriesSeeder extends Seeder
+class ShopCategoriesTableSeeder extends Seeder
 {
     public function run()
     {
