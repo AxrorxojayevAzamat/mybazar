@@ -1,35 +1,36 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Shop;
 
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $id
+ * @property int $id
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
  * @property string $slug
+ * @property string $photo
  * @property array $meta_json
- * @property string $logo
- * @property integer $created_by
- * @property integer $updated_by
+ * @property int $created_by
+ * @property int $updated_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
- * @property string $name
  * @property User $createdBy
  * @property User $updatedBy
+ *
+ * @property string $name
  */
-class Brand extends BaseModel
+class Mark extends Model
 {
-
-    protected $table = 'brands';
+    protected $table = 'shop_marks';
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'slug', 'logo',
+        'name_uz', 'name_ru', 'name_en', 'slug', 'photo',
     ];
 
 

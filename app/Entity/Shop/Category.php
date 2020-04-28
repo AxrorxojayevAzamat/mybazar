@@ -2,10 +2,10 @@
 
 namespace App\Entity\Shop;
 
+use App\Entity\BaseModel;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
@@ -17,7 +17,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property string $description_ru
  * @property string $description_en
  * @property string $slug
- * @property string $meta_json
+ * @property array $meta_json
  * @property integer $left
  * @property integer $right
  * @property integer|null $parent_id
@@ -33,7 +33,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property User $createdBy
  * @property User $updatedBy
  */
-class Category extends Model
+class Category extends BaseModel
 {
     use NodeTrait;
 

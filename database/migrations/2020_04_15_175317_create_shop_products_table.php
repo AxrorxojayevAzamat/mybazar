@@ -22,13 +22,13 @@ class CreateShopProductsTable extends Migration
             $table->text('description_ru')->nullable();
             $table->text('description_en')->nullable();
             $table->string('slug');
-            $table->integer('prize_uzs');
-            $table->float('prize_usd')->nullable();
+            $table->integer('price_uzs');
+            $table->float('price_usd')->nullable();
             $table->float('discount')->default(0);
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('brand_id');
             $table->tinyInteger('status');
-            $table->float('wright');
+            $table->float('weight');
             $table->integer('quantity');
             $table->boolean('guarantee');
             $table->boolean('bestseller');

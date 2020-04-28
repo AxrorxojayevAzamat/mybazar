@@ -1,35 +1,41 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Shop;
 
+use App\Entity\BaseModel;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 
 /**
- * @property integer $id
+ * @property int $id
+ * @property int $product_id
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
- * @property string $slug
- * @property array $meta_json
- * @property string $logo
- * @property integer $created_by
- * @property integer $updated_by
+ * @property string $code
+ * @property int $price_uzs
+ * @property float $price_usd
+ * @property string $color
+ * @property string $photo
+ * @property string $sort
+ * @property int $created_by
+ * @property int $updated_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
- * @property string $name
+ * @property Product $product
  * @property User $createdBy
  * @property User $updatedBy
+ *
+ * @property string $name
  */
-class Brand extends BaseModel
+class Modification extends BaseModel
 {
-
-    protected $table = 'brands';
+    protected $table = 'shop_modifications';
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'slug', 'logo',
+        'product_id', 'name_uz', 'name_ru', 'name_en', 'code', 'price_uzs', 'price_usd', 'color', 'photo', 'sort',
     ];
 
 
@@ -44,6 +50,11 @@ class Brand extends BaseModel
 
 
     ########################################### Relations
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 
     public function createdBy()
     {
