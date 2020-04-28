@@ -13,3 +13,4 @@ use command for docker build/up/down/exec:
 ```make de```
 
 Application URI is [http://localhost:55000](localhost:55000)
+.
