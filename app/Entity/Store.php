@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Eloquent;
 
 /**
  * @property int $id
@@ -22,6 +23,7 @@ use Carbon\Carbon;
  * @property User $updatedBy
  *
  * @property string $name
+ * @mixin Eloquent
  */
 class Store extends BaseModel
 {

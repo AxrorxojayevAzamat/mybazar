@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\User\User;
 use Carbon\Carbon;
+use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Product $product
  * @property User $createdBy
  * @property User $updatedBy
+ * @mixin Eloquent
  */
 class ProductReviews extends Model
 {

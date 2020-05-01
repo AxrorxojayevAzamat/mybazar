@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\Brand;
+use App\Entity\Shop\Product;
 use App\Entity\User\User;
 use App\Entity\Shop\Category;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
@@ -91,4 +92,32 @@ Breadcrumbs::register('admin.brands.show', function (Crumbs $crumbs, Brand $bran
 Breadcrumbs::register('admin.brands.edit', function (Crumbs $crumbs, Brand $brand) {
     $crumbs->parent('admin.brands.show', $brand);
     $crumbs->push(trans('adminlte.edit'), route('admin.brands.edit', $brand));
+});
+
+
+// Products
+
+Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.products'), route('admin.brands.index'));
+});
+
+Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
+});
+
+Breadcrumbs::register('admin.shop.products.show', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push($product->name, route('admin.shop.products.show', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.edit', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.products.edit', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.reject', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show');
+    $crumbs->push($product->name, route('admin.shop.products.reject', $product));
 });

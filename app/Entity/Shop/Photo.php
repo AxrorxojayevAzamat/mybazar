@@ -5,6 +5,7 @@ namespace App\Entity\Shop;
 use App\Entity\BaseModel;
 use App\Entity\User\User;
 use Carbon\Carbon;
+use Eloquent;
 
 /**
  * @property int $id
@@ -19,6 +20,7 @@ use Carbon\Carbon;
  * @property Product $product
  * @property User $createdBy
  * @property User $updatedBy
+ * @mixin Eloquent
  */
 class Photo extends BaseModel
 {

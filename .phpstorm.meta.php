@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-04-24 20:23:51.
+    * Generated on 2020-05-01 11:57:50.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -141,8 +141,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -301,8 +303,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -461,8 +465,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -621,8 +627,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -781,8 +789,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -941,8 +951,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1101,8 +1113,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1261,8 +1275,10 @@ namespace PHPSTORM_META {
         'flare.client' => \Facade\FlareClient\Flare::class,
         'flare.http' => \Facade\FlareClient\Http\Client::class,
         'flare.logger' => \Monolog\Logger::class,
+        'form' => \Collective\Html\FormBuilder::class,
         'hash' => \Illuminate\Hashing\HashManager::class,
         'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
         'image' => \Intervention\Image\ImageManager::class,
         'log' => \Illuminate\Log\LogManager::class,
         'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1295,6 +1311,8 @@ namespace PHPSTORM_META {
         '' => '@FactoryBuilder',
         'App\Entity\Shop\Category' => \App\Entity\Shop\CategoryFactoryBuilder::class,
         'App\Entity\User\User' => \App\Entity\User\UserFactoryBuilder::class,
+        'App\Entity\Store' => \App\Entity\StoreFactoryBuilder::class,
+        'App\Entity\Brand' => \App\Entity\BrandFactoryBuilder::class,
 	]));
 
     override(\Illuminate\Support\Arr::add(0), type(0));

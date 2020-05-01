@@ -2,7 +2,7 @@
 
 namespace App\Entity\Shop;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * @property int $product_id
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Product $product
  * @property Mark $mark
  */
-class ProductMark extends Model
+class ProductMark extends Pivot
 {
     protected $table = 'shop_product_marks';
 

@@ -5,6 +5,7 @@ namespace App\Entity\Shop;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property User $updatedBy
  *
  * @property string $name
+ * @mixin Eloquent
  */
 class Mark extends Model
 {

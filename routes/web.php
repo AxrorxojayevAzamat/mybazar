@@ -6,7 +6,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
 
-    Route::group(['prefix' => 'shop', 'as' => 'shop.'], function () {
+    Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
 

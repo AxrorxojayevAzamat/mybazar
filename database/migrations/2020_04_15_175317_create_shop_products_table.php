@@ -28,12 +28,13 @@ class CreateShopProductsTable extends Migration
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('brand_id');
             $table->tinyInteger('status');
-            $table->float('weight');
-            $table->integer('quantity');
+            $table->float('weight')->nullable();
+            $table->integer('quantity')->nullable();
             $table->boolean('guarantee');
             $table->boolean('bestseller');
             $table->boolean('new');
             $table->float('rating');
+            $table->text('reject_reason')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();

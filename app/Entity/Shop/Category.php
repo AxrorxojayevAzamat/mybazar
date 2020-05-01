@@ -6,6 +6,7 @@ use App\Entity\BaseModel;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Eloquent;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
@@ -32,6 +33,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property string $name
  * @property User $createdBy
  * @property User $updatedBy
+ * @mixin Eloquent
  */
 class Category extends BaseModel
 {

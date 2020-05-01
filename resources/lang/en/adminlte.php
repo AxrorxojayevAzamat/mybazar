@@ -40,6 +40,7 @@ return [
     'updated_by' => 'Updated by',
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
+    'new' => 'New',
 
     'user' => [
         'name'  => 'Username',
@@ -55,9 +56,32 @@ return [
 
     'category' => [
         'add' => 'Add Category',
+        'name' => 'Category',
     ],
 
     'brand' => [
         'add' => 'Add Brand',
+        'name' => 'Brand',
+    ],
+
+    'store' => [
+        'add' => 'Add Store',
+        'name' => 'Store',
+    ],
+
+    'product' => [
+        'add' => 'Add Product',
+        'name' => 'Product',
+        'price_uzs' => 'Price (sum)',
+        'price_usd' => 'Price (dollars)',
+        'discount' => 'Discount',
+        'draft' => 'Draft',
+        'moderation' => 'Moderation',
+        'active' => 'Active',
+        'closed' => 'Closed',
+        'weight' => 'Weight',
+        'quantity' => 'Quantity',
+        'guarantee' => 'Guarantied',
+        'bestseller' => 'Bestseller',
     ],
 ];

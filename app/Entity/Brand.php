@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Eloquent;
 
 /**
  * @property integer $id
@@ -22,6 +23,7 @@ use Carbon\Carbon;
  * @property string $name
  * @property User $createdBy
  * @property User $updatedBy
+ * @mixin Eloquent
  */
 class Brand extends BaseModel
 {

@@ -218,11 +218,11 @@ return [
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
-//        [
-//            'text' => 'products',
-//            'url'  => 'admin/shop/products',
-//            'icon' => 'fas fa-fw fa-product-hunt',
-//        ],
+        [
+            'text' => 'products',
+            'url'  => 'admin/shop/products',
+            'icon' => 'fas fa-fw fa-box',
+        ],
         [
             'text' => 'categories',
             'url'  => 'admin/shop/categories',

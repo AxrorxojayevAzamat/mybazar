@@ -8,6 +8,7 @@ use App\Entity\Store;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
+use Eloquent;
 
 /**
  * @property int $id
@@ -43,15 +44,23 @@ use Carbon\Carbon;
  * @property Value[] $values
  * @property Modification[] $modifications
  * @property ProductCategory[] $productCategories
+ * @property Category[] $categories
  * @property ProductMark[] $productMarks
+ * @property Mark[] $marks
  * @property ProductReviews[] $productReviews
  * @property User $createdBy
  * @property User $updatedBy
  *
  * @property string $name
+ * @mixin Eloquent
  */
 class Product extends BaseModel
 {
+    const STATUS_DRAFT = 0;
+    const STATUS_MODERATION = 1;
+    const STATUS_ACTIVE = 2;
+    const STATUS_CLOSED = 3;
+
     protected $table = 'shop_products';
 
     protected $fillable = [
@@ -59,6 +68,32 @@ class Product extends BaseModel
         'price_uzs', 'price_usd', 'discount', 'store_id', 'brand_id', 'status', 'weight', 'quantity', 'guarantee',
         'bestseller', 'new', 'rating',
     ];
+
+
+    public function isDraft(): bool
+    {
+        return $this->status === self::STATUS_DRAFT;
+    }
+
+    public function isModeration(): bool
+    {
+        return $this->status === self::STATUS_MODERATION;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function isClosed(): bool
+    {
+        return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function categoriesList(): array
+    {
+        return $this->productCategories()->select('id')->get()->toArray();
+    }
 
 
     ########################################### Mutators
@@ -108,9 +143,19 @@ class Product extends BaseModel
         return $this->hasMany(ProductCategory::class, 'product_id', 'id');
     }
 
+    public function categories()
+    {
+            return $this->belongsToMany(Category::class, 'shop_product_categories', 'product_id', 'category_id');
+    }
+
     public function productMarks()
     {
         return $this->hasMany(ProductMark::class, 'product_id', 'id');
+    }
+
+    public function marks()
+    {
+        return $this->belongsToMany(Mark::class, 'shop_product_marks', 'product_id', 'mark_id');
     }
 
     public function productReviews()

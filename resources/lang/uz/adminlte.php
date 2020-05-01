@@ -41,6 +41,7 @@ return [
     'updated_by' => 'Tahrirladi',
     'created_at' => 'Qo`shilgan',
     'updated_at' => 'Tahrirlangan',
+    'new' => 'Yangi',
 
     'user' => [
         'name' => 'Foydalanuvchi Nomi',
@@ -56,9 +57,32 @@ return [
 
     'category' => [
         'add' => 'Kategoriya qo`shmoq',
+        'name' => 'Kategoriya',
     ],
 
     'brand' => [
         'add' => 'Brend qo`shmoq',
+        'name' => 'Brend',
+    ],
+
+    'store' => [
+        'add' => 'Do`kon qo`shmoq',
+        'name' => 'Do`kon',
+    ],
+
+    'product' => [
+        'add' => 'Mahsulot qo`shmoq',
+        'name' => 'Mahsulot',
+        'price_uzs' => 'Narhi (so`mda)',
+        'price_usd' => 'Narhi (dollarda)',
+        'discount' => 'Chegirma',
+        'draft' => 'Qoralama',
+        'moderation' => 'Modeatsiyani kutmoqda',
+        'active' => 'Faol',
+        'closed' => 'Yopilgan',
+        'weight' => 'Vazni',
+        'quantity' => 'Miqdori',
+        'guarantee' => 'Kafolatlangan',
+        'bestseller' => 'Bestseller',
     ],
 ];
