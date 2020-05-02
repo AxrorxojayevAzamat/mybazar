@@ -4,7 +4,11 @@
 
 use command for docker build/up/down/exec:
 
-```make db```
+```
+make db
+make a-i
+make a-dev
+```
 
 ```make du```
 
@@ -13,4 +17,9 @@ use command for docker build/up/down/exec:
 ```make de```
 
 Application URI is [http://localhost:55000](localhost:55000)
-.
+
+---
+
+login: admin
+
+password: ???
