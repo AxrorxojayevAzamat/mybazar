@@ -22,4 +22,4 @@ Application URI is [http://localhost:55000](localhost:55000)
 
 login: admin
 
-password: ???
+password: 1q2w3e4r5t6y
