@@ -1,0 +1,26 @@
+stages:
+  - deploy
+deploy_development:
+  stage: deploy
+  script:
+  - rsync -av * /var/www/shop.dev/ --no-perms --no-owner --no-group
+  - cd /var/www/shop.dev/
+  - php artisan migrate
+  - composer update
+  environment:
+    name: development
+    url: https://shop.sec.uz
+  only:
+  - develop
+deploy_production:
+  stage: deploy
+  script:
+  - rsync -av * /var/www/shop.prod/ --no-perms --no-owner --no-group
+  - cd /var/www/shop.prod/
+  - php artisan migrate
+  - composer update
+  environment:
+    name: production
+    url: https://auth.uzcloud.uz/
+  only:
+  - master

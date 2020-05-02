@@ -19,4 +19,5 @@ return [
     'users'                         => 'Foydalanuvchilar',
     'categories'                    => 'Kategoriyalar',
     'brands'                        => 'Brendlar',
+    'products'                      => 'Mahsulotlar',
 ];

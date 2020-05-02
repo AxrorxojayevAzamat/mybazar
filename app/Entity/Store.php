@@ -8,27 +8,26 @@ use Carbon\Carbon;
 use Eloquent;
 
 /**
- * @property integer $id
+ * @property int $id
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
  * @property string $slug
- * @property array $meta_json
  * @property string $logo
- * @property integer $created_by
- * @property integer $updated_by
+ * @property int $created_by
+ * @property int $updated_by
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
- * @property string $name
  * @property User $createdBy
  * @property User $updatedBy
+ *
+ * @property string $name
  * @mixin Eloquent
  */
-class Brand extends BaseModel
+class Store extends BaseModel
 {
-
-    protected $table = 'brands';
+    protected $table = 'stores';
 
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'slug', 'logo',

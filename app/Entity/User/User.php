@@ -4,6 +4,7 @@ namespace App\Entity\User;
 
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use Carbon\Carbon;
+use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,6 +25,8 @@ use Illuminate\Support\Str;
  * @property boolean $phone_auth
  * @property string $role
  * @property string $status
+ *
+ * @mixin Eloquent
  */
 class User extends Authenticatable
 {

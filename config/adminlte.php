@@ -219,6 +219,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'products',
+            'url'  => 'admin/shop/products',
+            'icon' => 'fas fa-fw fa-box',
+        ],
+        [
             'text' => 'categories',
             'url'  => 'admin/shop/categories',
             'icon' => 'fas fa-fw fa-list-alt',

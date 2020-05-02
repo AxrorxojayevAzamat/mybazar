@@ -19,4 +19,5 @@ return [
     'users'                         => 'Users',
     'categories'                    => 'Categories',
     'brands'                        => 'Brands',
+    'products'                      => 'Products',
 ];
