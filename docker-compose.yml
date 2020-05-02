@@ -60,6 +60,8 @@ services:
       - ./:/app
     working_dir: /app
     tty: true
+    networks:
+      - magazin
 
   redis:
     image: redis
