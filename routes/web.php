@@ -20,4 +20,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::resource('brands', 'BrandController');
+    Route::resource('stores', 'StoreController');
 });

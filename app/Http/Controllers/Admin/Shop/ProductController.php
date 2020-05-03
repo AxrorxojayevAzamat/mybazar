@@ -41,33 +41,12 @@ class ProductController extends Controller
         return view('admin.shop.products.create', compact('categories', 'stores', 'brands'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        dd($this->validate($request, [
-            'name_uz' => 'required|string|max:255',
-            'name_ru' => 'required|string|max:255',
-            'name_en' => 'required|string|max:255',
-            'description_uz' => 'nullable|string',
-            'description_ru' => 'nullable|string',
-            'description_en' => 'nullable|string',
-            'slug' => 'required|string|max:255',
-            'price_uzs' => 'required|numeric|min:0',
-            'price_usd' => 'required|numeric|min:0',
-            'discount' => 'nullable|numeric|min:0',
-            'store_id' => 'required|numeric|min:1',
-            'brand_id' => 'required|numeric|min:1',
-            'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
-            'weight' => 'nullable|numeric|min:0',
-            'quantity' => 'nullable|numeric|min:0',
-            'guarantee' => 'required|boolean',
-            'bestseller' => 'required|boolean',
-            'new' => 'required|boolean',
-//            'categories.*.id' => 'required|numeric|min:1',
-        ]), $request->all());
-        $product = $this->service->create($request);
-
-        return redirect()->route('admin.shop.products.show', $product);
         try {
+            $product = $this->service->create($request);
+
+            return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -80,7 +59,11 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('admin.shop.products.edit', compact('product'));
+        $categories = $this->service->getCategoryList();
+        $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+
+        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands'));
     }
 
     public function update(UpdateRequest $request, Product $product)

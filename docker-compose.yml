@@ -2,15 +2,13 @@ version: '3.7'
 services:
 
   nginx:
-    image: nginx:1.17-alpine
+    build: docker/nginx
     container_name: magazin-nginx
     restart: unless-stopped
-    working_dir: /app
     ports:
       - 55000:80
     volumes:
-      - ./:/app:cached
-      - ./docker/nginx:/etc/nginx/conf.d:cached
+      - ./:/var/www/html
     links:
       - php-fpm
     depends_on:
@@ -21,15 +19,13 @@ services:
       - magazin
 
   php-fpm:
-    build: docker/php-fpm
     restart: unless-stopped
-    image: magazin
+    build: docker/php-fpm
     container_name: magazin-php
-    working_dir: /app
     ports:
       - 9000:9000
     volumes:
-      - ./:/app:cached
+      - ./:/var/www/html:cached
     links:
       - db
       - redis
@@ -41,36 +37,36 @@ services:
       - magazin
 
   db:
-    image: postgres:12.2-alpine
-    restart: unless-stopped
     ports:
       - 54321:5432
+    image: postgres:12.2-alpine
+    restart: unless-stopped
     volumes:
       - ./storage/docker/psql:/var/lib/postgresql/data:cached
     environment:
-      POSTGRES_USER: magazin
-      POSTGRES_PASSWORD: magazin
-      POSTGRES_DB: magazin
+      - POSTGRES_DB=magazin
+      - POSTGRES_USER=magazin
+      - POSTGRES_PASSWORD=magazin
     networks:
       - magazin
 
   node:
     image: node:14.1.0-alpine3.11
     volumes:
-      - ./:/app
-    working_dir: /app
+      - ./:/var/www/html/
     tty: true
     networks:
       - magazin
 
   redis:
     image: redis
+    restart: unless-stopped
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - 6379:6379
     volumes:
-      - ./:/app:cached
+      - ./:/var/www/html:cached
     networks:
       - magazin
 

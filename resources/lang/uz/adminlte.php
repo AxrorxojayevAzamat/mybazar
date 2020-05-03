@@ -42,6 +42,7 @@ return [
     'created_at' => 'Qo`shilgan',
     'updated_at' => 'Tahrirlangan',
     'new' => 'Yangi',
+    'rating' => 'Reyting',
 
     'user' => [
         'name' => 'Foydalanuvchi Nomi',
@@ -84,5 +85,6 @@ return [
         'quantity' => 'Miqdori',
         'guarantee' => 'Kafolatlangan',
         'bestseller' => 'Bestseller',
+        'main_photo' => 'Asosiy Surat',
     ],
 ];

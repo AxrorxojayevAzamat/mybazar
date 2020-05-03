@@ -41,6 +41,7 @@ return [
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
     'new' => 'New',
+    'rating' => 'Rating',
 
     'user' => [
         'name'  => 'Username',
@@ -83,5 +84,6 @@ return [
         'quantity' => 'Quantity',
         'guarantee' => 'Guarantied',
         'bestseller' => 'Bestseller',
+        'main_photo' => 'Main Photo',
     ],
 ];

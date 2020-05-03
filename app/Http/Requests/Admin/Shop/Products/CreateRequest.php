@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
             'guarantee' => 'required|boolean',
             'bestseller' => 'required|boolean',
             'new' => 'required|boolean',
-            'categories.*.id' => 'required|numeric|min:1',
+            'categories.*' => 'required|numeric|min:1',
         ];
     }
 }
