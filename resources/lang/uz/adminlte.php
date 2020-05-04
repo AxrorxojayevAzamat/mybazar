@@ -59,16 +59,19 @@ return [
     'category' => [
         'add' => 'Kategoriya qo`shmoq',
         'name' => 'Kategoriya',
+        'choose' => 'Kategoriya tanlamoq',
     ],
 
     'brand' => [
         'add' => 'Brend qo`shmoq',
         'name' => 'Brend',
+        'choose' => 'Brend tanlamoq',
     ],
 
     'store' => [
         'add' => 'Do`kon qo`shmoq',
         'name' => 'Do`kon',
+        'choose' => 'Do`kon tanlamoq',
     ],
 
     'product' => [
@@ -86,5 +89,6 @@ return [
         'guarantee' => 'Kafolatlangan',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Asosiy Surat',
+        'choose' => 'Mahsulot tanlamoq',
     ],
 ];

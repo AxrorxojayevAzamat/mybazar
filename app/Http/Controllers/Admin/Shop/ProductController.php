@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Admin\Shop;
 use App\Entity\Brand;
 use App\Entity\Shop\Category;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ProductCategory;
 use App\Entity\Store;
 use App\Helpers\LanguageHelper;
-use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
 use App\Services\Shop\ProductService;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -27,9 +26,36 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::orderByDesc('updated_at')->paginate(20);
+        $query = Product::orderByDesc('updated_at');
 
-        return view('admin.shop.products.index', compact('products'));
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('store_id'))) {
+            $query->where('store_id', $value);
+        }
+
+        if (!empty($value = $request->get('brand_id'))) {
+            $query->where('brand_id', $value);
+        }
+
+        if (!empty($value = $request->get('category_id'))) {
+            $products = ProductCategory::where('category_id', $value)->pluck('product_id')->toArray();
+            $query->whereIn('id', $products);
+        }
+
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+
+        $products = $query->paginate(20);
+
+        $categories = $this->service->getCategoryList();
+        $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+
+        return view('admin.shop.products.index', compact('products', 'categories', 'stores', 'brands'));
     }
 
     public function create()

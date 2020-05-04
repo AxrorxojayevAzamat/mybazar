@@ -3,6 +3,7 @@
 namespace App\Entity\Shop;
 
 use App\Entity\BasePivot;
+use Eloquent;
 
 /**
  * @property int $product_id
@@ -10,6 +11,7 @@ use App\Entity\BasePivot;
  *
  * @property Product $product
  * @property Category $category
+ * @mixin Eloquent
  */
 class ProductCategory extends BasePivot
 {

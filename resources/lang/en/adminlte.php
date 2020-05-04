@@ -58,16 +58,19 @@ return [
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',
+        'choose' => 'Choose category',
     ],
 
     'brand' => [
         'add' => 'Add Brand',
         'name' => 'Brand',
+        'choose' => 'Choose brand',
     ],
 
     'store' => [
         'add' => 'Add Store',
         'name' => 'Store',
+        'choose' => 'Choose store',
     ],
 
     'product' => [
@@ -85,5 +88,6 @@ return [
         'guarantee' => 'Guarantied',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Main Photo',
+        'choose' => 'Choose product',
     ],
 ];
