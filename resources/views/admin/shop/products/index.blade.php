@@ -66,6 +66,7 @@
 
         </tbody>
     </table>
+    {{ $products->links() }}
 @endsection
 
 @section('mix_adminlte_js')

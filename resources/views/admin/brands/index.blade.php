@@ -27,4 +27,5 @@
 
         </tbody>
     </table>
+    {{ $brands->links() }}
 @endsection
