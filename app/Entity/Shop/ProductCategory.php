@@ -2,7 +2,8 @@
 
 namespace App\Entity\Shop;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Entity\BasePivot;
+use Eloquent;
 
 /**
  * @property int $product_id
@@ -10,8 +11,9 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  *
  * @property Product $product
  * @property Category $category
+ * @mixin Eloquent
  */
-class ProductCategory extends Pivot
+class ProductCategory extends BasePivot
 {
     protected $table = 'shop_product_categories';
 

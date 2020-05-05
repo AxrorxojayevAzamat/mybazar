@@ -32,7 +32,8 @@ class ProductService
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
-        return DB::transaction(function () use ($request, $store, $brand): Product {
+        DB::beginTransaction();
+        try {
             /* @var $product Product */
             $product = Product::make([
                 'name_uz' => $request->name_uz,
@@ -44,7 +45,7 @@ class ProductService
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
-                'discount' => $request->discount ?? null,
+                'discount' => $request->discount ?? 0,
                 'status' => $request->status,
                 'weight' => $request->weight ?? null,
                 'quantity' => $request->quantity ?? null,
@@ -62,8 +63,13 @@ class ProductService
                 $product->productCategories()->create(['category_id' => $categoryId]);
             }
 
+            DB::commit();
+
             return $product;
-        });
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 
     public function update($id, UpdateRequest $request): Product
@@ -72,7 +78,8 @@ class ProductService
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
-        return DB::transaction(function () use ($request, $product, $store, $brand): Product {
+        DB::beginTransaction();
+        try {
             $product->update([
                 'name_uz' => $request->name_uz,
                 'name_ru' => $request->name_ru,
@@ -100,7 +107,12 @@ class ProductService
                 $product->productCategories()->create(['category_id' => $categoryId]);
             }
 
+            DB::commit();
+
             return $product;
-        });
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }

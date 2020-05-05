@@ -13,7 +13,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'description_uz' => $faker->text(200),
         'description_ru' => $faker->text(200),
         'description_en' => $faker->text(200),
-        'slug' => $faker->unique()->slug(2),
+        'slug' => $faker->unique()->slug(5),
         'parent_id' => null,
         'created_by' => 1,
         'updated_by' => 1,

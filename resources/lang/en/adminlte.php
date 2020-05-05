@@ -41,6 +41,7 @@ return [
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
     'new' => 'New',
+    'rating' => 'Rating',
 
     'user' => [
         'name'  => 'Username',
@@ -57,16 +58,19 @@ return [
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',
+        'choose' => 'Choose category',
     ],
 
     'brand' => [
         'add' => 'Add Brand',
         'name' => 'Brand',
+        'choose' => 'Choose brand',
     ],
 
     'store' => [
         'add' => 'Add Store',
         'name' => 'Store',
+        'choose' => 'Choose store',
     ],
 
     'product' => [
@@ -83,5 +87,7 @@ return [
         'quantity' => 'Quantity',
         'guarantee' => 'Guarantied',
         'bestseller' => 'Bestseller',
+        'main_photo' => 'Main Photo',
+        'choose' => 'Choose product',
     ],
 ];

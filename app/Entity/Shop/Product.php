@@ -92,7 +92,7 @@ class Product extends BaseModel
 
     public function categoriesList(): array
     {
-        return $this->productCategories()->select('id')->get()->toArray();
+        return $this->productCategories()->select('category_id')->pluck('category_id')->toArray();
     }
 
 

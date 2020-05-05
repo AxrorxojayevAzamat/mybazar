@@ -42,6 +42,7 @@ return [
     'created_at' => 'Qo`shilgan',
     'updated_at' => 'Tahrirlangan',
     'new' => 'Yangi',
+    'rating' => 'Reyting',
 
     'user' => [
         'name' => 'Foydalanuvchi Nomi',
@@ -58,16 +59,19 @@ return [
     'category' => [
         'add' => 'Kategoriya qo`shmoq',
         'name' => 'Kategoriya',
+        'choose' => 'Kategoriya tanlamoq',
     ],
 
     'brand' => [
         'add' => 'Brend qo`shmoq',
         'name' => 'Brend',
+        'choose' => 'Brend tanlamoq',
     ],
 
     'store' => [
         'add' => 'Do`kon qo`shmoq',
         'name' => 'Do`kon',
+        'choose' => 'Do`kon tanlamoq',
     ],
 
     'product' => [
@@ -84,5 +88,7 @@ return [
         'quantity' => 'Miqdori',
         'guarantee' => 'Kafolatlangan',
         'bestseller' => 'Bestseller',
+        'main_photo' => 'Asosiy Surat',
+        'choose' => 'Mahsulot tanlamoq',
     ],
 ];

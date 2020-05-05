@@ -33,7 +33,7 @@ class CreateShopProductsTable extends Migration
             $table->boolean('guarantee');
             $table->boolean('bestseller');
             $table->boolean('new');
-            $table->float('rating');
+            $table->float('rating')->nullable();
             $table->text('reject_reason')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
