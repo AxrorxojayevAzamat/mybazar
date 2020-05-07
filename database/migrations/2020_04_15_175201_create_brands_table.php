@@ -19,7 +19,7 @@ class CreateBrandsTable extends Migration
             $table->string('name_ru');
             $table->string('name_en');
             $table->string('slug');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->json('meta_json')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

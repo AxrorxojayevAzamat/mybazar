@@ -88,6 +88,8 @@ return [
         'guarantee' => 'Guarantied',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Main Photo',
+        'add_main_photo' => 'Add Main Photo',
+        'add_photos' => 'Add Photos',
         'choose' => 'Choose product',
     ],
 ];

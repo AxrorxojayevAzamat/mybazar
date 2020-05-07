@@ -1,5 +1,9 @@
 @extends('layouts.page')
 
+@php
+$user = Auth::user();
+@endphp
+
 @section('content')
     <p><a href="{{ route('admin.brands.create') }}" class="btn btn-success">{{ trans('adminlte.brand.add') }}</a></p>
 
@@ -15,7 +19,11 @@
 
         @foreach ($brands as $brand)
             <tr>
-                <td><a href="/storage/{{ $brand->logo }}" target="_blank"><img src="/storage/{{ $brand->logo }}" style="height: 50%; width: 50%;"></a></td>
+                <td>
+                    @if ($brand->logo)
+                        <a href="{{ $brand->logoOriginal }}" target="_blank"><img src="{{ $brand->logoThumbnail }}"></a>
+                    @endif
+                </td>
                 <td>
                     @for ($i = 0; $i < $brand->depth; $i++) &mdash; @endfor
                     <a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a>

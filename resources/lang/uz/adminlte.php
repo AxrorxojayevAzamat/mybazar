@@ -89,6 +89,8 @@ return [
         'guarantee' => 'Kafolatlangan',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Asosiy Surat',
+        'add_main_photo' => 'Asosiy suratni qo`shmoq',
+        'add_photos' => 'Suratnlar qo`shmoq',
         'choose' => 'Mahsulot tanlamoq',
     ],
 ];

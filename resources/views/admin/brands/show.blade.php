@@ -1,5 +1,9 @@
 @extends('layouts.page')
 
+@php
+    $user = Auth::user();
+@endphp
+
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.brands.edit', $brand) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
@@ -19,7 +23,14 @@
         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $brand->name_ru }}</td></tr>
         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $brand->name_en }}</td></tr>
         <tr><th>Slug</th><td>{{ $brand->slug }}</td></tr>
-        <tr><th>Logo</th><td><a href="/storage/{{ $brand->logo }}" target="_blank"><img src="/storage/{{ $brand->logo }}"></a></td></tr>
+        <tr>
+            <th>Logo</th>
+            <td>
+                @if ($brand->logo)
+                    <a href="{{ $brand->logoOriginal }}" target="_blank"><img src="{{ $brand->logoThumbnail }}"></a>
+                @endif
+            </td>
+        </tr>
         <tr><th>{{ trans('adminlte.created_by') }}</th><td>{{ $brand->createdBy->name }}</td></tr>
         <tr><th>{{ trans('adminlte.updated_by') }}</th><td>{{ $brand->updatedBy->name }}</td></tr>
         <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $brand->created_at }}</td></tr>

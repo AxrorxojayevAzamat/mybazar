@@ -3,12 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entity\Brand;
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brands\CreateRequest;
 use App\Http\Requests\Admin\Brands\UpdateRequest;
+use App\Services\BrandService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
+    private $service;
+
+    public function __construct(BrandService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
         $brands = Brand::orderByDesc('updated_at')->paginate(20);
@@ -23,15 +34,9 @@ class BrandController extends Controller
 
     public function store(CreateRequest $request)
     {
-        $category = Brand::create([
-            'name_uz' => $request['name_uz'],
-            'name_ru' => $request['name_ru'],
-            'name_en' => $request['name_en'],
-            'slug' => $request['slug'],
-            'logo' => $request->logo ? $request->logo->store('images/brands', 'public') : null,
-        ]);
+        $brand = $this->service->create($request);
 
-        return redirect()->route('admin.brands.show', $category);
+        return redirect()->route('admin.brands.show', $brand);
     }
 
     public function show(Brand $brand)
@@ -46,13 +51,7 @@ class BrandController extends Controller
 
     public function update(UpdateRequest $request, Brand $brand)
     {
-        $brand->update([
-            'name_uz' => $request['name_uz'],
-            'name_ru' => $request['name_ru'],
-            'name_en' => $request['name_en'],
-            'slug' => $request['slug'],
-            'logo' => $request->logo ? $request->logo->store('brands', 'public') : null,
-        ]);
+        $brand = $this->service->update($brand->id, $request);
 
         return redirect()->route('admin.brands.show', $brand);
     }
@@ -62,5 +61,13 @@ class BrandController extends Controller
         $brand->delete();
 
         return redirect()->route('admin.brands.index');
+    }
+
+    public function removeLogo(Brand $brand)
+    {
+        if ($this->service->removeLogo($brand->id)) {
+            return response()->json('The logo is successfully deleted!');
+        }
+        return response()->json('The logo is not deleted!', 400);
     }
 }

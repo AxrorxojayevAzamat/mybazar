@@ -15,5 +15,7 @@ mix
     .setPublicPath('public/build')
     .setResourceRoot('/build/')
     .js('resources/assets/js/app.js', 'js')
+    .js('resources/assets/js/fileinput.js', 'js')
     .sass('resources/assets/sass/app.scss', 'css')
+    .sass('resources/assets/sass/fileinput.scss', 'css')
     .version();

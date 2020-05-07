@@ -7,6 +7,10 @@ namespace App\Http\Requests\Admin\Brands;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
+ * @property string $name_uz
+ * @property string $name_ru
+ * @property string $name_en
+ * @property string $slug
  * @property \Illuminate\Http\UploadedFile $logo
  */
 class CreateRequest extends FormRequest
@@ -23,7 +27,8 @@ class CreateRequest extends FormRequest
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'logo' => 'required|image|mimes:jpg,jpeg,png'
+            'logo' => 'required|image|mimes:jpg,jpeg,png',
+//            'logo' => 'required|url'
         ];
     }
 }

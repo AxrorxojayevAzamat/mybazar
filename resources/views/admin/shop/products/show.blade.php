@@ -3,6 +3,8 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        <a href="{{ route('admin.shop.products.add-main-photo', $product) }}" class="btn btn-dark mr-1">{{ trans('adminlte.product.add_main_photo') }}</a>
+        <a href="{{ route('admin.shop.products.add-photos', $product) }}" class="btn btn-secondary mr-1">{{ trans('adminlte.product.add_photos') }}</a>
         <form method="POST" action="{{ route('admin.shop.products.destroy', $product) }}" class="mr-1">
             @csrf
             @method('DELETE')

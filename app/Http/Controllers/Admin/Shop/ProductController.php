@@ -13,6 +13,7 @@ use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
 use App\Services\Shop\ProductService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
 {
@@ -108,5 +109,35 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.shop.products.index');
+    }
+
+    public function addMainPhoto(Product $product, Request $request)
+    {
+        try {
+            $this->validate($request, ['image' => 'required|image|mimes:jpg,jpeg,png']);
+
+
+
+        } catch (ValidationException $e) {
+
+        } catch (\Exception $e) {
+
+        }
+
+    }
+
+    public function addPhotos(Product $product, Request $request)
+    {
+        try {
+            $this->validate($request, ['image' => 'required|image|mimes:jpg,jpeg,png']);
+
+
+
+        } catch (ValidationException $e) {
+
+        } catch (\Exception $e) {
+
+        }
+
     }
 }

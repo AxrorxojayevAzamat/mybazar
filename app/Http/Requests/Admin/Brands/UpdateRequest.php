@@ -6,6 +6,13 @@ namespace App\Http\Requests\Admin\Brands;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $name_uz
+ * @property string $name_ru
+ * @property string $name_en
+ * @property string $slug
+ * @property \Illuminate\Http\UploadedFile $logo
+ */
 class UpdateRequest extends FormRequest
 {
     public function authorize()
@@ -20,7 +27,8 @@ class UpdateRequest extends FormRequest
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:512'
+            'logo' => 'image|mimes:jpeg,png,jpg',
+//            'logo' => 'required|url'
         ];
     }
 }

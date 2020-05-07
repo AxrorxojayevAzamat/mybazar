@@ -21,8 +21,12 @@
     @yield('adminlte_css')
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/fonts.css') }}">
+
     @else
     <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
+
+    @yield('mix_adminlte_css')
+
     @endif
 
     @yield('meta_tags')
