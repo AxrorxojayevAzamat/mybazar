@@ -56,9 +56,9 @@ class UpdateRequest extends FormRequest
             'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
             'weight' => 'nullable|numeric|min:0',
             'quantity' => 'nullable|numeric|min:0',
-            'guarantee' => 'required|boolean',
-            'bestseller' => 'required|boolean',
-            'new' => 'required|boolean',
+            'guarantee' => 'boolean',
+            'bestseller' => 'boolean',
+            'new' => 'boolean',
             'categories.*' => 'required|numeric|min:1',
         ];
     }
