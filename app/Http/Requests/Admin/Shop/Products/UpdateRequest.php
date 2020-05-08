@@ -2,10 +2,34 @@
 
 namespace App\Http\Requests\Admin\Shop\Products;
 
+use App\Entity\Shop\Product;
 use App\Helpers\ProductHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * @property string $name_uz
+ * @property string $name_ru
+ * @property string $name_en
+ * @property string $description_uz
+ * @property string $description_ru
+ * @property string $description_en
+ * @property string $slug
+ * @property int $price_uzs
+ * @property float $price_usd
+ * @property float $discount
+ * @property int $store_id
+ * @property int $brand_id
+ * @property int $status
+ * @property int $weight
+ * @property int $quantity
+ * @property boolean $guarantee
+ * @property boolean $bestseller
+ * @property boolean $new
+ * @property int[] $categories
+ *
+ * @property Product $product
+ */
 class UpdateRequest extends FormRequest
 {
 
@@ -23,7 +47,7 @@ class UpdateRequest extends FormRequest
             'description_uz' => 'nullable|string',
             'description_ru' => 'nullable|string',
             'description_en' => 'nullable|string',
-            'slug' => 'required|string|max:255',
+            'slug' => ['required', 'string', 'max:255', Rule::unique('shop_products')->ignore($this->product->id)],
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',

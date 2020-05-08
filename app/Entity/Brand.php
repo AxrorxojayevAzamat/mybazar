@@ -59,7 +59,7 @@ class Brand extends BaseModel
             'name_ru' => $nameRu,
             'name_en' => $nameEn,
             'slug' => $slug,
-            'logo' => $logoName,
+            'logo' => $logoName ?: $this->logo,
         ]);
     }
 

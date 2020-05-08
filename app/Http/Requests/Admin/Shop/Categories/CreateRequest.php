@@ -1,11 +1,19 @@
 <?php
 
-
 namespace App\Http\Requests\Admin\Shop\Categories;
-
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $name_uz
+ * @property string $name_ru
+ * @property string $name_en
+ * @property string $description_uz
+ * @property string $description_ru
+ * @property string $description_en
+ * @property string $slug
+ * @property int $parent
+ */
 class CreateRequest extends FormRequest
 {
     public function authorize()

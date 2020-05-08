@@ -18,7 +18,7 @@ class CreateShopMarksTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('photo')->nullable();
             $table->json('meta_json')->nullable();
             $table->unsignedBigInteger('created_by');

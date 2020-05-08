@@ -2,7 +2,7 @@
     <div class="tab-pane active" id="uzbek" role="tabpanel">
         <div class="form-group">
             {!! Form::label('name_uz', 'Nomi', ['class' => 'col-form-label']); !!}
-            {!! Form::text('name_uz', old('name_uz', $product ? $product->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'id' => 'name_uz', 'required' => true]) !!}
+            {!! Form::text('name_uz', old('name_uz', $product ? $product->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'required' => true]) !!}
             @if ($errors->has('name_uz'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('name_uz') }}</strong></span>
             @endif
@@ -19,7 +19,7 @@
     <div class="tab-pane" id="russian" role="tabpanel">
         <div class="form-group">
             {!! Form::label('name_ru', 'Название', ['class' => 'col-form-label']); !!}
-            {!! Form::text('name_ru', old('name_ru', $product ? $product->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'id' => 'name_ru', 'required' => true]) !!}
+            {!! Form::text('name_ru', old('name_ru', $product ? $product->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'required' => true]) !!}
             @if ($errors->has('name_ru'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('name_ru') }}</strong></span>
             @endif
@@ -36,7 +36,7 @@
     <div class="tab-pane" id="english" role="tabpanel">
         <div class="form-group">
             {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
-            {!! Form::text('name_en', old('name_en', $product ? $product->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'id' => 'name_en', 'required' => true]) !!}
+            {!! Form::text('name_en', old('name_en', $product ? $product->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
             @if ($errors->has('name_en'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
             @endif

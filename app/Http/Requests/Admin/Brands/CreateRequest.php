@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
             'name_uz' => 'required|string|max:255',
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:brands',
             'logo' => 'required|image|mimes:jpg,jpeg,png',
 //            'logo' => 'required|url'
         ];
