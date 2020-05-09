@@ -2,6 +2,9 @@
 
 return [
 
+    'css_section_name' => 'mix_adminlte_css',
+    'javascript_section_name' => 'mix_adminlte_js',
+
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -193,7 +196,7 @@ return [
     |
     */
 
-    'enabled_laravel_mix' => true,
+    'enabled_laravel_mix' => false,
 
     /*
     |--------------------------------------------------------------------------

@@ -99,7 +99,7 @@ Breadcrumbs::register('admin.brands.edit', function (Crumbs $crumbs, Brand $bran
 
 Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push(trans('menu.products'), route('admin.brands.index'));
+    $crumbs->push(trans('menu.products'), route('admin.shop.products.index'));
 });
 
 Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
@@ -120,4 +120,14 @@ Breadcrumbs::register('admin.shop.products.edit', function (Crumbs $crumbs, Prod
 Breadcrumbs::register('admin.shop.products.reject', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.shop.products.show');
     $crumbs->push($product->name, route('admin.shop.products.reject', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.photos', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.photo.add_multiple'), route('admin.shop.products.photos', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.main-photo', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.photo.add_main'), route('admin.shop.products.main-photo', $product));
 });

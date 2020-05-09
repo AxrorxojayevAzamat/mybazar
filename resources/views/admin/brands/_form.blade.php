@@ -1,55 +1,79 @@
-@section('mix_adminlte_css')
+@if (!config('adminlte.enabled_laravel_mix'))
+    @php($cssSectionName = 'css')
+    @php($javaScriptSectionName = 'js')
+@else
+    @php($cssSectionName = 'mix_adminlte_css')
+    @php($javaScriptSectionName = 'mix_adminlte_js')
+@endif
+
+@section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-<div class="form-group">
-    {!! Form::label('name_uz', 'Nomi', ['class' => 'col-form-label']); !!}
-    {!! Form::text('name_uz', old('name_uz', $brand ? $brand->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'required' => true]) !!}
-    @if ($errors->has('name_uz'))
-        <span class="invalid-feedback"><strong>{{ $errors->first('name_uz') }}</strong></span>
-    @endif
-</div>
 
-<div class="form-group">
-    {!! Form::label('name_ru', 'Название', ['class' => 'col-form-label']); !!}
-    {!! Form::text('name_ru', old('name_ru', $brand ? $brand->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'required' => true]) !!}
-    @if ($errors->has('name_ru'))
-        <span class="invalid-feedback"><strong>{{ $errors->first('name_ru') }}</strong></span>
-    @endif
-</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
+            <div class="card-body">
+                <div class="form-group">
+                    {!! Form::label('name_uz', 'Nomi', ['class' => 'col-form-label']); !!}
+                    {!! Form::text('name_uz', old('name_uz', $brand ? $brand->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    @if ($errors->has('name_uz'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('name_uz') }}</strong></span>
+                    @endif
+                </div>
 
-<div class="form-group">
-    {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
-    {!! Form::text('name_en', old('name_en', $brand ? $brand->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
-    @if ($errors->has('name_en'))
-        <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
-    @endif
-</div>
+                <div class="form-group">
+                    {!! Form::label('name_ru', 'Название', ['class' => 'col-form-label']); !!}
+                    {!! Form::text('name_ru', old('name_ru', $brand ? $brand->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    @if ($errors->has('name_ru'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('name_ru') }}</strong></span>
+                    @endif
+                </div>
 
-<div class="form-group">
-    {!! Form::label('slug', 'Slug', ['class' => 'col-form-label']); !!}
-    {!! Form::text('slug', old('name_en', $brand ? $brand->slug : null), ['class'=>'form-control' . ($errors->has('slug') ? ' is-invalid' : ''), 'required' => true]) !!}
-    @if ($errors->has('slug'))
-        <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
-    @endif
-</div>
+                <div class="form-group">
+                    {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
+                    {!! Form::text('name_en', old('name_en', $brand ? $brand->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    @if ($errors->has('name_en'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
+                    @endif
+                </div>
 
-<div class="form-group">
-    <label for="logo" class="col-form-label">Logo</label>
-    <div class="file-loading">
-        <input id="file-input" class="file" type="file" name="logo">
+                <div class="form-group">
+                    {!! Form::label('slug', 'Slug', ['class' => 'col-form-label']); !!}
+                    {!! Form::text('slug', old('name_en', $brand ? $brand->slug : null), ['class'=>'form-control' . ($errors->has('slug') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    @if ($errors->has('slug'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-    @if ($errors->has('logo'))
-        <span class="invalid-feedback"><strong>{{ $errors->first('logo') }}</strong></span>
-    @endif
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header"><h3 class="card-title">Logo</h3></div>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="file-loading">
+                        <input id="file-input" class="file" type="file" name="logo">
+                    </div>
+                    @if ($errors->has('logo'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('logo') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="form-group">
     <button type="submit" class="btn btn-primary">{{ trans('adminlte.' . ($brand ? 'edit' : 'save')) }}</button>
 </div>
 
-@section('mix_adminlte_js')
-    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
-
+@section($javaScriptSectionName)
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/purify.min.js') }}" type="text/javascript"></script>
@@ -63,8 +87,6 @@
     <script>
         let fileInput = $("#file-input");
         let logoUrl = '{{ $brand ? ($brand->logo ? $brand->logoOriginal : null) : null }}';
-
-        $('#lfm').filemanager('image');
 
         if (logoUrl) {
             let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
@@ -80,7 +102,7 @@
                 previewFileType: 'text',
                 browseOnZoneClick: true,
                 overwriteInitial: true,
-                deleteUrl: '{{ 'remove-logo' }}',
+                deleteUrl: 'remove-logo',
                 maxFileCount: 1,
                 allowedFileExtensions: ['jpg', 'jpeg', 'png'],
             });

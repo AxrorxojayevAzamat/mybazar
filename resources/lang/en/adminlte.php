@@ -27,9 +27,11 @@ return [
 
     'create' => 'Create',
     'save' => 'Save',
+    'upload' => 'Upload',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'delete_confirmation_message' => 'Are you sure?',
+    'main' => 'Main',
 
     'name' => 'Name',
     'description' => 'Description',
@@ -42,6 +44,15 @@ return [
     'updated_at' => 'Updated at',
     'new' => 'New',
     'rating' => 'Rating',
+    'other' => 'Other',
+
+    'photo' => [
+        'plural' => 'Photos',
+        'name' => 'Photo',
+        'add' => 'Add Photo',
+        'add_multiple' => 'Add Photos',
+        'add_main' => 'Add Main Photo',
+    ],
 
     'user' => [
         'name'  => 'Username',

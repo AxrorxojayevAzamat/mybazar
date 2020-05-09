@@ -41,6 +41,7 @@ use Eloquent;
  * @property Brand $brand
  * @property Photo $mainPhoto
  * @property Photo[] $photos
+ * @property Photo[] $allPhotos
  * @property Value[] $values
  * @property Modification[] $modifications
  * @property ProductCategory[] $productCategories
@@ -96,6 +97,13 @@ class Product extends BaseModel
     }
 
 
+    ########################################### Photos
+
+
+
+    ###########################################
+
+
     ########################################### Mutators
 
     public function getNameAttribute(): string
@@ -125,7 +133,12 @@ class Product extends BaseModel
 
     public function photos()
     {
-        return $this->hasMany(Photo::class, 'product_id', 'id');
+        return $this->hasMany(Photo::class, 'product_id', 'id')->whereKeyNot($this->main_photo_id)->orderBy('sort');
+    }
+
+    public function allPhotos()
+    {
+        return $this->hasMany(Photo::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function values()

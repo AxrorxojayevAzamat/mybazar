@@ -11,9 +11,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('products', 'ProductController');
 
         Route::group(['prefix' => 'products/{product}', 'as' => 'products.'], function () {
-            Route::get('add-main-photo', 'ProductController@addMainPhoto')->name('add-main-photo');
-            Route::get('add-photos', 'ProductController@addPhotos')->name('add-photos');
-
+            Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
+            Route::get('photos', 'ProductController@photos')->name('photos');
+            Route::post('add-main-photo', 'ProductController@addMainPhoto')->name('add-main-photo');
+            Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
+            Route::post('remove-photo/{photo}', 'ProductController@removePhoto')->name('remove-photo');
+            Route::post('add-photo', 'ProductController@addPhoto')->name('add-photo');
+            Route::get('move-photo-up/{photo}', 'ProductController@movePhotoUp')->name('move-photo-up');
+            Route::get('remove-photo/{photo}', 'ProductController@removePhoto')->name('delete-photo');
+            Route::get('move-photo-down/{photo}', 'ProductController@movePhotoDown')->name('move-photo-down');
         });
 
         Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {

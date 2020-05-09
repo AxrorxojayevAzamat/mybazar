@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Brand;
 use App\Entity\Shop\Category;
+use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
 use App\Entity\Store;
@@ -111,33 +112,80 @@ class ProductController extends Controller
         return redirect()->route('admin.shop.products.index');
     }
 
+    public function mainPhoto(Product $product)
+    {
+        return view('admin.shop.products.add-main-photo', compact('product'));
+    }
+
+    public function photos(Product $product)
+    {
+        return view('admin.shop.products.add-photo', compact('product'));
+    }
+
     public function addMainPhoto(Product $product, Request $request)
     {
         try {
-            $this->validate($request, ['image' => 'required|image|mimes:jpg,jpeg,png']);
+            $this->validate($request, ['photo' => 'required|image|mimes:jpg,jpeg,png']);
 
+            $this->service->addMainPhoto($product->id, $request->photo);
 
-
-        } catch (ValidationException $e) {
-
+            return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
 
+    public function removeMainPhoto(Product $product)
+    {
+        try {
+            $this->service->removeMainPhoto($product->id);
+            return response()->json('The main photo is successfully deleted!');
+        } catch (\Exception $e) {
+            return response()->json('The main photo is not deleted!', 400);
         }
 
     }
 
-    public function addPhotos(Product $product, Request $request)
+    public function addPhoto(Product $product, Request $request)
     {
         try {
-            $this->validate($request, ['image' => 'required|image|mimes:jpg,jpeg,png']);
+            $this->validate($request, ['photo' => 'required|image|mimes:jpg,jpeg,png']);
 
+            $this->service->addPhoto($product->id, $request->photo);
 
-
-        } catch (ValidationException $e) {
-
+            return redirect()->route('admin.shop.products.photos', $product);
         } catch (\Exception $e) {
-
+            return back()->with('error', $e->getMessage());
         }
+    }
 
+    public function removePhoto(Product $product, Photo $photo)
+    {
+        try {
+            $this->service->removePhoto($product->id, $photo->id);
+            return redirect()->route('admin.shop.products.photos', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function movePhotoUp(Product $product, Photo $photo)
+    {
+        try {
+            $this->service->movePhotoUp($product->id, $photo->id);
+            return back();
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function movePhotoDown(Product $product, Photo $photo)
+    {
+        try {
+            $this->service->movePhotoDown($product->id, $photo->id);
+            return back();
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

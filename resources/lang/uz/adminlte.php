@@ -27,9 +27,11 @@ return [
 
     'create' => 'Yaratmoq',
     'save' => 'Qo`shmoq',
+    'upload' => 'Yuklamoq',
     'edit' => 'Tahrirlamoq',
     'delete' => 'O`chirmoq',
     'delete_confirmation_message' => 'Ishonchingiz komilmi?',
+    'main' => 'Asosiy',
 
     'name' => 'Nomi',
     'description' => 'Tavsifi',
@@ -43,6 +45,16 @@ return [
     'updated_at' => 'Tahrirlangan',
     'new' => 'Yangi',
     'rating' => 'Reyting',
+    'other' => 'Boshqa',
+    'photos' => 'Rasmlar',
+
+    'photo' => [
+        'plural' => 'Rasm',
+        'name' => 'Rasmlar',
+        'add' => 'Rasm qo`shmoq',
+        'add_multiple' => 'Rasmlar qo`shmoq',
+        'add_main' => 'Asosiy rasmni qo`shmoq',
+    ],
 
     'user' => [
         'name' => 'Foydalanuvchi Nomi',

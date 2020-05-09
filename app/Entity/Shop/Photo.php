@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
 use App\Entity\User\User;
+use App\Helpers\ImageHelper;
 use Carbon\Carbon;
 use Eloquent;
 
@@ -17,6 +18,9 @@ use Eloquent;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
+ * @property string $fileThumbnail
+ * @property string $fileOriginal
+ *
  * @property Product $product
  * @property User $createdBy
  * @property User $updatedBy
@@ -29,6 +33,31 @@ class Photo extends BaseModel
     protected $fillable = [
         'product_id', 'file', 'sort',
     ];
+
+    public function setSort($sort): void
+    {
+        $this->sort = $sort;
+    }
+
+    public function isIdEqualTo($id): bool
+    {
+        return $this->id == $id;
+    }
+
+
+    ########################################### Mutators
+
+    public function getFileThumbnailAttribute(): string
+    {
+        return '/storage/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $this->product_id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
+    }
+
+    public function getFileOriginalAttribute(): string
+    {
+        return '/storage/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $this->product_id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
+    }
+
+    ###########################################
 
 
     ########################################### Relations
