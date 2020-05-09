@@ -41,6 +41,8 @@ class BrandService
         if (!$request->logo) {
             $brand->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
         } else {
+            Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id);
+
             $imageName = ImageHelper::getRandomName($request->logo);
             $brand->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
 
