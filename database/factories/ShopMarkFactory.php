@@ -7,10 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Mark::class, function (Faker $faker) {
     return [
-        'name_uz' => $faker->unique()->name,
-        'name_ru' => $faker->unique()->name,
-        'name_en' => $faker->unique()->name,
-        'slug' => $faker->unique()->slug(2),
+        'name_uz' => $faker->unique()->firstName,
+        'name_ru' => $faker->unique()->firstName,
+        'name_en' => $faker->unique()->firstName,
+        'slug' => $faker->unique()->slug(1),
         'photo' => $faker->imageUrl(),
         'created_by' => 1,
         'updated_by' => 1,

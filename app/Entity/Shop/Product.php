@@ -96,7 +96,7 @@ class Product extends BaseModel
         return $this->productCategories()->pluck('category_id')->toArray();
     }
 
-    public function markList(): array
+    public function marksList(): array
     {
         return $this->productMarks()->pluck('mark_id')->toArray();
     }

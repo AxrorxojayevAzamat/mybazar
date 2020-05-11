@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Brand;
 use App\Entity\Shop\Category;
+use App\Entity\Shop\Mark;
 use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
@@ -70,8 +71,9 @@ class ProductController extends Controller
         $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.create', compact('categories', 'stores', 'brands'));
+        return view('admin.shop.products.create', compact('categories', 'stores', 'brands', 'marks'));
     }
 
     public function store(CreateRequest $request)
@@ -95,8 +97,9 @@ class ProductController extends Controller
         $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands'));
+        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands', 'marks'));
     }
 
     public function update(UpdateRequest $request, Product $product)

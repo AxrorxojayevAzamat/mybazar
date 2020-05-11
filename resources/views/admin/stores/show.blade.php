@@ -44,10 +44,49 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-warning card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
+                <div class="card-body">
+                    <table class="table {{--table-bordered--}} table-striped projects">
+                        <tbody>
+                        <tr>
+                            <th>{{ trans('menu.categories') }}</th>
+                            <td>
+                                @foreach($store->categories as $category)
+                                    <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('menu.marks') }}</th>
+                            <td>
+                                @foreach($store->marks as $mark)
+                                    <a href="{{ route('admin.shop.marks.show', $mark) }}">{{ $mark->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('menu.payments') }}</th>
+                            <td>
+                                @foreach($store->payments as $payment)
+                                    <a href="{{ route('admin.payments.show', $payment) }}">{{ $payment->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-green card-outline">
-                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.other') }}</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>

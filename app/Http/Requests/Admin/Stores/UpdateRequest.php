@@ -35,9 +35,9 @@ class UpdateRequest extends FormRequest
             'name_en' => 'required|string|max:255',
             'slug' => ['required', 'string', 'max:255', Rule::unique('stores')->ignore($this->store->id)],
             'logo' => 'image|mimes:jpeg,png,jpg',
-            'payments.*' => 'required|numeric|min:1|exists:brands',
-            'stores.*' => 'required|numeric|min:1|exists:stores',
-            'categories.*' => 'required|numeric|min:1|exists:shop_categories',
+            'payments.*' => 'numeric|min:1|exists:brands',
+            'marks.*' => 'numeric|min:1|exists:marks',
+            'categories.*' => 'numeric|min:1|exists:shop_categories',
         ];
     }
 }

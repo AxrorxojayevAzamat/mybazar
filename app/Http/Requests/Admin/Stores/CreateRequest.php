@@ -31,9 +31,9 @@ class CreateRequest extends FormRequest
             'name_en' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:stores',
             'logo' => 'required|image|mimes:jpg,jpeg,png',
-            'payments.*' => 'required|numeric|min:1|exists:brands',
-            'stores.*' => 'required|numeric|min:1|exists:stores',
-            'categories.*' => 'required|numeric|min:1|exists:shop_categories',
+            'payments.*' => 'numeric|min:1|exists:brands',
+            'marks.*' => 'numeric|min:1|exists:marks',
+            'categories.*' => 'numeric|min:1|exists:shop_categories',
         ];
     }
 }

@@ -39,6 +39,7 @@ return [
     'description' => 'Tavsifi',
     'status' => 'Holati',
     'parent' => 'Ajdodi',
+    'relations' => 'Bog`liqliklar',
     'sort' => 'Saralanish',
     'required' => 'Majburiy',
     'created_by' => 'Qo`shdi',
@@ -48,6 +49,8 @@ return [
     'new' => 'Yangi',
     'rating' => 'Reyting',
     'other' => 'Boshqa',
+    'others' => 'Boshqalar',
+    'additional' => 'Qo`shimcha',
     'photos' => 'Rasmlar',
 
     'photo' => [

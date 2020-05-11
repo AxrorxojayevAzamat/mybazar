@@ -15,54 +15,114 @@
     @php($store = $product->store)
     @php($brand = $product->brand)
 
-    <table class="table table-bordered table-striped">
-        <tbody>
-        <tr>
-            <th>ID</th><td>{{ $product->id }}</td>
-        </tr>
-        <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $product->name_uz }}</td></tr>
-        <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $product->name_ru }}</td></tr>
-        <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $product->name_en }}</td></tr>
-        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! $product->description_uz !!}</td></tr>
-        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! $product->description_ru !!}</td></tr>
-        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! $product->description_en !!}</td></tr>
-        <tr><th>Slug</th><td>{{ $product->slug }}</td></tr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
+                <div class="card-body">
+                    <table class="table {{--table-bordered--}} table-striped projects">
+                        <tbody>
+                        <tr><th>ID</th><td>{{ $product->id }}</td></tr>
+                        <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $product->name_uz }}</td></tr>
+                        <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $product->name_ru }}</td></tr>
+                        <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $product->name_en }}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! $product->description_uz !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! $product->description_ru !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! $product->description_en !!}</td></tr>
+                        <tr><th>Slug</th><td>{{ $product->slug }}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
-        <tr><th>{{ trans('adminlte.brand.name') }}</th><td><a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a></td></tr>
-        <tr>
-            <th>{{ trans('menu.categories') }}</th>
-            <td>
-                @foreach($product->categories as $category)
-                    <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
-                @endforeach
-            </td>
-        </tr>
-        <tr>
-            <th>{{ trans('adminlte.product.main_photo') }}</th>
-                <td>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-gray card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.product.main_photo') }}</h3></div>
+                <div class="card-body">
                     @if ($product->mainPhoto)
                         <a href="{{ $product->mainPhoto->fileOriginal }}" target="_blank"><img src="{{ $product->mainPhoto->fileThumbnail }}"></a>
                     @endif
-                </td>
-        </tr>
-        <tr><th>{{ trans('adminlte.product.price_uzs') }}</th><td>{{ $product->price_uzs }}</td></tr>
-        <tr><th>{{ trans('adminlte.product.price_usd') }}</th><td>{{ $product->price_usd }}</td></tr>
-        <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $product->discount }}</td></tr>
-        <tr><th>{{ trans('adminlte.status') }}</th><td>{!! \App\Helpers\ProductHelper::getStatusLabel($product->status) !!}</td></tr>
-        <tr><th>{{ trans('adminlte.product.weight') }}</th><td>{{ $product->weight }}</td></tr>
-        <tr><th>{{ trans('adminlte.product.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
-        <tr><th>{{ trans('adminlte.product.guarantee') }}</th><td>{{ $product->guarantee ? 'Да' : 'Нет' }}</td></tr>
-        <tr><th>{{ trans('adminlte.product.bestseller') }}</th><td>{{ $product->bestseller ? 'Да' : 'Нет' }}</td></tr>
-        <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
-        <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $product->rating }}</td></tr>
-        <tr><th>{{ trans('adminlte.created_by') }}</th><td>{{ $product->createdBy->name }}</td></tr>
-        <tr><th>{{ trans('adminlte.updated_by') }}</th><td>{{ $product->updatedBy->name }}</td></tr>
-        <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $product->created_at }}</td></tr>
-        <tr><th>{{ trans('adminlte.updated_at') }}</th><td>{{ $product->updated_at }}</td></tr>
-        <tbody>
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-warning card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
+                <div class="card-body">
+                    <table class="table {{--table-bordered--}} table-striped projects">
+                        <tbody>
+                        <tr>
+                            <th>{{ trans('menu.categories') }}</th>
+                            <td>
+                                @foreach($product->categories as $category)
+                                    <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        <tr><th>{{ trans('adminlte.brand.name') }}</th><td><a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a></td></tr>
+                        <tr>
+                            <th>{{ trans('menu.marks') }}</th>
+                            <td>
+                                @foreach($product->marks as $mark)
+                                    <a href="{{ route('admin.shop.marks.show', $mark) }}">{{ $mark->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.additional') }}</h3></div>
+                <div class="card-body">
+                    <table class="table {{--table-bordered--}} table-striped projects">
+                        <tbody>
+                        <tr><th>{{ trans('adminlte.product.price_uzs') }}</th><td>{{ $product->price_uzs }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.price_usd') }}</th><td>{{ $product->price_usd }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $product->discount }}</td></tr>
+                        <tr><th>{{ trans('adminlte.status') }}</th><td>{!! \App\Helpers\ProductHelper::getStatusLabel($product->status) !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.weight') }}</th><td>{{ $product->weight }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.guarantee') }}</th><td>{{ $product->guarantee ? 'Да' : 'Нет' }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.bestseller') }}</th><td>{{ $product->bestseller ? 'Да' : 'Нет' }}</td></tr>
+                        <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
+                        <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $product->rating }}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
+                <div class="card-body">
+                    <table class="table {{--table-bordered--}} table-striped projects">
+                        <tbody>
+                        <tr><th>{{ trans('adminlte.created_by') }}</th><td>{{ $product->createdBy->name }}</td></tr>
+                        <tr><th>{{ trans('adminlte.updated_by') }}</th><td>{{ $product->updatedBy->name }}</td></tr>
+                        <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $product->created_at }}</td></tr>
+                        <tr><th>{{ trans('adminlte.updated_at') }}</th><td>{{ $product->updated_at }}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="card" id="photos">
         <div class="card-header border">{{ trans('adminlte.photo.plural') }}</div>

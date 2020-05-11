@@ -37,6 +37,7 @@ return [
     'description' => 'Description',
     'status' => 'Status',
     'parent' => 'Parent',
+    'relations' => 'Relations',
     'required' => 'Required',
     'created_by' => 'Created by',
     'updated_by' => 'Updated by',
@@ -45,6 +46,8 @@ return [
     'new' => 'New',
     'rating' => 'Rating',
     'other' => 'Other',
+    'others' => 'Others',
+    'additional' => 'Additional',
     'search' => 'Search',
     'clear' => 'Clear',
 

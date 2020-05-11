@@ -81,7 +81,7 @@
         <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('categories', trans('adminlte.category.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('categories[]', $categories, old('categories', $product ? $product->categoriesList() : null),
@@ -91,7 +91,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('store_id', trans('adminlte.store.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('store_id', $stores, old('store_id', $product ? $product->store_id : null),
@@ -101,13 +101,23 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('brand_id', trans('adminlte.brand.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('brand_id', $brands, old('brand_id', $product ? $product->brand_id : null),
                                 ['class'=>'form-control' . ($errors->has('brand_id') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('brand_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('brand_id') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            {!! Form::label('marks', trans('adminlte.mark.name'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('marks[]', $marks, old('marks', $product ? $product->marksList() : null),
+                                ['multiple' => true, 'class'=>'form-control' . ($errors->has('marks') ? ' is-invalid' : ''), 'id' => 'marks', 'required' => true]) !!}
+                            @if ($errors->has('marks'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('marks') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -239,5 +249,6 @@
         $('#categories').select2();
         $('#store_id').select2();
         $('#brand_id').select2();
+        $('#marks').select2();
     </script>
 @endsection

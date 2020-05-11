@@ -37,6 +37,7 @@ return [
     'description' => 'Описание',
     'status' => 'Состояние',
     'parent' => 'Родительский',
+    'relations' => 'Связи',
     'required' => 'Обязательный',
     'created_by' => 'Добавил',
     'updated_by' => 'Редактировал',
@@ -45,6 +46,8 @@ return [
     'new' => 'Новый',
     'rating' => 'Рейтинг',
     'other' => 'Другой',
+    'others' => 'Другие',
+    'additional' => 'Дополнительно',
     'search' => 'Искать',
     'clear' => 'Очистить',
 

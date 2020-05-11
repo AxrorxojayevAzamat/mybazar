@@ -18,18 +18,23 @@ class StoreService
 
     public function create(CreateRequest $request): Store
     {
-        if (!$request->logo) {
-            return Store::create([
-                'name_uz' => $request->name_uz,
-                'name_ru' => $request->name_ru,
-                'name_en' => $request->name_en,
-                'slug' => $request->slug,
-            ]);
+        DB::beginTransaction();
+        try {
+            if (!$request->logo) {
+                return Store::create([
+                    'name_uz' => $request->name_uz,
+                    'name_ru' => $request->name_ru,
+                    'name_en' => $request->name_en,
+                    'slug' => $request->slug,
+                ]);
+            }
+
+            $imageName = ImageHelper::getRandomName($request->logo);
+            $store = Store::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
         }
-
-        $imageName = ImageHelper::getRandomName($request->logo);
-        $store = Store::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
-
         $this->uploadLogo($this->getNextId(), $request->logo, $imageName);
 
         return $store;

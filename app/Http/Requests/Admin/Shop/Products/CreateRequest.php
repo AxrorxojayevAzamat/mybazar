@@ -57,6 +57,7 @@ class CreateRequest extends FormRequest
             'bestseller' => 'boolean',
             'new' => 'boolean',
             'categories.*' => 'required|numeric|min:1|exists:shop_categories',
+            'marks.*' => 'numeric|min:1|exists:marks',
         ];
     }
 }
