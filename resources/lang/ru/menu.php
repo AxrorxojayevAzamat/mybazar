@@ -20,4 +20,7 @@ return [
     'categories'                    => 'Категории',
     'brands'                        => 'Бренды',
     'products'                      => 'Продукты',
+    'stores'                        => 'Магазины',
+    'payments'                      => 'Типы платежей',
+    'marks'                         => 'Отметки',
 ];

@@ -93,7 +93,12 @@ class Product extends BaseModel
 
     public function categoriesList(): array
     {
-        return $this->productCategories()->select('category_id')->pluck('category_id')->toArray();
+        return $this->productCategories()->pluck('category_id')->toArray();
+    }
+
+    public function markList(): array
+    {
+        return $this->productMarks()->pluck('mark_id')->toArray();
     }
 
 
@@ -158,7 +163,7 @@ class Product extends BaseModel
 
     public function categories()
     {
-            return $this->belongsToMany(Category::class, 'shop_product_categories', 'product_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'shop_product_categories', 'product_id', 'category_id');
     }
 
     public function productMarks()

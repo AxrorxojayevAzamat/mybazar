@@ -46,8 +46,8 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                            <a href="?" class="btn btn-outline-secondary">Clear</a>
+                            <button type="submit" class="btn btn-primary">{{ trans('adminlte.search') }}</button>
+                            <a href="?" class="btn btn-outline-secondary">{{ trans('adminlte.clear') }}</a>
                         </div>
                     </div>
                 </div>

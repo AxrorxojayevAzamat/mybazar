@@ -20,4 +20,7 @@ return [
     'categories'                    => 'Kategoriyalar',
     'brands'                        => 'Brendlar',
     'products'                      => 'Mahsulotlar',
+    'stores'                        => 'Do`konlar',
+    'payments'                      => 'To`lov turlari',
+    'marks'                         => 'Belgilar',
 ];

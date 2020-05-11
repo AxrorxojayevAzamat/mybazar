@@ -227,16 +227,34 @@ return [
             'icon' => 'fas fa-fw fa-box',
         ],
         [
+            'text' => 'stores',
+            'url'  => 'admin/stores',
+            'icon' => 'fas fa-fw fa-store-alt',
+            'can' => 'manage-shop-stores',
+        ],
+        [
             'text' => 'categories',
             'url'  => 'admin/shop/categories',
             'icon' => 'fas fa-fw fa-list-alt',
             'can' => 'manage-shop-categories',
         ],
         [
+            'text' => 'marks',
+            'url'  => 'admin/shop/marks',
+            'icon' => 'fas fa-fw fa-check-circle',
+            'can' => 'manage-shop-marks',
+        ],
+        [
             'text' => 'brands',
             'url'  => 'admin/brands',
-            'icon' => 'fas fa-fw fa-list-alt',
+            'icon' => 'fas fa-fw fa-copyright',
             'can' => 'manage-shop-brands',
+        ],
+        [
+            'text' => 'payments',
+            'url'  => 'admin/payments',
+            'icon' => 'fas fa-fw fa-credit-card',
+            'can' => 'manage-shop-payments',
         ],
     ],
 

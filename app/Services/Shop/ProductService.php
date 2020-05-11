@@ -15,21 +15,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
-    public function getCategoryList(): array
-    {
-        /* @var $category Category */
-        $categories = Category::defaultOrder()->withDepth()->get();
-        $categoryIds = [];
-        foreach ($categories as $category) {
-            $name = '';
-            for ($i = 0; $i < $category->depth; $i++) {
-                $name .= '— ';
-            }
-            $categoryIds[$category->id] = $name . $category->name;
-        }
-        return $categoryIds;
-    }
-
     public function create(CreateRequest $request): Product
     {
         $store = Store::findOrFail($request->store_id);

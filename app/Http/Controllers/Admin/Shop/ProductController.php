@@ -9,6 +9,7 @@ use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
 use App\Entity\Store;
 use App\Helpers\LanguageHelper;
+use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
@@ -31,7 +32,11 @@ class ProductController extends Controller
         $query = Product::orderByDesc('updated_at');
 
         if (!empty($value = $request->get('name'))) {
-            $query->where('name', 'like', '%' . $value . '%');
+            $query->where(function ($query) use ($value) {
+                $query->where('name_uz', 'ilike', '%' . $value . '%')
+                    ->orWhere('name_ru', 'ilike', '%' . $value . '%')
+                    ->orWhere('name_en', 'ilike', '%' . $value . '%');
+            });
         }
 
         if (!empty($value = $request->get('store_id'))) {
@@ -53,7 +58,7 @@ class ProductController extends Controller
 
         $products = $query->paginate(20);
 
-        $categories = $this->service->getCategoryList();
+        $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
@@ -62,7 +67,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = $this->service->getCategoryList();
+        $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
@@ -87,7 +92,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = $this->service->getCategoryList();
+        $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 

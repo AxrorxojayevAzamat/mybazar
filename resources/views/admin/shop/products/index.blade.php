@@ -1,5 +1,11 @@
 @extends('layouts.page')
 
+@if (!config('adminlte.enabled_laravel_mix'))
+    @php($javaScriptSectionName = 'js')
+@else
+    @php($javaScriptSectionName = 'mix_adminlte_js')
+@endif
+
 @section('content')
     <p><a href="{{ route('admin.shop.products.create') }}" class="btn btn-success">{{ trans('adminlte.product.add') }}</a></p>
 
@@ -35,8 +41,8 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                            <a href="?" class="btn btn-outline-secondary">Clear</a>
+                            <button type="submit" class="btn btn-primary">{{ trans('adminlte.search') }}</button>
+                            <a href="?" class="btn btn-outline-secondary">{{ trans('adminlte.clear') }}</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +75,7 @@
     {{ $products->links() }}
 @endsection
 
-@section('mix_adminlte_js')
+@section($javaScriptSectionName)
     <script>
         // $('#category_id').select2();
         $('#store_id').select2();

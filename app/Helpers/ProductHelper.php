@@ -4,6 +4,7 @@
 namespace App\Helpers;
 
 
+use App\Entity\Shop\Category;
 use App\Entity\Shop\Product;
 
 class ProductHelper
@@ -37,5 +38,20 @@ class ProductHelper
                 return '<span class="badge badge-danger">Default</span>';
                 break;
         }
+    }
+
+    public static function getCategoryList(): array
+    {
+        /* @var $category Category */
+        $categories = Category::defaultOrder()->withDepth()->get();
+        $categoryIds = [];
+        foreach ($categories as $category) {
+            $name = '';
+            for ($i = 0; $i < $category->depth; $i++) {
+                $name .= '— ';
+            }
+            $categoryIds[$category->id] = $name . $category->name;
+        }
+        return $categoryIds;
     }
 }

@@ -32,6 +32,8 @@ return [
     'delete' => 'O`chirmoq',
     'delete_confirmation_message' => 'Ishonchingiz komilmi?',
     'main' => 'Asosiy',
+    'search' => 'Qidirmoq',
+    'clear' => 'Tozalamoq',
 
     'name' => 'Nomi',
     'description' => 'Tavsifi',
@@ -84,6 +86,18 @@ return [
         'add' => 'Do`kon qo`shmoq',
         'name' => 'Do`kon',
         'choose' => 'Do`kon tanlamoq',
+    ],
+
+    'payment' => [
+        'add' => 'To`lov turi qo`shmoq',
+        'name' => 'To`lov turi',
+        'choose' => 'To`lov turini tanlamoq',
+    ],
+
+    'mark' => [
+        'add' => 'Belgi qo`shmoq',
+        'name' => 'Belgi',
+        'choose' => 'Belgini tanlamoq',
     ],
 
     'product' => [

@@ -12,6 +12,9 @@ class ImageHelper
     const THUMBNAIL_NAME = 'thumbs';
 
     const FOLDER_BRANDS = 'brands';
+    const FOLDER_MARKS = 'marks';
+    const FOLDER_STORES = 'stores';
+    const FOLDER_PAYMENTS = 'payments';
     const FOLDER_PRODUCTS = 'products';
 
     const TYPE_THUMBNAIL = 'thumbs';
@@ -28,7 +31,7 @@ class ImageHelper
         return $imageName;
     }
 
-    public static function saveThumbnail(int $id, string $folderName, UploadedFile $image, string $imageName)
+    public static function saveThumbnail(int $id, string $folderName, UploadedFile $image, string $imageName, int $width = 256, int $height = 192)
     {
         $destinationPath = self::getThumbnailPath($id, $folderName);
 

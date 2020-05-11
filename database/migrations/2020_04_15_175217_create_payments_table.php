@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
+            $table->string('logo');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();

@@ -20,4 +20,7 @@ return [
     'categories'                    => 'Categories',
     'brands'                        => 'Brands',
     'products'                      => 'Products',
+    'stores'                        => 'Stores',
+    'payments'                      => 'Payment types',
+    'marks'                         => 'Marks',
 ];

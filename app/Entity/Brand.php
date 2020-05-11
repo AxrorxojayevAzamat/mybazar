@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Shop\Product;
 use App\Entity\User\User;
 use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
@@ -25,9 +26,11 @@ use Illuminate\Support\Facades\DB;
  * @property string $name
  * @property string $logoThumbnail
  * @property string $logoOriginal
- * @property int $nextId
+ *
+ * @property Product[] $products
  * @property User $createdBy
  * @property User $updatedBy
+ *
  * @mixin Eloquent
  */
 class Brand extends BaseModel
@@ -94,6 +97,11 @@ class Brand extends BaseModel
 
 
     ########################################### Relations
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id', 'id');
+    }
 
     public function createdBy()
     {

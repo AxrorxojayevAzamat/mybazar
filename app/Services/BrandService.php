@@ -8,6 +8,7 @@ use App\Entity\Brand;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Brands\CreateRequest;
 use App\Http\Requests\Admin\Brands\UpdateRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,7 +30,7 @@ class BrandService
         $imageName = ImageHelper::getRandomName($request->logo);
         $brand = Brand::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
 
-        ImageHelper::uploadResizedImage($this->getNextId(), ImageHelper::FOLDER_BRANDS, $request->logo, $imageName);
+        $this->uploadLogo($this->getNextId(), $request->logo, $imageName);
 
         return $brand;
     }
@@ -46,7 +47,7 @@ class BrandService
             $imageName = ImageHelper::getRandomName($request->logo);
             $brand->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
 
-            ImageHelper::uploadResizedImage($brand->id, ImageHelper::FOLDER_BRANDS, $request->logo, $imageName);
+            $this->uploadLogo($brand->id, $request->logo, $imageName);
         }
 
         return $brand;
@@ -65,5 +66,11 @@ class BrandService
     {
         $brand = Brand::findOrFail($id);
         return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id) && $brand->update(['logo' => null]);
+    }
+
+    private function uploadLogo(int $brandId, UploadedFile $logo, string $imageName)
+    {
+        ImageHelper::saveThumbnail($brandId, ImageHelper::FOLDER_BRANDS, $logo, $imageName);
+        ImageHelper::saveOriginal($brandId, ImageHelper::FOLDER_BRANDS, $logo, $imageName);
     }
 }

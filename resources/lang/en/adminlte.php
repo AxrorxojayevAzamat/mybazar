@@ -45,6 +45,8 @@ return [
     'new' => 'New',
     'rating' => 'Rating',
     'other' => 'Other',
+    'search' => 'Search',
+    'clear' => 'Clear',
 
     'photo' => [
         'plural' => 'Photos',
@@ -82,6 +84,18 @@ return [
         'add' => 'Add Store',
         'name' => 'Store',
         'choose' => 'Choose store',
+    ],
+
+    'payment' => [
+        'add' => 'Add Payment Type',
+        'name' => 'Payment Type',
+        'choose' => 'Choose payment type',
+    ],
+
+    'mark' => [
+        'add' => 'Add Mark',
+        'name' => 'Mark',
+        'choose' => 'Choose Mark',
     ],
 
     'product' => [

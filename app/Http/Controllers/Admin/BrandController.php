@@ -20,9 +20,19 @@ class BrandController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::orderByDesc('updated_at')->paginate(20);
+        $query = Brand::orderByDesc('updated_at');
+
+        if (!empty($value = $request->get('name'))) {
+            $query->where(function ($query) use ($value) {
+                $query->where('name_uz', 'ilike', '%' . $value . '%')
+                    ->orWhere('name_ru', 'ilike', '%' . $value . '%')
+                    ->orWhere('name_en', 'ilike', '%' . $value . '%');
+            });
+        }
+
+        $brands = $query->paginate(20);
 
         return view('admin.brands.index', compact('brands'));
     }

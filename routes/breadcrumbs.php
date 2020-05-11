@@ -1,7 +1,10 @@
 <?php
 
 use App\Entity\Brand;
+use App\Entity\Payment;
+use App\Entity\Shop\Mark;
 use App\Entity\Shop\Product;
+use App\Entity\Store;
 use App\Entity\User\User;
 use App\Entity\Shop\Category;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
@@ -95,6 +98,29 @@ Breadcrumbs::register('admin.brands.edit', function (Crumbs $crumbs, Brand $bran
 });
 
 
+// Marks
+
+Breadcrumbs::register('admin.shop.marks.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.marks'), route('admin.shop.marks.index'));
+});
+
+Breadcrumbs::register('admin.shop.marks.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.marks.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.marks.create'));
+});
+
+Breadcrumbs::register('admin.shop.marks.show', function (Crumbs $crumbs, Mark $mark) {
+    $crumbs->parent('admin.shop.marks.index');
+    $crumbs->push($mark->name, route('admin.shop.marks.show', $mark));
+});
+
+Breadcrumbs::register('admin.shop.marks.edit', function (Crumbs $crumbs, Mark $mark) {
+    $crumbs->parent('admin.shop.marks.show', $mark);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.marks.edit', $mark));
+});
+
+
 // Products
 
 Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
@@ -130,4 +156,50 @@ Breadcrumbs::register('admin.shop.products.photos', function (Crumbs $crumbs, Pr
 Breadcrumbs::register('admin.shop.products.main-photo', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push(trans('adminlte.photo.add_main'), route('admin.shop.products.main-photo', $product));
+});
+
+
+// Stores
+
+Breadcrumbs::register('admin.stores.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.stores'), route('admin.stores.index'));
+});
+
+Breadcrumbs::register('admin.stores.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.stores.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.stores.create'));
+});
+
+Breadcrumbs::register('admin.stores.show', function (Crumbs $crumbs, Store $store) {
+    $crumbs->parent('admin.stores.index');
+    $crumbs->push($store->name, route('admin.stores.show', $store));
+});
+
+Breadcrumbs::register('admin.stores.edit', function (Crumbs $crumbs, Store $store) {
+    $crumbs->parent('admin.stores.show', $store);
+    $crumbs->push(trans('adminlte.edit'), route('admin.stores.edit', $store));
+});
+
+
+// Payments
+
+Breadcrumbs::register('admin.payments.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.payments'), route('admin.payments.index'));
+});
+
+Breadcrumbs::register('admin.payments.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.payments.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.payments.create'));
+});
+
+Breadcrumbs::register('admin.payments.show', function (Crumbs $crumbs, Payment $payment) {
+    $crumbs->parent('admin.payments.index');
+    $crumbs->push($payment->name, route('admin.payments.show', $payment));
+});
+
+Breadcrumbs::register('admin.payments.edit', function (Crumbs $crumbs, Payment $payment) {
+    $crumbs->parent('admin.payments.show', $payment);
+    $crumbs->push(trans('adminlte.edit'), route('admin.payments.edit', $payment));
 });

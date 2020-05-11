@@ -51,15 +51,15 @@ class UpdateRequest extends FormRequest
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
-            'store_id' => 'required|numeric|min:1',
-            'brand_id' => 'required|numeric|min:1',
+            'store_id' => 'required|numeric|min:1|exists:stores',
+            'brand_id' => 'required|numeric|min:1|exists:brands',
             'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
             'weight' => 'nullable|numeric|min:0',
             'quantity' => 'nullable|numeric|min:0',
             'guarantee' => 'boolean',
             'bestseller' => 'boolean',
             'new' => 'boolean',
-            'categories.*' => 'required|numeric|min:1',
+            'categories.*' => 'required|numeric|min:1|exists:shop_categories',
         ];
     }
 }

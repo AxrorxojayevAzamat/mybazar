@@ -9,6 +9,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
+        Route::resource('marks', 'MarkController');
+
+        Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
 
         Route::group(['prefix' => 'products/{product}', 'as' => 'products.'], function () {
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
@@ -31,8 +34,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     });
 
+    Route::resource('stores', 'StoreController');
+    Route::post('stores/{store}/remove-logo', 'StoreController@removeLogo')->name('remove-logo');
+
     Route::resource('brands', 'BrandController');
     Route::post('brands/{brand}/remove-logo', 'BrandController@removeLogo')->name('remove-logo');
 
-    Route::resource('stores', 'StoreController');
+    Route::resource('payments', 'PaymentController');
+    Route::post('payments/{payment}/remove-logo', 'PaymentController@removeLogo')->name('remove-logo');
 });
