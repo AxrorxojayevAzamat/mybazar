@@ -46,10 +46,8 @@ class ProductService
             $product->brand()->associate($brand);
             $product->saveOrFail();
 
-            $categories = array_unique($request->categories);
-            foreach ($categories as $i => $categoryId) {
-                $product->productCategories()->create(['category_id' => $categoryId]);
-            }
+            $this->addCategories($product, $request->categories);
+            $this->addMarks($product, $request->marks);
 
             DB::commit();
 
@@ -90,10 +88,11 @@ class ProductService
             ]);
 
             $product->productCategories()->delete();
-            $categories = array_unique($request->categories);
-            foreach ($categories as $i => $categoryId) {
-                $product->productCategories()->create(['category_id' => $categoryId]);
-            }
+            $this->addCategories($product, $request->categories);
+
+            $product->productMarks()->delete();
+            $this->addMarks($product, $request->marks);
+
 
             DB::commit();
 
@@ -246,6 +245,22 @@ class ProductService
                 }
                 return;
             }
+        }
+    }
+
+    private function addCategories(Product $product, array $categories)
+    {
+        $categories = array_unique($categories);
+        foreach ($categories as $i => $categoryId) {
+            $product->productCategories()->create(['category_id' => $categoryId]);
+        }
+    }
+
+    private function addMarks(Product $product, array $marks)
+    {
+        $marks = array_unique($marks);
+        foreach ($marks as $i => $markId) {
+            $product->productMarks()->create(['mark_id' => $markId]);
         }
     }
 

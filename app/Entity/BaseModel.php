@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,12 @@ class BaseModel extends Model
 
             static::updating(function ($model) use ($user) {
                 $model->updated_by = $user->id;
+                $model->updated_at = Carbon::now();
             });
 
             static::saving(function ($model) use ($user) {
                 $model->updated_by = $user->id;
+                $model->updated_at = Carbon::now();
             });
         }
     }

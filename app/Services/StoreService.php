@@ -31,6 +31,12 @@ class StoreService
 
             $imageName = ImageHelper::getRandomName($request->logo);
             $store = Store::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
+
+            $this->addCategories($store, $request->categories);
+            $this->addMarks($store, $request->marks);
+            $this->addPayments($store, $request->payments);
+
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
@@ -45,13 +51,32 @@ class StoreService
         $store = Store::findOrFail($id);
 
         if (!$request->logo) {
-            $store->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
+            DB::beginTransaction();
+            try {
+                $store->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
+
+                $this->updateRelations($store, $request);
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
         } else {
-            Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id);
-
             $imageName = ImageHelper::getRandomName($request->logo);
-            $store->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
 
+            DB::beginTransaction();
+            try {
+                $store->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
+                $this->updateRelations($store, $request);
+
+                Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id);
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
             $this->uploadLogo($store->id, $request->logo, $imageName);
         }
 
@@ -71,6 +96,42 @@ class StoreService
     {
         $store = Store::findOrFail($id);
         return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id) && $store->update(['logo' => null]);
+    }
+
+    private function updateRelations(Store $store, UpdateRequest $request)
+    {
+        $store->storeCategories()->delete();
+        $this->addCategories($store, $request->categories);
+
+        $store->storeMarks()->delete();
+        $this->addMarks($store, $request->marks);
+
+        $store->storePayments()->delete();
+        $this->addPayments($store, $request->payments);
+    }
+
+    private function addCategories(Store $store, array $categories)
+    {
+        $categories = array_unique($categories);
+        foreach ($categories as $i => $categoryId) {
+            $store->storeCategories()->create(['category_id' => $categoryId]);
+        }
+    }
+
+    private function addMarks(Store $store, array $marks)
+    {
+        $marks = array_unique($marks);
+        foreach ($marks as $i => $markId) {
+            $store->storeMarks()->create(['mark_id' => $markId]);
+        }
+    }
+
+    private function addPayments(Store $store, array $payments)
+    {
+        $payments = array_unique($payments);
+        foreach ($payments as $i => $paymentId) {
+            $store->storePayments()->create(['payment_id' => $paymentId]);
+        }
     }
 
     private function uploadLogo(int $storeId, UploadedFile $logo, string $imageName)

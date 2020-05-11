@@ -27,6 +27,7 @@ use Illuminate\Validation\Rule;
  * @property boolean $bestseller
  * @property boolean $new
  * @property int[] $categories
+ * @property int[] $marks
  *
  * @property Product $product
  */
@@ -51,16 +52,16 @@ class UpdateRequest extends FormRequest
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
-            'store_id' => 'required|numeric|min:1|exists:stores',
-            'brand_id' => 'required|numeric|min:1|exists:brands',
+            'store_id' => 'required|numeric|min:1|exists:stores,id',
+            'brand_id' => 'required|numeric|min:1|exists:brands,id',
             'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
             'weight' => 'nullable|numeric|min:0',
             'quantity' => 'nullable|numeric|min:0',
             'guarantee' => 'boolean',
             'bestseller' => 'boolean',
             'new' => 'boolean',
-            'categories.*' => 'required|numeric|min:1|exists:shop_categories',
-            'marks.*' => 'numeric|min:1|exists:marks',
+            'categories.*' => 'required|numeric|min:1|exists:shop_categories,id',
+            'marks.*' => 'numeric|min:1|exists:shop_marks,id',
         ];
     }
 }
