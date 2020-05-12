@@ -89,8 +89,8 @@
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
-                        <tr><th>{{ trans('adminlte.product.price_uzs') }}</th><td>{{ $product->price_uzs }}</td></tr>
-                        <tr><th>{{ trans('adminlte.product.price_usd') }}</th><td>{{ $product->price_usd }}</td></tr>
+                        <tr><th>{{ trans('adminlte.price_uzs') }}</th><td>{{ $product->price_uzs }}</td></tr>
+                        <tr><th>{{ trans('adminlte.price_usd') }}</th><td>{{ $product->price_usd }}</td></tr>
                         <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $product->discount }}</td></tr>
                         <tr><th>{{ trans('adminlte.status') }}</th><td>{!! \App\Helpers\ProductHelper::getStatusLabel($product->status) !!}</td></tr>
                         <tr><th>{{ trans('adminlte.product.weight') }}</th><td>{{ $product->weight }}</td></tr>
@@ -108,7 +108,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-warning card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -131,13 +131,13 @@
                 @foreach($product->photos as $photo)
                     <div class="col-md-2 col-xs-3" style="text-align: center">
                         <div class="btn-group">
-                            <a href="{{ route('admin.shop.products.move-photo-up', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" photo_id="{{ $photo->id }}" class="btn btn-default">
+                            <a href="{{ route('admin.shop.products.move-photo-up', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                             </a>
-                            <a href="{{ route('admin.shop.products.delete-photo', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" photo_id="{{ $photo->id }}" class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
+                            <a href="{{ route('admin.shop.products.delete-photo', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
-                            <a href="{{ route('admin.shop.products.move-photo-down', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" photo_id="{{ $photo->id }}" class="btn btn-default">
+                            <a href="{{ route('admin.shop.products.move-photo-down', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-right"></span>
                             </a>
                         </div>
@@ -149,4 +149,36 @@
             </div>
         </div>
     </div>
+
+    <div class="card" id="modifications">
+        <div class="card-header card-green with-border">{{ trans('adminlte.modification.name') }}</div>
+        <div class="card-body">
+            <p><a href="{{ route('admin.shop.modifications.create', $product) }}" class="btn btn-success">{{ trans('adminlte.modification.add') }}</a></p>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>{{ trans('adminlte.name') }}</th>
+                    <th>{{ trans('adminlte.modification.code') }}</th>
+                    <th>{{ trans('adminlte.price_uzs') }}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach ($product->modifications as $modification)
+                    <tr>
+                        <td>{{ $modification->id }}</td>
+                        <td><a href="{{ route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
+                        <td>{{ $modification->code }}</td>
+                        <td>{{ $modification->price_uzs }}</td>
+                        <td></td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 @endsection

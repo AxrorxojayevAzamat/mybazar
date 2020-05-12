@@ -134,9 +134,9 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('price_uzs', trans('adminlte.product.price_uzs'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('price_uzs', trans('adminlte.price_uzs'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('price_uzs', old('price_uzs', $product ? $product->price_uzs : null),
-                                    ['class'=>'form-control' . ($errors->has('price_uzs') ? ' is-invalid' : ''), 'step' => '0.01', 'required' => true]) !!}
+                                    ['class'=>'form-control' . ($errors->has('price_uzs') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('price_uzs'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('price_uzs') }}</strong></span>
                             @endif
@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('price_usd', trans('adminlte.product.price_usd'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('price_usd', trans('adminlte.price_usd'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('price_usd', old('price_usd', $product ? $product->price_usd : null),
                                     ['class'=>'form-control' . ($errors->has('price_usd') ? ' is-invalid' : ''), 'step' => '0.01']) !!}
                             @if ($errors->has('price_usd'))

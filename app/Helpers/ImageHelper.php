@@ -16,6 +16,7 @@ class ImageHelper
     const FOLDER_STORES = 'stores';
     const FOLDER_PAYMENTS = 'payments';
     const FOLDER_PRODUCTS = 'products';
+    const FOLDER_MODIFICATIONS = 'modifications';
 
     const TYPE_THUMBNAIL = 'thumbs';
     const TYPE_ORIGINAL = 'original';

@@ -3,18 +3,22 @@
 namespace App\Services\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
+use App\Http\Requests\Admin\Shop\Modifications\CreateRequest as ModificationCreateForm;
+use App\Http\Requests\Admin\Shop\Modifications\UpdateRequest as ModificationUpdateForm;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
+    private $nextId;
+
     public function create(CreateRequest $request): Product
     {
         $store = Store::findOrFail($request->store_id);
@@ -264,6 +268,105 @@ class ProductService
         }
     }
 
+    public function addModification(int $id, ModificationCreateForm $request): Modification
+    {
+        $product = Product::findOrFail($id);
+
+        DB::beginTransaction();
+        try {
+            if (!$request->photo) {
+                $modification = Modification::create([
+                    'product_id' => $product->id,
+                    'name_uz' => $request->name_uz,
+                    'name_ru' => $request->name_ru,
+                    'name_en' => $request->name_en,
+                    'code' => $request->code,
+                    'price_uzs' => $request->price_uzs,
+                    'price_usd' => $request->price_usd,
+                    'color' => $request->color,
+                    'sort' => 1000,
+                ]);
+
+                $this->sortModifications($product);
+            }
+
+            $imageName = ImageHelper::getRandomName($request->photo);
+            $modification = Modification::add($this->getNextModificationId(), $product->id, $request, $imageName);
+            $modification->saveOrFail();
+
+            $this->sortModifications($product);
+
+            DB::commit();
+
+            ImageHelper::saveThumbnail($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+            ImageHelper::saveOriginal($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+
+            return $modification;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    public function updateModification(int $id, int $modificationId, ModificationUpdateForm $request): Modification
+    {
+        $product = Product::findOrFail($id);
+        $modification = Modification::findOrFail($modificationId)->where('product_id', $id);
+
+        if ($request->color) {
+            $modification->edit($request, $request->color);
+        } else if ($request->photo) {
+            $this->deleteModificationPhoto($modification->id, $modification->photo);
+            $imageName = ImageHelper::getRandomName($request->photo);
+
+            $modification->edit($request, null, $imageName);
+
+            ImageHelper::saveThumbnail($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+            ImageHelper::saveOriginal($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+        } else {
+            $modification->edit($request);
+        }
+
+        DB::beginTransaction();
+        try {
+            if (!$request->photo) {
+                return Modification::create([
+                    'product_id' => $product->id,
+                    'name_uz' => $request->name_uz,
+                    'name_ru' => $request->name_ru,
+                    'name_en' => $request->name_en,
+                    'code' => $request->code,
+                    'price_uzs' => $request->price_uzs,
+                    'price_usd' => $request->price_usd,
+                    'color' => $request->color,
+                    'sort' => $request->sort,
+                ]);
+            }
+
+            $imageName = ImageHelper::getRandomName($request->photo);
+            $modification = Modification::add($this->getNextModificationId(), $request, $imageName);
+            $modification->saveOrFail();
+
+            DB::commit();
+
+            ImageHelper::saveThumbnail($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+            ImageHelper::saveOriginal($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+
+            return $modification;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    private function sortModifications(Product $product): void
+    {
+        foreach ($product->modifications as $i => $modification) {
+            $modification->setSort($i + 1);
+            $modification->saveOrFail();
+        }
+    }
+
     private function sortPhotos(Product $product): void
     {
         foreach ($product->photos as $i => $photo) {
@@ -276,5 +379,20 @@ class ProductService
     {
         Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
         Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
+    }
+
+    private function deleteModificationPhoto(int $modificationId, string $filename)
+    {
+        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
+        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
+    }
+
+    public function getNextModificationId(): int
+    {
+        if (!$this->nextId) {
+            $nextId = DB::select("select nextval('shop_modifications_id_seq')");
+            return $this->nextId = intval($nextId['0']->nextval);
+        }
+        return $this->nextId;
     }
 }

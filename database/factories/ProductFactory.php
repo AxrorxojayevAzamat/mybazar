@@ -11,7 +11,7 @@ use Faker\Generator as Faker;
 $factory->define(Product::class, function (Faker $faker) {
     $storesCount = Store::count();
     $brandCount = Brand::count();
-    $price = $faker->randomNumber(5);
+    $price = round($faker->randomNumber(5), -2);
 
     return [
         'name_uz' => $faker->unique()->name,

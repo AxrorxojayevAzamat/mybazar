@@ -3,6 +3,7 @@
 use App\Entity\Brand;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
+use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Entity\User\User;
@@ -156,6 +157,24 @@ Breadcrumbs::register('admin.shop.products.photos', function (Crumbs $crumbs, Pr
 Breadcrumbs::register('admin.shop.products.main-photo', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push(trans('adminlte.photo.add_main'), route('admin.shop.products.main-photo', $product));
+});
+
+
+// Modifications
+
+Breadcrumbs::register('admin.shop.modifications.create', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.modifications.create', $product));
+});
+
+Breadcrumbs::register('admin.shop.modifications.show', function (Crumbs $crumbs, Product $product, Modification $modification) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push($modification->name, route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]));
+});
+
+Breadcrumbs::register('admin.shop.modifications.edit', function (Crumbs $crumbs, Product $product, Modification $modification) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.modifications.edit', ['product' => $product, 'modification' => $modification]));
 });
 
 

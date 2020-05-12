@@ -32,15 +32,12 @@ return [
     'delete' => 'O`chirmoq',
     'delete_confirmation_message' => 'Ishonchingiz komilmi?',
     'main' => 'Asosiy',
-    'search' => 'Qidirmoq',
-    'clear' => 'Tozalamoq',
 
     'name' => 'Nomi',
     'description' => 'Tavsifi',
     'status' => 'Holati',
     'parent' => 'Ajdodi',
     'relations' => 'Bog`liqliklar',
-    'sort' => 'Saralanish',
     'required' => 'Majburiy',
     'created_by' => 'Qo`shdi',
     'updated_by' => 'Tahrirladi',
@@ -51,7 +48,11 @@ return [
     'other' => 'Boshqa',
     'others' => 'Boshqalar',
     'additional' => 'Qo`shimcha',
-    'photos' => 'Rasmlar',
+    'search' => 'Qidirmoq',
+    'clear' => 'Tozalamoq',
+    'price_uzs' => 'Narhi (so`mda)',
+    'price_usd' => 'Narhi (dollarda)',
+    'color' => 'Rang',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -106,8 +107,6 @@ return [
     'product' => [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
-        'price_uzs' => 'Narhi (so`mda)',
-        'price_usd' => 'Narhi (dollarda)',
         'discount' => 'Chegirma',
         'draft' => 'Qoralama',
         'moderation' => 'Modeatsiyani kutmoqda',
@@ -121,5 +120,13 @@ return [
         'add_main_photo' => 'Asosiy suratni qo`shmoq',
         'add_photos' => 'Suratnlar qo`shmoq',
         'choose' => 'Mahsulot tanlamoq',
+    ],
+
+    'modification' => [
+        'add' => 'O`zgartirish qo`shmoq',
+        'name' => 'O`zgartirish',
+        'plural' => 'O`zgartirishlar',
+        'choose' => 'O`zgartirish tanlamoq',
+        'code' => 'Kod',
     ],
 ];

@@ -16,6 +16,8 @@ mix
     .setResourceRoot('/build/')
     .js('resources/assets/js/app.js', 'js')
     .js('resources/assets/js/fileinput.js', 'js')
+    .js('resources/assets/js/colorpicker.js', 'js')
     .sass('resources/assets/sass/app.scss', 'css')
     .sass('resources/assets/sass/fileinput.scss', 'css')
+    .sass('resources/assets/sass/colorpicker.scss', 'css')
     .version();

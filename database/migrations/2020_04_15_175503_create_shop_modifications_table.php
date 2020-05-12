@@ -19,7 +19,7 @@ class CreateShopModificationsTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
-            $table->string('code');
+            $table->string('code', 20)->unique();
             $table->integer('price_uzs');
             $table->float('price_usd')->nullable();
             $table->string('color')->nullable();

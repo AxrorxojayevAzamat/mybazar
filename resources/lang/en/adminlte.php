@@ -50,6 +50,9 @@ return [
     'additional' => 'Additional',
     'search' => 'Search',
     'clear' => 'Clear',
+    'price_uzs' => 'Price (sum)',
+    'price_usd' => 'Price (dollars)',
+    'color' => 'Color',
 
     'photo' => [
         'plural' => 'Photos',
@@ -104,8 +107,6 @@ return [
     'product' => [
         'add' => 'Add Product',
         'name' => 'Product',
-        'price_uzs' => 'Price (sum)',
-        'price_usd' => 'Price (dollars)',
         'discount' => 'Discount',
         'draft' => 'Draft',
         'moderation' => 'Moderation',
@@ -119,5 +120,13 @@ return [
         'add_main_photo' => 'Add Main Photo',
         'add_photos' => 'Add Photos',
         'choose' => 'Choose product',
+    ],
+
+    'modification' => [
+        'add' => 'Add Modification',
+        'name' => 'Modification',
+        'plural' => 'Modifications',
+        'choose' => 'Choose Modification',
+        'code' => 'Code',
     ],
 ];

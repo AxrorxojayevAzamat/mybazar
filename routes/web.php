@@ -25,6 +25,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::get('move-photo-down/{photo}', 'ProductController@movePhotoDown')->name('move-photo-down');
         });
 
+        Route::group(['prefix' => 'products/{product}/modifications', 'as' => 'modifications.'], function () {
+            Route::get('create', 'ModificationController@create')->name('create');
+            Route::post('', 'ModificationController@store')->name('store');
+            Route::get('{modification}', 'ModificationController@show')->name('show');
+            Route::get('{modification}/edit', 'ModificationController@edit')->name('edit');
+            Route::put('{modification}', 'ModificationController@update')->name('update');
+            Route::delete('{modification}', 'ModificationController@destroy')->name('destroy');
+        });
+
         Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
             Route::post('/first', 'CategoryController@first')->name('first');
             Route::post('/up', 'CategoryController@up')->name('up');
