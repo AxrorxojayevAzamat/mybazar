@@ -311,7 +311,8 @@ class ProductService
 
     public function updateModification(int $id, int $modificationId, ModificationUpdateForm $request): void
     {
-        $modification = Modification::findOrFail($modificationId)->where('product_id', $id);
+        $product = Product::findOrFail($id);
+        $modification = $product->modifications()->where('id', $modificationId)->first();
 
         if ($request->color) {
             $modification->edit($request, $request->color);
@@ -321,11 +322,30 @@ class ProductService
 
             $modification->edit($request, null, $imageName);
 
-            ImageHelper::saveThumbnail($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
-            ImageHelper::saveOriginal($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+            ImageHelper::saveThumbnail($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+            ImageHelper::saveOriginal($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
         } else {
             $modification->edit($request);
         }
+    }
+
+    public function removeModification(int $id, int $modificationId): void
+    {
+        $product = Product::findOrFail($id);
+        $modification = $product->modifications()->where('id', $modificationId);
+
+        DB::beginTransaction();
+        try {
+            $modification->delete();
+            $this->sortModifications($product);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+
     }
 
     public function moveModificationToFirst(int $id, int $modificationId): void

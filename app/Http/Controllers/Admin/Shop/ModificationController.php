@@ -28,8 +28,7 @@ class ModificationController extends Controller
     {
         try {
             $modification = $this->service->addModification($product->id, $request);
-
-            return redirect()->route('admin.shop.modifications.show', $product, $modification);
+            return redirect()->route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -49,8 +48,7 @@ class ModificationController extends Controller
     {
         try {
             $this->service->updateModification($product->id, $modification->id, $request);
-
-            return redirect()->route('admin.shop.modifications.show', $product, $modification);
+            return redirect()->route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -58,36 +56,51 @@ class ModificationController extends Controller
 
     public function destroy(Product $product, Modification $modification)
     {
-        $modification->delete();
-
-        return redirect()->route('admin.shop.products.show', $product);
+        try {
+            $this->service->removeModification($product->id, $modification->id);
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function first(Product $product, Modification $modification)
     {
-        $this->service->moveModificationToFirst($product->id, $modification->id);
-
-        return redirect()->route('admin.shop.products.show', $product);
+        try {
+            $this->service->moveModificationToFirst($product->id, $modification->id);
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function up(Product $product, Modification $modification)
     {
-        $this->service->moveModificationUp($product->id, $modification->id);
-
-        return redirect()->route('admin.shop.products.show', $product);
+        try {
+            $this->service->moveModificationUp($product->id, $modification->id);
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function down(Product $product, Modification $modification)
     {
-        $this->service->moveModificationDown($product->id, $modification->id);
-
-        return redirect()->route('admin.shop.products.show', $product);
+        try {
+            $this->service->moveModificationDown($product->id, $modification->id);
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function last(Product $product, Modification $modification)
     {
-        $this->service->moveModificationToLast($product->id, $modification->id);
-
-        return redirect()->route('admin.shop.products.show', $product);
+        try {
+            $this->service->moveModificationToLast($product->id, $modification->id);
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }
