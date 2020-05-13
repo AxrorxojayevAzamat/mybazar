@@ -153,7 +153,7 @@ class Product extends BaseModel
 
     public function modifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id');
+        return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function productCategories()

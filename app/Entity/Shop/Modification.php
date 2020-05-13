@@ -84,6 +84,11 @@ class Modification extends BaseModel
         $this->sort = $sort;
     }
 
+    public function isIdEqualTo($id): bool
+    {
+        return $this->id == $id;
+    }
+
 
     ########################################### Mutators
 

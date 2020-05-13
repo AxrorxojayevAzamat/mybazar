@@ -14,6 +14,7 @@ use App\Http\Requests\Admin\Shop\Modifications\UpdateRequest as ModificationUpda
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\VarDumper\VarDumper;
 
 class ProductService
 {
@@ -308,9 +309,8 @@ class ProductService
         }
     }
 
-    public function updateModification(int $id, int $modificationId, ModificationUpdateForm $request): Modification
+    public function updateModification(int $id, int $modificationId, ModificationUpdateForm $request): void
     {
-        $product = Product::findOrFail($id);
         $modification = Modification::findOrFail($modificationId)->where('product_id', $id);
 
         if ($request->color) {
@@ -326,36 +326,141 @@ class ProductService
         } else {
             $modification->edit($request);
         }
+    }
 
-        DB::beginTransaction();
-        try {
-            if (!$request->photo) {
-                return Modification::create([
-                    'product_id' => $product->id,
-                    'name_uz' => $request->name_uz,
-                    'name_ru' => $request->name_ru,
-                    'name_en' => $request->name_en,
-                    'code' => $request->code,
-                    'price_uzs' => $request->price_uzs,
-                    'price_usd' => $request->price_usd,
-                    'color' => $request->color,
-                    'sort' => $request->sort,
-                ]);
+    public function moveModificationToFirst(int $id, int $modificationId): void
+    {
+        $product = Product::findOrFail($id);
+        $modifications = $product->modifications;
+
+        foreach ($modifications as $i => $modification) {
+            if ($modification->isIdEqualTo($modificationId)) {
+                for ($j = $i; $j >= 0; $j--) {
+                    if (!isset($modifications[$j - 1])) {
+                        break(1);
+                    }
+
+                    $prev = $modifications[$j - 1];
+                    $modifications[$j - 1] = $modifications[$j];
+                    $modifications[$j] = $prev;
+                }
+                $product->modifications = $modifications;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortModifications($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
             }
+        }
+    }
 
-            $imageName = ImageHelper::getRandomName($request->photo);
-            $modification = Modification::add($this->getNextModificationId(), $request, $imageName);
-            $modification->saveOrFail();
+    public function moveModificationUp(int $id, int $modificationId): void
+    {
+        $product = Product::findOrFail($id);
+        $modifications = $product->modifications;
 
-            DB::commit();
+        /* @var $modification Modification */
+        foreach ($modifications as $i => $modification) {
+            if ($modification->isIdEqualTo($modificationId)) {
+                if (!isset($modifications[$i - 1])) {
+                    $count = count($modifications);
 
-            ImageHelper::saveThumbnail($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
-            ImageHelper::saveOriginal($this->getNextModificationId(), ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
+                    for ($j = 1; $j < $count; $j++) {
+                        $next = $modifications[$j - 1];
+                        $modifications[$j - 1] = $modifications[$j];
+                        $modifications[$j] = $next;
+                    }
+                } else {
+                    $previous = $modifications[$i - 1];
+                    $modifications[$i - 1] = $modification;
+                    $modifications[$i] = $previous;
+                }
+                $product->modifications = $modifications;
 
-            return $modification;
-        } catch (\Exception $e) {
-            DB::rollBack();
-            throw $e;
+                DB::beginTransaction();
+                try {
+                    $this->sortModifications($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveModificationDown(int $id, int $modificationId): void
+    {
+        $product = Product::findOrFail($id);
+        $modifications = $product->modifications;
+
+        /* @var $modification Modification */
+        foreach ($modifications as $i => $modification) {
+            if ($modification->isIdEqualTo($modificationId)) {
+                if (!isset($modifications[$i + 1])) {
+                    $last = $modifications->last();
+                    $count = count($modifications);
+
+                    for ($j = $count - 1; $j > 0; $j--) {
+                        $modifications[$j] = $modifications[$j - 1];
+                    }
+
+                    $modifications[$j] = $last;
+                } else {
+                    $next = $modifications[$i + 1];
+                    $modifications[$i + 1] = $modification;
+                    $modifications[$i] = $next;
+                }
+                $product->modifications = $modifications;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortModifications($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveModificationToLast(int $id, int $modificationId): void
+    {
+        $product = Product::findOrFail($id);
+        $modifications = $product->modifications;
+
+        foreach ($modifications as $i => $modification) {
+            if ($modification->isIdEqualTo($modificationId)) {
+                $count = count($modifications);
+                for ($j = $i; $j < $count; $j++) {
+                    if (!isset($modifications[$j + 1])) {
+                        break(1);
+                    }
+
+                    $next = $modifications[$j + 1];
+                    $modifications[$j + 1] = $modifications[$j];
+                    $modifications[$j] = $next;
+                }
+                $product->modifications = $modifications;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortModifications($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
         }
     }
 

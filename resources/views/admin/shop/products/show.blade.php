@@ -172,7 +172,26 @@
                         <td><a href="{{ route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
                         <td>{{ $modification->code }}</td>
                         <td>{{ $modification->price_uzs }}</td>
-                        <td></td>
+                        <td>
+                            <div class="d-flex flex-row">
+                                <form method="POST" action="{{ route('admin.shop.modifications.first', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-up"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.modifications.up', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-up"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.modifications.down', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-down"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.modifications.last', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-down"></span></button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
 
