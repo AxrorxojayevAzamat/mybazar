@@ -10,7 +10,6 @@ use App\Http\Requests\Admin\Shop\Characteristics\CreateRequest;
 use App\Http\Requests\Admin\Shop\Characteristics\UpdateRequest;
 use App\Services\Shop\CharacteristicService;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\VarDumper;
 
 class CharacteristicController extends Controller
 {

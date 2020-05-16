@@ -13,12 +13,12 @@
         <div class="card-body">
             <form action="?" method="GET">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             {!! Form::text('name', request('name'), ['class'=>'form-control', 'placeholder' => trans('adminlte.name')]) !!}
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             {!! Form::select('category_id', $categories, request('category_id'), ['class'=>'form-control', 'id' => 'category_id', 'placeholder' => trans('adminlte.category.name')]) !!}
                         </div>
@@ -48,7 +48,7 @@
             <tr>
                 <td><a href="{{ route('admin.shop.characteristics.show', $characteristic) }}">{{ $characteristic->name }}</a></td>
                 <td>
-                    {{ $characteristic->typeName() }}
+                    {{ $characteristic->variants ? 'Select' : $characteristic->typeName() }}
                 </td>
                 <td>
                     @foreach($characteristic->categories as $category)

@@ -88,7 +88,7 @@ class Characteristic extends BaseModel
 
     public function isSelect(): bool
     {
-        return \count($this->variants) > 0;
+        return $this->variants && \count($this->variants) > 0;
     }
 
 
