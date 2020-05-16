@@ -1,3 +1,9 @@
+@if (!config('adminlte.enabled_laravel_mix'))
+    @php($javaScriptSectionName = 'js')
+@else
+    @php($javaScriptSectionName = 'mix_adminlte_js')
+@endif
+
 <div class="tab-content">
     <div class="tab-pane active" id="uzbek" role="tabpanel">
         <div class="form-group">
@@ -55,7 +61,7 @@
 
 <div class="form-group">
     <label for="slug" class="col-form-label">Slug</label>
-    <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug', $category ? $category->slug : null) }}"
+    <input id="slug" type="number" step="0.01" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug', $category ? $category->slug : null) }}"
            required>
     @if ($errors->has('slug'))
         <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
@@ -82,9 +88,8 @@
     <button type="submit" class="btn btn-primary">{{ trans('adminlte.' . ($category ? 'edit' : 'save')) }}</button>
 </div>
 
-@section('mix_adminlte_js')
+@section($javaScriptSectionName)
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('vendor/select2/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('description_uz');
         CKEDITOR.replace('description_ru');

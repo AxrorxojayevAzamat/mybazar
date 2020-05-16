@@ -227,6 +227,11 @@ return [
             'icon' => 'fas fa-fw fa-box',
         ],
         [
+            'text' => 'characteristics',
+            'url'  => 'admin/shop/characteristics',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        [
             'text' => 'stores',
             'url'  => 'admin/stores',
             'icon' => 'fas fa-fw fa-store-alt',

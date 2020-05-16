@@ -3,14 +3,17 @@
 namespace App\Services\Shop;
 
 use App\Entity\Brand;
+use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\Value;
 use App\Entity\Store;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
 use App\Http\Requests\Admin\Shop\Modifications\CreateRequest as ModificationCreateForm;
 use App\Http\Requests\Admin\Shop\Modifications\UpdateRequest as ModificationUpdateForm;
+use App\Http\Requests\Admin\Shop\Products\ValueRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -276,7 +279,7 @@ class ProductService
         DB::beginTransaction();
         try {
             if (!$request->photo) {
-                $modification = Modification::create([
+                $modification = $product->modifications()->create([
                     'product_id' => $product->id,
                     'name_uz' => $request->name_uz,
                     'name_ru' => $request->name_ru,
@@ -289,6 +292,8 @@ class ProductService
                 ]);
 
                 $this->sortModifications($product);
+
+                return $modification;
             }
 
             $imageName = ImageHelper::getRandomName($request->photo);
@@ -484,11 +489,226 @@ class ProductService
         }
     }
 
+    public function addValue(int $id, ValueRequest $request): Value
+    {
+        $product = Product::findOrFail($id);
+        $characteristic = Characteristic::findOrFail($request->characteristic_id);
+
+        /* @var $value Value */
+        DB::beginTransaction();
+        try {
+            $value = $product->values()->create([
+                'characteristic_id' => $characteristic->id,
+                'value' => $request->value ?? $characteristic->default,
+                'main' => (bool)$request->main,
+                'sort' => 1000,
+            ]);
+
+            $this->sortValues($product);
+
+            DB::commit();
+
+            return $value;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    public function updateValue(int $id, int $characteristicId, ValueRequest $request): Value
+    {
+        $product = Product::findOrFail($id);
+        $characteristic = Characteristic::findOrFail($request->characteristic_id);
+        /* @var $value Value */
+        $value = $product->values()->where('characteristic_id', $characteristicId)->firstOrFail();
+
+        DB::beginTransaction();
+        try {
+            DB::table('shop_values')->where('product_id', $value->product_id)
+                ->where('characteristic_id', $value->characteristic_id)->update([
+                    'characteristic_id' => $characteristic->id,
+                    'value' => $request->value ?? $characteristic->default,
+                    'main' => $request->main,
+                ]);
+
+            $value = $product->values()->where('characteristic_id', $request->characteristic_id)->firstOrFail();
+
+            DB::commit();
+
+            return $value;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    public function removeValue(int $id, int $characteristicId): void
+    {
+        $product = Product::findOrFail($id);
+        $value = $product->values()->where('characteristic_id', $characteristicId);
+
+        DB::beginTransaction();
+        try {
+            $value->delete();
+            $this->sortValues($product);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+
+    }
+
+    public function moveValueToFirst(int $id, int $characteristicId): void
+    {
+        $product = Product::findOrFail($id);
+        $values = $product->values;
+
+        foreach ($values as $i => $value) {
+            if ($value->isCharacteristicIdEqualTo($characteristicId)) {
+                for ($j = $i; $j >= 0; $j--) {
+                    if (!isset($values[$j - 1])) {
+                        break(1);
+                    }
+
+                    $prev = $values[$j - 1];
+                    $values[$j - 1] = $values[$j];
+                    $values[$j] = $prev;
+                }
+                $product->values = $values;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortValues($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveValueUp(int $id, int $characteristicId): void
+    {
+        $product = Product::findOrFail($id);
+        $values = $product->values;
+
+        foreach ($values as $i => $value) {
+            if ($value->isCharacteristicIdEqualTo($characteristicId)) {
+                if (!isset($values[$i - 1])) {
+                    $count = count($values);
+
+                    for ($j = 1; $j < $count; $j++) {
+                        $next = $values[$j - 1];
+                        $values[$j - 1] = $values[$j];
+                        $values[$j] = $next;
+                    }
+                } else {
+                    $previous = $values[$i - 1];
+                    $values[$i - 1] = $value;
+                    $values[$i] = $previous;
+                }
+                $product->values = $values;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortValues($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveValueDown(int $id, int $characteristicId): void
+    {
+        $product = Product::findOrFail($id);
+        $values = $product->values;
+
+        foreach ($values as $i => $value) {
+            if ($value->isCharacteristicIdEqualTo($characteristicId)) {
+                if (!isset($values[$i + 1])) {
+                    $last = $values->last();
+                    $count = count($values);
+
+                    for ($j = $count - 1; $j > 0; $j--) {
+                        $values[$j] = $values[$j - 1];
+                    }
+
+                    $values[$j] = $last;
+                } else {
+                    $next = $values[$i + 1];
+                    $values[$i + 1] = $value;
+                    $values[$i] = $next;
+                }
+                $product->modifications = $values;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortValues($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveValueToLast(int $id, int $characteristicId): void
+    {
+        $product = Product::findOrFail($id);
+        $values = $product->values;
+
+        foreach ($values as $i => $value) {
+            if ($value->isCharacteristicIdEqualTo($characteristicId)) {
+                $count = count($values);
+                for ($j = $i; $j < $count; $j++) {
+                    if (!isset($values[$j + 1])) {
+                        break(1);
+                    }
+
+                    $next = $values[$j + 1];
+                    $values[$j + 1] = $values[$j];
+                    $values[$j] = $next;
+                }
+                $product->values = $values;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortValues($product);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
     private function sortModifications(Product $product): void
     {
         foreach ($product->modifications as $i => $modification) {
             $modification->setSort($i + 1);
             $modification->saveOrFail();
+        }
+    }
+
+    private function sortValues(Product $product): void
+    {
+        foreach ($product->values as $i => $value) {
+            $value->setSort($i + 1);
+            DB::table('shop_values')->where('product_id', $value->product_id)
+                ->where('characteristic_id', $value->characteristic_id)->update(['sort' => ($i + 1)]);
         }
     }
 

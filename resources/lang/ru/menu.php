@@ -23,4 +23,5 @@ return [
     'stores'                        => 'Магазины',
     'payments'                      => 'Типы платежей',
     'marks'                         => 'Отметки',
+    'characteristics'               => 'Характеристики',
 ];

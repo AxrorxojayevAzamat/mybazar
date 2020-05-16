@@ -5,6 +5,6 @@
         @csrf
         @method('PUT')
 
-        @include('admin.shop.modifications._form')
+        @include('admin.shop.products.modifications._form')
     </form>
 @endsection

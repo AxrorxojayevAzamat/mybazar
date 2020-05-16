@@ -22,7 +22,7 @@
                         <div class="form-group">
                             {!! Form::label('description_uz', 'Tavsifi', ['class' => 'col-form-label']); !!}
                             {!! Form::textarea('description_uz', old('description_uz', $product ? $product->description_uz : null),
-                                ['class' => 'col-form-label' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
+                                ['class' => 'form-control' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
                             @if ($errors->has('description_uz'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('description_uz') }}</strong></span>
                             @endif
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             {!! Form::label('description_ru', 'Описание', ['class' => 'col-form-label']); !!}
                             {!! Form::textarea('description_ru', old('description_ru', $product ? $product->description_ru : null),
-                                ['class' => 'col-form-label' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
+                                ['class' => 'form-control' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
                             @if ($errors->has('description_ru'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('description_ru') }}</strong></span>
                             @endif
@@ -47,7 +47,7 @@
                     </div>
                     <div class="tab-pane" id="english" role="tabpanel">
                         <div class="form-group">
-                            {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
+                            {!! Form::label('name_en', 'Name', ['class' => 'col-form-label']); !!}
                             {!! Form::text('name_en', old('name_en', $product ? $product->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('name_en'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             {!! Form::label('description_en', 'Description', ['class' => 'col-form-label']); !!}
                             {!! Form::textarea('description_en', old('description_en', $product ? $product->description_en : null),
-                                ['class' => 'col-form-label' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
+                                ['class' => 'form-control' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
                             @if ($errors->has('description_en'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('description_en') }}</strong></span>
                             @endif

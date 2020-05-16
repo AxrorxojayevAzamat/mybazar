@@ -32,6 +32,8 @@ return [
     'delete' => 'Delete',
     'delete_confirmation_message' => 'Are you sure?',
     'main' => 'Main',
+    'yes' => 'Yes',
+    'no' => 'No',
 
     'name' => 'Name',
     'description' => 'Description',
@@ -53,6 +55,9 @@ return [
     'price_uzs' => 'Price (sum)',
     'price_usd' => 'Price (dollars)',
     'color' => 'Color',
+    'type' => 'Type',
+    'default' => 'Default',
+    'sort' => 'Sort',
 
     'photo' => [
         'plural' => 'Photos',
@@ -128,5 +133,19 @@ return [
         'plural' => 'Modifications',
         'choose' => 'Choose Modification',
         'code' => 'Code',
+    ],
+
+    'characteristic' => [
+        'add' => 'Add Characteristic',
+        'name' => 'Characteristic',
+        'plural' => 'Characteristics',
+        'choose' => 'Choose Characteristic',
+        'variants' => 'Variants',
+    ],
+
+    'value' => [
+        'add' => 'Add Value',
+        'name' => 'Value',
+        'plural' => 'Values',
     ],
 ];

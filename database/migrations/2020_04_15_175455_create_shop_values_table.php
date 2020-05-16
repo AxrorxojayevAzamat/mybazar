@@ -17,6 +17,8 @@ class CreateShopValuesTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('characteristic_id');
             $table->string('value');
+            $table->boolean('main');
+            $table->integer('sort');
         });
 
         Schema::table('shop_values', function (Blueprint $table) {

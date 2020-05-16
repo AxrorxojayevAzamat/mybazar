@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.shop.modifications.edit', ['product' => $product, 'modification' => $modification]) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-        <form method="POST" action="{{ route('admin.shop.modifications.destroy', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+        <a href="{{ route('admin.shop.products.modifications.edit', ['product' => $product, 'modification' => $modification]) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        <form method="POST" action="{{ route('admin.shop.products.modifications.destroy', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">{{ trans('adminlte.delete') }}</button>

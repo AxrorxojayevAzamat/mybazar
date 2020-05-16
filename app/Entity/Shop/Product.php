@@ -148,7 +148,7 @@ class Product extends BaseModel
 
     public function values()
     {
-        return $this->hasMany(Value::class, 'product_id', 'id');
+        return $this->hasMany(Value::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function modifications()

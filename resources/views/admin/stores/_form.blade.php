@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
+                    {!! Form::label('name_en', 'Name', ['class' => 'col-form-label']); !!}
                     {!! Form::text('name_en', old('name_en', $store ? $store->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
                     @if ($errors->has('name_en'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>

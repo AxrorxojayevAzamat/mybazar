@@ -5,6 +5,7 @@
         <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
         <a href="{{ route('admin.shop.products.main-photo', $product) }}" class="btn btn-dark mr-1">{{ trans('adminlte.product.add_main_photo') }}</a>
         <a href="{{ route('admin.shop.products.photos', $product) }}" class="btn btn-secondary mr-1">{{ trans('adminlte.product.add_photos') }}</a>
+        <a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-warning mr-1">{{ trans('adminlte.value.add') }}</a>
         <form method="POST" action="{{ route('admin.shop.products.destroy', $product) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -153,7 +154,7 @@
     <div class="card" id="modifications">
         <div class="card-header card-green with-border">{{ trans('adminlte.modification.name') }}</div>
         <div class="card-body">
-            <p><a href="{{ route('admin.shop.modifications.create', $product) }}" class="btn btn-success">{{ trans('adminlte.modification.add') }}</a></p>
+            <p><a href="{{ route('admin.shop.products.modifications.create', $product) }}" class="btn btn-success">{{ trans('adminlte.modification.add') }}</a></p>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -169,24 +170,24 @@
                 @foreach ($product->modifications as $modification)
                     <tr>
                         <td>{{ $modification->id }}</td>
-                        <td><a href="{{ route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
+                        <td><a href="{{ route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
                         <td>{{ $modification->code }}</td>
                         <td>{{ $modification->price_uzs }}</td>
                         <td>
                             <div class="d-flex flex-row">
-                                <form method="POST" action="{{ route('admin.shop.modifications.first', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                <form method="POST" action="{{ route('admin.shop.products.modifications.first', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
                                     @csrf
                                     <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-up"></span></button>
                                 </form>
-                                <form method="POST" action="{{ route('admin.shop.modifications.up', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                <form method="POST" action="{{ route('admin.shop.products.modifications.up', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
                                     @csrf
                                     <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-up"></span></button>
                                 </form>
-                                <form method="POST" action="{{ route('admin.shop.modifications.down', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                <form method="POST" action="{{ route('admin.shop.products.modifications.down', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
                                     @csrf
                                     <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-down"></span></button>
                                 </form>
-                                <form method="POST" action="{{ route('admin.shop.modifications.last', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
+                                <form method="POST" action="{{ route('admin.shop.products.modifications.last', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
                                     @csrf
                                     <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-down"></span></button>
                                 </form>
@@ -200,4 +201,56 @@
         </div>
     </div>
 
+    <div class="card" id="values">
+        <div class="card-header card-green with-border">{{ trans('adminlte.value.name') }}</div>
+        <div class="card-body">
+            <p><a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-success">{{ trans('adminlte.value.add') }}</a></p>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>{{ trans('adminlte.characteristic.name') }}</th>
+                    <th>{{ trans('adminlte.value.name') }}</th>
+                    <th>{{ trans('adminlte.main') }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach ($product->values as $value)
+                    @php($characteristic = $value->characteristic)
+                    <tr>
+                        <td><a href="{{ route('admin.shop.characteristics.show', ['product' => $product, 'characteristic' => $characteristic]) }}">{{ $characteristic->name }}</a></td>
+                        <td>{{ $value->value }}</td>
+                        <td>{{ $value->main ? trans('adminlte.yes') : trans('adminlte.no') }}</td>
+                        <td>
+                            <div class="d-flex flex-row">
+                                <form method="POST" action="{{ route('admin.shop.products.values.first', ['product' => $product, 'characteristic' => $characteristic]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-up"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.products.values.up', ['product' => $product, 'characteristic' => $characteristic]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-up"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.products.values.down', ['product' => $product, 'characteristic' => $characteristic]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-down"></span></button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.shop.products.values.last', ['product' => $product, 'characteristic' => $characteristic]) }}" class="mr-1">
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-primary"><span class="fa fa-angle-double-down"></span></button>
+                                </form>
+                            </div>
+                        </td>
+                        <td class="text-center td-min-width">
+                            <a href="{!! route('admin.shop.products.values.show', ['product' => $product, 'characteristic' => $characteristic]) !!}" data-popup="tooltip" title="Show"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection

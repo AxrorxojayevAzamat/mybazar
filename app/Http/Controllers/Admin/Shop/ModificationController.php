@@ -21,14 +21,14 @@ class ModificationController extends Controller
 
     public function create(Product $product)
     {
-        return view('admin.shop.modifications.create', compact('product'));
+        return view('admin.shop.products.modifications.create', compact('product'));
     }
 
     public function store(Product $product, CreateRequest $request)
     {
         try {
             $modification = $this->service->addModification($product->id, $request);
-            return redirect()->route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]);
+            return redirect()->route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -36,19 +36,19 @@ class ModificationController extends Controller
 
     public function show(Product $product, Modification $modification)
     {
-        return view('admin.shop.modifications.show', compact('product', 'modification'));
+        return view('admin.shop.products.modifications.show', compact('product', 'modification'));
     }
 
     public function edit(Product $product, Modification $modification)
     {
-        return view('admin.shop.modifications.edit', compact('product', 'modification'));
+        return view('admin.shop.products.modifications.edit', compact('product', 'modification'));
     }
 
     public function update(UpdateRequest $request, Product $product, Modification $modification)
     {
         try {
             $this->service->updateModification($product->id, $modification->id, $request);
-            return redirect()->route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]);
+            return redirect()->route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

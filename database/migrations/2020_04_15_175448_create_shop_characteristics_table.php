@@ -18,20 +18,16 @@ class CreateShopCharacteristicsTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
-            $table->unsignedBigInteger('category_id');
             $table->string('type');
-            $table->boolean('main');
-            $table->integer('sort');
-            $table->string('default');
+            $table->string('default')->nullable();
             $table->boolean('required');
-            $table->json('variants');
+            $table->json('variants')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();
         });
 
         Schema::table('shop_characteristics', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('shop_categories')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });

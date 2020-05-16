@@ -10,6 +10,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+        Route::resource('characteristics', 'CharacteristicController');
 
         Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
 
@@ -23,19 +24,32 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::get('move-photo-up/{photo}', 'ProductController@movePhotoUp')->name('move-photo-up');
             Route::get('remove-photo/{photo}', 'ProductController@removePhoto')->name('delete-photo');
             Route::get('move-photo-down/{photo}', 'ProductController@movePhotoDown')->name('move-photo-down');
-        });
 
-        Route::group(['prefix' => 'products/{product}/modifications', 'as' => 'modifications.'], function () {
-            Route::get('create', 'ModificationController@create')->name('create');
-            Route::post('', 'ModificationController@store')->name('store');
-            Route::get('{modification}', 'ModificationController@show')->name('show');
-            Route::get('{modification}/edit', 'ModificationController@edit')->name('edit');
-            Route::put('{modification}', 'ModificationController@update')->name('update');
-            Route::delete('{modification}', 'ModificationController@destroy')->name('destroy');
-            Route::post('{modification}/first', 'ModificationController@first')->name('first');
-            Route::post('{modification}/up', 'ModificationController@up')->name('up');
-            Route::post('{modification}/down', 'ModificationController@down')->name('down');
-            Route::post('{modification}/last', 'ModificationController@last')->name('last');
+            Route::group(['prefix' => 'values', 'as' => 'values.'], function () {
+                Route::get('create', 'ValueController@create')->name('add');
+                Route::post('', 'ValueController@store')->name('store');
+                Route::get('characteristic/{characteristic}', 'ValueController@show')->name('show');
+                Route::get('characteristic/{characteristic}/edit', 'ValueController@edit')->name('edit');
+                Route::put('characteristic/{characteristic}', 'ValueController@update')->name('update');
+                Route::delete('characteristic/{characteristic}', 'ValueController@destroy')->name('destroy');
+                Route::post('characteristic/{characteristic}/first', 'ValueController@first')->name('first');
+                Route::post('characteristic/{characteristic}/up', 'ValueController@up')->name('up');
+                Route::post('characteristic/{characteristic}/down', 'ValueController@down')->name('down');
+                Route::post('characteristic/{characteristic}/last', 'ValueController@last')->name('last');
+            });
+
+            Route::group(['prefix' => 'modifications', 'as' => 'modifications.'], function () {
+                Route::get('create', 'ModificationController@create')->name('create');
+                Route::post('', 'ModificationController@store')->name('store');
+                Route::get('{modification}', 'ModificationController@show')->name('show');
+                Route::get('{modification}/edit', 'ModificationController@edit')->name('edit');
+                Route::put('{modification}', 'ModificationController@update')->name('update');
+                Route::delete('{modification}', 'ModificationController@destroy')->name('destroy');
+                Route::post('{modification}/first', 'ModificationController@first')->name('first');
+                Route::post('{modification}/up', 'ModificationController@up')->name('up');
+                Route::post('{modification}/down', 'ModificationController@down')->name('down');
+                Route::post('{modification}/last', 'ModificationController@last')->name('last');
+            });
         });
 
         Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {

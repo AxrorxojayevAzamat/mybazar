@@ -32,6 +32,8 @@ return [
     'delete' => 'O`chirmoq',
     'delete_confirmation_message' => 'Ishonchingiz komilmi?',
     'main' => 'Asosiy',
+    'yes' => 'Ha',
+    'no' => 'Yo`q',
 
     'name' => 'Nomi',
     'description' => 'Tavsifi',
@@ -53,6 +55,9 @@ return [
     'price_uzs' => 'Narhi (so`mda)',
     'price_usd' => 'Narhi (dollarda)',
     'color' => 'Rang',
+    'type' => 'Turi',
+    'default' => 'Standard',
+    'sort' => 'Joylashuvi',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -128,5 +133,19 @@ return [
         'plural' => 'O`zgartirishlar',
         'choose' => 'O`zgartirish tanlamoq',
         'code' => 'Kod',
+    ],
+
+    'characteristic' => [
+        'add' => 'Xarakteristika qo`shmoq',
+        'name' => 'Xarakteristika',
+        'plural' => 'Xarakteristikalar',
+        'choose' => 'Xarakteristika tanlamoq',
+        'variants' => 'Variantlar',
+    ],
+
+    'value' => [
+        'add' => 'Qiymat qo`shmoq',
+        'name' => 'Qiymat',
+        'plural' => 'Qiymatlar',
     ],
 ];

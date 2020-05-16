@@ -3,6 +3,8 @@
 namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
+use App\Entity\Store;
+use App\Entity\StoreCategory;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
@@ -30,6 +32,12 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int $depth
  * @property Category $parent
  * @property Category[] $children
+ * @property ProductCategory[] $categoryProducts
+ * @property Product[] $products
+ * @property StoreCategory[] $categoryStores
+ * @property Store[] $stores
+ * @property CharacteristicCategory[] $categoryCharacteristics
+ * @property Characteristic[] $characteristics
  * @property string $name
  * @property User $createdBy
  * @property User $updatedBy
@@ -70,6 +78,36 @@ class Category extends BaseModel
 
 
     ########################################### Relations
+
+    public function categoryProducts()
+    {
+        return $this->hasMany(ProductCategory::class, 'category_id', 'id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'shop_product_categories', 'category_id', 'product_id');
+    }
+
+    public function categoryStores()
+    {
+        return $this->hasMany(StoreCategory::class, 'category_id', 'id');
+    }
+
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class, 'store_categories', 'category_id', 'store_id');
+    }
+
+    public function categoryCharacteristics()
+    {
+        return $this->hasMany(CharacteristicCategory::class, 'category_id', 'id');
+    }
+
+    public function characteristics()
+    {
+        return $this->belongsToMany(Characteristic::class, 'shop_characteristic_categories', 'category_id', 'characteristic_id');
+    }
 
     public function createdBy()
     {

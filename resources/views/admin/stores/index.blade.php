@@ -1,7 +1,5 @@
 @extends('layouts.page')
 
-@php($user = Auth::user())
-
 @if (!config('adminlte.enabled_laravel_mix'))
     @php($javaScriptSectionName = 'js')
 @else

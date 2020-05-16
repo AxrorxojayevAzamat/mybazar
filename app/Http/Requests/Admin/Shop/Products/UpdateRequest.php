@@ -34,12 +34,12 @@ use Illuminate\Validation\Rule;
 class UpdateRequest extends FormRequest
 {
 
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name_uz' => 'required|string|max:255',

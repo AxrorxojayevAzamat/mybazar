@@ -23,4 +23,5 @@ return [
     'stores'                        => 'Stores',
     'payments'                      => 'Payment types',
     'marks'                         => 'Marks',
+    'characteristics'               => 'Characteristics',
 ];

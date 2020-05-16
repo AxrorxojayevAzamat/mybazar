@@ -1,9 +1,5 @@
 @extends('layouts.page')
 
-@php
-$user = Auth::user();
-@endphp
-
 @section('content')
     <p><a href="{{ route('admin.payments.create') }}" class="btn btn-success">{{ trans('adminlte.payment.add') }}</a></p>
 

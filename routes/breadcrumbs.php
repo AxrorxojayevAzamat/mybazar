@@ -2,6 +2,7 @@
 
 use App\Entity\Brand;
 use App\Entity\Payment;
+use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
@@ -162,19 +163,60 @@ Breadcrumbs::register('admin.shop.products.main-photo', function (Crumbs $crumbs
 
 // Modifications
 
-Breadcrumbs::register('admin.shop.modifications.create', function (Crumbs $crumbs, Product $product) {
+Breadcrumbs::register('admin.shop.products.modifications.create', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.shop.products.show', $product);
-    $crumbs->push(trans('adminlte.create'), route('admin.shop.modifications.create', $product));
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.modifications.create', $product));
 });
 
-Breadcrumbs::register('admin.shop.modifications.show', function (Crumbs $crumbs, Product $product, Modification $modification) {
+Breadcrumbs::register('admin.shop.products.modifications.show', function (Crumbs $crumbs, Product $product, Modification $modification) {
     $crumbs->parent('admin.shop.products.show', $product);
-    $crumbs->push($modification->name, route('admin.shop.modifications.show', ['product' => $product, 'modification' => $modification]));
+    $crumbs->push($modification->name, route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]));
 });
 
-Breadcrumbs::register('admin.shop.modifications.edit', function (Crumbs $crumbs, Product $product, Modification $modification) {
+Breadcrumbs::register('admin.shop.products.modifications.edit', function (Crumbs $crumbs, Product $product, Modification $modification) {
     $crumbs->parent('admin.shop.products.show', $product);
-    $crumbs->push(trans('adminlte.edit'), route('admin.shop.modifications.edit', ['product' => $product, 'modification' => $modification]));
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.products.modifications.edit', ['product' => $product, 'modification' => $modification]));
+});
+
+
+// Values
+
+Breadcrumbs::register('admin.shop.products.values.add', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.values.add', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.values.show', function (Crumbs $crumbs, Product $product, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push($characteristic->name, route('admin.shop.products.values.show', ['product' => $product, 'characteristic' => $characteristic]));
+});
+
+Breadcrumbs::register('admin.shop.products.values.edit', function (Crumbs $crumbs, Product $product, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.products.values.edit', ['product' => $product, 'characteristic' => $characteristic]));
+});
+
+
+// Characteristics
+
+Breadcrumbs::register('admin.shop.characteristics.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.characteristics'), route('admin.shop.characteristics.index'));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.characteristics.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.characteristics.create'));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.show', function (Crumbs $crumbs, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.characteristics.index');
+    $crumbs->push($characteristic->name, route('admin.shop.characteristics.show', $characteristic));
+});
+
+Breadcrumbs::register('admin.shop.characteristics.edit', function (Crumbs $crumbs, Characteristic $characteristic) {
+    $crumbs->parent('admin.shop.characteristics.show', $characteristic);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.characteristics.edit', $characteristic));
 });
 
 
