@@ -32,7 +32,6 @@ class ValueController extends Controller
 
     public function store(ValueRequest $request, Product $product)
     {
-//        dd($request->all());
         $value = $this->service->addValue($product->id, $request);
         try {
             return redirect()->route('admin.shop.products.values.show', ['product' => $product, 'characteristic' => $value->characteristic]);

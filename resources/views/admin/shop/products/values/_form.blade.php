@@ -21,7 +21,7 @@
                             {!! Form::label('characteristic_id', trans('adminlte.characteristic.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('characteristic_id', $characteristics, $characteristic ? $characteristic->id : null,
                                 ['class'=>'form-control' . ($errors->has('characteristic_id') ? ' is-invalid' : ''), 'id' => 'characteristic_id',
-                                'required' => true, 'placeholder' => trans('adminlte.characteristic.name')]) !!}
+                                'required' => true, 'placeholder' => '']) !!}
                             @if ($errors->has('characteristic_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('characteristic_id') }}</strong></span>
                             @endif
@@ -41,17 +41,20 @@
                         @if ($characteristic)
                             {!! Form::label('value', trans('adminlte.value.name'), ['class' => 'col-form-label']); !!}
                             @if ($characteristic->isSelect())
-                                {!! Form::select('value', $characteristic->variants, $value->value,
-                                    ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
-                                    'required' => $characteristic->required, 'placeholder' => '']) !!}
+                                <select id="value" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" name="value">
+                                    <option value=""></option>
+                                    @foreach ($characteristic->variants as $variant)
+                                        <option value="{{ $variant }}"{{ $variant == $value->value ? ' selected' : '' }}>{{ $variant }}</option>
+                                    @endforeach;
+                                </select>
                             @elseif($characteristic->isFloat())
-                                {!! Form::number('value', old('value', $value->value), ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
+                                {!! Form::number('value', $value->value, ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
                                     'step' => '0.01', 'required' => $characteristic->required]) !!}
                             @elseif($characteristic->isInteger())
-                                {!! Form::number('value', old('value', $value->value), ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
+                                {!! Form::number('value', $value->value, ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
                                     'required' => $characteristic->required]) !!}
                             @else
-                                {!! Form::text('value', old('value', $value->value), ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
+                                {!! Form::text('value', $value->value, ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''),
                                     'required' => $characteristic->required]) !!}
                             @endif
                             @if ($errors->has('value'))
@@ -75,7 +78,7 @@
         $('#characteristic_id').select2();
         let main_forms = $('#main-forms');
         let submit_button = $('#submit-button');
-
+        console.log({{ old('characteristic_id') }});
         $(document).ready(function () {
             $('#characteristic_id').change(function () {
                 let characteristicValue = $(this).val();
