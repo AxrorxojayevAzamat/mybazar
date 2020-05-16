@@ -11,37 +11,27 @@
                 <div class="row">
                     <div class="col-sm-1">
                         <div class="form-group">
-                            <input id="id" class="form-control" name="id" value="{{ request('id') }}">
+                            {!! Form::text('id', request('id'), ['class'=>'form-control', 'placeholder' => 'ID']) !!}
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <input id="name" class="form-control" name="name" value="{{ request('name') }}">
+                            {!! Form::text('name', request('name'), ['class'=>'form-control', 'placeholder' => trans('adminlte.name')]) !!}
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <input id="email" class="form-control" name="email" value="{{ request('email') }}">
+                            {!! Form::text('email', request('email'), ['class'=>'form-control', 'placeholder' => trans('adminlte.email')]) !!}
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select id="status" class="form-control" name="status">
-                                <option value=""></option>
-                                @foreach ($statuses as $value => $label)
-                                    <option value="{{ $value }}"{{ $value === request('status') ? ' selected' : '' }}>{{ $label }}</option>
-                                @endforeach;
-                            </select>
+                            {!! Form::select('status', $statuses, request('status'), ['class'=>'form-control', 'placeholder' => trans('adminlte.status')]) !!}
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <select id="role" class="form-control" name="role">
-                                <option value=""></option>
-                                @foreach ($roles as $value => $label)
-                                    <option value="{{ $value }}"{{ $value === request('role') ? ' selected' : '' }}>{{ $label }}</option>
-                                @endforeach;
-                            </select>
+                            {!! Form::select('role', $roles, request('role'), ['class'=>'form-control', 'placeholder' => trans('adminlte.user.role')]) !!}
                         </div>
                     </div>
                     <div class="col-sm-2">

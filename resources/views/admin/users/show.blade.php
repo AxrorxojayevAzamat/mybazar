@@ -11,29 +11,38 @@
         </form>
     </div>
 
-    <table class="table table-bordered table-striped">
-        <tbody>
-        <tr>
-            <th>ID</th><td>{{ $user->id }}</td>
-        </tr>
-        <tr>
-            <th>{{ trans('adminlte.user.name') }}</th><td>{{ $user->name }}</td>
-        </tr>
-        <tr>
-            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
-        </tr>
-        <tr>
-            <th>{{ trans('adminlte.status') }}</th>
-            <td>
-                @if ($user->status === \App\Entity\User\User::STATUS_WAIT)
-                    <span class="badge badge-secondary">Waiting</span>
-                @endif
-                @if ($user->status === \App\Entity\User\User::STATUS_ACTIVE)
-                    <span class="badge badge-primary">Active</span>
-                @endif
-            </td>
-        </tr>
-        <tbody>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                        <tr>
+                            <th>ID</th><td>{{ $user->id }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('adminlte.user.name') }}</th><td>{{ $user->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('adminlte.status') }}</th>
+                            <td>
+                                @if ($user->status === \App\Entity\User\User::STATUS_WAIT)
+                                    <span class="badge badge-secondary">Waiting</span>
+                                @endif
+                                @if ($user->status === \App\Entity\User\User::STATUS_ACTIVE)
+                                    <span class="badge badge-primary">Active</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
