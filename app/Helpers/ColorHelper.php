@@ -4,6 +4,12 @@ namespace App\Helpers;
 
 class ColorHelper
 {
+
+    public static function getValidColor(string $color)
+    {
+        return self::rgba_to_hex($color);
+    }
+
     public static function rgba_to_hex(string $rgba): string
     {
         if (strpos($rgba, '#') === 0) {

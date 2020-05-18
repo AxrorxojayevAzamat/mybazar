@@ -8,6 +8,7 @@ use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\Value;
 use App\Entity\Store;
+use App\Helpers\ColorHelper;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
@@ -287,7 +288,7 @@ class ProductService
                     'code' => $request->code,
                     'price_uzs' => $request->price_uzs,
                     'price_usd' => $request->price_usd,
-                    'color' => $request->color,
+                    'color' => ColorHelper::getValidColor($request->color),
                     'sort' => 1000,
                 ]);
 
