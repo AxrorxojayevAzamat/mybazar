@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Store;
 
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;

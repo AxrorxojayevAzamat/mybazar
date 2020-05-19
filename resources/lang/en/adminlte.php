@@ -95,6 +95,8 @@ return [
         'add' => 'Add Store',
         'name' => 'Store',
         'choose' => 'Choose store',
+        'worker' => 'Worker',
+        'add_worker' => 'Add Worker',
     ],
 
     'payment' => [

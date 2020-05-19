@@ -30,6 +30,8 @@ use Eloquent;
  * @property Mark[] $marks
  * @property StoreCategory[] $storeCategories
  * @property Category[] $categories
+ * @property User[] $workers
+ * @property StoreUser[] $storeWorker
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -152,6 +154,16 @@ class Store extends BaseModel
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'store_categories', 'store_id', 'category_id');
+    }
+
+    public function storeWorkers()
+    {
+        return $this->hasMany(StoreUser::class, 'store_id', 'id');
+    }
+
+    public function workers()
+    {
+        return $this->belongsToMany(User::class, 'store_users', 'store_id', 'user_id');
     }
 
     public function createdBy()

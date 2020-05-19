@@ -5,9 +5,12 @@ namespace App\Services;
 
 
 use App\Entity\Store;
+use App\Entity\StoreUser;
+use App\Entity\User\User;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\stores\CreateRequest;
 use App\Http\Requests\Admin\stores\UpdateRequest;
+use App\Http\Requests\Admin\Stores\Users\CreateRequest as UserCreateRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -98,7 +101,7 @@ class StoreService
         return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id) && $store->update(['logo' => null]);
     }
 
-    private function updateRelations(Store $store, UpdateRequest $request)
+    private function updateRelations(Store $store, UpdateRequest $request): void
     {
         $store->storeCategories()->delete();
         $this->addCategories($store, $request->categories);
@@ -110,7 +113,7 @@ class StoreService
         $this->addPayments($store, $request->payments);
     }
 
-    private function addCategories(Store $store, array $categories)
+    private function addCategories(Store $store, array $categories): void
     {
         $categories = array_unique($categories);
         foreach ($categories as $i => $categoryId) {
@@ -118,7 +121,7 @@ class StoreService
         }
     }
 
-    private function addMarks(Store $store, array $marks)
+    private function addMarks(Store $store, array $marks): void
     {
         $marks = array_unique($marks);
         foreach ($marks as $i => $markId) {
@@ -126,11 +129,43 @@ class StoreService
         }
     }
 
-    private function addPayments(Store $store, array $payments)
+    private function addPayments(Store $store, array $payments): void
     {
         $payments = array_unique($payments);
         foreach ($payments as $i => $paymentId) {
             $store->storePayments()->create(['payment_id' => $paymentId]);
+        }
+    }
+
+    public function addWorker(int $id, UserCreateRequest $request): StoreUser
+    {
+        $store = Store::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $user = User::new($request->name, $request->email, User::ROLE_USER, $request->password);
+            $storeWorker = $store->storeWorkers()->create(['user_id' => $user->id, 'role' => $request->role]);
+
+            DB::commit();
+
+            return $storeWorker;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    public function updateWorker(int $id, UserCreateRequest $request): void
+    {
+        $store = Store::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $user = User::new($request->name, $request->email, User::ROLE_USER, $request->password);
+            $storeWorker = $store->storeWorkers()->create(['user_id' => $user->id, 'role' => $request->role]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
         }
     }
 

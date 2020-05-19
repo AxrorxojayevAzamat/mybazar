@@ -95,6 +95,8 @@ return [
         'add' => 'Do`kon qo`shmoq',
         'name' => 'Do`kon',
         'choose' => 'Do`kon tanlamoq',
+        'worker' => 'Ishchi',
+        'add_worker' => 'Ishchi qo`shmoq',
     ],
 
     'payment' => [

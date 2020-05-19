@@ -2,6 +2,8 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Store;
+use App\Entity\StoreUser;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
@@ -25,6 +27,9 @@ use Illuminate\Support\Str;
  * @property boolean $phone_auth
  * @property string $role
  * @property string $status
+ *
+ * @property StoreUser[] $storeWorkers
+ * @property Store[] $stores
  *
  * @mixin Eloquent
  */
@@ -142,4 +147,19 @@ class User extends Authenticatable
     {
         return (bool)$this->phone_auth;
     }
+
+
+    ########################################### Relations
+
+    public function storeWorkers()
+    {
+        return $this->hasMany(StoreUser::class, 'user_id', 'id');
+    }
+
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class, 'store_users', 'user_id', 'store_id');
+    }
+
+    ###########################################
 }

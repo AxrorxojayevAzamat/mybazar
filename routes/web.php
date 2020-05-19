@@ -61,8 +61,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     });
 
-    Route::resource('stores', 'StoreController');
-    Route::post('stores/{store}/remove-logo', 'StoreController@removeLogo')->name('remove-logo');
+    Route::resource('stores', 'Store\StoreController');
+    Route::group(['prefix' => 'stores/{store}', 'namespace' => 'Store', 'as' => 'stores.'], function () {
+        Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+            Route::get('create', 'UserController@create')->name('create');
+            Route::post('', 'UserController@add')->name('add');
+            Route::get('{user}', 'UserController@show')->name('show');
+            Route::get('{user}/edit', 'UserController@edit')->name('edit');
+            Route::put('{user}', 'UserController@update')->name('update');
+            Route::delete('{user}', 'UserController@destroy')->name('destroy');
+        });
+
+        Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
+    });
 
     Route::resource('brands', 'BrandController');
     Route::post('brands/{brand}/remove-logo', 'BrandController@removeLogo')->name('remove-logo');
