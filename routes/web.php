@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/catalog', 'PagesController@index');
+Route::get('/', 'PagesController@catalog');
+// Route::get('/about', 'PagesController@about');
+// Route::get('/', 'PagesController@catalog');
+Route::get('/cart', 'PagesController@shoppingCart');
+
