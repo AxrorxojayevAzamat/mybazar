@@ -31,7 +31,7 @@ use Eloquent;
  * @property StoreCategory[] $storeCategories
  * @property Category[] $categories
  * @property User[] $workers
- * @property StoreUser[] $storeWorker
+ * @property StoreUser[] $storeWorkers
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -163,7 +163,7 @@ class Store extends BaseModel
 
     public function workers()
     {
-        return $this->belongsToMany(User::class, 'store_users', 'store_id', 'user_id');
+        return $this->hasManyThrough(User::class, StoreUser::class, 'store_id', 'user_id', 'id', 'id');
     }
 
     public function createdBy()

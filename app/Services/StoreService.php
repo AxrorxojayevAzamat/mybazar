@@ -11,6 +11,7 @@ use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\stores\CreateRequest;
 use App\Http\Requests\Admin\stores\UpdateRequest;
 use App\Http\Requests\Admin\Stores\Users\CreateRequest as UserCreateRequest;
+use App\Http\Requests\Admin\Stores\Users\UpdateRequest as UserUpdateRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -154,13 +155,19 @@ class StoreService
         }
     }
 
-    public function updateWorker(int $id, UserCreateRequest $request): void
+    public function updateWorker(int $id, int $userId, UserUpdateRequest $request): void
     {
         $store = Store::findOrFail($id);
+        $user = User::findOrFail($userId);
+        $storeWorker = $store->storeWorkers()->where('user_id', $user->id)->firstOrFail();
         DB::beginTransaction();
         try {
-            $user = User::new($request->name, $request->email, User::ROLE_USER, $request->password);
-            $storeWorker = $store->storeWorkers()->create(['user_id' => $user->id, 'role' => $request->role]);
+            $user->edit($request->name, $request->email, $user->role, $request->status, $request->password);
+            DB::table('store_users')->where('store_id', $store->id)
+                ->where('user_id', $user->id)
+                ->update([
+                    'role' => $request->role,
+                ]);
 
             DB::commit();
         } catch (\Exception $e) {

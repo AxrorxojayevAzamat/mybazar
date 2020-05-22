@@ -530,7 +530,7 @@ class ProductService
                     'characteristic_id' => $characteristic->id,
                     'value' => $request->value ?? $characteristic->default,
                     'main' => $request->main,
-                ]);
+            ]);
 
             $value = $product->values()->where('characteristic_id', $request->characteristic_id)->firstOrFail();
 

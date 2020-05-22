@@ -27,7 +27,7 @@ class UserController extends Controller
         return view('admin.stores.users.create', compact('store', 'roles'));
     }
 
-    public function store(CreateRequest $request, Store $store)
+    public function add(CreateRequest $request, Store $store)
     {
         $storeWorker = $this->service->addWorker($store->id, $request);
 
@@ -40,19 +40,20 @@ class UserController extends Controller
         return view('admin.stores.users.show', compact('store', 'user', 'storeWorker'));
     }
 
-    public function edit(Store $store)
+    public function edit(Store $store, User $user)
     {
+        $storeWorker = $store->storeWorkers()->where('user_id', $user->id)->firstOrFail();
         $roles = StoreUser::rolesList();
         $statuses = User::statusesList();
 
-        return view('admin.stores.users.edit', compact('store', 'roles', 'statuses'));
+        return view('admin.stores.users.edit', compact('store', 'user', 'storeWorker', 'roles', 'statuses'));
     }
 
-    public function update(UpdateRequest $request, Store $store)
+    public function update(UpdateRequest $request, Store $store, User $user)
     {
-        $store = $this->service->update($store->id, $request);
+        $this->service->updateWorker($store->id, $user->id, $request);
 
-        return redirect()->route('admin.stores.users.show', $store);
+        return redirect()->route('admin.stores.users.show', ['store' => $store, 'user' => $user]);
     }
 
     public function destroy(Store $store, User $user)

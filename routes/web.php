@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::get('{user}', 'UserController@show')->name('show');
             Route::get('{user}/edit', 'UserController@edit')->name('edit');
             Route::put('{user}', 'UserController@update')->name('update');
-            Route::delete('{user}', 'UserController@destroy')->name('destroy');
+            Route::delete('user/{user}', 'UserController@destroy')->name('destroy');
         });
 
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');

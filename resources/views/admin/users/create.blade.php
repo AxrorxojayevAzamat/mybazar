@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-form-label">{{ trans('adminlte.password') }}</label>
+                            <label for="password" class="col-form-label">{{ trans('adminlte.password') }}</label>
                             <input id="password" type="password" class="form-control" name="password" required>
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('password') }}</strong></span>

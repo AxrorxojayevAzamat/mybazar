@@ -15,7 +15,7 @@ class CreateStoreUsersTable extends Migration
     {
         Schema::create('store_users', function (Blueprint $table) {
             $table->unsignedBigInteger('store_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->string('role');
         });
 

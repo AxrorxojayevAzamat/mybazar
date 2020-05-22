@@ -1,7 +1,5 @@
 @extends('layouts.page')
 
-@php($user = Auth::user())
-
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
@@ -112,16 +110,19 @@
                     <th>ID</th>
                     <th>{{ trans('adminlte.user.name') }}</th>
                     <th>{{ trans('adminlte.email') }}</th>
+                    <th>{{ trans('adminlte.user.role') }}</th>
                     <th>{{ trans('adminlte.status') }}</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                @foreach ($store->workers as $user)
+                @foreach ($store->storeWorkers as $storeWorker)
+                    @php($user = $storeWorker->user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
+                        <td><a href="{{ route('admin.stores.users.show', ['store' => $store, 'user' => $user]) }}">{{ $user->name }}</a></td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $storeWorker->roleName() }}</td>
                         <td>
                             @if ($user->status === \App\Entity\User\User::STATUS_WAIT)
                                 <span class="badge badge-secondary">{{ trans('adminlte.user.waiting') }}</span>

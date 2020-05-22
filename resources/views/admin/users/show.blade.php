@@ -27,6 +27,9 @@
                             <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
                         </tr>
                         <tr>
+                            <th>{{ trans('adminlte.user.role') }}</th><td>{{ $user->roleName() }}</td>
+                        </tr>
+                        <tr>
                             <th>{{ trans('adminlte.status') }}</th>
                             <td>
                                 @if ($user->status === \App\Entity\User\User::STATUS_WAIT)

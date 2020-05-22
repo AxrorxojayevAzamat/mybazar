@@ -19,7 +19,7 @@ class StoreUser extends BasePivot
 {
     protected $table = 'store_users';
 
-    protected $fillable = ['store_id', 'user_id'];
+    protected $fillable = ['store_id', 'user_id', 'role'];
 
 
     public static function rolesList(): array
@@ -31,7 +31,7 @@ class StoreUser extends BasePivot
         ];
     }
 
-    public function rolesName(): string
+    public function roleName(): string
     {
         return self::rolesList()[$this->role];
     }

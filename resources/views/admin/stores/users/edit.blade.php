@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('admin.users.update', $user) }}">
+    <form method="POST" action="{{ route('admin.stores.users.update', ['store' => $store, 'user' => $user]) }}">
         @csrf
         @method('PUT')
 
@@ -11,48 +11,40 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name" class="col-form-label">{{ trans('adminlte.user.name') }}</label>
-                            <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" required>
+                            {!! Form::label('name', trans('adminlte.user.name'), ['class' => 'col-form-label']); !!}
+                            {!! Form::text('name', old('name', $user->name), ['class'=>'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-form-label">{{ trans('adminlte.email') }}</label>
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" required>
+                            {!! Form::label('email', trans('adminlte.user.email'), ['class' => 'col-form-label']); !!}
+                            {!! Form::email('email', old('email', $user->email), ['class'=>'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('email') }}</strong></span>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label for="role" class="col-form-label">{{ trans('adminlte.user.role') }}</label>
-                            <select id="role" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="role">
-                                @foreach ($roles as $value => $label)
-                                    <option value="{{ $value }}"{{ $value === old('role', $user->role) ? ' selected' : '' }}>{{ $label }}</option>
-                                @endforeach;
-                            </select>
+                            {!! Form::label('role', trans('adminlte.user.role'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('role', $roles, old('role', $user->role), ['class'=>'form-control' . ($errors->has('role') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('role'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('role') }}</strong></span>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-form-label">{{ trans('adminlte.status') }}</label>
-                            <select id="status" type="email" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" name="status">
-                                @foreach ($statuses as $value => $label)
-                                    <option value="{{ $value }}"{{ $value === old('status', $user->status) ? ' selected' : '' }}>{{ $label }}</option>
-                                @endforeach;
-                            </select>
-                            @if ($errors->has('email'))
+                            {!! Form::label('status', trans('adminlte.status'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('status', $statuses, old('role', $user->status), ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : '')]) !!}
+                            @if ($errors->has('status'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                             @endif
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-form-label">{{ trans('adminlte.password') }}</label>
-                            <input id="password" type="password" class="form-control" name="password">
+                            {!! Form::label('password', trans('adminlte.password'), ['class' => 'col-form-label']); !!}
+                            {!! Form::password('password', ['class'=>'form-control']) !!}
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('password') }}</strong></span>
                             @endif

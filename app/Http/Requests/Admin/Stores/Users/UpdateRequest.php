@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
             'role' => ['required', 'string', Rule::in(array_keys(StoreUser::rolesList()))],
             'status' => ['numeric', Rule::in(array_keys(User::statusesList()))],
-            'password' => 'string',
+            'password' => 'nullable|string',
         ];
     }
 }

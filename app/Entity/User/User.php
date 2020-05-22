@@ -28,8 +28,8 @@ use Illuminate\Support\Str;
  * @property string $role
  * @property string $status
  *
- * @property StoreUser[] $storeWorkers
- * @property Store[] $stores
+ * @property StoreUser $storeWorker
+ * @property Store $store
  *
  * @mixin Eloquent
  */
@@ -104,6 +104,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function roleName(): string
+    {
+        return self::rolesList()[$this->role];
+    }
+
     public static function statusesList(): array
     {
         return [
@@ -151,14 +156,14 @@ class User extends Authenticatable
 
     ########################################### Relations
 
-    public function storeWorkers()
+    public function storeWorker()
     {
-        return $this->hasMany(StoreUser::class, 'user_id', 'id');
+        return $this->hasOne(StoreUser::class, 'user_id', 'id');
     }
 
-    public function stores()
+    public function store()
     {
-        return $this->belongsToMany(Store::class, 'store_users', 'user_id', 'store_id');
+        return $this->hasOneThrough(Store::class, StoreUser::class, 'user_id', 'store_id', 'id', 'id');
     }
 
     ###########################################

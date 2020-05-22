@@ -51,6 +51,7 @@
             <th>ID</th>
             <th>{{ trans('adminlte.user.name') }}</th>
             <th>{{ trans('adminlte.email') }}</th>
+            <th>{{ trans('adminlte.user.role') }}</th>
             <th>{{ trans('adminlte.status') }}</th>
         </tr>
         </thead>
@@ -61,6 +62,7 @@
                 <td>{{ $user->id }}</td>
                 <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->roleName() }}</td>
                 <td>
                     @if ($user->status === \App\Entity\User\User::STATUS_WAIT)
                         <span class="badge badge-secondary">{{ trans('adminlte.user.waiting') }}</span>

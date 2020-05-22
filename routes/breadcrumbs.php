@@ -268,17 +268,22 @@ Breadcrumbs::register('admin.payments.edit', function (Crumbs $crumbs, Payment $
 
 // Store Users
 
-Breadcrumbs::register('admin.stores.users.create', function (Crumbs $crumbs, Store $store) {
+Breadcrumbs::register('admin.stores.users.index', function (Crumbs $crumbs, Store $store) {
     $crumbs->parent('admin.stores.show', $store);
+    $crumbs->push(trans('menu.users'), null);
+});
+
+Breadcrumbs::register('admin.stores.users.create', function (Crumbs $crumbs, Store $store) {
+    $crumbs->parent('admin.stores.users.index', $store);
     $crumbs->push(trans('adminlte.create'), route('admin.stores.users.create', $store));
 });
 
 Breadcrumbs::register('admin.stores.users.show', function (Crumbs $crumbs, Store $store, User $user) {
-    $crumbs->parent('admin.stores.show', $store);
+    $crumbs->parent('admin.stores.users.index', $store);
     $crumbs->push($user->name, route('admin.stores.users.show', ['store' => $store, 'user' => $user]));
 });
 
 Breadcrumbs::register('admin.stores.users.edit', function (Crumbs $crumbs, Store $store, User $user) {
-    $crumbs->parent('admin.stores.show', $store);
+    $crumbs->parent('admin.stores.users.index', $store);
     $crumbs->push(trans('adminlte.edit'), route('admin.stores.users.edit', ['store' => $store, 'user' => $user]));
 });
