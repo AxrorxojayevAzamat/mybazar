@@ -14,7 +14,7 @@ use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
-use App\Services\Shop\ProductService;
+use App\Services\Manage\Shop\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

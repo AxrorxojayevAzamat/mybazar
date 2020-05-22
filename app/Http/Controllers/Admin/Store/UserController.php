@@ -8,7 +8,7 @@ use App\Entity\User\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\Users\CreateRequest;
 use App\Http\Requests\Admin\Stores\Users\UpdateRequest;
-use App\Services\StoreService;
+use App\Services\Manage\StoreService;
 
 class UserController extends Controller
 {

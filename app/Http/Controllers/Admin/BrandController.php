@@ -7,7 +7,7 @@ use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brands\CreateRequest;
 use App\Http\Requests\Admin\Brands\UpdateRequest;
-use App\Services\BrandService;
+use App\Services\Manage\BrandService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

@@ -8,7 +8,7 @@ use App\Entity\Shop\Product;
 use App\Helpers\LanguageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Products\ValueRequest;
-use App\Services\Shop\ProductService;
+use App\Services\Manage\Shop\ProductService;
 
 class ValueController extends Controller
 {

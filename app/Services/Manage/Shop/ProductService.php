@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Shop;
+namespace App\Services\Manage\Shop;
 
 use App\Entity\Brand;
 use App\Entity\Shop\Characteristic;

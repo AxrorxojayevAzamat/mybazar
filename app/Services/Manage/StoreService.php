@@ -1,8 +1,6 @@
 <?php
 
-
-namespace App\Services;
-
+namespace App\Services\Manage;
 
 use App\Entity\Store;
 use App\Entity\StoreUser;

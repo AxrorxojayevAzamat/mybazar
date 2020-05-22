@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\Shop;
+namespace App\Services\Manage\Shop;
 
 
 use App\Entity\Shop\Mark;

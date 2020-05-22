@@ -8,7 +8,7 @@ use App\Entity\Payment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Payments\CreateRequest;
 use App\Http\Requests\Admin\Payments\UpdateRequest;
-use App\Services\PaymentService;
+use App\Services\Manage\PaymentService;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller

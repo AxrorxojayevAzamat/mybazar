@@ -8,7 +8,7 @@ use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Characteristics\CreateRequest;
 use App\Http\Requests\Admin\Shop\Characteristics\UpdateRequest;
-use App\Services\Shop\CharacteristicService;
+use App\Services\Manage\Shop\CharacteristicService;
 use Illuminate\Http\Request;
 
 class CharacteristicController extends Controller

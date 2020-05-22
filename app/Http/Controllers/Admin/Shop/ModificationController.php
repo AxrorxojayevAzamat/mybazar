@@ -7,7 +7,7 @@ use App\Entity\Shop\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Modifications\CreateRequest;
 use App\Http\Requests\Admin\Shop\Modifications\UpdateRequest;
-use App\Services\Shop\ProductService;
+use App\Services\Manage\Shop\ProductService;
 
 class ModificationController extends Controller
 {

@@ -11,7 +11,7 @@ use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\CreateRequest;
 use App\Http\Requests\Admin\Stores\UpdateRequest;
-use App\Services\StoreService;
+use App\Services\Manage\StoreService;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller

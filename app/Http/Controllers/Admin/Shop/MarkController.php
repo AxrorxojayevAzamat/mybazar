@@ -6,7 +6,7 @@ use App\Entity\Shop\Mark;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Marks\CreateRequest;
 use App\Http\Requests\Admin\Shop\Marks\UpdateRequest;
-use App\Services\Shop\MarkService;
+use App\Services\Manage\Shop\MarkService;
 use Illuminate\Http\Request;
 
 class MarkController extends Controller

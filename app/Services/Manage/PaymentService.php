@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\Manage;
 
 
 use App\Entity\Payment;
