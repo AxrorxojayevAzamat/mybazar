@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Shop\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
 use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
 
 class CategoryController extends Controller
@@ -27,7 +28,7 @@ class CategoryController extends Controller
         return view('admin.shop.categories.create', compact('parents'));
     }
 
-    public function store(UpdateRequest $request)
+    public function store(CreateRequest $request)
     {
         $category = Category::create([
             'name_uz' => $request['name_uz'],

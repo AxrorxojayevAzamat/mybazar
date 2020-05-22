@@ -22,6 +22,7 @@ return [
     'products'                      => 'Products',
     'stores'                        => 'Stores',
     'payments'                      => 'Payment types',
+    'delivery_methods'              => 'Delivery Methods',
     'marks'                         => 'Marks',
     'characteristics'               => 'Characteristics',
 ];

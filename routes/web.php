@@ -90,6 +90,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::delete('user/{user}', 'UserController@destroy')->name('destroy');
         });
 
+        Route::group(['prefix' => 'deliveries/{delivery_method}', 'as' => 'deliveries.'], function () {
+            Route::post('first', 'StoreController@moveDeliveryToFirst')->name('first');
+            Route::post('up', 'StoreController@moveDeliveryUp')->name('up');
+            Route::post('down', 'StoreController@moveDeliveryDown')->name('down');
+            Route::post('last', 'StoreController@moveDeliveryToLast')->name('last');
+        });
+
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
     });
 
@@ -98,6 +105,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('payments', 'PaymentController');
     Route::post('payments/{payment}/remove-logo', 'PaymentController@removeLogo')->name('remove-logo');
+
+    Route::resource('deliveries', 'DeliveryController');
 });
 
 

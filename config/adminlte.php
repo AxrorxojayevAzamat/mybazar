@@ -261,6 +261,12 @@ return [
             'icon' => 'fas fa-fw fa-credit-card',
             'can' => 'manage-shop-payments',
         ],
+        [
+            'text' => 'delivery_methods',
+            'url'  => 'admin/deliveries',
+            'icon' => 'fas fa-fw fa-car',
+            'can' => 'manage-shop-deliveries',
+        ],
     ],
 
     /*

@@ -22,6 +22,7 @@ return [
     'products'                      => 'Продукты',
     'stores'                        => 'Магазины',
     'payments'                      => 'Типы платежей',
+    'delivery_methods'              => 'Доставки',
     'marks'                         => 'Отметки',
     'characteristics'               => 'Характеристики',
 ];

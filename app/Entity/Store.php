@@ -32,6 +32,8 @@ use Eloquent;
  * @property Category[] $categories
  * @property User[] $workers
  * @property StoreUser[] $storeWorkers
+ * @property StoreDeliveryMethod[] $storeDeliveryMethods
+ * @property DeliveryMethod[] $deliveryMethods
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -96,6 +98,15 @@ class Store extends BaseModel
             return [];
         }
         return $payments->pluck('payment_id')->toArray();
+    }
+
+    public function deliveriesList(): array
+    {
+        $deliveryMethods = $this->storeDeliveryMethods();
+        if (!$deliveryMethods->exists()) {
+            return [];
+        }
+        return $deliveryMethods->pluck('delivery_method_id')->toArray();
     }
 
 
@@ -164,6 +175,16 @@ class Store extends BaseModel
     public function workers()
     {
         return $this->hasManyThrough(User::class, StoreUser::class, 'store_id', 'user_id', 'id', 'id');
+    }
+
+    public function storeDeliveryMethods()
+    {
+        return $this->hasMany(StoreDeliveryMethod::class, 'store_id', 'id')->orderBy('sort');
+    }
+
+    public function deliveryMethods()
+    {
+        return $this->belongsToMany(DeliveryMethod::class, 'store_delivery_methods', 'store_id', 'delivery_method_id')->orderBy('sort');
     }
 
     public function createdBy()

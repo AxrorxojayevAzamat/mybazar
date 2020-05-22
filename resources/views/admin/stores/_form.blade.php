@@ -56,7 +56,7 @@
         <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('categories', trans('adminlte.category.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('categories[]', $categories, old('categories', $store ? $store->categoriesList() : null),
@@ -66,7 +66,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('marks', trans('adminlte.mark.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('marks[]', $marks, old('marks', $store ? $store->marksList() : null),
@@ -76,13 +76,23 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('payments', trans('adminlte.payment.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('payments[]', $payments, old('categories', $store ? $store->paymentsList() : null),
                                 ['multiple' => true, 'class'=>'form-control' . ($errors->has('payments') ? ' is-invalid' : ''), 'id' => 'payments', 'required' => true]) !!}
                             @if ($errors->has('payments'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('payments') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('delivery_methods', trans('adminlte.delivery_method.name'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('delivery_methods[]', $deliveryMethods, old('delivery_methods', $store ? $store->deliveriesList() : null),
+                                ['multiple' => true, 'class'=>'form-control' . ($errors->has('delivery_methods') ? ' is-invalid' : ''), 'id' => 'delivery_methods', 'required' => true]) !!}
+                            @if ($errors->has('delivery_methods'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('delivery_methods') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -129,6 +139,7 @@
         $('#categories').select2();
         $('#marks').select2();
         $('#payments').select2();
+        $('#delivery_methods').select2();
 
         let fileInput = $("#file-input");
         let logoUrl = '{{ $store ? ($store->logo ? $store->logoOriginal : null) : null }}';

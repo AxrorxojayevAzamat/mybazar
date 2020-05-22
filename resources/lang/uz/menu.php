@@ -22,6 +22,7 @@ return [
     'products'                      => 'Mahsulotlar',
     'stores'                        => 'Do`konlar',
     'payments'                      => 'To`lov turlari',
+    'delivery_methods'              => 'Yetkazib berishlar',
     'marks'                         => 'Belgilar',
     'characteristics'               => 'Xarakteristikalar',
 ];

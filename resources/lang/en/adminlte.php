@@ -105,6 +105,15 @@ return [
         'choose' => 'Choose payment type',
     ],
 
+    'delivery_method' => [
+        'add' => 'Add Delivery Method',
+        'name' => 'Delivery Method',
+        'choose' => 'Choose Delivery Method',
+        'cost' => 'Cost',
+        'min_weight' => 'Minimum weight',
+        'max_weight' => 'Maximum weight',
+    ],
+
     'mark' => [
         'add' => 'Add Mark',
         'name' => 'Mark',

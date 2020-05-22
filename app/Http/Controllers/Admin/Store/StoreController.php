@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Store;
 
+use App\Entity\DeliveryMethod;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
 use App\Entity\Store;
@@ -53,8 +54,9 @@ class StoreController extends Controller
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.stores.create', compact('categories', 'marks', 'payments'));
+        return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods'));
     }
 
     public function store(CreateRequest $request)
@@ -74,7 +76,9 @@ class StoreController extends Controller
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
-        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments'));
+        $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+
+        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments', 'deliveryMethods'));
     }
 
     public function update(UpdateRequest $request, Store $store)
@@ -97,5 +101,45 @@ class StoreController extends Controller
             return response()->json('The logo is successfully deleted!');
         }
         return response()->json('The logo is not deleted!', 400);
+    }
+
+    public function moveDeliveryToFirst(Store $store, DeliveryMethod $deliveryMethod)
+    {
+        try {
+            $this->service->moveDeliveryMethodToFirst($store->id, $deliveryMethod->id);
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function moveDeliveryUp(Store $store, DeliveryMethod $deliveryMethod)
+    {
+        try {
+            $this->service->moveDeliveryMethodUp($store->id, $deliveryMethod->id);
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function moveDeliveryDown(Store $store, DeliveryMethod $deliveryMethod)
+    {
+        try {
+            $this->service->moveDeliveryMethodDown($store->id, $deliveryMethod->id);
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function moveDeliveryToLast(Store $store, DeliveryMethod $deliveryMethod)
+    {
+        try {
+            $this->service->moveDeliveryMethodToLast($store->id, $deliveryMethod->id);
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

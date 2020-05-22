@@ -3,6 +3,7 @@
 namespace App\Services\Manage;
 
 use App\Entity\Store;
+use App\Entity\StoreDeliveryMethod;
 use App\Entity\StoreUser;
 use App\Entity\User\User;
 use App\Helpers\ImageHelper;
@@ -37,6 +38,7 @@ class StoreService
             $this->addCategories($store, $request->categories);
             $this->addMarks($store, $request->marks);
             $this->addPayments($store, $request->payments);
+            $this->addDeliveryMethods($store, $request->delivery_methods);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -110,6 +112,9 @@ class StoreService
 
         $store->storePayments()->delete();
         $this->addPayments($store, $request->payments);
+
+        $store->storeDeliveryMethods()->delete();
+        $this->addDeliveryMethods($store, $request->delivery_methods);
     }
 
     private function addCategories(Store $store, array $categories): void
@@ -133,6 +138,14 @@ class StoreService
         $payments = array_unique($payments);
         foreach ($payments as $i => $paymentId) {
             $store->storePayments()->create(['payment_id' => $paymentId]);
+        }
+    }
+
+    private function addDeliveryMethods(Store $store, array $deliveryMethods): void
+    {
+        $deliveryMethods = array_unique($deliveryMethods);
+        foreach ($deliveryMethods as $i => $deliveryMethodId) {
+            $store->storeDeliveryMethods()->create(['delivery_method_id' => $deliveryMethodId]);
         }
     }
 
@@ -171,6 +184,149 @@ class StoreService
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
+        }
+    }
+
+    public function moveDeliveryMethodToFirst(int $id, int $deliveryMethodId): void
+    {
+        $store = Store::findOrFail($id);
+        $storeDeliveryMethods = $store->storeDeliveryMethods;
+
+        foreach ($storeDeliveryMethods as $i => $storeDeliveryMethod) {
+            if ($storeDeliveryMethod->isIdEqualTo($deliveryMethodId)) {
+                for ($j = $i; $j >= 0; $j--) {
+                    if (!isset($storeDeliveryMethods[$j - 1])) {
+                        break(1);
+                    }
+
+                    $prev = $storeDeliveryMethods[$j - 1];
+                    $storeDeliveryMethods[$j - 1] = $storeDeliveryMethods[$j];
+                    $storeDeliveryMethods[$j] = $prev;
+                }
+                $store->storeDeliveryMethods = $storeDeliveryMethods;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortDeliveryMethods($store);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveDeliveryMethodUp(int $id, int $deliveryMethodId): void
+    {
+        $store = Store::findOrFail($id);
+        $storeDeliveryMethods = $store->storeDeliveryMethods;
+
+        foreach ($storeDeliveryMethods as $i => $storeDeliveryMethod) {
+            if ($storeDeliveryMethod->isIdEqualTo($deliveryMethodId)) {
+                if (!isset($storeDeliveryMethods[$i - 1])) {
+                    $count = count($storeDeliveryMethods);
+
+                    for ($j = 1; $j < $count; $j++) {
+                        $next = $storeDeliveryMethods[$j - 1];
+                        $storeDeliveryMethods[$j - 1] = $storeDeliveryMethods[$j];
+                        $storeDeliveryMethods[$j] = $next;
+                    }
+                } else {
+                    $previous = $storeDeliveryMethods[$i - 1];
+                    $storeDeliveryMethods[$i - 1] = $storeDeliveryMethod;
+                    $storeDeliveryMethods[$i] = $previous;
+                }
+                $store->storeDeliveryMethods = $storeDeliveryMethods;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortDeliveryMethods($store);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveDeliveryMethodDown(int $id, int $deliveryMethodId): void
+    {
+        $store = Store::findOrFail($id);
+        $storeDeliveryMethods = $store->storeDeliveryMethods;
+
+        foreach ($storeDeliveryMethods as $i => $storeDeliveryMethod) {
+            if ($storeDeliveryMethod->isIdEqualTo($deliveryMethodId)) {
+                if (!isset($storeDeliveryMethods[$i + 1])) {
+                    $last = $storeDeliveryMethods->last();
+                    $count = count($storeDeliveryMethods);
+
+                    for ($j = $count - 1; $j > 0; $j--) {
+                        $storeDeliveryMethods[$j] = $storeDeliveryMethods[$j - 1];
+                    }
+
+                    $storeDeliveryMethods[$j] = $last;
+                } else {
+                    $next = $storeDeliveryMethods[$i + 1];
+                    $storeDeliveryMethods[$i + 1] = $storeDeliveryMethod;
+                    $storeDeliveryMethods[$i] = $next;
+                }
+                $store->storeDeliveryMethods = $storeDeliveryMethods;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortDeliveryMethods($store);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    public function moveDeliveryMethodToLast(int $id, int $deliveryMethodId): void
+    {
+        $store = Store::findOrFail($id);
+        $storeDeliveryMethods = $store->storeDeliveryMethods;
+
+        foreach ($storeDeliveryMethods as $i => $storeDeliveryMethod) {
+            if ($storeDeliveryMethod->isIdEqualTo($deliveryMethodId)) {
+                $count = count($storeDeliveryMethods);
+                for ($j = $i; $j < $count; $j++) {
+                    if (!isset($storeDeliveryMethods[$j + 1])) {
+                        break(1);
+                    }
+
+                    $next = $storeDeliveryMethods[$j + 1];
+                    $storeDeliveryMethods[$j + 1] = $storeDeliveryMethods[$j];
+                    $storeDeliveryMethods[$j] = $next;
+                }
+                $store->storeDeliveryMethods = $storeDeliveryMethods;
+
+                DB::beginTransaction();
+                try {
+                    $this->sortDeliveryMethods($store);
+                    DB::commit();
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                return;
+            }
+        }
+    }
+
+    private function sortDeliveryMethods(Store $store): void
+    {
+        foreach ($store->storeDeliveryMethods as $i => $storeDeliveryMethod) {
+            DB::table('store_delivery_methods')->where('store_id', $store->id)
+                ->where('delivery_method_id', $storeDeliveryMethod->delivery_method_id)
+                ->update(['sort' => $i + 1]);
         }
     }
 
