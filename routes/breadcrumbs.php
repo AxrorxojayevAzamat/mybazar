@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\Brand;
+use App\Entity\DeliveryMethod;
 use App\Entity\Payment;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Mark;
@@ -286,4 +287,27 @@ Breadcrumbs::register('admin.stores.users.show', function (Crumbs $crumbs, Store
 Breadcrumbs::register('admin.stores.users.edit', function (Crumbs $crumbs, Store $store, User $user) {
     $crumbs->parent('admin.stores.users.index', $store);
     $crumbs->push(trans('adminlte.edit'), route('admin.stores.users.edit', ['store' => $store, 'user' => $user]));
+});
+
+
+// Delivery methods
+
+Breadcrumbs::register('admin.deliveries.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.delivery_methods'), route('admin.deliveries.index'));
+});
+
+Breadcrumbs::register('admin.deliveries.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.deliveries.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.deliveries.create'));
+});
+
+Breadcrumbs::register('admin.deliveries.show', function (Crumbs $crumbs, DeliveryMethod $delivery) {
+    $crumbs->parent('admin.deliveries.index');
+    $crumbs->push($delivery->name, route('admin.deliveries.show', $delivery));
+});
+
+Breadcrumbs::register('admin.deliveries.edit', function (Crumbs $crumbs, DeliveryMethod $delivery) {
+    $crumbs->parent('admin.deliveries.show', $delivery);
+    $crumbs->push(trans('adminlte.edit'), route('admin.deliveries.edit', $delivery));
 });

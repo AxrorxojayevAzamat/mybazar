@@ -105,6 +105,15 @@ return [
         'choose' => 'To`lov turini tanlamoq',
     ],
 
+    'delivery_method' => [
+        'add' => 'Yetkizib berish turi qo`shmoq',
+        'name' => 'Yetkizib berish turi',
+        'choose' => 'Yetkizib berish turini tanlamoq',
+        'cost' => 'Narhi',
+        'min_weight' => 'Minimum vazni',
+        'max_weight' => 'Maksimum vazni',
+    ],
+
     'mark' => [
         'add' => 'Belgi qo`shmoq',
         'name' => 'Belgi',

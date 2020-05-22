@@ -34,7 +34,7 @@ class CreateShopOrdersTable extends Migration
 
         Schema::table('shop_orders', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
-            $table->foreign('delivery_method_id')->references('id')->on('shop_delivery_methods')->onDelete('restrict');
+            $table->foreign('delivery_method_id')->references('id')->on('delivery_methods')->onDelete('restrict');
             $table->foreign('payment_type_id')->references('id')->on('payments')->onDelete('restrict');
         });
     }

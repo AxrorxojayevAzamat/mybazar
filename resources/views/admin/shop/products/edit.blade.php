@@ -5,7 +5,7 @@
         @csrf
         @method('PUT')
 
-        @include('admin.shop.products._nav')
+        @include('partials._nav')
 
         @include('admin.shop.products._form')
     {!! Form::close() !!}
