@@ -34,6 +34,7 @@ class CreateShopProductsTable extends Migration
             $table->boolean('bestseller');
             $table->boolean('new');
             $table->float('rating')->nullable();
+            $table->integer('number_of_reviews')->default(0);
             $table->text('reject_reason')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

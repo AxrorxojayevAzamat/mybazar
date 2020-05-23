@@ -32,6 +32,7 @@ use Eloquent;
  * @property boolean $bestseller
  * @property boolean $new
  * @property float $rating
+ * @property int $number_of_reviews
  * @property int $created_by
  * @property int $updated_by
  * @property Carbon $created_at
@@ -48,7 +49,7 @@ use Eloquent;
  * @property Category[] $categories
  * @property ProductMark[] $productMarks
  * @property Mark[] $marks
- * @property ProductReviews[] $productReviews
+ * @property ProductReview[] $reviews
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -67,7 +68,7 @@ class Product extends BaseModel
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'main_photo_id',
         'price_uzs', 'price_usd', 'discount', 'store_id', 'brand_id', 'status', 'weight', 'quantity', 'guarantee',
-        'bestseller', 'new', 'rating',
+        'bestseller', 'new',
     ];
 
 
@@ -176,9 +177,9 @@ class Product extends BaseModel
         return $this->belongsToMany(Mark::class, 'shop_product_marks', 'product_id', 'mark_id');
     }
 
-    public function productReviews()
+    public function reviews()
     {
-        return $this->hasMany(ProductReviews::class, 'product_id', 'id');
+        return $this->hasMany(ProductReview::class, 'product_id', 'id');
     }
 
     public function createdBy()

@@ -1,7 +1,5 @@
 @extends('layouts.page')
 
-@php($user = Auth::user())
-
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.marks.edit', $mark) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>

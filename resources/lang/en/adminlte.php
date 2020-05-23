@@ -47,6 +47,10 @@ return [
     'updated_at' => 'Updated at',
     'new' => 'New',
     'rating' => 'Rating',
+    'number_of_reviews' => 'Number of reviews',
+    'reviewer' => 'Reviewer',
+    'reviewed_at' => 'Reviewed at',
+    'comment' => 'Comment',
     'other' => 'Other',
     'others' => 'Others',
     'additional' => 'Additional',
@@ -136,6 +140,7 @@ return [
         'add_main_photo' => 'Add Main Photo',
         'add_photos' => 'Add Photos',
         'choose' => 'Choose product',
+        'reviews' => 'Reviews',
     ],
 
     'modification' => [

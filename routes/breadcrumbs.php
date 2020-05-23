@@ -7,6 +7,7 @@ use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
 use App\Entity\Shop\Category;
@@ -195,6 +196,19 @@ Breadcrumbs::register('admin.shop.products.values.show', function (Crumbs $crumb
 Breadcrumbs::register('admin.shop.products.values.edit', function (Crumbs $crumbs, Product $product, Characteristic $characteristic) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push(trans('adminlte.edit'), route('admin.shop.products.values.edit', ['product' => $product, 'characteristic' => $characteristic]));
+});
+
+
+// Product reviews
+
+Breadcrumbs::register('admin.shop.products.reviews.index', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push(trans('menu.products'), route('admin.shop.products.reviews.index', $product));
+});
+
+Breadcrumbs::register('admin.shop.products.reviews.show', function (Crumbs $crumbs, Product $product, ProductReview $review) {
+    $crumbs->parent('admin.shop.products.show', $product);
+    $crumbs->push($review->id, route('admin.shop.products.reviews.show', ['product' => $product, 'review' => $review]));
 });
 
 

@@ -47,6 +47,10 @@ return [
     'updated_at' => 'Редактировано',
     'new' => 'Новый',
     'rating' => 'Рейтинг',
+    'number_of_reviews' => 'Число обзоров',
+    'reviewer' => 'Обозреватель',
+    'reviewed_at' => 'Рассмотрено',
+    'comment' => 'Коммент',
     'other' => 'Другой',
     'others' => 'Другие',
     'additional' => 'Дополнительно',
@@ -136,6 +140,7 @@ return [
         'add_main_photo' => 'Добавить Главное Фото',
         'add_photos' => 'Добавить Фото',
         'choose' => 'Выбрать товар',
+        'reviews' => 'Обзоры',
     ],
 
     'modification' => [

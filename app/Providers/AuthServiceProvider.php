@@ -21,11 +21,15 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
+        Gate::define('manage-users', function (User $user) {
+            return $user->isAdmin();
+        });
+
         Gate::define('manage-shop-categories', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-shop-stores', function (User $user) {
+        Gate::define('manage-stores', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
@@ -33,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-shop-brands', function (User $user) {
+        Gate::define('manage-brands', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
@@ -45,11 +49,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-shop-payments', function (User $user) {
+        Gate::define('manage-payments', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-shop-deliveries', function (User $user) {
+        Gate::define('manage-deliveries', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
     }

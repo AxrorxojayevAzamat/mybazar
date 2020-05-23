@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:manage-users');
+    }
 
     public function index(Request $request)
     {

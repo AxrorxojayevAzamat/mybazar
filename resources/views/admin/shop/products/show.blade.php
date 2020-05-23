@@ -6,6 +6,7 @@
         <a href="{{ route('admin.shop.products.main-photo', $product) }}" class="btn btn-dark mr-1">{{ trans('adminlte.product.add_main_photo') }}</a>
         <a href="{{ route('admin.shop.products.photos', $product) }}" class="btn btn-secondary mr-1">{{ trans('adminlte.product.add_photos') }}</a>
         <a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-warning mr-1">{{ trans('adminlte.value.add') }}</a>
+        <a href="{{ route('admin.shop.products.reviews.index', $product) }}" class="btn btn-info mr-1">{{ trans('adminlte.product.reviews') }}</a>
         <form method="POST" action="{{ route('admin.shop.products.destroy', $product) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -100,6 +101,7 @@
                         <tr><th>{{ trans('adminlte.product.bestseller') }}</th><td>{{ $product->bestseller ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $product->rating }}</td></tr>
+                        <tr><th>{{ trans('adminlte.number_of_reviews') }}</th><td>{{ $product->number_of_reviews }}</td></tr>
                         </tbody>
                     </table>
                 </div>

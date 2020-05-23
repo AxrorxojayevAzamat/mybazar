@@ -17,6 +17,7 @@ class BrandController extends Controller
 
     public function __construct(BrandService $service)
     {
+        $this->middleware('can:manage-brands');
         $this->service = $service;
     }
 

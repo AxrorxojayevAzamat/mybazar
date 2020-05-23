@@ -18,15 +18,14 @@ class CreateShopProductReviewsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->float('rating');
             $table->text('comment');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
 
         Schema::table('shop_product_reviews', function (Blueprint $table) {
+            $table->unique(['product_id', 'user_id']);
             $table->foreign('product_id')->references('id')->on('shop_products')->onDelete('restrict');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

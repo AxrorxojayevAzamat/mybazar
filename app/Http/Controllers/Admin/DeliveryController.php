@@ -12,7 +12,7 @@ class DeliveryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:manage-shop-deliveries');
+        $this->middleware('can:manage-deliveries');
     }
 
     public function index(Request $request)

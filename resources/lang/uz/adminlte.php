@@ -47,6 +47,10 @@ return [
     'updated_at' => 'Tahrirlangan',
     'new' => 'Yangi',
     'rating' => 'Reyting',
+    'number_of_reviews' => 'Sharhlar soni',
+    'reviewer' => 'Sharhlagan foydalanuvchi',
+    'reviewed_at' => 'Sharhlangan',
+    'comment' => 'Sharh',
     'other' => 'Boshqa',
     'others' => 'Boshqalar',
     'additional' => 'Qo`shimcha',
@@ -136,6 +140,7 @@ return [
         'add_main_photo' => 'Asosiy suratni qo`shmoq',
         'add_photos' => 'Suratnlar qo`shmoq',
         'choose' => 'Mahsulot tanlamoq',
+        'reviews' => 'Sharhlar',
     ],
 
     'modification' => [

@@ -21,7 +21,7 @@ class StoreController extends Controller
 
     public function __construct(StoreService $service)
     {
-        $this->middleware('can:manage-shop-stores');
+        $this->middleware('can:manage-stores');
         $this->service = $service;
     }
 

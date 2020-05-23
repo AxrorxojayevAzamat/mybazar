@@ -50,6 +50,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
                 Route::post('{modification}/down', 'ModificationController@down')->name('down');
                 Route::post('{modification}/last', 'ModificationController@last')->name('last');
             });
+
+            Route::group(['prefix' => 'reviews', 'as' => 'reviews.'], function () {
+                Route::get('', 'ProductReviewController@index')->name('index');
+                Route::get('{review}', 'ProductReviewController@show')->name('show');
+                Route::delete('{review}', 'ProductReviewController@destroy')->name('destroy');
+            });
         });
 
         Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
