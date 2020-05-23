@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'mybazar';
+  src:  url('../fonts/mybazar.eot?tvi5dx');
+  src:  url('../fonts/mybazar.eot?tvi5dx#iefix') format('embedded-opentype'),
+    url('../fonts/mybazar.ttf?tvi5dx') format('truetype'),
+    url('../fonts/mybazar.woff?tvi5dx') format('woff'),
+    url('../fonts/mybazar.svg?tvi5dx#mybazar') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'mybazar' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mbwhatsapp:before {
+  content: "\e92c";
+}
+.mbtelegram:before {
+  content: "\e92d";
+}
+.mbaccount:before {
+  content: "\e900";
+  color: #07108f;
+}
+.mbaddone:before {
+  content: "\e901";
+  color: #242954;
+}
+.mbback_mobile:before {
+  content: "\e902";
+  color: #fff;
+}
+.mbbox:before {
+  content: "\e903";
+  color: #07108f;
+}
+.mbcart:before {
+  content: "\e904";
+  color: #07108f;
+}
+.mbcatalog:before {
+  content: "\e905";
+  color: #fff;
+}
+.mbcatalog_active:before {
+  content: "\e906";
+  color: #fff;
+}
+.mbcomment:before {
+  content: "\e907";
+  color: #a4b0be;
+}
+.mbcompare:before {
+  content: "\e908";
+  color: #07108f;
+}
+.mbcontent_slide-next:before {
+  content: "\e909";
+  color: #fff;
+}
+.mbcontent_slide-prev:before {
+  content: "\e90a";
+  color: #fff;
+}
+.mbdelete:before {
+  content: "\e90b";
+  color: #a5b1c2;
+}
+.mbdeleteone:before {
+  content: "\e90c";
+  color: #242954;
+}
+.mbdelievery:before {
+  content: "\e90d";
+  color: #07108f;
+}
+.mbexit_mobile:before {
+  content: "\e90e";
+  color: #fff;
+}
+.mbfacebook:before {
+  content: "\e90f";
+  color: #fff;
+}
+.mbfavorite:before {
+  content: "\e910";
+  color: #07108f;
+}
+.mbfood .path1:before {
+  content: "\e911";
+  color: rgb(0, 66, 255);
+}
+.mbfood .path2:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(116, 125, 140);
+}
+.mbfunction-available_compare:before {
+  content: "\e913";
+  color: #242954;
+}
+.mbfunction-nonavailable_compare:before {
+  content: "\e914";
+  color: #242954;
+}
+.mbgotoresults_searchresulticon:before {
+  content: "\e915";
+  color: #a5b1c2;
+}
+.mbhide:before {
+  content: "\e916";
+  color: #a5b1c2;
+}
+.mbinstagram:before {
+  content: "\e917";
+  color: #fff;
+}
+.mblistview_white:before {
+  content: "\e918";
+  color: #fff;
+}
+.mbmosaicview_white:before {
+  content: "\e919";
+  color: #fff;
+}
+.mbnext_page:before {
+  content: "\e91a";
+  color: #242954;
+}
+.mbprev_page:before {
+  content: "\e91b";
+  color: #242954;
+}
+.mbsearch:before {
+  content: "\e91c";
+  color: #fff;
+}
+.mbsearch_resulticon:before {
+  content: "\e91d";
+  color: #a5b1c2;
+}
+.mbshow:before {
+  content: "\e91e";
+  color: #a5b1c2;
+}
+.mbslider_next:before {
+  content: "\e91f";
+  color: #fff;
+}
+.mbslider_prev:before {
+  content: "\e920";
+  color: #fff;
+}
+.mbsort_down:before {
+  content: "\e921";
+  color: #0042ff;
+}
+.mbsort_up:before {
+  content: "\e922";
+  color: #0042ff;
+}
+.mbstar_empty:before {
+  content: "\e923";
+  color: #a4b0be;
+}
+.mbstar_full:before {
+  content: "\e924";
+  color: #ffc621;
+}
+.mbtocart:before {
+  content: "\e925";
+  color: #fff;
+}
+.mbtocompare:before {
+  content: "\e926";
+  color: #07108f;
+}
+.mbtwitter:before {
+  content: "\e927";
+  color: #fff;
+}
+.mbvkontakte:before {
+  content: "\e928";
+  color: #fff;
+}
+.mbwear .path1:before {
+  content: "\e929";
+  color: rgb(0, 66, 255);
+}
+.mbwear .path2:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: rgb(116, 125, 140);
+}
+.mbwear .path3:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: rgb(116, 125, 140);
+}

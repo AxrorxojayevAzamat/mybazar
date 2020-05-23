@@ -4,6 +4,7 @@
 
 use command for docker build/up/down/exec:
 
+
 ```
 make db
 make a-i
@@ -18,8 +19,7 @@ make a-dev
 
 Application URI is [http://localhost:55000](localhost:55000)
 
----
-
 login: admin
 
 password: 1q2w3e4r5t6y
+
