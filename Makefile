@@ -10,21 +10,6 @@ db: memory
 de:
 	docker exec -it magazin-php sh
 
-<<<<<<< HEAD
-a-i:
-	docker-compose exec node yarn install
-
-a-rebuild:
-	docker-compose exec node npm rebuild node-sass --force
-
-a-dev:
-	docker-compose exec node yarn run dev
-
-a-watch:
-	docker-compose exec node yarn run watch
-
-=======
->>>>>>> mybazar_index
 memory:
 	sudo sysctl -w vm.max_map_count=262144
 

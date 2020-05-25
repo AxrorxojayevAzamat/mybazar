@@ -5,7 +5,6 @@ services:
     image: nginx:1.17-alpine
     container_name: magazin-nginx
     restart: unless-stopped
-<<<<<<< HEAD
     ports:
       - 55000:80
     volumes:
@@ -14,13 +13,6 @@ services:
       # Mount source-code for development
       - ./:/var/www/html
       # Mount config for development
-=======
-    working_dir: /app
-    ports:
-      - 55000:80
-    volumes:
-      - ./:/app:cached
->>>>>>> mybazar_index
       - ./docker/nginx:/etc/nginx/conf.d:cached
     links:
       - php-fpm
@@ -34,21 +26,11 @@ services:
   php-fpm:
     build: docker/php-fpm
     restart: unless-stopped
-<<<<<<< HEAD
     container_name: magazin-php
     ports:
       - 9000:9000
     volumes:
       - ./:/var/www/html:cached
-=======
-    image: magazin
-    container_name: magazin-php
-    working_dir: /app
-    ports:
-      - 9000:9000
-    volumes:
-      - ./:/app:cached
->>>>>>> mybazar_index
     links:
       - db
       - redis
@@ -60,13 +42,12 @@ services:
       - magazin
 
   db:
-<<<<<<< HEAD
     ports:
-      - 54321:5432
+      - 11:5432
     image: postgres:12.2-alpine
     restart: unless-stopped
     volumes:
-      - ./storage/docker/psql:/var/lib/postgresql/data:cached
+      - /var/lib/postgresql/data
     environment:
       - POSTGRES_DB=magazin
       - POSTGRES_USER=magazin
@@ -79,47 +60,24 @@ services:
     volumes:
       - ./:/var/www/html/
     tty: true
-=======
-    image: postgres:12.2-alpine
-    restart: unless-stopped
-    ports:
-      - 54321:5432
-    volumes:
-      - ./storage/docker/psql:/var/lib/postgresql/data:cached
-    environment:
-      POSTGRES_USER: magazin
-      POSTGRES_PASSWORD: magazin
-      POSTGRES_DB: magazin
->>>>>>> mybazar_index
     networks:
       - magazin
 
   redis:
     image: redis
-<<<<<<< HEAD
     restart: unless-stopped
-=======
->>>>>>> mybazar_index
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - 6379:6379
     volumes:
-<<<<<<< HEAD
       - ./:/var/www/html:cached
-=======
-      - ./:/app:cached
->>>>>>> mybazar_index
     networks:
       - magazin
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
-<<<<<<< HEAD
     container_name: magazin_elasticsearch
-=======
-    container_name: elasticsearch
->>>>>>> mybazar_index
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true

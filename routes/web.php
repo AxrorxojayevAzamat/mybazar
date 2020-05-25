@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/catalog', 'PagesController@index');
-Route::get('/', 'PagesController@catalog');
-// Route::get('/about', 'PagesController@about');
-// Route::get('/', 'PagesController@catalog');
+
+
+Route::get('/', 'PagesController@index');
+Route::get('/catalog', 'PagesController@catalog');
 Route::get('/cart', 'PagesController@shoppingCart');
 
 Auth::routes();
@@ -114,7 +114,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('deliveries', 'DeliveryController');
 });
-
-
-
 
