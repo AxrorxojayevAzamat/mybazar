@@ -270,6 +270,12 @@ return [
             'icon' => 'fas fa-fw fa-car',
             'can' => 'manage-deliveries',
         ],
+        [
+            'text' => 'orders',
+            'url'  => 'admin/shop/orders',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'can' => 'manage-orders',
+        ],
     ],
 
     /*

@@ -65,6 +65,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('last', 'CategoryController@last')->name('last');
         });
 
+        Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+            Route::get('', 'OrderController@index')->name('index');
+            Route::get('{order}', 'OrderController@show')->name('show');
+            Route::get('{order}/items/{item}', 'OrderController@showItem')->name('show-item');
+            Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+        });
+
     });
 
     Route::resource('stores', 'Store\StoreController');

@@ -1,7 +1,7 @@
 @extends('layouts.page')
 
 @section('content')
-    <p><a href="{{ route('admin.deliveries.create') }}" class="btn btn-success">{{ trans('adminlte.delivery_method.add') }}</a></p>
+    <p><a href="{{ route('admin.deliveries.create') }}" class="btn btn-success">{{ trans('adminlte.delivery.add') }}</a></p>
 
     <div class="card mb-4">
         <div class="card-body">
@@ -27,9 +27,9 @@
         <thead>
         <tr>
             <th>{{ trans('adminlte.name') }}</th>
-            <th>{{ trans('adminlte.delivery_method.cost') }}</th>
-            <th>{{ trans('adminlte.delivery_method.min_weight') }}</th>
-            <th>{{ trans('adminlte.delivery_method.max_weight') }}</th>
+            <th>{{ trans('adminlte.cost') }}</th>
+            <th>{{ trans('adminlte.delivery.min_weight') }}</th>
+            <th>{{ trans('adminlte.delivery.max_weight') }}</th>
         </tr>
         </thead>
         <tbody>

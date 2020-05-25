@@ -17,7 +17,9 @@ class CreateShopOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('delivery_method_id');
-            $table->string('delivery_method_name');
+            $table->string('delivery_method_name_uz');
+            $table->string('delivery_method_name_ru');
+            $table->string('delivery_method_name_en');
             $table->integer('delivery_cost');
             $table->unsignedInteger('payment_type_id');
             $table->integer('cost');

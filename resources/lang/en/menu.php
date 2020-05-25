@@ -25,4 +25,6 @@ return [
     'delivery_methods'              => 'Delivery Methods',
     'marks'                         => 'Marks',
     'characteristics'               => 'Characteristics',
+    'orders'                        => 'Orders',
+    'order_items'                   => 'Order items',
 ];

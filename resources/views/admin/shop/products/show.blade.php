@@ -96,7 +96,7 @@
                         <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $product->discount }}</td></tr>
                         <tr><th>{{ trans('adminlte.status') }}</th><td>{!! \App\Helpers\ProductHelper::getStatusLabel($product->status) !!}</td></tr>
                         <tr><th>{{ trans('adminlte.product.weight') }}</th><td>{{ $product->weight }}</td></tr>
-                        <tr><th>{{ trans('adminlte.product.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
+                        <tr><th>{{ trans('adminlte.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
                         <tr><th>{{ trans('adminlte.product.guarantee') }}</th><td>{{ $product->guarantee ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.product.bestseller') }}</th><td>{{ $product->bestseller ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
@@ -162,7 +162,7 @@
                 <tr>
                     <th>ID</th>
                     <th>{{ trans('adminlte.name') }}</th>
-                    <th>{{ trans('adminlte.modification.code') }}</th>
+                    <th>{{ trans('adminlte.code') }}</th>
                     <th>{{ trans('adminlte.price_uzs') }}</th>
                     <th></th>
                 </tr>

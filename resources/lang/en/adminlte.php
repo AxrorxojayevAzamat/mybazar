@@ -4,6 +4,7 @@ return [
     'home'                        => 'Home',
     'full_name'                   => 'Full name',
     'email'                       => 'Email',
+    'phone'                       => 'Phone number',
     'password'                    => 'Password',
     'retype_password'             => 'Retype password',
     'remember_me'                 => 'Remember Me',
@@ -37,7 +38,10 @@ return [
 
     'name' => 'Name',
     'description' => 'Description',
+    'note' => 'Note',
+    'code' => 'Code',
     'status' => 'Status',
+    'cancel_reason' => 'Cancel reason',
     'parent' => 'Parent',
     'relations' => 'Relations',
     'required' => 'Required',
@@ -62,6 +66,10 @@ return [
     'type' => 'Type',
     'default' => 'Default',
     'sort' => 'Sort',
+    'cost' => 'Cost',
+    'quantity' => 'Quantity',
+    'date_from' => 'Date from',
+    'date_to' => 'Date to',
 
     'photo' => [
         'plural' => 'Photos',
@@ -109,13 +117,16 @@ return [
         'choose' => 'Choose payment type',
     ],
 
-    'delivery_method' => [
+    'delivery' => [
         'add' => 'Add Delivery Method',
         'name' => 'Delivery Method',
         'choose' => 'Choose Delivery Method',
-        'cost' => 'Cost',
         'min_weight' => 'Minimum weight',
         'max_weight' => 'Maximum weight',
+        'index' => 'Delivery index',
+        'address' => 'Delivery address',
+        'cost' => 'Delivery cost',
+        'delivery' => 'Delivery',
     ],
 
     'mark' => [
@@ -133,7 +144,6 @@ return [
         'active' => 'Active',
         'closed' => 'Closed',
         'weight' => 'Weight',
-        'quantity' => 'Quantity',
         'guarantee' => 'Guarantied',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Main Photo',
@@ -148,7 +158,6 @@ return [
         'name' => 'Modification',
         'plural' => 'Modifications',
         'choose' => 'Choose Modification',
-        'code' => 'Code',
     ],
 
     'characteristic' => [

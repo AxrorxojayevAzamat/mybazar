@@ -25,4 +25,6 @@ return [
     'delivery_methods'              => 'Yetkazib berishlar',
     'marks'                         => 'Belgilar',
     'characteristics'               => 'Xarakteristikalar',
+    'orders'                        => 'Buyurtmalar',
+    'order_items'                   => 'Buyurtma buyumlari',
 ];
