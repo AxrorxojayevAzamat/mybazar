@@ -1,9 +1,9 @@
 // GLOBAL MIXINS
 @mixin fontRegular{
-    font-family:'CERAPRO-REGULAR';
+    font-family:'cerapro-regular';
 }
 @mixin fontBold{
-    font-family:'CERAPRO-BOLD';
+    font-family:'cerapro-bold';
 }
 @mixin displayFlex($justify_position, $direction, $align_position){
     display: flex;

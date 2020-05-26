@@ -1,17 +1,16 @@
 @font-face{
-    font-family:'CERAPRO-BOLD';
-    src:url("../fonts/CERAPRO-BOLD.ttf");
+    font-family:'cerapro-bold';
+    src:url("../fonts/cerapro-bold.ttf");
     font-weight:bold;
 }
 @font-face{
-    font-family:'CERAPRO-REGULAR';
-    src:url("../fonts/CERAPRO-REGULAR.ttf");
+    font-family:'cerapro-regular';
+    src:url("../fonts/cerapro-regular.ttf");
     font-weight:normal;
 }
 
 body{
     @include fontRegular;
-    font-family:'CERAPRO-REGULAR';
     background:#ffffff;
     padding: 0;
     margin:0;

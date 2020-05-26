@@ -1,4 +1,4 @@
-@import url("/public/css/mybazar-fonts.css");
+@import url("/css/mybazar-fonts.css");
 .pn-ProductNav_Wrapper {
   width: 88%;
   position: relative;
@@ -144,20 +144,19 @@
 }
 
 @font-face {
-  font-family: 'CERAPRO-BOLD';
-  src: url("../fonts/CERAPRO-BOLD.ttf");
+  font-family: 'cerapro-bold';
+  src: url("../fonts/cerapro-bold.ttf");
   font-weight: bold;
 }
 
 @font-face {
-  font-family: 'CERAPRO-REGULAR';
-  src: url("../fonts/CERAPRO-REGULAR.ttf");
+  font-family: 'cerapro-regular';
+  src: url("../fonts/cerapro-regular.ttf");
   font-weight: normal;
 }
 
 body {
-  font-family: 'CERAPRO-REGULAR';
-  font-family: 'CERAPRO-REGULAR';
+  font-family: 'cerapro-regular';
   background: #ffffff;
   padding: 0;
   margin: 0;
@@ -188,7 +187,7 @@ a:hover, a.active {
 
 .bold {
   font-weight: 500;
-  font-family: 'CERAPRO-BOLD';
+  font-family: 'cerapro-bold';
 }
 
 .form-control:focus {
@@ -1704,7 +1703,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown-main a.main-link {
   padding: 10px 20px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  font-family: 'CERAPRO-BOLD';
+  font-family: 'cerapro-bold';
 }
 
 nav#main_navbar .collapse .navbar-nav .dropdown-main a.main-link::after {
