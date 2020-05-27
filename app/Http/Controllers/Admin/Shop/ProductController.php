@@ -122,12 +122,12 @@ class ProductController extends Controller
 
     public function mainPhoto(Product $product)
     {
-        return view('admin.shop.products.add-main-photo', compact('product'));
+        return view('admin.shop.products.main-photo', compact('product'));
     }
 
     public function photos(Product $product)
     {
-        return view('admin.shop.products.add-photo', compact('product'));
+        return view('admin.shop.products.photos', compact('product'));
     }
 
     public function addMainPhoto(Product $product, Request $request)

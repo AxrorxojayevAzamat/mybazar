@@ -35,6 +35,6 @@ class OrderController extends Controller
 
     public function showItem(Order $order, OrderItem $item)
     {
-        return view('admin.shop.orders.show-item', compact('order', 'item'));
+        return view('admin.shop.orders.item', compact('order', 'item'));
     }
 }

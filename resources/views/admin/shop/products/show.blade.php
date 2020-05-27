@@ -137,9 +137,14 @@
                             <a href="{{ route('admin.shop.products.move-photo-up', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                             </a>
-                            <a href="{{ route('admin.shop.products.delete-photo', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
+                            {!! Form::open(['url' => route('admin.shop.products.remove-photo', ['product' => $product, 'photo' => $photo])]) !!}
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" id="{{ $product->id }}" photo_id="{{ $photo->id }}" class="btn btn-default" style="border-radius: 0; margin-left: -1px;"
+                                    onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
                                 <span class="glyphicon glyphicon-remove"></span>
-                            </a>
+                            </button>
+                            {!! Form::close() !!}
                             <a href="{{ route('admin.shop.products.move-photo-down', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-right"></span>
                             </a>

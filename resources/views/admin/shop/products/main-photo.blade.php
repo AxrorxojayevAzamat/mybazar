@@ -17,14 +17,14 @@
     <div class="card" id="photos">
         <div class="card-header border">{{ trans('adminlte.photo.add_main') }}</div>
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.shop.products.add-main-photo', $product) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.shop.products.main-photo', $product) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <div class="file-loading">
                         <input id="file-input" class="file" type="file" name="photo">
                     </div>
-                    @if ($errors->has('logo'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('photos') }}</strong></span>
+                    @if ($errors->has('photo'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('photo') }}</strong></span>
                     @endif
                 </div>
                 <div class="form-group">

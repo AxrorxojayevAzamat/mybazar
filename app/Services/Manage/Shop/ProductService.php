@@ -160,8 +160,8 @@ class ProductService
         DB::beginTransaction();
         try {
 
-            $product->mainPhoto()->delete();
             $product->update(['main_photo_id' => null]);
+            $product->mainPhoto()->delete();
             $this->sortPhotos($product);
 
             DB::commit();

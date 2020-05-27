@@ -342,7 +342,7 @@ Breadcrumbs::register('admin.shop.orders.show', function (Crumbs $crumbs, Order 
 });
 
 
-Breadcrumbs::register('admin.shop.orders.show-item', function (Crumbs $crumbs, Order $order, OrderItem $item) {
+Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order $order, OrderItem $item) {
     $crumbs->parent('admin.shop.orders.show', $order);
-    $crumbs->push($order->id, route('admin.shop.orders.show-item', ['order' => $order, 'item' => $item]));
+    $crumbs->push($order->id, route('admin.shop.orders.item', ['order' => $order, 'item' => $item]));
 });
