@@ -27,4 +27,5 @@ return [
     'characteristics'               => 'Characteristics',
     'orders'                        => 'Orders',
     'order_items'                   => 'Order items',
+    'carts'                         => 'Cart',
 ];

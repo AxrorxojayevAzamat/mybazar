@@ -49,45 +49,47 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>ID</th>
             <th>{{ trans('adminlte.user.name') }}</th>
-            <th>{{ trans('adminlte.delivery.name') }}</th>
-            <th>{{ trans('adminlte.payment.name') }}</th>
-            <th>{{ trans('adminlte.cost') }}</th>
-            <th>{{ trans('adminlte.status') }}</th>
+            <th>{{ trans('adminlte.product.name') }}</th>
+            <th>{{ trans('adminlte.modification.name') }}</th>
+            <th>{{ trans('adminlte.quantity') }}</th>
             <th>{{ trans('adminlte.created_at') }}</th>
         </tr>
         </thead>
         <tbody>
 
-        @foreach ($orders as $order)
+        @foreach ($carts as $cart)
             <tr>
-                <td>{{ $order->id }}</td>
                 <td>
                     @can ('manage-users')
-                        <a href="{{ route('admin.users.show', $order->user) }}">{{ $order->user->name }}</a>
+                        <a href="{{ route('admin.users.show', $cart->user) }}">{{ $cart->user->name }}</a>
                     @else
-                        {{ $order->user->name }}
+                        {{ $cart->user->name }}
                     @endcan
                 </td>
-                <td>{{ $order->delivery_method_name }}</td>
                 <td>
-                    @can ('manage-payments')
-                        <a href="{{ route('admin.payments.show', $order->payment) }}">{{ $order->payment->name }}</a>
+                    @can ('manage-shop-products')
+                        <a href="{{ route('admin.shop.products.show', $cart->product) }}">{{ $cart->product->name }}</a>
                     @else
-                        {{ $order->payment->name }}
+                        {{ $cart->product->name }}
                     @endcan
                 </td>
-                <td>{{ $order->cost }}</td>
-                <td>{{ $order->status }}</td>
-                <td>{{ $order->created_at }}</td>
+                <td>
+                    @can ('manage-shop-products')
+                        <a href="{{ route('admin.shop.products.modifications.show', $cart->modification) }}">{{ $cart->modification->name }}</a>
+                    @else
+                        {{ $cart->modification->name }}
+                    @endcan
+                </td>
+                <td>{{ $cart->quantity }}</td>
+                <td>{{ $cart->created_at }}</td>
             </tr>
         @endforeach
 
         </tbody>
     </table>
 
-    {{ $orders->links() }}
+    {{ $carts->links() }}
 @endsection
 
 @section($javaScriptSectionName)

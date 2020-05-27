@@ -27,4 +27,5 @@ return [
     'characteristics'               => 'Характеристики',
     'orders'                        => 'Заказы',
     'order_items'                   => 'Товары заказа',
+    'carts'                         => 'Корзина',
 ];

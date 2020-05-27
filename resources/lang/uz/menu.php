@@ -27,4 +27,5 @@ return [
     'characteristics'               => 'Xarakteristikalar',
     'orders'                        => 'Buyurtmalar',
     'order_items'                   => 'Buyurtma buyumlari',
+    'carts'                         => 'Savat',
 ];

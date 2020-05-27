@@ -71,6 +71,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::delete('{order}', 'OrderController@destroy')->name('destroy');
         });
 
+        Route::group(['prefix' => 'carts', 'as' => 'carts.'], function () {
+            Route::get('', 'CartController@index')->name('index');
+            Route::get('{cart}', 'CartController@show')->name('show');
+            Route::delete('{cart}', 'CartController@destroy')->name('destroy');
+        });
+
     });
 
     Route::resource('stores', 'Store\StoreController');

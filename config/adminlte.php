@@ -271,6 +271,12 @@ return [
             'can' => 'manage-deliveries',
         ],
         [
+            'text' => 'carts',
+            'url'  => 'admin/shop/carts',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+            'can' => 'manage-carts',
+        ],
+        [
             'text' => 'orders',
             'url'  => 'admin/shop/orders',
             'icon' => 'fas fa-fw fa-list-alt',
