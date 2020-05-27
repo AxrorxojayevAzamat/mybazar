@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('adminlte_css')
     @stack('css')
@@ -80,7 +80,7 @@
 
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <ul class="nav navbar-nav">
-                        @each('partials.menu-item-top-nav-left', $adminlte->menu(), 'item')
+                        @each('partials.admin.menu-item-top-nav-left', $adminlte->menu(), 'item')
                     </ul>
                 </div>
             @else
@@ -92,13 +92,13 @@
                             <span class="sr-only">{{ trans('adminlte.toggle_navigation') }}</span>
                         </a>
                     </li>
-                    @each('partials.menu-item-top-nav-left', $adminlte->menu(), 'item')
+                    @each('partials.admin.menu-item-top-nav-left', $adminlte->menu(), 'item')
                     @yield('content_top_nav_left')
                 </ul>
             @endif
                 <ul class="navbar-nav ml-auto @if(config('adminlte.layout_topnav') || View::getSection('layout_topnav'))order-1 order-md-3 navbar-no-expand @endif">
                     @yield('content_top_nav_right')
-                    @each('partials.menu-item-top-nav-right', $adminlte->menu(), 'item')
+                    @each('partials.admin.menu-item-top-nav-right', $adminlte->menu(), 'item')
                     @if(Auth::user())
                         @if(config('adminlte.usermenu_enabled'))
                         <li class="nav-item dropdown user-menu">
@@ -124,7 +124,7 @@
                                 @else
                                 @yield('usermenu_header')
                                 @endif
-                                @each('partials.menu-item-top-nav-user', $adminlte->menu(), 'item')
+                                @each('partials.admin.menu-item-top-nav-user', $adminlte->menu(), 'item')
                                 @hasSection('usermenu_body')
                                 <li class="user-body">
                                     @yield('usermenu_body')
@@ -191,7 +191,7 @@
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column {{config('adminlte.classes_sidebar_nav', '')}}" data-widget="treeview" role="menu" @if(config('adminlte.sidebar_nav_animation_speed') != 300) data-animation-speed="{{config('adminlte.sidebar_nav_animation_speed')}}" @endif @if(!config('adminlte.sidebar_nav_accordion')) data-accordion="false" @endif>
-                        @each('partials.menu-item', $adminlte->menu(), 'item')
+                        @each('partials.admin.menu-item', $adminlte->menu(), 'item')
                     </ul>
                 </nav>
             </div>

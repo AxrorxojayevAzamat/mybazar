@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.css') }}">
 
-    @include('layouts.plugins', ['type' => 'css'])
+    @include('layouts.admin.plugins', ['type' => 'css'])
 
     @yield('adminlte_css_pre')
 
@@ -65,7 +65,7 @@
 <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script>
 
-@include('layouts.plugins', ['type' => 'js'])
+@include('layouts.admin.plugins', ['type' => 'js'])
 
 @yield('adminlte_js')
 @else

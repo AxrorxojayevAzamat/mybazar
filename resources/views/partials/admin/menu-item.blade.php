@@ -35,7 +35,7 @@
             </a>
             @if (isset($item['submenu']))
                 <ul class="nav nav-treeview">
-                    @each('partials.menu-item', $item['submenu'], 'item')
+                    @each('partials.admin.menu-item', $item['submenu'], 'item')
                 </ul>
             @endif
         </li>

@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <p><a href="{{ route('admin.payments.create') }}" class="btn btn-success">{{ trans('adminlte.payment.add') }}</a></p>

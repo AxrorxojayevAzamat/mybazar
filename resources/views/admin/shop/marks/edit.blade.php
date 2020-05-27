@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <form method="POST" action="{{ route('admin.shop.marks.update', $mark) }}" enctype="multipart/form-data">

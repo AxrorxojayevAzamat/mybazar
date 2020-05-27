@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <p><a href="{{ route('admin.deliveries.create') }}" class="btn btn-success">{{ trans('adminlte.delivery.add') }}</a></p>

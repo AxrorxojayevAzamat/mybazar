@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <form method="POST" action="{{ route('admin.shop.products.values.update', ['product' => $product, 'characteristic' => $characteristic]) }}" enctype="multipart/form-data">
