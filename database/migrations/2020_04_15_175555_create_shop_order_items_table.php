@@ -28,6 +28,7 @@ class CreateShopOrderItemsTable extends Migration
             $table->string('modification_code');
             $table->integer('price');
             $table->integer('quantity');
+            $table->float('discount')->default(0);
             $table->timestamps();
         });
 

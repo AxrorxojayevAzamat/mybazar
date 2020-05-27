@@ -10,6 +10,7 @@
                         <tr><th>ID</th><td>{{ $item->id }}</td></tr>
                         <tr><th>{{ trans('adminlte.cost') }}</th><td>{{ $item->price }}</td></tr>
                         <tr><th>{{ trans('adminlte.quantity') }}</th><td>{{ $item->quantity }}</td></tr>
+                        <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $item->discount }}</td></tr>
                         <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $item->created_at }}</td></tr>
                         <tr><th>{{ trans('adminlte.updated_at') }}</th><td>{{ $item->updated_at }}</td></tr>
                     </table>

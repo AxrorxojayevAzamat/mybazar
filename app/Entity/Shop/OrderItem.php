@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $modification_code
  * @property int $price
  * @property int $quantity
+ * @property float $discount
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
@@ -39,7 +40,7 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id', 'product_id', 'modification_id', 'product_name_uz', 'product_name_ru', 'product_name_en', 'product_code',
-        'modification_name_uz', 'modification_name_ru', 'modification_name_en', 'modification_code', 'price', 'quantity',
+        'modification_name_uz', 'modification_name_ru', 'modification_name_en', 'modification_code', 'price', 'quantity', 'discount',
     ];
 
 
