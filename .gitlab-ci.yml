@@ -6,6 +6,7 @@ deploy_development:
   - rsync -av * /var/www/shop.dev/ --no-perms --no-owner --no-group
   - cd /var/www/shop.dev/
   - php artisan migrate
+  - npm i
   - npm run dev
   - composer update
   environment:
