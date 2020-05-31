@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Home page')   
+@section('title', 'Home page')
 
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/shopping-cart-page.css')}}">

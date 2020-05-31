@@ -1,69 +1,69 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Home page')   
+@section('title', 'Home page')
 
-    @section('styles')
-        <link rel="stylesheet" href="{{asset('css/index.css')}}">
-    @endsection
-    
-    @section('body')
-        @extends ('layouts.menu')
-            @section('page')
-                <!-- All headers 1560 -->
-                <section class="navbar-1560">
-                    @include('layouts.top-header')
-                    @include('layouts.main-header')
-                    @include('layouts.nav-header')
-                </section>
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/index.css')}}">
+@endsection
 
-                <!-- Casousel -->
-                @include ('layouts.carousel')
-                
-                <!-- PRODUCT OF DAY -->
-                @include ('layouts.products-of-day')
+@section('body')
+    @extends ('layouts.menu')
+@section('page')
+    <!-- All headers 1560 -->
+    <section class="navbar-1560">
+        @include('layouts.top-header')
+        @include('layouts.main-header')
+        @include('layouts.nav-header')
+    </section>
 
-                <!-- POPULAR PRODUCTS -->
-                @include ('layouts.popular-products')
+    <!-- Casousel -->
+    @include ('layouts.carousel')
 
-                <!-- NEW PRODUCTS -->
-                @include ('layouts.new-products')
+    <!-- PRODUCT OF DAY -->
+    @include ('layouts.products-of-day')
 
-                <!-- 3 small banners -->
-                @include ('layouts.three-small-banners')
+    <!-- POPULAR PRODUCTS -->
+    @include ('layouts.popular-products')
 
-                <!-- RECOMMENDED PRODUCTS-->
-                @include ('layouts.recommended-products')
+    <!-- NEW PRODUCTS -->
+    @include ('layouts.new-products')
 
-                <!--INDEX BLOG-->
-                @include ('layouts.index-blog')
+    <!-- 3 small banners -->
+    @include ('layouts.three-small-banners')
 
-                <!-- FULL BANNER 1 -->
-                @include ('layouts.full-banner1')
+    <!-- RECOMMENDED PRODUCTS-->
+    @include ('layouts.recommended-products')
 
-                <!-- SHOPS -->
+    <!--INDEX BLOG-->
+    @include ('layouts.index-blog')
 
-                <!-- FULL BANNER 2 -->
-                @include ('layouts.full-banner2')
+    <!-- FULL BANNER 1 -->
+    @include ('layouts.full-banner1')
 
-                <!-- TOP BRANDS  -->
-                @include ('layouts.top-brands')
+    <!-- SHOPS -->
 
-                <!-- VIDEOS -->
-                @include ('layouts.index-videos')
+    <!-- FULL BANNER 2 -->
+    @include ('layouts.full-banner2')
 
-                <!-- NEWS LETTER -->
-                @include ('layouts.news-letter')
+    <!-- TOP BRANDS  -->
+    @include ('layouts.top-brands')
 
-                <!-- FOOTER -->
-                @include ('layouts.footer')
-            @endsection
-    @endsection
-    
-   
-    @section('script')
-        <script src="{{asset('js/shopping-cart.js')}}"></script>
-        <script src="{{asset('js/compare-items.js')}}"></script>
-        <script src="{{asset('js/1-index.js')}}"></script>
-    @endsection
-    
+    <!-- VIDEOS -->
+    @include ('layouts.index-videos')
+
+    <!-- NEWS LETTER -->
+    @include ('layouts.news-letter')
+
+    <!-- FOOTER -->
+    @include ('layouts.footer')
+@endsection
+@endsection
+
+
+@section('script')
+    <script src="{{asset('js/shopping-cart.js')}}"></script>
+    <script src="{{asset('js/compare-items.js')}}"></script>
+    <script src="{{asset('js/1-index.js')}}"></script>
+@endsection
+
 
