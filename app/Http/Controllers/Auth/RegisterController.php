@@ -39,6 +39,7 @@ class RegisterController extends Controller
             'role' => User::ROLE_USER,
             'status' => User::STATUS_WAIT,
             'phone' => $data['phone'],
+            'phone_verified' => 0,
         ]);
     }
 }
