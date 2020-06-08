@@ -23,6 +23,7 @@ Route::get('/brands', 'PagesController@brands');
 Route::get('/sales','PagesController@sales');
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
     Route::get('', 'HomeController@index')->name('home');
@@ -119,3 +120,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('deliveries', 'DeliveryController');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
