@@ -1,0 +1,22 @@
+.newone{
+    width:100%;
+    height:700px;
+    background:white;
+    .rate{
+        width:60%;
+        margin:15px 0;
+    }
+    button.owl-prev,
+    button.owl-next{
+        top:50%;
+    }
+}
+@media all and (max-width:1250px){
+    .newone{
+        .rate{
+            width:100%;
+        }
+    }
+}
+
+

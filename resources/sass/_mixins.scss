@@ -1,0 +1,47 @@
+// GLOBAL MIXINS
+@mixin fontRegular{
+    font-family:'cerapro-regular';
+}
+@mixin fontBold{
+    font-family:'cerapro-bold';
+}
+@mixin displayFlex($justify_position, $direction, $align_position){
+    display: flex;
+    justify-content: $justify_position;
+    flex-flow: $direction;
+    align-items:$align_position;
+}
+
+@mixin positionTopLeft($absolute, $top, $left){
+    position:absolute;
+    top:$top;
+    left:$left;
+}
+@mixin positionTopRight($absolute, $top, $right){
+    position:absolute;
+    top:$top;
+    right:$right;
+}
+@mixin positionBottomLeft($absolute, $bottom, $left){
+    position:absolute;
+    bottom:$bottom;
+    left:$left;
+}
+@mixin positionTopRight($absolute, $bottom, $right){
+    position:absolute;
+    bottom:$bottom;
+    right:$right;
+}
+
+@mixin border($thickness, $color, $radius){
+    border: $thickness solid $color;
+    border-radius: $radius;
+}
+@mixin box-shadow($top, $left, $bottom, $right, $color){
+    box-shadow:$top $left $bottom $right $color;
+}
+@mixin backgroundCover{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

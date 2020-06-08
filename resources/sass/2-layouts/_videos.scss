@@ -1,0 +1,37 @@
+.videos{
+    width:100%;
+    height:405px;
+    background:$bg_grey_color2;
+    .outter-players{
+        width:100%;
+        height:315px;
+        background:white;
+        position:relative;
+        .all-players{
+            width:80%;
+            height:300px;
+            margin:0 auto;
+            position:absolute;
+            left:10%;
+            top:-3%;
+            .item{
+                height:300px;
+                iframe{
+                    width:100%;
+                    height:100%;
+                }
+            }
+        }
+    }
+    .owl-dots{
+        top:-14%;
+        right:1%;
+    }
+}
+@media all and (max-width:1150px){
+    .outter-players{
+        .all-players{
+            top:-2%;
+        }
+    }
+}

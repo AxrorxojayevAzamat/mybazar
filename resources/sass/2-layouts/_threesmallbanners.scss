@@ -1,0 +1,83 @@
+.three-small-banners{
+    padding:0 10%;
+    display:flex;
+    @include displayFlex(space-between, row, center);
+    width:100%;
+    height:380px;
+    background:white;
+    div{
+        width:32%;
+        height:300px;
+        @include displayFlex(center, column, flex-end);
+        padding:2%;
+        text-align:end;
+        color:white;
+        h5{
+            margin-bottom:4%;
+        }
+        p{
+            font-size:25px;
+            line-height:30px;
+        }
+        &.first{
+            background:url('../images/fastbuy.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            align-items:flex-start;
+            text-align:start;
+        }
+        &.second{
+            background:url('../images/gifts.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        &.third{
+            background:url('../images/1plus1.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            button{
+                background:#c011ca !important;
+                color:#ffd821 !important;
+            }
+        }
+    }
+}
+
+@media all and (max-width:1522px){
+    .three-small-banners{
+       div{
+            h5{
+                font-size:25px;
+            }
+            p{
+                font-size:20px;
+                line-height:25px;
+            }
+       }
+    }
+}
+// @media all and (max-width:1400px){
+//     .three-small-banners{
+      
+//     }
+// }
+@media all and (max-width:1250px){
+    .three-small-banners{
+        height:1000px;
+        padding:0 10%;
+        @include displayFlex(space-around, column, flex-start);
+        div{
+            width:100%;
+            h5{
+                font-size:30px;
+            }
+            p{
+                font-size:25px;
+                line-height:30px;
+            }
+        }
+    }
+}

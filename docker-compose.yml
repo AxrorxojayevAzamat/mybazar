@@ -43,11 +43,11 @@ services:
 
   db:
     ports:
-      - 54321:5432
+      - 11:5432
     image: postgres:12.2-alpine
     restart: unless-stopped
     volumes:
-      - ./storage/docker/psql:/var/lib/postgresql/data:cached
+      - /var/lib/postgresql/data
     environment:
       - POSTGRES_DB=magazin
       - POSTGRES_USER=magazin

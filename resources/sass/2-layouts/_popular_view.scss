@@ -1,0 +1,22 @@
+.new-popular-recommended-btn{
+    height:65px;
+    background:$bg_grey_color;
+    width:100%;
+    padding:0 10%;
+    @include displayFlex(flex-start, row, center);
+    button{
+        padding:15px 30px;
+        color:$title_color;
+        font-weight:bold;
+        font-size:18px;
+        line-height:18px;
+        border:none;
+        border-radius:23px;
+        background:transparent;
+        margin:0 10px 0 0;
+        &.active{
+            background:$item_price_color;
+            color:white;
+        }
+    }
+}
