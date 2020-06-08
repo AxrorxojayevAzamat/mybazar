@@ -2531,6 +2531,43 @@ img.menu-auto-icon:hover {
   }
 }
 
+.new-popular-recommended-btn {
+  height: 65px;
+  background: #f1f2f6;
+  width: 100%;
+  padding: 0 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.new-popular-recommended-btn button {
+  padding: 15px 30px;
+  color: #07108f;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+  border: none;
+  border-radius: 23px;
+  background: transparent;
+  margin: 0 10px 0 0;
+}
+
+.new-popular-recommended-btn button.active {
+  background: #0042ff;
+  color: white;
+}
+
 .outter-catalog-view, .outter-brand-view-body {
   min-height: 1000px;
   width: 80%;

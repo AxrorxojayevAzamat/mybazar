@@ -1,4 +1,4 @@
-.slide-banner{
+.slide-banner-catalog{
     width:80%;
     height:200px;
     margin:1%  auto 2%;
@@ -6,6 +6,20 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.slide-banner-brandv{
+    width:80%;
+    height:200px;
+    margin:1%  auto 2%;
+    background:url('../images/brand-view-slide-banner.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slide-banner-brand-view{
+    .h4-title{
+        padding:0.5% 10%;
+    }
 }
 @media all and (max-width:1522px){
     .slide-banner{

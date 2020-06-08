@@ -1,55 +1,24 @@
 <section>
-    <div class="h4-title catalog-view">
-        <h4 class="title">Новинки</h4>
-    </div>
-    <div class="outter-catalog-view">
+    <div class="outter-brand-view-body">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
-                <label for="" class="filter-title">Технология</label>
+                <label for="" class="filter-title">Категории</label>
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1-1" >
-                    <label  class="custom-control-label" for="customCheck1-1">LED</label>
+                    <label  class="custom-control-label" for="customCheck1-1">Телевизоры, аудио и виедо</label>
                 </div>
                 <div  class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1-2"  >
-                    <label class="custom-control-label" for="customCheck1-2">OLED</label>
+                    <label class="custom-control-label" for="customCheck1-2">Смартфоны и гаджеты</label>
                 </div>
                 <div  class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1-3" >
-                    <label class="custom-control-label" for="customCheck1-3">QLED</label>
+                    <label class="custom-control-label" for="customCheck1-3">Бытовая техника для дома</label>
                 </div>
                 <div  class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1-4"  >
-                    <label class="custom-control-label" for="customCheck1-4">4K UHD</label>
+                    <label class="custom-control-label" for="customCheck1-4">Для кухни</label>
                 </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-5"  >
-                    <label class="custom-control-label" for="customCheck1-5">8K FHD</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Бренд</label>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-1"  >
-                    <label class="custom-control-label" for="customCheck2-1">LG</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-2"  >
-                    <label class="custom-control-label" for="customCheck2-2">Samsung</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-3"  >
-                    <label class="custom-control-label" for="customCheck2-3">Artel</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-4"  >
-                    <label class="custom-control-label" for="customCheck2-4">Roison</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-5"  >
-                    <label class="custom-control-label" for="customCheck2-5">Toshiba</label>
-                </div>
-                <a class="show-more" href="#">Показать еще</a>
             </div>
             <div class="filter-item">
                 <label for="" class="filter-title">Цена</label>
@@ -64,62 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Диагональ</label>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-1"  >
-                    <label class="custom-control-label" for="customCheck4-1">До 19 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-2"  >
-                    <label class="custom-control-label" for="customCheck4-2">20 - 26 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-3"  >
-                    <label class="custom-control-label" for="customCheck4-3">27 - 32 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-4"  >
-                    <label class="custom-control-label" for="customCheck4-4">37 - 43 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-5"  >
-                    <label class="custom-control-label" for="customCheck4-5">45 - 49 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-6"  >
-                    <label class="custom-control-label" for="customCheck4-6">50 - 58 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-7"  >
-                    <label class="custom-control-label" for="customCheck4-7">60 дюймов и более</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Функции</label>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-1"  >
-                    <label class="custom-control-label" for="customCheck5-1">SmartTV</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-2"  >
-                    <label class="custom-control-label" for="customCheck5-2">WiFi</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-3"  >
-                    <label class="custom-control-label" for="customCheck5-3">Поддержка HDR</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-4"  >
-                    <label class="custom-control-label" for="customCheck5-4">Встроенный сабвуфер</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-5"  >
-                    <label class="custom-control-label" for="customCheck5-5">Curved</label>
-                </div>
-            </div>
         </form>
-
         <div class="wrapper-filtered-items">
             <!-- SORTING OPTIONS -->
             <nav class=" navbar navbar-expand-custom sort-types">
@@ -144,7 +58,7 @@
                                 <div class="card-header" id="filterOne">
                                     <h2 class="mb-0">
                                         <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="filterOne">
-                                        Технология
+                                        Категории
                                         </button>
                                     </h2>
                                 </div>
@@ -152,62 +66,23 @@
                                     <div class="card-body">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-1" >
-                                            <label  class="custom-control-label" for="smallcustomCheck1-1">LED</label>
+                                            <label  class="custom-control-label" for="smallcustomCheck1-1">Телевизоры, аудио и видео</label>
                                         </div>
                                         <div  class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-2"  >
-                                            <label class="custom-control-label" for="smallcustomCheck1-2">OLED</label>
+                                            <label class="custom-control-label" for="smallcustomCheck1-2">Смартфоны и гаджеты</label>
                                         </div>
                                         <div  class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-3" >
-                                            <label class="custom-control-label" for="smallcustomCheck1-3">QLED</label>
+                                            <label class="custom-control-label" for="smallcustomCheck1-3">Бытовая техника для дома</label>
                                         </div>
                                         <div  class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-4"  >
-                                            <label class="custom-control-label" for="smallcustomCheck1-4">4K UHD</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-5"  >
-                                            <label class="custom-control-label" for="smallcustomCheck1-5">8K FHD</label>
+                                            <label class="custom-control-label" for="smallcustomCheck1-4">Для кухни</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-header" id="filterTwo">
-                                    <h2 class="mb-0">
-                                        <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="filterTwo">
-                                        Бренд
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="filterTwo" data-parent="#catalogFilter">
-                                    <div class="card-body">
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-1"  >
-                                            <label class="custom-control-label" for="smallcustomCheck2-1">LG</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-2"  >
-                                            <label class="custom-control-label" for="smallcustomCheck2-2">Samsung</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-3"  >
-                                            <label class="custom-control-label" for="smallcustomCheck2-3">Artel</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-4"  >
-                                            <label class="custom-control-label" for="smallcustomCheck2-4">Roison</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-5"  >
-                                            <label class="custom-control-label" for="smallcustomCheck2-5">Toshiba</label>
-                                        </div>
-                                        <a class="show-more" href="#">Показать еще</a>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="card price">
                                 <div class="card-header" id="filterThree">
                                     <h2 class="mb-0">
@@ -231,84 +106,7 @@
                                     </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="filterFour">
-                                    <h2 class="mb-0">
-                                        <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="filterFour">
-                                        Диагональ
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="filterFour" data-parent="#catalogFilter">
-                                    <div class="card-body">
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-1"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-1">До 19 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-2"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-2">20 - 26 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-3"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-3">27 - 32 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-4"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-4">37 - 43 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-5"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-5">45 - 49 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-6"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-6">50 - 58 дюймов</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-7"  >
-                                            <label class="custom-control-label" for="smallcustomCheck4-7">60 дюймов и более</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header" id="filterFive">
-                                    <h2 class="mb-0">
-                                        <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="filterFive">
-                                        Функции
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseFive" class="collapse" aria-labelledby="filterFive" data-parent="#catalogFilter">
-                                    <div class="card-body">
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-1"  >
-                                            <label class="custom-control-label" for="smallcustomCheck5-1">SmartTV</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-2"  >
-                                            <label class="custom-control-label" for="smallcustomCheck5-2">WiFi</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-3"  >
-                                            <label class="custom-control-label" for="smallcustomCheck5-3">Поддержка HDR</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-4"  >
-                                            <label class="custom-control-label" for="smallcustomCheck5-4">Встроенный сабвуфер</label>
-                                        </div>
-                                        <div  class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-5"  >
-                                            <label class="custom-control-label" for="smallcustomCheck5-5">Curved</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                            </div>                            
                         </ul>
                     </form>
                 </div>
@@ -652,12 +450,6 @@
                     </div>
                     <!-- end description -->
                 </div>
-                <!-- Banner should be after even number of products, otherwise products wouldn't wrap correctly! -->
-                <div class="catalog-banner">
-                    <h5 class="title bold">SmartTV Exclusive</h5>
-                    <p class="description ">Adverbs</p>
-                </div>
-                <!-- end of banner -->
                 <div class="item">
                     <div class="product-img">
                         <img src="{{asset('images/tv3.png')}}" alt="">

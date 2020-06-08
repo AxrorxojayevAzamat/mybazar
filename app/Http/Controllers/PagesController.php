@@ -19,4 +19,16 @@ class PagesController extends Controller
     public function about() {
         return view("pages.about");
     }
+    public function popular() {
+        return view("pages.popular");
+    }
+    public function brandView(){
+        return view("pages.brand-view");
+    }
+    public function brands(){
+        return view("pages.brands");
+    }
+    public function sales(){
+        return view("pages.sales");
+    }
 }

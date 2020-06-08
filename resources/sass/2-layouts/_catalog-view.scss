@@ -1,4 +1,4 @@
-.outter-catalog-view{
+.outter-catalog-view, .outter-brand-view-body{
     min-height:1000px;
     width:80%;
     padding:1% 0;
@@ -13,6 +13,28 @@
             &:nth-child(2){
                 margin-bottom:15px;
             }
+            .select-all-div{
+                width:100%;
+                position:relative;
+                text-align: start;
+                border-bottom:1px solid $link_hover_color !important;
+                padding:15px 15px 15px 25px;
+                &:before{
+                    width: 10px;
+                    height: 10px;
+                    top: 25px;
+                    right: 0;
+                    position: absolute;
+                    content: url(../images/gotoresults_searchresulticon.svg);
+                    -webkit-transform: rotate(90deg);
+                    transform: rotate(90deg);
+                }
+                .select-all-label{
+                    font-weight:bold;
+                    font-size:18px;
+                }
+            }
+           
             label.filter-title{
                 width:100%;
                 border-bottom:1px solid $link_hover_color;
@@ -205,7 +227,7 @@
     }
     .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
         box-shadow: none;
-        border:none;
+        border:1px solid #AFB7BF;
         outline: none;
     }
     .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
@@ -426,7 +448,7 @@
 }
 
 @media all and(max-width:1800px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
             .all-filtered-items.list-styles{
                 .description{
@@ -439,7 +461,7 @@
     }
 }
 @media all and (max-width:1560px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
             .column{
                 .item{
@@ -453,7 +475,7 @@
     .h4-title.catalog-view{
         padding:2% 8%;
     }
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         width:84%;
         form.big-filter{
             width:20%;
@@ -467,7 +489,7 @@
     .h4-title.catalog-view{
         padding:2% 5%;
     }
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         width:90%;
     }
     .form-control{
@@ -475,7 +497,7 @@
     }
 }
 @media all and (max-width:1300px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         form.big-filter{
             width:22%;
             .filter-item{
@@ -498,7 +520,7 @@
     }
 }
 @media all and (max-width:1150px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         flex-flow:column;
         form.big-filter{
             display: none;
@@ -529,7 +551,7 @@
     }
 }
 @media all and (max-width:900px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         select, .custom-checkbox .custom-control-label{
             font-size:16px;
         }
@@ -543,7 +565,7 @@
     }
 } 
 @media all and(max-width:575px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .rating:not(:checked) > label {
             font-size: 170% !important;
         }
@@ -617,7 +639,7 @@
     }
 }
 @media all and(max-width:550px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .rate{
             display: none !important;
         }
@@ -668,7 +690,7 @@
     }
 }
 @media all and(max-width:475px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
             .all-filtered-items.column{
                 .item{
@@ -688,7 +710,7 @@
     }
 }
 @media all and(max-width:450px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
             .all-filtered-items.column{
                 .item{
@@ -705,7 +727,7 @@
     }
 }
 @media all and(max-width:400px){
-    .outter-catalog-view{
+    .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
             .all-filtered-items.column{
                 .item{

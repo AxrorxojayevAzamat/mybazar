@@ -2,6 +2,7 @@
 
 @section('title', 'Catalog page')   
 
+    @include ('includes.common-style') 
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
     @endsection
@@ -15,13 +16,14 @@
                         @include('layouts.nav-header')
                     </section>
                     <!-- Slide banner -->
-                    @include ('layouts.slide-banner')
+                    @include ('layouts.slide-banner-catalog')
 
                     <!-- Breadcrumbs -->
-                    @include ('layouts.breadcrumbs-catalog')
+                    @include ('layouts.breadcrumb-catalog')
 
                     <!-- CATALOG VIEW -->
                     @include ('layouts.catalog-view')
+
                     <!-- NEWS LETTER -->
                     @include ('layouts.news-letter')
 

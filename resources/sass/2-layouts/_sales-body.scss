@@ -1,0 +1,40 @@
+.outter-sales{
+    width:100%;
+    .h4-title{
+        padding:0.5% 10%;
+    }
+    .sales-banners{
+        width:100%;
+        padding:0% 10%;
+        @include displayFlex(flex-start, row, center);
+        flex-wrap:wrap;
+        .sales-full-banner{
+            width:100%;
+            height:200px;
+            background:url('../images/sales-full-banner.png');
+            background-position:center;
+            background-repeat: no-repeat;
+        }
+        .banner-item{
+            width:33%;
+            margin:2% auto;
+            height:auto;
+            position:relative;
+            img{
+                width:100%;
+                height:auto;
+            }
+            span{
+                position:absolute;
+                left:10px;
+                bottom:10px;
+                color:white;
+                @include fontBold;
+                background: #242954;
+                border-radius:15px;
+                font-size:20px;
+                padding:5px 17px;
+            }
+        }
+    }
+}

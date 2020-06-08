@@ -4,6 +4,15 @@
     padding: 0 20px;
     box-sizing: border-box;
 }
+.outter-brands-body{
+  .pn-ProductNav_Wrapper{
+    width:100%;
+    padding:0;
+    .pn-ProductNav_Contents{
+      padding:10px 0;
+    }
+  }
+}
 .pn-ProductNav {
     /* Make this scrollable when needed */
     overflow-x: auto;
@@ -124,10 +133,20 @@
   .pn-ProductNav_Wrapper {
     width: 83%;
   }
+  .outter-brands-body{
+    .pn-ProductNav_Wrapper{
+      width:100%;
+    }
+  }
 }
 @media all and (max-width:980px){
   .pn-ProductNav_Wrapper {
     width: 80%;
+  }
+  .outter-brands-body{
+    .pn-ProductNav_Wrapper{
+      width:100%;
+    }
   }
 }
   

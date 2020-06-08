@@ -1,16 +1,11 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Home page')   
-
+@section('title', 'Home page')  
+    @include ('includes.common-style') 
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/shopping-cart-page.css')}}">
     @endsection
-        <!-- page loader -->
-        <div class="wrapper-loader">
-            <span class="loader">
-                <span class="loader-inner"></span>
-            </span>
-        </div>
+       
         @section('body')
             @extends ('layouts.menu')
                 @section('page')

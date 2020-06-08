@@ -1,7 +1,7 @@
 @extends('layouts.default-layout')
 
 @section('title', 'Home page')   
-
+    @include ('includes.common-style') 
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/index.css')}}">
     @endsection
@@ -41,6 +41,7 @@
                 @include ('layouts.full-banner1')
 
                 <!-- SHOPS -->
+                @include('layouts.index-shops')
 
                 <!-- FULL BANNER 2 -->
                 @include ('layouts.full-banner2')

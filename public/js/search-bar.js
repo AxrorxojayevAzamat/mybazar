@@ -1,5 +1,5 @@
 
-var search_input = document.getElementsByTagName('input');
+var search_input = document.getElementById('search-input');
     
     for (i=0;i<search_input.length;i++){
         if (search_input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
