@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("/css/mybazar-fonts.css");
 .pn-ProductNav_Wrapper {
   width: 88%;
@@ -2251,7 +2252,7 @@ img.menu-auto-icon:hover {
 
 .outter-sales .sales-banners {
   width: 100%;
-  padding: 1% 10%;
+  padding: 0% 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2271,13 +2272,14 @@ img.menu-auto-icon:hover {
 
 .outter-sales .sales-banners .sales-full-banner {
   width: 100%;
-  background: url("../images/.sales-full-banner.png");
+  height: 200px;
+  background: url("../images/sales-full-banner.png");
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .outter-sales .sales-banners .banner-item {
-  width: 33%;
+  width: 32%;
   margin: 1% auto;
   height: auto;
   position: relative;
@@ -2298,6 +2300,289 @@ img.menu-auto-icon:hover {
   border-radius: 15px;
   font-size: 20px;
   padding: 5px 17px;
+}
+
+.current-old-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.current-old-price.vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.current-old-price.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.current-old-price h5.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0042ff;
+}
+
+.current-old-price h5.price span {
+  font-weight: 300;
+}
+
+.current-old-price h6.old-price {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: line-through;
+  color: #a4b0be;
+}
+
+.current-old-price h6.old-price span {
+  font-weight: 300;
+}
+
+.item-action-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.item-action-icons div {
+  border: 1px solid #1d3553;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background: white;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.item-action-icons div i {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.item-action-icons div.cart:hover, .item-action-icons div.libra:hover, .item-action-icons div.like:hover {
+  -webkit-box-shadow: 0px 4px 10px -6px black;
+          box-shadow: 0px 4px 10px -6px black;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.selected_libra, .selected_cart, .selected_like {
+  color: white;
+  border: none !important;
+  background: #0042ff !important;
+  -webkit-box-shadow: 0px 2px 7px -5px black !important;
+          box-shadow: 0px 2px 7px -5px black !important;
+  -webkit-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+}
+
+.selected_libra i:before, .selected_cart i:before, .selected_like i:before {
+  color: white !important;
+}
+
+.selected_like {
+  background: #f42c48 !important;
+}
+
+.rate {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.rate .commet {
+  width: 18%;
+}
+
+.rate .commet i {
+  font-size: 22px;
+}
+
+.rate .commet span {
+  font-size: 20px;
+  color: #a4b0be;
+}
+
+.rating {
+  float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  border: none !important;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+    follow these rules. Every browser that supports :checked also supports :not(), so
+    it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  /* padding:0 .1em; */
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  /* line-height:1.2; */
+  color: #ddd;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.rating > input:checked ~ label {
+  color: #ffc621;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffc621;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #ffc621;
+}
+
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+@media all and (max-width: 1800px) {
+  .rating:not(:checked) > label {
+    font-size: 170%;
+  }
+}
+
+@media all and (max-width: 1665px) {
+  .rating:not(:checked) > label {
+    font-size: 135%;
+  }
+  .comment {
+    font-size: 14px;
+  }
+  .current-old-price h5.price {
+    font-size: 18px;
+  }
+  .current-old-price h6.old-price {
+    font-size: 16px;
+  }
+  .item-action-icons div {
+    width: 30px;
+    height: 30px;
+  }
+  .item-action-icons div i {
+    font-size: 14px;
+    line-height: 30px;
+  }
+}
+
+@media all and (max-width: 1250px) {
+  .rate {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .rating:not(:checked) > label {
+    font-size: 200%;
+  }
+  .comment {
+    font-size: 20px;
+  }
+  .item-action-icons div {
+    width: 40px;
+    height: 40px;
+  }
+  .item-action-icons div i {
+    font-size: 20px;
+    line-height: 40px;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .rating:not(:checked) > label {
+    font-size: 190%;
+  }
+  .item-action-icons div {
+    width: 30px;
+    height: 30px;
+  }
+  .item-action-icons div i {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .comment {
+    font-size: 18px;
+  }
 }
 
 nav.products-pagination {
