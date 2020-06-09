@@ -52,7 +52,13 @@
     @include ('includes.common-style')
 </head>
 <body>
-@yield('body')
-@include ('includes.common-js')
-</body>
+    <!-- page loader -->
+    <div class="wrapper-loader">
+            <span class="loader">
+                <span class="loader-inner"></span>
+            </span>
+        </div>
+    @yield('body')
+    @include ('includes.common-js')
+    </body>
 </html>
