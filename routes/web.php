@@ -41,13 +41,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
         Route::group(['prefix' => 'products/{product}', 'as' => 'products.'], function () {
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
-            Route::get('photos', 'ProductController@photos')->name('photos');
-            Route::post('add-main-photo', 'ProductController@addMainPhoto')->name('add-main-photo');
+            Route::post('main-photo', 'ProductController@addMainPhoto');
             Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
-            Route::post('remove-photo/{photo}', 'ProductController@removePhoto')->name('remove-photo');
-            Route::post('add-photo', 'ProductController@addPhoto')->name('add-photo');
+            Route::get('photos', 'ProductController@photos')->name('photos');
+            Route::post('photos', 'ProductController@addPhoto');
+            Route::delete('photos/{photo}', 'ProductController@removePhoto')->name('remove-photo');
             Route::get('move-photo-up/{photo}', 'ProductController@movePhotoUp')->name('move-photo-up');
-            Route::get('remove-photo/{photo}', 'ProductController@removePhoto')->name('delete-photo');
             Route::get('move-photo-down/{photo}', 'ProductController@movePhotoDown')->name('move-photo-down');
 
             Route::group(['prefix' => 'values', 'as' => 'values.'], function () {
@@ -88,6 +87,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('up', 'CategoryController@up')->name('up');
             Route::post('down', 'CategoryController@down')->name('down');
             Route::post('last', 'CategoryController@last')->name('last');
+        });
+
+        Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
+            Route::get('', 'OrderController@index')->name('index');
+            Route::get('{order}', 'OrderController@show')->name('show');
+            Route::get('{order}/items/{item}', 'OrderController@showItem')->name('item');
+            Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+        });
+
+        Route::group(['prefix' => 'carts', 'as' => 'carts.'], function () {
+            Route::get('', 'CartController@index')->name('index');
+            Route::get('{cart}', 'CartController@show')->name('show');
+            Route::delete('{cart}', 'CartController@destroy')->name('destroy');
         });
 
     });

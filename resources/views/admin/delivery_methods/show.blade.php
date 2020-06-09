@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <div class="d-flex flex-row mb-3">
@@ -39,9 +39,9 @@
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
-                        <tr><th>{{ trans('adminlte.delivery_method.cost') }}</th><td>{{ $delivery->cost }}</td></tr>
-                        <tr><th>{{ trans('adminlte.delivery_method.min_weight') }}</th><td>{{ $delivery->min_weight }}</td></tr>
-                        <tr><th>{{ trans('adminlte.delivery_method.max_weight') }}</th><td>{{ $delivery->max_weight }}</td></tr>
+                        <tr><th>{{ trans('adminlte.cost') }}</th><td>{{ $delivery->cost }}</td></tr>
+                        <tr><th>{{ trans('adminlte.delivery.min_weight') }}</th><td>{{ $delivery->min_weight }}</td></tr>
+                        <tr><th>{{ trans('adminlte.delivery.max_weight') }}</th><td>{{ $delivery->max_weight }}</td></tr>
                         </tbody>
                     </table>
                 </div>

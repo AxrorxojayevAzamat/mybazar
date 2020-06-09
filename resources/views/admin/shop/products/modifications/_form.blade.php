@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('code', trans('adminlte.modification.code'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('code', trans('adminlte.code'), ['class' => 'col-form-label']); !!}
                             {!! Form::text('code', old('discount', $modification ? $modification->code : null),
                                     ['class'=>'form-control' . ($errors->has('code') ? ' is-invalid' : ''), 'maxlength' => 20]) !!}
                             @if ($errors->has('code'))

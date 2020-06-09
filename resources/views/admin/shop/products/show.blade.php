@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <div class="d-flex flex-row mb-3">
@@ -96,7 +96,7 @@
                         <tr><th>{{ trans('adminlte.product.discount') }}</th><td>{{ $product->discount }}</td></tr>
                         <tr><th>{{ trans('adminlte.status') }}</th><td>{!! \App\Helpers\ProductHelper::getStatusLabel($product->status) !!}</td></tr>
                         <tr><th>{{ trans('adminlte.product.weight') }}</th><td>{{ $product->weight }}</td></tr>
-                        <tr><th>{{ trans('adminlte.product.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
+                        <tr><th>{{ trans('adminlte.quantity') }}</th><td>{{ $product->quantity }}</td></tr>
                         <tr><th>{{ trans('adminlte.product.guarantee') }}</th><td>{{ $product->guarantee ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.product.bestseller') }}</th><td>{{ $product->bestseller ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
@@ -137,9 +137,14 @@
                             <a href="{{ route('admin.shop.products.move-photo-up', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-left"></span>
                             </a>
-                            <a href="{{ route('admin.shop.products.delete-photo', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
+                            {!! Form::open(['url' => route('admin.shop.products.remove-photo', ['product' => $product, 'photo' => $photo])]) !!}
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" id="{{ $product->id }}" photo_id="{{ $photo->id }}" class="btn btn-default" style="border-radius: 0; margin-left: -1px;"
+                                    onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
                                 <span class="glyphicon glyphicon-remove"></span>
-                            </a>
+                            </button>
+                            {!! Form::close() !!}
                             <a href="{{ route('admin.shop.products.move-photo-down', ['product' => $product, 'photo' => $photo]) }}" id="{{ $product->id }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-arrow-right"></span>
                             </a>
@@ -162,7 +167,7 @@
                 <tr>
                     <th>ID</th>
                     <th>{{ trans('adminlte.name') }}</th>
-                    <th>{{ trans('adminlte.modification.code') }}</th>
+                    <th>{{ trans('adminlte.code') }}</th>
                     <th>{{ trans('adminlte.price_uzs') }}</th>
                     <th></th>
                 </tr>

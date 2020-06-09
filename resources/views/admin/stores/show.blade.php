@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <div class="d-flex flex-row mb-3">
@@ -145,10 +145,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>{{ trans('adminlte.delivery_method.name') }}</th>
-                    <th>{{ trans('adminlte.delivery_method.cost') }}</th>
-                    <th>{{ trans('adminlte.delivery_method.min_weight') }}</th>
-                    <th>{{ trans('adminlte.delivery_method.max_weight') }}</th>
+                    <th>{{ trans('adminlte.delivery.name') }}</th>
+                    <th>{{ trans('adminlte.cost') }}</th>
+                    <th>{{ trans('adminlte.delivery.min_weight') }}</th>
+                    <th>{{ trans('adminlte.delivery.max_weight') }}</th>
                     <th></th>
                 </tr>
                 </thead>

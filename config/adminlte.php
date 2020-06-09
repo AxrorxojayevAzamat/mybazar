@@ -53,7 +53,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'EDevon',
+    'logo_img_alt' => 'EMagazin',
 
     /*
     |--------------------------------------------------------------------------
@@ -269,6 +269,18 @@ return [
             'url'  => 'admin/deliveries',
             'icon' => 'fas fa-fw fa-car',
             'can' => 'manage-deliveries',
+        ],
+        [
+            'text' => 'carts',
+            'url'  => 'admin/shop/carts',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+            'can' => 'manage-carts',
+        ],
+        [
+            'text' => 'orders',
+            'url'  => 'admin/shop/orders',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'can' => 'manage-orders',
         ],
     ],
 

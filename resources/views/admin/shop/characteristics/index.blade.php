@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @if (!config('adminlte.enabled_laravel_mix'))
     @php($javaScriptSectionName = 'js')

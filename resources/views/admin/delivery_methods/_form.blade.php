@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('cost', trans('adminlte.delivery_method.cost'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('cost', trans('adminlte.cost'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('cost', old('price_uzs', $delivery ? $delivery->cost : null),
                                     ['class'=>'form-control' . ($errors->has('cost') ? ' is-invalid' : ''), 'required' => true]) !!}
                             @if ($errors->has('cost'))
@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('min_weight', trans('adminlte.delivery_method.min_weight'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('min_weight', trans('adminlte.delivery.min_weight'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('min_weight', old('min_weight', $delivery ? $delivery->min_weight : null),
                                     ['class'=>'form-control' . ($errors->has('min_weight') ? ' is-invalid' : ''), 'step' => '0.01']) !!}
                             @if ($errors->has('min_weight'))
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('max_weight', trans('adminlte.delivery_method.max_weight'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('max_weight', trans('adminlte.delivery.max_weight'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('max_weight', old('max_weight', $delivery ? $delivery->max_weight : null),
                                     ['class'=>'form-control' . ($errors->has('max_weight') ? ' is-invalid' : ''), 'step' => '0.01']) !!}
                             @if ($errors->has('max_weight'))

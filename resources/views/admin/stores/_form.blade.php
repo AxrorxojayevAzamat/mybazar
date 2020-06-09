@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('delivery_methods', trans('adminlte.delivery_method.name'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('delivery_methods', trans('adminlte.delivery.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('delivery_methods[]', $deliveryMethods, old('delivery_methods', $store ? $store->deliveriesList() : null),
                                 ['multiple' => true, 'class'=>'form-control' . ($errors->has('delivery_methods') ? ' is-invalid' : ''), 'id' => 'delivery_methods', 'required' => true]) !!}
                             @if ($errors->has('delivery_methods'))

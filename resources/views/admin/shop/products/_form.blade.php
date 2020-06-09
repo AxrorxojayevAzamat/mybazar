@@ -187,7 +187,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('quantity', trans('adminlte.product.quantity'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('quantity', trans('adminlte.quantity'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('quantity', old('quantity', $product ? $product->quantity : null),
                                     ['class'=>'form-control' . ($errors->has('quantity') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('quantity'))

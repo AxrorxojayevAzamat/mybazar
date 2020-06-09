@@ -4,6 +4,7 @@ return [
     'home'                        => 'Asosiy sahifa',
     'full_name'                   => 'To`liq ismi',
     'email'                       => 'Elektron pochtasi',
+    'phone'                       => 'Telefon raqami',
     'password'                    => 'Parol',
     'retype_password'             => 'Parolni tasdiqlash',
     'remember_me'                 => 'Eslab qolish',
@@ -37,7 +38,10 @@ return [
 
     'name' => 'Nomi',
     'description' => 'Tavsifi',
+    'note' => 'Qo`shimcha ma`lumot',
+    'code' => 'Kod',
     'status' => 'Holati',
+    'cancel_reason' => 'Bekor qilish sababi',
     'parent' => 'Ajdodi',
     'relations' => 'Bog`liqliklar',
     'required' => 'Majburiy',
@@ -62,6 +66,10 @@ return [
     'type' => 'Turi',
     'default' => 'Standard',
     'sort' => 'Joylashuvi',
+    'cost' => 'Narhi',
+    'quantity' => 'Miqdori',
+    'date_from' => 'Boshlanish sana',
+    'date_to' => 'Ohirgi sana',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -109,13 +117,16 @@ return [
         'choose' => 'To`lov turini tanlamoq',
     ],
 
-    'delivery_method' => [
+    'delivery' => [
         'add' => 'Yetkizib berish turi qo`shmoq',
         'name' => 'Yetkizib berish turi',
         'choose' => 'Yetkizib berish turini tanlamoq',
-        'cost' => 'Narhi',
         'min_weight' => 'Minimum vazni',
         'max_weight' => 'Maksimum vazni',
+        'index' => 'Yetkazib berish indeksi',
+        'address' => 'Yetkazib berish manzili',
+        'cost' => 'Yetkazib berish narxi',
+        'delivery' => 'Yetkazib berish',
     ],
 
     'mark' => [
@@ -133,7 +144,6 @@ return [
         'active' => 'Faol',
         'closed' => 'Yopilgan',
         'weight' => 'Vazni',
-        'quantity' => 'Miqdori',
         'guarantee' => 'Kafolatlangan',
         'bestseller' => 'Bestseller',
         'main_photo' => 'Asosiy Surat',
@@ -148,7 +158,6 @@ return [
         'name' => 'O`zgartirish',
         'plural' => 'O`zgartirishlar',
         'choose' => 'O`zgartirish tanlamoq',
-        'code' => 'Kod',
     ],
 
     'characteristic' => [

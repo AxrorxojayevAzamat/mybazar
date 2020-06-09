@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.admin.page')
 
 @section('content')
     <table class="table table-bordered table-striped">
@@ -16,7 +16,7 @@
             <tr>
                 <td>
                     @can ('manage-users')
-                        <a href="{{ route('admin.users.show', $review->user_id) }}">{{ $review->user->name }}</a>
+                        <a href="{{ route('admin.users.show', $review->user) }}">{{ $review->user->name }}</a>
                     @else
                         {{ $review->user->name }}
                     @endcan

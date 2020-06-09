@@ -3,9 +3,12 @@
 use App\Entity\Brand;
 use App\Entity\DeliveryMethod;
 use App\Entity\Payment;
+use App\Entity\Shop\Cart;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Modification;
+use App\Entity\Shop\Order;
+use App\Entity\Shop\OrderItem;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
@@ -324,4 +327,35 @@ Breadcrumbs::register('admin.deliveries.show', function (Crumbs $crumbs, Deliver
 Breadcrumbs::register('admin.deliveries.edit', function (Crumbs $crumbs, DeliveryMethod $delivery) {
     $crumbs->parent('admin.deliveries.show', $delivery);
     $crumbs->push(trans('adminlte.edit'), route('admin.deliveries.edit', $delivery));
+});
+
+
+// Carts
+
+Breadcrumbs::register('admin.shop.carts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.carts'), route('admin.shop.carts.index'));
+});
+
+Breadcrumbs::register('admin.shop.carts.show', function (Crumbs $crumbs, Cart $cart) {
+    $crumbs->parent('admin.shop.carts.index');
+    $crumbs->push($cart->id, route('admin.shop.carts.show', $cart));
+});
+
+
+// Orders
+
+Breadcrumbs::register('admin.shop.orders.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.orders'), route('admin.shop.orders.index'));
+});
+
+Breadcrumbs::register('admin.shop.orders.show', function (Crumbs $crumbs, Order $order) {
+    $crumbs->parent('admin.shop.orders.index');
+    $crumbs->push($order->id, route('admin.shop.orders.show', $order));
+});
+
+Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order $order, OrderItem $item) {
+    $crumbs->parent('admin.shop.orders.show', $order);
+    $crumbs->push($order->id, route('admin.shop.orders.item', ['order' => $order, 'item' => $item]));
 });

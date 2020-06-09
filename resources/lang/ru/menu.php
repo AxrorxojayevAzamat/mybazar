@@ -25,4 +25,7 @@ return [
     'delivery_methods'              => 'Доставки',
     'marks'                         => 'Отметки',
     'characteristics'               => 'Характеристики',
+    'orders'                        => 'Заказы',
+    'order_items'                   => 'Товары заказа',
+    'carts'                         => 'Корзина',
 ];

@@ -18,12 +18,17 @@ class CreateShopOrderItemsTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('modification_id');
-            $table->string('product_name');
+            $table->string('product_name_uz');
+            $table->string('product_name_ru');
+            $table->string('product_name_en');
             $table->string('product_code');
-            $table->string('modification_name');
+            $table->string('modification_name_uz');
+            $table->string('modification_name_ru');
+            $table->string('modification_name_en');
             $table->string('modification_code');
             $table->integer('price');
             $table->integer('quantity');
+            $table->float('discount')->default(0);
             $table->timestamps();
         });
 

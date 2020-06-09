@@ -78,7 +78,7 @@ class AdminLteServiceProvider extends BaseServiceProvider
 
     private function registerViewComposers(Factory $view)
     {
-        $view->composer('layouts.page', AdminLteComposer::class);
+        $view->composer('layouts.admin.page', AdminLteComposer::class);
     }
 
     public static function registerMenu(Dispatcher $events, Repository $config)
