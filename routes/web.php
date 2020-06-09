@@ -22,6 +22,7 @@ Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
 Route::get('/sales','PagesController@sales');
 Route::get('/videoblog','PagesController@videoblog');
+Route::get('/shopview','PagesController@shopview');
 
 
 Auth::routes();
