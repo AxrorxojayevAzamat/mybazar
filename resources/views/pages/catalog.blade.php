@@ -1,7 +1,7 @@
 @extends('layouts.default-layout')
 
 @section('title', 'Catalog page')   
-
+@include ('includes.common-style')
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
     @endsection

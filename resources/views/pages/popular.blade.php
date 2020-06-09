@@ -1,7 +1,7 @@
 @extends('layouts.default-layout')
 
 @section('title', 'Popular page')   
-
+@include ('includes.common-style')
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/popular-page.css')}}">
     @endsection

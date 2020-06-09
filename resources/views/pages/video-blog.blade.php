@@ -1,7 +1,7 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Home page')
-
+@section('title', 'Video blog')
+@include ('includes.common-style')
 @section('styles')
     
     <link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
