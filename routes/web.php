@@ -21,6 +21,8 @@ Route::get('/popular', 'PagesController@popular');
 Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
 Route::get('/sales','PagesController@sales');
+Route::get('/videoblog','PagesController@videoblog');
+
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');

@@ -96,7 +96,9 @@ h4.title{
     text-align:start;
     vertical-align: middle;
     background:$bg_grey_color;
-
+    &.video-blog{
+        padding:0.5% 10%;
+    }
 }
 h5.title{
     color:white;

@@ -1,4 +1,4 @@
-.outter-catalog-view, .outter-brand-view-body{
+.outter-list-of-videos, .outter-catalog-view, .outter-brand-view-body{
     min-height:1000px;
     width:80%;
     padding:1% 0;
@@ -88,7 +88,7 @@
             }
         }
     }
-    .wrapper-filtered-items{
+    .wrapper-filtered-items, .wrapper-filtered-videos{
         width:80%;
         min-height:1000px;
         @include displayFlex(flex-start, column, flex-start);
@@ -447,6 +447,22 @@
     }
 }
 
+.all-filtered-videos{
+    width:100%;
+    min-height:500px;
+    background:white;
+    @include displayFlex(flex-start, row, center);
+    flex-wrap:wrap;
+    .video-item{
+        width:32%;
+        margin:1% auto;
+        iframe{
+            width:100%;
+            height:225px;
+        }
+    }
+
+}
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{

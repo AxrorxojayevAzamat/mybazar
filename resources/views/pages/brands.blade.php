@@ -1,7 +1,7 @@
 @extends('layouts.default-layout')
 
 @section('title', 'Brand view')   
-    @include ('includes.common-style') 
+
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/brands.css')}}">
     @endsection

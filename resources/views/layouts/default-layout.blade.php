@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> @yield('title')</title>
     <style >
+        
         @keyframes loader {
             0% { transform: rotate(0deg);}
             25% { transform: rotate(180deg);}
@@ -51,12 +52,6 @@
     @include ('includes.common-style')
 </head>
 <body>
-<!-- page loader -->
-<div class="wrapper-loader">
-            <span class="loader">
-                <span class="loader-inner"></span>
-            </span>
-</div>
 @yield('body')
 @include ('includes.common-js')
 </body>
