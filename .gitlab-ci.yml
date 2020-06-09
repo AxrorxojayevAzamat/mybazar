@@ -8,7 +8,7 @@ deploy_development:
   - php artisan migrate
   - npm i
   - npm run dev
-  - composer update
+#   - composer update
   environment:
     name: development
     url: https://shop.sec.uz
