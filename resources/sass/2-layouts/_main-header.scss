@@ -17,6 +17,9 @@
         padding-right:2px;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $link_hover_color, 23px);
+        &:focus{
+            border-color:red !important;
+        }
         input{
             width:85%;
         }

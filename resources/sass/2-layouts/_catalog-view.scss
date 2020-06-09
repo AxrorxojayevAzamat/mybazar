@@ -1,4 +1,4 @@
-.outter-list-of-videos, .outter-catalog-view, .outter-brand-view-body{
+.outter-catalog-view, .outter-brand-view-body{
     min-height:1000px;
     width:80%;
     padding:1% 0;
@@ -88,7 +88,7 @@
             }
         }
     }
-    .wrapper-filtered-items, .wrapper-filtered-videos{
+    .wrapper-filtered-items{
         width:80%;
         min-height:1000px;
         @include displayFlex(flex-start, column, flex-start);
