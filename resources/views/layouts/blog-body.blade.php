@@ -1,8 +1,5 @@
 <section>
-    <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
-    </div>
-    <div class="outter-list-of-videos">
+    <div class="outter-list-of-blogs">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
                 <div class="custom-control custom-checkbox">
@@ -50,7 +47,7 @@
             </div>
         </form>
 
-        <div class="wrapper-filtered-videos">
+        <div class="wrapper-filtered-blogs">
             <nav class=" navbar navbar-expand-custom sort-types">
 
                 <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,55 +118,115 @@
                 </div>
             </nav>
 
-            <div class="all-filtered-videos">
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
+            <div class="all-filtered-blogs">
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page1.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Как выбрать телевизор?</h6>
+                            <p>Выбор телевизора- процесс непростой, но мы постарались вам его максимально облегчить. Если вы планируете </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page2.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Сравнение отечественных телевизоров</h6>
+                            <p>Групповой тест- сравниваем 55-дюймовые 4k- бюджетники от трёх приличных брендов из Поднебесно!</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page3.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Умный ТВ в умном доме</h6>
+                            <p>Все, что вы хотели знать о некоторых технологиях, но боялись спросить! Максимально доступно и коротко </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page4.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Топ-10 Smart-телевизоров 2020 года</h6>
+                            <p>Телевизор уже давно превратился в домашний мультимедийный центр. </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page1.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Как выбрать телевизор?</h6>
+                            <p>Выбор телевизора- процесс непростой, но мы постарались вам его максимально облегчить. Если вы планируете </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page2.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Сравнение отечественных телевизоров</h6>
+                            <p>Групповой тест- сравниваем 55-дюймовые 4k- бюджетники от трёх приличных брендов из Поднебесно!</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page3.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Умный ТВ в умном доме</h6>
+                            <p>Все, что вы хотели знать о некоторых технологиях, но боялись спросить! Максимально доступно и коротко </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page4.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Топ-10 Smart-телевизоров 2020 года</h6>
+                            <p>Телевизор уже давно превратился в домашний мультимедийный центр. </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="{{asset('images/blog-page1.png')}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Как выбрать телевизор?</h6>
+                            <p>Выбор телевизора- процесс непростой, но мы постарались вам его максимально облегчить. Если вы планируете </p>
+                        </div>
+                    </div>
+                </a> 
             </div>
 
             <!-- PAGINATION  -->

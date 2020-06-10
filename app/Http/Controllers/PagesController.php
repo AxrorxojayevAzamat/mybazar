@@ -37,4 +37,11 @@ class PagesController extends Controller
     public function shopview(){
         return view("pages.shop-view");
     }
+    public function blog(){
+        return view("pages.blog");
+    }
+    public function news(){
+        return view("pages.news");
+    }
+
 }

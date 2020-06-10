@@ -23,7 +23,8 @@ Route::get('/brands', 'PagesController@brands');
 Route::get('/sales','PagesController@sales');
 Route::get('/videoblog','PagesController@videoblog');
 Route::get('/shopview','PagesController@shopview');
-
+Route::get('/blog', 'PagesController@blog');
+Route::get('/news', 'PagesController@news');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
