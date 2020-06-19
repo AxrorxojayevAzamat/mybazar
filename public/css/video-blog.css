@@ -2774,6 +2774,10 @@ img.menu-auto-icon:hover {
   background-color: #2449c5;
 }
 
+.h4-title.catalog-view {
+  padding: 0.5% 10%;
+}
+
 .outter-catalog-view, .outter-brand-view-body {
   min-height: 1000px;
   width: 80%;

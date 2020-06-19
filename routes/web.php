@@ -25,6 +25,11 @@ Route::get('/videoblog','PagesController@videoblog');
 Route::get('/shopview','PagesController@shopview');
 Route::get('/blog', 'PagesController@blog');
 Route::get('/news', 'PagesController@news');
+Route::get('/delivery', 'PagesController@delivery');
+Route::get('/guaranty', 'PagesController@guaranty');
+Route::get('/payment', 'PagesController@payment');
+Route::get('/catalogsection', 'PagesController@catalogSection');
+
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');

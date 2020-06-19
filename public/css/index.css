@@ -2232,24 +2232,26 @@ img.menu-auto-icon:hover {
   background-size: cover;
 }
 
-.popular-products {
+.recommended, .popular-products, .newone {
   width: 100%;
   height: 700px;
   background: white;
 }
 
-.popular-products .rate {
+.recommended .rate, .popular-products .rate, .newone .rate {
   width: 60%;
   margin: 15px 0;
 }
 
-.popular-products button.owl-prev,
-.popular-products button.owl-next {
+.recommended button.owl-prev,
+.recommended button.owl-next, .popular-products button.owl-prev,
+.popular-products button.owl-next, .newone button.owl-prev,
+.newone button.owl-next {
   top: 50%;
 }
 
 @media all and (max-width: 1250px) {
-  .popular-products .rate {
+  .recommended .rate, .popular-products .rate, .newone .rate {
     width: 100%;
   }
 }
@@ -2951,50 +2953,6 @@ img.menu-auto-icon:hover {
   .three-small-banners div p {
     font-size: 25px;
     line-height: 30px;
-  }
-}
-
-.recommended {
-  width: 100%;
-  height: 700px;
-  background: white;
-}
-
-.recommended .rate {
-  width: 60%;
-  margin: 15px 0;
-}
-
-.recommended button.owl-prev,
-.recommended button.owl-next {
-  top: 50%;
-}
-
-@media all and (max-width: 1250px) {
-  .recommended .rate {
-    width: 100%;
-  }
-}
-
-.newone {
-  width: 100%;
-  height: 700px;
-  background: white;
-}
-
-.newone .rate {
-  width: 60%;
-  margin: 15px 0;
-}
-
-.newone button.owl-prev,
-.newone button.owl-next {
-  top: 50%;
-}
-
-@media all and (max-width: 1250px) {
-  .newone .rate {
-    width: 100%;
   }
 }
 

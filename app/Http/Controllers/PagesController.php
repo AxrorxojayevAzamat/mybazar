@@ -43,5 +43,18 @@ class PagesController extends Controller
     public function news(){
         return view("pages.news");
     }
+    public function delivery(){
+        return view("pages.delivery");
+    }
+    public function guaranty(){
+        return view("pages.guaranty");
+    }
+    public function payment(){
+        return view("pages.payment");
+    }
+    public function catalogSection(){
+        return view("pages.catalog-section");
+    }
+    
 
 }

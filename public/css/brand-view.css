@@ -2428,44 +2428,56 @@ img.menu-auto-icon:hover {
   }
 }
 
+.slide-banner-catalog,
+.slide-banner-brandv,
+.slide-banner-shopv,
+.slide-banner-delivery,
+.slide-banner-guaranty,
+.slide-banner-payment {
+  width: 80%;
+  height: 200px;
+  margin: 1%  auto 2%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .slide-banner-catalog {
-  width: 80%;
-  height: 200px;
-  margin: 1%  auto 2%;
   background: url("../images/catalog-slider-banner.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.slide-banner-brandv {
-  width: 80%;
-  height: 200px;
-  margin: 1%  auto 2%;
-  background: url("../images/brand-view-slide-banner.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.slide-banner-shopv {
-  width: 80%;
-  height: 200px;
-  margin: 1%  auto 2%;
-  background: url("../images/shop-view-slide-banner.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin: 1%  auto 1%;
 }
 
 .slide-banner-brand-view .h4-title {
   padding: 0.5% 10%;
 }
 
+.slide-banner-brand-view .slide-banner-brandv {
+  background: url("../images/brand-view-slide-banner.png");
+}
+
+.slide-banner-shopv {
+  background: url("../images/shop-view-slide-banner.png");
+}
+
+.slide-banner-delivery {
+  background: url("../images/delivery-slide-banner.png");
+}
+
+.slide-banner-guaranty {
+  background: url("../images/guaranty-slide-banner.png");
+}
+
+.slide-banner-payment {
+  background: url("../images/payment-slide-banner.png");
+}
+
 @media all and (max-width: 1522px) {
   .slide-banner-catalog,
   .slide-banner-brandv,
-  .slide-banner-shopv {
+  .slide-banner-shopv,
+  .slide-banner-delivery,
+  .slide-banner-guaranty,
+  .slide-banner-payment {
     width: 84%;
   }
 }
@@ -2473,9 +2485,16 @@ img.menu-auto-icon:hover {
 @media all and (max-width: 1400px) {
   .slide-banner,
   .slide-banner-brandv,
-  .slide-banner-shopv {
+  .slide-banner-shopv,
+  .slide-banner-delivery,
+  .slide-banner-guaranty,
+  .slide-banner-payment {
     width: 90%;
   }
+}
+
+.h4-title.catalog-view {
+  padding: 0.5% 10%;
 }
 
 .outter-catalog-view, .outter-brand-view-body {
