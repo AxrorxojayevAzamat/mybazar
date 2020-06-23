@@ -14,6 +14,8 @@ use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
 use App\Entity\Shop\Category;
+use App\Models\NewsCategory;
+use App\Models\News;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
@@ -358,4 +360,167 @@ Breadcrumbs::register('admin.shop.orders.show', function (Crumbs $crumbs, Order 
 Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order $order, OrderItem $item) {
     $crumbs->parent('admin.shop.orders.show', $order);
     $crumbs->push($order->id, route('admin.shop.orders.item', ['order' => $order, 'item' => $item]));
+});
+
+
+// Posts
+
+Breadcrumbs::register('admin.posts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Posts', route('admin.posts.index'));
+});
+
+Breadcrumbs::register('admin.posts.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.posts.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.posts.create'));
+});
+
+Breadcrumbs::register('admin.posts.show', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.posts.index');
+    $crumbs->push('sda', route('admin.posts.show', 'sa'));
+});
+
+Breadcrumbs::register('admin.posts.edit', function (Crumbs $crumbs, \App\Models\Post $brand) {
+    $crumbs->parent('admin.posts.show', $brand);
+    $crumbs->push(trans('adminlte.edit'), route('admin.posts.edit', $brand));
+});
+
+
+
+// Posts categories
+
+Breadcrumbs::register('admin.categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.categories'), route('admin.categories.index'));
+});
+
+Breadcrumbs::register('admin.categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.categories.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.categories.create'));
+});
+
+Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, \App\Models\Category $brand) {
+    $crumbs->parent('admin.categories.index');
+    $crumbs->push('sa', route('admin.categories.show', $brand));
+});
+
+Breadcrumbs::register('admin.categories.edit', function (Crumbs $crumbs, \App\Models\Category $brand) {
+    $crumbs->parent('admin.home', $brand);
+    $crumbs->push(trans('adminlte.edit'), route('admin.categories.edit', $brand));
+});
+
+
+
+// News
+
+Breadcrumbs::register('admin.news.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('News', route('admin.news.index'));
+});
+
+Breadcrumbs::register('admin.news.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.news.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.news.create'));
+});
+
+Breadcrumbs::register('admin.news.show', function (Crumbs $crumbs, News $news) {
+    $crumbs->parent('admin.news.index');
+    $crumbs->push($news->title_ru, route('admin.news.show', $news));
+});
+
+Breadcrumbs::register('admin.news.edit', function (Crumbs $crumbs, News $brand) {
+    $crumbs->parent('admin.news.show', $brand);
+    $crumbs->push(trans('adminlte.edit'), route('admin.news.edit', $brand));
+});
+
+
+
+// News categories
+
+Breadcrumbs::register('admin.news-categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('News Categories', route('admin.news-categories.index'));
+});
+
+Breadcrumbs::register('admin.news-categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.news-categories.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.news-categories.create'));
+});
+
+Breadcrumbs::register('admin.news-categories.show', function (Crumbs $crumbs, NewsCategory $brand) {
+    $crumbs->parent('admin.news-categories.index');
+    $crumbs->push('sa', route('admin.news-categories.show', $brand));
+});
+
+Breadcrumbs::register('admin.news-categories.edit', function (Crumbs $crumbs, NewsCategory $brand) {
+    $crumbs->parent('admin.home', $brand);
+    $crumbs->push(trans('adminlte.edit'), route('admin.news-categories.edit', $brand));
+});
+
+
+// Videos
+
+Breadcrumbs::register('admin.videos.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Videos', route('admin.videos.index'));
+});
+
+Breadcrumbs::register('admin.videos.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.videos.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.videos.create'));
+});
+
+Breadcrumbs::register('admin.videos.show', function (Crumbs $crumbs, \App\Models\Videos $videos) {
+    $crumbs->parent('admin.videos.index');
+    $crumbs->push($videos->title_ru, route('admin.videos.show', $videos));
+});
+
+Breadcrumbs::register('admin.videos.edit', function (Crumbs $crumbs, \App\Models\Videos $videos) {
+    $crumbs->parent('admin.videos.show', $videos);
+    $crumbs->push(trans('adminlte.edit'), route('admin.videos.edit', $videos));
+});
+
+// Videos categories
+
+Breadcrumbs::register('admin.videos-categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Videos Category', route('admin.videos-categories.index'));
+});
+
+Breadcrumbs::register('admin.videos-categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.videos-categories.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.videos-categories.create'));
+});
+
+Breadcrumbs::register('admin.videos-categories.show', function (Crumbs $crumbs, \App\Models\VideosCategory $videosCategory) {
+    $crumbs->parent('admin.videos-categories.index');
+    $crumbs->push('sa', route('admin.videos-categories.show', $videosCategory));
+});
+
+Breadcrumbs::register('admin.videos-categories.edit', function (Crumbs $crumbs, \App\Models\VideosCategory $videosCategory) {
+    $crumbs->parent('admin.home', $videosCategory);
+    $crumbs->push(trans('adminlte.edit'), route('admin.videos-categories.edit', $videosCategory));
+});
+
+
+// Banners
+
+Breadcrumbs::register('admin.banners.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Banners', route('admin.banners.index'));
+});
+
+Breadcrumbs::register('admin.banners.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.banners.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.banners.create'));
+});
+
+Breadcrumbs::register('admin.banners.show', function (Crumbs $crumbs, \App\Models\Banners $banners) {
+    $crumbs->parent('admin.banners.index');
+    $crumbs->push($banners->title_ru, route('admin.banners.show', $banners));
+});
+
+Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, \App\Models\Banners $banner) {
+    $crumbs->parent('admin.banners.show', $banner);
+    $crumbs->push(trans('adminlte.edit'), route('admin.banners.edit', $banner));
 });

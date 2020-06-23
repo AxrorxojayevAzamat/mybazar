@@ -6,7 +6,7 @@ services:
     container_name: magazin-nginx
     restart: unless-stopped
     ports:
-      - 55000:80
+      - 5500:80
     volumes:
       # Re-use local composer cache via host-volume
       - ~/.composer-docker/cache:/root/.composer/cache:delegated

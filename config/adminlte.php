@@ -223,6 +223,42 @@ return [
             'can' => 'manage-users',
         ],
         [
+            'text' => 'Blog',
+            'url'  => 'admin/posts',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can' => 'manage-users',
+        ],
+        [
+            'text' => 'Blog Categories',
+            'url'  => 'admin/categories',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can' => 'manage-users',
+        ],
+        [
+            'text' => 'News',
+            'url'  => 'admin/news',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can' => 'manage-users',
+        ],
+        [
+            'text' => 'News Categories',
+            'url'  => 'admin/news-categories',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can' => 'manage-users',
+        ],
+        [
+            'text' => 'Videos',
+            'url'  => 'admin/videos',
+            'icon' => 'fas fa-fw fa-video',
+            'can' => 'manage-users',
+        ],
+        [
+            'text' => 'Videos Categories',
+            'url'  => 'admin/videos-categories',
+            'icon' => 'fas fa-fw fa-video',
+            'can' => 'manage-users',
+        ],
+        [
             'text' => 'products',
             'url'  => 'admin/shop/products',
             'icon' => 'fas fa-fw fa-box',
