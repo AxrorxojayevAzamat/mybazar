@@ -124,39 +124,51 @@
             <div class="all-filtered-videos">
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
                 <div class="video-item">
                     <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="image-overlay"></div>
                 </div>
             </div>
 

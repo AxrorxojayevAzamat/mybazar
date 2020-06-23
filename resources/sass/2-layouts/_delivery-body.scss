@@ -1,0 +1,78 @@
+.payment-outter, .guaranty-outter, .delivery-outter{
+    width:80%;
+    margin:0 auto 2%;
+    .accordion{
+        .card{
+            padding:2%;
+            transition:.4s ease-in-out;
+            position:relative;
+            &:hover{
+                background:$bg_grey_color;
+                transition:.4s ease-in-out;
+            }
+            &:before{
+                content:"";
+                height:1px;
+                position:absolute;
+                border-bottom:1px solid $item_border_color;
+                left:2%;
+                width:96%;
+                bottom:0;
+            }
+            .card-header{
+                h2{
+                    position:relative;
+                    button{
+                        @include fontBold;
+                        font-size:24px;
+                        text-align:left;
+                        margin-left:2%;
+                        padding:0;
+                        @include displayFlex(flex-start, row, center);
+                        &:after{
+                            left:0;
+                            width:12px;
+                            height:12px;
+                            top:15%;
+                        }
+                        .cart-logos{
+                            @include displayFlex(flex-start, row, center);
+                            margin-left:20px;
+                            min-height:20px;
+                            img{
+                                min-width:35px;
+                                min-height:20px;
+                                margin:0 10px;
+                            }
+                        }
+                    }
+                    p{
+                        @include fontRegular;
+                        font-size:19px;
+                        text-align:left;
+                        line-height:20px;
+                    }
+                }
+            }
+            .card-body{
+                width:100%;
+                @include displayFlex(flex-start, column, flex-start);
+                .image{
+                    width:270px;
+                    @include displayFlex(flex-start, row, center);
+                    margin:0.5% 0;
+                    img{
+                        height:auto;
+                        width:100%;
+                        margin-right:15px;
+                    }
+                }
+                .description{
+                    text-align:start;
+                    font-size:19px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}

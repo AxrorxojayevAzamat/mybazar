@@ -1,6 +1,6 @@
 <section>
     <div class="h4-title catalog-view">
-        <h4 class="title">Новинки</h4>
+        <h4 class="title">Телевизоры</h4>
     </div>
     <div class="outter-catalog-view">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
@@ -653,10 +653,7 @@
                     <!-- end description -->
                 </div>
                 <!-- Banner should be after even number of products, otherwise products wouldn't wrap correctly! -->
-                <div class="catalog-banner">
-                    <h5 class="title bold">SmartTV Exclusive</h5>
-                    <p class="description ">Adverbs</p>
-                </div>
+                <div class="catalog-banner"></div>
                 <!-- end of banner -->
                 <div class="item">
                     <div class="product-img">

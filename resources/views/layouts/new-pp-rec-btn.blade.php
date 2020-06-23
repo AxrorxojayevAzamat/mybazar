@@ -1,5 +1,5 @@
 <div class="new-popular-recommended-btn">
-    <button class="btn active btn-popular">Популярные</button>
-    <button class="btn btn-new">Новинки</button>
-    <button class="btn btn-recommended">Рекомендуемые</button>
+    <button class="btn active">Популярные</button>
+    <button class="btn">Новинки</button>
+    <button class="btn">Рекомендуемые</button>
 </div>
