@@ -13,6 +13,10 @@
         text-align: start;
         .filter-item{
             width:100%;
+            @include displayFlex(space-between, column, flex-start);
+            a{
+                margin:10px 0; 
+            }
             &:nth-child(2){
                 margin-bottom:15px;
             }
@@ -126,6 +130,10 @@
                     .card-body{
                         padding:0;
                         text-align: start;
+                        @include displayFlex(space-between, column, flex-start);
+                        a{
+                            margin:10px 0;
+                        }
                         div{
                             margin:15px 0;
                             outline: none;

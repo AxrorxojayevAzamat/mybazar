@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Brand view')   
+@section('title', 'Shop view')   
 @include ('includes.common-style')
     @section('styles')
         <link rel="stylesheet" href="{{asset('css/shop-view.css')}}">

@@ -54,7 +54,8 @@ h4.title{
     text-align:start;
     vertical-align: middle;
     background:$bg_grey_color;
-    &.video-blog{
+    &.video-blog, &.catalog-view, &.pay-body,
+     &.sales-body, &.recently-viewed, &.brands-alphabet{
         padding:0.5% 10%;
     }
 }

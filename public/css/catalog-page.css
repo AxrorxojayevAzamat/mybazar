@@ -483,7 +483,7 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog {
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
   padding: 0.5% 10%;
 }
 
@@ -2525,6 +2525,23 @@ img.menu-auto-icon:hover {
 
 .outter-catalog-view form.big-filter .filter-item, .outter-brand-view-body form.big-filter .filter-item {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.outter-catalog-view form.big-filter .filter-item a, .outter-brand-view-body form.big-filter .filter-item a {
+  margin: 10px 0;
 }
 
 .outter-catalog-view form.big-filter .filter-item:nth-child(2), .outter-brand-view-body form.big-filter .filter-item:nth-child(2) {
@@ -2693,6 +2710,23 @@ img.menu-auto-icon:hover {
 .outter-catalog-view .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body, .outter-brand-view-body .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body {
   padding: 0;
   text-align: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.outter-catalog-view .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body a, .outter-brand-view-body .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body a {
+  margin: 10px 0;
 }
 
 .outter-catalog-view .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body div, .outter-brand-view-body .wrapper-filtered-items nav.sort-types form.small-filter .card .card-body div {
@@ -3749,84 +3783,29 @@ img.menu-auto-icon:hover {
   }
 }
 
-.full-banner1 {
+.full-banner1,
+.full-banner2,
+.catalog-banner {
   width: 80%;
-  padding: 0 4%;
   margin: 1% auto;
   height: 200px;
-  color: white;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background: url("../images/fullbanner1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.full-banner1 {
+  background: url("../images/fullbanner1.jpg");
 }
 
 .full-banner2 {
-  width: 80%;
-  padding: 0 4%;
-  margin: 1% auto;
-  height: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   background: url("../images/fullbanner2.jpg");
 }
 
 .catalog-banner {
   width: 100%;
-  padding: 0 5%;
   height: 370px;
   margin: 2% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   background: url("../images/catalog-view-banner.png");
 }
 

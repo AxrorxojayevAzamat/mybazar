@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'News page')
+@section('title', 'Delivery page')
 @include ('includes.common-style')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/delivery.css')}}">

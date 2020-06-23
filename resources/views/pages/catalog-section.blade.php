@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'News page')
+@section('title', 'Catalog section page')
 @include ('includes.common-style')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/catalog-section.css')}}">

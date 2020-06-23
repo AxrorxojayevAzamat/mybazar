@@ -1,40 +1,23 @@
-.full-banner1{
+.full-banner1,
+.full-banner2,
+.catalog-banner{
     width: 80%;
-    padding:0 4%;
     margin:1% auto;
     height:200px;
-    color:white;
-    box-sizing:border-box;
-    background:url('../images/fullbanner1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @include displayFlex(space-between, row, center );
+}
+.full-banner1{
+    background:url('../images/fullbanner1.jpg');
 }
 .full-banner2{
-    width: 80%;
-    padding:0 4%;
-    margin:1% auto;
-    height:200px;
-    @include displayFlex(center, column, flex-start);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color:white;
-    box-sizing:border-box;
     background:url('../images/fullbanner2.jpg');
 }
 .catalog-banner{
     width: 100%;
-    padding:0 5%;
     height:370px;
     margin:2% 0;
-    @include displayFlex(center, column, flex-start);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color:white;
-    box-sizing:border-box;
     background:url('../images/catalog-view-banner.png');
 }
 @media all and (max-width:1000px){

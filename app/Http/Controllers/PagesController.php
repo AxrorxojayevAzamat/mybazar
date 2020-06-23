@@ -13,8 +13,8 @@ class PagesController extends Controller
     public function catalog() {
         return view("pages.catalog");
     }
-    public function shoppingCart() {
-        return view("pages.shopping-cart-page");
+    public function cart() {
+        return view("pages.cart");
     }
     public function about() {
         return view("pages.about");
@@ -55,6 +55,13 @@ class PagesController extends Controller
     public function catalogSection(){
         return view("pages.catalog-section");
     }
-    
-
+    public function favorites(){
+        return view("pages.favorites");
+    }
+    public function pay(){
+        return view("pages.pay");
+    }
+    public function checkout(){
+        return view("pages.checkout");
+    }
 }

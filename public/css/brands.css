@@ -229,7 +229,7 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog {
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
   padding: 0.5% 10%;
 }
 
@@ -2174,21 +2174,12 @@ img.menu-auto-icon:hover {
   }
 }
 
-.outter-brands-body {
-  width: 100%;
-  background: white;
-}
-
-.outter-brands-body .h4-title {
-  padding: 0.5% 10%;
-}
-
-.outter-brands-body .list-of-brands {
+.list-of-brands {
   width: 100%;
   padding: 2% 10%;
 }
 
-.outter-brands-body .list-of-brands .filter-by-alphabet {
+.list-of-brands .filter-by-alphabet {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2207,7 +2198,7 @@ img.menu-auto-icon:hover {
       flex-wrap: wrap;
 }
 
-.outter-brands-body .list-of-brands .filter-by-alphabet a {
+.list-of-brands .filter-by-alphabet a {
   font-family: 'cerapro-bold';
   font-size: 18px;
   color: #07108f;
@@ -2216,32 +2207,32 @@ img.menu-auto-icon:hover {
   padding: 8px 14px;
 }
 
-.outter-brands-body .list-of-brands .filter-by-alphabet a.active {
+.list-of-brands .filter-by-alphabet a.active {
   background: #0042ff;
   color: white;
   border-radius: 23px;
 }
 
-.outter-brands-body .list-of-brands .filter-by-alphabet .first-row, .outter-brands-body .list-of-brands .filter-by-alphabet .second-row {
+.list-of-brands .filter-by-alphabet .first-row, .list-of-brands .filter-by-alphabet .second-row {
   width: 100%;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands {
+.list-of-brands .filtered-brands {
   width: 100%;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item {
+.list-of-brands .filtered-brands .letter-item {
   width: 100%;
   color: black;
   margin-bottom: 1%;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item h6.title {
+.list-of-brands .filtered-brands .letter-item h6.title {
   font-size: 24px;
   font-family: 'cerapro-bold';
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter {
+.list-of-brands .filtered-brands .letter-item .brands-by-letter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2259,50 +2250,50 @@ img.menu-auto-icon:hover {
       flex-wrap: wrap;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div {
+.list-of-brands .filtered-brands .letter-item .brands-by-letter div {
   width: 25%;
   text-align: start;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div a {
+.list-of-brands .filtered-brands .letter-item .brands-by-letter div a {
   color: black;
   font-size: 20px;
   line-height: 40px;
 }
 
-.outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div a.all-brands-by-this-letter {
+.list-of-brands .filtered-brands .letter-item .brands-by-letter div a.all-brands-by-this-letter {
   color: #0042ff;
   font-family: 'cerapro-bold';
 }
 
 @media all and (max-width: 800px) {
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div {
+  .list-of-brands .filtered-brands .letter-item .brands-by-letter div {
     width: 33.3%;
   }
 }
 
 @media all and (max-width: 600px) {
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item {
+  .list-of-brands .filtered-brands .letter-item {
     margin-bottom: 3%;
   }
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item h6.title {
+  .list-of-brands .filtered-brands .letter-item h6.title {
     font-size: 22px;
     font-family: 'cerapro-bold';
   }
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div {
+  .list-of-brands .filtered-brands .letter-item .brands-by-letter div {
     width: 50%;
   }
 }
 
 @media all and (max-width: 400px) {
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item {
+  .list-of-brands .filtered-brands .letter-item {
     margin-bottom: 5%;
   }
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item h6.title {
+  .list-of-brands .filtered-brands .letter-item h6.title {
     font-size: 20px;
     font-family: 'cerapro-bold';
   }
-  .outter-brands-body .list-of-brands .filtered-brands .letter-item .brands-by-letter div a {
+  .list-of-brands .filtered-brands .letter-item .brands-by-letter div a {
     font-size: 18px;
   }
 }

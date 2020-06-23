@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index');
 Route::get('/catalog', 'PagesController@catalog');
-Route::get('/cart', 'PagesController@shoppingCart');
+Route::get('/cart', 'PagesController@cart');
+Route::get('/checkout', 'PagesController@checkout');
 Route::get('/popular', 'PagesController@popular');
 Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
@@ -29,6 +30,9 @@ Route::get('/delivery', 'PagesController@delivery');
 Route::get('/guaranty', 'PagesController@guaranty');
 Route::get('/payment', 'PagesController@payment');
 Route::get('/catalogsection', 'PagesController@catalogSection');
+Route::get('/favorites', 'PagesController@favorites');
+Route::get('/pay', 'PagesController@pay');
+
 
 
 Auth::routes();

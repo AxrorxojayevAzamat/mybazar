@@ -483,7 +483,7 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog {
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
   padding: 0.5% 10%;
 }
 
