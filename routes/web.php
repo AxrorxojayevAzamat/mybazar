@@ -39,6 +39,23 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
+
+    Route::resource('/news', 'NewsController');
+    Route::resource('/news-categories', 'NewsCategoryController', ['except' => ['show']]);
+
+    Route::resource('/videos', 'VideosController');
+    Route::resource('/videos-categories', 'VideosCategoryController', ['except' => ['show']]);
+
+    Route::resource('/posts', 'PostController');
+    Route::resource('/categories', 'CategoryController', ['except' => ['show']]);
+
+    Route::resource('/banners', 'BannersController');
+
+
+
+
+
+
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
 
