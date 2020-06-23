@@ -375,9 +375,9 @@ Breadcrumbs::register('admin.posts.create', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.create'), route('admin.posts.create'));
 });
 
-Breadcrumbs::register('admin.posts.show', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.posts.show', function (Crumbs $crumbs, \App\Models\Post $post) {
     $crumbs->parent('admin.posts.index');
-    $crumbs->push('sda', route('admin.posts.show', 'sa'));
+    $crumbs->push($post->title_ru, route('admin.posts.show', $post));
 });
 
 Breadcrumbs::register('admin.posts.edit', function (Crumbs $crumbs, \App\Models\Post $brand) {

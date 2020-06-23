@@ -48,7 +48,6 @@ class NewsController extends Controller
         $post->description_uz = $request->description_uz;
         $post->description_en = $request->description_en;
         $post->description_ru = $request->description_ru;
-        $post->description_ru = $request->description_ru;
         $post->category_id = $request->category_id;
         $post->is_published = $request->is_published;
         if($request->hasFile('file')){
@@ -91,7 +90,6 @@ class NewsController extends Controller
         $post->body_uz = $request->title_uz;
         $post->description_uz = $request->description_uz;
         $post->description_en = $request->description_en;
-        $post->description_ru = $request->description_ru;
         $post->description_ru = $request->description_ru;
         $post->category_id = $request->category_id;
         $post->is_published = $request->is_published;
