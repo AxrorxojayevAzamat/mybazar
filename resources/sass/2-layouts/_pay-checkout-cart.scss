@@ -2,7 +2,7 @@
     width:100%;
     background:white;
     padding:2% 10%;
-    @include displayFlex(flex-start, row, center);
+    @include displayFlex(flex-start, row, start);
     .ur-cart{
         width:20%;
         text-align: left;
@@ -62,9 +62,218 @@
     }
     .inner-pay-checkout-cart{
         width:80%;
-        h6{
+        padding:0 0 0 2%;
+        text-align:left;
+        h6.title{
             @include fontBold;
             font-size:30px;
+            margin-bottom:3%;
+        }
+        h6.sub-title{
+            font-size:22px;
+            margin-bottom:2%;
+        }
+        form{
+            text-align:start;
+            select{
+                background: url("../images/fill-arrow-down.png") no-repeat right;
+                -webkit-appearance: none;
+                background-position-x: 97%;
+                option{
+                    color:black;
+                    border:none;
+                }
+            }
+            .form-group{
+                @include displayFlex(space-between, row, center);
+                &.wishes{
+                    div{
+                        width:100%;
+                        input{
+                            width:100%;
+                        }
+                    }
+                }
+                &.three-inputs{
+                    @include displayFlex(space-between, row, center);
+                    div{
+                        &.house-number{
+                            @include displayFlex(space-between, row, center);
+                        }
+                    }
+                    .street{
+                        width:49%;
+                    }
+                }
+                div{
+                    width:49%;
+                    select{
+                        height:45px;
+                        @include border(1px,$link_hover_color, 20px );
+                        color:$grey_text2;
+                        font-size:20px;
+                    }
+                    label{
+                        font-size:18px;
+                        color:black;
+                    }
+                    .input{
+                        width:100%; 
+                        @include border(1px,$link_hover_color, 20px );
+                        input{
+                            height:45px;
+                            border:none;
+                            border-radius:20px;
+                            color:$grey_text2;
+                            font-size:20px;
+                        }
+                    }
+                }   
+            }
+            input#submit{
+                width:20%;
+                margin:0 0 0 auto;
+                color:white;
+                background:$item_price_color;
+                border-radius:25px;
+                @include fontBold;
+                font-size:18px;
+                line-height:50px;
+                padding:0;
+                margin:0 0 3%;
+                float:right;
+            }
+        }
+        .check-labels{
+            width:50%;
+            @include displayFlex(space-between, row, flex-start);
+        }
+        .add-carts-type{
+            margin:2% 0;
+            @include displayFlex(flex-start, row, center);
+            .item{
+                margin-right:20px;
+                width:235px;
+                height:150px;
+                padding:2px;
+                @include border(2px, $item_price_color ,20px);
+                &.add-another-cart{
+                    border:none;
+                    background:$bg_grey_color;
+                    color:$item_price_color;
+                    font-size:20px;
+                    @include displayFlex(center, row, center);
+                }
+            }
+        }
+        .clear-list{
+            padding:0 20px;
+            background:white;
+            @include border(2px, $item_price_color, 25px);
+            color:black;
+            font-size:18px;
+            line-height:35px;
+            margin-bottom:10%;
+            float:right;
+        }
+    }
+    button.pay{
+        width:25%;
+        background:$item_price_color;
+        border-radius:25px;
+        color:white;
+        font-size:18px;
+        line-height:50px;
+        padding:0;
+        @include fontBold;
+        margin-bottom:2%;
+        display:block;
+    }
+    p{
+        font-size:18px;
+        line-height:25px;
+        a{
+            color:$item_price_color;
+        }
+    }
+    .all-items{
+        width:100%;
+        min-height:500px;
+        background:white;
+        // @include displayFlex(flex-start,row, flex-start);
+        flex-wrap:wrap;
+        .item{
+            height:390px;
+            width:100%;
+            @include displayFlex(flex-start, row, center);
+            @include border(1px, $item_border_color, 0);
+            background:white;
+            .product-img{
+                width:38%;
+                height:100%;
+                position:relative;
+                img{
+                    width:auto;
+                    margin:auto;
+                    height:100%;
+                    padding:20px;
+                }
+                span.new-product{
+                    position:absolute;
+                    top:0;
+                    right:0;
+                }
+                span.sale.small{
+                    right:5px;
+                }
+            }
+            .description{
+                width:66%;
+                height:100%;
+                padding:2%  2% 2% 0;
+                text-align:left;
+                position:relative;
+                h6{
+                    @include fontRegular;
+                }
+                .item-action-icons{
+                    display: flex;
+                    position:relative;
+                    justify-content: flex-start;
+                    div{
+                        height:50px;
+                        width:50px;
+                        i{
+                            font-size:26px;
+                            line-height:50px;
+                        }
+                    }
+                }
+                .delivery-options{
+                    margin:5% 0;
+                    height:60%;
+                    @include displayFlex(flex-start,column, flex-start);
+                    div{
+                        height:26px;
+                        @include displayFlex(space-between,row, center);
+                        font-size:16px;
+                        margin-bottom:20px;
+                        color:$item_title_color;
+                        i{
+                            margin-right:10px;
+                            font-size:26px;
+                        }
+                    }
+                }
+                p.sub-title{
+                    display: none;
+                }
+                p.sub-title.bottom{
+                    display: block;
+                    bottom:2%;
+                    position: absolute;
+                }
+            }
         }
     }
 }

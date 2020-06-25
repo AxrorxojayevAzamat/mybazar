@@ -1,6 +1,6 @@
 
-var search_input = document.getElementsByTagName('input');
-    
+var search_input = document.getElementsByClassName('bordered-input');
+
     for (i=0;i<search_input.length;i++){
         if (search_input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
             search_input[i].onfocus = function(){

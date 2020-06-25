@@ -3,7 +3,7 @@
         <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
     </div>
     <div id="search-bar" class="search-bar form-control">
-        <input id="search-input" type="search" placeholder="Поиск на myBazar">
+        <input id="search-input" class="bordered-input" type="search" placeholder="Поиск на myBazar">
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Все категории

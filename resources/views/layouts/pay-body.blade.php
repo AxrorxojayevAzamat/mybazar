@@ -14,7 +14,35 @@
             <p class="total-checkout">10 231 749 <span>сум</span></p>
         </div>
         <div class="inner-pay-checkout-cart">
-            <h6>Выберите способ оплаты</h6>
+            <h6 class="title">Выберите способ оплаты</h6>
+            <div class="check-labels">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Онлайн оплата</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Наличными</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">С картой</label>
+                </div>
+            </div>
+            <div class="add-carts-type">
+                <div class="item">
+                    <img src="{{asset('images/uzcard.png')}}" alt="">
+                </div>
+                <div class="item">
+                    <img src="{{asset('images/humo.png')}}" alt="">
+                </div>
+                <div class="item add-another-cart">
+                    <p>Добавить карту</p>
+                </div>
+            </div>
+            <button class="btn pay">Оплатить</button>
+            <p>Срок доставки: 48 часов </p>
+            <p>Связи с тем, некоторые товары мы доставляем через курьерскими службами. <a href="#">Подробно</a></p>
         </div>
     </div>
 
