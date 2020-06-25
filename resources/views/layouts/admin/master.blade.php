@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/glyphicon/css/glyphicon.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('vendor/select2/dist/css/select2.css') }}">--}}
 
     @include('layouts.admin.plugins', ['type' => 'css'])
 
@@ -63,7 +63,7 @@
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script>
+{{--<script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script>--}}
 
 @include('layouts.admin.plugins', ['type' => 'js'])
 
