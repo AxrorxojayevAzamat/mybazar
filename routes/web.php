@@ -32,6 +32,10 @@ Route::get('/payment', 'PagesController@payment');
 Route::get('/catalogsection', 'PagesController@catalogSection');
 Route::get('/favorites', 'PagesController@favorites');
 Route::get('/pay', 'PagesController@pay');
+Route::get('/auth', 'PagesController@auth');
+Route::get('/sms', 'PagesController@sms');
+Route::get('/mail', 'PagesController@mail');
+Route::get('/shops', 'PagesController@shops');
 
 
 

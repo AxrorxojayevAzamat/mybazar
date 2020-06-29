@@ -1,0 +1,52 @@
+.outter-resend-sms{
+    width:100%;
+    padding:5% 0;
+    .inner{
+        @include displayFlex(flex-start, column, space-between);
+        width:40%;
+        text-align:left;
+        margin:0 auto;
+        form{
+            width:100%;
+            margin-bottom:0;
+            text-align:left;
+            label{
+                font-size:18px;
+                color:black;
+            }
+            .input{
+                width:100%; 
+                @include border(1px,$link_hover_color, 20px );
+                margin-bottom:5%;
+                input{
+                    height:45px;
+                    border:none;
+                    border-radius:20px;
+                    color:$grey_text2;
+                    font-size:20px;
+                    &::placeholder{
+                        color:$grey_text2;
+                        font-size:18px;
+                    }
+                }
+            }
+            input#submit{
+                line-height:50px;
+                background:#ced6e0;
+                border-radius:25px;
+                @include fontBold;
+                font-size:18px;
+                padding:0;
+                width:100%;
+                margin:0;
+                color:white;
+                margin-bottom:5%;
+            }
+        }
+        a{
+            font-size:18px;
+            color:$item_price_color;
+            margin:1% 0;
+        }
+    }
+}

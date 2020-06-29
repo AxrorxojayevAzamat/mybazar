@@ -64,4 +64,16 @@ class PagesController extends Controller
     public function checkout(){
         return view("pages.checkout");
     }
+    public function auth(){
+        return view("pages.auth");
+    }
+    public function sms(){
+        return view("pages.sms");
+    }
+    public function mail(){
+        return view("pages.mail");
+    }
+    public function shops(){
+        return view("pages.shops");
+    }
 }

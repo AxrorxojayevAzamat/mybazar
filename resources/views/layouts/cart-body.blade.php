@@ -28,6 +28,11 @@
                             <h5 class="price">741 640 <span>сум</span></h5>
                             <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
                         </div>
+                        <div class="count-div">
+                            <i class="mbfunction-available_compare"></i>
+                            <div class="number">1</div>
+                            <i class="mbaddone"></i>
+                        </div>
                         <div class="item-action-icons">
                             <div class="libra"data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbtocompare"></i></div>
                             <div class="like"><i class="mbfavorite"></i></div>
@@ -51,6 +56,11 @@
                         <div class="current-old-price horizontal">
                             <h5 class="price">741 640 <span>сум</span></h5>
                             <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
+                        </div>
+                        <div class="count-div">
+                            <i class="mbfunction-available_compare"></i>
+                            <div class="number">1</div>
+                            <i class="mbaddone"></i>
                         </div>
                         <div class="item-action-icons">
                             <div class="libra"data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbtocompare"></i></div>

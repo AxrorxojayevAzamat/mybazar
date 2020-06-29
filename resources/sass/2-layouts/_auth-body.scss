@@ -1,0 +1,206 @@
+.outter-sign-reg{
+    width:100%;
+    padding:3% 20% 2%;
+    @include displayFlex(flex-start, column, flex-start);
+    text-align:start;
+    .inner-sign-reg{
+        width:100%;
+        @include displayFlex(space-between, row, flex-start);
+        form{
+            width:48%;
+            .phone-number{
+                text-align:start;
+                label{
+                    font-size:18px;
+                    color:black;
+                    &.mail-phone-number{
+                        text-align:left;
+                    }
+                }
+                .input{
+                    width:100%; 
+                    @include border(1px,$link_hover_color, 20px );
+                    margin-bottom:5%;
+                    input{
+                        height:45px;
+                        border:none;
+                        border-radius:20px;
+                        color:$grey_text2;
+                        font-size:20px;
+                        &::placeholder{
+                            color:$grey_text2;
+                            font-size:18px;
+                        }
+                    }
+                }
+            }
+            .oneline-label{
+                @include displayFlex(space-between, row, center);
+                .forget-password{
+                    color:$comment_color;
+                    font-size:14px;
+                }
+            }
+            input#submit{
+                line-height:50px;
+                background:$item_price_color;
+                border-radius:25px;
+                @include fontBold;
+                font-size:18px;
+                padding:0;
+                width:100%;
+                margin:0;
+                color:white;
+            }
+            .enter{
+                @include displayFlex(space-between, row,center);
+                input#submit{
+                    margin:0;
+                    width:48%;
+                    border-radius:20px;
+                } 
+                .form-check{
+                    width:40%;
+                    margin:0;
+                }
+            }
+        }
+        .sign-in-through{
+            width:48%;
+            text-align: start;
+            label{
+                font-size:18px;
+                color:black;
+            }
+            .social-app-icons{
+                width:100%;
+                min-height:50px;
+                @include displayFlex(flex-start, row, flex-start);
+                i{
+                    font-size:18px;
+                    padding:14px;
+                    border-radius:50%;
+                    color:white;
+                    margin-right:10px;
+                    &.mbfacebook{
+                        background:#405994;
+                    }
+                    &.mbtwitter{
+                        background:#1da1f2;
+                    }
+                    &.mbvkontakte{
+                        background:#5082b9;
+                    }
+                }
+            }
+    
+        }
+    }
+    a{
+        font-size:18px;
+        color:$item_price_color;
+        margin:1% 0;
+    }
+}
+
+@media all and (max-width:1522px){
+    .outter-sign-reg{
+        padding:2% 18%;
+    }
+}
+@media all and (max-width:1245px){
+    .outter-sign-reg{
+        padding:3% 10% 2%;
+    }
+}
+@media all and (max-width:1000px){
+    .outter-sign-reg{
+        padding:3% 5% 2%;
+    }
+}
+@media all and (max-width:800px){
+    .outter-sign-reg{
+        @include displayFlex(center, column, center);
+        .inner-sign-reg{
+            @include displayFlex(center, column, center);
+            form{
+                width:60%;
+                .phone-number{
+                    text-align: center;
+                    &.mail-phone-number{
+                        text-align:left;
+                    }
+                }
+            }
+            .sign-in-through{
+                width:60%;
+                text-align:center;
+                .social-app-icons{
+                    justify-content: center;
+                }
+            }
+        }
+        a{
+            margin:3% 0;
+        }
+    }
+}
+@media all and (max-width:700px){
+    .outter-sign-reg{
+        .inner-sign-reg{
+            form{
+                width:70%;
+            }
+            .sign-in-through{
+                width:70%;
+            }
+        }
+    }
+}
+@media all and (max-width:600px){
+    .outter-sign-reg{
+        .inner-sign-reg{
+            form{
+                width:80%;
+            }
+            .sign-in-through{
+                width:80%;
+            }
+        }
+    }
+}
+@media all and (max-width:500px){
+    .outter-sign-reg{
+        .inner-sign-reg{
+            form{
+                width:90%;
+            }
+            .sign-in-through{
+                width:90%;
+            }
+        }
+    }
+}
+@media all and (max-width:400px){
+    .outter-sign-reg{
+        .inner-sign-reg{
+            form{
+                width:90%;
+                .phone-number{
+                    .input{
+                        input{
+                            height:30px;
+                        }
+                    }
+                }
+                input#submit{
+                    line-height:40px;
+                    font-size:16px;
+                }
+            }
+            .sign-in-through{
+                width:90%;
+            }
+        }
+    }
+}

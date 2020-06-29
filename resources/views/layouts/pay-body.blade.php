@@ -29,21 +29,42 @@
                     <label class="form-check-label" for="inlineRadio3">С картой</label>
                 </div>
             </div>
-            <div class="add-carts-type">
-                <div class="item">
-                    <img src="{{asset('images/uzcard.png')}}" alt="">
-                </div>
-                <div class="item">
-                    <img src="{{asset('images/humo.png')}}" alt="">
-                </div>
-                <div class="item add-another-cart">
-                    <p>Добавить карту</p>
-                </div>
+            <div class="pn-ProductNav_Wrapper">
+                <nav id="pnProductNav" class="pn-ProductNav">
+                    <div id="pnProductNavContents" class=" add-carts-type pn-ProductNav_Contents">
+                        <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
+                        <a href="#" class="pn-ProductNav_Link">
+                            <div class="item">
+                                <img src="{{asset('images/uzcard.png')}}" alt="">
+                            </div>
+                        </a>
+                        <a href="#" class="pn-ProductNav_Link">
+                            <div class="item">
+                                <img src="{{asset('images/humo.png')}}" alt="">
+                            </div>
+                        </a>
+                        <a href="#" class="pn-ProductNav_Link">
+                            <div class="item add-another-cart">
+                                <p>Добавить карту</p>
+                            </div>
+                        </a>
+                        <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
+                    </div>
+                </nav>
+                <button id="pnAdvancerLeft" class="pn-Advancer pn-Advancer_Left" type="button">
+                    <svg class="pn-Advancer_Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551 1024"><path d="M445.44 38.183L-2.53 512l447.97 473.817 85.857-81.173-409.6-433.23v81.172l409.6-433.23L445.44 38.18z"/></svg>
+                </button>
+                <button id="pnAdvancerRight" class="pn-Advancer pn-Advancer_Right" type="button">
+                    <svg class="pn-Advancer_Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551 1024"><path d="M105.56 985.817L553.53 512 105.56 38.183l-85.857 81.173 409.6 433.23v-81.172l-409.6 433.23 85.856 81.174z"/></svg>
+                </button>
             </div>
             <button class="btn pay">Оплатить</button>
             <p>Срок доставки: 48 часов </p>
             <p>Связи с тем, некоторые товары мы доставляем через курьерскими службами. <a href="#">Подробно</a></p>
         </div>
+    </div>
+    <div class="back-to-products">
+        <button class="btn">Назад к товарам</button>
     </div>
 
 </section>

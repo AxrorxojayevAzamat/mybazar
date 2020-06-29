@@ -107,9 +107,13 @@
             button.navbar-toggler{
                 padding:0;
                 display: none;
-                i{
-                    line-height:32px;
-                    font-size:20px;
+                img{
+                    width:25px;
+
+                }
+                &:focus{
+                    outline:none;
+                    border:none;
                 }
             }
             form.small-filter{

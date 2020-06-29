@@ -101,13 +101,13 @@
                         </div>
                     </div>
                     <div class="house-number">
-                        <div>
+                        <div class="outter">
                             <label for="house">Дом</label>
                             <div class="input">
                                 <input type="text" id="house"class="form-control bordered-input" required placeholder="" >
                             </div>
                         </div>
-                        <div >
+                        <div class="outter">
                             <label for="flat">Квартира</label>
                             <div class="input">
                                 <input type="text" id="flat" class="form-control bordered-input" required placeholder="" >
@@ -143,9 +143,12 @@
                 </div>
                 
                 
-                <input type="submit" id="submit" value="Отправить заявку">
+                <input type="submit" id="submit" value="Заказать">
             </form>
         </div>
+    </div>
+    <div class="back-to-products">
+        <button class="btn">Назад к товарам</button>
     </div>
 
 </section>

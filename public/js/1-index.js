@@ -180,7 +180,6 @@ $(document).ready(function(){
             }
         }
     });
-    
 
     // add to wishlist script
     var wishlist_count = 0;

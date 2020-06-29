@@ -484,7 +484,7 @@ h4.title {
 }
 
 .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
-  padding: 0.5% 10%;
+  padding: 1% 10%;
 }
 
 h5.title {
@@ -795,9 +795,21 @@ nav ol.breadcrumb li {
   nav ol.breadcrumb {
     width: 84%;
   }
+  .h4-title {
+    padding: 3% 8%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+    padding: 1% 8%;
+  }
 }
 
 @media all and (max-width: 1400px) {
+  .h4-title {
+    padding: 2% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+    padding: 1% 5%;
+  }
   nav ol.breadcrumb {
     width: 90%;
   }
@@ -829,6 +841,12 @@ nav ol.breadcrumb li {
     width: 80%;
     margin: 0 auto;
   }
+  .h4-title {
+    padding: 2.5% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+    padding: 1.5% 5%;
+  }
 }
 
 @media all and (max-width: 800px) {
@@ -840,6 +858,15 @@ nav ol.breadcrumb li {
 @media all and (max-width: 600px) {
   h5.price, h6.old-price {
     font-size: 20px;
+  }
+  .h4-title {
+    padding: 3% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+    padding: 2% 5%;
+  }
+  h4.title {
+    font-size: 24px;
   }
 }
 
@@ -855,6 +882,9 @@ nav ol.breadcrumb li {
   }
   .newone, .recommended, .popular-products {
     height: 565px !important;
+  }
+  h4.title {
+    font-size: 22px;
   }
 }
 
@@ -2683,9 +2713,13 @@ img.menu-auto-icon:hover {
   display: none;
 }
 
-.outter-catalog-view .wrapper-filtered-items nav.sort-types button.navbar-toggler i, .outter-brand-view-body .wrapper-filtered-items nav.sort-types button.navbar-toggler i {
-  line-height: 32px;
-  font-size: 20px;
+.outter-catalog-view .wrapper-filtered-items nav.sort-types button.navbar-toggler img, .outter-brand-view-body .wrapper-filtered-items nav.sort-types button.navbar-toggler img {
+  width: 25px;
+}
+
+.outter-catalog-view .wrapper-filtered-items nav.sort-types button.navbar-toggler:focus, .outter-brand-view-body .wrapper-filtered-items nav.sort-types button.navbar-toggler:focus {
+  outline: none;
+  border: none;
 }
 
 .outter-catalog-view .wrapper-filtered-items nav.sort-types form.small-filter, .outter-brand-view-body .wrapper-filtered-items nav.sort-types form.small-filter {
