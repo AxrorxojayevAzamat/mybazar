@@ -181,6 +181,15 @@ $(document).ready(function(){
         }
     });
 
+    $('.hot-news').owlCarousel({
+        items:1,
+        autoplay:true,
+        autoplayHoverPause:true,
+        loop:true,
+        dots:false,
+        nav:false
+    });
+
     // add to wishlist script
     var wishlist_count = 0;
     $("div.like").click(function(event) {

@@ -1118,7 +1118,15 @@ nav#menu .mm-navbar__title span {
   color: #0042ff;
 }
 
-.top-header a.hot-news {
+.top-header .hot-news {
+  width: 35%;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  -moz-animation: bounce 2s infinite;
+  -o-animation: bounce 2s infinite;
+}
+
+.top-header .hot-news a {
   color: #0042ff;
 }
 
@@ -1141,6 +1149,33 @@ nav#menu .mm-navbar__title span {
 
 .top-header .lang-medium {
   display: none;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-17px);
+  }
+  60% {
+    -webkit-transform: translateY(-13px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-17px);
+            transform: translateY(-17px);
+  }
+  60% {
+    -webkit-transform: translateY(-13px);
+            transform: translateY(-13px);
+  }
 }
 
 @media all and (max-width: 1522px) {

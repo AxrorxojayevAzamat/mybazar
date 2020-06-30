@@ -14,8 +14,15 @@
             color:$item_price_color;
         }
     }
-    a.hot-news{
-        color:$item_price_color;
+    .hot-news{
+        width:35%;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite;
+        -moz-animation: bounce 2s infinite;
+        -o-animation: bounce 2s infinite;
+        a{
+            color:$item_price_color;
+        }
     }
     .lang{
         width:20%;
@@ -24,6 +31,28 @@
     .lang-medium{
         display:none;
     }
+}
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	
+	40% {-webkit-transform: translateY(-17px);}
+	60% {-webkit-transform: translateY(-13px);}
+}
+ 
+@-moz-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+	40% {-moz-transform: translateY(-17px);}
+	60% {-moz-transform: translateY(-13px);}
+}
+ 
+@-o-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+	40% {-o-transform: translateY(-17px);}
+	60% {-o-transform: translateY(-13px);}
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-17px);}
+	60% {transform: translateY(-13px);}
 }
 
 @media all and (max-width:1522px){
