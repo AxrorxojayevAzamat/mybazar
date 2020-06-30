@@ -211,6 +211,18 @@ $(document).ready(function(){
         event.preventDefault();
     });
 
+    // cart dropdown delete button
+    $('.cart-dropdown .dropdown-menu .selected-items a').on("click", ".delete-btn", function(event){
+        this.parentNode.remove();
+    });
+
+    // compare dropdown delete button
+    $('.compare-dropdown .dropdown-menu .selected-items a').on("click", ".delete-btn", function(event){
+        this.parentNode.remove();
+    });
+
+
+
     // add to compare script
     var compare_count = 0;
     $("div.libra").click(function(event) {

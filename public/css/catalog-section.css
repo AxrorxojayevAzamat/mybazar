@@ -1418,7 +1418,7 @@ nav#menu .mm-navbar__title span {
 
 .main-header .from-statistics-to-account .dropdown .dropdown-menu .dropdown-item .delete-btn i {
   font-size: 6px;
-  line-height: 20px;
+  line-height: 18px;
   padding: 0;
   margin: 0;
 }
@@ -4082,6 +4082,7 @@ img.menu-auto-icon:hover {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: white;
+  text-align: left;
 }
 
 .top-brands .two-rows-brands {

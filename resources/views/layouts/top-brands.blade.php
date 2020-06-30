@@ -1,6 +1,6 @@
 <section>
     <div class="top-brands">
-        <h4>Топ бренды</h4>
+        <h4 class="title">Топ бренды</h4>
         <!-- responsive one-row -->
         <div class="one-row-brands owl-carousel owl-theme">
             <div class="item">
