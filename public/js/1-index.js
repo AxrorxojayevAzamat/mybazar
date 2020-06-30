@@ -199,6 +199,30 @@ $(document).ready(function(){
         event.preventDefault();
     });
 
+    // add to cart script
+    var cart_count = 0;
+    $("div.cart").click(function(event) {
+        $(this).addClass('selected_cart');
+        cart_count+=1;
+            setTimeout(function() {
+                $("a.cart > i > span").addClass("counter");
+                $("a.cart > i > span.counter").text(cart_count);
+            }, 100);
+        event.preventDefault();
+    });
+
+    // add to compare script
+    var compare_count = 0;
+    $("div.libra").click(function(event) {
+        $(this).addClass('selected_libra');
+        compare_count+=1;
+            setTimeout(function() {
+                $("a.comparison > i > span").addClass("counter");
+                $("a.comparison > i > span.counter").text(compare_count);
+            }, 100);
+        event.preventDefault();
+    });
+
     // show nav on scroll
     var prev=0;
     var $window= $(window);

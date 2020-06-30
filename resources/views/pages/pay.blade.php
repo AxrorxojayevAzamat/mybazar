@@ -30,8 +30,6 @@
 
 
 @section('script')
-    <script src="{{asset('js/shopping-cart.js')}}"></script>
-    <script src="{{asset('js/compare-items.js')}}"></script>
     <script src="{{asset('js/1-index.js')}}"></script>
 @endsection
 

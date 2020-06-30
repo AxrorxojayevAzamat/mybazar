@@ -40,8 +40,6 @@
 <script src="{{asset('js/autoNumeric-2.0-BETA.js')}}"></script>
 <script src="{{asset('js/autoNumeric.js')}}"></script>
 
-<script src="{{asset('js/shopping-cart.js')}}"></script>
-<script src="{{asset('js/compare-items.js')}}"></script>
 <script src="{{asset('js/range-slider.js')}}"></script>
 <script src="{{asset('js/1-index.js')}}"></script>
 <script src="{{asset('js/2-catalog-page.js')}}"></script>
