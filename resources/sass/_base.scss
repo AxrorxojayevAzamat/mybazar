@@ -55,7 +55,7 @@ h4.title{
     vertical-align: middle;
     background:$bg_grey_color;
     &.video-blog, &.catalog-view, &.pay-body,
-     &.sales-body, &.recently-viewed, &.brands-alphabet{
+     &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body{
         padding:1% 10%;
     }
 }
@@ -313,7 +313,7 @@ nav ol.breadcrumb{
     .h4-title{
         padding:3% 8%;
         &.video-blog, &.catalog-view, &.pay-body,
-         &.sales-body, &.recently-viewed, &.brands-alphabet{
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body{
             padding:1% 8%;
         }
     }
@@ -322,7 +322,7 @@ nav ol.breadcrumb{
     .h4-title{
         padding:2% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
-         &.sales-body, &.recently-viewed, &.brands-alphabet{
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body{
             padding:1% 5%;
         }
     }
@@ -376,7 +376,7 @@ nav ol.breadcrumb{
     .h4-title{
         padding:2.5% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
-         &.sales-body, &.recently-viewed, &.brands-alphabet{
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body{
             padding:1.5% 5%;
         }
     }
@@ -401,7 +401,7 @@ nav ol.breadcrumb{
     .h4-title{
         padding:3% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
-         &.sales-body, &.recently-viewed, &.brands-alphabet{
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body{
             padding:2% 5%;
         }
     }

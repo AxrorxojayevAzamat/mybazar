@@ -3,7 +3,7 @@
 @section('title', 'Shops page')   
 @include ('includes.common-style')
     @section('styles')
-        <link rel="stylesheet" href="{{asset('css/shops.css')}}">
+        <link rel="stylesheet" href="{{asset('css/shop.css')}}">
     @endsection
         @section('body')
             @extends ('layouts.menu')
@@ -21,8 +21,10 @@
                     @include('layouts.breadcrumb-shops')
 
                      <!-- SHOPS body  -->
-                     @include('layouts.shops-view')
-
+                     @include('layouts.shops-body')
+                    
+                     <!-- recently viewed -->
+                    @include('layouts.recently-viewed')
 
                      <!-- NEWS LETTER -->
                      @include ('layouts.news-letter')

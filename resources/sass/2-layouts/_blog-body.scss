@@ -1,4 +1,4 @@
-.outter-list-of-blogs{
+.outter-list-of-shops, .outter-list-of-blogs{
     min-height:500px;
     width:80%;
     padding:1% 0;
@@ -88,7 +88,8 @@
             }
         }
     }
-    .wrapper-filtered-blogs{
+    .wrapper-filtered-blogs,
+    .wrapper-filtered-shops{
         width:80%;
         min-height:1000px;
         @include displayFlex(flex-start, column, flex-start);

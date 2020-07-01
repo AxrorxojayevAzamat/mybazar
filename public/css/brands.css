@@ -229,7 +229,7 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body {
   padding: 1% 10%;
 }
 
@@ -544,7 +544,7 @@ nav ol.breadcrumb li {
   .h4-title {
     padding: 3% 8%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body {
     padding: 1% 8%;
   }
 }
@@ -553,7 +553,7 @@ nav ol.breadcrumb li {
   .h4-title {
     padding: 2% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body {
     padding: 1% 5%;
   }
   nav ol.breadcrumb {
@@ -590,7 +590,7 @@ nav ol.breadcrumb li {
   .h4-title {
     padding: 2.5% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body {
     padding: 1.5% 5%;
   }
 }
@@ -608,7 +608,7 @@ nav ol.breadcrumb li {
   .h4-title {
     padding: 3% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body {
     padding: 2% 5%;
   }
   h4.title {
