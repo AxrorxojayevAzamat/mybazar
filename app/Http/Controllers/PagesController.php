@@ -76,4 +76,7 @@ class PagesController extends Controller
     public function shops(){
         return view("pages.shops");
     }
+    public function singleblog(){
+        return view("pages.singleblog");
+    }
 }

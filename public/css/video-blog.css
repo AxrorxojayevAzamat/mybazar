@@ -472,7 +472,7 @@ nav ol.breadcrumb li {
           transform: rotate(90deg);
 }
 
-.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn {
+.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn, .single-blog-btn {
   height: 65px;
   background: #f1f2f6;
   width: 100%;
@@ -492,7 +492,7 @@ nav ol.breadcrumb li {
           align-items: center;
 }
 
-.news-inner-btn button, .blog-news-btn button, .new-popular-recommended-btn button {
+.news-inner-btn button, .blog-news-btn button, .new-popular-recommended-btn button, .single-blog-btn button {
   padding: 15px 30px;
   color: #07108f;
   font-weight: bold;
@@ -504,7 +504,7 @@ nav ol.breadcrumb li {
   margin: 0 10px 0 0;
 }
 
-.news-inner-btn button.active, .blog-news-btn button.active, .new-popular-recommended-btn button.active {
+.news-inner-btn button.active, .blog-news-btn button.active, .new-popular-recommended-btn button.active, .single-blog-btn button.active {
   background: #0042ff;
   color: white;
 }
