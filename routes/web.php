@@ -37,6 +37,7 @@ Route::get('/sms', 'PagesController@sms');
 Route::get('/mail', 'PagesController@mail');
 Route::get('/shops', 'PagesController@shops');
 Route::get('/singleblog', 'PagesController@singleblog');
+Route::get('/productviewpage-comments', 'PagesController@productViewPageComments');
 
 
 

@@ -363,7 +363,7 @@
                 height:60%;
                 @include displayFlex(flex-start,column, flex-start);
                 div{
-                    height:26px;
+                    line-height:26px;
                     @include displayFlex(space-between,row, center);
                     font-size:16px;
                     margin-bottom:20px;
