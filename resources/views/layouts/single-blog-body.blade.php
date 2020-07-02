@@ -1,7 +1,8 @@
 <section>
     <div class="outter-single-blog-body">
-        <div class="search-side-bar">
-
+        <div id="search-bar" class="search-bar form-control">
+            <input id="search-input" class="bordered-input" type="search" placeholder="Поиск по блогам и новостям">
+            <button class="search btn" type="submit"><i class="mbsearch"></i></button>
         </div>
         <div class="inner-single-blog-body">
             <img class="full-width" src="{{asset('images/single-blog1.png')}}" alt="">
@@ -16,7 +17,9 @@
                     adipisicing elit. Aliquid id culpa illo maiores laboriosam 
                     ducimus rem cupiditate hic tenetur optio.</p>
             </div>
-            <img  class="medium-width" src="{{asset('images/single-blog2.png')}}" alt="">
+            <div class="medium-width">
+                <img src="{{asset('images/single-blog2.png')}}" alt="">
+            </div>
             <div class="three-column-description">
                 <div class="item">
                     <h6 class="title">HD</h6>
