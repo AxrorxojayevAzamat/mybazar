@@ -89,6 +89,30 @@ $(document).ready(function(){
             }
         }
     });
+    $('.similar-p').owlCarousel({
+        nav:true,
+        dots:false,
+        responsive:{
+            0:{
+                items:3
+            },
+            600:{
+                items:4
+            },
+            800:{
+                items:5
+            },
+            1000:{
+                items:5
+            },
+            1251:{
+                items:6
+            },
+            1400:{
+                items:6
+            }
+        }
+    });
     $('.one-row-brands').owlCarousel({
         nav:true,
         margin:10,

@@ -21,12 +21,12 @@
 
     <!-- similar products -->
     @include('layouts.similar-products')
+    
+    <!-- single-charachteristics-comments btn-->
+    @include('layouts.singlep-charac-com-btn')
 
-     <!-- single-charachteristics-comments btn-->
-     @include('layouts.com-singlep-charac-btn')
-
-     <!-- full comments -->
-     @include('layouts.full-comments-singlep')
+    <!-- about product -->
+    @include('layouts.full-des-of-singlep')
 
     <!-- other products of this seller -->
     @include('layouts.other-products-of-this-seller')
@@ -48,6 +48,8 @@
 
 @section('script')
     <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+
 @endsection
 
 

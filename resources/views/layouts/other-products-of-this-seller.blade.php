@@ -1,5 +1,5 @@
 <section>
-    <div class="newone">
+    <div class="other-products-of-this-seller">
         <div class="h4-title other-products-of-this-seller">
             <h4 class="title">Другие товары этого продавца</h4>
         </div>

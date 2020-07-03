@@ -22,11 +22,8 @@
     <!-- similar products -->
     @include('layouts.similar-products')
 
-     <!-- single-charachteristics-comments btn-->
-     @include('layouts.com-singlep-charac-btn')
-
-     <!-- full comments -->
-     @include('layouts.full-comments-singlep')
+     <!-- single-charachteristics-comments btn -->
+     @include('layouts.charac-singlep-com-btn')
 
     <!-- other products of this seller -->
     @include('layouts.other-products-of-this-seller')

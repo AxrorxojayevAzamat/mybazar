@@ -110,6 +110,9 @@
                         width:50px;
                         height:50px;
                         @include border(2px,$comment_color, 50%);
+                        &.active{
+                            border-color:$item_price_color;
+                        }
                         div{
                             width:34px;
                             height:34px;
@@ -173,6 +176,142 @@
                             font-size:26px;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.outter-full-des-of-singlep{
+    width:100%;
+    padding:2% 10%;
+    text-align:center;
+    p{
+        font-size:20px;
+        color:$item_title_color;
+        span.bold{
+            @include fontBold;
+        }
+        .bold{
+            @include fontBold;
+        }
+    }
+    img{
+        display:block;
+        margin:2% auto;
+    }
+}
+.outter-full-comments{
+    @include displayFlex(space-between, row, flex-start);
+    width:100%;
+    padding:2% 10%;
+    height:auto;
+    .comments{
+        width:48%;
+        .sort-by{
+            @include displayFlex(flex-start, row, flex-start);
+            .sort-by-btn{
+                font-size:16px;
+                margin:0;
+                &.active{
+                    color:$item_price_color;
+                    i:before{
+                        font-size:10px;
+                        color:$item_price_color;
+                        margin-left:10px;
+                    }
+                }
+            }
+        }
+        .item{
+            width:100%;
+            margin:0 0 5% 0;
+            text-align:start;
+            .user-with-rating{
+                width:90%;
+                @include displayFlex(space-between, row, flex-start);
+                .user{
+                    @include displayFlex(flex-start, row, flex-start);
+                    width:85%;
+                    .user-ava{
+                        margin-right:20px;
+                        img{
+                            width:50px;
+                            height:50px;
+                        }
+                    }
+                    .user-name{
+                        h6{
+                            font-size:16px;
+                            @include fontBold;
+                        }
+                        p.green{
+                            font-size:14.11px;
+                            color:$bg_discount;
+                        }
+                        p.red{
+                            color:$bg_like_heart;
+                        }
+                    }
+                }
+                .voted-rate{
+                    width:15%;
+                }
+            }
+            p.date{
+                color:$comment_color;
+                font-size:14.11;
+                margin-bottom:5px;
+            }
+            h6{
+                font-size:16px;
+                @include fontBold;
+                color:black;
+                margin:2% 0 1% 0;
+            }
+            p{
+                font-size:16px;
+                color:black;
+            }
+        }
+    }
+    .leave-comment{
+        width:48%;
+        text-align:center;
+        h6.title{
+            font-size:30px;
+            color:black;
+            @include fontBold;
+            .new-rate{
+                width:100%;
+            }
+            form{
+                width:100%;
+                text-align:left;
+                .form-group{
+                    width:100%;
+                    label{
+                        font-size:18px;
+                        color:black;
+                    }
+                    textarea{
+                        height:100px;
+                        color:$bg_grey_color2;
+                        @include border(1px, $bg_grey_color2, 20px);
+                    }
+                }
+                input#submit{
+                    width:20%;
+                    margin:0 0 0 auto;
+                    color:white;
+                    background:$item_price_color;
+                    border-radius:25px;
+                    @include fontBold;
+                    font-size:18px;
+                    line-height:50px;
+                    padding:0;
+                    margin:0 0 3%;
+                    float:right;
                 }
             }
         }

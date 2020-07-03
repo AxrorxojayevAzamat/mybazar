@@ -1,5 +1,5 @@
 <section>
-    <div class="newone">
+    <div class="u-will-also-like">
         <div class="h4-title u-will-also-like">
             <h4 class="title">Вам также может понравиться</h4>
         </div>

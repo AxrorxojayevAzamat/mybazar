@@ -61,7 +61,7 @@
                     </div>
                     <p>Цвет: <span>Interstellar Grey</span></p>
                     <div class="colors">
-                        <div>
+                        <div class="active">
                             <div class="grey"></div>
                         </div>
                         <div >

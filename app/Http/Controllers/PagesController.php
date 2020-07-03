@@ -79,7 +79,13 @@ class PagesController extends Controller
     public function singleblog(){
         return view("pages.singleblog");
     }
+    public function productViewPage(){
+        return view("pages.productviewpage");
+    }
     public function productViewPageComments(){
         return view("pages.productviewpage-comments");
+    }
+    public function productViewPageCharacteristics(){
+        return view("pages.productviewpage-characteristics");
     }
 }

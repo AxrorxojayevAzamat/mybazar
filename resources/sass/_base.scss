@@ -25,6 +25,9 @@ a{
         color:$link_hover_color;
     }
 }
+.text-left{
+    text-align:left;
+}
 .btn:focus{
     outline:none;
     box-shadow:none;
@@ -56,7 +59,7 @@ h4.title{
     background:$bg_grey_color;
     &.video-blog, &.catalog-view, &.pay-body,
      &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
-     &.u-will-also-like, &.other-products-of-this-seller{
+     &.u-will-also-like, &.other-products-of-this-seller, &.similar-products{
         padding:1% 10%;
     }
 }
@@ -107,12 +110,14 @@ span.sale.big{
     position:absolute;
     bottom:5px;
     padding:8px 30px;
+    right:0;
     color:white;
     border-radius:15px;
     font-size:20px;
     text-transform:uppercase;
     text-align: center;
     background:$bg_discount;
+    white-space: nowrap;
     span{
         display: inline-block;
         span{
@@ -148,6 +153,7 @@ button.owl-prev, .owl-carousel .owl-nav button.owl-prev{
     height:40px;
     border-radius:23px;
     left:-2%;
+    top:50%;
     outline: none;
 }
 button.owl-next, .owl-carousel .owl-nav button.owl-next{
@@ -157,6 +163,7 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
     height:40px;
     border-radius:23px;
     right:-2%;
+    top:50%;
     outline: none;
 }
 .owl-dots{
@@ -169,14 +176,15 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
 button.owl-prev span,
 button.owl-next span{
     color:white;
-    font-size:40px;
+    font-size:45px;
+    line-height:15px;
 }
 .outter-products{
     width:100%;
     height:610px;
     background:white;
     position:relative;
-    .products{
+    .similar-p,.products{
         width:80%;
         height:610px;
         margin:0 auto;
@@ -315,7 +323,7 @@ nav ol.breadcrumb{
         padding:3% 8%;
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
-         &.u-will-also-like, &.other-products-of-this-seller{
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products{
             padding:1% 8%;
         }
     }
@@ -325,7 +333,7 @@ nav ol.breadcrumb{
         padding:2% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
-         &.u-will-also-like, &.other-products-of-this-seller{
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products{
             padding:1% 5%;
         }
     }
@@ -380,7 +388,7 @@ nav ol.breadcrumb{
         padding:2.5% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
-         &.u-will-also-like, &.other-products-of-this-seller{
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products{
             padding:1.5% 5%;
         }
     }
@@ -406,7 +414,7 @@ nav ol.breadcrumb{
         padding:3% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
-         &.u-will-also-like, &.other-products-of-this-seller{
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products{
             padding:2% 5%;
         }
     }
