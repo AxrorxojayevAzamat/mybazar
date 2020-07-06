@@ -88,4 +88,7 @@ class PagesController extends Controller
     public function productViewPageCharacteristics(){
         return view("pages.productviewpage-characteristics");
     }
+    public function compare(){
+        return view("pages.compare");
+    }
 }

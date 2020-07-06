@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Productviewpage comments')
+@section('title', 'Productviewpage')
 @include ('includes.common-style')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}">

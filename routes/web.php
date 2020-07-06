@@ -40,6 +40,8 @@ Route::get('/singleblog', 'PagesController@singleblog');
 Route::get('/productviewpage', 'PagesController@productViewPage');
 Route::get('/productviewpage-comments', 'PagesController@productViewPageComments');
 Route::get('/productviewpage-characteristics', 'PagesController@productViewPageCharacteristics');
+Route::get('/compare', 'PagesController@compare');
+
 
 
 
