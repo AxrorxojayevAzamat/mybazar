@@ -3066,9 +3066,79 @@ img.menu-auto-icon:hover {
   padding: 2% 10%;
 }
 
-.outter-full-characteristics #fullCharacteristicsCollapse {
+.outter-full-characteristics .accordion {
   width: 48%;
-  background: red;
+  text-align: start;
+}
+
+.outter-full-characteristics .accordion .card .card-header {
+  border-bottom: 1px solid #dfe4ea;
+}
+
+.outter-full-characteristics .accordion .card .card-header h2 button {
+  text-align: left;
+  font-family: 'cerapro-bold';
+  font-size: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dfe4ea;
+}
+
+.outter-full-characteristics .accordion .card .card-body {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.outter-full-characteristics .accordion .card .card-body p.grey {
+  font-size: 14.5px;
+  color: #a5b1c2;
+  margin-bottom: 5px;
+}
+
+.outter-full-characteristics .accordion .card .card-body p.black {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors {
+  height: 20px;
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors div {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors div.pink {
+  background: #dda6c5;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors div.blue {
+  background: #409be8;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors div.nude {
+  background: #d9cba4;
+}
+
+.outter-full-characteristics .accordion .card .card-body .colors div.dark-grey {
+  background: #636363;
 }
 
 .current-old-price {

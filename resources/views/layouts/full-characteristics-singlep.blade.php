@@ -8,7 +8,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -20,6 +20,12 @@
                     <p class="black">179 г.</p>
 
                     <p class="grey">Цвета</p>
+                    <div class="colors">
+                        <div class="pink"></div>
+                        <div class="blue"></div>
+                        <div class="nude"></div>
+                        <div class="dark-grey"></div>
+                    </div>
 
 
                     <p class="grey">Аккумлятор</p>
@@ -35,7 +41,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -62,7 +68,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -89,7 +95,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -116,7 +122,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -143,7 +149,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>
@@ -170,7 +176,7 @@
                     </button>
                 </h2>
             </div>
-            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#fullCharacteristicsCollapse">
+            <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#fullCharacteristicsCollapse">
                 <div class="card-body">
                     <p class="grey">Дата выхода</p>
                     <p class="black">2019, июль</p>

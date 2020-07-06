@@ -29,7 +29,8 @@ $(document).ready(function(){
         }
         $(this).addClass('active');
         $(this).children('i').addClass('mbshow');
-    })
+    });
+    
 });
 
 jQuery(function($) {

@@ -22,11 +22,11 @@
     <!-- similar products -->
     @include('layouts.similar-products')
 
-     <!-- single-charachteristics-comments btn -->
-     @include('layouts.charac-singlep-com-btn')
-
     <!-- other products of this seller -->
     @include('layouts.other-products-of-this-seller')
+
+    <!-- single-charachteristics-comments btn -->
+    @include('layouts.charac-singlep-com-btn')
 
     <!-- full characteristics of single products -->
     @include('layouts.full-characteristics-singlep')
@@ -48,6 +48,7 @@
 
 @section('script')
     <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/2-catalog-page.js')}}"></script>
 @endsection
 
 
