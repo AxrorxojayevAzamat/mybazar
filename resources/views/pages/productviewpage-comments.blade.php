@@ -48,6 +48,7 @@
 
 @section('script')
     <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/2-catalog-page.js')}}"></script>
 @endsection
 
 

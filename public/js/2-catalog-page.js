@@ -21,11 +21,11 @@ $(document).ready(function(){
         $(this).addClass('active');
         $(this).children('i').addClass('mbshow');
     });
-    $('.outter-full-comments .sort-by .sort-by-btn').on('click', function(event){
+    $('.outter-full-comments .comments .sort-by-btn').on('click', function(event){
         event.preventDefault();
-        if($('.outter-full-comments .sort-by .sort-by-btn').hasClass('active')){
-            $('.outter-full-comments .sort-by .sort-by-btn').removeClass('active');
-            $('.outter-full-comments .sort-by .sort-by-btn i').removeClass('mbshow');
+        if($('.outter-full-comments .comments .sort-by-btn').hasClass('active')){
+            $('.outter-full-comments .comments .sort-by-btn').removeClass('active');
+            $('.outter-full-comments .comments .sort-by-btn i').removeClass('mbshow');
         }
         $(this).addClass('active');
         $(this).children('i').addClass('mbshow');

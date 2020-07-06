@@ -28,6 +28,9 @@
     <!-- other products of this seller -->
     @include('layouts.other-products-of-this-seller')
 
+    <!-- full characteristics of single products -->
+    @include('layouts.full-characteristics-singlep')
+
     <!-- u will also like -->
     @include('layouts.u-will-also-like')
 

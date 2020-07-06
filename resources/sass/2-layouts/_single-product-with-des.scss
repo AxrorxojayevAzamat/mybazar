@@ -277,43 +277,55 @@
     }
     .leave-comment{
         width:48%;
-        text-align:center;
+        text-align:left;
         h6.title{
             font-size:30px;
+            line-height:30px;
             color:black;
             @include fontBold;
-            .new-rate{
+        }
+        .new-rate{
+            width:100%;
+            height:50px
+        }
+        form{
+            width:100%;
+            text-align:left;
+            .form-group{
                 width:100%;
-            }
-            form{
-                width:100%;
-                text-align:left;
-                .form-group{
-                    width:100%;
-                    label{
-                        font-size:18px;
-                        color:black;
-                    }
-                    textarea{
-                        height:100px;
-                        color:$bg_grey_color2;
-                        @include border(1px, $bg_grey_color2, 20px);
-                    }
-                }
-                input#submit{
-                    width:20%;
-                    margin:0 0 0 auto;
-                    color:white;
-                    background:$item_price_color;
-                    border-radius:25px;
-                    @include fontBold;
+                label{
                     font-size:18px;
-                    line-height:50px;
-                    padding:0;
-                    margin:0 0 3%;
-                    float:right;
+                    color:black;
+                    font-weight:bold;
                 }
+                textarea{
+                    height:100px;
+                    color:$grey_text2;
+                    @include border(1px, $link_hover_color, 20px);
+                    resize: none;
+                }
+            }
+            input#submit{
+                margin:0 0 0 auto;
+                color:white;
+                background:$item_price_color;
+                border-radius:25px;
+                @include fontBold;
+                font-size:18px;
+                line-height:50px;
+                padding:0 100px;
+                margin:0 0 3%;
+                float:right;
             }
         }
+    }
+}
+.outter-full-characteristics{
+    @include displayFlex(flex-start, row, center);
+    width:100%;
+    padding:2% 10%;
+    #fullCharacteristicsCollapse{
+        width:48%;
+        background:red;
     }
 }
