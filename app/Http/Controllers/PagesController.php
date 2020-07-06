@@ -91,4 +91,7 @@ class PagesController extends Controller
     public function compare(){
         return view("pages.compare");
     }
+    public function salesView(){
+        return view("pages.salesview");
+    }
 }
