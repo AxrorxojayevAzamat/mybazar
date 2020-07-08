@@ -53,7 +53,7 @@
                     <div class="video-item">
                         <img src="/storage/videos/{{$video->poster}}" alt="" class="poster">
                         <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <h6>{{$video->title}}</h6>
                             <button class="btn play">
                                 <div class="arrow-right"></div>
                             </button>

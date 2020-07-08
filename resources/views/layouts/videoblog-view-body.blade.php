@@ -27,7 +27,6 @@
                     <div class="player-overlay">
                         <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
                     </div> 
-
             </div>
             <h6>Топовая SFF-сборка на Ryzen</h6>
             <p>Несмотря на то, что мы сейчас переходим на обновленную методику тестирования, «пропустить» 
