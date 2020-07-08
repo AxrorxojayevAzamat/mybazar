@@ -223,6 +223,12 @@ return [
             'can' => 'manage-users',
         ],
         [
+            'text' => 'Sliders',
+            'url'  => 'admin/sliders',
+            'icon' => 'fas fa-fw fa-images',
+            'can' => 'manage-users',
+        ],
+        [
             'text' => 'Blog',
             'url'  => 'admin/posts',
             'icon' => 'fas fa-fw fa-newspaper',
