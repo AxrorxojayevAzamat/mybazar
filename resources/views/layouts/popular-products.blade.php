@@ -16,7 +16,7 @@
                         <h6 class="title">{{$bestseller->name}}</h6>
                         <p class="sub-title">
                             @foreach($bestseller->categories as $category)
-                                <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
+                                <a href="{{ route('category.show', $category) }}">{{ $category->name }}</a><br>
                             @endforeach
                         </p>
                         <div class="rate">
