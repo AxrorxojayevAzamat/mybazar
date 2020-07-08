@@ -40,7 +40,8 @@ class BlogController extends Controller
     public function show(Post $blog){
         $post = $blog->load(['category']);
         $categories = \App\Models\Category::get();
+        $lastBlogs = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(3)->get();
 
-        return view('pages.bloginner', compact('post', 'categories'));
+        return view('pages.bloginner', compact('post', 'categories','lastBlogs'));
     }
 }

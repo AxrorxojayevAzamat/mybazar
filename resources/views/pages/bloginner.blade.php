@@ -1,11 +1,10 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Blog page')
+@section('title', 'Single blog page')
 @include ('includes.common-style')
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/blog.css')}}">
+    <link rel="stylesheet" href="{{asset('css/single-blog.css')}}">
 @endsection
-
 @section('body')
     @extends ('layouts.menu')
 @section('page')
@@ -15,18 +14,20 @@
         @include('layouts.main-header')
         @include('layouts.nav-header')
     </section>
+    <!-- Slide banner -->
+    @include ('layouts.slide-banner-catalog')
 
-    <!-- BREADCRUMB -->
-    @include('layouts.breadcrumb-blog')
+    <!-- Breadcrumbs -->
+    @include('layouts.breadcrumb-single-blog')
 
+    <!-- single-blog btn -->
+    @include('layouts.single-blog-btn')
 
-    <!-- blog-news btn -->
-    @include('layouts.blog-news-btn')
-
-    <!-- blog body -->
+    <!-- Single body blog -->
     @include('pages.bloginner_body')
 
-    <!-- recently watched -->
+
+    <!-- recently viewed -->
     @include('layouts.recently-viewed')
 
     <!-- NEWS LETTER -->
@@ -34,12 +35,12 @@
 
     <!-- FOOTER -->
     @include ('layouts.footer')
-@endsection
+
 @endsection
 
+@endsection
 
 @section('script')
-    <script src="{{asset('js/shopping-cart.js')}}"></script>
-    <script src="{{asset('js/compare-items.js')}}"></script>
     <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/3-popular-page.js')}}"></script>
 @endsection

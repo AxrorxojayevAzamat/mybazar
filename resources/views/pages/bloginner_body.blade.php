@@ -1,55 +1,32 @@
 <section>
-    <div class="outter-list-of-blogs">
-        <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                @foreach($categories as $category)
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                        <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
-                    </div>
-                @endforeach
-            </div>
-        </form>
-
-        <div class="wrapper-filtered-blogs">
-            <nav class=" navbar navbar-expand-custom sort-types">
-
-                <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- <span class="navbar-toggler-icon"></span>     -->
-                    <i class="navbar-toggler-icon mbcompare"></i>
-                </button>
-
-                <div id="search-bar" class="search-bar form-control">
-                    <input id="search-input" type="search" placeholder="Поиск по блогам и новостям">
-                    <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <form action="get" class="accordion small-filter filter" id="catalogFilter">
-                        <ul class="navbar-nav">
-                            <div class="card">
-                                <div id="collapseOne" class="collapse" aria-labelledby="filterOne" data-parent="#catalogFilter">
-                                    <div class="card-body">
-                                        @foreach($categories as $category)
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                                                <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </ul>
-                    </form>
-                </div>
-            </nav>
-
-            <div class="all-filtered-blogs">
-                <h1>{{$post->title}}</h1>
-                <h3>{{$post->description}}</h3>
+    <div class="outter-single-blog-body">
+        <div id="search-bar" class="search-bar form-control">
+            <input id="search-input" class="bordered-input" type="search" placeholder="Поиск по блогам и новостям">
+            <button class="search btn" type="submit"><i class="mbsearch"></i></button>
+        </div>
+        <div class="inner-single-blog-body">
+            <img class="full-width" src="/storage/posts/{{$post->file}}" alt="">
+            <div class="description">
+                <h5 class="title">{{$post->title}}</h5>
+                <p>{{$post->description}}</p>
                 {!! $post->body !!}
             </div>
-
+            <div class="all-filtered-blogs">
+                @foreach($lastBlogs as $blog)
+                <a href="{{route('blogs.show',$blog)}}">
+                    <div class="blog-item">
+                        <div class="image">
+                            <img src="/storage/posts/{{$blog->file}}" alt="">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="description">
+                            <h6 class="title">{{$blog->title}}</h6>
+                            <p>{{$blog->description}}</p>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
