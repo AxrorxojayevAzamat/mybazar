@@ -1,4 +1,6 @@
 <?php
+
+use App\Entity\Shop\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,26 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/', 'PagesController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/catalog', 'PagesController@catalog');
 Route::get('/cart', 'PagesController@shoppingCart');
 Route::get('/popular', 'PagesController@popular');
 Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
-Route::get('/sales','PagesController@sales');
-Route::get('/videoblog','PagesController@videoblog');
-Route::get('/shopview','PagesController@shopview');
+Route::get('/sales', 'PagesController@sales');
+Route::get('/videoblog', 'PagesController@videoblog');
+Route::get('/shopview', 'PagesController@shopview');
 Route::get('/blog', 'PagesController@blog');
-Route::get('/news', 'PagesController@news');
 Route::get('/delivery', 'PagesController@delivery');
 Route::get('/guaranty', 'PagesController@guaranty');
 Route::get('/payment', 'PagesController@payment');
 Route::get('/catalogsection', 'PagesController@catalogSection');
 
+Route::resource('/blogs', 'BlogController');
+Route::resource('/videos', 'VideosController');
+Route::resource('/news', 'NewsController');
+Route::resource('/category', 'CategoryController');
 
 Auth::routes();
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
@@ -46,6 +50,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('/categories', 'CategoryController', ['except' => ['show']]);
 
     Route::resource('/banners', 'BannersController');
+    Route::resource('/sliders', 'SlidersController');
 
 
 

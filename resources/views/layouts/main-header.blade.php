@@ -1,6 +1,8 @@
 <div class="main-header">
     <div class="logo">
-        <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
+        <a href="/">
+            <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
+        </a>
     </div>
     <div id="search-bar" class="search-bar form-control">
         <input id="search-input" type="search" placeholder="Поиск на myBazar">
@@ -8,7 +10,7 @@
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Все категории
             </button>
-            <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu animated fadeIn" aria-lab#mm-14elledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Телевизоры, аудио, видео</a>
                 <a class="dropdown-item" href="#">Смартфоны и гаджеты</a>
                 <a class="dropdown-item" href="#">Техника для дома</a>

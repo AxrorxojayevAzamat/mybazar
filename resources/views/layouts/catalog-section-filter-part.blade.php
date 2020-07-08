@@ -212,7 +212,7 @@
                                 </div>
                                 <div id="collapseThree" class="collapse" aria-labelledby="filterThree" data-parent="#catalogFilter">
                                     <div class="card-body">
-                                    <div class="outter-range-slider">	
+                                    <div class="outter-range-slider">
                                         <div class="form-group">
                                             <input type="text" class=" js-input-from form-control" value="0" />
                                             <span>-</span>
@@ -221,7 +221,7 @@
                                         <div class="range-slider">
                                             <input type="text" class="js-range-slider" value="" />
                                         </div>
-                                    
+
                                     </div>
                                     </div>
                                 </div>
@@ -302,51 +302,24 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </ul>
                     </form>
                 </div>
             </nav>
-            
+
             <div class="all-filtered-catalog-section">
                 <div class="types-of-media">
+                    @foreach($rootCategories as $category)
                     <div class="item">
-
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media1.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Телевизоры</h6>
+                        <a href="{{ route('category.show', $category) }}">
+                            <div class="image">
+                                <img src="{{asset('images/type-of-media1.png')}}" alt="">
+                            </div>
+                            <h6 class="title">{{$category->name}}</h6>
+                        </a>
                     </div>
-                    <div class="item">
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media2.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Спутниковое ТВ</h6>
-                    </div>
-                    <div class="item">
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media3.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Проекторы</h6>
-                    </div>
-                    <div class="item">
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media4.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Музыкальные центры</h6>
-                    </div>
-                    <div class="item">
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media5.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Оборудование для DJ</h6>
-                    </div>
-                    <div class="item">
-                        <div class="image">
-                            <img src="{{asset('images/type-of-media6.png')}}" alt="">
-                        </div>
-                        <h6 class="title">Наушники</h6>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="all-filtered-blogs">
                     <a href="#">
@@ -398,7 +371,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <div class="catalog-banner"></div>
             </div>
 

@@ -5,15 +5,13 @@
         </div>
         <div class="outter-players">
             <div class="all-players owl-carousel owl-theme">
+                @foreach($videos as $video)
                 <div class="item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <a href="/videos/{{$video->id}}">
+                        <img src="/storage/videos/{{$video->poster}}">
+                    </a>
                 </div>
-                <div class="item">
-                    <iframe  src="https://www.youtube.com/embed/cO9win31fvg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                <iframe src="https://www.youtube.com/embed/NBAtkH_7L_I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

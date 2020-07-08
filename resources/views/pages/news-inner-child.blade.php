@@ -18,8 +18,8 @@
             <nav class=" navbar navbar-expand-custom sort-types">
 
                 <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- <span class="navbar-toggler-icon"></span>     -->
-                <i class="navbar-toggler-icon mbcompare"></i>
+                    <!-- <span class="navbar-toggler-icon"></span>     -->
+                    <i class="navbar-toggler-icon mbcompare"></i>
                 </button>
 
                 <div id="search-bar" class="search-bar form-control">
@@ -34,10 +34,10 @@
                                 <div id="collapseOne" class="collapse" aria-labelledby="filterOne" data-parent="#catalogFilter">
                                     <div class="card-body">
                                         @foreach($categories as $category)
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                                            <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
-                                        </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
+                                                <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -47,37 +47,11 @@
                 </div>
             </nav>
 
-            <div class="all-filtered-videos">
-                @foreach($videos as $video)
-                <div class="video-item">
-                    <a href="{{ route('videos.show', $video) }}" style="position:relative; display: block">
-                        <img src="/storage/videos/{{$video->poster}}" >
-                    </a>
-                    <div class="image-overlay"></div>
-                </div>
-                @endforeach
+            <div class="">
+                <h1>{{$news->title}}</h1><br>
+                <h3>{{$news->description}}</h3><br>
+                {!! $news->body !!}<br>
             </div>
-
-            <!-- PAGINATION  -->
-{{--            <nav class="products-pagination" aria-label="Page navigation example">--}}
-{{--                <ul class="pagination">--}}
-{{--                    <!-- <li class="page-item">--}}
-{{--                        <a class="page-link" href="#" aria-label="Previous">--}}
-{{--                            <span aria-hidden="true">&laquo;</span>--}}
-{{--                            <span class="sr-only">Previous</span>--}}
-{{--                        </a>--}}
-{{--                    </li> -->--}}
-{{--                    <li class="page-item active"><a href="#">1</a></li>--}}
-{{--                    <li class="page-item"><a href="#">2</a></li>--}}
-{{--                    <li class="page-item"><a href="#">3</a></li>--}}
-{{--                    <li class="page-item">--}}
-{{--                        <a href="#" aria-label="Next">--}}
-{{--                            <i class="mbnext_page"></i>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="page-item"><a href="#">10</a></li>--}}
-{{--                </ul>--}}
-{{--            </nav>--}}
         </div>
     </div>
 </section>

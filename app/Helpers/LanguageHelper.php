@@ -17,6 +17,17 @@ class LanguageHelper
         return self::getAttribute($className, 'name', $lang) ?? '';
     }
 
+    public static function getTitle($className, $lang = null): string
+    {
+        return self::getAttribute($className, 'title', $lang) ?? '';
+    }
+
+    public static function getBody($className, $lang = null): string
+    {
+        return self::getAttribute($className, 'body', $lang) ?? '';
+    }
+
+
     public static function getDescription($className, $lang = null): string
     {
         return self::getAttribute($className, 'description', $lang) ?? '';

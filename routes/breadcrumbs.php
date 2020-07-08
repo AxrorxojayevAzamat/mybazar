@@ -524,3 +524,26 @@ Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, \App\Model
     $crumbs->parent('admin.banners.show', $banner);
     $crumbs->push(trans('adminlte.edit'), route('admin.banners.edit', $banner));
 });
+
+
+// Sliders
+
+Breadcrumbs::register('admin.sliders.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Sliders', route('admin.sliders.index'));
+});
+
+Breadcrumbs::register('admin.sliders.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.sliders.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.sliders.create'));
+});
+
+Breadcrumbs::register('admin.sliders.show', function (Crumbs $crumbs, \App\Models\Sliders $sliders) {
+    $crumbs->parent('admin.sliders.index');
+    $crumbs->push($sliders->id, route('admin.sliders.show', $sliders));
+});
+
+Breadcrumbs::register('admin.sliders.edit', function (Crumbs $crumbs, \App\Models\Sliders $sliders) {
+    $crumbs->parent('admin.sliders.show', $sliders);
+    $crumbs->push(trans('adminlte.edit'), route('admin.sliders.edit', $sliders));
+});

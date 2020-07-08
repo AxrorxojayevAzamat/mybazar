@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Entity\User\User;
+use App\Helpers\LanguageHelper;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,6 +35,21 @@ class Videos extends Model
                 $post->user_id = auth()->user()->id;
             }
         });
+    }
+
+    public function getTitleAttribute(): string
+    {
+        return LanguageHelper::getTitle($this);
+    }
+
+    public function getDescriptionAttribute(): string
+    {
+        return LanguageHelper::getDescription($this);
+    }
+
+    public function getBodyAttribute(): string
+    {
+        return LanguageHelper::getBody($this);
     }
 
     public function category()

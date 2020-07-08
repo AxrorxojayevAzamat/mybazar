@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\LanguageHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class NewsCategory extends Model
@@ -12,6 +13,11 @@ class NewsCategory extends Model
     protected static function boot()
     {
         parent::boot();
+    }
+
+    public function getNameAttribute(): string
+    {
+        return LanguageHelper::getName($this);
     }
 
     public function news()
