@@ -200,6 +200,77 @@
         display:block;
         margin:2% auto;
     }
+    a{
+        margin:0 auto 2%;
+        width:45%;
+        height:420px;
+        display:block;
+        .video-item{
+            width:100%;
+            height:100%;
+            position:relative;
+            padding:0;
+            margin:0 auto;
+            &:hover{
+                .video-overlay{
+                    background-color:rgba(36,73,197, 0);
+                    transition:.4s ease-in-out;
+                }
+            }
+            img{
+                width:100%;
+                height:100%;
+                position: absolute;
+                top:0;
+                left:0;
+                margin:0
+            }
+            .video-overlay{
+                width:100%;
+                height:100%;
+                position:absolute;
+                top:0;
+                left:0;
+                padding:5% 0 0 3%;
+                background: rgb(9,17,142);
+                background: linear-gradient(180deg, rgba(9,17,142,1) 0%, rgba(0,0,0,0) 35%);
+                button.play{
+                    position:absolute;
+                    left:45%;
+                    top:45%;
+                    width:65px;
+                    height:65px;
+                    border:none;
+                    background:white;
+                    border-radius:50%;
+                    z-index:3;
+                    // background:no-repeat center url(../images/play.png);
+                    .arrow-right{
+                        width: 0; 
+                        height: 0; 
+                        border-top: 15px solid transparent;
+                        border-bottom: 15px solid transparent;
+                        border-left: 20px solid #09118E;
+                        margin:0 auto;
+                    }
+                    &:focus{
+                        outline:none;
+                        border:none;
+                    }
+                }
+                h6{
+                    color:white;
+                    text-align:left;
+                    font-size:20px;
+                    opacity:1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+
 }
 .outter-full-comments{
     @include displayFlex(space-between, row, flex-start);

@@ -9,6 +9,17 @@
             <br>
             В смартфоне <span class="bold"> Redmi Note 9S 64GB Aurora Blue </span> установлен аккумулятор емкостью 5020 мА*ч. Такого запаса энергии хватит для долгой работы без подзарядки. «Сердце» этого девайса — мощный восьмиядерный процессор Qualcomm Snapdragon 720G. Он обеспечивает высокую производительность. Для быстрой разблокировки есть сканер отпечатков пальцев.
         </p>
+        <a href="#">
+            <div class="video-item">
+                <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                <div class="video-overlay">
+                    <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                    <button class="btn play">
+                        <div class="arrow-right"></div>
+                    </button>
+                </div>
+            </div>
+        </a>
         <img src="{{asset('images/fulldesofsinglep1.png')}}" alt="">
         <p class="bold">Процессор Qualcomm® Snapdragon™ 720G. <br>
             Встречайте новый процессор Snapdragon 700 серии. Впервые в линейке Redmi Note</p>

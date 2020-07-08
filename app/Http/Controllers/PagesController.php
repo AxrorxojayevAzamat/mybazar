@@ -94,4 +94,7 @@ class PagesController extends Controller
     public function salesView(){
         return view("pages.salesview");
     }
+    public function videoBlogView(){
+        return view("pages.videoblog-view");
+    }
 }

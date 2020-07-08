@@ -5,15 +5,40 @@
         </div>
         <div class="outter-players">
             <div class="all-players owl-carousel owl-theme">
-                <div class="item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                    <iframe  src="https://www.youtube.com/embed/cO9win31fvg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="item">
-                <iframe src="https://www.youtube.com/embed/NBAtkH_7L_I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

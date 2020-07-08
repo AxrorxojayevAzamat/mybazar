@@ -122,54 +122,208 @@
             </nav>
 
             <div class="all-filtered-videos">
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="video-item">
-                    <iframe  src="https://www.youtube-nocookie.com/embed/1Dm1av7Rt3E?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="image-overlay"></div>
-                </div>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="video-item">
+                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <div class="video-overlay">
+                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
+                            <button class="btn play">
+                                <div class="arrow-right"></div>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                
             </div>
 
             <!-- PAGINATION  -->

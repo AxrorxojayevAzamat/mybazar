@@ -3,7 +3,7 @@
 @section('title', 'Video blog')
 @include ('includes.common-style')
 @section('styles')
-    
+
     <link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
 @endsection
 
@@ -23,7 +23,7 @@
     @include ('layouts.breadcrumb-video-blog')
 
     <!-- list of videos -->
-    @include ('layouts.video-blog-body')
+    @include ('layouts.videoview-body')
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
