@@ -38,6 +38,33 @@ $(document).ready(function(){
             }
         }
     });
+    $('.several-images').owlCarousel({
+        margin:10,
+        nav:true,
+        dots:true,
+        responsive:{
+            0:{
+                items:2,
+                nav:true
+            },
+            600:{
+                items:2,
+                nav:true
+            },
+            800:{
+                items:3,
+                nav:true
+            },
+            1001:{
+                items:4,
+                nav:true
+            },
+            1251:{
+                items:5,
+                nav:true
+            }
+        }
+    });
     $('.products').owlCarousel({
         nav:true,
         dots:false,
@@ -59,6 +86,30 @@ $(document).ready(function(){
             },
             1400:{
                 items:4
+            }
+        }
+    });
+    $('.similar-p').owlCarousel({
+        nav:true,
+        dots:false,
+        responsive:{
+            0:{
+                items:3
+            },
+            600:{
+                items:4
+            },
+            800:{
+                items:5
+            },
+            1000:{
+                items:5
+            },
+            1251:{
+                items:6
+            },
+            1400:{
+                items:6
             }
         }
     });
@@ -180,7 +231,15 @@ $(document).ready(function(){
             }
         }
     });
-    
+
+    $('.hot-news').owlCarousel({
+        items:1,
+        autoplay:true,
+        autoplayHoverPause:true,
+        loop:true,
+        dots:false,
+        nav:false
+    });
 
     // add to wishlist script
     var wishlist_count = 0;
@@ -197,6 +256,42 @@ $(document).ready(function(){
                 $("a.wish-list > i > span.counter").text(wishlist_count);
             }, 100);
         }
+        event.preventDefault();
+    });
+
+    // add to cart script
+    var cart_count = 0;
+    $("div.cart").click(function(event) {
+        $(this).addClass('selected_cart');
+        cart_count+=1;
+            setTimeout(function() {
+                $("a.cart > i > span").addClass("counter");
+                $("a.cart > i > span.counter").text(cart_count);
+            }, 100);
+        event.preventDefault();
+    });
+
+    // cart dropdown delete button
+    $('.cart-dropdown .dropdown-menu .selected-items a').on("click", ".delete-btn", function(event){
+        this.parentNode.remove();
+    });
+
+    // compare dropdown delete button
+    $('.compare-dropdown .dropdown-menu .selected-items a').on("click", ".delete-btn", function(event){
+        this.parentNode.remove();
+    });
+
+
+
+    // add to compare script
+    var compare_count = 0;
+    $("div.libra").click(function(event) {
+        $(this).addClass('selected_libra');
+        compare_count+=1;
+            setTimeout(function() {
+                $("a.comparison > i > span").addClass("counter");
+                $("a.comparison > i > span.counter").text(compare_count);
+            }, 100);
         event.preventDefault();
     });
 

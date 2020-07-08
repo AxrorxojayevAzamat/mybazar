@@ -13,8 +13,8 @@ class PagesController extends Controller
     public function catalog() {
         return view("pages.catalog");
     }
-    public function shoppingCart() {
-        return view("pages.shopping-cart-page");
+    public function cart() {
+        return view("pages.cart");
     }
     public function about() {
         return view("pages.about");
@@ -55,6 +55,43 @@ class PagesController extends Controller
     public function catalogSection(){
         return view("pages.catalog-section");
     }
-    
-
+    public function favorites(){
+        return view("pages.favorites");
+    }
+    public function pay(){
+        return view("pages.pay");
+    }
+    public function checkout(){
+        return view("pages.checkout");
+    }
+    public function auth(){
+        return view("pages.auth");
+    }
+    public function sms(){
+        return view("pages.sms");
+    }
+    public function mail(){
+        return view("pages.mail");
+    }
+    public function shops(){
+        return view("pages.shops");
+    }
+    public function singleblog(){
+        return view("pages.singleblog");
+    }
+    public function productViewPage(){
+        return view("pages.productviewpage");
+    }
+    public function productViewPageComments(){
+        return view("pages.productviewpage-comments");
+    }
+    public function productViewPageCharacteristics(){
+        return view("pages.productviewpage-characteristics");
+    }
+    public function compare(){
+        return view("pages.compare");
+    }
+    public function salesView(){
+        return view("pages.salesview");
+    }
 }

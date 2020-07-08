@@ -4,30 +4,24 @@
     .item{
         height:310px;
         margin:2% 0;
-        padding:0 0 20px 30px;
-        @include displayFlex(flex-end, column, flex-start);
-        h5{
-            color:white;
-            text-align: start;
-            font-size:22px;
+        position:relative;
+        img{
+            width:100%;
+            height:100%;
         }
-        &.first{
-            background: url(../images/blog1.png);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        &.second{
-            background: url(../images/blog2.png);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        &.third{
-            background: url(../images/blog3.png);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        .description{
+            position:absolute;
+            padding:0 0 20px 30px;
+            @include displayFlex(flex-end, column, flex-start);
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            h5{
+                color:white;
+                text-align: start;
+                font-size:22px;
+            }
         }
     }
     .owl-dots{

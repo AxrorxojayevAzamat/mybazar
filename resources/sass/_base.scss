@@ -25,6 +25,9 @@ a{
         color:$link_hover_color;
     }
 }
+.text-left{
+    text-align:left;
+}
 .btn:focus{
     outline:none;
     box-shadow:none;
@@ -45,7 +48,7 @@ input{
 }
 h4.title{
     font-size:26px;
-    color:$item-title-color;
+    color:$title-color;
     width:100%;
 }
 .h4-title{
@@ -54,8 +57,11 @@ h4.title{
     text-align:start;
     vertical-align: middle;
     background:$bg_grey_color;
-    &.video-blog{
-        padding:0.5% 10%;
+    &.video-blog, &.catalog-view, &.pay-body,
+     &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
+     &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
+     &.compare{
+        padding:1% 10%;
     }
 }
 h5.title{
@@ -105,12 +111,14 @@ span.sale.big{
     position:absolute;
     bottom:5px;
     padding:8px 30px;
+    right:0;
     color:white;
     border-radius:15px;
     font-size:20px;
     text-transform:uppercase;
     text-align: center;
     background:$bg_discount;
+    white-space: nowrap;
     span{
         display: inline-block;
         span{
@@ -146,6 +154,7 @@ button.owl-prev, .owl-carousel .owl-nav button.owl-prev{
     height:40px;
     border-radius:23px;
     left:-2%;
+    top:50%;
     outline: none;
 }
 button.owl-next, .owl-carousel .owl-nav button.owl-next{
@@ -155,6 +164,7 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
     height:40px;
     border-radius:23px;
     right:-2%;
+    top:50%;
     outline: none;
 }
 .owl-dots{
@@ -167,14 +177,15 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
 button.owl-prev span,
 button.owl-next span{
     color:white;
-    font-size:40px;
+    font-size:45px;
+    line-height:15px;
 }
 .outter-products{
     width:100%;
     height:610px;
     background:white;
     position:relative;
-    .products{
+    .similar-p,.products{
         width:80%;
         height:610px;
         margin:0 auto;
@@ -258,7 +269,7 @@ nav ol.breadcrumb{
         }
     }
 }
-.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn{
+.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn, .single-blog-btn{
     height:65px;
     background:$bg_grey_color;
     width:100%;
@@ -309,8 +320,26 @@ nav ol.breadcrumb{
     nav ol.breadcrumb{
         width:84%;
     }
+    .h4-title{
+        padding:3% 8%;
+        &.video-blog, &.catalog-view, &.pay-body,
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
+         &.compare{
+            padding:1% 8%;
+        }
+    }
 }
 @media all and (max-width:1400px){
+    .h4-title{
+        padding:2% 5%;
+        &.video-blog, &.catalog-view, &.pay-body,
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
+         &.compare{
+            padding:1% 5%;
+        }
+    }
     nav ol.breadcrumb{
         width:90%;
     }
@@ -358,6 +387,15 @@ nav ol.breadcrumb{
             }
         }
     }
+    .h4-title{
+        padding:2.5% 5%;
+        &.video-blog, &.catalog-view, &.pay-body,
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
+         &.compare{
+            padding:1.5% 5%;
+        }
+    }
 }
 @media all and (max-width:800px){
     .outter-products{
@@ -376,6 +414,18 @@ nav ol.breadcrumb{
     h5.price, h6.old-price{
         font-size:20px;
     }
+    .h4-title{
+        padding:3% 5%;
+        &.video-blog, &.catalog-view, &.pay-body,
+         &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
+         &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
+         &.compare{
+            padding:2% 5%;
+        }
+    }
+    h4.title{
+        font-size:24px;
+    }
 }
 @media all and (max-width:400px){
     .outter-products{
@@ -389,6 +439,9 @@ nav ol.breadcrumb{
     }
     .newone, .recommended, .popular-products{
         height:565px !important;
+    }
+    h4.title{
+        font-size:22px;
     }
 }
 

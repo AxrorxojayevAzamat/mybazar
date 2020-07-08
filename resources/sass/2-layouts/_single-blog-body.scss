@@ -1,0 +1,153 @@
+.outter-single-blog-body{
+    @include displayFlex(space-between, row, flex-start);
+    width:100%;
+    min-height:100px;
+    padding:2% 10%;
+    text-align:left;
+    div#search-bar.search-bar{
+        width:27%;
+        height:45px;
+        padding-right:2px;
+        @include displayFlex(flex-start, row, center);
+        @include border(1px, $link_hover_color, 23px);
+        input{
+            width:100%;
+        }
+        button.search{
+            width:50px;
+            height:40px;
+            padding:0;
+            background:$item_price_color;
+            @include border(1px, $item_price_color,23px);
+            i.fa-search::before{
+                color:#ffffff;
+                font-size:20px;
+                line-height:28px;
+            }
+        }
+    }
+    .inner-single-blog-body{
+        width:70%;
+        height:auto;
+        img.full-width{
+            width:100%;
+            height:555px;
+        }
+        .description{
+            margin:1% 0;
+            text-align:left;
+            h5.title{
+                font-size:30px;
+                color:$item_title_color;
+            }
+            p{
+                color:$item_title_color;
+                font-size:20px;
+            }
+            h6.title{
+                color:$item_title_color;
+                font-size:20px;
+                @include fontBold;
+            }
+        }
+        .medium-width{
+                width:100%;
+                min-height:200px;
+                display:flex;
+                img{
+                    width:70%;
+                    height:auto;
+                    margin:0 auto;
+                }
+        }
+        .three-column-description{
+            @include displayFlex(space-between, row, flex-start);
+            .item{
+                width:32%;
+                height:auto;
+                h6{
+                    @include fontBold;
+                }
+            }
+        }
+        .text-and-img{
+            width:100%;
+            @include displayFlex(space-between, row, center);
+            .description{
+                width:80%;
+            }
+            .image{
+                width:20%;
+                img{
+                    width:100%;
+                    height:auto;
+                }
+            }
+        }
+        .all-filtered-blogs{
+            @include displayFlex(flex-start, column, flex-start);
+            a{
+                width:100%; 
+                margin:1% 0;
+                &:hover{
+                    cursor:pointer;
+                    transition:.4s ease-in-out;
+                    @include box-shadow(0px, 2px, 7px, -5px, black);
+                    .blog-item{
+                        .description{
+                            transition:.4s ease-in-out;
+                            background-color:white;
+                        }
+                        .image{
+                            .image-overlay{
+                            transition:.4s ease-in-out;
+                                opacity:0;
+                            }
+                        }
+                    }
+                }
+                .blog-item{
+                    height:175px;
+                    @include displayFlex(flex-start, row, center);
+                    width:100%;
+                    .image{
+                        width:40%;
+                        height:175px;
+                        position: relative;
+                        img{
+                            width:100%;
+                            height:100%;
+                        }
+                        .image-overlay{
+                            width:100%;
+                            height:175px;
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            opacity:0.7;
+                            background-color:#2449c5;
+                        }
+                    }
+                }
+                .description{
+                    background-color:$bg_grey_color;
+                    width:60%;
+                    height:100%;
+                    text-align: start;
+                    padding:0 2%;
+                    color:$item_title_color;
+                    @include displayFlex(center, column, flex-start);
+                    h6.title{
+                        font-weight:bold;
+                        font-size:22px;
+                        margin-bottom:2%;
+                    }
+                    p{
+                        font-size:18px;
+                    }
+                }
+            }
+        }
+
+    }
+}

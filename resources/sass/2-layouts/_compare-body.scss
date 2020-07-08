@@ -1,0 +1,170 @@
+.outter-compare-body{
+    width:100%;
+    padding:3% 10% 2%;
+    height:auto;
+    @include displayFlex(space-between, row, flex-start);
+    .side-filter{
+        width:19%;
+        height:auto;
+        button{
+            @include border(2px, $item-price-color,25px);
+            background:white;
+            color:black; 
+            padding:10px 30px;
+            margin-bottom:4%;
+            float:left;
+        }
+        .side-filter{
+            @include displayFlex(flex-start, column, flex-start);
+        }
+        .form-check{
+            padding:10px;
+            text-align:left;
+        }
+    }
+    .compare-items{
+        width:79%;
+        height:auto;
+        @include displayFlex(flex-start, column, flex-start);
+        .items-view{
+            @include displayFlex(center, row, flex-start);
+            width:100%;
+            h6{
+                font-size:20px;
+                margin:10px 0 4%;
+            }
+            .item{
+                text-align:left;
+                width:50%;
+                .image{
+                    width:100px;
+                    height:75px;
+                    position:relative;
+                    img{
+                        height:100%;
+                        width:auto;
+                        margin:0 auto;
+                    }
+                    button{
+                        border:none;
+                        width: 20px;
+                        height: 20px;
+                        border-radius:23px;
+                        display: flex;
+                        justify-content: center;
+                        cursor:pointer;
+                        position:absolute;
+                        top:-8px;
+                        right:-8px;
+                        background:#a5b1c2;
+                        padding:0;
+                        margin:0;
+                        transition: .4s;
+                        &:focus{
+                            border:none;
+                            outline:none;
+                        }
+                        &:hover {
+                            background:$bg_like_heart;
+                            transition: .4s;
+                        }
+                        i{
+                            font-size:6px;
+                            line-height:20px;
+                            padding:0;
+                            margin:0;
+                        }
+                    }
+                    
+                }
+                .item-action-icons{
+                    position:relative;
+                    justify-content: flex-start;
+                    width:100%;
+                    height:40px;
+                    div{
+                        width:40px;
+                        height:40px;
+                        i{
+                            font-size:20px;
+                            line-height:40px;
+                        }
+                        &.cart{
+                            justify-content: center;
+                            font-size:0;
+                            padding:0;
+                            width:40px;
+                            border-radius: 50%;
+                            i{
+                                margin-right:0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .accordion{
+            width:100%;
+            text-align:start;
+            .card{
+                .card-header{
+                    border-bottom:1px solid $item_border_color;
+                    h2{
+                        button{
+                            text-align: left;
+                        @include fontBold;
+                        font-size:16px;
+                        padding:10px 0;
+                            border-bottom:1px solid $item_border_color;
+                            &:after{
+                                right:10px;
+                            }
+                        }
+                    }
+                }
+                .card-body{
+                    margin-top:10px;
+                    padding:0;
+                    @include displayFlex(space-between, row, flex-start);
+                    .item{
+                        width:48%;
+                        p.grey{
+                            font-size:14.5px;
+                            color:$grey_text2;
+                            margin-bottom:5px;
+                        }
+                        p.black{
+                            font-size:16px;
+                            margin-bottom:10px;
+                        }
+                        .colors{
+                            height:20px;
+                            width:auto;
+                            @include displayFlex(flex-start, row, center);
+                            margin-bottom:20px;
+                            div{
+                                height:16px;
+                                width:16px;
+                                border-radius:50%;
+                                margin-right:10px;
+                                &.pink{
+                                    background:#dda6c5;
+                                }
+                                &.blue{
+                                    background: #409be8;
+                                }
+                                &.nude{
+                                    background: #d9cba4;
+                                }
+                                &.dark-grey{
+                                    background:#636363 ;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

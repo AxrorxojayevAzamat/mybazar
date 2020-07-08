@@ -1,0 +1,46 @@
+.similar-products{
+    .outter-products{
+        height:355px;
+        .similar-p{
+            height:355px;
+            .item{
+                height:340px;
+                .product-img{
+                    height:54%;
+                    span.sale.small{
+                        font-size:14px;
+                    }
+                }
+                .description{
+                    height:40%;
+                    margin-top:7%;
+                    p.sub-title{
+                        display:none;
+                    }
+                    .current-old-price{
+                        h5.price{
+                            font-size:22px;
+                        }
+                    }
+                    .item-action-icons{
+                        bottom:0;
+                        div{
+                            width:35px;
+                            height:35px;
+                            i{
+                                font-size:18px;
+                                line-height:35px;
+                            }
+                        }
+                    }
+                    .rate{
+                        .rating:not(:checked) > label{
+                            font-size:160%;
+                            width:1.3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

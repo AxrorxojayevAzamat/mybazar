@@ -1,8 +1,8 @@
 <section>
+    <div class="h4-title sales-body">
+        <h4 class="title">Акции и скидки</h4>
+    </div>
     <div class="outter-sales">
-        <div class="h4-title">
-            <h4 class="title">Акции и скидки</h4>
-        </div>
         <div class="sales-banners">
             <div class="banner-item">
                 <img src="{{asset('images/sales1.png')}}" alt="">

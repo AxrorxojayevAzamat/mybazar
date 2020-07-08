@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 Route::get('/catalog', 'PagesController@catalog');
-Route::get('/cart', 'PagesController@shoppingCart');
+Route::get('/cart', 'PagesController@cart');
+Route::get('/checkout', 'PagesController@checkout');
 Route::get('/popular', 'PagesController@popular');
 Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
@@ -28,6 +29,23 @@ Route::get('/delivery', 'PagesController@delivery');
 Route::get('/guaranty', 'PagesController@guaranty');
 Route::get('/payment', 'PagesController@payment');
 Route::get('/catalogsection', 'PagesController@catalogSection');
+Route::get('/favorites', 'PagesController@favorites');
+Route::get('/pay', 'PagesController@pay');
+Route::get('/auth', 'PagesController@auth');
+Route::get('/sms', 'PagesController@sms');
+Route::get('/mail', 'PagesController@mail');
+Route::get('/shops', 'PagesController@shops');
+Route::get('/singleblog', 'PagesController@singleblog');
+Route::get('/productviewpage', 'PagesController@productViewPage');
+Route::get('/productviewpage-comments', 'PagesController@productViewPageComments');
+Route::get('/productviewpage-characteristics', 'PagesController@productViewPageCharacteristics');
+Route::get('/compare', 'PagesController@compare');
+Route::get('/salesview', 'PagesController@salesView');
+
+
+
+
+
 
 Route::resource('/blogs', 'BlogController');
 Route::resource('/videos', 'VideosController');

@@ -9,6 +9,7 @@
   font-style: normal;
   font-display: block;
 }
+
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'mybazar' !important;
@@ -23,6 +24,23 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.mbcorrect:before {
+  content: "\e92e";
+  color: #52ce66;
+}
+.mbedit .path1:before {
+  content: "\e92f";
+  color: rgb(138, 138, 142);
+}
+.mbedit .path2:before {
+  content: "\e930";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.mbwrong:before {
+  content: "\e931";
+  color: #f83333;
+}
 .mbwhatsapp:before {
   content: "\e92c";
 }
@@ -208,3 +226,4 @@ i {
   margin-left: -1em;
   color: rgb(116, 125, 140);
 }
+

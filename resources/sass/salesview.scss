@@ -1,9 +1,8 @@
-@import "variables";
+@import "malika-variables";
 
 @import "mixins";
 
 @import "0-plugins/plugins-index";
-@import "0-plugins/range-slider";
 @import url("/css/mybazar-fonts.css");
 @import "base";
 
@@ -11,10 +10,10 @@
 @import "2-layouts/top-header";
 @import "2-layouts/main-header";
 @import "2-layouts/nav-header";
-@import "2-layouts/slide-banner";
-@import "2-layouts/product-of-day";
-@import "2-layouts/catalog-view";
+@import "2-layouts/salesview-body";
+
 @import "2-layouts/price-rating-comments";
+
 @import "2-layouts/pagination";
 
 @import "2-layouts/news-letter";

@@ -1,6 +1,6 @@
 @extends('layouts.default-layout')
 
-@section('title', 'News page')
+@section('title', 'Delivery page')
 @include ('includes.common-style')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/delivery.css')}}">
@@ -38,7 +38,5 @@
 
 
 @section('script')
-<script src="{{asset('js/shopping-cart.js')}}"></script>
-<script src="{{asset('js/compare-items.js')}}"></script>
 <script src="{{asset('js/1-index.js')}}"></script>
 @endsection

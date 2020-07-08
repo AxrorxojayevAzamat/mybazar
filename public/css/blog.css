@@ -191,6 +191,10 @@ a:hover, a.active {
   color: #d1d8e0;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .btn:focus {
   outline: none;
   -webkit-box-shadow: none;
@@ -218,7 +222,7 @@ input {
 
 h4.title {
   font-size: 26px;
-  color: #0b2546;
+  color: #07108f;
   width: 100%;
 }
 
@@ -230,8 +234,8 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog {
-  padding: 0.5% 10%;
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+  padding: 1% 10%;
 }
 
 h5.title {
@@ -287,12 +291,14 @@ span.sale.big, span.sale.small {
   position: absolute;
   bottom: 5px;
   padding: 8px 30px;
+  right: 0;
   color: white;
   border-radius: 15px;
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
   background: #11da53;
+  white-space: nowrap;
 }
 
 span.sale.big span, span.sale.small span {
@@ -333,6 +339,7 @@ button.owl-prev, .owl-carousel .owl-nav button.owl-prev {
   height: 40px;
   border-radius: 23px;
   left: -2%;
+  top: 50%;
   outline: none;
 }
 
@@ -343,6 +350,7 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next {
   height: 40px;
   border-radius: 23px;
   right: -2%;
+  top: 50%;
   outline: none;
 }
 
@@ -358,7 +366,8 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next {
 button.owl-prev span,
 button.owl-next span {
   color: white;
-  font-size: 40px;
+  font-size: 45px;
+  line-height: 15px;
 }
 
 .outter-products {
@@ -368,7 +377,7 @@ button.owl-next span {
   position: relative;
 }
 
-.outter-products .products {
+.outter-products .similar-p, .outter-products .products {
   width: 80%;
   height: 610px;
   margin: 0 auto;
@@ -377,7 +386,7 @@ button.owl-next span {
   top: -3%;
 }
 
-.outter-products .products .item {
+.outter-products .similar-p .item, .outter-products .products .item {
   margin: 0;
   height: 600px;
   padding: 10px 20px 5px;
@@ -386,24 +395,24 @@ button.owl-next span {
   background: white;
 }
 
-.outter-products .products .item .product-img {
+.outter-products .similar-p .item .product-img, .outter-products .products .item .product-img {
   height: 45%;
   position: relative;
 }
 
-.outter-products .products .item .product-img img {
+.outter-products .similar-p .item .product-img img, .outter-products .products .item .product-img img {
   width: auto;
   margin: auto;
   height: 100%;
 }
 
-.outter-products .products .item .product-img span.new-product {
+.outter-products .similar-p .item .product-img span.new-product, .outter-products .products .item .product-img span.new-product {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.outter-products .products .item .description {
+.outter-products .similar-p .item .description, .outter-products .products .item .description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -420,11 +429,11 @@ button.owl-next span {
   margin-top: 5%;
 }
 
-.outter-products .products .item .item-action-icons {
+.outter-products .similar-p .item .item-action-icons, .outter-products .products .item .item-action-icons {
   bottom: 35px;
 }
 
-.outter-products .products .item p.sub-title.bottom {
+.outter-products .similar-p .item p.sub-title.bottom, .outter-products .products .item p.sub-title.bottom {
   position: absolute;
   bottom: 0;
   margin: 0;
@@ -472,7 +481,7 @@ nav ol.breadcrumb li {
           transform: rotate(90deg);
 }
 
-.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn {
+.news-inner-btn, .blog-news-btn, .new-popular-recommended-btn, .single-blog-btn {
   height: 65px;
   background: #f1f2f6;
   width: 100%;
@@ -492,7 +501,7 @@ nav ol.breadcrumb li {
           align-items: center;
 }
 
-.news-inner-btn button, .blog-news-btn button, .new-popular-recommended-btn button {
+.news-inner-btn button, .blog-news-btn button, .new-popular-recommended-btn button, .single-blog-btn button {
   padding: 15px 30px;
   color: #07108f;
   font-weight: bold;
@@ -504,7 +513,7 @@ nav ol.breadcrumb li {
   margin: 0 10px 0 0;
 }
 
-.news-inner-btn button.active, .blog-news-btn button.active, .new-popular-recommended-btn button.active {
+.news-inner-btn button.active, .blog-news-btn button.active, .new-popular-recommended-btn button.active, .single-blog-btn button.active {
   background: #0042ff;
   color: white;
 }
@@ -542,9 +551,21 @@ nav ol.breadcrumb li {
   nav ol.breadcrumb {
     width: 84%;
   }
+  .h4-title {
+    padding: 3% 8%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+    padding: 1% 8%;
+  }
 }
 
 @media all and (max-width: 1400px) {
+  .h4-title {
+    padding: 2% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+    padding: 1% 5%;
+  }
   nav ol.breadcrumb {
     width: 90%;
   }
@@ -576,6 +597,12 @@ nav ol.breadcrumb li {
     width: 80%;
     margin: 0 auto;
   }
+  .h4-title {
+    padding: 2.5% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+    padding: 1.5% 5%;
+  }
 }
 
 @media all and (max-width: 800px) {
@@ -587,6 +614,15 @@ nav ol.breadcrumb li {
 @media all and (max-width: 600px) {
   h5.price, h6.old-price {
     font-size: 20px;
+  }
+  .h4-title {
+    padding: 3% 5%;
+  }
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+    padding: 2% 5%;
+  }
+  h4.title {
+    font-size: 24px;
   }
 }
 
@@ -602,6 +638,9 @@ nav ol.breadcrumb li {
   }
   .newone, .recommended, .popular-products {
     height: 565px !important;
+  }
+  h4.title {
+    font-size: 22px;
   }
 }
 
@@ -1089,7 +1128,15 @@ nav#menu .mm-navbar__title span {
   color: #0042ff;
 }
 
-.top-header a.hot-news {
+.top-header .hot-news {
+  width: 35%;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  -moz-animation: bounce 2s infinite;
+  -o-animation: bounce 2s infinite;
+}
+
+.top-header .hot-news a {
   color: #0042ff;
 }
 
@@ -1112,6 +1159,33 @@ nav#menu .mm-navbar__title span {
 
 .top-header .lang-medium {
   display: none;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-17px);
+  }
+  60% {
+    -webkit-transform: translateY(-13px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-17px);
+            transform: translateY(-17px);
+  }
+  60% {
+    -webkit-transform: translateY(-13px);
+            transform: translateY(-13px);
+  }
 }
 
 @media all and (max-width: 1522px) {
@@ -1388,7 +1462,7 @@ nav#menu .mm-navbar__title span {
 
 .main-header .from-statistics-to-account .dropdown .dropdown-menu .dropdown-item .delete-btn i {
   font-size: 6px;
-  line-height: 20px;
+  line-height: 18px;
   padding: 0;
   margin: 0;
 }
@@ -2175,7 +2249,7 @@ img.menu-auto-icon:hover {
   }
 }
 
-.outter-list-of-blogs {
+.outter-list-of-shops, .outter-list-of-blogs {
   min-height: 500px;
   width: 80%;
   padding: 1% 0;
@@ -2195,21 +2269,21 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.outter-list-of-blogs form.big-filter {
+.outter-list-of-shops form.big-filter, .outter-list-of-blogs form.big-filter {
   width: 18%;
   margin-top: 50px;
   text-align: start;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item {
+.outter-list-of-shops form.big-filter .filter-item, .outter-list-of-blogs form.big-filter .filter-item {
   width: 100%;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item:nth-child(2) {
+.outter-list-of-shops form.big-filter .filter-item:nth-child(2), .outter-list-of-blogs form.big-filter .filter-item:nth-child(2) {
   margin-bottom: 15px;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .select-all-div {
+.outter-list-of-shops form.big-filter .filter-item .select-all-div, .outter-list-of-blogs form.big-filter .filter-item .select-all-div {
   width: 100%;
   position: relative;
   text-align: start;
@@ -2217,7 +2291,7 @@ img.menu-auto-icon:hover {
   padding: 15px 15px 15px 25px;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .select-all-div:before {
+.outter-list-of-shops form.big-filter .filter-item .select-all-div:before, .outter-list-of-blogs form.big-filter .filter-item .select-all-div:before {
   width: 10px;
   height: 10px;
   top: 25px;
@@ -2228,12 +2302,12 @@ img.menu-auto-icon:hover {
   transform: rotate(90deg);
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .select-all-div .select-all-label {
+.outter-list-of-shops form.big-filter .filter-item .select-all-div .select-all-label, .outter-list-of-blogs form.big-filter .filter-item .select-all-div .select-all-label {
   font-weight: bold;
   font-size: 18px;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item label.filter-title {
+.outter-list-of-shops form.big-filter .filter-item label.filter-title, .outter-list-of-blogs form.big-filter .filter-item label.filter-title {
   width: 100%;
   border-bottom: 1px solid #d1d8e0;
   padding: 15px 15px 15px 0;
@@ -2243,7 +2317,7 @@ img.menu-auto-icon:hover {
   position: relative;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item label.filter-title:before {
+.outter-list-of-shops form.big-filter .filter-item label.filter-title:before, .outter-list-of-blogs form.big-filter .filter-item label.filter-title:before {
   width: 10px;
   height: 10px;
   top: 25px;
@@ -2254,24 +2328,24 @@ img.menu-auto-icon:hover {
   transform: rotate(90deg);
 }
 
-.outter-list-of-blogs form.big-filter .filter-item div {
+.outter-list-of-shops form.big-filter .filter-item div, .outter-list-of-blogs form.big-filter .filter-item div {
   margin: 15px 0;
   outline: none;
   border: none !important;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item div:focus {
+.outter-list-of-shops form.big-filter .filter-item div:focus, .outter-list-of-blogs form.big-filter .filter-item div:focus {
   border: none;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item a.show-more {
+.outter-list-of-shops form.big-filter .filter-item a.show-more, .outter-list-of-blogs form.big-filter .filter-item a.show-more {
   padding-left: 30px;
   color: #07108f;
   font-size: 18px;
   text-decoration: underline;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .outter-range-slider {
+.outter-list-of-shops form.big-filter .filter-item .outter-range-slider, .outter-list-of-blogs form.big-filter .filter-item .outter-range-slider {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2285,12 +2359,12 @@ img.menu-auto-icon:hover {
   margin: 0 !important;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .outter-range-slider span {
+.outter-list-of-shops form.big-filter .filter-item .outter-range-slider span, .outter-list-of-blogs form.big-filter .filter-item .outter-range-slider span {
   font-size: 18px;
   line-height: 40px;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .outter-range-slider .form-group {
+.outter-list-of-shops form.big-filter .filter-item .outter-range-slider .form-group, .outter-list-of-blogs form.big-filter .filter-item .outter-range-slider .form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2306,13 +2380,15 @@ img.menu-auto-icon:hover {
           align-items: center;
 }
 
-.outter-list-of-blogs form.big-filter .filter-item .outter-range-slider .form-group input {
+.outter-list-of-shops form.big-filter .filter-item .outter-range-slider .form-group input, .outter-list-of-blogs form.big-filter .filter-item .outter-range-slider .form-group input {
   width: 45%;
   color: #07108f;
   border-radius: 12px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs {
+.outter-list-of-shops .wrapper-filtered-blogs,
+.outter-list-of-shops .wrapper-filtered-shops, .outter-list-of-blogs .wrapper-filtered-blogs,
+.outter-list-of-blogs .wrapper-filtered-shops {
   width: 80%;
   min-height: 1000px;
   display: -webkit-box;
@@ -2330,7 +2406,9 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -2339,51 +2417,71 @@ img.menu-auto-icon:hover {
   padding: 0;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types button.navbar-toggler {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types button.navbar-toggler,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types button.navbar-toggler, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types button.navbar-toggler,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types button.navbar-toggler {
   padding: 0;
   display: none;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types button.navbar-toggler i {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types button.navbar-toggler i,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types button.navbar-toggler i, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types button.navbar-toggler i,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types button.navbar-toggler i {
   line-height: 32px;
   font-size: 20px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter {
   display: none;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card {
   border-bottom: 1px solid #d1d8e0;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-header button {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-header button,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-header button, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-header button,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-header button {
   padding: 15px 15px 15px 0;
   font-weight: bold;
   font-size: 18px;
   text-align: start;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card #collapseTwo {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card #collapseTwo,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card #collapseTwo, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card #collapseTwo,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card #collapseTwo {
   padding-bottom: 10px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body {
   padding: 0;
   text-align: start;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body div, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body div {
   margin: 15px 0;
   outline: none;
   border: none !important;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div:focus {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div:focus,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body div:focus, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body div:focus,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body div:focus {
   border: none;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2397,12 +2495,16 @@ img.menu-auto-icon:hover {
   margin: 0 !important;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider span {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider span,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider span, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider span,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider span {
   font-size: 18px;
   line-height: 40px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2418,20 +2520,26 @@ img.menu-auto-icon:hover {
           align-items: center;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group input {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group input,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group input, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group input,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body .outter-range-slider .form-group input {
   width: 45%;
   color: #07108f;
   border-radius: 12px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body a.show-more {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body a.show-more,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body a.show-more, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types form.small-filter .card .card-body a.show-more,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types form.small-filter .card .card-body a.show-more {
   padding-left: 30px;
   color: #07108f;
   font-size: 18px;
   text-decoration: underline;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar {
   width: 100%;
   height: 45px;
   padding-right: 2px;
@@ -2452,11 +2560,15 @@ img.menu-auto-icon:hover {
   border-radius: 23px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar input {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar input,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar input, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar input,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar input {
   width: 100%;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar button.search, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar button.search {
   width: 50px;
   height: 40px;
   padding: 0;
@@ -2465,13 +2577,17 @@ img.menu-auto-icon:hover {
   border-radius: 23px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search i.fa-search::before {
+.outter-list-of-shops .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search i.fa-search::before,
+.outter-list-of-shops .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar button.search i.fa-search::before, .outter-list-of-blogs .wrapper-filtered-blogs nav.sort-types div#search-bar.search-bar button.search i.fa-search::before,
+.outter-list-of-blogs .wrapper-filtered-shops nav.sort-types div#search-bar.search-bar button.search i.fa-search::before {
   color: #ffffff;
   font-size: 20px;
   line-height: 28px;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2487,12 +2603,16 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a {
   width: 100%;
   margin: 1% 0;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a:hover,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a:hover, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a:hover {
   cursor: pointer;
   -webkit-transition: .4s ease-in-out;
   transition: .4s ease-in-out;
@@ -2500,19 +2620,25 @@ img.menu-auto-icon:hover {
           box-shadow: 0px 2px 7px -5px black;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .description {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .description,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a:hover .blog-item .description, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .description,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a:hover .blog-item .description {
   -webkit-transition: .4s ease-in-out;
   transition: .4s ease-in-out;
   background-color: white;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .image .image-overlay {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .image .image-overlay,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a:hover .blog-item .image .image-overlay, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a:hover .blog-item .image .image-overlay,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a:hover .blog-item .image .image-overlay {
   -webkit-transition: .4s ease-in-out;
   transition: .4s ease-in-out;
   opacity: 0;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .blog-item,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .blog-item, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .blog-item {
   height: 175px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2530,18 +2656,24 @@ img.menu-auto-icon:hover {
   width: 100%;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image {
   width: 40%;
   height: 175px;
   position: relative;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image img {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image img,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image img, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image img,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image img {
   width: 100%;
   height: 100%;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image .image-overlay {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image .image-overlay,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image .image-overlay, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .blog-item .image .image-overlay,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .blog-item .image .image-overlay {
   width: 100%;
   height: 175px;
   position: absolute;
@@ -2551,7 +2683,9 @@ img.menu-auto-icon:hover {
   background-color: #2449c5;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .description,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .description, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .description {
   background-color: #f1f2f6;
   width: 60%;
   height: 100%;
@@ -2573,13 +2707,17 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description h6.title {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .description h6.title,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .description h6.title, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description h6.title,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .description h6.title {
   font-weight: bold;
   font-size: 22px;
   margin-bottom: 2%;
 }
 
-.outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description p {
+.outter-list-of-shops .wrapper-filtered-blogs .all-filtered-blogs a .description p,
+.outter-list-of-shops .wrapper-filtered-shops .all-filtered-blogs a .description p, .outter-list-of-blogs .wrapper-filtered-blogs .all-filtered-blogs a .description p,
+.outter-list-of-blogs .wrapper-filtered-shops .all-filtered-blogs a .description p {
   font-size: 18px;
 }
 

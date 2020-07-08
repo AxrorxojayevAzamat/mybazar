@@ -1,7 +1,7 @@
 .h4-title.catalog-view{
     padding:0.5% 10%;
 }
-.outter-catalog-view, .outter-brand-view-body{
+ .outter-catalog-view, .outter-brand-view-body{
     min-height:1000px;
     width:80%;
     padding:1% 0;
@@ -13,6 +13,10 @@
         text-align: start;
         .filter-item{
             width:100%;
+            @include displayFlex(space-between, column, flex-start);
+            a{
+                margin:10px 0; 
+            }
             &:nth-child(2){
                 margin-bottom:15px;
             }
@@ -103,9 +107,13 @@
             button.navbar-toggler{
                 padding:0;
                 display: none;
-                i{
-                    line-height:32px;
-                    font-size:20px;
+                img{
+                    width:25px;
+
+                }
+                &:focus{
+                    outline:none;
+                    border:none;
                 }
             }
             form.small-filter{
@@ -126,6 +134,10 @@
                     .card-body{
                         padding:0;
                         text-align: start;
+                        @include displayFlex(space-between, column, flex-start);
+                        a{
+                            margin:10px 0;
+                        }
                         div{
                             margin:15px 0;
                             outline: none;
@@ -351,7 +363,7 @@
                 height:60%;
                 @include displayFlex(flex-start,column, flex-start);
                 div{
-                    height:26px;
+                    line-height:26px;
                     @include displayFlex(space-between,row, center);
                     font-size:16px;
                     margin-bottom:20px;

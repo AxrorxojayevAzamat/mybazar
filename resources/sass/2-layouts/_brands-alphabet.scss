@@ -1,74 +1,65 @@
-.outter-brands-body{
+.list-of-brands{
     width:100%;
-    background:white;
-    .h4-title{
-        padding:0.5% 10%;
-    }
-    .list-of-brands{
+    padding:2% 10%;
+    .filter-by-alphabet{
         width:100%;
-        padding:2% 10%;
-        .filter-by-alphabet{
-            width:100%;
-            @include displayFlex(center, column, flex-start);
-            flex-wrap:wrap;
-            a{
-                @include fontBold;
-                font-size:18px;
-                color:$title_color;
-                transform:uppercase;
-                padding:8px 14px;
-                &.active{
-                    background:$item_price_color;
-                    color:white;
-                    border-radius:23px;
+        @include displayFlex(center, column, flex-start);
+        flex-wrap:wrap;
+        a{
+            @include fontBold;
+            font-size:18px;
+            color:$title_color;
+            transform:uppercase;
+            padding:8px 14px;
+            &.active{
+                background:$item_price_color;
+                color:white;
+                border-radius:23px;
 
-                }
-            }
-            .first-row, .second-row{
-                width:100%;
             }
         }
-        .filtered-brands{
+        .first-row, .second-row{
             width:100%;
-            .letter-item{
-                width:100%;
-                color:black;
-                margin-bottom:1%;
-                h6.title{
-                    font-size:24px;
-                    @include fontBold;
-                }
-                .brands-by-letter{
-                    @include displayFlex(flex-start, row, center);
-                    flex-wrap:wrap;
-                    div{ 
-                        width:25%;
-                        text-align: start;
-                        a{
-                        color:black;
-                        font-size:20px;
-                        line-height:40px;
-                        &.all-brands-by-this-letter{
-                            color:$item_price_color;
-                            @include fontBold;
-                        }
-                        }
+        }
+    }
+    .filtered-brands{
+        width:100%;
+        .letter-item{
+            width:100%;
+            color:black;
+            margin-bottom:1%;
+            h6.title{
+                font-size:24px;
+                @include fontBold;
+            }
+            .brands-by-letter{
+                @include displayFlex(flex-start, row, center);
+                flex-wrap:wrap;
+                div{ 
+                    width:25%;
+                    text-align: start;
+                    a{
+                    color:black;
+                    font-size:20px;
+                    line-height:40px;
+                    &.all-brands-by-this-letter{
+                        color:$item_price_color;
+                        @include fontBold;
                     }
-                    
+                    }
                 }
+                
             }
         }
     }
 }
 @media all and (max-width:800px){
-    .outter-brands-body{
-        .list-of-brands{
-            .filtered-brands{
-                .letter-item{
-                    .brands-by-letter{
-                        div{
-                            width:33.3%;
-                        }
+    .list-of-brands{
+        .filtered-brands{
+            .letter-item{
+                .brands-by-letter{
+                    div{
+                        width:33.3%;
                     }
                 }
             }
@@ -76,19 +67,17 @@
     }
 }
 @media all and (max-width:600px){
-    .outter-brands-body{
-        .list-of-brands{
-            .filtered-brands{
-                .letter-item{
-                    margin-bottom:3%;
-                    h6.title{
-                        font-size:22px;
-                        @include fontBold;
-                    }
-                    .brands-by-letter{
-                        div{
-                            width:50%;
-                        }
+    .list-of-brands{
+        .filtered-brands{
+            .letter-item{
+                margin-bottom:3%;
+                h6.title{
+                    font-size:22px;
+                    @include fontBold;
+                }
+                .brands-by-letter{
+                    div{
+                        width:50%;
                     }
                 }
             }
@@ -96,20 +85,18 @@
     }
 }
 @media all and (max-width:400px){
-    .outter-brands-body{
-        .list-of-brands{
-            .filtered-brands{
-                .letter-item{
-                    margin-bottom:5%;
-                    h6.title{
-                        font-size:20px;
-                        @include fontBold;
-                    }
-                    .brands-by-letter{
-                        div{
-                            a{
-                                font-size:18px;
-                            }
+    .list-of-brands{
+        .filtered-brands{
+            .letter-item{
+                margin-bottom:5%;
+                h6.title{
+                    font-size:20px;
+                    @include fontBold;
+                }
+                .brands-by-letter{
+                    div{
+                        a{
+                            font-size:18px;
                         }
                     }
                 }
