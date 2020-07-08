@@ -1,5 +1,8 @@
 <section>
-    <div class="outter-list-of-news">
+    <div class="h4-title video-blog">
+        <h4 class="title">Видеоролики</h4>
+    </div>
+    <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
                 @foreach($categories as $category)
@@ -11,12 +14,12 @@
             </div>
         </form>
 
-        <div class="wrapper-filtered-news">
+        <div class="wrapper-filtered-videos">
             <nav class=" navbar navbar-expand-custom sort-types">
 
                 <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- <span class="navbar-toggler-icon"></span>     -->
-                <i class="navbar-toggler-icon mbcompare"></i>
+                    <!-- <span class="navbar-toggler-icon"></span>     -->
+                    <i class="navbar-toggler-icon mbcompare"></i>
                 </button>
 
                 <div id="search-bar" class="search-bar form-control">
@@ -43,43 +46,12 @@
                     </form>
                 </div>
             </nav>
-            <div class="news-inner-btn">
-                <button class="btn active">Все</button>
-                <button class="btn">2020</button>
-                <button class="btn">2019</button>
-                <button class="btn">2018</button>
-            </div>
-            <div class="all-filtered-news">
-                @foreach($news as $new)
-                <a href="{{ route('news.show', $new) }}">
-                    <div class="news-item">
-                        <div class="image">
-                            <img src="/storage/news/{{$new->file}}" alt="">
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="description">
-                            <h6 class="title">{{$new->title}}</h6>
-                            <p>{{$new->description}}</p>
-                        </div>
-                    </div>
-                </a>
-                @endforeach
-            </div>
 
-            <!-- PAGINATION  -->
-{{--            <nav class="products-pagination" aria-label="Page navigation example">--}}
-{{--                <ul class="pagination">--}}
-{{--                    <li class="page-item active"><a href="#">1</a></li>--}}
-{{--                    <li class="page-item"><a href="#">2</a></li>--}}
-{{--                    <li class="page-item"><a href="#">3</a></li>--}}
-{{--                    <li class="page-item">--}}
-{{--                        <a href="#" aria-label="Next">--}}
-{{--                            <i class="mbnext_page"></i>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="page-item"><a href="#">10</a></li>--}}
-{{--                </ul>--}}
-{{--            </nav>--}}
+            <div class="">
+                <h1>{{$video->title}}</h1><br>
+                <h3>{{$video->description}}</h3><br>
+                {!! $video->body !!}<br>
+            </div>
         </div>
     </div>
 </section>

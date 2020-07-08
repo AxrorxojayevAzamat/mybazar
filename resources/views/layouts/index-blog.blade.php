@@ -1,25 +1,12 @@
 <section>
     <div class="outter-blogs owl-carousel owl-theme">
-        <div class="item first">
-            <img src="{{asset('images/blog1.png')}}" alt="">
-            <div class="description">
-                <p class="sub-title">Блог</p>
-                <h5>Лучшие девайсы <br> для геймеров</h5>
+        @foreach($blogs as $blog)
+        <a href="{{route('blogs.show',$blog)}}">
+            <div class="item first">
+                <p class="sub-title">{{$blog->title}}</p>
+                <h5>{{$blog->description}}</h5>
             </div>
-        </div>
-        <div class="item second">
-            <img src="{{asset('images/blog1.png')}}" alt="">
-            <div class="description">
-                <p class="sub-title">Блог</p>
-                <h5>Умные часы с умным<br>интелектом</h5>
-            </div>
-        </div>
-        <div class="item third">
-            <img src="{{asset('images/blog1.png')}}" alt="">
-            <div class="description">
-                <p class="sub-title">Блог</p>
-                <h5>Безопасный дом:<br>уязвимости работа-пылесоса</h5>
-            </div>
-        </div>
+        </a>
+        @endforeach
     </div>
 </section>

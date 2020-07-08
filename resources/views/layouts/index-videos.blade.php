@@ -5,32 +5,11 @@
         </div>
         <div class="outter-players">
             <div class="all-players owl-carousel owl-theme">
-                <a href="#">
-                    <div class="video-item">
-                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
-                        <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
-                            <button class="btn play">
-                                <div class="arrow-right"></div>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="video-item">
-                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
-                        <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
-                            <button class="btn play">
-                                <div class="arrow-right"></div>
-                            </button>
-                        </div>
-                    </div>
-                </a>
 
-                <a href="#">
+                @foreach($videos as $video)
+                <a href="/videos/{{$video->id}}">
                     <div class="video-item">
-                        <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                        <img src="/storage/videos/{{$video->poster}}" alt="" class="poster">
                         <div class="video-overlay">
                             <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
                             <button class="btn play">
@@ -39,6 +18,7 @@
                         </div>
                     </div>
                 </a>
+                @endforeach
             </div>
         </div>
     </div>

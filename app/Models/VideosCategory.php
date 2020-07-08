@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\LanguageHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class VideosCategory extends Model
@@ -12,6 +13,11 @@ class VideosCategory extends Model
     protected static function boot()
     {
         parent::boot();
+    }
+
+    public function getNameAttribute(): string
+    {
+        return LanguageHelper::getName($this);
     }
 
     public function videos()

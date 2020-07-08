@@ -1,4 +1,4 @@
 <div class="single-blog-btn">
-    <button class="btn active ">Блог</button>
-    <button class="btn">Новости</button>
+    <a href="{{route('blogs.index')}}" class="btn active ">Блог</a>
+    <a href="{{route('news.index')}}" class="btn">Новости</a>
 </div>
