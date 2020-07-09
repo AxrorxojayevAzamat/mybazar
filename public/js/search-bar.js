@@ -1,13 +1,13 @@
 
-var input = document.getElementsByClassName('bordered-input');
+var any_input = document.getElementsByClassName('bordered-input');
 
-    for (i=0;i<input.length;i++){
-        if (input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
-            input[i].onfocus = function(){
+    for (i=0;i<any_input.length;i++){
+        if (any_input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
+            any_input[i].onfocus = function(){
                 // this.parentNode.addCSS('border':'1px solid blue');
                 this.parentNode.style.border = '1px solid #0042ff';
             }
-            input[i].onblur = function(){
+            any_input[i].onblur = function(){
                 // this.parentNode.addCSS('border':'1px solid grey');
 
                 this.parentNode.style.border = '1px solid #d1d8e0';
