@@ -17,28 +17,44 @@
         padding-right:2px;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $link_hover_color, 23px);
-        &:focus{
-            border-color:red !important;
-        }
-        .tag{
-            height: 25px;
-            padding: 5px 6px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            color: #333;
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
-            cursor: default;
-            i{
-                font-size: 16px;
-                color: #666;
-                margin-left: 5px;
-            } 
-        }
-        input{
+        .input-with-tags{
             width:85%;
+            overflow:hidden;
+            overflow-y:auto;
+            &::webkit-scrollbar{
+                display:none;
+            }
+            scrollbar-width:none;
+            padding:0 5px;
+            @include displayFlex(flex-start, row, center);
+            .tag{
+                height: 35px;
+                margin-right:5px;
+                padding: 5px 10px;
+                border: none;
+                background: $item_price_color;
+                display: flex;
+                align-items: center;
+                color: white;
+                cursor: default;
+                span{
+                    white-space: nowrap;
+                }
+                i{
+                    font-size: 7px;
+                    line-height:35px;
+                    color: white;
+                    margin-left: 5px;
+                } 
+            }
+            input{
+                width:100%;
+                &:focus{
+                    &::placeholder{
+                        color:transparent;
+                    }
+                }
+            }
         }
         button.dropdown-toggle{
             color:$title_color;

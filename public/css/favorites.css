@@ -1531,36 +1531,76 @@ nav#menu .mm-navbar__title span {
   border-radius: 23px;
 }
 
-.main-header div.search-bar:focus {
-  border-color: red !important;
+.main-header div.search-bar .input-with-tags {
+  width: 85%;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.main-header div.search-bar .tag {
-  height: 25px;
-  padding: 5px 6px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background: #eee;
+.main-header div.search-bar .input-with-tags::webkit-scrollbar {
+  display: none;
+}
+
+.main-header div.search-bar .input-with-tags .tag {
+  height: 35px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  background: #0042ff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #333;
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
+  color: white;
   cursor: default;
 }
 
-.main-header div.search-bar .tag i {
-  font-size: 16px;
-  color: #666;
+.main-header div.search-bar .input-with-tags .tag span {
+  white-space: nowrap;
+}
+
+.main-header div.search-bar .input-with-tags .tag i {
+  font-size: 7px;
+  line-height: 35px;
+  color: white;
   margin-left: 5px;
 }
 
-.main-header div.search-bar input {
-  width: 85%;
+.main-header div.search-bar .input-with-tags input {
+  width: 100%;
+}
+
+.main-header div.search-bar .input-with-tags input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.main-header div.search-bar .input-with-tags input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+.main-header div.search-bar .input-with-tags input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+.main-header div.search-bar .input-with-tags input:focus::placeholder {
+  color: transparent;
 }
 
 .main-header div.search-bar button.dropdown-toggle {

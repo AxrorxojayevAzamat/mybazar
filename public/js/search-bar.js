@@ -1,13 +1,13 @@
 
-var search_input = document.getElementsByClassName('bordered-input');
+var input = document.getElementsByClassName('bordered-input');
 
-    for (i=0;i<search_input.length;i++){
-        if (search_input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
-            search_input[i].onfocus = function(){
+    for (i=0;i<input.length;i++){
+        if (input[i].parentNode.tagName.toString().toLowerCase() == 'div') {
+            input[i].onfocus = function(){
                 // this.parentNode.addCSS('border':'1px solid blue');
                 this.parentNode.style.border = '1px solid #0042ff';
             }
-            search_input[i].onblur = function(){
+            input[i].onblur = function(){
                 // this.parentNode.addCSS('border':'1px solid grey');
 
                 this.parentNode.style.border = '1px solid #d1d8e0';
@@ -15,8 +15,25 @@ var search_input = document.getElementsByClassName('bordered-input');
         }
     }
 
-    const tagContainer = document.querySelector('.search-bar');
-    const input = document.querySelector('.search-bar input');
+    var search_input = document.getElementsByClassName('main-search-bordered-input');
+
+    for (i=0;i<search_input.length;i++){
+        
+        if (search_input[i].parentNode.parentNode.tagName.toString().toLowerCase() == 'div') {
+            search_input[i].onfocus = function(){
+                // this.parentNode.addCSS('border':'1px solid blue');
+                this.parentNode.parentNode.style.border = '1px solid #0042ff';
+            }
+            search_input[i].onblur = function(){
+                // this.parentNode.addCSS('border':'1px solid grey');
+
+                this.parentNode.parentNode.style.border = '1px solid #d1d8e0';
+            }
+        }
+    }
+
+    const tagContainer = document.querySelector('.input-with-tags');
+    const input = document.querySelector('.input-with-tags input');
     
     let tags = [];
     
@@ -26,8 +43,8 @@ var search_input = document.getElementsByClassName('bordered-input');
       const span = document.createElement('span');
       span.innerHTML = label;
       const closeIcon = document.createElement('i');
-      closeIcon.innerHTML = 'close';
-      closeIcon.setAttribute('class', 'material-icons');
+      
+      closeIcon.setAttribute('class', 'mbexit_mobile');
       closeIcon.setAttribute('data-item', label);
       div.appendChild(span);
       div.appendChild(closeIcon);
@@ -42,6 +59,7 @@ var search_input = document.getElementsByClassName('bordered-input');
     
     function addTags() {
       clearTags();
+      $('.input-with-tags input').attr('placeholder', '');
       tags.slice().reverse().forEach(tag => {
         tagContainer.prepend(createTag(tag));
       });
@@ -66,7 +84,6 @@ var search_input = document.getElementsByClassName('bordered-input');
         addTags();    
       }
     })
-    
     input.focus();
     
     

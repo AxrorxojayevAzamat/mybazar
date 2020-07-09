@@ -5,7 +5,9 @@
         </a>
     </div>
     <div id="search-bar" class="search-bar form-control">
-        <input id="search-input" class="bordered-input" type="search" placeholder="Поиск на myBazar">
+        <div class="input-with-tags">
+            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="Поиск на myBazar" do-not-use-data-role="tagsinput">   
+        </div>
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Все категории
