@@ -33,6 +33,9 @@
                     @include ('layouts.full-banner1')
 
                     <!-- SHOPS 2 -->
+                    @include('layouts.shops2')
+
+                    <!-- SHOPS 2 -->
 
                      <!-- NEWS LETTER -->
                      @include ('layouts.news-letter')

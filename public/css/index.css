@@ -3076,7 +3076,7 @@ img.menu-auto-icon:hover {
   top: -3%;
 }
 
-.shops .outter-shops .all-shops .shops-fr {
+.shops-fr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3092,12 +3092,12 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item {
+.shops-fr .item {
   border: 1px solid #dfe4ea;
   background: white;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .shop-name-logo {
+.shops-fr .item .shop-name-logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3114,20 +3114,20 @@ img.menu-auto-icon:hover {
   padding: 15px 0 0 15px;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .shop-name-logo img {
+.shops-fr .item .shop-name-logo img {
   margin-right: 15px;
   width: 30px;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .shop-name-logo h6, .shops .outter-shops .all-shops .shops-fr .item .shop-name-logo p {
+.shops-fr .item .shop-name-logo h6, .shops-fr .item .shop-name-logo p {
   margin: 0;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .shop-name-logo p.sub-title {
+.shops-fr .item .shop-name-logo p.sub-title {
   font-size: 16px;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .product-images {
+.shops-fr .item .product-images {
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3144,11 +3144,11 @@ img.menu-auto-icon:hover {
           align-items: center;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .product-images .big-img {
+.shops-fr .item .product-images .big-img {
   width: 75%;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .product-images .small-img {
+.shops-fr .item .product-images .small-img {
   width: 25%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3165,16 +3165,16 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.shops .outter-shops .all-shops .shops-fr .item .product-images .small-img img {
+.shops-fr .item .product-images .small-img img {
   margin: 15% 0;
 }
 
-.shops .outter-shops .all-shops .shops-fr button.owl-prev,
-.shops .outter-shops .all-shops .shops-fr button.owl-next {
+.shops-fr button.owl-prev,
+.shops-fr button.owl-next {
   top: 50%;
 }
 
-.shops .outter-shops .all-shops .shops-2r {
+.shops-2r {
   height: 400px;
   margin-top: 1%;
   display: -webkit-box;
@@ -3192,19 +3192,19 @@ img.menu-auto-icon:hover {
           align-items: flex-start;
 }
 
-.shops .outter-shops .all-shops .shops-2r button.owl-prev,
-.shops .outter-shops .all-shops .shops-2r button.owl-next {
+.shops-2r button.owl-prev,
+.shops-2r button.owl-next {
   top: 50%;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item {
+.shops-2r .first-item {
   width: 33%;
   height: 100%;
   border: 1px solid #dfe4ea;
   background: white;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .shop-name-logo {
+.shops-2r .first-item .shop-name-logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3221,28 +3221,28 @@ img.menu-auto-icon:hover {
   padding: 15px 0 0 15px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .shop-name-logo img {
+.shops-2r .first-item .shop-name-logo img {
   margin-right: 15px;
   width: 30px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .shop-name-logo h6, .shops .outter-shops .all-shops .shops-2r .first-item .shop-name-logo p {
+.shops-2r .first-item .shop-name-logo h6, .shops-2r .first-item .shop-name-logo p {
   margin: 0;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .shop-name-logo p.sub-title {
+.shops-2r .first-item .shop-name-logo p.sub-title {
   font-size: 16px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .single-img {
+.shops-2r .first-item .single-img {
   padding: 15px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .first-item .single-img img {
+.shops-2r .first-item .single-img img {
   width: 100%;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner {
+.shops-2r .shops-2r-inner {
   width: 67%;
   height: 100%;
   display: -webkit-box;
@@ -3260,7 +3260,7 @@ img.menu-auto-icon:hover {
           align-items: center;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items {
+.shops-2r .shops-2r-inner .palette-items {
   height: 100%;
   padding: 10px 20px 5px;
   border: 1px solid #dfe4ea;
@@ -3268,7 +3268,7 @@ img.menu-auto-icon:hover {
   background: white;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .product-img {
+.shops-2r .shops-2r-inner .palette-items .product-img {
   height: 45%;
   position: relative;
   display: -webkit-box;
@@ -3276,11 +3276,11 @@ img.menu-auto-icon:hover {
   display: flex;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .product-img img {
+.shops-2r .shops-2r-inner .palette-items .product-img img {
   width: 100%;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .product-img span.sale.small {
+.shops-2r .shops-2r-inner .palette-items .product-img span.sale.small {
   position: absolute;
   font-size: 14px;
   padding: 2px 15px;
@@ -3288,7 +3288,7 @@ img.menu-auto-icon:hover {
   left: 0;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description {
+.shops-2r .shops-2r-inner .palette-items .description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3307,30 +3307,30 @@ img.menu-auto-icon:hover {
   margin-top: 5%;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description h6.title {
+.shops-2r .shops-2r-inner .palette-items .description h6.title {
   font-size: 19px;
   line-height: 21px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description p.sub-title {
+.shops-2r .shops-2r-inner .palette-items .description p.sub-title {
   font-size: 16px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description .current-old-price h5.price {
+.shops-2r .shops-2r-inner .palette-items .description .current-old-price h5.price {
   font-size: 21px;
   line-height: 23px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description .item-action-icons {
+.shops-2r .shops-2r-inner .palette-items .description .item-action-icons {
   bottom: 20px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description .item-action-icons div {
+.shops-2r .shops-2r-inner .palette-items .description .item-action-icons div {
   width: 30px;
   height: 30px;
 }
 
-.shops .outter-shops .all-shops .shops-2r .shops-2r-inner .palette-items .description .item-action-icons div i {
+.shops-2r .shops-2r-inner .palette-items .description .item-action-icons div i {
   font-size: 14px;
   line-height: 30px;
 }
