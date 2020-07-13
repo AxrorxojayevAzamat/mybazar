@@ -3521,12 +3521,33 @@ img.menu-auto-icon:hover {
 .outter-blogs {
   width: 80%;
   margin: 1% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .outter-blogs .item {
   height: 310px;
   margin: 2% 0;
   position: relative;
+  -webkit-box-shadow: inset 11px 10px 33px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: inset 11px 10px 33px 0px rgba(0, 0, 0, 0.75);
+}
+
+.outter-blogs .item:hover .description {
+  background: none;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 .outter-blogs .item img {
@@ -3550,6 +3571,9 @@ img.menu-auto-icon:hover {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background: rgba(1, 65, 252, 0.6);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
   left: 0;
   top: 0;
   width: 100%;
