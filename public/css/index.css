@@ -2462,9 +2462,16 @@ img.menu-auto-icon:hover {
 
 #carousel-index .carousel-inner {
   height: 100%;
+  width: 100%;
 }
 
-#carousel-index .carousel-inner .carousel-item {
+#carousel-index .carousel-inner .item {
+  height: 100%;
+  width: 100%;
+}
+
+#carousel-index .carousel-inner .item img {
+  width: 100%;
   height: 100%;
 }
 
