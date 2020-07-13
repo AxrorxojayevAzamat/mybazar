@@ -176,6 +176,35 @@ $(document).ready(function(){
             }
         }
     });
+    $('.shops-2r-inner').owlCarousel({
+        nav:false,
+        dots:false,
+        // autoWidth:true,
+        margin:0,
+        items:3,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:1,
+                nav:true
+            },
+            800:{
+                items:2,
+                nav:true
+            },
+            1251:{
+                items:3,
+                nav:true
+            },
+            1400:{
+                items:4,
+                nav:true
+            }
+        }
+    });
     $('.all-players').owlCarousel({
         nav:false,
         dots:false,

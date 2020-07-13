@@ -25,17 +25,27 @@
 
                      <!-- POPULAR VIEW  -->
                      @include('layouts.popular_view')
-
+                    
+                     <div class="h4-title">
+                         <h4 class="title">Магазины</h4>
+                     </div>
                     <!-- SHOPS 1 -->
-                    @include('layouts.shops1')
+                    <section class="popular-shops">
+                        @include('layouts.shops1')
+                    </section>
 
                      <!-- FULL BANNER 1 -->
                     @include ('layouts.full-banner1')
 
                     <!-- SHOPS 2 -->
-                    @include('layouts.shops2')
+                    <section class="popular-shops">
+                        @include('layouts.shops2')
+                    </section>
 
                     <!-- SHOPS 2 -->
+                    <section class="popular-shops last">
+                        @include('layouts.shops2')
+                    </section>
 
                      <!-- NEWS LETTER -->
                      @include ('layouts.news-letter')

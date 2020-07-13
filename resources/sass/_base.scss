@@ -78,6 +78,7 @@ h6.title{
     white-space: nowrap;
     font-size:20px;
     text-align: start;
+    width:100%;
     color:$item_title_color;
 }
 p.description{
@@ -297,6 +298,80 @@ nav ol.breadcrumb{
     button{
         padding:10px 15px;
     }
+}
+.popular-shops{
+    width:100%;
+    padding:0 10%;
+    &.last{
+        margin-bottom:2%;
+    }
+}
+form.big-filter{
+    width:18%;
+    margin-top:50px;
+    text-align: start;
+    .card{
+        .card-header{
+            border-bottom:1px solid $link_hover_color;
+            button{
+                padding:15px 15px 15px 0;
+                font-weight:bold;
+                font-size:18px;
+                text-align: start;
+                &:after{
+                    right:10px;
+                }
+            }
+        }
+        #collapseTwo{
+            padding-bottom:10px;
+        }
+        .card-body{
+            padding:0;
+            text-align: start;
+            @include displayFlex(space-between, column, flex-start);
+            a{
+                margin:10px 0;
+            }
+            div{
+                margin:15px 0;
+                outline: none;
+                border:none !important;
+                &:focus{
+                    border:none;
+                }
+            }
+            .outter-range-slider{
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                margin:0 !important;
+                span{
+                    font-size:18px;
+                    line-height: 40px;
+                }
+                .form-group{
+                    @include displayFlex(space-between,row, center);
+                    input{
+                        width:45%;
+                        color:$title_color;
+                        border-radius:12px;
+                    }
+                }
+            }
+            a.show-more{
+                padding-left:30px;
+                color:$title_color;
+                font-size:18px;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+form.small-filter{
+    @extend form.big-filter;
+    display: none;
+    
 }
 @media all and (max-width:1695px){
     span.sale.big{

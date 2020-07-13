@@ -1,349 +1,177 @@
 <section>
-<div class="outter-catalog-view">
-        <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck1-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck1-0">Телевизоры, аудио и видео</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-1" >
-                    <label  class="custom-control-label" for="customCheck1-1">Телевизоры</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-2"  >
-                    <label class="custom-control-label" for="customCheck1-2">По диагонали и по бренду</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-3" >
-                    <label class="custom-control-label" for="customCheck1-3">Спутниковое и цифровое ТВ</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-4"  >
-                    <label class="custom-control-label" for="customCheck1-4">Домашний кинотеатр и Hi-Fi техника</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-5"  >
-                    <label class="custom-control-label" for="customCheck1-5">Аудио и дидееинг</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-5"  >
-                    <label class="custom-control-label" for="customCheck1-5">Аксессуары</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck2-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck2-0">Смартфоны и гаджеты</label> 
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-1"  >
-                    <label class="custom-control-label" for="customCheck2-1">Смартфоны</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-2"  >
-                    <label class="custom-control-label" for="customCheck2-2">По бренду</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-3"  >
-                    <label class="custom-control-label" for="customCheck2-3">Планшеты и эл.книги</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-4"  >
-                    <label class="custom-control-label" for="customCheck2-4">Смарт часы и гаджеты</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-5"  >
-                    <label class="custom-control-label" for="customCheck2-5">Наушники и гарнитуры</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-5"  >
-                    <label class="custom-control-label" for="customCheck2-5">SIM карты и тарифы</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck3-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck3-0">Одежда и обувь</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-1"  >
-                    <label class="custom-control-label" for="customCheck3-1">Мужчинам</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-2"  >
-                    <label class="custom-control-label" for="customCheck3-2">Женщинам</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-3"  >
-                    <label class="custom-control-label" for="customCheck3-3">Детям</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-4"  >
-                    <label class="custom-control-label" for="customCheck3-4">Спецодежда</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-5"  >
-                    <label class="custom-control-label" for="customCheck3-5">Путешествие</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck3-5"  >
-                    <label class="custom-control-label" for="customCheck3-5">Уход за одеждой и обувью</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck4-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck4-0">Продуты питания</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-1"  >
-                    <label class="custom-control-label" for="customCheck4-1">Чай, кофе, какао</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-2"  >
-                    <label class="custom-control-label" for="customCheck4-2">Хлеб, выпечка, сладости</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-3"  >
-                    <label class="custom-control-label" for="customCheck4-3">Соки, воды, напитки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-4"  >
-                    <label class="custom-control-label" for="customCheck4-4">Орехи, снэки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-5"  >
-                    <label class="custom-control-label" for="customCheck4-5">Макароны, крупы, мука</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-6"  >
-                    <label class="custom-control-label" for="customCheck4-6">50 - 58 дюймов</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-7"  >
-                    <label class="custom-control-label" for="customCheck4-7">60 дюймов и более</label>
-                </div>
-                <a class="show-more" href="#">Показать еще</a>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck5-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck5-0">Компьютеры и ноутбуки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-1"  >
-                    <label class="custom-control-label" for="customCheck5-1">Ноутбуки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-2"  >
-                    <label class="custom-control-label" for="customCheck5-2">Компьютеры и мониторы</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-3"  >
-                    <label class="custom-control-label" for="customCheck5-3">Периферийные устройства</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-4"  >
-                    <label class="custom-control-label" for="customCheck5-4">Оргтехника</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-5"  >
-                    <label class="custom-control-label" for="customCheck5-5">Носители и компликтующие</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-6"  >
-                    <label class="custom-control-label" for="customCheck5-6">Сетевое оборудование</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-7"  >
-                    <label class="custom-control-label" for="customCheck5-7">Игровые Аксессуары</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck5-8"  >
-                    <label class="custom-control-label" for="customCheck5-8">Аксессуары для компьютеров</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck6-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label"for="customCheck6-0">Бытовая техника для дома</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck6-1"  >
-                    <label class="custom-control-label" for="customCheck6-1">Стиральные и сушильные машины</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck6-2"  >
-                    <label class="custom-control-label" for="customCheck6-2">Климатическая техника</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck6-3"  >
-                    <label class="custom-control-label" for="customCheck6-3">Техника для уборки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck6-4"  >
-                    <label class="custom-control-label" for="customCheck6-4">Аксессуары для дома</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck6-5"  >
-                    <label class="custom-control-label" for="customCheck6-5">Товары для дома и сада</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck7-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck7-0">Для кухни</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-1"  >
-                    <label class="custom-control-label" for="customCheck7-1">Крупная технгика для кухники</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-2"  >
-                    <label class="custom-control-label" for="customCheck7-2">Мелкая техника для кухни</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-3"  >
-                    <label class="custom-control-label" for="customCheck7-3">Встраиваемая техника</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-4"  >
-                    <label class="custom-control-label" for="customCheck7-4">Приготовление пищи</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-5"  >
-                    <label class="custom-control-label" for="customCheck7-5">Кофеварки и кофемашины</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-6"  >
-                    <label class="custom-control-label" for="customCheck7-6">Посуда и товары</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck7-7"  >
-                    <label class="custom-control-label" for="customCheck7-7">Аксессуары для кухни</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck8-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck8-0">Красота и здоровье</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-1"  >
-                    <label class="custom-control-label" for="customCheck8-1">Укладка волос </label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-2"  >
-                    <label class="custom-control-label" for="customCheck8-2">Бритье и стрижка</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-3"  >
-                    <label class="custom-control-label" for="customCheck8-3">Товары для красоты</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-4"  >
-                    <label class="custom-control-label" for="customCheck8-4">Товары для здоровья </label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-5"  >
-                    <label class="custom-control-label" for="customCheck8-5">товары для спорта и фитнеса</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-6"  >
-                    <label class="custom-control-label" for="customCheck8-6">Посуда и товары</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck8-7"  >
-                    <label class="custom-control-label" for="customCheck8-7">Товары для детей</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck9-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck9-0">Фото и видео</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck9-1"  >
-                    <label class="custom-control-label" for="customCheck9-1">Объективы, вспышки и оптика</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck9-2"  >
-                    <label class="custom-control-label" for="customCheck9-2">Экшн-камеры</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck9-3"  >
-                    <label class="custom-control-label" for="customCheck9-3">Видеокамеры</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck9-4"  >
-                    <label class="custom-control-label" for="customCheck9-4">Фотопринтеры и фоторамки</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck9-5"  >
-                    <label class="custom-control-label" for="customCheck9-5">Аксессуары для фото-видеотехники</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck10-0" class="checkAll custom-control-input">
-                    <label class="select-all-label custom-control-label" for="customCheck10-0">Игры, софт, развлечения</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-1"  >
-                    <label class="custom-control-label" for="customCheck10-1">PlayStation</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-2"  >
-                    <label class="custom-control-label" for="customCheck10-2">Xbox</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-3"  >
-                    <label class="custom-control-label" for="customCheck10-3">Nintendo</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-4"  >
-                    <label class="custom-control-label" for="customCheck10-4">PC Gaming </label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-5"  >
-                    <label class="custom-control-label" for="customCheck10-5">Онлайн контент и софт </label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck10-6"  >
-                    <label class="custom-control-label" for="customCheck10-6">Электротраанспорт</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <div  class="custom-control custom-checkbox select-all-div">
-                    <input type="checkbox"  id="customCheck11-0" class="checkAll custom-control-input">
-                    <label class="select-all-label" for="customCheck11-0">Автотовары</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-1"  >
-                    <label class="custom-control-label" for="customCheck11-1">Видеорегистраторы и навигаторы</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-2"  >
-                    <label class="custom-control-label" for="customCheck11-2">Автоакустика </label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-3"  >
-                    <label class="custom-control-label" for="customCheck11-3">Автомобильная электрика</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-4"  >
-                    <label class="custom-control-label" for="customCheck11-4">Автоаксессуары</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-5"  >
-                    <label class="custom-control-label" for="customCheck11-5">Товары для Авто</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck11-6"  >
-                    <label class="custom-control-label" for="customCheck11-6">Автозапчасти</label>
-                </div>
-            </div>
+    <div class="outter-catalog-view">
+         <form action="get" class="accordion big-filter filter" id="catalogFilter">
+            <ul class="navbar-nav">
+                <div class="card">
+                    <div class="card-header" id="filterOne">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="filterOne">
+                            Технология
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="filterOne" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-1" >
+                                <label  class="custom-control-label" for="smallcustomCheck1-1">LED</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-2">OLED</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-3" >
+                                <label class="custom-control-label" for="smallcustomCheck1-3">QLED</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-4"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-4">4K UHD</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-5"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-5">8K FHD</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="filterTwo">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="filterTwo">
+                            Бренд
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="filterTwo" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-1"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-1">LG</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-2">Samsung</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-3"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-3">Artel</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-4"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-4">Roison</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-5"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-5">Toshiba</label>
+                            </div>
+                            <a class="show-more" href="#">Показать еще</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card price">
+                    <div class="card-header" id="filterThree">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="filterThree">
+                            Цена
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="filterThree" data-parent="#catalogFilter">
+                        <div class="card-body">
+                        <div class="outter-range-slider">	
+                            <div class="form-group">
+                                <input type="text" class=" js-input-from form-control" value="0" />
+                                <span>-</span>
+                                <input type="text" class=" js-input-to form-control" value="0" />
+                            </div>
+                            <div class="range-slider">
+                                <input type="text" class="js-range-slider" value="" />
+                            </div>
+                        
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFour">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="filterFour">
+                            Диагональ
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse show" aria-labelledby="filterFour" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-1"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-1">До 19 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-2">20 - 26 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-3"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-3">27 - 32 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-4"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-4">37 - 43 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-5"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-5">45 - 49 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-6"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-6">50 - 58 дюймов</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-7"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-7">60 дюймов и более</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFive">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="filterFive">
+                            Функции
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse show" aria-labelledby="filterFive" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-1"  >
+                                <label class="custom-control-label" for="smallcustomCheck5-1">SmartTV</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck5-2">WiFi</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-3"  >
+                                <label class="custom-control-label" for="smallcustomCheck5-3">Поддержка HDR</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-4"  >
+                                <label class="custom-control-label" for="smallcustomCheck5-4">Встроенный сабвуфер</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck5-5"  >
+                                <label class="custom-control-label" for="smallcustomCheck5-5">Curved</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </ul>
         </form>
 
         <div class="wrapper-filtered-items">
