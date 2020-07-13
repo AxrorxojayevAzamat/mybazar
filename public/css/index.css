@@ -2468,27 +2468,6 @@ img.menu-auto-icon:hover {
   height: 100%;
 }
 
-#carousel-index .carousel-inner .carousel-item:first-child {
-  background: url("../images/slider1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#carousel-index .carousel-inner .carousel-item:nth-child(2) {
-  background: url("../images/slider2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#carousel-index .carousel-inner .carousel-item:last-child {
-  background: url("../images/slider3.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .recommended, .popular-products, .newone {
   width: 100%;
   height: 700px;
