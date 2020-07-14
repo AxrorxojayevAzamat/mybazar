@@ -150,23 +150,29 @@ span.new-product{
 
 button.owl-prev, .owl-carousel .owl-nav button.owl-prev{
     position: absolute;
-    background:#c8d2ed;
+    background:#668eff;
     width:40px;
     height:40px;
     border-radius:23px;
     left:-2%;
     top:50%;
     outline: none;
+    &:hover{
+        background:#668eff;
+    }
 }
 button.owl-next, .owl-carousel .owl-nav button.owl-next{
     position: absolute;
-    background: #c8d2ed;
+    background: #668eff;
     width:40px;
     height:40px;
     border-radius:23px;
     right:-2%;
     top:50%;
     outline: none;
+    &:hover{
+        background:#668eff;
+    }
 }
 .owl-dots{
     margin:0;

@@ -588,7 +588,7 @@ span.new-product span span {
 
 button.owl-prev, .owl-carousel .owl-nav button.owl-prev {
   position: absolute;
-  background: #c8d2ed;
+  background: #668eff;
   width: 40px;
   height: 40px;
   border-radius: 23px;
@@ -597,15 +597,23 @@ button.owl-prev, .owl-carousel .owl-nav button.owl-prev {
   outline: none;
 }
 
+button.owl-prev:hover, .owl-carousel .owl-nav button.owl-prev:hover {
+  background: #668eff;
+}
+
 button.owl-next, .owl-carousel .owl-nav button.owl-next {
   position: absolute;
-  background: #c8d2ed;
+  background: #668eff;
   width: 40px;
   height: 40px;
   border-radius: 23px;
   right: -2%;
   top: 50%;
   outline: none;
+}
+
+button.owl-next:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background: #668eff;
 }
 
 .owl-dots {

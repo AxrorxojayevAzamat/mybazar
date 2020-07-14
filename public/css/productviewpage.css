@@ -588,7 +588,7 @@ span.new-product span span {
 
 button.owl-prev, .owl-carousel .owl-nav button.owl-prev {
   position: absolute;
-  background: #c8d2ed;
+  background: #668eff;
   width: 40px;
   height: 40px;
   border-radius: 23px;
@@ -597,15 +597,23 @@ button.owl-prev, .owl-carousel .owl-nav button.owl-prev {
   outline: none;
 }
 
+button.owl-prev:hover, .owl-carousel .owl-nav button.owl-prev:hover {
+  background: #668eff;
+}
+
 button.owl-next, .owl-carousel .owl-nav button.owl-next {
   position: absolute;
-  background: #c8d2ed;
+  background: #668eff;
   width: 40px;
   height: 40px;
   border-radius: 23px;
   right: -2%;
   top: 50%;
   outline: none;
+}
+
+button.owl-next:hover, .owl-carousel .owl-nav button.owl-next:hover {
+  background: #668eff;
 }
 
 .owl-dots {
@@ -2771,7 +2779,8 @@ img.menu-auto-icon:hover {
 
 .outter-single-product-with-des .inner-single-product-with-des .images .big-image {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  margin-bottom: 2%;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images .big-image img {
@@ -2783,6 +2792,17 @@ img.menu-auto-icon:hover {
   width: 100%;
   height: 100px;
   position: relative;
+}
+
+.outter-single-product-with-des .inner-single-product-with-des .images .several-images img.demo {
+  opacity: 0.6;
+}
+
+.outter-single-product-with-des .inner-single-product-with-des .images .several-images img.active, .outter-single-product-with-des .inner-single-product-with-des .images .several-images img.demo:hover {
+  opacity: 1;
+  border: 1px solid #0042ff;
+  border-radius: 20px;
+  background: #dfe1e1;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images .several-images .owl-nav {
@@ -2872,21 +2892,35 @@ img.menu-auto-icon:hover {
   color: black;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .two-buttons {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons2,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons3 {
   width: 100%;
   margin: 1% 0;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .two-buttons button {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons div,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons2 div,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons3 div {
   margin-right: 10px;
-  padding: 15px 30px;
+  padding: 15px 0;
+  width: 18%;
+  display: inline-block;
   color: black;
+  text-align: center;
   background: white;
+  cursor: pointer;
   border: 2px solid #a4b0be;
   border-radius: 25px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .two-buttons button.active {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons div.active,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons2 div.active,
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .pr-des-radio-buttons3 div.active {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
   border-color: #0042ff;
 }
 
@@ -2907,38 +2941,42 @@ img.menu-auto-icon:hover {
   margin-bottom: 3%;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color {
   margin-right: 8px;
   padding: 6px;
   width: 50px;
   height: 50px;
   border: 2px solid #a4b0be;
   border-radius: 50%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div.active {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color.active {
   border-color: #0042ff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div div {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color div {
   width: 34px;
   height: 34px;
   border: none;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div div.grey {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color div.grey {
   background: #bfbfbf;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div div.blue {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color div.blue {
   background: #1463cf;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div div.green {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color div.green {
   background: #1a6c26;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors div div.white {
+.outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .colors .color div.white {
   background: white;
   border: 2px solid #a4b0be;
 }

@@ -41,27 +41,28 @@ $(document).ready(function(){
     $('.several-images').owlCarousel({
         margin:10,
         nav:true,
-        dots:true,
+        dots:false,
+        navRewind: false,
+        loop:false,
         responsive:{
             0:{
                 items:2,
                 nav:true
             },
             600:{
-                items:2,
-                nav:true
-            },
-            800:{
                 items:3,
                 nav:true
             },
-            1001:{
+            800:{
                 items:4,
                 nav:true
             },
-            1251:{
+            1001:{
                 items:5,
                 nav:true
+            },
+            1251:{
+                items:6,
             }
         }
     });
