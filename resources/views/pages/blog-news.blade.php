@@ -1,9 +1,9 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Blog page')
+@section('title', 'News page')
 @include ('includes.common-style')
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/blog.css')}}">
+    <link rel="stylesheet" href="{{asset('css/blog-news.css')}}">
 @endsection
 
 @section('body')
@@ -19,15 +19,21 @@
     <!-- BREADCRUMB -->
     @include('layouts.breadcrumb-blog')
 
-    
     <!-- blog-news btn -->
     @include('layouts.blog-news-btn')
 
-    <!-- blog body -->
-    @include('layouts.blog-body')
-    
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-blog" role="tabpanel" aria-labelledby="pills-blog">
+            <!-- blog body -->
+            @include('layouts.blog-body')
+        </div>
+        <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news">
+            <!-- blog body -->
+            @include('layouts.news-body')
+        </div>
+    <div>
     <!-- recently watched -->
-        @include('layouts.recently-viewed')
+    @include('layouts.recently-viewed')
 
      <!-- NEWS LETTER -->
      @include ('layouts.news-letter')

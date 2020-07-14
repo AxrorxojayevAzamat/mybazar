@@ -24,10 +24,8 @@ Route::get('/brands', 'PagesController@brands');
 Route::get('/sales', 'PagesController@sales');
 Route::get('/videoblog', 'PagesController@videoblog');
 Route::get('/shopview', 'PagesController@shopview');
-Route::get('/blog', 'PagesController@blog');
-Route::get('/delivery', 'PagesController@delivery');
-Route::get('/guaranty', 'PagesController@guaranty');
-Route::get('/payment', 'PagesController@payment');
+Route::get('/blog-news', 'PagesController@blogNews'); //blog and news  are combined
+Route::get('/delivery-guaranty-payment', 'PagesController@deliveryGuarantyPayment'); // delivery, guaranty, payment are combined
 Route::get('/catalogsection', 'PagesController@catalogSection');
 Route::get('/favorites', 'PagesController@favorites');
 Route::get('/pay', 'PagesController@pay');
@@ -36,9 +34,7 @@ Route::get('/sms', 'PagesController@sms');
 Route::get('/mail', 'PagesController@mail');
 Route::get('/shops', 'PagesController@shops');
 Route::get('/singleblog', 'PagesController@singleblog');
-Route::get('/productviewpage', 'PagesController@productViewPage');
-Route::get('/productviewpage-comments', 'PagesController@productViewPageComments');
-Route::get('/productviewpage-characteristics', 'PagesController@productViewPageCharacteristics');
+Route::get('/productviewpage', 'PagesController@productViewPage'); // comments and characteristics are combined here
 Route::get('/compare', 'PagesController@compare');
 Route::get('/salesview', 'PagesController@salesView');
 Route::get('/videoblog-view', 'PagesController@videoBlogView');

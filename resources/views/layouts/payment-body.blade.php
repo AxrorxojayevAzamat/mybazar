@@ -1,4 +1,9 @@
 <section>
+    <div class="slide-banner">
+        <img src="{{asset('images/payment-slide-banner.png')}}" alt="">
+    </div>
+</section>
+<section>
     <div class="payment-outter">
         <div class="accordion" id="paymentCollapse">
             <div class="card">

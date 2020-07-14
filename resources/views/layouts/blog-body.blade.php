@@ -2,7 +2,7 @@
     <div class="outter-list-of-blogs">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
-                @foreach($categories as $category)
+                @foreach($gCategories as $category)
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
                         <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
@@ -30,7 +30,7 @@
                             <div class="card">
                                 <div id="collapseOne" class="collapse" aria-labelledby="filterOne" data-parent="#catalogFilter">
                                     <div class="card-body">
-                                        @foreach($categories as $category)
+                                        @foreach($gCategories as $category)
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
                                                 <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>

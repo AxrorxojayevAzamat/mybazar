@@ -19,7 +19,7 @@
                 <!-- BREADCRUMB -->
                 @include('layouts.breadcrumb-shop-view')
 
-                <!-- Slide Banner brand-view -->
+                <!-- Slide Banner shop-view -->
                 @include('layouts.slide-banner-shop-view')
 
                 <!-- PRODUCT OF DAY -->

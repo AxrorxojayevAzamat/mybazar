@@ -490,6 +490,43 @@ nav ol.breadcrumb li {
           transform: rotate(90deg);
 }
 
+.nav-pills.page-tabs {
+  height: 65px;
+  background: #f1f2f6;
+  width: 100%;
+  padding: 0 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-pills.page-tabs li a {
+  padding: 15px 30px;
+  color: #07108f;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+  border: none;
+  border-radius: 23px;
+  background: transparent;
+  margin: 0 10px 0 0;
+}
+
+.nav-pills.page-tabs li a.active {
+  background: #0042ff;
+  color: white;
+}
+
 .news-inner-btn, .blog-news-btn, .new-popular-recommended-btn, .single-blog-btn {
   height: 65px;
   background: #f1f2f6;
@@ -654,6 +691,20 @@ form.small-filter {
   display: none;
 }
 
+.slide-banner {
+  width: 80%;
+  height: 200px;
+  margin: 1%  auto 2%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide-banner img {
+  width: 100%;
+  height: 100%;
+}
+
 @media all and (max-width: 1695px) {
   span.sale.big, span.sale.small {
     font-size: 18px;
@@ -681,8 +732,11 @@ form.small-filter {
   .h4-title {
     padding: 3% 8%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.brand-view, .h4-title.compare {
     padding: 1% 8%;
+  }
+  .slide-banner {
+    width: 84%;
   }
 }
 
@@ -690,10 +744,13 @@ form.small-filter {
   .h4-title {
     padding: 2% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
     padding: 1% 5%;
   }
   nav ol.breadcrumb {
+    width: 90%;
+  }
+  .slide-banner {
     width: 90%;
   }
 }
@@ -727,7 +784,7 @@ form.small-filter {
   .h4-title {
     padding: 2.5% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
     padding: 1.5% 5%;
   }
 }
@@ -745,7 +802,7 @@ form.small-filter {
   .h4-title {
     padding: 3% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
     padding: 2% 5%;
   }
   h4.title {

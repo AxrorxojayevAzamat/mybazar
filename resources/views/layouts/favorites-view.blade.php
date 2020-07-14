@@ -4,31 +4,69 @@
     </div>
     <div class="outter-catalog-view">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                <label for="" class="filter-title">Телевизоры, аудио и видео</label>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-1" >
-                    <label  class="custom-control-label" for="customCheck1-1">Телевизоры</label>
+            <ul class="navbar-nav">
+                <div class="card">
+                    <div class="card-header" id="filterOne">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="filterOne">
+                            Телевизоры, аудио и видео
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="filterOne" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-1" >
+                                <label  class="custom-control-label" for="smallcustomCheck1-1"> Телевизоры</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-2">OLED</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Смартфоны и гаджеты</label>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-1"  >
-                    <label class="custom-control-label" for="customCheck2-1">Смартфоны</label>
+                <div class="card">
+                    <div class="card-header" id="filterTwo">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="filterTwo">
+                            Смартфоны и гаджеты
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="filterTwo" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-1"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-1">Смартфоны</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck2-2">Наушники и гарнитуры</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2-2"  >
-                    <label class="custom-control-label" for="customCheck2-2">Наушники и гарнитуры</label>
+
+                <div class="card">
+                    <div class="card-header" id="filterFour">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="filterFour">
+                            Одежда и обувь
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse show" aria-labelledby="filterFour" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck4-1"  >
+                                <label class="custom-control-label" for="smallcustomCheck4-1">Мужчинам</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Одежда и обувь</label>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck4-1"  >
-                    <label class="custom-control-label" for="customCheck4-1">Мужчинам</label>
-                </div>
-            </div>
+                
+            </ul>
         </form>
 
         <div class="wrapper-filtered-items">

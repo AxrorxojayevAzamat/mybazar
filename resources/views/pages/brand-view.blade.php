@@ -19,9 +19,6 @@
                 <!-- BREADCRUMB -->
                 @include('layouts.breadcrumb-brand-view')
 
-                <!-- Slide Banner brand-view -->
-                @include('layouts.slide-banner-brand-view')
-
                 <!-- Items-list-mosaic -->
                 @include('layouts.brand-view-list-mosaic')
 

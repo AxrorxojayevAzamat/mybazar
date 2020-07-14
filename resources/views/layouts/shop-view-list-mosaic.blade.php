@@ -1,38 +1,61 @@
 <section>
     <div class="outter-brand-view-body">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                <label for="" class="filter-title">Категории</label>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-1" >
-                    <label  class="custom-control-label" for="customCheck1-1">Телевизоры, аудио и виедо</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-2"  >
-                    <label class="custom-control-label" for="customCheck1-2">Смартфоны и гаджеты</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-3" >
-                    <label class="custom-control-label" for="customCheck1-3">Бытовая техника для дома</label>
-                </div>
-                <div  class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1-4"  >
-                    <label class="custom-control-label" for="customCheck1-4">Для кухни</label>
-                </div>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Цена</label>
-                <div class="outter-range-slider">	
-                    <div class="form-group">
-                        <input type="text" class=" js-input-from form-control" value="0" />
-                        <span>-</span>
-                        <input type="text" class=" js-input-to form-control" value="0" />
+            <ul class="navbar-nav">
+                <div class="card">
+                    <div class="card-header" id="filterOne">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="filterOne">
+                            Категории
+                            </button>
+                        </h2>
                     </div>
-                    <div class="range-slider">
-                        <input type="text" class="js-range-slider" value="" />
+                    <div id="collapseOne" class="collapse" aria-labelledby="filterOne" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-1" >
+                                <label  class="custom-control-label" for="smallcustomCheck1-1">Телевизоры, аудио и видео</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-2"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-2">Смартфоны и гаджеты</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-3" >
+                                <label class="custom-control-label" for="smallcustomCheck1-3">Бытовая техника для дома</label>
+                            </div>
+                            <div  class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-4"  >
+                                <label class="custom-control-label" for="smallcustomCheck1-4">Для кухни</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="card price">
+                    <div class="card-header" id="filterThree">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="filterThree">
+                            Цена
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="filterThree" data-parent="#catalogFilter">
+                        <div class="card-body">
+                        <div class="outter-range-slider">	
+                            <div class="form-group">
+                                <input type="text" class=" js-input-from form-control" value="0" />
+                                <span>-</span>
+                                <input type="text" class=" js-input-to form-control" value="0" />
+                            </div>
+                            <div class="range-slider">
+                                <input type="text" class="js-range-slider" value="" />
+                            </div>
+                        
+                        </div>
+                        </div>
+                    </div>
+                </div>                            
+            </ul>
         </form>
         <div class="wrapper-filtered-items">
             <!-- SORTING OPTIONS -->

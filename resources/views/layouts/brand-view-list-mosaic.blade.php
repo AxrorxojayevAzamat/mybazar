@@ -1,4 +1,10 @@
 <section>
+    <div class="h4-title brand-view">
+        <h4 class="title">Samsung</h4>
+    </div>
+    <div class="slide-banner">
+        <img src="{{asset('images/brand-view-slide-banner.png')}}" alt="">
+    </div>
     <div class="outter-brand-view-body">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">

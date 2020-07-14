@@ -4,63 +4,130 @@
     </div>
     <div class="outter-catalog-view">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                <label for="" class="filter-title">Телевизоры</label>
-                <a href="#">Все телевизоры</a>
-                <a href="#">Smart телевизоры</a>
-                <a href="#">4K UHD-телевизоры</a>
-                <a href="#">8K UHD-телевизоры</a>
-                <a href="#">QLED телевизоры</a>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">По диоганали и бренду</label>
-                <a href="#">10"-39"</a>
-                <a href="#">40"-49"</a>
-                <a href="#">50"-55"</a>
-                <a href="#">56"-65"</a>
-                <a href="#">66" и более</a>
-                <a href="#">Телевизоры Samsung</a>
-                <a href="#">Телевизоры LG</a>
-                <a href="#">Телевизоры Roison</a>
-                <a href="#">Телевизоры Artel</a>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Спутниковое и цифровое ТВ</label>
-                <a href="#">Спутниковое ТВ</a>
-                <a href="#">Цифровое ТВ</a>
-                <a href="#">Медиаплееры</a>
-                <a href="#">ТВ-антенны</a>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Домашний кинотеатр и Hi-Fi техника</label>
-                <a href="#">Саундбары</a>
-                <a href="#">Системы для вечеринок</a>
-                <a href="#">Музыкальные центры</a>
-                <a href="#">DVD, Blu-Ray-плееры</a>
-                <a href="#">Проекторы и экраны</a>
-                <a href="#">Акустические системы</a>
-                <a href="#">Ресиверы</a>
-                <a href="#">Проигрователи виниловых дисков и аксессуары</a>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Аудио и диджеинг</label>
-                <a href="#">Портативное аудио и акустика</a>
-                <a href="#">MP3-плееры</a>
-                <a href="#">Радио и магнитолы</a>
-                <a href="#">Ванил и проигрыватели</a>
-                <a href="#">Музыкальные центры</a>
-                <a href="#">Беспроводное аудиосистемы</a>
-                <a href="#">Оборудование для DJ</a>
-            </div>
-            <div class="filter-item">
-                <label for="" class="filter-title">Аксессуары</label>
-                <a href="#">Кронштейны и тумбы</a>
-                <a href="#">Кабели и переходники</a>
-                <a href="#">Электропитание и элементы питания</a>
-                <a href="#">Наушники и мирофоны</a>
-                <a href="#">Пульты</a>
-                <a href="#">Информационные носители</a>
-            </div>
+            <ul class="navbar-nav">
+                <div class="card">
+                    <div class="card-header" id="filterOne">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="filterOne">
+                            Телевизоры
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="filterOne" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">Все телевизоры</a>
+                            <a href="#">Smart телевизоры</a>
+                            <a href="#">4K UHD-телевизоры</a>
+                            <a href="#">8K UHD-телевизоры</a>
+                            <a href="#">QLED телевизоры</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="filterTwo">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="filterTwo">
+                            По диагонали и по бренду
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="filterTwo" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">10" - 39"</a>
+                            <a href="#">40" - 49"</a>
+                            <a href="#">50" - 55"</a>
+                            <a href="#">56" - 65"</a>
+                            <a href="#">66" и более</a>
+                            <a href="#">Телевизоры Samsung</a>
+                            <a href="#">Телевизоры LG</a>
+                            <a href="#">Телевизоры Sony</a>
+                            <a href="#">Телевизоры Artel</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFour">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="filterFour">
+                            Спутниковое и цифровое ТВ
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse show" aria-labelledby="filterFour" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">Спутниковое ТВ</a>
+                            <a href="#">Цифровое ТВ</a>
+                            <a href="#">Медиаплееры</a>
+                            <a href="#">ТВ-антенны</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFive">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="filterFive">
+                            Домашний кинотеатр и Hi-Fi техника
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse show" aria-labelledby="filterFive" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">Саундбары</a>
+                            <a href="#">Системы для вечеринок</a>
+                            <a href="#">Музыкальные центры</a>
+                            <a href="#">DVD, Blu-Ray-плееры</a>
+                            <a href="#">Проекторы и экраны</a>
+                            <a href="#">Акустические системы</a>
+                            <a href="#">Ресиверы</a>
+                            <a href="#">Проигрователи виниловых дисков и аксессуары</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFive">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="filterFive">
+                            Аудио и диджеинг
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse show" aria-labelledby="filterFive" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">Портативное аудио и акустика</a>
+                            <a href="#">MP3-плееры</a>
+                            <a href="#">Радио и магнитолы</a>
+                            <a href="#">Ванил и проигрыватели</a>
+                            <a href="#">Музыкальные центры</a>
+                            <a href="#">Беспроводное аудиосистемы</a>
+                            <a href="#">Оборудование для DJ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="filterFive">
+                        <h2 class="mb-0">
+                            <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="filterFive">
+                            Аксессуары
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse show" aria-labelledby="filterFive" data-parent="#catalogFilter">
+                        <div class="card-body">
+                            <a href="#">Кронштейны и тумбы</a>
+                            <a href="#">Кабели и переходники</a>
+                            <a href="#">Электропитание и элементы питания</a>
+                            <a href="#">Наушники и мирофоны</a>
+                            <a href="#">Пульты</a>
+                            <a href="#">Информационные носители</a>
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
         </form>
 
         <div class="wrapper-filtered-items">
@@ -126,23 +193,10 @@
                                 </div>
                                 <div id="collapseFour" class="collapse" aria-labelledby="filterFour" data-parent="#catalogFilter">
                                     <div class="card-body">
-<<<<<<< HEAD
-                                    <div class="outter-range-slider">
-                                        <div class="form-group">
-                                            <input type="text" class=" js-input-from form-control" value="0" />
-                                            <span>-</span>
-                                            <input type="text" class=" js-input-to form-control" value="0" />
-                                        </div>
-                                        <div class="range-slider">
-                                            <input type="text" class="js-range-slider" value="" />
-                                        </div>
-
-=======
                                         <a href="#">Спутниковое ТВ</a>
                                         <a href="#">Цифровое ТВ</a>
                                         <a href="#">Медиаплееры</a>
                                         <a href="#">ТВ-антенны</a>
->>>>>>> 66c81eed7902cd350424b7de523ce6b809cbbd7a
                                     </div>
                                 </div>
                             </div>

@@ -37,20 +37,11 @@ class PagesController extends Controller
     public function shopview(){
         return view("pages.shop-view");
     }
-    public function blog(){
-        return view("pages.blog");
+    public function blogNews(){
+        return view("pages.blog-news");
     }
-    public function news(){
-        return view("pages.news");
-    }
-    public function delivery(){
-        return view("pages.delivery");
-    }
-    public function guaranty(){
-        return view("pages.guaranty");
-    }
-    public function payment(){
-        return view("pages.payment");
+    public function deliveryGuarantyPayment(){
+        return view("pages.delivery-guaranty-payment");
     }
     public function catalogSection(){
         return view("pages.catalog-section");
@@ -81,12 +72,6 @@ class PagesController extends Controller
     }
     public function productViewPage(){
         return view("pages.productviewpage");
-    }
-    public function productViewPageComments(){
-        return view("pages.productviewpage-comments");
-    }
-    public function productViewPageCharacteristics(){
-        return view("pages.productviewpage-characteristics");
     }
     public function compare(){
         return view("pages.compare");
