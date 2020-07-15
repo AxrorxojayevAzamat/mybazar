@@ -3,7 +3,7 @@
 @section('title', 'Favorites page')   
 @include ('includes.common-style')
     @section('styles')
-        <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
+        <link rel="stylesheet" href="{{asset('css/favorites.css')}}">
     @endsection
         @section('body')
             @extends ('layouts.menu')
@@ -18,8 +18,34 @@
                     <!-- Breadcrumbs -->
                     @include ('layouts.breadcrumb-favorites')
 
-                    <!-- CATALOG VIEW -->
-                    @include ('layouts.favorites-view')
+                    <!-- favorities VIEW -->
+                    <section>
+                        <div class="h4-title catalog-view">
+                            <h4 class="title">Избранное</h4>
+                        </div>
+                        <div class="outter-catalog-view">
+                            <!-- big filter without title checkbox -->
+                            @include('layouts.big-filter-with-title-checkbox')
+
+                            <div class="wrapper-filtered-items">
+
+                                <nav class=" navbar navbar-expand-custom sort-types">
+
+                                    <!--sort-by options  -->
+                                    @include('layouts.sort-by-options')
+
+                                    <!-- small filter without title checkbox -->
+                                    @include('layouts.small-filter-without-title-checkbox')
+                                </nav>
+
+                                <!-- list mosaic catalog items -->
+                                @include('layouts.favorite-items')
+
+                                <!-- pagination -->
+
+                            </div>
+                        </div>
+                    </section>
 
                     <!-- NEWS LETTER -->
                     @include ('layouts.news-letter')
@@ -34,4 +60,6 @@
         @section('script')
             <script src="{{asset('js/1-index.js')}}"></script>
             <script src="{{asset('js/2-catalog-page.js')}}"></script>
+            <script src="{{asset('js/3-popular-page.js')}}"></script>
+        
         @endsection

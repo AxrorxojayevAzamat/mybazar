@@ -1,4 +1,3 @@
-
 $('.custom-control .checkAll').on('click',function(){
     console.log($(this).parent());
     if($(this).is(':checked')){

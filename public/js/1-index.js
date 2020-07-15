@@ -1,5 +1,21 @@
 $(document).ready(function(){
     
+    var acc = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        var panel = this.nextElementSibling;
+        if(this.classList.contains('active')){
+            $(panel).slideUp();
+        }
+        else{
+            $(panel).slideDown();
+        }
+
+        this.classList.toggle("active");
+    });
+    }
+
     $(function () {
         $('#main_navbar').bootnavbar({
             //option
