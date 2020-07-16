@@ -603,7 +603,7 @@ nav ol.breadcrumb{
 .all-filtered-shops{
     width:100%;
     min-height:430px;
-    padding: 2% 0;
+    padding: 0;
     @include displayFlex(space-between, row, flex-start);
     flex-wrap:wrap;
     .item{
@@ -832,9 +832,6 @@ form.big-filter-without-title-checkbox{
         font-size:18px;
         padding:10px 0;
         margin-bottom:1%;
-        &.hide{
-            display:none;
-        }
         .custom-conrol{
             margin-bottom:1.5%;
         }
@@ -882,6 +879,25 @@ form.big-filter-with-title-checkbox{
     @extend form.big-filter-without-title-checkbox;
 }
 form.big-filter-with-listof-checkbox{
+    width:18%;
+    margin-top:5%;
+    text-align: start;
+    @include displayFlex(flex-start, column, flex-start);
+    input#submit{
+        background:$item_price_color;
+        color:white;
+        font-size:16px;
+        padding:15px 0;
+        width:100%;
+        white-space:nowrap;
+        text-align:center;
+        border-radius:23px;
+        margin:15% auto 0;
+        font-weight:bold;
+    }
+    .custom-control{
+        margin:2% 0;
+    }
 }
 form.small-filter{
     @extend form.big-filter;

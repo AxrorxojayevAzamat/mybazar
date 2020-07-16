@@ -1181,7 +1181,7 @@ nav ol.breadcrumb li {
 .all-filtered-shops {
   width: 100%;
   min-height: 430px;
-  padding: 2% 0;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1601,10 +1601,6 @@ form.big-filter-without-title-checkbox .panel, form.big-filter-with-title-checkb
   margin-bottom: 1%;
 }
 
-form.big-filter-without-title-checkbox .panel.hide, form.big-filter-with-title-checkbox .panel.hide {
-  display: none;
-}
-
 form.big-filter-without-title-checkbox .panel .custom-conrol, form.big-filter-with-title-checkbox .panel .custom-conrol {
   margin-bottom: 1.5%;
 }
@@ -1669,6 +1665,42 @@ form.big-filter-without-title-checkbox input#submit, form.big-filter-with-title-
   border-radius: 23px;
   margin: 15% auto 0;
   font-weight: bold;
+}
+
+form.big-filter-with-listof-checkbox {
+  width: 18%;
+  margin-top: 5%;
+  text-align: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+form.big-filter-with-listof-checkbox input#submit {
+  background: #0042ff;
+  color: white;
+  font-size: 16px;
+  padding: 15px 0;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 23px;
+  margin: 15% auto 0;
+  font-weight: bold;
+}
+
+form.big-filter-with-listof-checkbox .custom-control {
+  margin: 2% 0;
 }
 
 form.small-filter {
