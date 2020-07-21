@@ -22,6 +22,9 @@
 
                     <!-- CATALOG VIEW -->
                     <section>
+                        <div class="h4-title catalog-view">
+                            <h4 class="title">Телевизоры</h4>
+                        </div>
                         <div class="outter-catalog-view">
                             <!-- big filter without title checkbox -->
                             @include('layouts.big-filter-with-title-checkbox')

@@ -4709,6 +4709,7 @@ nav.products-pagination ul li.active {
 
 nav.products-pagination ul li.active a {
   color: white;
+  background: transparent;
 }
 
 nav.products-pagination ul li a {
@@ -4717,6 +4718,8 @@ nav.products-pagination ul li a {
   font-size: 20px;
   padding: 0;
   font-weight: bold;
+  border: none;
+  background: transparent;
 }
 
 nav.products-pagination ul li a i {
@@ -4726,6 +4729,15 @@ nav.products-pagination ul li a i {
 
 nav.products-pagination ul li a i:before {
   color: #07108f;
+}
+
+.page-link {
+  background: transparent !important;
+  border: none !important;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: bold;
+  padding: 0;
 }
 
 .news-letter {

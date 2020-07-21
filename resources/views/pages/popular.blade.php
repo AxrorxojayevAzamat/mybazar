@@ -44,6 +44,7 @@
                                     @include('layouts.list-mosaic-catalog-items')
 
                                     <!-- pagination -->
+                                    @include('layouts.pagination')
                                     
                                 </div>
                             </div>

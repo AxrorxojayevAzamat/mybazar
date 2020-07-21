@@ -18,7 +18,8 @@ Route::get('/', 'HomeController@index');
 Route::get('/catalog', 'PagesController@catalog');
 Route::get('/cart', 'PagesController@cart');
 Route::get('/checkout', 'PagesController@checkout');
-Route::get('/popular', 'PagesController@popular');
+
+Route::get('/popular', 'PopularController@popular');
 Route::get('/brandview', 'PagesController@brandView');
 Route::get('/brands', 'PagesController@brands');
 Route::get('/sales', 'PagesController@sales');
