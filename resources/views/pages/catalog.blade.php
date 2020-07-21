@@ -38,7 +38,7 @@
                                 </nav>
 
                                 <!-- list mosaic catalog items -->
-                                @include('layouts.list-mosaic-catalog-items')
+                                @include('layouts.list-mosaic-catalog-items', ['products'=>$product])
 
                                 <!-- pagination -->
                                 @include('layouts.pagination')

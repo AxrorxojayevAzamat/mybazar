@@ -3,7 +3,7 @@ $(document).ready(function(){
     var acc = document.getElementsByClassName("accordion");
 
     for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
+        acc[i].addEventListener("click", function() {
         var panel = this.nextElementSibling;
         if(this.classList.contains('active')){
             $(panel).slideUp();
@@ -13,8 +13,30 @@ $(document).ready(function(){
         }
 
         this.classList.toggle("active");
-    });
+        });
     }
+
+    $('.d2').hover(
+        function(){
+            // When hover the #slide_img img hide the div.shadow
+            // $('li.full-image-banner').hide();
+        },function(){
+            // When out of hover the #slide_img img show the div.shadow
+            // $('li.full-image-banner').show();
+        }
+    );
+    $('#main_navbar .collapse ul.navbar-nav li.dropdown-main ul.all-dropdowns li').each(function(){
+        if($(this).find('ul.d2').length>0){
+            $(this).find('.first-dropdown').append('<i class="mbgotoresults_searchresulticon" style="position:absolute; top:40%; right:4%; font-size:12px"></i>');
+
+            $('#main_navbar .collapse ul.navbar-nav li.dropdown-main ul.all-dropdowns li ul.d2 li').each(function(){
+                if($(this).find('ul').length>0){
+                    $(this).find('.dropdown-toggle').append('<i class="mbgotoresults_searchresulticon" style="position:absolute; top:40%; right:4%; font-size:12px"></i>');
+                    
+                }
+            });
+        }
+    })
 
     $(function () {
         $('#main_navbar').bootnavbar({
@@ -22,15 +44,6 @@ $(document).ready(function(){
             //animation: false
         });
     })
-    $('.d2').hover(
-        function(){
-            // When hover the #slide_img img hide the div.shadow
-            $('li.full-image-banner').hide();
-        },function(){
-            // When out of hover the #slide_img img show the div.shadow
-            $('li.full-image-banner').show();
-        }
-    );
 
     $('.products-of-day').owlCarousel({
         margin:10,
