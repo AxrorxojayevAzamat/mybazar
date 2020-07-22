@@ -23,7 +23,7 @@
     @include ('layouts.breadcrumb-video-blog')
 
     <!-- list of videos -->
-    @include ('layouts.videoview-body')
+    @include ('layouts.video-blog-body', ['categories'=>'category'])
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')

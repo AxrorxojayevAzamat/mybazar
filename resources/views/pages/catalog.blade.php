@@ -27,7 +27,7 @@
                         </div>
                         <div class="outter-catalog-view">
                             <!-- big filter without title checkbox -->
-                            @include('layouts.big-filter-with-title-checkbox')
+                            @include('layouts.big-filter-without-title-checkbox')
 
                             <div class="wrapper-filtered-items">
 

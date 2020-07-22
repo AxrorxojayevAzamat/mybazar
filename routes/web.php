@@ -15,31 +15,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/catalog', 'PagesController@catalog');
-Route::get('/cart', 'PagesController@cart');
-Route::get('/checkout', 'PagesController@checkout');
 
+Route::get('/catalog', 'CatalogController@catalog');
+Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
 Route::get('/popular', 'PopularController@popular');
-Route::get('/brandview', 'PagesController@brandView');
-Route::get('/brands', 'PagesController@brands');
-Route::get('/sales', 'PagesController@sales');
-Route::get('/videoblog', 'PagesController@videoblog');
-Route::get('/shopview', 'PagesController@shopview');
-Route::get('/blog-news', 'PagesController@blogNews'); //blog and news  are combined
-Route::get('/delivery-guaranty-payment', 'PagesController@deliveryGuarantyPayment'); // delivery, guaranty, payment are combined
-Route::get('/catalogsection', 'PagesController@catalogSection');
-Route::get('/favorites', 'PagesController@favorites');
-Route::get('/pay', 'PagesController@pay');
-Route::get('/auth', 'PagesController@auth');
-Route::get('/sms', 'PagesController@sms');
-Route::get('/mail', 'PagesController@mail');
-Route::get('/shops', 'PagesController@shops');
-Route::get('/singleblog', 'PagesController@singleblog');
-Route::get('/productviewpage', 'PagesController@productViewPage'); // comments and characteristics are combined here
-Route::get('/compare', 'PagesController@compare');
-Route::get('/salesview', 'PagesController@salesView');
-Route::get('/videoblog-view', 'PagesController@videoBlogView');
 
+Route::get('/brandview', 'BrandViewController@brandView');
+Route::get('/brands', 'BrandsController@brands');
+
+Route::get('/sales', 'SalesController@sales');
+Route::get('/salesview', 'SalesViewController@salesView');
+
+Route::get('/cart', 'CartController@cart');
+Route::get('/favorites', 'FavoritesController@favorites');
+Route::get('/compare', 'CompareController@compare');
+
+Route::get('/videoblog', 'VideoBlogController@videoBlog');
+Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
+
+Route::get('/sms', 'SmsController@sms');
+Route::get('/mail', 'MailController@mail');
+Route::get('/auth', 'AuthController@auth');
+
+Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment'); // delivery, guaranty, payment are combined
+Route::get('/pay', 'PayController@pay');
+Route::get('/checkout', 'CheckoutController@checkout');
+
+Route::get('/shops', 'ShopsController@shops');
+Route::get('/shopsview', 'ShopsViewController@shopsView');
+
+Route::get('/productviewpage', 'ProductViewPageController@productViewPage'); // comments and characteristics are combined here
+
+Route::get('/blogs-news', 'BlogsNewsController@blogsNews'); //blog and news  are combined
+Route::get('/singleblog', 'SingleBlogController@singleBlog');
 
 
 
