@@ -51,9 +51,6 @@ Route::get('/singleblog', 'SingleBlogController@singleBlog');
 
 
 
-
-
-
 Route::resource('/blogs', 'BlogController');
 Route::resource('/videos', 'VideosController');
 Route::resource('/news', 'NewsController');
