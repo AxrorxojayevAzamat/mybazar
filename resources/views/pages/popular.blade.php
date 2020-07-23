@@ -37,7 +37,7 @@
                                         @include('layouts.sort-by-options')
                                         
                                         <!-- small filter without title checkbox -->
-                                        @include('layouts.small-filter-without-title-checkbox')
+                                        @include('layouts.small-filter-with-title-checkbox')
                                     </nav>
 
                                     <!-- list mosaic catalog items -->
@@ -84,5 +84,4 @@
         @section('script')
         <script src="{{asset('js/1-index.js')}}"></script>
         <script src="{{asset('js/2-catalog-page.js')}}"></script>
-        <script src="{{asset('js/3-popular-page.js')}}"></script>
         @endsection

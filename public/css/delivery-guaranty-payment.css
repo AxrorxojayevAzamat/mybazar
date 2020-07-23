@@ -906,49 +906,49 @@ nav ol.breadcrumb li {
   line-height: 28px;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-label, .outter-brand-view-body .custom-checkbox .custom-control-label,
-.outter-list-of-shops .custom-checkbox .custom-control-label, .outter-list-of-blogs .custom-checkbox .custom-control-label {
+.outter-catalog-view .custom-control-label, .outter-brand-view-body .custom-control-label,
+.outter-list-of-shops .custom-control-label, .outter-list-of-blogs .custom-control-label {
   font-size: 18px;
   line-height: 27px;
   padding-left: 10px;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-label:before, .outter-brand-view-body .custom-checkbox .custom-control-label:before,
-.outter-list-of-shops .custom-checkbox .custom-control-label:before, .outter-list-of-blogs .custom-checkbox .custom-control-label:before {
+.outter-catalog-view .custom-control-label:before, .outter-brand-view-body .custom-control-label:before,
+.outter-list-of-shops .custom-control-label:before, .outter-list-of-blogs .custom-control-label:before {
   border-radius: 7px;
   width: 19px;
   height: 19px;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-label:after, .outter-brand-view-body .custom-checkbox .custom-control-label:after,
-.outter-list-of-shops .custom-checkbox .custom-control-label:after, .outter-list-of-blogs .custom-checkbox .custom-control-label:after {
+.outter-catalog-view .custom-control-label:after, .outter-brand-view-body .custom-control-label:after,
+.outter-list-of-shops .custom-control-label:after, .outter-list-of-blogs .custom-control-label:after {
   width: 19px;
   height: 19px;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before, .outter-brand-view-body .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
-.outter-list-of-shops .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before, .outter-list-of-blogs .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+.outter-catalog-view .custom-control-input:checked ~ .custom-control-label::before, .outter-brand-view-body .custom-control-input:checked ~ .custom-control-label::before,
+.outter-list-of-shops .custom-control-input:checked ~ .custom-control-label::before, .outter-list-of-blogs .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #0042ff !important;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before, .outter-brand-view-body .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before,
-.outter-list-of-shops .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before, .outter-list-of-blogs .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before {
+.outter-catalog-view .custom-control-input:checked:focus ~ .custom-control-label::before, .outter-brand-view-body .custom-control-input:checked:focus ~ .custom-control-label::before,
+.outter-list-of-shops .custom-control-input:checked:focus ~ .custom-control-label::before, .outter-list-of-blogs .custom-control-input:checked:focus ~ .custom-control-label::before {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;
   outline: none;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before, .outter-brand-view-body .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before,
-.outter-list-of-shops .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before, .outter-list-of-blogs .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+.outter-catalog-view .custom-control-input:focus ~ .custom-control-label::before, .outter-brand-view-body .custom-control-input:focus ~ .custom-control-label::before,
+.outter-list-of-shops .custom-control-input:focus ~ .custom-control-label::before, .outter-list-of-blogs .custom-control-input:focus ~ .custom-control-label::before {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: 1px solid #AFB7BF;
   outline: none;
 }
 
-.outter-catalog-view .custom-checkbox .custom-control-input:active ~ .custom-control-label::before, .outter-brand-view-body .custom-checkbox .custom-control-input:active ~ .custom-control-label::before,
-.outter-list-of-shops .custom-checkbox .custom-control-input:active ~ .custom-control-label::before, .outter-list-of-blogs .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+.outter-catalog-view .custom-control-input:active ~ .custom-control-label::before, .outter-brand-view-body .custom-control-input:active ~ .custom-control-label::before,
+.outter-list-of-shops .custom-control-input:active ~ .custom-control-label::before, .outter-list-of-blogs .custom-control-input:active ~ .custom-control-label::before {
   background-color: #0042ff;
 }
 
@@ -1665,6 +1665,23 @@ form.big-filter-without-title-checkbox input#submit, form.big-filter-with-title-
   border-radius: 23px;
   margin: 15% auto 0;
   font-weight: bold;
+}
+
+form.big-filter-with-title-checkbox .filter-item {
+  position: relative;
+  width: 100%;
+}
+
+form.big-filter-with-title-checkbox .filter-item .checkAll-first-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+form.big-filter-with-title-checkbox .filter-item .checkAll-first-label:after, form.big-filter-with-title-checkbox .filter-item .checkAll-first-label:before {
+  position: absolute;
+  top: 25px;
+  left: -5px;
 }
 
 form.big-filter-with-listof-checkbox {

@@ -429,7 +429,7 @@ nav ol.breadcrumb{
             }
         }
     }
-    .custom-checkbox .custom-control-label{
+    .custom-control-label{
         font-size:18px;
         line-height:27px;
         padding-left:10px;
@@ -443,21 +443,20 @@ nav ol.breadcrumb{
         height: 19px;
         }
     }
-    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    .custom-control-input:checked ~ .custom-control-label::before{
         background-color: $item_price_color!important;
-    }
-      
-    .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before {
+    } 
+     .custom-control-input:checked:focus ~ .custom-control-label::before{
         box-shadow: none;
         border:none;
         outline: none;
     }
-    .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+     .custom-control-input:focus ~ .custom-control-label::before{
         box-shadow: none;
         border:1px solid #AFB7BF;
         outline: none;
     }
-    .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+    .custom-control-input:active ~ .custom-control-label::before{
         background-color: $item_price_color; 
     }
 }
@@ -876,6 +875,22 @@ form.big-filter-without-title-checkbox{
 }
 form.big-filter-with-title-checkbox{
     @extend form.big-filter-without-title-checkbox;
+    .filter-item{
+        position:relative;
+        width:100%;
+        .checkAll-first-label{
+            position:absolute;
+            left:0;
+            top:0;
+            &:after,
+            &:before{
+                position:absolute;
+                top:25px;
+                left:-5px;
+            }
+        }
+        
+    }
 }
 form.big-filter-with-listof-checkbox{
     width:18%;

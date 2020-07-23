@@ -1,7 +1,14 @@
 $(document).ready(function(){
     
+    $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
+        if($(this).is(':checked')){
+           $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
+        }else{        
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
+        }
+    });
     var acc = document.getElementsByClassName("accordion");
-
+    var title_with_checkbox=document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
         var panel = this.nextElementSibling;
@@ -11,7 +18,18 @@ $(document).ready(function(){
         else{
             $(panel).slideDown();
         }
-
+        this.classList.toggle("active");
+        });
+    }
+    for (var i = 0; i < title_with_checkbox.length; i++) {
+        title_with_checkbox[i].addEventListener("click", function() {
+        var panel = this.nextElementSibling;
+        if(this.classList.contains('active')){
+            $(panel).slideUp();
+        }
+        else{
+            $(panel).slideDown();
+        }
         this.classList.toggle("active");
         });
     }
