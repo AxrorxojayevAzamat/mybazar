@@ -1,6 +1,11 @@
 .h4-title.catalog-section{
     padding:0.5% 10%;
 }
+.catalog-section-shop{
+    width: 100%;
+    padding:0 10%;
+    margin:2% 0;
+}
 .all-filtered-catalog-section{
     .types-of-media{
         @include displayFlex(space-between, row, space-between);

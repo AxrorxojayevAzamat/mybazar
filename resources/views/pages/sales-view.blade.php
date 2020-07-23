@@ -3,7 +3,7 @@
 @section('title', 'Sales view')   
 @include ('includes.common-style')
     @section('styles')
-        <link rel="stylesheet" href="{{asset('css/salesview.css')}}">
+        <link rel="stylesheet" href="{{asset('css/sales.css')}}">
     @endsection
         @section('body')
             @extends ('layouts.menu')

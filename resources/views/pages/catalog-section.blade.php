@@ -3,7 +3,7 @@
 @section('title', 'Catalog section page')
 @include ('includes.common-style')
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/catalog-section.css')}}">
+    <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
 @endsection
 
 @section('body')
@@ -53,6 +53,11 @@
     <!-- TOP BRANDS  -->
     @include ('layouts.top-brands')
 
+    <!-- shops -->
+    <section class="catalog-section-shop">
+        @include ('layouts.shops2')
+    </section>
+
     <!-- TOP sales  -->
     @include ('layouts.top-sales')
 
@@ -67,4 +72,6 @@
 
 @section('script')
 <script src="{{asset('js/1-index.js')}}"></script>
+<script src="{{asset('js/2-catalog-page.js')}}"></script>
+
 @endsection

@@ -3,7 +3,7 @@
 @section('title', 'Brand view')   
 @include ('includes.common-style')
     @section('styles')
-        <link rel="stylesheet" href="{{asset('css/brand-view.css')}}">
+        <link rel="stylesheet" href="{{asset('css/brands.css')}}">
     @endsection
     
     @section('body')
@@ -19,8 +19,38 @@
                 <!-- BREADCRUMB -->
                 @include('layouts.breadcrumb-brand-view')
 
-                <!-- Items-list-mosaic -->
-                @include('layouts.brand-view-list-mosaic')
+                <!-- BRAND View -->
+                <section>
+                    <div class="h4-title brand-view">
+                        <h4 class="title">Samsung</h4>
+                    </div>
+                    <div class="slide-banner">
+                        <img src="{{asset('images/brand-view-slide-banner.png')}}" alt="">
+                    </div>
+
+                    <div class="outter-brand-view-body">
+                            <!-- big filter without title checkbox -->
+                            @include('layouts.big-filter-without-title-checkbox')
+
+                            <div class="wrapper-filtered-items">
+
+                                <nav class=" navbar navbar-expand-custom sort-types">
+                                      <!--sort-by options  -->
+                                      @include('layouts.sort-by-options')
+                                    
+                                    <!-- small filter without title checkbox -->
+                                    @include('layouts.small-filter-without-title-checkbox')
+                                </nav>
+
+                                <!-- list mosaic brand items -->
+                                @include('layouts.list-mosaic-catalog-items', ['products'=>$product])
+
+                                <!-- pagination -->
+                                @include('layouts.pagination')
+                                
+                            </div>
+                        </div>
+                    </section>
 
                 <!-- NEWS LETTER -->
                 @include ('layouts.news-letter')

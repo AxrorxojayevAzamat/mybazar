@@ -28,12 +28,12 @@
             @include('layouts.delivery-body')
         </div>
 
-        <div class="tab-pane fade show active" id="pills-guaranty" role="tabpanel" aria-labelledby="pills-guaranty">
+        <div class="tab-pane fade" id="pills-guaranty" role="tabpanel" aria-labelledby="pills-guaranty">
             <!-- guaranty body -->
             @include('layouts.guaranty-body')
         </div>
 
-        <div class="tab-pane fade show active" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment">
+        <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment">
             <!-- payment body -->
             @include('layouts.payment-body')
         </div>
