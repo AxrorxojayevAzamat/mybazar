@@ -6,17 +6,12 @@
             @endfor
         </ol>
         <div class="carousel-inner">
+            <div class="item">
+                <img src="{{asset('images/slider1.jpg')}}" alt="">
+            </div>
             @foreach($sliders as $slide)
-            <div class="carousel-item @if ($loop->first){{'active'}}@endif">
-                <div class="inner-content">
-                    <div class="info">
-                        <img src="/storage/sliders/{{$slide->file}}" alt="">
-                        <h5 class="bold"></h5>
-                    </div>
-                    <div class="image">
-                        <img src="" alt="">
-                    </div>
-                </div>
+            <div class="item @if ($loop->first){{'active'}}@endif">
+                <img src="/storage/sliders/{{$slide->file}}" alt="">
             </div>
             @endforeach
         </div>

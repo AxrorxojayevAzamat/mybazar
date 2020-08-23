@@ -1,4 +1,9 @@
 <section>
+    <div class="slide-banner">
+        <img src="{{asset('images/guaranty-slide-banner.png')}}" alt="">
+    </div>
+</section>
+<section>
     <div class="guaranty-outter">
         <div class="accordion" id="guarantyCollapse">
             <div class="card">

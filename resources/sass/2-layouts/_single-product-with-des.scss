@@ -13,8 +13,8 @@
             width:34%;
             .big-image{
                 width:100%;
-                height:600px;
-
+                height:500px;
+                margin-bottom:2%;
                 img{
                     width:auto;
                     height:100%;                            
@@ -23,7 +23,18 @@
             .several-images{
                 width:100%;
                 height:100px;
-                position:relative;
+                position:relative; 
+                img{
+                    &.demo {
+                        opacity: 0.6;
+                    }
+                    &.active,
+                    &.demo:hover {
+                        opacity: 1;
+                        @include border(1px, $item_price_color, 20px);
+                        background:#dfe1e1;
+                    }
+                }
                 .owl-nav{
                     position:absolute;
                     display:block;
@@ -87,16 +98,24 @@
                         color:black;
                     }
                 }
-                .two-buttons{
+                .pr-des-radio-buttons,
+                .pr-des-radio-buttons2,
+                .pr-des-radio-buttons3{
                     width:100%;
                     margin:1% 0;
-                    button{
+                    div{
                         margin-right:10px;
-                        padding:15px 30px;
+                        padding:15px 0;
+                        width:18%;
+                        display: inline-block;
                         color:black;
+                        text-align:center;
                         background:white;
+                        cursor:pointer;
                         @include border(2px, $comment_color, 25px );
+                        transition:0.3s ease-in-out;
                         &.active{
+                            transition:0.3s ease-in-out;
                             border-color:$item_price_color;
                         }
                     }
@@ -104,14 +123,16 @@
                 .colors{
                     @include displayFlex(flex-start, row, flex-start);
                     margin-bottom:3%;
-                    div{
+                    .color{
                         margin-right:8px;
                         padding:6px;
                         width:50px;
                         height:50px;
                         @include border(2px,$comment_color, 50%);
+                        transition:0.3s ease-in-out;
                         &.active{
                             border-color:$item_price_color;
+                            transition:0.3s ease-in-out;
                         }
                         div{
                             width:34px;
@@ -395,62 +416,76 @@
     @include displayFlex(flex-start, row, center);
     width:100%;
     padding:2% 10%;
-    .accordion{
+    .accordion-characteristics{
         width:48%;
         text-align:start;
-        .card{
-            .card-header{
-                border-bottom:1px solid $item_border_color;
-                h2{
-                    button{
-                        text-align: left;
-                       @include fontBold;
-                       font-size:16px;
-                       padding:10px 0;
-                        border-bottom:1px solid $item_border_color;
-                        &:after{
-                            right:10px;
-                        }
-                    }
-                }
+        button{
+            width:100%;
+            text-align: left;
+            @include fontBold;
+            font-size:16px;
+            padding:10px 0;
+            cursor: pointer;
+            padding: 18px 0;
+            outline: none;
+            position:relative;
+            background:transparent;
+            border-bottom:1px solid $link_hover_color;
+            &:after{
+                width: 10px;
+                height: 10px;
+                position:absolute;
+                top:50%;
+                right:10px;
+                content: '\002B';
+                content:url("../images/gotoresults_searchresulticon.svg");
+                transform: rotate(-90deg);
+                transition: 0.4s;
             }
-            .card-body{
-                margin-top:10px;
-                padding:0;
-                p.grey{
-                    font-size:14.5px;
-                    color:$grey_text2;
-                    margin-bottom:5px;
-                }
-                p.black{
-                    font-size:16px;
-                    margin-bottom:10px;
-                }
-                .colors{
-                    height:20px;
-                    width:auto;
-                    @include displayFlex(flex-start, row, center);
-                    margin-bottom:20px;
-                    div{
-                        height:16px;
-                        width:16px;
-                        border-radius:50%;
-                        margin-right:10px;
-                        &.pink{
-                            background:#dda6c5;
-                        }
-                        &.blue{
-                            background: #409be8;
-                        }
-                        &.nude{
-                            background: #d9cba4;
-                        }
-                        &.dark-grey{
-                            background:#636363 ;
-                        }
+            &.active:after{
+                transform: rotate(90deg);
+                transition: 0.4s;
+            }
+        }
+        .panel{
+            margin-top:10px;
+            padding:0;
+            display: block;
+            font-size:18px;
+            width:100%;
+            margin-bottom:1%;
+            p.grey{
+                font-size:14.5px;
+                color:$grey_text2;
+                margin-bottom:5px;
+            }
+            p.black{
+                font-size:16px;
+                margin-bottom:10px;
+            }
+            .colors{
+                height:20px;
+                width:auto;
+                @include displayFlex(flex-start, row, center);
+                margin-bottom:20px;
+                div{
+                    height:16px;
+                    width:16px;
+                    border-radius:50%;
+                    margin-right:10px;
+                    &.pink{
+                        background:#dda6c5;
+                    }
+                    &.blue{
+                        background: #409be8;
+                    }
+                    &.nude{
+                        background: #d9cba4;
+                    }
+                    &.dark-grey{
+                        background:#636363 ;
                     }
                 }
-
             }
         }
     }

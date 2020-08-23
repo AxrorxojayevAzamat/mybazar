@@ -65,8 +65,9 @@
     }
     @include displayFlex(flex-start, row, flex-start);
     .first-item{
-        width:33%;
-        height:100%;
+        // width:33%;
+        width:28%;
+        height:400px;
         border:1px solid $item_border_color;
         background:white;
         .shop-name-logo{
@@ -85,17 +86,21 @@
         }
         .single-img{
             padding:15px;
+            height:400px;
             img{
+                height:auto;
                 width:100%;
             }
         }
     }
     .shops-2r-inner{
-        width:67%;
+        // width:67%;
+        width:72%;
         height:100%;
         @include displayFlex(flex-start, row, center);
         .palette-items{
             height:100%;
+            // width:270px;
             padding:10px 20px 5px;
             @include border(1px, $item_border_color, 0);
             background:white;
@@ -104,14 +109,13 @@
                 position:relative;
                 display:flex;
                 img{
-                    width: 100%;
+                    width:auto;
+                    height:100%;
                 }
                 span.sale.small{
-                    position:absolute;
                     font-size:14px;
                     padding:2px 15px;
                     bottom:0;
-                    left:0; 
                 }
             }
             .description{
@@ -119,10 +123,7 @@
                 position:relative;
                 height:55%;
                 margin-top:5%;
-                h6.title{
-                    font-size:19px;
-                    line-height:21px;
-                }
+                overflow:hidden;
                 p.sub-title{
                     font-size:16px;
                 }

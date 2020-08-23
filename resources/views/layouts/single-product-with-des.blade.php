@@ -4,24 +4,56 @@
         <div class="inner-single-product-with-des">
             <div class="images">
                 <div class="big-image">
-                    <img src="{{asset('images/single-product-with-des.png')}}" alt="">
+                    <img src="{{asset('images/single-product-with-des.png')}}" style="width:100%">
                 </div>
-                <div class="several-images owl-carousel owl-theme">
-                    <div class="item">
-                        <img src="{{asset('images/single-product-with-des2.png')}}" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('images/single-product-with-des3.png')}}" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('images/single-product-with-des4.png')}}" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('images/single-product-with-des5.png')}}" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('images/single-product-with-des6.png')}}" alt="">
-                    </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des2.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des3.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des5.png')}}" style="width:100%">
+                </div>
+                    
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des6.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des2.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des3.png')}}" style="width:100%">
+                </div>
+
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des5.png')}}" style="width:100%">
+                </div>
+                    
+                <div class="big-image">
+                    <img src="{{asset('images/single-product-with-des6.png')}}" style="width:100%">
+                </div>
+
+                <div class="several-images owl-theme owl-carousel">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des.png')}}" style="width:100%" onclick="currentSlide(1)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des2.png')}}" style="width:100%" onclick="currentSlide(2)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des3.png')}}" style="width:100%" onclick="currentSlide(3)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des5.png')}}" style="width:100%" onclick="currentSlide(4)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des6.png')}}" style="width:100%" onclick="currentSlide(5)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des.png')}}" style="width:100%" onclick="currentSlide(6)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des2.png')}}" style="width:100%" onclick="currentSlide(7)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des3.png')}}" style="width:100%" onclick="currentSlide(8)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des5.png')}}" style="width:100%" onclick="currentSlide(9)">
+                    <img class="demo cursor" src="{{asset('images/single-product-with-des6.png')}}" style="width:100%" onclick="currentSlide(10)">
                 </div>
             </div>
             <div class="description">
@@ -49,37 +81,40 @@
                     <a href="#">Все характеристики</a>
                 </div>
                 <div class="color-delivery-des">
-                    <p>Встроенная память, ГБ: <span> 64</span></p>
-                    <div class="two-buttons">
-                        <button class="btn active">64</button>
-                        <button class="btn">128</button>
-                    </div>
-                    <p>Оперативаня память, ГБ: <span> 4</span></p>
-                    <div class="two-buttons">
-                        <button class="btn active">4</button>
-                        <button class="btn">6</button>
-                    </div>
-                    <p>Цвет: <span>Interstellar Grey</span></p>
-                    <div class="colors">
-                        <div class="active">
-                            <div class="grey"></div>
+                    <form action="#">
+                        <p>Встроенная память, ГБ: <span> 64</span></p>
+                        <div class="pr-des-radio-buttons">
+                            <div>64</div>
+                            <div>128</div>
                         </div>
-                        <div >
-                            <div class="blue"></div>
+                        <p>Оперативаня память, ГБ: <span> 4</span></p>
+                        <div class="pr-des-radio-buttons2">
+                            <div>4</div>
+                            <div>6</div>
                         </div>
-                        <div>
-                            <div class="green"></div>
+                        <p>Цвет: <span>Interstellar Grey</span></p>
+                        <div class="colors pr-des-radio-buttons3">
+                            <div class="color">
+                                <div class="grey"></div>
+                            </div>
+                            <div  class="color">
+                                <div class="blue"></div>
+                            </div>
+                            <div  class="color">
+                                <div class="green"></div>
+                            </div>
+                            <div  class="color">
+                                <div class="white"></div>
+                            </div>
                         </div>
-                        <div >
-                            <div class="white"></div>
-                        </div>
-                    </div>
+                    </form>
                     <div class="current-old-price horizontal">
                         <h5 class="price">446 725 <span>сум</span></h5>
                         <h6 class="old-price">855 790 <span>сум</span></h6>
                     </div>
                     <div class="item-action-icons">
-                        <div class="cart" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbcart"></i>В корзину</div>
+                        <div class="cart" da
+                        ta-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbcart"></i>В корзину</div>
                         <div class="libra"data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbtocompare"></i></div>
                         <div class="like"><i class="mbfavorite"></i></div>
                     </div>

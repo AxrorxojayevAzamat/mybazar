@@ -21,7 +21,32 @@
                     @include('layouts.breadcrumb-shops')
 
                      <!-- SHOPS body  -->
-                     @include('layouts.shops-body')
+                     <section>
+                        <div class="h4-title shops-body">
+                            <h4 class="title">Магазины</h4>
+                        </div>
+                        <div class="outter-list-of-shops">
+                            @include('layouts.big-filter-with-listof-checkbox')
+
+                            <div class="wrapper-filtered-items">
+
+                                <nav class=" navbar navbar-expand-custom sort-types">
+
+                                    <!--sort-by options  -->
+                                    @include('layouts.sort-by-options')
+
+                                    <!-- small filter without title checkbox -->
+                                    @include('layouts.small-filter-without-title-checkbox')
+                                </nav>
+
+                                <!-- list mosaic catalog items -->
+                                @include('layouts.shops-items')
+
+                                <!-- pagination -->
+
+                            </div>
+                        </div>
+                     </section>
                     
                      <!-- recently viewed -->
                     @include('layouts.recently-viewed')

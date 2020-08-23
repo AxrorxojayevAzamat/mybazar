@@ -1,20 +1,67 @@
 $(document).ready(function(){
     
+    $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
+        if($(this).is(':checked')){
+           $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
+        }else{        
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
+        }
+    });
+    var acc = document.getElementsByClassName("accordion");
+    var title_with_checkbox=document.getElementsByClassName("checkAll-label");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+        var panel = this.nextElementSibling;
+        if(this.classList.contains('active')){
+            $(panel).slideUp();
+        }
+        else{
+            $(panel).slideDown();
+        }
+        this.classList.toggle("active");
+        });
+    }
+    for (var i = 0; i < title_with_checkbox.length; i++) {
+        title_with_checkbox[i].addEventListener("click", function() {
+        var panel = this.nextElementSibling;
+        if(this.classList.contains('active')){
+            $(panel).slideUp();
+        }
+        else{
+            $(panel).slideDown();
+        }
+        this.classList.toggle("active");
+        });
+    }
+
+    $('.d2').hover(
+        function(){
+            // When hover the #slide_img img hide the div.shadow
+            // $('li.full-image-banner').hide();
+        },function(){
+            // When out of hover the #slide_img img show the div.shadow
+            // $('li.full-image-banner').show();
+        }
+    );
+    $('#main_navbar .collapse ul.navbar-nav li.dropdown-main ul.all-dropdowns li').each(function(){
+        if($(this).find('ul.d2').length>0){
+            $(this).find('.first-dropdown').append('<i class="mbgotoresults_searchresulticon" style="position:absolute; top:40%; right:4%; font-size:12px"></i>');
+
+            $('#main_navbar .collapse ul.navbar-nav li.dropdown-main ul.all-dropdowns li ul.d2 li').each(function(){
+                if($(this).find('ul').length>0){
+                    $(this).find('.dropdown-toggle').append('<i class="mbgotoresults_searchresulticon" style="position:absolute; top:40%; right:4%; font-size:12px"></i>');
+                    
+                }
+            });
+        }
+    })
+
     $(function () {
         $('#main_navbar').bootnavbar({
             //option
             //animation: false
         });
     })
-    $('.d2').hover(
-        function(){
-            // When hover the #slide_img img hide the div.shadow
-            $('li.full-image-banner').hide();
-        },function(){
-            // When out of hover the #slide_img img show the div.shadow
-            $('li.full-image-banner').show();
-        }
-    );
 
     $('.products-of-day').owlCarousel({
         margin:10,
@@ -41,27 +88,28 @@ $(document).ready(function(){
     $('.several-images').owlCarousel({
         margin:10,
         nav:true,
-        dots:true,
+        dots:false,
+        navRewind: false,
+        loop:false,
         responsive:{
             0:{
                 items:2,
                 nav:true
             },
             600:{
-                items:2,
-                nav:true
-            },
-            800:{
                 items:3,
                 nav:true
             },
-            1001:{
+            800:{
                 items:4,
                 nav:true
             },
-            1251:{
+            1001:{
                 items:5,
                 nav:true
+            },
+            1251:{
+                items:6,
             }
         }
     });
@@ -172,6 +220,35 @@ $(document).ready(function(){
             },
             1400:{
                 items:3,
+                nav:true
+            }
+        }
+    });
+    $('.shops-2r-inner').owlCarousel({
+        nav:false,
+        dots:false,
+        // autoWidth:true,
+        margin:0,
+        items:3,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:1,
+                nav:true
+            },
+            800:{
+                items:2,
+                nav:true
+            },
+            1251:{
+                items:3,
+                nav:true
+            },
+            1400:{
+                items:4,
                 nav:true
             }
         }

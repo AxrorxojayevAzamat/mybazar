@@ -21,7 +21,34 @@
                     @include ('layouts.breadcrumb-catalog')
 
                     <!-- CATALOG VIEW -->
-                    @include ('layouts.catalog-view')
+                    <section>
+                        <div class="h4-title catalog-view">
+                            <h4 class="title">Телевизоры</h4>
+                        </div>
+                        <div class="outter-catalog-view">
+                            <!-- big filter without title checkbox -->
+                            @include('layouts.big-filter-without-title-checkbox')
+
+                            <div class="wrapper-filtered-items">
+
+                                <nav class=" navbar navbar-expand-custom sort-types">
+
+                                    <!--sort-by options  -->
+                                    @include('layouts.sort-by-options')
+                                    
+                                    <!-- small filter without title checkbox -->
+                                    @include('layouts.small-filter-without-title-checkbox')
+                                </nav>
+
+                                <!-- list mosaic catalog items -->
+                                @include('layouts.list-mosaic-catalog-items', ['products'=>$product])
+
+                                <!-- pagination -->
+                                @include('layouts.pagination')
+                                
+                            </div>
+                        </div>
+                    </section>
 
                     <!-- NEWS LETTER -->
                     @include ('layouts.news-letter')

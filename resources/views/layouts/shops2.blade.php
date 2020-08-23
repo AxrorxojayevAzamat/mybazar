@@ -11,7 +11,7 @@
         <img src="{{asset('images/pallete1.png')}}" alt="">
         </div>
     </div>
-    <div class="shops-2r-inner">
+    <div class="shops-2r-inner owl-carousel owl-theme">
         <div class="palette-items">
             <div class="product-img">
                 <img src="{{asset('images/recomended2.png')}}" alt="">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="item-action-icons">
                     <div class="libra"><i class="mbtocompare"></i></div>
-                    <div class="cart"><i class="mbtocart"></i></div>
+                    <div class="cart"><i class="mbcart"></i></div>
                     <div class="like"><i class="mbfavorite"></i></div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="item-action-icons">
                     <div class="libra"><i class="mbtocompare"></i></div>
-                    <div class="cart"><i class="mbtocart"></i></div>
+                    <div class="cart"><i class="mbcart"></i></div>
                     <div class="like"><i class="mbfavorite"></i></div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="item-action-icons">
                     <div class="libra"><i class="mbtocompare"></i></div>
-                    <div class="cart"><i class="mbtocart"></i></div>
+                    <div class="cart"><i class="mbcart"></i></div>
                     <div class="like"><i class="mbfavorite"></i></div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="item-action-icons">
                     <div class="libra"><i class="mbtocompare"></i></div>
-                    <div class="cart"><i class="mbtocart"></i></div>
+                    <div class="cart"><i class="mbcart"></i></div>
                     <div class="like"><i class="mbfavorite"></i></div>
                 </div>
             </div>
