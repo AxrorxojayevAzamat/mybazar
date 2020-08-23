@@ -54,6 +54,11 @@ Route::resource('/videos', 'VideosController');
 Route::resource('/news', 'NewsController');
 Route::resource('/category', 'CategoryController');
 
+Route::get('cart', 'ProductController@cart');
+Route::get('add-to-cart/{id}', 'ProductController@addToCart');
+Route::patch('update-cart', 'ProductController@update');
+Route::delete('remove-from-cart', 'ProductController@remove');
+
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
