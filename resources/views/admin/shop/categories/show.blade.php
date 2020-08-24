@@ -27,7 +27,13 @@
                         <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{{ $category->description_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.description') }} En</th><td>{{ $category->description_en }}</td></tr>
                         <tr><th>Slug</th><td>{{ $category->slug }}</td></tr>
-                        <tr><th>{{ trans('adminlte.parent') }}</th><td><a href="{{ route('admin.shop.categories.show', $parent) }}">{{ $parent->name }}</a></td></tr>
+                        <tr>
+                            <th>{{ trans('adminlte.parent') }}</th><td>
+                                @if($parent)
+                                    <a href="{{ route('admin.shop.categories.show', $parent) }}">{{ $parent->name }}</a>
+                                @endif
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

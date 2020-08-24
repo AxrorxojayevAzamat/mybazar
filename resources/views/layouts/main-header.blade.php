@@ -6,7 +6,7 @@
     </div>
     <div id="search-bar" class="search-bar form-control">
         <div class="input-with-tags">
-            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="Поиск на myBazar" do-not-use-data-role="tagsinput">   
+            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="Поиск на myBazar" do-not-use-data-role="tagsinput">
         </div>
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +83,7 @@
 
         <div class="dropdown cart-dropdown" >
             <a href="#" class="btn dropdown-toggle cart" role="button" id="dropdownCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mbcart"><span></span></i> Корзина
+                <i class="mbcart"><span class="counter">{{ count((array) session('cart')) }}</span></i> Корзина
             </a>
             <div class="dropdown-menu"  aria-labelledby="dropdownCart">
                 <div class="selected-items">
