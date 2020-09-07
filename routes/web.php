@@ -20,8 +20,8 @@ Route::get('/catalog', 'CatalogController@catalog');
 Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
 Route::get('/popular', 'PopularController@popular');
 
-Route::get('/brandview', 'BrandViewController@brandView');
-Route::get('/brands', 'BrandsController@brands');
+Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+Route::get('/brands', 'BrandsController@brands')->name('brands');
 
 Route::get('/sales', 'SalesController@sales');
 Route::get('/salesview', 'SalesViewController@salesView');
