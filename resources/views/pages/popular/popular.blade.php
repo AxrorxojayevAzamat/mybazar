@@ -8,12 +8,7 @@
         @section('body')
             @extends ('layouts.menu')
                 @section('page')
-                    <!-- All headers 1560 -->
-                    <section class="navbar-1560">
-                        @include('layouts.top-header')
-                        @include('layouts.main-header')
-                        @include('layouts.nav-header')
-                    </section>
+
                     <!-- Slide banner -->
                     @include ('layouts.slide-banner-catalog')
 
@@ -70,12 +65,6 @@
                     <section class="popular-shops last">
                         @include('layouts.shops2')
                     </section>
-
-                     <!-- NEWS LETTER -->
-                     @include ('layouts.news-letter')
-                    
-                    <!-- FOOTER -->
-                    @include ('layouts.footer')
 
                 @endsection
 

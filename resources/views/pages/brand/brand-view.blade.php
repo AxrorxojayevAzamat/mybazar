@@ -9,15 +9,6 @@
     @section('body')
         @extends ('layouts.menu')
             @section('page')
-                <!-- All headers 1560 -->
-                <section class="navbar-1560">
-                    @include('layouts.top-header')
-                    @include('layouts.main-header')
-                    @include('layouts.nav-header')
-                </section>
-
-                <!-- BREADCRUMB -->
-                @include('layouts.breadcrumb-brand-view')
 
                 <!-- BRAND View -->
                 <section>
@@ -51,12 +42,6 @@
                             </div>
                         </div>
                     </section>
-
-                <!-- NEWS LETTER -->
-                @include ('layouts.news-letter')
-                    
-                <!-- FOOTER -->
-                @include ('layouts.footer')
 
             @endsection
 

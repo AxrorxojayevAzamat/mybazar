@@ -8,29 +8,15 @@
         @section('body')
             @extends ('layouts.menu')
                 @section('page')
-                    <!-- All headers 1560 -->
-                    <section class="navbar-1560">
-                        @include('layouts.top-header')
-                        @include('layouts.main-header')
-                        @include('layouts.nav-header')
-                    </section>
+
                     <!-- Slide banner -->
                     @include ('layouts.slide-banner-catalog')
-
-                    <!-- Breadcrumbs -->
-                    @include('layouts.breadcrumb-sales')
 
                     <!-- sales body -->
                     @include('layouts.salesview-body')
 
                       <!-- recently viewed -->
                       @include('layouts.recently-viewed')
-
-                     <!-- NEWS LETTER -->
-                     @include ('layouts.news-letter')
-                    
-                    <!-- FOOTER -->
-                    @include ('layouts.footer')
 
                 @endsection
 

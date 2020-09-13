@@ -8,6 +8,6 @@ use App\Entity\Shop\Product;
 class SalesController extends Controller
 {
     public function sales() {
-        return view('pages.sales'); 
+        return view('pages.sale.sales'); 
     }
 }

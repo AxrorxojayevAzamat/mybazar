@@ -9,22 +9,10 @@
 @section('body')
     @extends ('layouts.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
 
     <!-- Pay body -->
-    @include('layouts.pay-body')
+    @include('pages.cart.pay-body')
 
-    
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 @endsection
 @endsection
 

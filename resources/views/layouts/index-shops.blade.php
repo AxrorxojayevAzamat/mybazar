@@ -6,9 +6,9 @@
         <div class="outter-shops">
             <div class="all-shops">
                 <!-- SHOPS 1 -->
-                @include('layouts.shops1')
+                @include('pages.shop.shops1')
                 <!-- SHOPS 2 -->
-                @include('layouts.shops2')
+                @include('pages.shop.shops2')
             </div>
         </div>
     </div>

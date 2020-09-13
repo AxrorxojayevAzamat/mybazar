@@ -27,6 +27,86 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.sign_in'), route('login'));
 });
 
+Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
+    $crumbs->push('Главная', route('front-home'));
+});
+
+Breadcrumbs::register('auth', function (Crumbs $crumbs) {
+    $crumbs->push('Вход или регистрация', route('auth'));
+});
+
+Breadcrumbs::register('mail', function (Crumbs $crumbs) {
+    $crumbs->push('Вход или регистрация', route('mail'));
+});
+
+Breadcrumbs::register('sms', function (Crumbs $crumbs) {
+    $crumbs->push('Вход или регистрация', route('sms'));
+});
+
+Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Блог и новости', route('blogs-news'));
+});
+
+Breadcrumbs::register('brands', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Все бренды', route('brands'));
+});
+
+Breadcrumbs::register('cart', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Корзина', route('cart'));
+});
+
+Breadcrumbs::register('checkout', function (Crumbs $crumbs) {
+    $crumbs->parent('cart');
+    $crumbs->push('Оформление заказа', route('checkout'));
+});
+
+Breadcrumbs::register('pay', function (Crumbs $crumbs) {
+    $crumbs->parent('checkout');
+    $crumbs->push('Способ оплаты', route('pay'));
+});
+
+Breadcrumbs::register('catalog', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Весь каталог', route('catalog'));
+});
+
+Breadcrumbs::register('compare', function (Crumbs $crumbs) {
+    $crumbs->parent('compare');
+    $crumbs->push('Сравнение', route('compare'));
+});
+
+Breadcrumbs::register('delivery', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Способы доставки', route('delivery'));
+});
+
+Breadcrumbs::register('favorites', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Избранное', route('favorites'));
+});
+
+Breadcrumbs::register('popular', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Избранное', route('popular'));
+});
+
+Breadcrumbs::register('videoblog', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Видеоролики', route('videoblog'));
+});
+
+Breadcrumbs::register('sales', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Акции и скидки', route('sales'));
+});
+
+
+
+
+
 ################################### Admin
 
 Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {

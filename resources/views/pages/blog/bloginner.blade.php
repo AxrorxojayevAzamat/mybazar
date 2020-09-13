@@ -8,17 +8,10 @@
 @section('body')
     @extends ('layouts.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
+   
     <!-- Slide banner -->
     @include ('layouts.slide-banner-catalog')
 
-    <!-- Breadcrumbs -->
-    @include('layouts.breadcrumb-single-blog')
 
     <!-- single-blog btn -->
     @include('layouts.single-blog-btn')
@@ -29,12 +22,6 @@
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
-
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 
 @endsection
 

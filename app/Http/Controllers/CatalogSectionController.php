@@ -13,6 +13,6 @@ class CatalogSectionController extends Controller
     public function catalogSection() {
         $rootCategories = Category::where(['parent_id' => null])->get();
         //  dd($categories);
-         return view('pages.catalog-section',compact('rootCategories'));
+         return view('pages.catalog.catalog-section',compact('rootCategories'));
     }
 }

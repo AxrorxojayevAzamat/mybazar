@@ -5,7 +5,7 @@
             <li class="nav-item dropdown dropdown-main">
                 <!-- Main dropdown -->
                 <a class="nav-link dropdown-toggle main-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                   aria-haspopup="true" aria-expanded="false">
                     <div class="center-icon">
                         <!-- <div class="round">
                             <span></span>
@@ -26,7 +26,7 @@
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
                         <a class="dropdown-item first-dropdown dropdown-toggle" href="#" id="navbarDropdown{{$category->id}}" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                           aria-haspopup="true" aria-expanded="false">
                             <img  class="menu-discount-icon" src="{{asset('images/discount.svg')}}"> {{$category->name}}
                         </a>
                         <!-- second dropdown -->
@@ -53,14 +53,14 @@
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                 <a href="#" class="pn-ProductNav_Link">Новые товары</a>
-                <a href="#" class="pn-ProductNav_Link">Скидки</a>
+                <a href="{{route('sales')}}" class="pn-ProductNav_Link">Скидки</a>
                 <a href="#" class="pn-ProductNav_Link">Акции</a>
-                <a href="#" class="pn-ProductNav_Link">Топ бренды</a>
+                <a href="{{route('brands')}}" class="pn-ProductNav_Link">Топ бренды</a>
                 <a href="#" class="pn-ProductNav_Link">Блог</a>
                 <a href="#" class="pn-ProductNav_Link">Видеоролики</a>
                 <a href="#" class="pn-ProductNav_Link">Доставка</a>
                 <a href="#" class="pn-ProductNav_Link">Для бизнеса</a>
-                <a href="#" class="pn-ProductNav_Link">Магазины</a>
+                <a href="{{route('shops')}}" class="pn-ProductNav_Link">Магазины</a>
                 <a href="#" class="pn-ProductNav_Link">Оплата</a>
                 <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
             </div>

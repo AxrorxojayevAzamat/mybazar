@@ -9,41 +9,27 @@
 @section('body')
     @extends ('layouts.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
-
-    <!-- BREADCRUMB -->
-    @include('layouts.breadcrumb-delivery')
 
     <!-- blog-news btn -->
-    @include('layouts.delivery-g-p-btn')
+    @include('pages.delivery.delivery-g-p-btn')
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-delivery" role="tabpanel" aria-labelledby="pills-delivery">
             <!-- delivery body -->
-            @include('layouts.delivery-body')
+            @include('pages.delivery.delivery-body')
         </div>
 
         <div class="tab-pane fade" id="pills-guaranty" role="tabpanel" aria-labelledby="pills-guaranty">
             <!-- guaranty body -->
-            @include('layouts.guaranty-body')
+            @include('pages.delivery.guaranty-body')
         </div>
 
         <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment">
             <!-- payment body -->
-            @include('layouts.payment-body')
+            @include('pages.delivery.payment-body')
         </div>
     </div>
 
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
-
-<!-- FOOTER -->
-@include ('layouts.footer')
 @endsection
 @endsection
 

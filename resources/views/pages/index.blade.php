@@ -7,14 +7,8 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
 
     <!-- Casousel -->
     @include ('layouts.carousel')
@@ -23,7 +17,7 @@
     @include ('layouts.products-of-day')
 
     <!-- POPULAR PRODUCTS -->
-    @include ('layouts.popular-products')
+    @include ('pages.popular.popular-products')
 
     <!-- NEW PRODUCTS -->
     @include ('layouts.new-products')
@@ -51,12 +45,6 @@
 
     <!-- VIDEOS -->
     @include ('layouts.index-videos')
-
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 @endsection
 @endsection
 

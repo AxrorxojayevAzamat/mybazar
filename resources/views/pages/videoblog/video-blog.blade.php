@@ -10,29 +10,15 @@
 @section('body')
     @extends ('layouts.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
+
     <!-- Slide banner -->
     @include ('layouts.slide-banner-catalog')
 
-    <!-- Breadcrumbs -->
-    @include ('layouts.breadcrumb-video-blog')
-
     <!-- list of videos -->
-    @include ('layouts.video-blog-body', ['categories'=>'category'])
+    @include ('pages.videoblog.video-blog-body', ['categories'=>'category'])
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
-
-     <!-- NEWS LETTER -->
-     @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 
     @endsection
 

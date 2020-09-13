@@ -31,7 +31,7 @@
                 <i class="mbcompare"><span></span></i> Сравнение
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownComparison">
-               <div class="selected-items">
+                <div class="selected-items">
                     <a class='dropdown-item animated fadeInDown' href="#">
                         <div class='product-img'>
                             <img src="{{asset('images/popular1.png')}}">
@@ -72,7 +72,7 @@
                         </div>
                         <button class="btn delete-btn" data-name='${cartArray[i].name}'><i class="mbexit_mobile"></i></button>
                     </a>
-               </div>
+                </div>
                 <div class="bottom-btn">
                     <button class="btn bold switch-to-compare">
                         Сравнить товары

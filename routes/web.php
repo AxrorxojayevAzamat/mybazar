@@ -14,56 +14,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/catalog', 'CatalogController@catalog');
-Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
-Route::get('/popular', 'PopularController@popular');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('front-home');
 
-Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+Route::get('/auth', 'AuthController@auth')->name('auth');
+Route::get('/mail', 'MailController@mail')->name('mail');
+Route::get('/sms', 'SmsController@sms')->name('sms');
+
+Route::get('/blogs-news', 'BlogsNewsController@blogsNews')->name('blogs-news'); //blog and news  are combined
 Route::get('/brands', 'BrandsController@brands')->name('brands');
+Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
 
-Route::get('/sales', 'SalesController@sales');
-Route::get('/salesview', 'SalesViewController@salesView');
+Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+Route::get('/pay', 'PayController@pay')->name('pay');
+Route::get('/catalog', 'CatalogController@catalog')->name('catalog');
+Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
+Route::get('/compare', 'CompareController@compare')->name('compare');
 
-Route::get('/cart', 'CartController@cart');
-Route::get('/favorites', 'FavoritesController@favorites');
-Route::get('/compare', 'CompareController@compare');
+//Route::get('cart', 'ProductController@cart'); double must delete
 
-Route::get('/videoblog', 'VideoBlogController@videoBlog');
-Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
+Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
-Route::get('/sms', 'SmsController@sms');
-Route::get('/mail', 'MailController@mail');
-Route::get('/auth', 'AuthController@auth');
+Route::get('/favorites', 'FavoritesController@favorites')->name('favorites');
 
-Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment'); // delivery, guaranty, payment are combined
-Route::get('/pay', 'PayController@pay');
-Route::get('/checkout', 'CheckoutController@checkout');
 
-Route::get('/shops', 'ShopsController@shops');
-Route::get('/shopsview', 'ShopsViewController@shopsView');
-
+Route::get('/popular', 'PopularController@popular')->name('popular');
 Route::get('/productviewpage', 'ProductViewPageController@productViewPage'); // comments and characteristics are combined here
-
-Route::get('/blogs-news', 'BlogsNewsController@blogsNews'); //blog and news  are combined
-Route::get('/singleblog', 'SingleBlogController@singleBlog');
-
-
-
-Route::resource('/blogs', 'BlogController');
-Route::resource('/videos', 'VideosController');
-Route::resource('/news', 'NewsController');
-Route::resource('/category', 'CategoryController');
-
-Route::get('cart', 'ProductController@cart');
 Route::get('add-to-cart/{id}', 'ProductController@addToCart');
 Route::patch('update-cart', 'ProductController@update');
 Route::delete('remove-from-cart', 'ProductController@remove');
 
-Auth::routes();
+Route::get('/sales', 'SalesController@sales')->name('sales');
+Route::get('/salesview', 'SalesViewController@salesView');
+Route::get('/shops', 'ShopsController@shops')->name('shops');
+Route::get('/shopsview', 'ShopsViewController@shopsView');
+Route::get('/singleblog', 'SingleBlogController@singleBlog');
 
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
+Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
+
+Route::resource('/blogs', 'BlogController');
+Route::resource('/category', 'CategoryController');
+Route::resource('/news', 'NewsController');
+Route::resource('/videos', 'VideosController');
+
+
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 
@@ -78,11 +78,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('/banners', 'BannersController');
     Route::resource('/sliders', 'SlidersController');
-
-
-
-
-
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
@@ -189,8 +184,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('deliveries', 'DeliveryController');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

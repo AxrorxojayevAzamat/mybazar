@@ -9,21 +9,10 @@
 @section('body')
     @extends ('layouts.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
 
     <!--auth body  -->
     @include('layouts.sms-body')
 
-     <!-- NEWS LETTER -->
-     @include ('layouts.news-letter')
-
-<!-- FOOTER -->
-@include ('layouts.footer')
 @endsection
 @endsection
 

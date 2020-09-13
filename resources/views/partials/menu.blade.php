@@ -43,7 +43,7 @@
                         <ul>
                             <li>
                                 <a href="#about/team/management"
-                                    >Management</a
+                                   >Management</a
                                 >
                             </li>
                             <li>
@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <a href="#about/team/development"
-                                    >Development</a
+                                   >Development</a
                                 >
                             </li>
                         </ul>
@@ -86,7 +86,7 @@
             <a href="#" class="wish-list"><i class="mbfavorite"><span></span></i></a>
             <a href="#" class="account"><i class="mbaccount"></i></a>
         </div>
-            <form action="" class="search-box">
+        <form action="" class="search-box">
             <input type="text" class="text search-input" placeholder="Поиск на myBazar..." />
         </form>
         <div class="search-button">
@@ -96,6 +96,25 @@
 
     <!-- FULL CONTENT BODY -->
     <div class="content container-fluid">
+
+        <!-- All headers 1560 -->
+        <section class="navbar-1560">
+            @include('partials.top-header')
+            @include('partials.main-header')
+            @include('partials.nav-header')
+        </section>
+
+        <nav aria-label="breadcrumb">
+            <div class="breadcrumb-item">
+                @section('breadcrumbs', Breadcrumbs::render())
+                @yield('breadcrumbs')
+            </div>
+        </nav>
         @yield('page')
+        <!-- NEWS LETTER -->
+        @include ('layouts.news-letter')
+
+        <!-- FOOTER -->
+        @include ('partials.footer')
     </div>
 </div>
