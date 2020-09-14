@@ -8,14 +8,14 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
-
+@section('banner')
     <!-- Slide banner -->
     @include ('layouts.slide-banner-catalog')
-
+@endsection
     <!-- list of videos -->
-    @include ('pages.videoblog.video-blog-body', ['categories'=>'category'])
+    @include ('videoblog.video-blog-body', ['categories'=>'category'])
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')

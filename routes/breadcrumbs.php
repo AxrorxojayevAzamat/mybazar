@@ -84,6 +84,20 @@ Breadcrumbs::register('catalog', function (Crumbs $crumbs) {
     $crumbs->push('Весь каталог', route('catalog'));
 });
 
+Breadcrumbs::register('catalogsection', function (Crumbs $crumbs) {
+    $crumbs->parent('catalog');
+    $crumbs->push('Телевизоры, аудио и видео', route('catalogsection'));
+});
+
+Breadcrumbs::register('category.index', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Категория', route('category.index'));
+});
+
+Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Ролики', route('videos.index'));
+});
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {
     $crumbs->parent('compare');
     $crumbs->push('Сравнение', route('compare'));
@@ -104,15 +118,41 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
     $crumbs->push('Избранное', route('popular'));
 });
 
-Breadcrumbs::register('videoblog', function (Crumbs $crumbs) {
-    $crumbs->parent('front-home');
-    $crumbs->push('Видеоролики', route('videoblog'));
+Breadcrumbs::register('productviewpage', function (Crumbs $crumbs) {
+    $crumbs->parent('catalog');
+    $crumbs->push('Смартфоны и гаджеты * Все смартфоны * Xiaomi * Смартфон Redmi Note 9S (Interstellar Grey)', route('productviewpage'));
 });
 
 Breadcrumbs::register('sales', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push('Акции и скидки', route('sales'));
 });
+
+Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
+    $crumbs->parent('sales');
+    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
+});
+
+Breadcrumbs::register('shops', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Магазины', route('shops'));
+});
+
+Breadcrumbs::register('shopsview', function (Crumbs $crumbs) {
+    $crumbs->parent('shops');
+    $crumbs->push('Телевизоры, аудио и видео * Artel Qoratosh" MChJ', route('shopsview'));
+});
+
+Breadcrumbs::register('videoblog', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push('Видеоролики', route('videoblog'));
+});
+
+Breadcrumbs::register('videoblogview', function (Crumbs $crumbs) {
+    $crumbs->parent('videoblog');
+    $crumbs->push('Топовая SFF - сборка на Ryzen', route('videoblogview'));
+});
+
 
 
 

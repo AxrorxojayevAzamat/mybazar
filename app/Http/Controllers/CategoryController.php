@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Entity\Shop\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -19,7 +18,7 @@ class CategoryController extends Controller
     {
         $rootCategories = Category::where(['parent_id' => null])->get();
 //        dd($categories);
-        return view('pages.catalog-section',compact('rootCategories'));
+        return view('catalog.catalog-section',compact('rootCategories'));
     }
 
     public function show(Category $category)
@@ -29,6 +28,6 @@ class CategoryController extends Controller
         $query->whereIn('id', $products);
         $products = $query->paginate(20);
 //        dd($products);
-        return view('pages.catalog', compact('products'));
+        return view('catalog.catalog', compact('products'));
     }
 }

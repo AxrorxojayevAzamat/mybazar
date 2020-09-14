@@ -7,7 +7,7 @@
     @endsection
     
     @section('body')
-        @extends ('layouts.menu')
+        @extends ('partials.menu')
             @section('page')
 
                 <!-- BRAND View -->
@@ -21,7 +21,7 @@
 
                     <div class="outter-brand-view-body">
                             <!-- big filter without title checkbox -->
-                            @include('layouts.big-filter-without-title-checkbox')
+                            @include('filters.big-filter-without-title-checkbox')
 
                             <div class="wrapper-filtered-items">
 
@@ -30,7 +30,7 @@
                                       @include('layouts.sort-by-options')
                                     
                                     <!-- small filter without title checkbox -->
-                                    @include('layouts.small-filter-without-title-checkbox')
+                                    @include('filters.small-filter-without-title-checkbox')
                                 </nav>
 
                                 <!-- list mosaic brand items -->

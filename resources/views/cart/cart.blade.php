@@ -7,11 +7,11 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
     <!-- Cart body -->
-    @include('pages.cart.cart-body')
+    @include('cart.cart-body')
 
 @endsection
 @endsection

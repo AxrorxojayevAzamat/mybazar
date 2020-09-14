@@ -7,21 +7,12 @@
     @endsection
     
     @section('body')
-        @extends ('layouts.menu')
+        @extends ('partials.menu')
             @section('page')
-                <!-- All headers 1560 -->
-                <section class="navbar-1560">
-                    @include('layouts.top-header')
-                    @include('layouts.main-header')
-                    @include('layouts.nav-header')
-                </section>
-
-                <!-- BREADCRUMB -->
-                @include('layouts.breadcrumb-shop-view')
-
+@section('banner')
                 <!-- Slide Banner shop-view -->
                 @include('layouts.slide-banner-shop-view')
-
+@endsection
                 <!-- PRODUCT OF DAY -->
                 @include ('layouts.products-of-day')
 
@@ -32,7 +23,7 @@
                     </div>
                     <div class="outter-catalog-view">
                         <!-- big filter without title checkbox -->
-                        @include('layouts.big-filter-without-title-checkbox')
+                        @include('filters.big-filter-without-title-checkbox')
 
                         <div class="wrapper-filtered-items">
 
@@ -42,7 +33,7 @@
                                 @include('layouts.sort-by-options')
                                 
                                 <!-- small filter without title checkbox -->
-                                @include('layouts.small-filter-without-title-checkbox')
+                                @include('filters.small-filter-without-title-checkbox')
                             </nav>
 
                             <!-- list mosaic catalog items -->
@@ -55,11 +46,7 @@
                     </div>
                 </section>
 
-                 <!-- NEWS LETTER -->
-                @include ('layouts.news-letter')
 
-<!-- FOOTER -->
-@include ('layouts.footer')
 @endsection
 @endsection
 

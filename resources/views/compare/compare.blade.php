@@ -7,11 +7,11 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
     <!-- compare body -->
-    @include('pages.compare.compare-body')
+    @include('compare.compare-body')
 
 @endsection
 @endsection

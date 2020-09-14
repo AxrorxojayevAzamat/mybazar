@@ -8,31 +8,18 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
+    @section('banner')
     <!-- Slide banner -->
     @include ('layouts.slide-banner-catalog')
-
-    <!-- Breadcrumbs -->
-    @include ('layouts.breadcrumb-video-blog')
+    @endsection
 
     <!-- list of videos -->
-    @include ('pages.video-blog-inner-child')
+    @include ('videoblog.video-blog-inner-child')
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
-
-     <!-- NEWS LETTER -->
-     @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 
     @endsection
 
