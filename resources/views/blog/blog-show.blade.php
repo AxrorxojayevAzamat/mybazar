@@ -6,18 +6,19 @@
     <link rel="stylesheet" href="{{asset('css/single-blog.css')}}">
 @endsection
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
-   
-    <!-- Slide banner -->
-    @include ('layouts.slide-banner-catalog')
-
+  
+    @section('banner')
+        <!-- Slide banner -->
+        @include ('layouts.slide-banner-catalog')
+    @endsection
 
     <!-- single-blog btn -->
-    @include('layouts.single-blog-btn')
+    @include('blog._blog-news-btn')
 
     <!-- Single body blog -->
-    @include('pages.bloginner_body')
+    @include('blog.blog-show-body')
 
 
     <!-- recently viewed -->

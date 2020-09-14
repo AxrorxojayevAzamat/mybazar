@@ -1,21 +1,24 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Video blog')
+@section('title', 'Single news page')
 @include ('includes.common-style')
 @section('styles')
-
     <link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
 @endsection
-
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
-    <!-- Slide banner -->
-    @include ('layouts.slide-banner-catalog')
+    @section('banner')    
+        <!-- Slide banner -->
+        @include ('layouts.slide-banner-catalog')
+    @endsection
+    
+    <!-- single-blog btn -->
+    @include('blog._blog-news-btn')
 
     <!-- list of news -->
-    @include ('pages.news-inner-child')
+    @include ('blog.news-show-body')
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')

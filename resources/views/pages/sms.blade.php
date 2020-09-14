@@ -1,18 +1,17 @@
 @extends('layouts.default-layout')
 
-@section('title', 'Mail page')
+@section('title', 'SMS page')
 @include ('includes.common-style')
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/auth.css')}}">
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
-
     <!--auth body  -->
-    @include('layouts.mail-body')
+    @include('pages.sms-body')
 
 @endsection
 @endsection
