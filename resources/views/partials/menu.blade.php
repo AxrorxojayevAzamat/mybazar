@@ -103,7 +103,9 @@
             @include('partials.main-header')
             @include('partials.nav-header')
         </section>
-
+        
+         @yield('banner')
+        
         <nav aria-label="breadcrumb">
             <div class="breadcrumb-item">
                 @section('breadcrumbs', Breadcrumbs::render())

@@ -49,7 +49,7 @@
                 <a href="{{ route('blogs.show', $blog) }}">
                     <div class="blog-item">
                         <div class="image">
-                            <img src="/storage/posts/{{$blog->file}}" alt="">
+                            <img src="{{asset('images/'. $blog->file)}}" alt="">
                             <div class="image-overlay"></div>
                         </div>
                         <div class="description">

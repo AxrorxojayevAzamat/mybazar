@@ -1,7 +1,5 @@
 <section>
-    <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
-    </div>
+    
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
@@ -48,6 +46,7 @@
             </nav>
 
             <div class="">
+                <img class="full-width" src="{{asset('images/'.$news->file)}}" alt="">
                 <h1>{{$news->title}}</h1><br>
                 <h3>{{$news->description}}</h3><br>
                 {!! $news->body !!}<br>

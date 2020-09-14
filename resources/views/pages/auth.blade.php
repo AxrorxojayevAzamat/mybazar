@@ -7,13 +7,12 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
     
     <!--auth body  -->
-    @include('pages.auth.auth-body')
+    @include('pages.auth-body')
 
-    
 @endsection
 @endsection
 

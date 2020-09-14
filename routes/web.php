@@ -4,15 +4,15 @@ use App\Entity\Shop\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
@@ -24,7 +24,9 @@ Route::get('/auth', 'AuthController@auth')->name('auth');
 Route::get('/mail', 'MailController@mail')->name('mail');
 Route::get('/sms', 'SmsController@sms')->name('sms');
 
-Route::get('/blogs-news', 'BlogsNewsController@blogsNews')->name('blogs-news'); //blog and news  are combined
+Route::get('/blogs-news', 'BlogController@blogsNews')->name('blogs-news');
+Route::get('/blogs/{blog}', 'BlogController@show')->name('blogs.show');
+Route::get('/news/{news}', 'NewsController@show')->name('news.show');
 Route::get('/brands', 'BrandsController@brands')->name('brands');
 Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
 
@@ -52,14 +54,11 @@ Route::get('/sales', 'SalesController@sales')->name('sales');
 Route::get('/salesview', 'SalesViewController@salesView');
 Route::get('/shops', 'ShopsController@shops')->name('shops');
 Route::get('/shopsview', 'ShopsViewController@shopsView');
-Route::get('/singleblog', 'SingleBlogController@singleBlog');
 
 Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
 Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
 
-Route::resource('/blogs', 'BlogController');
 Route::resource('/category', 'CategoryController');
-Route::resource('/news', 'NewsController');
 Route::resource('/videos', 'VideosController');
 
 
@@ -152,7 +151,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::get('{cart}', 'CartController@show')->name('show');
             Route::delete('{cart}', 'CartController@destroy')->name('destroy');
         });
-
     });
 
     Route::resource('stores', 'Store\StoreController');

@@ -27,7 +27,7 @@ class NewsController extends Controller
     {
         $categories = NewsCategory::pluck('name_ru', 'id')->all();
 
-
+dd($categories);
         return view('admin.news.create', compact('categories'));
     }
 

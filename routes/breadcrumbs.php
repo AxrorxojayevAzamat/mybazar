@@ -1,5 +1,6 @@
 <?php
 
+use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\Brand;
 use App\Entity\DeliveryMethod;
 use App\Entity\Payment;
@@ -16,7 +17,7 @@ use App\Entity\User\User;
 use App\Entity\Shop\Category;
 use App\Models\NewsCategory;
 use App\Models\News;
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
+use App\Models\Post;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.home'), route('admin.home'));
@@ -46,6 +47,16 @@ Breadcrumbs::register('sms', function (Crumbs $crumbs) {
 Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push('Блог и новости', route('blogs-news'));
+});
+
+Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
+    $crumbs->parent('blogs-news');
+    $crumbs->push($post->title, route('blogs.show', $post));
+});
+
+Breadcrumbs::register('news.show', function (Crumbs $crumbs, News $news) {
+    $crumbs->parent('blogs-news');
+    $crumbs->push($news->title, route('news.show', $news));
 });
 
 Breadcrumbs::register('brands', function (Crumbs $crumbs) {

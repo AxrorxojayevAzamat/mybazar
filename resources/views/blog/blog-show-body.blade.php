@@ -5,7 +5,7 @@
             <button class="search btn" type="submit"><i class="mbsearch"></i></button>
         </div>
         <div class="inner-single-blog-body">
-            <img class="full-width" src="/storage/posts/{{$post->file}}" alt="">
+            <img class="full-width" src="{{asset('images/'.$post->file)}}" alt="">
             <div class="description">
                 <h5 class="title">{{$post->title}}</h5>
                 <p>{{$post->description}}</p>
@@ -16,7 +16,7 @@
                 <a href="{{route('blogs.show',$blog)}}">
                     <div class="blog-item">
                         <div class="image">
-                            <img src="/storage/posts/{{$blog->file}}" alt="">
+                            <img src="{{asset('images/'. $blog->file)}}" alt="">
                             <div class="image-overlay"></div>
                         </div>
                         <div class="description">

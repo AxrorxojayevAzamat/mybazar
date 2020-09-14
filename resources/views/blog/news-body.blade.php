@@ -54,7 +54,7 @@
                 <a href="{{ route('news.show', $new) }}">
                     <div class="news-item">
                         <div class="image">
-                            <img src="/storage/news/{{$new->file}}" alt="">
+                            <img src="{{asset('images/'. $new->file)}}" alt="">
                             <div class="image-overlay"></div>
                         </div>
                         <div class="description">
