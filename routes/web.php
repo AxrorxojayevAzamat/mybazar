@@ -14,54 +14,54 @@ use Illuminate\Support\Facades\Route;
  */
 
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('front-home');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/auth', 'AuthController@auth')->name('auth');
-Route::get('/mail', 'MailController@mail')->name('mail');
-Route::get('/sms', 'SmsController@sms')->name('sms');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('front-home');
 
-Route::get('/blogs-news', 'BlogController@blogsNews')->name('blogs-news');
-Route::get('/blogs/{blog}', 'BlogController@show')->name('blogs.show');
-Route::get('/news/{news}', 'NewsController@show')->name('news.show');
-Route::get('/brands', 'BrandsController@brands')->name('brands');
-Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+    Route::get('/auth', 'AuthController@auth')->name('auth');
+    Route::get('/mail', 'MailController@mail')->name('mail');
+    Route::get('/sms', 'SmsController@sms')->name('sms');
 
-Route::get('/cart', 'CartController@cart')->name('cart');
-Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
-Route::get('/pay', 'PayController@pay')->name('pay');
-Route::get('/catalog', 'CatalogController@catalog')->name('catalog');
-Route::get('/catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
-Route::get('/compare', 'CompareController@compare')->name('compare');
+    Route::get('/blogs-news', 'BlogController@blogsNews')->name('blogs-news');
+    Route::get('/blogs/{blog}', 'BlogController@show')->name('blogs.show');
+    Route::get('/news/{news}', 'NewsController@show')->name('news.show');
+    Route::get('/brands', 'BrandsController@brands')->name('brands');
+    Route::get('/brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+
+    Route::get('/cart', 'CartController@cart')->name('cart');
+    Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+    Route::get('/pay', 'PayController@pay')->name('pay');
+    Route::get('/catalog', 'CatalogController@catalog')->name('catalog');
+    Route::get('/catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
+    Route::get('/compare', 'CompareController@compare')->name('compare');
 
 //Route::get('cart', 'ProductController@cart'); double must delete
 
-Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
+    Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
-Route::get('/favorites', 'FavoritesController@favorites')->name('favorites');
-
-
-Route::get('/popular', 'PopularController@popular')->name('popular');
-Route::get('/productviewpage', 'ProductViewPageController@productViewPage')->name('productviewpage'); // comments and characteristics are combined here
-Route::get('add-to-cart/{id}', 'ProductController@addToCart');
-Route::patch('update-cart', 'ProductController@update');
-Route::delete('remove-from-cart', 'ProductController@remove');
-
-Route::get('/sales', 'SalesController@sales')->name('sales');
-Route::get('/salesview', 'SalesViewController@salesView')->name('salesview');
-Route::get('/shops', 'ShopsController@shops')->name('shops');
-Route::get('/shopsview', 'ShopsViewController@shopsView')->name('shopsview');
-
-Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
-Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView')->name('videoblogview');;
-
-Route::resource('/category', 'CategoryController');
-Route::resource('/videos', 'VideosController');
+    Route::get('/favorites', 'FavoritesController@favorites')->name('favorites');
 
 
+    Route::get('/popular', 'PopularController@popular')->name('popular');
+    Route::get('/productviewpage', 'ProductViewPageController@productViewPage')->name('productviewpage'); // comments and characteristics are combined here
+    Route::get('add-to-cart/{id}', 'ProductController@addToCart');
+    Route::patch('update-cart', 'ProductController@update');
+    Route::delete('remove-from-cart', 'ProductController@remove');
 
+    Route::get('/sales', 'SalesController@sales')->name('sales');
+    Route::get('/salesview', 'SalesViewController@salesView')->name('salesview');
+    Route::get('/shops', 'ShopsController@shops')->name('shops');
+    Route::get('/shopsview', 'ShopsViewController@shopsView')->name('shopsview');
+
+    Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
+    Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView')->name('videoblogview');;
+
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/videos', 'VideosController');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 

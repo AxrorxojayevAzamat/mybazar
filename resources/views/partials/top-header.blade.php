@@ -13,9 +13,12 @@
         </a>
     </div>
     <div class="lang">
-        <a href="#" class="uzb">O'zbekcha</a>
-        <a href="#" class="active ru">Русский</a>
-        <a href="#" class="en">English</a>
+        @foreach(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalesOrder() as $localeCode => $properties)
+            <a rel="alternate" hreflang="{{ $localeCode }}" class="{{ $localeCode != App::getLocale() ? : 'active' }}"
+               href="{{ \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        @endforeach
     </div>
     <div class="lang-medium">
         <a href="#" class="uzb">O'zb</a>
