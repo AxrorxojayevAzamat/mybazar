@@ -8,7 +8,7 @@
                 @foreach($categories as $category)
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                        <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
+                        <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->title}}</label>
                     </div>
                 @endforeach
             </div>
@@ -36,7 +36,7 @@
                                         @foreach($categories as $category)
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                                            <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
+                                            <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->title}}</label>
                                         </div>
                                         @endforeach
                                     </div>

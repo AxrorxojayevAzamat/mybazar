@@ -11,7 +11,7 @@
             @section('page')
 
                 <!-- all brands list -->
-                @include('pages.brand.brands-body')
+                @include('brand.brands-body')
             
             @endsection
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Entity\Shop\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +33,7 @@ Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
 Route::get('/pay', 'PayController@pay')->name('pay');
 Route::get('/catalog', 'CatalogController@catalog')->name('catalog');
-Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
+Route::get('/catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
 Route::get('/compare', 'CompareController@compare')->name('compare');
 
 //Route::get('cart', 'ProductController@cart'); double must delete
@@ -45,18 +44,18 @@ Route::get('/favorites', 'FavoritesController@favorites')->name('favorites');
 
 
 Route::get('/popular', 'PopularController@popular')->name('popular');
-Route::get('/productviewpage', 'ProductViewPageController@productViewPage'); // comments and characteristics are combined here
+Route::get('/productviewpage', 'ProductViewPageController@productViewPage')->name('productviewpage'); // comments and characteristics are combined here
 Route::get('add-to-cart/{id}', 'ProductController@addToCart');
 Route::patch('update-cart', 'ProductController@update');
 Route::delete('remove-from-cart', 'ProductController@remove');
 
 Route::get('/sales', 'SalesController@sales')->name('sales');
-Route::get('/salesview', 'SalesViewController@salesView');
+Route::get('/salesview', 'SalesViewController@salesView')->name('salesview');
 Route::get('/shops', 'ShopsController@shops')->name('shops');
-Route::get('/shopsview', 'ShopsViewController@shopsView');
+Route::get('/shopsview', 'ShopsViewController@shopsView')->name('shopsview');
 
 Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
-Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
+Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView')->name('videoblogview');;
 
 Route::resource('/category', 'CategoryController');
 Route::resource('/videos', 'VideosController');

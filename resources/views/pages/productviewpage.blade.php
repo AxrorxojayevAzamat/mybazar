@@ -7,14 +7,8 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
 
     <!-- product with description -->
     @include('layouts.single-product-with-des')
@@ -49,11 +43,6 @@
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
 
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
-
-    <!-- FOOTER -->
-    @include ('layouts.footer')
 @endsection
 @endsection
 

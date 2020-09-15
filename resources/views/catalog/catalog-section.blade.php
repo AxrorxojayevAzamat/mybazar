@@ -7,12 +7,13 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
+@section('banner')
      <!-- Slide banner -->
      @include ('layouts.slide-banner-catalog')
-
+@endsection
     <!-- body part -->
     <section>
         <div class="h4-title catalog-section">
@@ -20,7 +21,7 @@
         </div>
         <div class="outter-catalog-view">
             <!-- big filter without title checkbox -->
-            @include('layouts.big-filter-without-title-checkbox')
+            @include('filters.big-filter-without-title-checkbox')
 
             <div class="wrapper-filtered-items">
 
@@ -31,11 +32,11 @@
                     </button>
 
                     <!-- small filter without title checkbox -->
-                    @include('layouts.small-filter-without-title-checkbox')
+                    @include('filters.small-filter-without-title-checkbox')
                 </nav>
 
                 <!-- catalog section-items -->
-                @include('layouts.catalog-section-items', ['rootCategories'])
+                @include('catalog.catalog-section-items', ['rootCategories'])
               
             </div>
         </div>
@@ -46,7 +47,7 @@
 
     <!-- shops -->
     <section class="catalog-section-shop">
-        @include ('layouts.shops2')
+        @include ('shop.shops2')
     </section>
 
     <!-- TOP sales  -->

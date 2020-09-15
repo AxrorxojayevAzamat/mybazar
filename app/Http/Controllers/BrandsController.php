@@ -39,7 +39,7 @@ class BrandsController extends Controller
             return $carry;
         }, []);
         
-        return view('pages.brand.brands', compact('groups'));
+        return view('brand.brands', compact('groups'));
     }
 
 }

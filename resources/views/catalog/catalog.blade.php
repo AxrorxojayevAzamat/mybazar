@@ -6,12 +6,12 @@
         <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
     @endsection
         @section('body')
-            @extends ('layouts.menu')
+            @extends ('partials.menu')
                 @section('page')
-                    
+                    @section('banner')
                     <!-- Slide banner -->
                     @include ('layouts.slide-banner-catalog')
-
+@endsection
                     <!-- CATALOG VIEW -->
                     <section>
                         <div class="h4-title catalog-view">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="outter-catalog-view">
                             <!-- big filter without title checkbox -->
-                            @include('layouts.big-filter-without-title-checkbox')
+                            @include('filters.big-filter-without-title-checkbox')
 
                             <div class="wrapper-filtered-items">
 
@@ -29,7 +29,7 @@
                                     @include('layouts.sort-by-options')
                                     
                                     <!-- small filter without title checkbox -->
-                                    @include('layouts.small-filter-without-title-checkbox')
+                                    @include('filters.small-filter-without-title-checkbox')
                                 </nav>
 
                                 <!-- list mosaic catalog items -->

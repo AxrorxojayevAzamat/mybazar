@@ -6,15 +6,12 @@
         <link rel="stylesheet" href="{{asset('css/popular-page.css')}}">
     @endsection
         @section('body')
-            @extends ('layouts.menu')
+            @extends ('partials.menu')
                 @section('page')
-
+@section('banner')
                     <!-- Slide banner -->
                     @include ('layouts.slide-banner-catalog')
-
-                    <!-- Breadcrumbs -->
-                    @include('layouts.breadcrumb-popular')
-
+@endsection
                      <!-- POPULAR NEW  RECOMMENDED BUTTONS -->
                      @include('layouts.new-pp-rec-btn')
 
@@ -22,7 +19,7 @@
                         <section>
                             <div class="outter-catalog-view">
                                 <!-- big filter without title checkbox -->
-                                @include('layouts.big-filter-with-title-checkbox')
+                                @include('filters.big-filter-with-title-checkbox')
 
                                 <div class="wrapper-filtered-items">
 
@@ -32,7 +29,7 @@
                                         @include('layouts.sort-by-options')
                                         
                                         <!-- small filter without title checkbox -->
-                                        @include('layouts.small-filter-with-title-checkbox')
+                                        @include('filters.small-filter-with-title-checkbox')
                                     </nav>
 
                                     <!-- list mosaic catalog items -->
@@ -50,7 +47,7 @@
                      </div>
                     <!-- SHOPS 1 -->
                     <section class="popular-shops">
-                        @include('layouts.shops1')
+                        @include('shop.shops1')
                     </section>
 
                      <!-- FULL BANNER 1 -->
@@ -58,12 +55,12 @@
 
                     <!-- SHOPS 2 -->
                     <section class="popular-shops">
-                        @include('layouts.shops2')
+                        @include('shop.shops2')
                     </section>
 
                     <!-- SHOPS 2 -->
                     <section class="popular-shops last">
-                        @include('layouts.shops2')
+                        @include('shop.shops2')
                     </section>
 
                 @endsection

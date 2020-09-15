@@ -7,11 +7,11 @@
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
+    @extends ('partials.menu')
 @section('page')
 
     <!-- Pay body -->
-    @include('pages.cart.checkout-body')
+    @include('cart.checkout-body')
 
 @endsection
 @endsection

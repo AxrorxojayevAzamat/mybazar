@@ -17,7 +17,7 @@
     @include ('layouts.products-of-day')
 
     <!-- POPULAR PRODUCTS -->
-    @include ('pages.popular.popular-products')
+    @include ('popular.popular-products')
 
     <!-- NEW PRODUCTS -->
     @include ('layouts.new-products')

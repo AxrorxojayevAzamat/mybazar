@@ -7,10 +7,10 @@
     @endsection
     
     @section('body')
-        @extends ('layouts.menu')
+        @extends ('partials.menu')
             @section('page')
                 <!-- sales body -->
-                @include('pages.sale.sales-body')
+                @include('sale.sales-body')
 
                 <!-- recently viewed -->
                 @include('layouts.recently-viewed')
