@@ -25,7 +25,7 @@
                     <!-- 1 -->
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
-                        <a class="dropdown-item first-dropdown dropdown-toggle" href="#" id="navbarDropdown{{$category->id}}" role="button" data-toggle="dropdown"
+                        <a class="dropdown-item first-dropdown dropdown-toggle" href="{{ route('category.show', $category) }}" id="navbarDropdown{{$category->id}}" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <img  class="menu-discount-icon" src="{{asset('images/discount.svg')}}"> {{$category->name}}
                         </a>
