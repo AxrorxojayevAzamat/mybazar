@@ -1,6 +1,6 @@
 <div class="top-header">
     <div>
-        <a href="tel" class="bold tel">+998 92 123 45 67</a>
+        <a href="#" class="bold tel">+998 92 123 45 67</a>
         <a href="#" class="email">info@mybazar.com</a>
     </div>
     <div class="hot-news owl-carousel owl-theme">

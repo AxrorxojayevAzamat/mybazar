@@ -1,7 +1,7 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Video blog')
-@include ('includes.common-style')
+
 @section('styles')
     <link href="{{asset('css/video-js.css')}}" rel="stylesheet" />
 
@@ -9,13 +9,10 @@
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-
     @section('banner')
-    <!-- Slide banner -->
-    @include ('layouts.slide-banner-catalog')
-    @endSection
+        <!-- Slide banner -->
+        @include ('layouts.slide-banner-catalog')
+    @endsection
 
     <!-- list of videos -->
     @include ('videoblog.videoblog-view-body')
@@ -23,11 +20,9 @@
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
 
-    @endsection
+@endsection
 
-    @endsection
-
-    @section('script')
+@section('script')
     <script>
         function hideOverlay(){
             $(".player-overlay").hide();
@@ -38,4 +33,4 @@
     </script>
     <script src="{{asset('js/1-index.js')}}"></script>
     <script src="{{asset('js/video.js')}}"></script>
-    @endsection
+@endsection

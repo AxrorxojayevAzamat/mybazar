@@ -1,29 +1,23 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Video blog')
-@include ('includes.common-style')
-@section('styles')
 
+@section('styles')
     <link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-@section('banner')
-    <!-- Slide banner -->
-    @include ('layouts.slide-banner-catalog')
-@endsection
+    @section('banner')
+        <!-- Slide banner -->
+        @include ('layouts.slide-banner-catalog')
+    @endsection
     <!-- list of videos -->
     @include ('videoblog.video-blog-body', ['categories'=>'category'])
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
+@endsection
 
-    @endsection
-
-    @endsection
-
-    @section('script')
+@section('script')
     <script src="{{asset('js/1-index.js')}}"></script>
-    @endsection
+@endsection

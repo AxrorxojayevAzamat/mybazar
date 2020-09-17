@@ -1,15 +1,12 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Productviewpage characteristics')
-@include ('includes.common-style')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}">
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-
     <!-- product with description -->
     @include('layouts.single-product-with-des')
 
@@ -19,8 +16,8 @@
     <!-- other products of this seller -->
     @include('layouts.other-products-of-this-seller')
 
-     <!-- single-charachteristics-comments btn-->
-     @include('layouts.singlep-charac-com-btn')
+    <!-- single-charachteristics-comments btn-->
+    @include('layouts.singlep-charac-com-btn')
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product">
@@ -42,8 +39,6 @@
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
-
-@endsection
 @endsection
 
 

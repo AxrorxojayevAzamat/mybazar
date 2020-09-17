@@ -1,49 +1,43 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
-@section('title', 'Favorites page')   
-@include ('includes.common-style')
-    @section('styles')
-        <link rel="stylesheet" href="{{asset('css/favorites.css')}}">
-    @endsection
-        @section('body')
-            @extends ('partials.menu')
-                @section('page')
+@section('title', 'Favorites page')
 
-                    <!-- favorities VIEW -->
-                    <section>
-                        <div class="h4-title catalog-view">
-                            <h4 class="title">Избранные товары</h4>
-                        </div>
-                        <div class="outter-catalog-view">
-                            <!-- big filter without title checkbox -->
-                            @include('filters.big-filter-with-title-checkbox')
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/favorites.css')}}">
+@endsection
 
-                            <div class="wrapper-filtered-items">
+@section('body')
+    <!-- favorities VIEW -->
+    <section>
+        <div class="h4-title catalog-view">
+            <h4 class="title">Избранные товары</h4>
+        </div>
+        <div class="outter-catalog-view">
+            <!-- big filter without title checkbox -->
+            @include('filters.big-filter-with-title-checkbox')
 
-                                <nav class=" navbar navbar-expand-custom sort-types">
+            <div class="wrapper-filtered-items">
 
-                                    <!--sort-by options  -->
-                                    @include('layouts.sort-by-options')
+                <nav class=" navbar navbar-expand-custom sort-types">
 
-                                    <!-- small filter without title checkbox -->
-                                    @include('filters.small-filter-without-title-checkbox')
-                                </nav>
+                    <!--sort-by options  -->
+                @include('layouts.sort-by-options')
 
-                                <!-- list mosaic catalog items -->
-                                @include('favorite.favorite-items')
+                <!-- small filter without title checkbox -->
+                    @include('filters.small-filter-without-title-checkbox')
+                </nav>
 
-                                <!-- pagination -->
+                <!-- list mosaic catalog items -->
+            @include('favorite.favorite-items')
 
-                            </div>
-                        </div>
-                    </section>
+            <!-- pagination -->
 
-                @endsection
+            </div>
+        </div>
+    </section>
+@endsection
 
-        @endsection
-
-        @section('script')
-            <script src="{{asset('js/1-index.js')}}"></script>
-            <script src="{{asset('js/2-catalog-page.js')}}"></script>
-        
-        @endsection
+@section('script')
+    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+@endsection

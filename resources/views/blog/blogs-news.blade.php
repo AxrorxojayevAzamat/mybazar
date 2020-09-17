@@ -1,15 +1,12 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'News page')
-@include ('includes.common-style')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/blog-news.css')}}">
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-
     <!-- blog-news btn -->
     @include('blog._blog-news-btn')
 
@@ -25,11 +22,9 @@
     <div>
     <!-- recently watched -->
     @include('layouts.recently-viewed')
-
-@endsection
 @endsection
 
 
 @section('script')
-<script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/1-index.js')}}"></script>
 @endsection

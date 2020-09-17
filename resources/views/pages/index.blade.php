@@ -1,15 +1,12 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Home page')
-@include ('includes.common-style')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-
     <!-- Casousel -->
     @include ('layouts.carousel')
 
@@ -45,7 +42,6 @@
 
     <!-- VIDEOS -->
     @include ('layouts.index-videos')
-@endsection
 @endsection
 
 

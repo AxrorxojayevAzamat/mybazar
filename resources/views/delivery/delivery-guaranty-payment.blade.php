@@ -1,15 +1,12 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Delivery page')
-@include ('includes.common-style')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/delivery-guaranty-payment.css')}}">
 @endsection
 
 @section('body')
-    @extends ('partials.menu')
-@section('page')
-
     <!-- blog-news btn -->
     @include('delivery.delivery-g-p-btn')
 
@@ -29,11 +26,9 @@
             @include('delivery.payment-body')
         </div>
     </div>
-
-@endsection
 @endsection
 
 
 @section('script')
-<script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/1-index.js')}}"></script>
 @endsection

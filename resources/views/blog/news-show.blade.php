@@ -1,19 +1,17 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
 @section('title', 'Single news page')
-@include ('includes.common-style')
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
 @endsection
-@section('body')
-    @extends ('partials.menu')
-@section('page')
 
-    @section('banner')    
+@section('body')
+    @section('banner')
         <!-- Slide banner -->
         @include ('layouts.slide-banner-catalog')
     @endsection
-    
+
     <!-- single-blog btn -->
     @include('blog._blog-news-btn')
 
@@ -22,15 +20,10 @@
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')
+@endsection
 
-
-
-    @endsection
-
-    @endsection
-
-    @section('script')
+@section('script')
     <script src="{{asset('js/shopping-cart.js')}}"></script>
     <script src="{{asset('js/compare-items.js')}}"></script>
     <script src="{{asset('js/1-index.js')}}"></script>
-    @endsection
+@endsection
