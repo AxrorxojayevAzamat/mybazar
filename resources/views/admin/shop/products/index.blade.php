@@ -77,7 +77,7 @@
 
 @section($javaScriptSectionName)
     <script>
-        // $('#category_id').select2();
+        $('#category_id').select2();
         $('#store_id').select2();
         $('#brand_id').select2();
     </script>

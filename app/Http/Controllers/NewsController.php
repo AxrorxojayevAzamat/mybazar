@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
-use App\Models\NewsCategory;
+use App\Entity\Blog\Category;
+use App\Entity\Blog\News;
 
 class NewsController extends Controller
 {
@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function show(News $news)
     {
         $news = $news->load(['category']);
-        $categories = NewsCategory::get();
+        $categories = Category::where('type', Category::NEWS)->get();
 
         return view("blog.news-inner", compact('news', 'categories'));
     }

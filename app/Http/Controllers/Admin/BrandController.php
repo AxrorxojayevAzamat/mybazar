@@ -69,6 +69,8 @@ class BrandController extends Controller
 
     public function destroy(Brand $brand)
     {
+        Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id);
+
         $brand->delete();
 
         return redirect()->route('admin.brands.index');

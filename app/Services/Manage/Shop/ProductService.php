@@ -723,14 +723,14 @@ class ProductService
 
     private function deletePhotos(int $productId, string $filename)
     {
-        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
-        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
+        Storage::disk('public')->delete('/files/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
+        Storage::disk('public')->delete('/files/' . ImageHelper::FOLDER_PRODUCTS . '/' . $productId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
     }
 
     private function deleteModificationPhoto(int $modificationId, string $filename)
     {
-        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
-        Storage::disk('public')->delete('/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
+        Storage::disk('public')->delete('/files/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $filename);
+        Storage::disk('public')->delete('/files/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $modificationId . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $filename);
     }
 
     public function getNextModificationId(): int

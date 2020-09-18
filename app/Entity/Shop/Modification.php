@@ -99,12 +99,12 @@ class Modification extends BaseModel
 
     public function getPhotoThumbnailAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->photo;
+        return '/storage/files/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->photo;
     }
 
     public function getPhotoOriginalAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->photo;
+        return '/storage/files/' . ImageHelper::FOLDER_MODIFICATIONS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->photo;
     }
 
     ###########################################

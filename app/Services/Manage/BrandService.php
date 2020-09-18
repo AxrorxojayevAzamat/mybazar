@@ -42,7 +42,7 @@ class BrandService
         if (!$request->logo) {
             $brand->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
         } else {
-            Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id);
+            Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id);
 
             $imageName = ImageHelper::getRandomName($request->logo);
             $brand->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
@@ -65,7 +65,7 @@ class BrandService
     public function removeLogo(int $id): bool
     {
         $brand = Brand::findOrFail($id);
-        return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id) && $brand->update(['logo' => null]);
+        return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id) && $brand->update(['logo' => null]);
     }
 
     private function uploadLogo(int $brandId, UploadedFile $logo, string $imageName)

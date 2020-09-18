@@ -25,6 +25,7 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
+    'is_published' => 'E`lon qilinganmi',
 
     'create' => 'Yaratmoq',
     'save' => 'Qo`shmoq',
@@ -35,9 +36,13 @@ return [
     'main' => 'Asosiy',
     'yes' => 'Ha',
     'no' => 'Yo`q',
+    'draft' => 'Qoralama',
+    'publish' => 'Nashr etish',
 
     'name' => 'Nomi',
+    'title' => 'Nomi',
     'description' => 'Tavsifi',
+    'body' => 'Asosiy qismi',
     'note' => 'Qo`shimcha ma`lumot',
     'code' => 'Kod',
     'status' => 'Holati',
@@ -45,6 +50,7 @@ return [
     'parent' => 'Ajdodi',
     'relations' => 'Bog`liqliklar',
     'required' => 'Majburiy',
+    'author' => 'Muallifi',
     'created_by' => 'Qo`shdi',
     'updated_by' => 'Tahrirladi',
     'created_at' => 'Qo`shilgan',
@@ -70,6 +76,10 @@ return [
     'quantity' => 'Miqdori',
     'date_from' => 'Boshlanish sana',
     'date_to' => 'Ohirgi sana',
+    'image' => 'Tasviri',
+    'poster' => 'Poster',
+    'video' => 'Video fayli',
+    'files' => 'Fayllar',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -139,7 +149,6 @@ return [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
         'discount' => 'Chegirma',
-        'draft' => 'Qoralama',
         'moderation' => 'Modeatsiyani kutmoqda',
         'active' => 'Faol',
         'closed' => 'Yopilgan',
@@ -172,5 +181,9 @@ return [
         'add' => 'Qiymat qo`shmoq',
         'name' => 'Qiymat',
         'plural' => 'Qiymatlar',
+    ],
+
+    'news' => [
+        'name' => 'Yangiliklar',
     ],
 ];
