@@ -67,6 +67,11 @@ Breadcrumbs::register('brands', function (Crumbs $crumbs) {
     $crumbs->push('Все бренды', route('brands'));
 });
 
+Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
+    $crumbs->parent('brands');
+    $crumbs->push($brand->name, route('brands.show',$brand));
+});
+
 Breadcrumbs::register('cart', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push('Корзина', route('cart'));

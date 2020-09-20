@@ -29,7 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
     Route::get('news/{news}', 'NewsController@show')->name('news.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
-    Route::get('brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+    Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
 
     Route::get('cart', 'CartController@cart')->name('cart');
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');

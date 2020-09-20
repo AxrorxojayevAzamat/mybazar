@@ -60,7 +60,7 @@
                         </h6>
                         @foreach($group as $brand)
                             <div class="brands-by-letter">
-                                <div><a href="{{ route('brandview', $brand)}}">{{ $brand['name_ru'] }}</a></div>
+                                <div><a href="{{ route('brands.show', $brand)}}">{{ $brand['name_ru'] }}</a></div>
 
                             <!--<div><a href="#" class="all-brands-by-this-letter">Ве бренды на {{ $letter }}</a></div>-->
                             </div>
