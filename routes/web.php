@@ -50,7 +50,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::delete('remove-from-cart', 'ProductController@remove');
 
     Route::get('sales', 'SalesController@sales')->name('sales');
-    Route::get('salesview', 'SalesViewController@salesView')->name('salesview');
+    Route::get('sales/show', 'SalesController@show')->name('sales.show');
     Route::get('shops', 'ShopsController@shops')->name('shops');
     Route::get('shopsview', 'ShopsViewController@shopsView')->name('shopsview');
 

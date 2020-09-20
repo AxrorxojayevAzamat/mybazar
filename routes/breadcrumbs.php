@@ -132,6 +132,11 @@ Breadcrumbs::register('sales', function (Crumbs $crumbs) {
     $crumbs->push('Акции и скидки', route('sales'));
 });
 
+Breadcrumbs::register('sales.show', function (Crumbs $crumbs) {
+    $crumbs->parent('sales');
+    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('sales.show'));
+});
+
 Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
     $crumbs->parent('sales');
     $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
