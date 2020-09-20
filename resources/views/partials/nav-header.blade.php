@@ -57,7 +57,7 @@
                 <a href="#" class="pn-ProductNav_Link">Акции</a>
                 <a href="{{route('brands')}}" class="pn-ProductNav_Link">Топ бренды</a>
                 <a href="#" class="pn-ProductNav_Link">Блог</a>
-                <a href="#" class="pn-ProductNav_Link">Видеоролики</a>
+                <a href="{{route('videos.index')}}" class="pn-ProductNav_Link">Видеоролики</a>
                 <a href="#" class="pn-ProductNav_Link">Доставка</a>
                 <a href="#" class="pn-ProductNav_Link">Для бизнеса</a>
                 <a href="{{route('shops')}}" class="pn-ProductNav_Link">Магазины</a>

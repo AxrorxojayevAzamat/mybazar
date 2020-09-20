@@ -38,8 +38,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
     Route::get('/compare', 'CompareController@compare')->name('compare');
 
-//Route::get('cart', 'ProductController@cart'); double must delete
-
     Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
     Route::get('/favorites', 'FavoritesController@favorites')->name('favorites');
@@ -55,9 +53,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/salesview', 'SalesViewController@salesView')->name('salesview');
     Route::get('/shops', 'ShopsController@shops')->name('shops');
     Route::get('/shopsview', 'ShopsViewController@shopsView')->name('shopsview');
-
-    Route::get('/videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
-    Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView')->name('videoblogview');;
 
     Route::resource('/category', 'CategoryController');
     Route::resource('/videos', 'VideosController');

@@ -13,7 +13,7 @@ class VideosController extends Controller
 
         $videos = Videos::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
         $categories = VideosCategory::get();
-        return view('videoblog.video-blog', compact('videos', 'categories'));
+        return view('videoblog.videoblog', compact('videos', 'categories'));
     }
 
     public function show(Videos $video)
@@ -21,7 +21,7 @@ class VideosController extends Controller
         $video = $video->load(['category']);
         $categories = VideosCategory::get();
 
-        return view('videoblog.video-blog-inner', compact('video', 'categories'));
+        return view('videoblog.videoblog-view', compact('video', 'categories'));
     }
 
 }

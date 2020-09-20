@@ -18,6 +18,7 @@ use App\Entity\Shop\Category;
 use App\Models\NewsCategory;
 use App\Models\News;
 use App\Models\Post;
+use App\Models\Videos;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.home'), route('admin.home'));
@@ -94,10 +95,6 @@ Breadcrumbs::register('category.index', function (Crumbs $crumbs) {
     $crumbs->push('Категория', route('category.index'));
 });
 
-Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
-    $crumbs->parent('front-home');
-    $crumbs->push('Ролики', route('videos.index'));
-});
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {
     $crumbs->parent('compare');
     $crumbs->push('Сравнение', route('compare'));
@@ -143,18 +140,15 @@ Breadcrumbs::register('shopsview', function (Crumbs $crumbs) {
     $crumbs->push('Телевизоры, аудио и видео * Artel Qoratosh" MChJ', route('shopsview'));
 });
 
-Breadcrumbs::register('videoblog', function (Crumbs $crumbs) {
+Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Видеоролики', route('videoblog'));
+    $crumbs->push('Видеоролики', route('videos.index'));
 });
 
-Breadcrumbs::register('videoblogview', function (Crumbs $crumbs) {
-    $crumbs->parent('videoblog');
-    $crumbs->push('Топовая SFF - сборка на Ryzen', route('videoblogview'));
+Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Videos $videos) {
+    $crumbs->parent('videos.index');
+    $crumbs->push($videos->title, route('videos.show',$videos));
 });
-
-
-
 
 
 
