@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\News;
+use App\Entity\Blog\Post;
+use App\Entity\Blog\News;
 
 class BlogController extends Controller
 {
@@ -16,7 +16,7 @@ class BlogController extends Controller
     public function blogsNews()
     {
         $blogs = Post::orderByDesc('created_at')->where(['is_published' => true])->paginate(20);
-        $categories = \App\Models\Category::get();
+        $categories = \App\Entity\Blog\Category::get();
         $news = News::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
 
         return view('blog.blogs-news', compact('blogs', 'categories', 'news'));
@@ -25,7 +25,7 @@ class BlogController extends Controller
     public function show(Post $blog)
     {
         $post = $blog->load(['category']);
-        $categories = \App\Models\Category::get();
+        $categories = \App\Entity\Blog\Category::get();
         $lastBlogs = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(3)->get();
 
         return view('blog.blog-show', compact('post', 'categories', 'lastBlogs'));

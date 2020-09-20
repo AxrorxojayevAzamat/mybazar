@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Sliders;
+use App\Entity\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +17,7 @@ class SlidersController extends Controller
 
     public function index()
     {
-        $posts = Sliders::paginate(10);
+        $posts = Slider::paginate(10);
         return view('admin.sliders.index', compact('posts'));
     }
 
@@ -33,7 +33,7 @@ class SlidersController extends Controller
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ));
 
-        $post = new Sliders();
+        $post = new Slider();
         $post->sort = $request->sort;
         $post->url = $request->url;
         if($request->hasFile('file')){
@@ -48,20 +48,20 @@ class SlidersController extends Controller
     }
 
 
-    public function show(Sliders $slider)
+    public function show(Slider $slider)
     {
         $post = $slider;
 
         return view('admin.sliders.show', compact('post'));
     }
 
-    public function edit(Sliders $slider)
+    public function edit(Slider $slider)
     {
         $post = $slider;
         return view('admin.sliders.edit', compact('post'));
     }
 
-    public function update(Request $request, Sliders $sliders)
+    public function update(Request $request, Slider $sliders)
     {
         $post = $sliders;
         $this->validate($request, array(
@@ -84,7 +84,7 @@ class SlidersController extends Controller
         return redirect('/admin/sliders');
     }
 
-    public function destroy(Sliders $sliders)
+    public function destroy(Slider $sliders)
     {
         $post = $sliders;
         if($post->file){

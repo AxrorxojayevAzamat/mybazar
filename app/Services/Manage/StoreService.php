@@ -74,7 +74,7 @@ class StoreService
                 $store->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
                 $this->updateRelations($store, $request);
 
-                Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id);
+                Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_STORES . '/' . $store->id);
 
                 DB::commit();
             } catch (\Exception $e) {
@@ -99,7 +99,7 @@ class StoreService
     public function removeLogo(int $id): bool
     {
         $store = Store::findOrFail($id);
-        return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_STORES . '/' . $store->id) && $store->update(['logo' => null]);
+        return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_STORES . '/' . $store->id) && $store->update(['logo' => null]);
     }
 
     private function updateRelations(Store $store, UpdateRequest $request): void

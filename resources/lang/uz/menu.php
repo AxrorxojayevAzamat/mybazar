@@ -17,7 +17,8 @@ return [
     'information'                   => 'Информация',
 
     'users'                         => 'Foydalanuvchilar',
-    'categories'                    => 'Kategoriyalar',
+    'shop_categories'               => 'Mahsulot kategoriyalari',
+    'blog_categories'               => 'Blog kategoriyalari',
     'brands'                        => 'Brendlar',
     'products'                      => 'Mahsulotlar',
     'stores'                        => 'Do`konlar',
@@ -28,4 +29,8 @@ return [
     'orders'                        => 'Buyurtmalar',
     'order_items'                   => 'Buyurtma buyumlari',
     'carts'                         => 'Savat',
+    'sliders'                       => 'Slayderlar',
+    'posts'                         => 'Maqolalar',
+    'news'                          => 'Yangiliklar',
+    'videos'                        => 'Videolar',
 ];

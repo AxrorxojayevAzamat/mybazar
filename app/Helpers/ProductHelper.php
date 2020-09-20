@@ -12,7 +12,7 @@ class ProductHelper
     public static function getStatusList(): array
     {
         return [
-            Product::STATUS_DRAFT => trans('adminlte.product.draft'),
+            Product::STATUS_DRAFT => trans('adminlte.draft'),
             Product::STATUS_MODERATION => trans('adminlte.product.moderation'),
             Product::STATUS_ACTIVE => trans('adminlte.product.active'),
             Product::STATUS_CLOSED => trans('adminlte.product.closed'),
@@ -23,7 +23,7 @@ class ProductHelper
     {
         switch ($status) {
             case Product::STATUS_DRAFT:
-                return '<span class="badge badge-secondary">'. trans('adminlte.product.draft') . '</span>';
+                return '<span class="badge badge-secondary">'. trans('adminlte.draft') . '</span>';
                 break;
             case Product::STATUS_MODERATION:
                 return '<span class="badge badge-warning">'. trans('adminlte.product.moderation') . '</span>';

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Banners;
-use App\Models\News;
-use App\Models\NewsCategory;
+use App\Entity\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +17,7 @@ class BannersController extends Controller
 
     public function index()
     {
-        $posts = Banners::paginate(10);
+        $posts = Banner::paginate(10);
         return view('admin.banners.index', compact('posts'));
     }
 
@@ -36,7 +34,7 @@ class BannersController extends Controller
             'slug'  => 'required|string|unique:banners',
         ));
 
-        $post = new Banners();
+        $post = new Banner();
         $post->title_ru = $request->title_ru;
         $post->title_en = $request->title_en;
         $post->title_uz = $request->title_uz;
@@ -59,20 +57,20 @@ class BannersController extends Controller
     }
 
 
-    public function show(Banners $banners)
+    public function show(Banner $banners)
     {
         $post = $banners;
 
         return view('admin.banners.show', compact('post'));
     }
 
-    public function edit(Banners $banner)
+    public function edit(Banner $banner)
     {
         $post = $banner;
         return view('admin.banners.edit', compact('post'));
     }
 
-    public function update(Request $request, Banners $banners)
+    public function update(Request $request, Banner $banners)
     {
         $post = $banners;
         $this->validate($request, array(
@@ -104,7 +102,7 @@ class BannersController extends Controller
         return redirect('/admin/banners');
     }
 
-    public function destroy(Banners $banners)
+    public function destroy(Banner $banners)
     {
         $post = $banners;
         if($post->file){

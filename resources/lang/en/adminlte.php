@@ -25,6 +25,7 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
+    'is_published' => 'Is published',
 
     'create' => 'Create',
     'save' => 'Save',
@@ -35,9 +36,13 @@ return [
     'main' => 'Main',
     'yes' => 'Yes',
     'no' => 'No',
+    'draft' => 'Draft',
+    'publish' => 'Publish',
 
     'name' => 'Name',
+    'title' => 'Title',
     'description' => 'Description',
+    'body' => 'Body',
     'note' => 'Note',
     'code' => 'Code',
     'status' => 'Status',
@@ -45,6 +50,7 @@ return [
     'parent' => 'Parent',
     'relations' => 'Relations',
     'required' => 'Required',
+    'author' => 'Author',
     'created_by' => 'Created by',
     'updated_by' => 'Updated by',
     'created_at' => 'Created at',
@@ -70,6 +76,10 @@ return [
     'quantity' => 'Quantity',
     'date_from' => 'Date from',
     'date_to' => 'Date to',
+    'image' => 'Image',
+    'poster' => 'Poster',
+    'video' => 'Video',
+    'files' => 'Files',
 
     'photo' => [
         'plural' => 'Photos',
@@ -139,7 +149,6 @@ return [
         'add' => 'Add Product',
         'name' => 'Product',
         'discount' => 'Discount',
-        'draft' => 'Draft',
         'moderation' => 'Moderation',
         'active' => 'Active',
         'closed' => 'Closed',
@@ -172,5 +181,9 @@ return [
         'add' => 'Add Value',
         'name' => 'Value',
         'plural' => 'Values',
+    ],
+
+    'news' => [
+        'name' => 'News',
     ],
 ];

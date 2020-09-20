@@ -42,7 +42,7 @@ class MarkService
         if (!$request->photo) {
             $mark->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
         } else {
-            Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_MARKS . '/' . $mark->id);
+            Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_MARKS . '/' . $mark->id);
 
             $imageName = ImageHelper::getRandomName($request->photo);
             $mark->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
@@ -65,7 +65,7 @@ class MarkService
     public function removePhoto(int $id): bool
     {
         $mark = Mark::findOrFail($id);
-        return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_MARKS . '/' . $mark->id) && $mark->update(['photo' => null]);
+        return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_MARKS . '/' . $mark->id) && $mark->update(['photo' => null]);
     }
 
     private function uploadPhoto(int $markId, UploadedFile $photo, string $imageName)

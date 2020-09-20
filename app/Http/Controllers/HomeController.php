@@ -7,9 +7,9 @@ use App\Entity\Shop\Category;
 use App\Entity\Shop\Product;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
-use App\Models\Post;
-use App\Models\Sliders;
-use App\Models\Videos;
+use App\Entity\Blog\Post;
+use App\Entity\Slider;
+use App\Entity\Blog\Video;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,12 +37,12 @@ class HomeController extends Controller
         $categories = Category::get()->toTree();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $blogs = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
-        $sliders = Sliders::orderByDesc('sort')->get();
+        $sliders = Slider::orderByDesc('sort')->get();
         $sliders_count = $sliders->count();
 
 
 //        dd($sliders);
-        $videos = Videos::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
+        $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
         return view('pages.index',compact('products_new', 'categories', 'brands','products_bestsellers', 'blogs','videos','sliders','sliders_count'));
     }
 }

@@ -17,7 +17,8 @@ return [
     'information'                   => 'Информация',
 
     'users'                         => 'Пользователи',
-    'categories'                    => 'Категории',
+    'shop_categories'               => 'Категории магазинов',
+    'blog_categories'               => 'Категории блогов',
     'brands'                        => 'Бренды',
     'products'                      => 'Продукты',
     'stores'                        => 'Магазины',
@@ -28,4 +29,8 @@ return [
     'orders'                        => 'Заказы',
     'order_items'                   => 'Товары заказа',
     'carts'                         => 'Корзина',
+    'sliders'                       => 'Слайдеры',
+    'posts'                         => 'Статьи',
+    'news'                          => 'Новости',
+    'videos'                        => 'Видео',
 ];
