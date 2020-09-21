@@ -10,6 +10,11 @@ use App\Entity\Blog\Category;
 class CategoryController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('can:manage-blog-categories');
+    }
+
     public function index()
     {
         $categories = Category::paginate(10);

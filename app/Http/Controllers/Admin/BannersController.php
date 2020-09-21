@@ -12,7 +12,7 @@ class BannersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:manage-shop-products');
+        $this->middleware('can:manage-banners');
     }
 
     public function index()

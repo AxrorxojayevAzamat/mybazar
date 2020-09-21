@@ -12,7 +12,7 @@ class SlidersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:manage-shop-products');
+        $this->middleware('can:manage-sliders');
     }
 
     public function index()

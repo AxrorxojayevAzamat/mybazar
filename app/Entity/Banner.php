@@ -36,7 +36,7 @@ use Eloquent;
  */
 class Banner extends BaseModel
 {
-    protected $table = 'blog_banners';
+    protected $table = 'banners';
 
     protected $fillable = [
         'title_ru', 'title_en', 'title_uz', 'body_en', 'body_ru', 'body_uz', 'description_uz', 'description_en',

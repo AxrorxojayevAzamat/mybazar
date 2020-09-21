@@ -65,6 +65,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
+        Gate::define('manage-blog-categories', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+
         Gate::define('manage-blog-posts', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
@@ -77,11 +81,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-blog-banners', function (User $user) {
+        Gate::define('manage-banners', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-blog-sliders', function (User $user) {
+        Gate::define('manage-sliders', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
     }
