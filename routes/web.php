@@ -29,7 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
     Route::get('news/{news}', 'NewsController@show')->name('news.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
-    Route::get('brandview/{brand}', 'BrandViewController@brandView')->name('brandview');
+    Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
 
     Route::get('cart', 'CartController@cart')->name('cart');
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
@@ -38,9 +38,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
     Route::get('compare', 'CompareController@compare')->name('compare');
 
-//Route::get('cart', 'ProductController@cart'); double must delete
-
-    Route::get('delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
+    Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
     Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
 
@@ -52,15 +50,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::delete('remove-from-cart', 'ProductController@remove');
 
     Route::get('sales', 'SalesController@sales')->name('sales');
-    Route::get('salesview', 'SalesViewController@salesView')->name('salesview');
+    Route::get('sales/show', 'SalesController@show')->name('sales.show');
     Route::get('shops', 'ShopsController@shops')->name('shops');
     Route::get('shopsview', 'ShopsViewController@shopsView')->name('shopsview');
 
-    Route::get('videoblog', 'VideoBlogController@videoBlog')->name('videoblog');
-    Route::get('videoblog-view', 'VideoBlogViewController@videoBlogView')->name('videoblogview');;
-
-    Route::resource('category', 'CategoryController');
-    Route::resource('videos', 'VideosController');
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/videos', 'VideosController');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

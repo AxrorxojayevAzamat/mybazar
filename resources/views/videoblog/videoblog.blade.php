@@ -1,3 +1,17 @@
+@extends('layouts.app')
+
+@section('title', 'Video blog')
+
+@section('styles')
+<link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
+@endsection
+
+@section('body')
+@section('banner')
+<!-- Slide banner -->
+@include ('layouts.slide-banner-catalog')
+@endsection
+<!-- list of videos -->
 <section>
     <div class="h4-title video-blog">
         <h4 class="title">Видеоролики</h4>
@@ -6,10 +20,10 @@
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
                 @foreach($categories as $category)
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                        <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->title}}</label>
-                    </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
+                    <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
+                </div>
                 @endforeach
             </div>
         </form>
@@ -19,7 +33,7 @@
 
                 <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <!-- <span class="navbar-toggler-icon"></span>     -->
-                <i class="navbar-toggler-icon mbcompare"></i>
+                    <i class="navbar-toggler-icon mbcompare"></i>
                 </button>
 
                 <div id="search-bar" class="search-bar form-control">
@@ -36,7 +50,7 @@
                                         @foreach($categories as $category)
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                                            <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->title}}</label>
+                                            <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
                                         </div>
                                         @endforeach
                                     </div>
@@ -51,7 +65,7 @@
                 @foreach($videos as $video)
                 <a href="{{ route('videos.show', $video) }}">
                     <div class="video-item">
-                        <img src="/storage/videos/{{$video->poster}}" alt="" class="poster">
+                        <img src="../images/{{$video->poster}}" alt="" class="poster">
                         <div class="video-overlay">
                             <h6>{{$video->title}}</h6>
                             <button class="btn play">
@@ -63,26 +77,15 @@
                 @endforeach
             </div>
 
-            <!-- PAGINATION  -->
-{{--            <nav class="products-pagination" aria-label="Page navigation example">--}}
-{{--                <ul class="pagination">--}}
-{{--                    <!-- <li class="page-item">--}}
-{{--                        <a class="page-link" href="#" aria-label="Previous">--}}
-{{--                            <span aria-hidden="true">&laquo;</span>--}}
-{{--                            <span class="sr-only">Previous</span>--}}
-{{--                        </a>--}}
-{{--                    </li> -->--}}
-{{--                    <li class="page-item active"><a href="#">1</a></li>--}}
-{{--                    <li class="page-item"><a href="#">2</a></li>--}}
-{{--                    <li class="page-item"><a href="#">3</a></li>--}}
-{{--                    <li class="page-item">--}}
-{{--                        <a href="#" aria-label="Next">--}}
-{{--                            <i class="mbnext_page"></i>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="page-item"><a href="#">10</a></li>--}}
-{{--                </ul>--}}
-{{--            </nav>--}}
+          
         </div>
     </div>
 </section>
+
+<!-- recently viewed -->
+@include('layouts.recently-viewed')
+@endsection
+
+@section('script')
+<script src="{{asset('js/1-index.js')}}"></script>
+@endsection

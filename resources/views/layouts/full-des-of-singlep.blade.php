@@ -11,7 +11,7 @@
         </p>
         <a href="#">
             <div class="video-item">
-                <img src="{{asset('images/poster-ihateusomuch.jpg')}}" alt="" class="poster">
+                <img src="{{asset('images/poster5.jpg')}}" alt="" class="poster">
                 <div class="video-overlay">
                     <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
                     <button class="btn play">

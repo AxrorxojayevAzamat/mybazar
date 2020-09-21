@@ -2,7 +2,6 @@
 
 use App\Entity\Banner;
 use App\Entity\Slider;
-use App\Entity\Blog\Video;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\Brand;
 use App\Entity\DeliveryMethod;
@@ -21,6 +20,7 @@ use App\Entity\Shop\Category as ShopCategory;
 use App\Entity\Blog\Category as BlogCategory;
 use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
+use App\Entity\Blog\Video;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.home'), route('admin.home'));
@@ -67,6 +67,11 @@ Breadcrumbs::register('brands', function (Crumbs $crumbs) {
     $crumbs->push('Все бренды', route('brands'));
 });
 
+Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
+    $crumbs->parent('brands');
+    $crumbs->push($brand->name, route('brands.show',$brand));
+});
+
 Breadcrumbs::register('cart', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push('Корзина', route('cart'));
@@ -97,10 +102,6 @@ Breadcrumbs::register('category.index', function (Crumbs $crumbs) {
     $crumbs->push('Категория', route('category.index'));
 });
 
-Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
-    $crumbs->parent('front-home');
-    $crumbs->push('Ролики', route('videos.index'));
-});
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {
     $crumbs->parent('compare');
     $crumbs->push('Сравнение', route('compare'));
@@ -131,6 +132,11 @@ Breadcrumbs::register('sales', function (Crumbs $crumbs) {
     $crumbs->push('Акции и скидки', route('sales'));
 });
 
+Breadcrumbs::register('sales.show', function (Crumbs $crumbs) {
+    $crumbs->parent('sales');
+    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('sales.show'));
+});
+
 Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
     $crumbs->parent('sales');
     $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
@@ -146,18 +152,15 @@ Breadcrumbs::register('shopsview', function (Crumbs $crumbs) {
     $crumbs->push('Телевизоры, аудио и видео * Artel Qoratosh" MChJ', route('shopsview'));
 });
 
-Breadcrumbs::register('videoblog', function (Crumbs $crumbs) {
+Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Видеоролики', route('videoblog'));
+    $crumbs->push('Видеоролики', route('videos.index'));
 });
 
-Breadcrumbs::register('videoblogview', function (Crumbs $crumbs) {
-    $crumbs->parent('videoblog');
-    $crumbs->push('Топовая SFF - сборка на Ryzen', route('videoblogview'));
+Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Video $video) {
+    $crumbs->parent('videos.index');
+    $crumbs->push($video->title, route('videos.show',$video));
 });
-
-
-
 
 
 

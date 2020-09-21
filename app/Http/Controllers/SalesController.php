@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-class SalesController extends Controller
-{
+class SalesController extends Controller {
 
-    public function sales()
-    {
+    public function sales() {
         return view('sale.sales');
+    }
+
+    public function show() {
+        return view('sale.show');
     }
 
 }
