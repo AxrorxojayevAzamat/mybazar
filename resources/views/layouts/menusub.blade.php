@@ -1,12 +1,27 @@
-@foreach($childs as $child)
-<li class="nav-item dropdown">
-    <a class="dropdown-item dropdown-toggle" href="{{route('category.show',$child)}}" id="navbarDropdown{{$child->id}}" role="button" data-toggle="dropdown"
-       aria-haspopup="true" aria-expanded="false">
-        {{ $child->name }}
-    </a>
-<!-- third dropdown -->
-@if(count($child->children))
-    @include('layouts.menusubchild',['childs' => $child->children])
-@endif
-</li>
-@endforeach
+@php($childrenCategories = $children)
+
+<ul class="dropdown-menu d2" aria-labelledby="navbarDropdown{{$category->id}}">
+    @foreach($childrenCategories as $i => $child)
+        <li class="nav-item dropdown">
+            <a class="dropdown-item{{ count($child->children) ? ' first-dropdown' : '' }}" href="{{route('categories.show',$child)}}">
+                {{ $child->name }}
+            </a>
+
+            @if(count($child->children))
+                @include('layouts.menusub', ['children' => $children[$i]->children])
+            @endif
+        </li>
+    @endforeach
+
+    @if (!$banner)
+        @php($banner = true)
+        <li class="full-image-banner">
+            <img src="{{asset('images/menu-banner1.jpg')}}" alt="">
+        </li>
+        <li class="full-image-banner2">
+            <img src="{{asset('images/menu-banner2.png')}}" alt="">
+        </li>
+    @endif
+</ul>
+
+

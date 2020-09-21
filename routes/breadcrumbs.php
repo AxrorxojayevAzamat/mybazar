@@ -87,19 +87,24 @@ Breadcrumbs::register('pay', function (Crumbs $crumbs) {
     $crumbs->push('Способ оплаты', route('pay'));
 });
 
-Breadcrumbs::register('catalog', function (Crumbs $crumbs) {
+Breadcrumbs::register('catalog.list', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Весь каталог', route('catalog'));
+    $crumbs->push('Весь каталог', route('catalog.list'));
 });
 
 Breadcrumbs::register('catalogsection', function (Crumbs $crumbs) {
-    $crumbs->parent('catalog');
+    $crumbs->parent('catalog.list');
     $crumbs->push('Телевизоры, аудио и видео', route('catalogsection'));
 });
 
-Breadcrumbs::register('category.index', function (Crumbs $crumbs) {
+Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Категория', route('category.index'));
+    $crumbs->push('Категория', route('categories.index'));
+});
+
+Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+    $crumbs->parent('front-home');
+    $crumbs->push($category->name, route('categories.show', $category));
 });
 
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {

@@ -34,8 +34,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('cart', 'CartController@cart')->name('cart');
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
     Route::get('pay', 'PayController@pay')->name('pay');
-    Route::get('catalog', 'CatalogController@catalog')->name('catalog');
+    Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function () {
+        Route::get('{category}', 'CatalogController@catalog')->name('list');
+    });
     Route::get('catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
+
     Route::get('compare', 'CompareController@compare')->name('compare');
 
     Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
@@ -54,7 +57,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('shops', 'ShopsController@shops')->name('shops');
     Route::get('shopsview', 'ShopsViewController@shopsView')->name('shopsview');
 
-    Route::resource('/category', 'CategoryController');
+    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+        Route::get('', 'CategoryController@index')->name('index');
+        Route::get('{category}', 'CategoryController@show')->name('show');
+    });
+
     Route::resource('/videos', 'VideosController');
 });
 

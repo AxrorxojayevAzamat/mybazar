@@ -25,22 +25,13 @@
                     <!-- 1 -->
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
-                        <a class="dropdown-item first-dropdown dropdown-toggle" href="{{ route('category.show', $category) }}" id="navbarDropdown{{$category->id}}" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <img  class="menu-discount-icon" src="{{asset('images/discount.svg')}}"> {{$category->name}}
+                        <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}" href="{{ route('categories.show', $category) }}">
+                            <img class="menu-discount-icon" src="{{asset('images/discount.svg')}}"> {{$category->name}}
                         </a>
-                        <!-- second dropdown -->
+
                         @if(count($category->children))
-                        <ul class="dropdown-menu d2" aria-labelledby="navbarDropdown{{$category->id}}">
-                            <!-- 1.1 -->
-                            @include('layouts.menusub',['childs' => $category->children])
-                            <li class="full-image-banner">
-                                <img src="{{asset('images/menu-banner1.jpg')}}" alt="">
-                            </li>
-                            <li class="full-image-banner2">
-                                <img src="{{asset('images/menu-banner2.png')}}" alt="">
-                            </li>
-                        </ul>
+                            @php($banner = false)
+                            @include('layouts.menusub', ['children' => $category->children])
                         @endif
                     </li>
                     @endforeach
