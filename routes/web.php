@@ -94,6 +94,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::resource('banners', 'BannersController');
+    Route::group(['prefix' => 'banners/{banner}', 'as' => 'banners.'], function () {
+        Route::post('remove-file', 'BannersController@removeFile')->name('remove-file');
+        Route::post('publish', 'BannersController@publish')->name('publish');
+        Route::post('discard', 'BannersController@discard')->name('discard');
+    });
     Route::resource('sliders', 'SlidersController');
 
     Route::get('', 'HomeController@index')->name('home');
@@ -170,6 +175,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::delete('{cart}', 'CartController@destroy')->name('destroy');
         });
     });
+//        Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
+//            Route::get('', 'BannerController@index')->name('index');
+//            Route::get('{order}', 'OrderController@show')->name('show');
+//            Route::get('{order}/items/{item}', 'OrderController@showItem')->name('item');
+//            Route::delete('{order}', 'OrderController@destroy')->name('destroy');
+//        });
 
     Route::resource('stores', 'Store\StoreController');
     Route::group(['prefix' => 'stores/{store}', 'namespace' => 'Store', 'as' => 'stores.'], function () {

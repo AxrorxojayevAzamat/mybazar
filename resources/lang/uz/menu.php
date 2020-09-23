@@ -33,4 +33,5 @@ return [
     'posts'                         => 'Maqolalar',
     'news'                          => 'Yangiliklar',
     'videos'                        => 'Videolar',
+    'banners'                        => 'Bannerlar',
 ];

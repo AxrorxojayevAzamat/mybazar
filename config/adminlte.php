@@ -229,6 +229,12 @@ return [
             'can' => 'manage-users',
         ],
         [
+            'text' => 'banners',
+            'url'  => 'admin/banners',
+            'icon' => 'fas fa-fw fa-list-alt',
+            'can' => 'manage-banners',
+        ],
+        [
             'text' => 'posts',
             'url'  => 'admin/blog/posts',
             'icon' => 'fas fa-fw fa-newspaper',

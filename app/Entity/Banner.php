@@ -34,58 +34,71 @@ use Eloquent;
  * @property string $fileOriginal
  * @mixin Eloquent
  */
-class Banner extends BaseModel
-{
-    protected $table = 'banners';
+class   Banner extends BaseModel {
 
+    protected $table = 'banners';
     protected $fillable = [
-        'title_ru', 'title_en', 'title_uz', 'body_en', 'body_ru', 'body_uz', 'description_uz', 'description_en',
-        'description_ru', 'is_published', 'slug', 'url', 'file',
+        'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru',
+        'description_en', 'is_published', 'slug', 'url', 'file',
     ];
 
-    public function getPublishedAttribute()
-    {
+
+    public function publish(): void {
+        $this->is_published = true;
+    }
+
+    public function discard(): void {
+        $this->is_published = false;
+    }
+
+    ########################################### Mutators
+    
+    public function getPublishedAttribute() {
         return ($this->is_published) ? trans('adminlte.yes') : trans('adminlte.no');
     }
 
-
-    ########################################### Mutators
-
-    public function getTitleAttribute(): string
-    {
+    public function getTitleAttribute(): string {
         return LanguageHelper::getTitle($this);
     }
 
-    public function getDescriptionAttribute(): string
-    {
+    public function getDescriptionAttribute(): string {
         return LanguageHelper::getDescription($this);
     }
 
-    public function getFileThumbnailAttribute(): string
-    {
+    public function getFileThumbnailAttribute(): string {
         return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
     }
 
-    public function getFileOriginalAttribute(): string
-    {
+    public function getFileOriginalAttribute(): string {
         return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
     }
 
     ###########################################
+    
+    
+    ########################################### Scopes
 
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
 
+    public function scopeDrafted($query)
+    {
+        return $query->where('is_published', false);
+    }
+
+    ###########################################
+    
     ########################################### Relations
 
-    public function createdBy()
-    {
+    public function createdBy() {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
-    public function updatedBy()
-    {
+    public function updatedBy() {
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
     ###########################################
-
 }

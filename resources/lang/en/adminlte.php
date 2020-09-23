@@ -80,6 +80,8 @@ return [
     'poster' => 'Poster',
     'video' => 'Video',
     'files' => 'Files',
+    'url' => 'Url',
+    'slug' => 'Slug',
 
     'photo' => [
         'plural' => 'Photos',
