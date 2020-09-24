@@ -33,4 +33,5 @@ return [
     'posts'                         => 'Posts',
     'news'                          => 'News',
     'videos'                        => 'Videos',
+    'banners'                       => 'Banners',
 ];
