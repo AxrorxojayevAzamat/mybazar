@@ -7,6 +7,7 @@ deploy_development:
   - cd /var/www/shop.dev/
   # - composer install
 #  - composer update
+  - composer dump-autoload
   - php artisan migrate:fresh --seed
 #  - php artisan migrate
   - php artisan cache:clear
