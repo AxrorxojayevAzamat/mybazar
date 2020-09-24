@@ -51,6 +51,11 @@ class Category extends BaseModel
 
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
 
+    public function getPath(): string
+    {
+        return implode('/', array_merge($this->ancestors()->defaultOrder()->pluck('slug')->toArray(), [$this->slug]));
+    }
+
 
     ########################################### Mutators
 
@@ -76,8 +81,6 @@ class Category extends BaseModel
     }
 
     ###########################################
-
-
 
 
     ########################################### Relations

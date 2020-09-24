@@ -19,13 +19,15 @@
             <ul>
                 @foreach($gCategories as $category)
                     <li>
-                            <span>
-                                <img class="menu-discount-icon" src="{{asset('images/discount.svg')}}">
-                                {{$category->name}}
-                            </span>
-                        @if($category->children)
+                        <span>
+                            <a href="{{ route('categories.show', products_path($category)) }}">
+                                <img class="menu-discount-icon" src="{{asset('images/discount.svg')}}">{{$category->name}}
+                            </a>
+
+                        </span>
+                        @if(count($category->children))
                             <ul>
-                                @include('layouts.mobile-menu-sub',['childs' => $category->children])
+                                @include('layouts.mobile-menu-sub', ['children' => $category->children])
                             </ul>
                         @endif
                     </li>

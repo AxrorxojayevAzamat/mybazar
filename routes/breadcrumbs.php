@@ -2,6 +2,7 @@
 
 use App\Entity\Banner;
 use App\Entity\Slider;
+use App\Http\Router\ProductsPath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\Brand;
 use App\Entity\DeliveryMethod;
@@ -102,10 +103,10 @@ Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
     $crumbs->push('Категория', route('categories.index'));
 });
 
-Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
-    $crumbs->parent('front-home');
-    $crumbs->push($category->name, route('categories.show', $category));
-});
+//Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+//    $crumbs->parent('front-home');
+//    $crumbs->push($category->name, route('categories.show', $category));
+//});
 
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {
     $crumbs->parent('compare');
@@ -125,6 +126,24 @@ Breadcrumbs::register('favorites', function (Crumbs $crumbs) {
 Breadcrumbs::register('popular', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push('Избранное', route('popular'));
+});
+
+// Categories
+Breadcrumbs::register('categories.inner_category', function (Crumbs $crumbs, ProductsPath $path, ProductsPath $orig) {
+    if ($path->category && $parent = $path->category->parent) {
+        $crumbs->parent('categories.inner_category', $path->withCategory($parent), $orig);
+    } else {
+        $crumbs->parent('front-home');
+        $crumbs->push(trans('menu.products'), route('categories.show'));
+    }
+    if ($path->category) {
+        $crumbs->push($path->category->name, route('categories.show', products_path($path->category)));
+    }
+});
+
+Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ProductsPath $path = null) {
+    $path = $path ?: products_path(null);
+    $crumbs->parent('categories.inner_category', $path, $path);
 });
 
 Breadcrumbs::register('productviewpage', function (Crumbs $crumbs) {
