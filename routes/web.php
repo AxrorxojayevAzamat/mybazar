@@ -59,7 +59,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('', 'CategoryController@index')->name('index');
-        Route::get('{category}', 'CategoryController@show')->name('show');
+        Route::get('/{products_path?}', 'CategoryController@show')->name('show')->where('products_path', '.+');
+//        Route::get('{category}', 'CategoryController@show')->name('show');
     });
 
     Route::resource('/videos', 'VideosController');
