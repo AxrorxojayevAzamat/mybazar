@@ -6,10 +6,10 @@ deploy_development:
   - rsync -av * /var/www/shop.dev/ --no-perms --no-owner --no-group
   - cd /var/www/shop.dev/
 #  - composer install
+  - composer update
   - php artisan migrate:fresh --seed
   - npm i
   - npm run dev
-  - composer update
   environment:
     name: development
     url: https://shop.sec.uz
