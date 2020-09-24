@@ -7,6 +7,8 @@ use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
+use App\Http\Requests\Admin\Banners\CreateRequest;
+use App\Http\Requests\Admin\Banners\UpdateRequest;
 
 /**
  * @property int $id
@@ -34,7 +36,7 @@ use Eloquent;
  * @property string $fileOriginal
  * @mixin Eloquent
  */
-class   Banner extends BaseModel {
+class Banner extends BaseModel {
 
     protected $table = 'banners';
     protected $fillable = [
@@ -42,6 +44,36 @@ class   Banner extends BaseModel {
         'description_en', 'is_published', 'slug', 'url', 'file',
     ];
 
+    public static function add(int $id, CreateRequest $request, string $fileName): self {
+        return static::create([
+                    'id' => $id,
+                    'title_uz' => $request->title_uz,
+                    'title_ru' => $request->title_ru,
+                    'title_en' => $request->title_en,
+                    'description_uz' => $request->description_uz,
+                    'description_ru' => $request->description_ru,
+                    'description_en' => $request->description_en,
+                    'url' => $request->url,
+                    'slug' => $request->slug,
+                    'is_published' => $request->is_published,
+                    'file' => $fileName,
+        ]);
+    }
+
+    public function edit(UpdateRequest $request, string $fileName = null): void {
+        $this->update([
+            'title_uz' => $request->title_uz,
+            'title_ru' => $request->title_ru,
+            'title_en' => $request->title_en,
+            'description_uz' => $request->description_uz,
+            'description_ru' => $request->description_ru,
+            'description_en' => $request->description_en,
+            'url' => $request->url,
+            'slug' => $request->slug,
+            'is_published' => $request->is_published,
+            'file' => $fileName ?: $this->file,
+        ]);
+    }
 
     public function publish(): void {
         $this->is_published = true;
@@ -52,7 +84,7 @@ class   Banner extends BaseModel {
     }
 
     ########################################### Mutators
-    
+
     public function getPublishedAttribute() {
         return ($this->is_published) ? trans('adminlte.yes') : trans('adminlte.no');
     }
@@ -74,22 +106,17 @@ class   Banner extends BaseModel {
     }
 
     ###########################################
-    
-    
     ########################################### Scopes
 
-    public function scopePublished($query)
-    {
+    public function scopePublished($query) {
         return $query->where('is_published', true);
     }
 
-    public function scopeDrafted($query)
-    {
+    public function scopeDrafted($query) {
         return $query->where('is_published', false);
     }
 
     ###########################################
-    
     ########################################### Relations
 
     public function createdBy() {

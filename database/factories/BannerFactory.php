@@ -3,7 +3,6 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Entity\Banner;
-use App\Entity\Blog\Category;
 use Faker\Generator as Faker;
 
 $factory->define(Banner::class, function (Faker $faker) {

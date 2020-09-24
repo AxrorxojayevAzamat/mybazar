@@ -100,6 +100,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('discard', 'BannersController@discard')->name('discard');
     });
     Route::resource('sliders', 'SlidersController');
+            Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
+            Route::post('first', 'SlidersController@first')->name('first');
+            Route::post('up', 'SlidersController@up')->name('up');
+            Route::post('down', 'SlidersController@down')->name('down');
+            Route::post('last', 'SlidersController@last')->name('last');
+        });
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
