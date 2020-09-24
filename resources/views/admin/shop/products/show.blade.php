@@ -14,6 +14,7 @@
         </form>
     </div>
 
+    @php($mainCategory = $product->mainCategory)
     @php($store = $product->store)
     @php($brand = $product->brand)
 
@@ -59,8 +60,9 @@
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
+                        <tr><th>{{ trans('adminlte.product.main_category') }}</th><td><a href="{{ route('admin.shop.categories.show', $mainCategory) }}">{{ $mainCategory->name }}</a></td></tr>
                         <tr>
-                            <th>{{ trans('menu.categories') }}</th>
+                            <th>{{ trans('adminlte.product.additional_categories') }}</th>
                             <td>
                                 @foreach($product->categories as $category)
                                     <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>

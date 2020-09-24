@@ -146,9 +146,9 @@ Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ProductsPath 
     $crumbs->parent('categories.inner_category', $path, $path);
 });
 
-Breadcrumbs::register('productviewpage', function (Crumbs $crumbs) {
-    $crumbs->parent('catalog');
-    $crumbs->push('Смартфоны и гаджеты * Все смартфоны * Xiaomi * Смартфон Redmi Note 9S (Interstellar Grey)', route('productviewpage'));
+Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $product) {
+    $crumbs->parent('categories.show', products_path($product->mainCategory));
+    $crumbs->push($product->name, route('products.show', $product));
 });
 
 Breadcrumbs::register('sales', function (Crumbs $crumbs) {

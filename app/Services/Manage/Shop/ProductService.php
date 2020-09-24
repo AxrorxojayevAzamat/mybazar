@@ -3,6 +3,7 @@
 namespace App\Services\Manage\Shop;
 
 use App\Entity\Brand;
+use App\Entity\Shop\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
@@ -26,6 +27,7 @@ class ProductService
 
     public function create(CreateRequest $request): Product
     {
+        $mainCategory = Category::findOrFail($request->main_category_id);
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -51,6 +53,7 @@ class ProductService
                 'new' => $request->new ?? false,
             ]);
 
+            $product->mainCategory()->associate($mainCategory);
             $product->store()->associate($store);
             $product->brand()->associate($brand);
             $product->saveOrFail();
@@ -70,6 +73,7 @@ class ProductService
     public function update($id, UpdateRequest $request): Product
     {
         $product = Product::findOrFail($id);
+        $mainCategory = Category::findOrFail($request->main_category_id);
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -86,6 +90,7 @@ class ProductService
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
                 'discount' => $request->discount ?? null,
+                'main_category_id' => $mainCategory->id,
                 'store_id' => $store->id,
                 'brand_id' => $brand->id,
                 'status' => $request->status,

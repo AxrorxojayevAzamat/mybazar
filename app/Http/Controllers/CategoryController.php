@@ -32,6 +32,6 @@ class CategoryController extends Controller
         $query->whereIn('id', $products);
         $products = $query->paginate(20);
 //        dd($products);
-        return view('catalog.catalog', compact('products'));
+        return view('catalog.catalog', compact('category', 'products'));
     }
 }

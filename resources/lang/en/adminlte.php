@@ -160,6 +160,8 @@ return [
         'add_photos' => 'Add Photos',
         'choose' => 'Choose product',
         'reviews' => 'Reviews',
+        'main_category' => 'Main category',
+        'additional_categories' => 'Additional categories',
     ],
 
     'modification' => [

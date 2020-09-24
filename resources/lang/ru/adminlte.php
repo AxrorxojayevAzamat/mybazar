@@ -160,6 +160,8 @@ return [
         'add_photos' => 'Добавить Фото',
         'choose' => 'Выбрать товар',
         'reviews' => 'Обзоры',
+        'main_category' => 'Главная категория',
+        'additional_categories' => 'Дополнительные категории',
     ],
 
     'modification' => [

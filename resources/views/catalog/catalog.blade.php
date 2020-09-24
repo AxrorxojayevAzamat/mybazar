@@ -16,7 +16,7 @@
         <!-- CATALOG VIEW -->
     <section>
         <div class="h4-title catalog-view">
-            <h4 class="title">Телевизоры</h4>
+            <h4 class="title">{{ $category->name }}</h4>
         </div>
         <div class="outter-catalog-view">
             <!-- big filter without title checkbox -->

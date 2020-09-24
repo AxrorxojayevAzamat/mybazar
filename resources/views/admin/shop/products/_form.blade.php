@@ -83,7 +83,17 @@
                 <div class="row">
                     <div class="col-md-10">
                         <div class="form-group">
-                            {!! Form::label('categories', trans('adminlte.category.name'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('main_category_id', trans('adminlte.product.main_category'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('main_category_id', $categories, old('main_category_id', $product ? $product->main_category_id : null),
+                                ['class'=>'form-control' . ($errors->has('main_category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                            @if ($errors->has('main_category_id'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('main_category_id') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            {!! Form::label('categories', trans('adminlte.product.additional_categories'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('categories[]', $categories, old('categories', $product ? $product->categoriesList() : null),
                                 ['multiple' => true, 'class'=>'form-control' . ($errors->has('categories') ? ' is-invalid' : ''), 'id' => 'categories', 'required' => true]) !!}
                             @if ($errors->has('categories'))
@@ -246,6 +256,7 @@
         CKEDITOR.replace('description_uz');
         CKEDITOR.replace('description_ru');
         CKEDITOR.replace('description_en');
+        $('#main_category_id').select2();
         $('#categories').select2();
         $('#store_id').select2();
         $('#brand_id').select2();

@@ -33,12 +33,14 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property Category $parent
  * @property Category[] $children
  * @property ProductCategory[] $categoryProducts
+ * @property Product[] $mainProducts
  * @property Product[] $products
  * @property StoreCategory[] $categoryStores
  * @property Store[] $stores
  * @property CharacteristicCategory[] $categoryCharacteristics
  * @property Characteristic[] $characteristics
  * @property string $name
+ * @property string $description
  * @property User $createdBy
  * @property User $updatedBy
  * @mixin Eloquent
@@ -59,10 +61,14 @@ class Category extends BaseModel
 
     ########################################### Mutators
 
-
     public function getNameAttribute(): string
     {
         return LanguageHelper::getName($this);
+    }
+
+    public function getDescriptionAttribute(): string
+    {
+        return LanguageHelper::getDescription($this);
     }
 
     ###########################################
@@ -84,6 +90,11 @@ class Category extends BaseModel
 
 
     ########################################### Relations
+
+    public function mainProducts()
+    {
+        return $this->hasMany(Product::class, 'main_category_id', 'id');
+    }
 
     public function categoryProducts()
     {

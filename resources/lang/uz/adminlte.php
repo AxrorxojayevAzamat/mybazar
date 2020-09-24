@@ -160,6 +160,8 @@ return [
         'add_photos' => 'Suratnlar qo`shmoq',
         'choose' => 'Mahsulot tanlamoq',
         'reviews' => 'Sharhlar',
+        'main_category' => 'Asosiy kategoriya',
+        'additional_categories' => 'Yordamchi kategoriyalar',
     ],
 
     'modification' => [
