@@ -5,10 +5,10 @@ deploy_development:
   script:
   - rsync -av * /var/www/shop.dev/ --no-perms --no-owner --no-group
   - cd /var/www/shop.dev/
+  - composer install
   - php artisan migrate:fresh --seed
   - npm i
   - npm run dev
-   - composer install
 #   - composer update
   environment:
     name: development
