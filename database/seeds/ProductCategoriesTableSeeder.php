@@ -28,6 +28,7 @@ class ProductCategoriesTableSeeder extends Seeder
                     $product->productCategories()->create(['category_id' => $categories[$key]]);
                     unset($categories[$key]);
                 }
+                $product->update(['main_category_id' => $categories[array_rand($categories)]]);
             }
         });
     }

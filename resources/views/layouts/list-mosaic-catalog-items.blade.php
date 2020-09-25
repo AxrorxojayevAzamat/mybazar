@@ -3,15 +3,15 @@
     <div class="item">
         <div class="product-img">
             @if ($product->mainPhoto)
-                <img src="{{ $product->mainPhoto->fileOriginal }}" alt="">
+                <a href="{{ route('productviewpage') }}"><img src="{{ $product->mainPhoto->fileOriginal }}" alt=""></a>
             @endif
         </div>
         <!-- description -->
         <div class="description ">
-            <h6 class="title">{{$product->name}}</h6>
+            <h6 class="title"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h6>
             <p class="sub-title">
                 @foreach($product->categories as $category)
-                    <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a><br>
+                    <a href="{{ route('categories.show', products_path($category)) }}">{{ $category->name }}</a><br>
                 @endforeach
             </p>
             <div class="rate">

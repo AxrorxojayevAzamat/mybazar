@@ -17,6 +17,7 @@ use Illuminate\Validation\Rule;
  * @property int $price_uzs
  * @property float $price_usd
  * @property float $discount
+ * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
  * @property int $status
@@ -49,6 +50,7 @@ class CreateRequest extends FormRequest
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
+            'main_category_id' => 'required|numeric|min:1|exists:shop_categories,id',
             'store_id' => 'required|numeric|min:1|exists:stores,id',
             'brand_id' => 'required|numeric|min:1|exists:brands,id',
             'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],

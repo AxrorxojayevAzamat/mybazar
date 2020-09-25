@@ -7,7 +7,7 @@ use App\Entity\Shop\Product;
 
 class ProductViewPageController extends Controller
 {
-    public function productViewPage() {
-        return view('pages.productviewpage'); 
+    public function productViewPage(Product $product) {
+        return view('products.show', compact('product'));
     }
 }

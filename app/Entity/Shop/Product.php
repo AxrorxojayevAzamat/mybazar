@@ -23,6 +23,7 @@ use Eloquent;
  * @property int $price_uzs
  * @property float $price_usd
  * @property float $discount
+ * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
  * @property int $status
@@ -46,6 +47,7 @@ use Eloquent;
  * @property Value[] $values
  * @property Modification[] $modifications
  * @property ProductCategory[] $productCategories
+ * @property Category $mainCategory
  * @property Category[] $categories
  * @property ProductMark[] $productMarks
  * @property Mark[] $marks
@@ -54,6 +56,8 @@ use Eloquent;
  * @property User $updatedBy
  *
  * @property string $name
+ * @property int $currentPriceUzs
+ * @property int $currentPriceUsd
  * @mixin Eloquent
  */
 class Product extends BaseModel
@@ -67,8 +71,8 @@ class Product extends BaseModel
 
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'main_photo_id',
-        'price_uzs', 'price_usd', 'discount', 'store_id', 'brand_id', 'status', 'weight', 'quantity', 'guarantee',
-        'bestseller', 'new',
+        'price_uzs', 'price_usd', 'discount', 'main_category_id', 'store_id', 'brand_id', 'status', 'weight', 'quantity',
+        'guarantee', 'bestseller', 'new',
     ];
 
 
@@ -117,10 +121,25 @@ class Product extends BaseModel
         return LanguageHelper::getName($this);
     }
 
+    public function getCurrentPriceUzsAttribute(): int
+    {
+        return $this->price_uzs - ($this->price_uzs * $this->discount);
+    }
+
+    public function getCurrentPriceUsdAttribute(): int
+    {
+        return $this->price_usd - ($this->price_usd * $this->discount);
+    }
+
     ###########################################
 
 
     ########################################### Relations
+
+    public function mainCategory()
+    {
+        return $this->belongsTo(Category::class, 'main_category_id', 'id');
+    }
 
     public function store()
     {

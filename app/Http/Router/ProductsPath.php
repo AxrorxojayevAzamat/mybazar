@@ -52,6 +52,7 @@ class ProductsPath implements UrlRoutable
             }
         } while (!empty($slug) && !empty($next));
 
+
         if (!empty($chunks)) {
             abort(404);
         }

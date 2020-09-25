@@ -47,7 +47,8 @@ class CategoryController extends Controller {
         }
 
         $products = $query->paginate(20);
-        return view('catalog.catalog', compact('products'));
+//        dd($products);
+        return view('catalog.catalog', compact('category', 'products'));
     }
 
 }
