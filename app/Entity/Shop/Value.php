@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $product_id
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Product $product
  * @property Characteristic $characteristic
+ *
+ * @method Builder main()
  * @mixin Eloquent
  */
 class Value extends Model
@@ -37,6 +40,16 @@ class Value extends Model
     {
         $this->sort = $sort;
     }
+
+
+    ########################################### Scopes
+
+    public function scopeMain(Builder $query)
+    {
+        return $query->where('main', true);
+    }
+
+    ###########################################
 
 
     ########################################### Relations

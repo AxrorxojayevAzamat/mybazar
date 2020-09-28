@@ -19,7 +19,6 @@ use App\Http\Requests\Admin\Shop\Products\ValueRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\VarDumper\VarDumper;
 
 class ProductService
 {
@@ -262,7 +261,7 @@ class ProductService
         }
     }
 
-    private function addCategories(Product $product, array $categories)
+    private function addCategories(Product $product, array $categories): void
     {
         $categories = array_unique($categories);
         foreach ($categories as $i => $categoryId) {
@@ -270,7 +269,7 @@ class ProductService
         }
     }
 
-    private function addMarks(Product $product, array $marks)
+    private function addMarks(Product $product, array $marks): void
     {
         $marks = array_unique($marks);
         foreach ($marks as $i => $markId) {
@@ -285,6 +284,7 @@ class ProductService
         DB::beginTransaction();
         try {
             if (!$request->photo) {
+                $type = $request->color ? Modification::TYPE_COLOR : Modification::TYPE_VALUE;
                 $modification = $product->modifications()->create([
                     'product_id' => $product->id,
                     'name_uz' => $request->name_uz,
@@ -293,7 +293,9 @@ class ProductService
                     'code' => $request->code,
                     'price_uzs' => $request->price_uzs,
                     'price_usd' => $request->price_usd,
-                    'color' => ColorHelper::getValidColor($request->color),
+                    'value' => $request->value ? $request->value : null,
+                    'color' => $request->color ? ColorHelper::getValidColor($request->color) : null,
+                    'type' => $type,
                     'sort' => 1000,
                 ]);
 
@@ -303,7 +305,7 @@ class ProductService
             }
 
             $imageName = ImageHelper::getRandomName($request->photo);
-            $modification = Modification::add($this->getNextModificationId(), $product->id, $request, $imageName);
+            $modification = Modification::add($this->getNextModificationId(), $product->id, $request, Modification::TYPE_COLOR, $imageName);
             $modification->saveOrFail();
 
             $this->sortModifications($product);
@@ -326,12 +328,14 @@ class ProductService
         $modification = $product->modifications()->where('id', $modificationId)->first();
 
         if ($request->color) {
-            $modification->edit($request, $request->color);
+            $modification->edit($request, null, $request->color);
+        } else if ($request->value) {
+            $modification->edit($request, $request->value);
         } else if ($request->photo) {
             $this->deleteModificationPhoto($modification->id, $modification->photo);
             $imageName = ImageHelper::getRandomName($request->photo);
 
-            $modification->edit($request, null, $imageName);
+            $modification->edit($request, null, null, $imageName);
 
             ImageHelper::saveThumbnail($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
             ImageHelper::saveOriginal($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);

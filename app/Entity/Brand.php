@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Shop\Category;
+use App\Entity\Shop\CategoryBrand;
 use App\Entity\Shop\Product;
 use App\Entity\User\User;
 use App\Helpers\ImageHelper;
@@ -28,6 +30,8 @@ use Illuminate\Support\Facades\DB;
  * @property string $logoOriginal
  *
  * @property Product[] $products
+ * @property CategoryBrand[] $brandCategories
+ * @property Category[] $categories
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -101,6 +105,16 @@ class Brand extends BaseModel
     public function products()
     {
         return $this->hasMany(Product::class, 'brand_id', 'id');
+    }
+
+    public function brandCategories()
+    {
+        return $this->hasMany(CategoryBrand::class, 'brand_id', 'id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'shop_category_brands', 'brand_id', 'category_id');
     }
 
     public function createdBy()

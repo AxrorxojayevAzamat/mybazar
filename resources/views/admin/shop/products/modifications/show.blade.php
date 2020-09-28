@@ -24,6 +24,13 @@
                         <tr><th>Code</th><td>{{ $modification->code }}</td></tr>
                         <tr><th>{{ trans('adminlte.price_uzs') }}</th><td>{{ $modification->price_uzs }}</td></tr>
                         <tr><th>{{ trans('adminlte.price_usd') }}</th><td>{{ $modification->price_usd }}</td></tr>
+                        <tr><th>{{ trans('adminlte.type') }}</th><td>{{ $modification->typeName() }}</td></tr>
+                        @if ($modification->value)
+                            <tr>
+                                <th>{{ trans('adminlte.value.name') }}</th>
+                                <td>{{ $modification->value }}</td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

@@ -60,6 +60,8 @@ return [
     'number_of_reviews' => 'Sharhlar soni',
     'reviewer' => 'Sharhlagan foydalanuvchi',
     'reviewed_at' => 'Sharhlangan',
+    'advantages' => 'Afzalliklari',
+    'disadvantages' => 'Kamchiliklari',
     'comment' => 'Sharh',
     'other' => 'Boshqa',
     'others' => 'Boshqalar',

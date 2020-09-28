@@ -31,7 +31,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    {!! Form::label('name_en', 'Название', ['class' => 'col-form-label']); !!}
+                    {!! Form::label('name_en', 'Name', ['class' => 'col-form-label']); !!}
                     {!! Form::text('name_en', old('name_en', $modification ? $modification->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
                     @if ($errors->has('name_en'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
@@ -85,6 +85,22 @@
 
 <div class="row">
     <div class="col-md-12">
+        <div class="card card-danger card-outline">
+            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.value.name') }}</h3></div>
+            <div class="card-body">
+                <div class="form-group">
+                    {!! Form::text('value', old('value', $modification ? $modification->value : null), ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    @if ($errors->has('value'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('value') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <div class="card card-warning card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.color') }}</h3></div>
             <div class="card-body">
@@ -92,9 +108,6 @@
                     {!! Form::text('color', old('color', $modification ? $modification->color : null), ['class' => 'form-control' . ($errors->has('color') ? ' is-invalid' : ''), 'id' => 'color']) !!}
                     @if ($errors->has('color'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('color') }}</strong></span>
-                    @endif
-                    @if ($errors->has('photo'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('photo') }}</strong></span>
                     @endif
                 </div>
             </div>

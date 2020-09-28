@@ -171,6 +171,7 @@
                     <th>{{ trans('adminlte.name') }}</th>
                     <th>{{ trans('adminlte.code') }}</th>
                     <th>{{ trans('adminlte.price_uzs') }}</th>
+                    <th>{{ trans('adminlte.type') }}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -182,6 +183,7 @@
                         <td><a href="{{ route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
                         <td>{{ $modification->code }}</td>
                         <td>{{ $modification->price_uzs }}</td>
+                        <td>{{ $modification->typeName() }}</td>
                         <td>
                             <div class="d-flex flex-row">
                                 <form method="POST" action="{{ route('admin.shop.products.modifications.first', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">
