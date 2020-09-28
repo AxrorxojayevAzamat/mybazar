@@ -17,6 +17,7 @@ use Illuminate\Validation\Rule;
  * @property string $description_en
  * @property string $slug
  * @property int $parent
+ * @property int[] $brands
  *
  * @property Category $category
  */
@@ -38,6 +39,7 @@ class UpdateRequest extends FormRequest
             'description_en' => 'required|string',
             'slug' => ['required', 'string', 'max:255', Rule::unique('shop_categories')->ignore($this->category->id)],
             'parent' => 'nullable|integer|exists:advert_categories,id',
+            'brands.*' => 'numeric|min:1|exists:brands,id',
         ];
     }
 }

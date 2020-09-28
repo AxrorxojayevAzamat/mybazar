@@ -60,6 +60,8 @@ return [
     'number_of_reviews' => 'Число обзоров',
     'reviewer' => 'Обозреватель',
     'reviewed_at' => 'Рассмотрено',
+    'advantages' => 'Достоинтсва',
+    'disadvantages' => 'Недостатки',
     'comment' => 'Коммент',
     'other' => 'Другой',
     'others' => 'Другие',

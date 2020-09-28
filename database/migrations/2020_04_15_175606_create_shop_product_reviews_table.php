@@ -17,6 +17,8 @@ class CreateShopProductReviewsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->float('rating');
+            $table->text('advantages')->nullable();
+            $table->text('disadvantages')->nullable();
             $table->text('comment');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

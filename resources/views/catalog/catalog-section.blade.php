@@ -20,7 +20,7 @@
 
         <div class="outter-catalog-view">
             <!-- big filter without title checkbox -->
-            @include('filters.big-filter-without-title-checkbox')
+            @include('catalog.big-filter-without-title-checkbox')
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
@@ -30,7 +30,7 @@
                     </button>
 
                     <!-- small filter without title checkbox -->
-                    @include('filters.small-filter-without-title-checkbox')
+                    @include('catalog.small-filter-without-title-checkbox')
                 </nav>
 
                 <!-- catalog section-items -->

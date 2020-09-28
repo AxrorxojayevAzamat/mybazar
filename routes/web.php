@@ -49,7 +49,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('popular', 'PopularController@popular')->name('popular');
 
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
-        Route::get('show/{product}', 'ProductViewPageController@productViewPage')->name('show');
+        Route::get('show/{product}', 'ProductController@show')->name('show');
+        Route::post('{product}/add-review', 'ProductController@addReview')->name('add-review');
+        Route::group(['prefix' => '{product}/cart', 'as' => 'cart.'], function () {
+            Route::get('add', 'ProductController@addToCart')->name('add');
+            Route::patch('update-cart', 'ProductController@update')->name('update');
+            Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
+        });
+
     });
 
     Route::get('add-to-cart/{id}', 'ProductController@addToCart');

@@ -45,7 +45,11 @@ use Eloquent;
  * @property Photo[] $photos
  * @property Photo[] $allPhotos
  * @property Value[] $values
+ * @property Value[] $mainValues
  * @property Modification[] $modifications
+ * @property Modification[] $valueModifications
+ * @property Modification[] $colorModifications
+ * @property Modification[] $photoModifications
  * @property ProductCategory[] $productCategories
  * @property Category $mainCategory
  * @property Category[] $categories
@@ -56,6 +60,7 @@ use Eloquent;
  * @property User $updatedBy
  *
  * @property string $name
+ * @property string $description
  * @property int $currentPriceUzs
  * @property int $currentPriceUsd
  * @mixin Eloquent
@@ -121,6 +126,11 @@ class Product extends BaseModel
         return LanguageHelper::getName($this);
     }
 
+    public function getDescriptionAttribute(): string
+    {
+        return LanguageHelper::getDescription($this);
+    }
+
     public function getCurrentPriceUzsAttribute(): int
     {
         return $this->price_uzs - ($this->price_uzs * $this->discount);
@@ -166,6 +176,12 @@ class Product extends BaseModel
         return $this->hasMany(Photo::class, 'product_id', 'id')->orderBy('sort');
     }
 
+    public function mainValues()
+    {
+        return $this->hasMany(Value::class, 'product_id', 'id')
+            ->where('main', true)->orderBy('sort');
+    }
+
     public function values()
     {
         return $this->hasMany(Value::class, 'product_id', 'id')->orderBy('sort');
@@ -174,6 +190,24 @@ class Product extends BaseModel
     public function modifications()
     {
         return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
+    }
+
+    public function valueModifications()
+    {
+        return $this->hasMany(Modification::class, 'product_id', 'id')
+            ->where('type', Modification::TYPE_VALUE)->orderBy('sort');
+    }
+
+    public function colorModifications()
+    {
+        return $this->hasMany(Modification::class, 'product_id', 'id')
+            ->where('type', Modification::TYPE_COLOR)->orderBy('sort');
+    }
+
+    public function photoModifications()
+    {
+        return $this->hasMany(Modification::class, 'product_id', 'id')
+            ->where('type', Modification::TYPE_PHOTO)->orderBy('sort');
     }
 
     public function productCategories()

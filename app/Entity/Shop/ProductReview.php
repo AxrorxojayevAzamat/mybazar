@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
  * @property int $id
  * @property int $product_id
  * @property float $rating
+ * @property string $advantages
+ * @property string $disadvantages
  * @property string $comment
  * @property int $user_id
  * @property Carbon $created_at
@@ -26,7 +28,7 @@ class ProductReview extends Model
     protected $table = 'shop_product_reviews';
 
     protected $fillable = [
-        'product_id', 'rating', 'comment',
+        'product_id', 'rating', 'advantages', 'disadvantages', 'comment',
     ];
 
     public static function boot()

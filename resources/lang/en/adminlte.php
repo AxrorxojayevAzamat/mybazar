@@ -60,6 +60,8 @@ return [
     'number_of_reviews' => 'Number of reviews',
     'reviewer' => 'Reviewer',
     'reviewed_at' => 'Reviewed at',
+    'advantages' => 'Advantages',
+    'disadvantages' => 'Disadvantages',
     'comment' => 'Comment',
     'other' => 'Other',
     'others' => 'Others',

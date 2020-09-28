@@ -16,6 +16,7 @@ use Illuminate\Validation\Rule;
  * @property string $code
  * @property int $price_uzs
  * @property float $price_usd
+ * @property string $value
  * @property string $color
  * @property UploadedFile $photo
  *
@@ -37,8 +38,9 @@ class UpdateRequest extends FormRequest
             'code' => ['required', 'string', 'max:15', Rule::unique('shop_modifications')->ignore($this->modification->id)],
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
-            'color' => ['required_without_all:photo', 'nullable', /*'regex:#[a-zA-Z0-9]{6}', */'regex:(#([a-fA-F0-9]{6})|rgba\((\d{1,3}?,\s?){3}(1|0?\.\d+)\))'],
-            'photo' => 'required_without_all:colornullable|image|mimes:jpg,jpeg,png',
+            'value' => 'required_without_all:color,photo|string|max:50',
+            'color' => ['required_without_all:photo,value', 'nullable', /*'regex:#[a-zA-Z0-9]{6}', */'regex:(#([a-fA-F0-9]{6})|rgba\((\d{1,3}?,\s?){3}(1|0?\.\d+)\))'],
+            'photo' => 'required_without_all:color,value|nullable|image|mimes:jpg,jpeg,png',
         ];
     }
 }

@@ -2,35 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Brand;
 use App\Entity\Shop\Category;
+use App\Entity\Shop\CategoryBrand;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
+use App\Entity\Store;
+use App\Entity\StoreCategory;
 use App\Http\Router\ProductsPath;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller {
+class CategoryController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
 //        $this->middleware('auth');
     }
 
-    public function index() {
+    public function index()
+    {
         $rootCategories = Category::where(['parent_id' => null])->get();
 //        dd($categories);
         return view('catalog.catalog-section', compact('rootCategories'));
     }
 
-    public function show(Request $request, ProductsPath $path) {
-        $price = $request->get('by-price');
-        $raiting = $request->get('by-raiting');
-        $new_items = $request->get('new-items');
+    public function show(Request $request, ProductsPath $path)
+    {
         $category = $path->category;
         $categoryIds = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
-        $query = Product::where(['status' => Product::STATUS_ACTIVE]);
-        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
-        $query->whereIn('id', $products);
+        $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->pluck('brand_id')->toArray();
+        $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->pluck('store_id')->toArray();
 
-        if (empty($price) && empty($raiting) && empty($new_items)) {
+        $price = $request->get('by-price');
+        $rating = $request->get('by-rating');
+        $newItems = $request->get('new-items');
+
+        $brands = Brand::whereIn('id', $brandIds)->get();
+        $stores = Store::whereIn('id', $storeIds)->get();
+
+        $query = Product::where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
+//        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
+//        $query->whereIn('id', $products);
+
+        if (!empty($value = $request->get('brands'))) {
+            $value = explode(',', $value);
+            $brandIds = Brand::whereIn('slug', $value)->pluck('id')->toArray();
+            $query->whereIn('brand_id', $brandIds);
+        }
+
+        if (!empty($value = $request->get('stores'))) {
+            $value = explode(',', $value);
+            $storeIds = Store::whereIn('slug', $value)->pluck('id')->toArray();
+            $query->whereIn('store_id', $storeIds);
+        }
+
+        if (!empty($value = $request->get('min_price'))) {
+            $query->where('price', '>=', $value);
+        }
+
+        if (!empty($value = $request->get('max_price'))) {
+            $query->where('price', '<=', $value);
+        }
+
+        if (empty($price) && empty($rating) && empty($newItems)) {
             $query->orderByDesc('updated_at');
         }
 
@@ -38,17 +73,16 @@ class CategoryController extends Controller {
             $query->orderBy('price_uzs');
         }
 
-        if (!empty($raiting)) {
+        if (!empty($rating)) {
             $query->orderByDesc('rating');
         }
 
-        if (!empty($new_items)) {
+        if (!empty($newItems)) {
             $query->orderByDesc('new');
         }
 
         $products = $query->paginate(20);
-//        dd($products);
-        return view('catalog.catalog', compact('category', 'products'));
-    }
 
+        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores'));
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\OrderItem;
 use App\Entity\Store;
 use App\Entity\StoreUser;
 use App\Http\Requests\Admin\Users\UpdateRequest;
@@ -151,6 +152,13 @@ class User extends Authenticatable
     public function isPhoneAuthEnabled(): bool
     {
         return (bool)$this->phone_auth;
+    }
+
+    public function haveBoughtProduct(int $productId): bool
+    {
+        return OrderItem::select('shop_order_items.*')
+            ->leftJoin('shop_orders as o', 'shop_order_items.order_id', '=', 'o.id')
+            ->where('shop_order_items.id', $productId)->where('o.user_id', $this->id)->exists();
     }
 
 
