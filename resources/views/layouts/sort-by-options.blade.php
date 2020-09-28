@@ -3,9 +3,9 @@
 <img src="{{asset('images/filter.svg')}}" alt="" class="navbar-toggler-icon">
 </button>
 <form action="?" method="GET">
-    <button type="submit" class="btn" name="by-price" value="price" ><i></i>По цене</button>
-    <button type="submit" class="btn" name="by-rating" value="rating" ><i></i>По рейтингу</button>
-    <button type="submit" class="btn" name="new-items" value="is_new" ><i></i>По новизне</button>
+    <button type="submit" class="btn" name="by-price" value="price" ><i></i>@lang('frontend.by_price')</button>
+    <button type="submit" class="btn" name="by-rating" value="rating" ><i></i>@lang('frontend.by_rating')</button>
+    <button type="submit" class="btn" name="new-items" value="is_new" ><i></i>@lang('frontend.by_novelty')</button>
 </form>
 <div class="toggle-view">
     <a class="list-view view-blue-bg" href=""><i class="mblistview_white"></i></a>

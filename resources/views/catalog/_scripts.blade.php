@@ -16,15 +16,16 @@
 
                 let brands = getFilter('brands-checkbox');
                 let stores = getFilter('stores-checkbox');
-                // let minPrice = $('#min-price').val();
-                // let maxPrice = $('#max-price').val();
+                let brandsInput = $('#brands-hidden-input');
+                let storesInput = $('#stores-hidden-input');
 
-                let input = '<input name="brands" value="' + brands + '">';
-                input += '<input name="stores" value="' + stores + '">';
-                // input += '<input name="min_price" value="' + minPrice + '">';
-                // input += '<input name="max_price" value="' + maxPrice + '">';
+                brandsInput.val(brands);
+                storesInput.val(stores);
 
-                filterForm.append(input);
+                // let input = '<input name="brands" value="' + brands + '">';
+                // input += '<input name="stores" value="' + stores + '">';
+
+                // filterForm.append(input);
                 filterForm.submit();
 
                 console.log(brands);

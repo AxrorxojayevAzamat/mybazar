@@ -18,6 +18,7 @@
             <h4 class="title">{{ $category->name }}</h4>
         </div>
         <div class="outter-catalog-view">
+
             <!-- big filter without title checkbox -->
             @include('catalog.big-filter-without-title-checkbox')
 

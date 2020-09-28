@@ -5,8 +5,10 @@ return [
     'apply_filter' => 'Filtrlarni qo`llamoq',
 
     'color' => 'Rangi',
+    'by_price' => 'Narxi bo`yicha',
     'by_date' => 'Sana bo`yicha',
     'by_rating' => 'Baho bo`yicha',
+    'by_novelty' => 'Yangiligi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
 
     'brand' => 'Brend',

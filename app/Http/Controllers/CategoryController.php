@@ -58,11 +58,11 @@ class CategoryController extends Controller
         }
 
         if (!empty($value = $request->get('min_price'))) {
-            $query->where('price', '>=', $value);
+            $query->where('price_uzs', '>=', $value);
         }
 
         if (!empty($value = $request->get('max_price'))) {
-            $query->where('price', '<=', $value);
+            $query->where('price_uzs', '<=', $value);
         }
 
         if (empty($price) && empty($rating) && empty($newItems)) {
