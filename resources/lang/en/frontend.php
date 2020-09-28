@@ -5,8 +5,10 @@ return [
     'apply_filter' => 'Apply filter',
 
     'color' => 'Color',
+    'by_price' => 'By price',
     'by_date' => 'By date',
     'by_rating' => 'By rating',
+    'by_novelty' => 'By novelty',
     'log_in_to_review' => 'Please, log in to send a review!',
 
     'brand' => 'Brand',
