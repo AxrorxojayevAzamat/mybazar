@@ -2,7 +2,6 @@
 
 @section('title', 'Catalog page')
 
-
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}">
 @endsection
@@ -38,11 +37,4 @@
     </section>
 @endsection
 
-@section('script')
-    <script src="{{asset('js/autoNumeric-2.0-BETA.js')}}"></script>
-    <script src="{{asset('js/autoNumeric.js')}}"></script>
-
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/range-slider.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
-@endsection
+@include('catalog._scripts')

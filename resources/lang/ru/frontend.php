@@ -2,6 +2,7 @@
 
 return [
     'send' => 'Отправить',
+    'apply_filter' => 'Применить фильтр',
 
     'color' => 'Цвет',
     'by_date' => 'По дате',
@@ -9,6 +10,7 @@ return [
     'log_in_to_review' => 'Пожалуйста, авторизуйтесь, чтобы оставить отзыв!',
 
     'brand' => 'Бренд',
+    'stores' => 'Магазины',
 
     'product' => [
         'price' => ':price <span>сум</span>',

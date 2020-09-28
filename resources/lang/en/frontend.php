@@ -2,6 +2,7 @@
 
 return [
     'send' => 'Send',
+    'apply_filter' => 'Apply filter',
 
     'color' => 'Color',
     'by_date' => 'By date',
@@ -9,11 +10,12 @@ return [
     'log_in_to_review' => 'Please, log in to send a review!',
 
     'brand' => 'Brand',
+    'stores' => 'Stores',
 
     'product' => [
         'price' => ':price <span>sums</span>',
         'delivery_time' => 'Delivery within 24 hours',
-        'pickup_time' => 'Olib ketish :date dan',
+        'pickup_time' => 'Pickup available from :date',
         'to_cart' => 'To cart',
         'characteristics' => 'Specifications',
         'all_characteristics' => 'All specifications',

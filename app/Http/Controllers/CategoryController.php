@@ -43,6 +43,26 @@ class CategoryController extends Controller
 //        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
 //        $query->whereIn('id', $products);
 
+        if (!empty($value = $request->get('brands'))) {
+            $value = explode(',', $value);
+            $brandIds = Brand::whereIn('slug', $value)->pluck('id')->toArray();
+            $query->whereIn('brand_id', $brandIds);
+        }
+
+        if (!empty($value = $request->get('stores'))) {
+            $value = explode(',', $value);
+            $storeIds = Store::whereIn('slug', $value)->pluck('id')->toArray();
+            $query->whereIn('store_id', $storeIds);
+        }
+
+        if (!empty($value = $request->get('min_price'))) {
+            $query->where('price', '>=', $value);
+        }
+
+        if (!empty($value = $request->get('max_price'))) {
+            $query->where('price', '<=', $value);
+        }
+
         $products = $query->paginate(20);
 
         return view('catalog.catalog', compact('category', 'products', 'brands', 'stores'));
