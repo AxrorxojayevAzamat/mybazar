@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogVideosTableSeeder::class);
         $this->call(BannersTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
+        $this->call(ShopValuesTableSeeder::class);
     }
 }
