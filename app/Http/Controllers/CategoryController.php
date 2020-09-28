@@ -34,12 +34,14 @@ class CategoryController extends Controller
         $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->pluck('brand_id')->toArray();
         $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->pluck('store_id')->toArray();
 
+        $price = $request->get('by-price');
+        $rating = $request->get('by-rating');
+        $newItems = $request->get('new-items');
+
         $brands = Brand::whereIn('id', $brandIds)->get();
         $stores = Store::whereIn('id', $storeIds)->get();
 
-        $query = Product::orderByDesc('updated_at')
-            ->where(['status' => Product::STATUS_ACTIVE])
-            ->whereIn('main_category_id', $categoryIds);
+        $query = Product::where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
 //        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
 //        $query->whereIn('id', $products);
 
@@ -61,6 +63,22 @@ class CategoryController extends Controller
 
         if (!empty($value = $request->get('max_price'))) {
             $query->where('price', '<=', $value);
+        }
+
+        if (empty($price) && empty($rating) && empty($newItems)) {
+            $query->orderByDesc('updated_at');
+        }
+
+        if (!empty($price)) {
+            $query->orderBy('price_uzs');
+        }
+
+        if (!empty($rating)) {
+            $query->orderByDesc('rating');
+        }
+
+        if (!empty($newItems)) {
+            $query->orderByDesc('new');
         }
 
         $products = $query->paginate(20);
