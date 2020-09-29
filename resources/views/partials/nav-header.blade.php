@@ -43,16 +43,16 @@
         <nav id="pnProductNav" class="pn-ProductNav">
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
-                <a href="#" class="pn-ProductNav_Link">Новые товары</a>
-                <a href="{{route('sales')}}" class="pn-ProductNav_Link">Скидки</a>
-                <a href="#" class="pn-ProductNav_Link">Акции</a>
-                <a href="{{route('brands')}}" class="pn-ProductNav_Link">Топ бренды</a>
-                <a href="#" class="pn-ProductNav_Link">Блог</a>
-                <a href="{{route('videos.index')}}" class="pn-ProductNav_Link">Видеоролики</a>
-                <a href="#" class="pn-ProductNav_Link">Доставка</a>
-                <a href="#" class="pn-ProductNav_Link">Для бизнеса</a>
-                <a href="{{route('shops')}}" class="pn-ProductNav_Link">Магазины</a>
-                <a href="#" class="pn-ProductNav_Link">Оплата</a>
+                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
+                <a href="{{route('sales')}}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
+                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.stock') }}</a>
+                <a href="{{route('brands')}}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
+                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.blog') }}</a>
+                <a href="{{route('videos.index')}}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a>
+                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a>
+                    <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.business') }}</a>
+                <a href="{{route('shops')}}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a>
+                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a>
                 <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
             </div>
         </nav>
