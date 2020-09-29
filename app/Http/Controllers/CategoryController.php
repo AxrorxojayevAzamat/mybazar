@@ -23,8 +23,12 @@ class CategoryController extends Controller
     public function index()
     {
         $rootCategories = Category::where(['parent_id' => null])->get();
-//        dd($categories);
-        return view('catalog.catalog-section', compact('rootCategories'));
+
+        $brands = Brand::all();
+        $stores = Store::all();
+
+
+        return view('catalog.catalog-section', compact('rootCategories', 'brands', 'stores'));
     }
 
     public function show(Request $request, ProductsPath $path)

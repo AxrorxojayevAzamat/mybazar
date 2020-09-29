@@ -1,12 +1,12 @@
 <div class="all-filtered-catalog-section">
     <div class="types-of-media">
         @foreach($rootCategories as $category)
-        <a href="{{ route('categories.show', $category) }}">
+        <a href="{{ route('categories.show', products_path($category)) }}">
             <div class="item">
                 <div class="image">
                     <img src="{{asset('images/type-of-media1.png')}}" alt="">
                 </div>
-                <h6 class="title">{{$category->name}}</h6>
+                <h6 class="title">{{ $category->name }}</h6>
             </div>
         </a>
         @endforeach

@@ -10,7 +10,7 @@ class CatalogController extends Controller
     {
         $query = Product::orderByDesc('created_at');
         $products = $query->paginate(12);
-        return view('catalog.catalog', compact('product', 'products'));
+        return view('catalog.catalog', compact('products'));
     }
 
 }

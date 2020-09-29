@@ -35,9 +35,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
     Route::get('pay', 'PayController@pay')->name('pay');
     Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function () {
-        Route::get('{category}', 'CatalogController@catalog')->name('list');
+        Route::get('', 'CatalogController@catalog')->name('list');
     });
-    Route::get('catalogsection', 'CatalogSectionController@catalogSection')->name('catalogsection');
+    Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
 
     Route::get('compare', 'CompareController@compare')->name('compare');
 
