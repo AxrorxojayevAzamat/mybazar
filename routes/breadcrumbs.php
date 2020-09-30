@@ -33,24 +33,24 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
-    $crumbs->push('Главная', route('front-home'));
+    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
 });
 
 Breadcrumbs::register('auth', function (Crumbs $crumbs) {
-    $crumbs->push('Вход или регистрация', route('auth'));
+    $crumbs->push(trans('frontend.breadcrumb.auth'), route('auth'));
 });
 
 Breadcrumbs::register('mail', function (Crumbs $crumbs) {
-    $crumbs->push('Вход или регистрация', route('mail'));
+    $crumbs->push(trans('frontend.breadcrumb.mail'), route('mail'));
 });
 
 Breadcrumbs::register('sms', function (Crumbs $crumbs) {
-    $crumbs->push('Вход или регистрация', route('sms'));
+    $crumbs->push(trans('frontend.breadcrumb.sms'), route('sms'));
 });
 
 Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
     $crumbs->parent('home');
-    $crumbs->push('Блог и новости', route('blogs-news'));
+    $crumbs->push(trans('frontend.breadcrumb.blogs_news'), route('blogs-news'));
 });
 
 Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
@@ -65,7 +65,7 @@ Breadcrumbs::register('news.show', function (Crumbs $crumbs, News $news) {
 
 Breadcrumbs::register('brands', function (Crumbs $crumbs) {
     $crumbs->parent('home');
-    $crumbs->push('Все бренды', route('brands'));
+    $crumbs->push(trans('frontend.breadcrumb.brands'), route('brands'));
 });
 
 Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
@@ -75,17 +75,17 @@ Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
 
 Breadcrumbs::register('cart', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Корзина', route('cart'));
+    $crumbs->push(trans('frontend.breadcrumb.cart'), route('cart'));
 });
 
 Breadcrumbs::register('checkout', function (Crumbs $crumbs) {
     $crumbs->parent('cart');
-    $crumbs->push('Оформление заказа', route('checkout'));
+    $crumbs->push(trans('frontend.breadcrumb.checkout'), route('checkout'));
 });
 
 Breadcrumbs::register('pay', function (Crumbs $crumbs) {
     $crumbs->parent('checkout');
-    $crumbs->push('Способ оплаты', route('pay'));
+    $crumbs->push(trans('frontend.breadcrumb.delivery'), route('pay'));
 });
 
 Breadcrumbs::register('catalog.list', function (Crumbs $crumbs) {
@@ -100,7 +100,7 @@ Breadcrumbs::register('catalogsection', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Категория', route('categories.index'));
+    $crumbs->push(trans('frontend.breadcrumb.categories'), route('categories.index'));
 });
 
 //Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
@@ -110,22 +110,22 @@ Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('compare', function (Crumbs $crumbs) {
     $crumbs->parent('compare');
-    $crumbs->push('Сравнение', route('compare'));
+    $crumbs->push(trans('frontend.breadcrumb.compare'), route('compare'));
 });
 
 Breadcrumbs::register('delivery', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Способы доставки', route('delivery'));
+    $crumbs->push(trans('frontend.breadcrumb.delivery'), route('delivery'));
 });
 
 Breadcrumbs::register('favorites', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Избранное', route('favorites'));
+    $crumbs->push(trans('frontend.breadcrumb.favorites'), route('favorites'));
 });
 
 Breadcrumbs::register('popular', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Избранное', route('popular'));
+    $crumbs->push(trans('frontend.breadcrumb.popular'), route('popular'));
 });
 
 // Categories
@@ -151,9 +151,14 @@ Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $produc
     $crumbs->push($product->name, route('products.show', $product));
 });
 
+Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.newest'));
+});
+
 Breadcrumbs::register('sales', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Акции и скидки', route('sales'));
+    $crumbs->push(trans('frontend.breadcrumb.sales'), route('sales'));
 });
 
 Breadcrumbs::register('sales.show', function (Crumbs $crumbs) {
@@ -168,7 +173,7 @@ Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('shops.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Магазины', route('shops.index'));
+    $crumbs->push(trans('frontend.breadcrumb.shops'), route('shops.index'));
 });
 
 Breadcrumbs::register('shops.show', function (Crumbs $crumbs, Store $store) {
@@ -178,7 +183,7 @@ Breadcrumbs::register('shops.show', function (Crumbs $crumbs, Store $store) {
 
 Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Видеоролики', route('videos.index'));
+    $crumbs->push(trans('frontend.breadcrumb.videos'), route('videos.index'));
 });
 
 Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Video $video) {
