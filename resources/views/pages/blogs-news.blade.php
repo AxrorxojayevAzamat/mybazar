@@ -23,13 +23,34 @@
     @include('layouts.blog-news-btn')
 
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-blog" role="tabpanel" aria-labelledby="pills-blog">
-            <!-- blog body -->
-            @include('layouts.blog-body')
+        <div class="tab-pane fade show" id="pills-blog" role="tabpanel" aria-labelledby="pills-blog-tab">
+
+            <div class="outter-list-of-blogs">
+                <!-- big filter without title checkbox -->
+                @include('layouts.big-filter-with-listof-checkbox')
+                <div class="wrapper-filtered-items">
+                    <nav class=" navbar navbar-expand-custom sort-types">
+
+                        <!--sort-by options  -->
+                        @include('layouts.sort-by-options')
+                        
+                        <!-- small filter without title checkbox -->
+                        @include('layouts.big-filter-with-listof-checkbox')
+                    </nav>
+
+                    <!-- blog-items -->
+                    @include('layouts.blog-items', ['categories'=>$blogs])
+
+                     <!-- pagination -->
+                     @include('layouts.pagination')
+
+                </div>
+            </div>
         </div>
-        <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news">
+
+        <div class="tab-pane fade show" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
             <!-- blog body -->
-            @include('layouts.news-body')
+            
         </div>
     <div>
     <!-- recently watched -->

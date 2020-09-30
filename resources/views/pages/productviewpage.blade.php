@@ -29,7 +29,7 @@
      @include('layouts.singlep-charac-com-btn')
 
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product">
+        <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product-tab">
             <!-- about product -->
             @include('layouts.full-des-of-singlep')
         </div>

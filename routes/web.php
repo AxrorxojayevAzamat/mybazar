@@ -49,6 +49,9 @@ Route::get('/productviewpage', 'ProductViewPageController@productViewPage'); // 
 Route::get('/blogs-news', 'BlogsNewsController@blogsNews'); //blog and news  are combined
 Route::get('/singleblog', 'SingleBlogController@singleBlog');
 
+Route::get('/search-results', 'SearchResultsController@searchResults');
+
+
 
 
 Route::resource('/blogs', 'BlogController');
