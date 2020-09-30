@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $gCategories = Category::get()->toTree();
             $gBrands = Brand::get();
-            $view->with(compact(['gCategories','gBrands']));
+            $view->with(compact(['gCategories', 'gBrands']));
         });
     }
 }

@@ -11,6 +11,8 @@ $factory->define(ProductReview::class, function (Faker $faker) {
 
     return [
         'rating' => $faker->numberBetween(1, 5),
+        'advantages' => $faker->text(100),
+        'disadvantages' => $faker->text(100),
         'comment' => $faker->text(100),
         'user_id' => $faker->randomElement($userIds),
     ];

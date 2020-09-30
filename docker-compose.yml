@@ -45,6 +45,7 @@ services:
     ports:
       - 11:5432
     image: postgres:12.2-alpine
+    container_name: magazin-db
     restart: unless-stopped
     volumes:
       - /var/lib/postgresql/data

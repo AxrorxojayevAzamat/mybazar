@@ -14,6 +14,7 @@
         </form>
     </div>
 
+    @php($mainCategory = $product->mainCategory)
     @php($store = $product->store)
     @php($brand = $product->brand)
 
@@ -59,8 +60,9 @@
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
+                        <tr><th>{{ trans('adminlte.product.main_category') }}</th><td><a href="{{ route('admin.shop.categories.show', $mainCategory) }}">{{ $mainCategory->name }}</a></td></tr>
                         <tr>
-                            <th>{{ trans('menu.categories') }}</th>
+                            <th>{{ trans('adminlte.product.additional_categories') }}</th>
                             <td>
                                 @foreach($product->categories as $category)
                                     <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
@@ -169,6 +171,7 @@
                     <th>{{ trans('adminlte.name') }}</th>
                     <th>{{ trans('adminlte.code') }}</th>
                     <th>{{ trans('adminlte.price_uzs') }}</th>
+                    <th>{{ trans('adminlte.type') }}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -180,6 +183,7 @@
                         <td><a href="{{ route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]) }}">{{ $modification->name }}</a></td>
                         <td>{{ $modification->code }}</td>
                         <td>{{ $modification->price_uzs }}</td>
+                        <td>{{ $modification->typeName() }}</td>
                         <td>
                             <div class="d-flex flex-row">
                                 <form method="POST" action="{{ route('admin.shop.products.modifications.first', ['product' => $product, 'modification' => $modification]) }}" class="mr-1">

@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Entity\Shop\Category;
 use App\Entity\Brand;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
@@ -11,6 +12,7 @@ use Faker\Generator as Faker;
 $factory->define(Product::class, function (Faker $faker) {
     $storesCount = Store::count();
     $brandCount = Brand::count();
+    $categoryCount = Category::count();
     $price = round($faker->randomNumber(5), -2);
 
     return [
@@ -24,6 +26,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'price_uzs' => $price,
         'price_usd' => round($price / 9500, 2),
         'discount' => $faker->randomFloat(1, 0, 1),
+        'main_category_id' => $faker->numberBetween(1, $categoryCount),
         'store_id' => $faker->numberBetween(1, $storesCount),
         'brand_id' => $faker->numberBetween(1, $brandCount),
         'status' => $faker->randomElement(array_keys(ProductHelper::getStatusList())),

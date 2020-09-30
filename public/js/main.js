@@ -27,7 +27,7 @@
 				event.preventDefault();
 				toggleCart();
 			});
-			
+
 			cart[0].addEventListener('click', function(event) {
 				if(event.target == cart[0]) { // close cart when clicking on bg layer
 					toggleCart(true);
@@ -67,7 +67,7 @@
 			var cartIsEmpty = Util.hasClass(cart[0], 'cd-cart--empty');
 			//update cart product list
 			addProduct(this);
-			//update number of items 
+			//update number of items
 			updateCartCount(cartIsEmpty);
 			//update total price
 			updateCartTotal(this.getAttribute('data-price'), true);
@@ -77,7 +77,7 @@
 
 		function toggleCart(bool) { // toggle cart visibility
 			var cartIsOpen = ( typeof bool === 'undefined' ) ? Util.hasClass(cart[0], 'cd-cart--open') : bool;
-		
+
 			if( cartIsOpen ) {
 				Util.removeClass(cart[0], 'cd-cart--open');
 				//reset undo
@@ -108,7 +108,7 @@
 		function removeProduct(product) {
 			if(cartTimeoutId) clearInterval(cartTimeoutId);
 			removePreviousProduct(); // prduct previously deleted -> definitively remove it from the cart
-			
+
 			var topPosition = product.offsetTop,
 				productQuantity = Number(product.getElementsByTagName('select')[0].value),
 				productTotPrice = Number((product.getElementsByClassName('cd-cart__price')[0].innerText).replace('$', '')) * productQuantity;
@@ -137,7 +137,7 @@
 			if( typeof quantity === 'undefined' ) {
 				var actual = Number(cartCountItems[0].innerText) + 1;
 				var next = actual + 1;
-				
+
 				if( emptyCart ) {
 					cartCountItems[0].innerText = actual;
 					cartCountItems[1].innerText = next;
@@ -161,7 +161,7 @@
 			} else {
 				var actual = Number(cartCountItems[0].innerText) + quantity;
 				var next = actual + 1;
-				
+
 				cartCountItems[0].innerText = actual;
 				cartCountItems[1].innerText = next;
 				animatingQuantity = false;

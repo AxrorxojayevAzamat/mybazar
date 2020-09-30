@@ -8,6 +8,6 @@ use App\Entity\Shop\Product;
 class CompareController extends Controller
 {
     public function compare() {
-        return view('pages.compare'); 
+        return view('compare.compare'); 
     }
 }

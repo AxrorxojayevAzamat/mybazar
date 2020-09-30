@@ -3,6 +3,7 @@
 namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
+use App\Entity\Brand;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
 use App\Entity\User\User;
@@ -33,12 +34,16 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property Category $parent
  * @property Category[] $children
  * @property ProductCategory[] $categoryProducts
+ * @property Product[] $mainProducts
  * @property Product[] $products
  * @property StoreCategory[] $categoryStores
  * @property Store[] $stores
  * @property CharacteristicCategory[] $categoryCharacteristics
  * @property Characteristic[] $characteristics
+ * @property CategoryBrand[] $categoryBrands
+ * @property Brand[] $brands
  * @property string $name
+ * @property string $description
  * @property User $createdBy
  * @property User $updatedBy
  * @mixin Eloquent
@@ -51,13 +56,27 @@ class Category extends BaseModel
 
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
 
+    public function getPath(): string
+    {
+        return implode('/', array_merge($this->ancestors()->defaultOrder()->pluck('slug')->toArray(), [$this->slug]));
+    }
+
+    public function brandsList(): array
+    {
+        return $this->categoryBrands()->pluck('brand_id')->toArray();
+    }
+
 
     ########################################### Mutators
-
 
     public function getNameAttribute(): string
     {
         return LanguageHelper::getName($this);
+    }
+
+    public function getDescriptionAttribute(): string
+    {
+        return LanguageHelper::getDescription($this);
     }
 
     ###########################################
@@ -78,9 +97,12 @@ class Category extends BaseModel
     ###########################################
 
 
-
-
     ########################################### Relations
+
+    public function mainProducts()
+    {
+        return $this->hasMany(Product::class, 'main_category_id', 'id');
+    }
 
     public function categoryProducts()
     {
@@ -110,6 +132,16 @@ class Category extends BaseModel
     public function characteristics()
     {
         return $this->belongsToMany(Characteristic::class, 'shop_characteristic_categories', 'category_id', 'characteristic_id');
+    }
+
+    public function categoryBrands()
+    {
+        return $this->hasMany(CategoryBrand::class, 'category_id', 'id');
+    }
+
+    public function brands()
+    {
+        return $this->belongsToMany(Brand::class, 'shop_category_brands', 'category_id', 'brand_id');
     }
 
     public function createdBy()

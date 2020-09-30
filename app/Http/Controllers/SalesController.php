@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Entity\Shop\Product;
+class SalesController extends Controller {
 
-class SalesController extends Controller
-{
     public function sales() {
-        return view('pages.sales'); 
+        return view('sale.sales');
     }
+
+    public function show() {
+        return view('sale.show');
+    }
+
 }

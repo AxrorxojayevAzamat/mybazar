@@ -22,8 +22,10 @@ class CreateShopModificationsTable extends Migration
             $table->string('code', 20)->unique();
             $table->integer('price_uzs');
             $table->float('price_usd')->nullable();
-            $table->string('color')->nullable();
-            $table->string('photo')->nullable();
+            $table->tinyInteger('type');
+            $table->string('value', 50)->nullable();
+            $table->string('color', 15)->nullable();
+            $table->string('photo', 50)->nullable();
             $table->integer('sort');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

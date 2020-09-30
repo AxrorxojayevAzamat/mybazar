@@ -41,7 +41,7 @@ class PaymentService
         if (!$request->logo) {
             $payment->edit($request->name_uz, $request->name_ru, $request->name_en, $request->slug);
         } else {
-            Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_PAYMENTS . '/' . $payment->id);
+            Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PAYMENTS . '/' . $payment->id);
 
             $imageName = ImageHelper::getRandomName($request->logo);
             $payment->edit($request->name_uz, $request->name_ru, $request->name_en, $imageName);
@@ -64,7 +64,7 @@ class PaymentService
     public function removeLogo(int $id): bool
     {
         $payment = Payment::findOrFail($id);
-        return Storage::disk('public')->deleteDirectory('/images/' . ImageHelper::FOLDER_PAYMENTS . '/' . $payment->id) && $payment->update(['logo' => null]);
+        return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PAYMENTS . '/' . $payment->id) && $payment->update(['logo' => null]);
     }
 
     private function uploadLogo(int $paymentId, UploadedFile $logo, string $imageName)

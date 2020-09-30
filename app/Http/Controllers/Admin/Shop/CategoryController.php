@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Shop;
 
+use App\Entity\Brand;
 use App\Entity\Shop\Category;
+use App\Helpers\LanguageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
 use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
+use App\Services\Manage\Shop\CategoryService;
 
 class CategoryController extends Controller
 {
-    public function __construct()
+    private $service;
+
+    public function __construct(CategoryService $service)
     {
         $this->middleware('can:manage-shop-categories');
+        $this->service = $service;
     }
 
     public function index()
@@ -24,22 +30,14 @@ class CategoryController extends Controller
     public function create()
     {
         $parents = Category::defaultOrder()->withDepth()->get();
+        $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.categories.create', compact('parents'));
+        return view('admin.shop.categories.create', compact('parents', 'brands'));
     }
 
     public function store(CreateRequest $request)
     {
-        $category = Category::create([
-            'name_uz' => $request['name_uz'],
-            'name_ru' => $request['name_ru'],
-            'name_en' => $request['name_en'],
-            'description_uz' => $request['description_uz'],
-            'description_ru' => $request['description_ru'],
-            'description_en' => $request['description_en'],
-            'slug' => $request['slug'],
-            'parent_id' => $request['parent'],
-        ]);
+        $category = $this->service->create($request);
 
         return redirect()->route('admin.shop.categories.show', $category);
     }
@@ -52,22 +50,14 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $parents = Category::defaultOrder()->withDepth()->get();
+        $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.categories.edit', compact('category', 'parents'));
+        return view('admin.shop.categories.edit', compact('category', 'parents', 'brands'));
     }
 
     public function update(UpdateRequest $request, Category $category)
     {
-        $category->update([
-            'name_uz' => $request['name_uz'],
-            'name_ru' => $request['name_ru'],
-            'name_en' => $request['name_en'],
-            'description_uz' => $request['description_uz'],
-            'description_ru' => $request['description_ru'],
-            'description_en' => $request['description_en'],
-            'slug' => $request['slug'],
-            'parent_id' => $request['parent'],
-        ]);
+        $category = $this->service->update($category->id, $request);
 
         return redirect()->route('admin.shop.categories.show', $category);
     }
@@ -106,7 +96,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        $this->service->remove($category->id);
 
         return redirect()->route('admin.shop.categories.index');
     }

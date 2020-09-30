@@ -20,9 +20,17 @@ class DatabaseSeeder extends Seeder
         $this->call(DeliveryMethodsTableSeeder::class);
         $this->call(StorePaymentsTableSeeder::class);
         $this->call(StoreCategoriesTableSeeder::class);
+        $this->call(ShopCategoryBrandsTableSeeder::class);
         $this->call(StoreMarksTableSeeder::class);
         // $this->call(UserSeeder::class);
         $this->call(StoreDeliveryMethodsTableSeeder::class);
         $this->call(ShopProductReviewsTableSeeder::class);
+        $this->call(BlogCategoriesTableSeeder::class);
+        $this->call(BlogPostsTableSeeder::class);
+        $this->call(BlogNewsTableSeeder::class);
+        $this->call(BlogVideosTableSeeder::class);
+        $this->call(BannersTableSeeder::class);
+        $this->call(SlidersTableSeeder::class);
+        $this->call(ShopValuesTableSeeder::class);
     }
 }

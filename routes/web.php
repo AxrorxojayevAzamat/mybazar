@@ -1,86 +1,126 @@
 <?php
 
-use App\Entity\Shop\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', 'HomeController@index');
-
-Route::get('/catalog', 'CatalogController@catalog');
-Route::get('/catalogsection', 'CatalogSectionController@catalogSection');
-Route::get('/popular', 'PopularController@popular');
-
-Route::get('/brandview', 'BrandViewController@brandView');
-Route::get('/brands', 'BrandsController@brands');
-
-Route::get('/sales', 'SalesController@sales');
-Route::get('/salesview', 'SalesViewController@salesView');
-
-Route::get('/cart', 'CartController@cart');
-Route::get('/favorites', 'FavoritesController@favorites');
-Route::get('/compare', 'CompareController@compare');
-
-Route::get('/videoblog', 'VideoBlogController@videoBlog');
-Route::get('/videoblog-view', 'VideoBlogViewController@videoBlogView');
-
-Route::get('/sms', 'SmsController@sms');
-Route::get('/mail', 'MailController@mail');
-Route::get('/auth', 'AuthController@auth');
-
-Route::get('/delivery-guaranty-payment', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment'); // delivery, guaranty, payment are combined
-Route::get('/pay', 'PayController@pay');
-Route::get('/checkout', 'CheckoutController@checkout');
-
-Route::get('/shops', 'ShopsController@shops');
-Route::get('/shopsview', 'ShopsViewController@shopsView');
-
-Route::get('/productviewpage', 'ProductViewPageController@productViewPage'); // comments and characteristics are combined here
-
-Route::get('/blogs-news', 'BlogsNewsController@blogsNews'); //blog and news  are combined
-Route::get('/singleblog', 'SingleBlogController@singleBlog');
-
-Route::get('/search-results', 'SearchResultsController@searchResults');
-
-
-
-
-Route::resource('/blogs', 'BlogController');
-Route::resource('/videos', 'VideosController');
-Route::resource('/news', 'NewsController');
-Route::resource('/category', 'CategoryController');
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 Auth::routes();
 
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('logout', 'Auth\LoginController@logout');
+
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('', 'HomeController@index')->name('front-home');
+
+    Route::get('auth', 'AuthController@auth')->name('auth');
+    Route::get('mail', 'MailController@mail')->name('mail');
+    Route::get('sms', 'SmsController@sms')->name('sms');
+
+    Route::get('blogs-news', 'BlogController@blogsNews')->name('blogs-news');
+    Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
+    Route::get('news/{news}', 'NewsController@show')->name('news.show');
+    Route::get('brands', 'BrandsController@brands')->name('brands');
+    Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
+
+    Route::get('cart', 'CartController@cart')->name('cart');
+    Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
+    Route::get('pay', 'PayController@pay')->name('pay');
+    Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function () {
+        Route::get('', 'CatalogController@catalog')->name('list');
+    });
+    Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
+
+    Route::get('compare', 'CompareController@compare')->name('compare');
+
+    Route::get('/delivery', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
+
+    Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
+
+
+    Route::get('popular', 'PopularController@popular')->name('popular');
+
+    Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+        Route::get('show/{product}', 'ProductController@show')->name('show');
+        Route::post('{product}/add-review', 'ProductController@addReview')->name('add-review');
+        Route::group(['prefix' => '{product}/cart', 'as' => 'cart.'], function () {
+            Route::get('add', 'ProductController@addToCart')->name('add');
+            Route::patch('update-cart', 'ProductController@update')->name('update');
+            Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
+        });
+
+    });
+
+    Route::get('add-to-cart/{id}', 'ProductController@addToCart');
+    Route::patch('update-cart', 'ProductController@update');
+    Route::delete('remove-from-cart', 'ProductController@remove');
+
+    Route::get('sales', 'SalesController@sales')->name('sales');
+    Route::get('sales/show', 'SalesController@show')->name('sales.show');
+
+    Route::group(['prefix' => 'shops', 'as' => 'shops.'], function () {
+        Route::get('', 'ShopsController@index')->name('index');
+        Route::get('{store}', 'ShopsController@view')->name('show');
+    });
+
+    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+        Route::get('', 'CategoryController@index')->name('index');
+        Route::get('/{products_path?}', 'CategoryController@show')->name('show')->where('products_path', '.+');
+//        Route::get('{category}', 'CategoryController@show')->name('show');
+    });
+
+    Route::resource('/videos', 'VideosController');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 
-    Route::resource('/news', 'NewsController');
-    Route::resource('/news-categories', 'NewsCategoryController', ['except' => ['show']]);
+    Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
+        Route::resource('news', 'NewsController');
+        Route::group(['prefix' => 'news/{news}', 'as' => 'news.'], function () {
+            Route::post('remove-file', 'NewsController@removeFile')->name('remove-file');
+            Route::post('publish', 'NewsController@publish')->name('publish');
+            Route::post('discard', 'NewsController@discard')->name('discard');
+        });
 
-    Route::resource('/videos', 'VideosController');
-    Route::resource('/videos-categories', 'VideosCategoryController', ['except' => ['show']]);
+        Route::resource('videos', 'VideoController');
+        Route::group(['prefix' => 'videos/{video}', 'as' => 'videos.'], function () {
+            Route::post('remove-poster', 'VideoController@removePoster')->name('remove-poster');
+            Route::post('remove-video', 'VideoController@removeVideo')->name('remove-video');
+            Route::post('publish', 'VideoController@publish')->name('publish');
+            Route::post('discard', 'VideoController@discard')->name('discard');
+        });
 
-    Route::resource('/posts', 'PostController');
-    Route::resource('/categories', 'CategoryController', ['except' => ['show']]);
+        Route::resource('posts', 'PostController');
+        Route::group(['prefix' => 'posts/{post}', 'as' => 'posts.'], function () {
+            Route::post('remove-file', 'PostController@removeFile')->name('remove-file');
+            Route::post('publish', 'PostController@publish')->name('publish');
+            Route::post('discard', 'PostController@discard')->name('discard');
+        });
 
-    Route::resource('/banners', 'BannersController');
-    Route::resource('/sliders', 'SlidersController');
+        Route::resource('categories', 'CategoryController');
+    });
 
-
-
-
-
+    Route::resource('banners', 'BannersController');
+    Route::group(['prefix' => 'banners/{banner}', 'as' => 'banners.'], function () {
+        Route::post('remove-file', 'BannersController@removeFile')->name('remove-file');
+        Route::post('publish', 'BannersController@publish')->name('publish');
+        Route::post('discard', 'BannersController@discard')->name('discard');
+    });
+    Route::resource('sliders', 'SlidersController');
+            Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
+            Route::post('first', 'SlidersController@first')->name('first');
+            Route::post('up', 'SlidersController@up')->name('up');
+            Route::post('down', 'SlidersController@down')->name('down');
+            Route::post('last', 'SlidersController@last')->name('last');
+        });
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
@@ -155,7 +195,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::get('{cart}', 'CartController@show')->name('show');
             Route::delete('{cart}', 'CartController@destroy')->name('destroy');
         });
-
     });
 
     Route::resource('stores', 'Store\StoreController');
@@ -187,8 +226,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('deliveries', 'DeliveryController');
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

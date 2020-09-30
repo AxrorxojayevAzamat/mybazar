@@ -17,7 +17,8 @@ return [
     'information'                   => 'Information',
 
     'users'                         => 'Users',
-    'categories'                    => 'Categories',
+    'shop_categories'               => 'Shop categories',
+    'blog_categories'               => 'Blog categories',
     'brands'                        => 'Brands',
     'products'                      => 'Products',
     'stores'                        => 'Stores',
@@ -28,4 +29,9 @@ return [
     'orders'                        => 'Orders',
     'order_items'                   => 'Order items',
     'carts'                         => 'Cart',
+    'sliders'                       => 'Sliders',
+    'posts'                         => 'Posts',
+    'news'                          => 'News',
+    'videos'                        => 'Videos',
+    'banners'                       => 'Banners',
 ];

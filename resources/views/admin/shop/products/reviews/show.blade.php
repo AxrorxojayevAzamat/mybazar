@@ -18,6 +18,8 @@
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
                         <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $review->rating }}</td></tr>
+                        <tr><th>{{ trans('adminlte.advantages') }}</th><td>{{ $review->advantages }}</td></tr>
+                        <tr><th>{{ trans('adminlte.disadvantages') }}</th><td>{{ $review->disadvantages }}</td></tr>
                         <tr><th>{{ trans('adminlte.comment') }}</th><td>{{ $review->comment }}</td></tr>
                         <tr><th>{{ trans('adminlte.reviewer') }}</th><td>{{ $review->user->name }}</td></tr>
                         <tr><th>{{ trans('adminlte.reviewed_at') }}</th><td>{{ $review->created_at }}</td></tr>

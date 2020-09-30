@@ -8,6 +8,6 @@ use App\Entity\Shop\Product;
 class PayController extends Controller
 {
     public function pay() {
-        return view('pages.pay'); 
+        return view('cart.pay'); 
     }
 }

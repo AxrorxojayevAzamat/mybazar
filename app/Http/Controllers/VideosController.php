@@ -2,41 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Entity\Brand;
-use App\Entity\Shop\Category;
-use App\Entity\Shop\Product;
-use App\Helpers\LanguageHelper;
-use App\Helpers\ProductHelper;
-use App\Models\Post;
-use App\Models\Videos;
-use App\Models\VideosCategory;
-use Illuminate\Http\Request;
+use App\Entity\Blog\Category;
+use App\Entity\Blog\Video;
+use Illuminate\Database\Eloquent\Collection;
 
 class VideosController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
 
-        $videos = Videos::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
-        $categories = VideosCategory::get();
-        return view('pages.video-blog',compact('videos','categories'));
+        $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
+        $categories = Category::where('type', Category::VIDEOS)->get();
+        return view('videoblog.videoblog', compact('videos', 'categories'));
     }
 
-    public function show(Videos $video){
+    public function show(Video $video)
+    {
         $video = $video->load(['category']);
-        $categories = VideosCategory::get();
+        $categories = $this->getCategories();
 
-        return view('pages.video-blog-inner', compact('video', 'categories'));
+        return view('videoblog.videoblog-view', compact('video', 'categories'));
+    }
+
+
+    private function getCategories(): Collection
+    {
+        return Category::where('type', Category::VIDEOS)->get();
     }
 }
