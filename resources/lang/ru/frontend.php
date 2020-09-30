@@ -3,6 +3,7 @@
 return [
     'send' => 'Отправить',
     'apply_filter' => 'Применить фильтр',
+    'search_placeholder' => 'Поиск на myBazar',
 
     'color' => 'Цвет',
     'by_price' => 'По цене',
@@ -13,6 +14,7 @@ return [
 
     'brand' => 'Бренд',
     'stores' => 'Магазины',
+    'all_categories' => 'Все категории',
 
     'product' => [
         'price' => ':price <span>сум</span>',

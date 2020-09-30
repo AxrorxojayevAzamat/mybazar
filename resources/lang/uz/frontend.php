@@ -3,6 +3,7 @@
 return [
     'send' => 'Jo`natmoq',
     'apply_filter' => 'Filtrlarni qo`llamoq',
+    'search_placeholder' => 'myBazarda qidirish',
 
     'color' => 'Rangi',
     'by_price' => 'Narxi bo`yicha',
@@ -13,6 +14,7 @@ return [
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
+    'all_categories' => 'Hamma kategoriyalar',
 
     'product' => [
         'price' => ':price <span>so`m</span>',

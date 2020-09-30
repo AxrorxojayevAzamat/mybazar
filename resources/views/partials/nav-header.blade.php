@@ -44,14 +44,14 @@
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                 <a href="#" class="pn-ProductNav_Link">Новые товары</a>
-                <a href="{{route('sales')}}" class="pn-ProductNav_Link">Скидки</a>
+                <a href="{{ route('sales') }}" class="pn-ProductNav_Link">Скидки</a>
                 <a href="#" class="pn-ProductNav_Link">Акции</a>
-                <a href="{{route('brands')}}" class="pn-ProductNav_Link">Топ бренды</a>
+                <a href="{{ route('brands') }}" class="pn-ProductNav_Link">Топ бренды</a>
                 <a href="#" class="pn-ProductNav_Link">Блог</a>
-                <a href="{{route('videos.index')}}" class="pn-ProductNav_Link">Видеоролики</a>
-                <a href="#" class="pn-ProductNav_Link">Доставка</a>
+                <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">Видеоролики</a>
+                <a href="{{ route('delivery') }}" class="pn-ProductNav_Link">Доставка</a>
                 <a href="#" class="pn-ProductNav_Link">Для бизнеса</a>
-                <a href="{{route('shops')}}" class="pn-ProductNav_Link">Магазины</a>
+                <a href="{{ route('shops.index') }}" class="pn-ProductNav_Link">Магазины</a>
                 <a href="#" class="pn-ProductNav_Link">Оплата</a>
                 <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
             </div>

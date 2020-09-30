@@ -3,6 +3,7 @@
 return [
     'send' => 'Send',
     'apply_filter' => 'Apply filter',
+    'search_placeholder' => 'Search in myBazar',
 
     'color' => 'Color',
     'by_price' => 'By price',
@@ -13,6 +14,7 @@ return [
 
     'brand' => 'Brand',
     'stores' => 'Stores',
+    'all_categories' => 'All categories',
 
     'product' => [
         'price' => ':price <span>sums</span>',

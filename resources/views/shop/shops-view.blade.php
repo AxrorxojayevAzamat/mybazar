@@ -21,7 +21,7 @@
         </div>
         <div class="outter-catalog-view">
             <!-- big filter without title checkbox -->
-            @include('filters.big-filter-without-title-checkbox')
+            @include('shop.big-filter-without-title-checkbox')
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
@@ -33,7 +33,7 @@
                 </nav>
 
                 <!-- list mosaic catalog items -->
-                @include('layouts.list-mosaic-catalog-items', ['products' => $product])
+                @include('layouts.list-mosaic-catalog-items', ['products' => $products])
 
                 <!-- pagination -->
                 @include('layouts.pagination')
@@ -44,11 +44,4 @@
 @endsection
 
 
-@section('script')
-    <script src="{{asset('js/autoNumeric-2.0-BETA.js')}}"></script>
-    <script src="{{asset('js/autoNumeric.js')}}"></script>
-
-    <script src="{{asset('js/range-slider.js')}}"></script>
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
-@endsection
+@include('shop._scripts')

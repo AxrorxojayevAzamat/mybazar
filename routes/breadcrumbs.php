@@ -166,14 +166,14 @@ Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
     $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
 });
 
-Breadcrumbs::register('shops', function (Crumbs $crumbs) {
+Breadcrumbs::register('shops.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push('Магазины', route('shops'));
+    $crumbs->push('Магазины', route('shops.index'));
 });
 
-Breadcrumbs::register('shopsview', function (Crumbs $crumbs) {
-    $crumbs->parent('shops');
-    $crumbs->push('Телевизоры, аудио и видео * Artel Qoratosh" MChJ', route('shopsview'));
+Breadcrumbs::register('shops.show', function (Crumbs $crumbs, Store $store) {
+    $crumbs->parent('shops.index');
+    $crumbs->push($store->name, route('shops.show', $store));
 });
 
 Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
