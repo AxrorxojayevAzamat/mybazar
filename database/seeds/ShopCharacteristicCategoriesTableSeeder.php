@@ -22,7 +22,7 @@ class ShopCharacteristicCategoriesTableSeeder extends Seeder
             /* @var $characteristic Characteristic */
             foreach ($characteristics as $characteristic) {
                 $categories = $categoryIds;
-                $count = random_int(1, 3);
+                $count = random_int(3, 5);
                 for ($i = 0; $i < $count; $i++) {
                     $key = array_rand($categories);
                     $characteristic->characteristicCategories()->create(['category_id' => $categories[$key]]);
