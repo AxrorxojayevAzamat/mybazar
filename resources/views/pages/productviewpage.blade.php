@@ -35,7 +35,7 @@
     </div>
 
     <!-- u will also like -->
-    @include('layouts.u-will-also-like')
+    @include('products.u-will-also-like')
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')

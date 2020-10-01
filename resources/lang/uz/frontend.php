@@ -11,6 +11,7 @@ return [
     'by_rating' => 'Baho bo`yicha',
     'by_novelty' => 'Yangiligi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
+    'novelty' => 'YANGI',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
@@ -25,6 +26,9 @@ return [
         'all_characteristics' => 'Barcha xususiyatlari',
         'have_bought' => 'Ushbu foydalanuvchi ushbu maxsulotni sotib olgan',
         'have_not_bought' => 'Ushbu foydalanuvchi ushbu maxsulotni sotib olmagan',
+        'other_products' => 'Ushbu sotuvchining boshqa mahsulotlari',
+        'similar_products' => 'Mijozlar ham ushbu mahsulot bilan sotib olmoqdalar',
+        'interesting_products' => 'Sizga ham yoqishi mumkin',
     ],
 
     'review' => [
@@ -33,7 +37,7 @@ return [
         'comment' => 'Sharh',
         'write' => 'Sharh yozmoq',
     ],
-    
+
     'breadcrumb' => [
         'home' => 'Bosh sahifa',
         'auth' => 'Kirish yoki ro\'yxatdan o\'tish',
@@ -54,7 +58,7 @@ return [
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
     ],
-        
+
     'nav' => [
         'new_products' => 'Yangi maxsulotlar',
         'stock' => 'Aksiyalar',
