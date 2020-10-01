@@ -3,8 +3,8 @@
     <script src="{{asset('js/2-catalog-page.js')}}"></script>
 
     <script>
-        let valueModification = $('#value-modification');
-        let colorModification = $('#color-modification');
+        let valueModification = $('.value-modification');
+        let colorModification = $('.color-modification');
         let colorModificationName = $('#color-modification-name');
         let actualProductPrice = $('#actual-product-price');
         let finalProductPrice = $('#final-product-price');
