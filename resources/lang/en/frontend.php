@@ -29,6 +29,8 @@ return [
         'other_products' => 'Other products from this seller',
         'similar_products' => 'Customers also buy with this product',
         'interesting_products' => 'You may also like',
+        'about' => 'About product',
+        'comments' => 'Comments',
     ],
 
     'review' => [

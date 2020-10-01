@@ -29,6 +29,8 @@ return [
         'other_products' => 'Другие товары этого продавца',
         'similar_products' => 'С этим товаром также покупают',
         'interesting_products' => 'Вам также может понравиться',
+        'about' => 'О товаре',
+        'comments' => 'Комментарии',
     ],
 
     'review' => [

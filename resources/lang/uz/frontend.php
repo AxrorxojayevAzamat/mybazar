@@ -29,6 +29,8 @@ return [
         'other_products' => 'Ushbu sotuvchining boshqa mahsulotlari',
         'similar_products' => 'Mijozlar ham ushbu mahsulot bilan sotib olmoqdalar',
         'interesting_products' => 'Sizga ham yoqishi mumkin',
+        'about' => 'Mahsulot haqida',
+        'comments' => 'Sharhlar',
     ],
 
     'review' => [
