@@ -21,8 +21,8 @@ $factory->define(Video::class, function (Faker $faker) {
         'description_ru'=> $faker->text(200),
         'category_id'=> random_int(1, 5),
         'is_published'=> $faker->randomElement([true,false]),
-        'poster'=> $poster,
-        'video'=> $video,
+        'poster'=> asset('/images/'.$poster),
+        'video'=> asset('/images/'.$video),
         'created_by' => 1,
         'updated_by' => 1,
     ];

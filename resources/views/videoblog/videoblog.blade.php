@@ -65,7 +65,7 @@
                 @foreach($videos as $video)
                 <a href="{{ route('videos.show', $video) }}">
                     <div class="video-item">
-                        <img src="../images/{{$video->poster}}" alt="" class="poster">
+                        <img src="{{$video->posterOriginal}}" alt="" class="poster">
                         <div class="video-overlay">
                             <h6>{{$video->title}}</h6>
                             <button class="btn play">
