@@ -153,6 +153,7 @@ return [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
         'discount' => 'Chegirma',
+        'discount_ends_at' => 'Chegirma tugaydi',
         'moderation' => 'Modeatsiyani kutmoqda',
         'active' => 'Faol',
         'closed' => 'Yopilgan',

@@ -1,23 +1,52 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+@section('title', 'Home page')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/index.css')}}">
 @endsection
+
+@section('body')
+    <!-- Casousel -->
+    @include ('layouts.carousel')
+
+    <!-- PRODUCT OF DAY -->
+    @include ('layouts.products-of-day')
+
+    <!-- POPULAR PRODUCTS -->
+    @include ('popular.popular-products')
+
+    <!-- NEW PRODUCTS -->
+    @include ('layouts.new-products')
+
+    <!-- 3 small banners -->
+    @include ('layouts.three-small-banners')
+
+    <!-- RECOMMENDED PRODUCTS-->
+    @include ('layouts.recommended-products')
+
+    <!--INDEX BLOG-->
+    @include ('layouts.index-blog')
+
+    <!-- FULL BANNER 1 -->
+    @include ('layouts.full-banner1')
+
+    <!-- SHOPS -->
+    @include ('layouts.index-shops')
+
+    <!-- FULL BANNER 2 -->
+    @include ('layouts.full-banner2')
+
+    <!-- TOP BRANDS  -->
+    @include ('layouts.top-brands')
+
+    <!-- VIDEOS -->
+    @include ('layouts.index-videos')
+@endsection
+
+
+@section('script')
+    <script src="{{asset('js/1-index.js')}}"></script>
+@endsection
+
+

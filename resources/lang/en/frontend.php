@@ -4,6 +4,8 @@ return [
     'send' => 'Send',
     'apply_filter' => 'Apply filter',
     'search_placeholder' => 'Search in myBazar',
+    'previous' => 'Previous',
+    'next' => 'Next',
 
     'color' => 'Color',
     'by_price' => 'By price',
@@ -16,6 +18,7 @@ return [
     'brand' => 'Brand',
     'stores' => 'Stores',
     'all_categories' => 'All categories',
+    'discount_upper' => 'DISCOUNT',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -31,6 +34,7 @@ return [
         'interesting_products' => 'You may also like',
         'about' => 'About product',
         'comments' => 'Comments',
+        'day_product' => 'PRODUCT OF THE DAY',
     ],
 
     'review' => [

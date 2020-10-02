@@ -4,6 +4,8 @@ return [
     'send' => 'Jo`natmoq',
     'apply_filter' => 'Filtrlarni qo`llamoq',
     'search_placeholder' => 'myBazarda qidirish',
+    'previous' => 'Oldingi',
+    'next' => 'Keyingi',
 
     'color' => 'Rangi',
     'by_price' => 'Narxi bo`yicha',
@@ -16,6 +18,7 @@ return [
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
     'all_categories' => 'Hamma kategoriyalar',
+    'discount_upper' => 'CHEGIRMA',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
@@ -31,6 +34,7 @@ return [
         'interesting_products' => 'Sizga ham yoqishi mumkin',
         'about' => 'Mahsulot haqida',
         'comments' => 'Sharhlar',
+        'day_product' => 'KUN MAHSULOTI',
     ],
 
     'review' => [

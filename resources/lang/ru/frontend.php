@@ -4,6 +4,8 @@ return [
     'send' => 'Отправить',
     'apply_filter' => 'Применить фильтр',
     'search_placeholder' => 'Поиск на myBazar',
+    'previous' => 'Предыдущий',
+    'next' => 'Следующий',
 
     'color' => 'Цвет',
     'by_price' => 'По цене',
@@ -16,6 +18,7 @@ return [
     'brand' => 'Бренд',
     'stores' => 'Магазины',
     'all_categories' => 'Все категории',
+    'discount_upper' => 'СКИДКА',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -31,6 +34,7 @@ return [
         'interesting_products' => 'Вам также может понравиться',
         'about' => 'О товаре',
         'comments' => 'Комментарии',
+        'day_product' => 'ТОВАР ДНЯ',
     ],
 
     'review' => [

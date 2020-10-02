@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $price_uzs
  * @property float $price_usd
  * @property float $discount
+ * @property Carbon $discount_ends_at
  * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
@@ -78,8 +79,12 @@ class Product extends BaseModel
 
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'main_photo_id',
-        'price_uzs', 'price_usd', 'discount', 'main_category_id', 'store_id', 'brand_id', 'status', 'weight', 'quantity',
-        'guarantee', 'bestseller', 'new',
+        'price_uzs', 'price_usd', 'discount', 'discount_ends_at', 'main_category_id', 'store_id', 'brand_id', 'status',
+        'weight', 'quantity', 'guarantee', 'bestseller', 'new',
+    ];
+
+    protected $casts = [
+        'discount_ends_at' => 'datetime',
     ];
 
 

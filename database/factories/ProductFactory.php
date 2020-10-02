@@ -14,6 +14,7 @@ $factory->define(Product::class, function (Faker $faker) {
     $brandCount = Brand::count();
     $categoryCount = Category::count();
     $price = round($faker->randomNumber(5), -2);
+    $isDiscount = $faker->boolean;
 
     return [
         'name_uz' => $faker->unique()->name,
@@ -25,7 +26,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'slug' => $faker->unique()->slug(10),
         'price_uzs' => $price,
         'price_usd' => round($price / 9500, 2),
-        'discount' => $faker->randomFloat(1, 0, 1),
+        'discount' => $isDiscount ? $faker->randomFloat(1, 0, 1) : 0,
+        'discount_ends_at' => $isDiscount ? $faker->dateTimeBetween('now', '+1 month') : null,
         'main_category_id' => $faker->numberBetween(1, $categoryCount),
         'store_id' => $faker->numberBetween(1, $storesCount),
         'brand_id' => $faker->numberBetween(1, $brandCount),
