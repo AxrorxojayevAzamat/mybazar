@@ -33,11 +33,11 @@
                     class="video-js"
                     controls
                     preload="auto"
-                    poster="{{asset('images/'.$video->poster)}}"
+                    poster="{{$video->posterOriginal}}"
                     
                     data-setup="{}"
                 >
-                        <source src="{{asset('images/'.$video->video)}}" type="video/mp4" />
+                        <source src="{{$video->videoFile}}" type="video/mp4" />
                     
                     </p>
 
@@ -47,7 +47,7 @@
                     </div> 
             </div>
             <h6>{{$video->title}}</h6>
-            <p>{{$video->body}}</p>
+            <p>{!!$video->body!!}</p>
             <div class="small-videos">
                 <a href="#">
                     <div class="video-item">

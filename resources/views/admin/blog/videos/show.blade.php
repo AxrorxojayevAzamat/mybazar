@@ -63,8 +63,8 @@
                         <tr>
                             <th>{{ trans('adminlte.image') }}</th>
                             <td>
-                                @if ($video->file)
-                                    <a href="{{ $video->fileOriginal }}" target="_blank"><img src="{{ $video->fileThumbnail }}"></a>
+                                @if ($video->poster)
+                                    <a href="{{ $video->posterOriginal }}" target="_blank"><img src="{{ $video->posterThumbnail }}"></a>
                                 @endif
                             </td>
                         </tr>
