@@ -20,7 +20,7 @@
     @include('products.singlep-charac-com-btn')
 
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product">
+        <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product-tab">
             <!-- about product -->
             @include('products.full-des-of-singlep')
         </div>
@@ -35,7 +35,7 @@
     </div>
 
     <!-- u will also like -->
-    @include('layouts.u-will-also-like')
+    @include('products.u-will-also-like')
 
     <!-- recently viewed -->
     @include('layouts.recently-viewed')

@@ -6,21 +6,16 @@
     </div>
     <div id="search-bar" class="search-bar form-control">
         <div class="input-with-tags">
-            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="Поиск на myBazar" do-not-use-data-role="tagsinput">
+            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
         </div>
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Все категории
+                @lang('frontend.all_categories')
             </button>
-            <div class="dropdown-menu animated fadeIn" aria-lab#mm-14elledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Телевизоры, аудио, видео</a>
-                <a class="dropdown-item" href="#">Смартфоны и гаджеты</a>
-                <a class="dropdown-item" href="#">Техника для дома</a>
-                <a class="dropdown-item" href="#">Техника для кухни</a>
-                <a class="dropdown-item" href="#">Красота и здоровье</a>
-                <a class="dropdown-item" href="#">Игры, софт, развления</a>
-                <a class="dropdown-item" href="#">Компьютеры</a>
-                <a class="dropdown-item" href="#">Автопродукты</a>
+            <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
+                @foreach ($gCategories as $category)
+                    <a class="dropdown-item" href="{{ route('categories.show', products_path($category)) }}">{{ $category->name }}</a>
+                @endforeach
             </div>
         </div>
         <button class="search btn" type="submit"><i class="mbsearch"></i></button>

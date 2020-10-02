@@ -3,6 +3,7 @@
 return [
     'send' => 'Send',
     'apply_filter' => 'Apply filter',
+    'search_placeholder' => 'Search in myBazar',
 
     'color' => 'Color',
     'by_price' => 'By price',
@@ -10,9 +11,11 @@ return [
     'by_rating' => 'By rating',
     'by_novelty' => 'By novelty',
     'log_in_to_review' => 'Please, log in to send a review!',
+    'novelty' => 'NEW',
 
     'brand' => 'Brand',
     'stores' => 'Stores',
+    'all_categories' => 'All categories',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -23,6 +26,11 @@ return [
         'all_characteristics' => 'All specifications',
         'have_bought' => 'This user has bought this item',
         'have_not_bought' => 'This user has not bought this item',
+        'other_products' => 'Other products from this seller',
+        'similar_products' => 'Customers also buy with this product',
+        'interesting_products' => 'You may also like',
+        'about' => 'About product',
+        'comments' => 'Comments',
     ],
 
     'review' => [
@@ -31,7 +39,7 @@ return [
         'comment' => 'Comment',
         'write' => 'Write a feedback',
     ],
-    
+
     'breadcrumb' => [
         'home' => 'Home',
         'auth' => 'Login or register',
@@ -52,7 +60,7 @@ return [
         'shops' => 'Shops',
         'videos' => 'Video Blog',
     ],
-        
+
     'nav' => [
         'new_products' => 'New products',
         'stock' => 'Stock',

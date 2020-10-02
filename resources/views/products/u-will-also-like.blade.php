@@ -1,11 +1,11 @@
 <section>
-    <div class="other-products-of-this-seller">
-        <div class="h4-title other-products-of-this-seller">
-            <h4 class="title">@lang('frontend.product.other_products')</h4>
+    <div class="u-will-also-like">
+        <div class="h4-title u-will-also-like">
+            <h4 class="title">@lang('frontend.product.interesting_products')</h4>
         </div>
         <div class="outter-products">
             <div class="products owl-carousel owl-theme">
-                @foreach($otherProducts as $product)
+                @foreach($interestingProducts as $product)
                     <div class="item">
                         <div class="product-img">
                             @if ($product->main_photo_id)

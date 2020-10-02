@@ -59,7 +59,7 @@
                         @foreach($valueModifications as $modification)
                             <p>{{ $modification->name }}: <span>{{ $modification->value }}</span></p>
                             <div class="pr-des-radio-buttons">
-                                <div id="value-modification"
+                                <div class="value-modification" id="value-modification"
                                      data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
                                      data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}">
                                     {{ $modification->value }}
@@ -71,7 +71,7 @@
                             <p>@lang('frontend.color'): <span id="color-modification-name">{{ $colorModifications[0]->name }}</span></p>
                             <div class="colors pr-des-radio-buttons3">
                                 @foreach($colorModifications as $modification)
-                                    <div class="color" id="color-modification">
+                                    <div class="color color-modification" id="color-modification">
                                         <div style="background-color: {{ $modification->color }}"
                                              data-name="{{ $modification->name }}"
                                              data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"

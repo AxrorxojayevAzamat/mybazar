@@ -9,6 +9,7 @@ use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -63,6 +64,7 @@ use Eloquent;
  * @property string $description
  * @property int $currentPriceUzs
  * @property int $currentPriceUsd
+ * @method Builder active()
  * @mixin Eloquent
  */
 class Product extends BaseModel
@@ -139,6 +141,16 @@ class Product extends BaseModel
     public function getCurrentPriceUsdAttribute(): int
     {
         return $this->price_usd - ($this->price_usd * $this->discount);
+    }
+
+    ###########################################
+
+
+    ########################################### Scopes
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
     }
 
     ###########################################
