@@ -84,6 +84,6 @@ var any_input = document.getElementsByClassName('bordered-input');
         addTags();    
       }
     })
-    input.focus();
+    // input.focus();
     
     
