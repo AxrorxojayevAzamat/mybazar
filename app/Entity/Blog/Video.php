@@ -139,7 +139,7 @@ class Video extends BaseModel
 
     public function getVideoFileAttribute(): string
     {
-        return '/storage/files/' . ImageHelper::FOLDER_VIDEOS . '/' . $this->id . '/' . $this->poster;
+        return '/storage/files/' . ImageHelper::FOLDER_VIDEOS . '/' . $this->id . '/' . $this->video;
     }
 
     ###########################################
