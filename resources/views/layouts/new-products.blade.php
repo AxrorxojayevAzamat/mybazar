@@ -21,13 +21,7 @@
                             @endforeach
                         </p>
                         <div class="rate">
-                            <div class="rating stars">
-                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-                            </div>
+                            <div id="rateYo_N{{ $loop->index}}"></div>
                             <div class="comment">
                                 <i class="mbcomment"></i>
                                 <span>{{$product_new->number_of_reviews}}</span>
@@ -51,9 +45,7 @@
 </section>
 
 
-@section('scripts')
-
-
+{{-- @section('script')
     <script type="text/javascript">
 
         $(".update-cart").click(function (e) {
@@ -89,5 +81,6 @@
         });
 
     </script>
+@endsection --}}
 
-@endsection
+@include('pages.rating-js', ['products' => $products_new, 'type' => '"N"'])

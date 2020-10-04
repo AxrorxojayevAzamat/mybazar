@@ -4,6 +4,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
 @endsection
 
 @section('body')
@@ -47,6 +48,7 @@
 
 @section('script')
     <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 @endsection
 
 
