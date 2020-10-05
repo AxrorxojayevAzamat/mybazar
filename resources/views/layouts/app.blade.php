@@ -83,6 +83,7 @@
     <script src="{{asset('js/scroll-xNav.js')}}"></script>
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     @yield ('script')
+    @stack('script')
 
 
 </body>
