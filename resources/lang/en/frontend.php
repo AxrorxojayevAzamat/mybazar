@@ -13,7 +13,9 @@ return [
     'by_rating' => 'By rating',
     'by_novelty' => 'By novelty',
     'log_in_to_review' => 'Please, log in to send a review!',
-    'novelty' => 'NEW',
+    'novelty_upper' => 'NEW',
+    'popular' => 'Popular',
+    'recommend' => 'Recommended',
 
     'brand' => 'Brand',
     'stores' => 'Stores',

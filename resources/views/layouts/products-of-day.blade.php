@@ -5,10 +5,10 @@
                 <div class="top">
                     <h5 class="bold title">@lang('frontend.product.day_product')</h5>
                     <div class="time">
-                        @php($discountExpireDate = strtotime($product->discount_ends_at) - time())
+                        @php($discountExpireDate = $product->discountExpiresAt)
                         <span class="day">{{ date('d', $discountExpireDate) }}</span>
                         <span class="hour">{{ date('H', $discountExpireDate) }}</span>
-                        <span class="minute">{{ date('i', $discountExpireDate) }}</span>
+                        <span class="minute">{{ date('i', $discountExpireDate) }}</span>{{-- TODO: fix timing --}}
                     </div>
                 </div>
                 <div class="product-info">

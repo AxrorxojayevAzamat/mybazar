@@ -23,25 +23,25 @@
     @include ('layouts.three-small-banners')
 
     <!-- RECOMMENDED PRODUCTS-->
-    @include ('layouts.recommended-products')
+    @include ('layouts.recommended-products')   {{-- TODO: fix --}}
 
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')
 
     <!-- FULL BANNER 1 -->
-    @include ('layouts.full-banner1')
+    @include ('layouts.full-banner1')   {{-- TODO: fix --}}
 
     <!-- SHOPS -->
-    @include ('layouts.index-shops')
+    @include ('layouts.index-shops')   {{-- TODO: fix --}}
 
     <!-- FULL BANNER 2 -->
-    @include ('layouts.full-banner2')
+    @include ('layouts.full-banner2')   {{-- TODO: fix --}}
 
     <!-- TOP BRANDS  -->
-    @include ('layouts.top-brands')
+    @include ('layouts.top-brands')   {{-- TODO: fix --}}
 
     <!-- VIDEOS -->
-    @include ('layouts.index-videos')
+    @include ('layouts.index-videos')   {{-- TODO: fix --}}
 @endsection
 
 

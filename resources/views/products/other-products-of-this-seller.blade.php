@@ -13,7 +13,7 @@
                                     <img src="{{ $product->mainPhoto->fileOriginal }}" alt="">
                                 </a>
                             @endif
-                            <span class="new-product">@lang('frontend.novelty')</span>
+                            <span class="new-product">@lang('frontend.novelty_upper')</span>
                         </div>
                         <div class="description">
                             <h6 class="title"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h6>

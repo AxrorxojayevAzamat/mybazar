@@ -65,6 +65,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $description
  * @property int $currentPriceUzs
  * @property int $currentPriceUsd
+ * @property int $discountExpiresAt
  * @method Builder active()
  * @mixin Eloquent
  */
@@ -74,6 +75,7 @@ class Product extends BaseModel
     const STATUS_MODERATION = 1;
     const STATUS_ACTIVE = 2;
     const STATUS_CLOSED = 3;
+    const STATUS_NO_PRODUCT = 4;
 
     protected $table = 'shop_products';
 
@@ -106,6 +108,11 @@ class Product extends BaseModel
     public function isClosed(): bool
     {
         return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function hasProduct(): bool
+    {
+        return $this->status !== self::STATUS_NO_PRODUCT;
     }
 
     public function categoriesList(): array
@@ -148,6 +155,11 @@ class Product extends BaseModel
         return $this->price_usd - ($this->price_usd * $this->discount);
     }
 
+    public function getDiscountExpiresAtAttribute(): int
+    {
+        return strtotime($this->discount_ends_at) - time();
+    }
+
     ###########################################
 
 
@@ -185,7 +197,8 @@ class Product extends BaseModel
 
     public function photos()
     {
-        return $this->hasMany(Photo::class, 'product_id', 'id')->whereKeyNot($this->main_photo_id)->orderBy('sort');
+        return $this->hasMany(Photo::class, 'product_id', 'id')
+            ->whereKeyNot($this->main_photo_id)->orderBy('sort');
     }
 
     public function allPhotos()
@@ -263,9 +276,5 @@ class Product extends BaseModel
     }
 
     ###########################################
-
-
-
-
 
 }
