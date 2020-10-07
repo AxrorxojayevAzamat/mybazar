@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int $price_uzs
  * @property float $price_usd
  * @property float $discount
+ * @property Carbon $discount_ends_at
  * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
@@ -64,6 +65,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $description
  * @property int $currentPriceUzs
  * @property int $currentPriceUsd
+ * @property int $discountExpiresAt
  * @method Builder active()
  * @mixin Eloquent
  */
@@ -73,13 +75,18 @@ class Product extends BaseModel
     const STATUS_MODERATION = 1;
     const STATUS_ACTIVE = 2;
     const STATUS_CLOSED = 3;
+    const STATUS_NO_PRODUCT = 4;
 
     protected $table = 'shop_products';
 
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'main_photo_id',
-        'price_uzs', 'price_usd', 'discount', 'main_category_id', 'store_id', 'brand_id', 'status', 'weight', 'quantity',
-        'guarantee', 'bestseller', 'new',
+        'price_uzs', 'price_usd', 'discount', 'discount_ends_at', 'main_category_id', 'store_id', 'brand_id', 'status',
+        'weight', 'quantity', 'guarantee', 'bestseller', 'new',
+    ];
+
+    protected $casts = [
+        'discount_ends_at' => 'datetime',
     ];
 
 
@@ -101,6 +108,11 @@ class Product extends BaseModel
     public function isClosed(): bool
     {
         return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function hasProduct(): bool
+    {
+        return $this->status !== self::STATUS_NO_PRODUCT;
     }
 
     public function categoriesList(): array
@@ -143,6 +155,11 @@ class Product extends BaseModel
         return $this->price_usd - ($this->price_usd * $this->discount);
     }
 
+    public function getDiscountExpiresAtAttribute(): int
+    {
+        return strtotime($this->discount_ends_at) - time();
+    }
+
     ###########################################
 
 
@@ -180,7 +197,8 @@ class Product extends BaseModel
 
     public function photos()
     {
-        return $this->hasMany(Photo::class, 'product_id', 'id')->whereKeyNot($this->main_photo_id)->orderBy('sort');
+        return $this->hasMany(Photo::class, 'product_id', 'id')
+            ->whereKeyNot($this->main_photo_id)->orderBy('sort');
     }
 
     public function allPhotos()
@@ -258,9 +276,5 @@ class Product extends BaseModel
     }
 
     ###########################################
-
-
-
-
 
 }

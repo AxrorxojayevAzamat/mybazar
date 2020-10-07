@@ -25,6 +25,7 @@ class CreateShopProductsTable extends Migration
             $table->integer('price_uzs');
             $table->float('price_usd')->nullable();
             $table->float('discount')->default(0);
+            $table->timestamp('discount_ends_at')->nullable();
             $table->unsignedBigInteger('main_category_id');
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('brand_id');

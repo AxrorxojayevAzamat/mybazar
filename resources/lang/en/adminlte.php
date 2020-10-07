@@ -153,6 +153,7 @@ return [
         'add' => 'Add Product',
         'name' => 'Product',
         'discount' => 'Discount',
+        'discount_ends_at' => 'Discount ends at',
         'moderation' => 'Moderation',
         'active' => 'Active',
         'closed' => 'Closed',

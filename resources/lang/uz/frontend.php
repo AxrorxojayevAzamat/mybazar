@@ -4,6 +4,8 @@ return [
     'send' => 'Jo`natmoq',
     'apply_filter' => 'Filtrlarni qo`llamoq',
     'search_placeholder' => 'myBazarda qidirish',
+    'previous' => 'Oldingi',
+    'next' => 'Keyingi',
 
     'color' => 'Rangi',
     'by_price' => 'Narxi bo`yicha',
@@ -11,11 +13,14 @@ return [
     'by_rating' => 'Baho bo`yicha',
     'by_novelty' => 'Yangiligi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
-    'novelty' => 'YANGI',
+    'novelty_upper' => 'YANGI',
+    'popular' => 'Ommabop',
+    'recommend' => 'Tavsiya etiladi',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
     'all_categories' => 'Hamma kategoriyalar',
+    'discount_upper' => 'CHEGIRMA',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
@@ -31,6 +36,7 @@ return [
         'interesting_products' => 'Sizga ham yoqishi mumkin',
         'about' => 'Mahsulot haqida',
         'comments' => 'Sharhlar',
+        'day_product' => 'KUN MAHSULOTI',
     ],
 
     'review' => [

@@ -1,41 +1,42 @@
 <section>
     <div class="newone">
         <div class="h4-title">
-            <h4 class="title">Новинки</h4>
+            <h4 class="title">@lang('frontend.novelty')</h4>
         </div>
         <div class="outter-products">
             <div class="products owl-carousel owl-theme">
-                @foreach($products_new as $product_new)
+                @foreach($newProducts as $product)
                 <div class="item">
                     <div class="product-img">
-                        @if ($product_new->mainPhoto)
-                            <img src="{{ $product_new->mainPhoto->fileOriginal }}" alt="">
+                        @if ($product->mainPhoto)
+                            <img src="{{ $product->mainPhoto->fileOriginal }}" alt="">
                         @endif
-                        <span class="new-product">НОВИНКА</span>
+                        <span class="new-product">@lang('frontend.novelty_upper')</span>
                     </div>
                     <div class="description">
-                        <h6 class="title">{{$product_new->name}}</h6>
+                        <h6 class="title">{{ $product->name }}</h6>
                         <p class="sub-title">
-                            @foreach($product_new->categories as $category)
-                                <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a><br>
-                            @endforeach
+{{--                            @foreach($product->categories as $category)--}}
+{{--                                <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a><br>--}}
+{{--                            @endforeach--}}
+                            <a href="{{ route('categories.show', $product->mainCategory) }}">{{ $product->mainCategory->name }}</a><br>
                         </p>
                         <div class="rate">
                             <div id="rateYo_N{{ $loop->index}}"></div>
                             <div class="comment">
                                 <i class="mbcomment"></i>
-                                <span>{{$product_new->number_of_reviews}}</span>
+                                <span>{{ $product->number_of_reviews }}</span>
                             </div>
                         </div>
                         <div class="current-old-price horizontal">
-                            <h5 class="price">{{$product_new->price_uzs}} <span>сум</span></h5>
+                            <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
                         </div>
                         <div class="item-action-icons">
-                            <div class="cart" data-name="{{$product_new->name}}" date-price="{{$product_new->price_uzs}}" data-url="{{asset('images/newone1.png')}}"><a href="{{ url('add-to-cart/'.$product_new->id) }}"><i class="mbcart"></i></a></div>
-                            <div class="libra" data-name="{{$product_new->name}}" date-price="{{$product_new->price_uzs}}" data-url="{{asset('images/newone1.png')}}"><i class="mbtocompare"></i></div>
+                            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/newone1.png')}}"><a href="{{ url('add-to-cart/'.$product->id) }}"><i class="mbcart"></i></a></div>
+                            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/newone1.png')}}"><i class="mbtocompare"></i></div>
                             <div class="like"><i class="mbfavorite"></i></div>
                         </div>
-                        <p class="sub-title bottom">{{$product_new->store->name}}</p>
+                        <p class="sub-title bottom">{{$product->store->name}}</p>
                     </div>
                 </div>
                 @endforeach
@@ -83,4 +84,4 @@
     </script>
 @endsection --}}
 
-@include('pages.rating-js', ['products' => $products_new, 'type' => '"N"'])
+@include('pages.rating-js', ['products' => $bestsellerProducts, 'type' => '"N"'])

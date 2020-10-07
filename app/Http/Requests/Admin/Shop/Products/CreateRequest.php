@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Shop\Products;
 
 use App\Helpers\ProductHelper;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -17,6 +18,8 @@ use Illuminate\Validation\Rule;
  * @property int $price_uzs
  * @property float $price_usd
  * @property float $discount
+ * @property Carbon $discount_ends_at_date
+ * @property Carbon $discount_ends_at_time
  * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
@@ -50,6 +53,8 @@ class CreateRequest extends FormRequest
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
+            'discount_ends_at_date' => 'nullable|date_format:Y-m-d',
+            'discount_ends_at_time' => 'nullable|date_format:H:i',
             'main_category_id' => 'required|numeric|min:1|exists:shop_categories,id',
             'store_id' => 'required|numeric|min:1|exists:stores,id',
             'brand_id' => 'required|numeric|min:1|exists:brands,id',
