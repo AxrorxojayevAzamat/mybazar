@@ -38,6 +38,9 @@ return [
     'no' => 'Нет',
     'draft' => 'Черновой вариант',
     'publish' => 'Опубликовать',
+    'send_to_moderation' => 'Отправить на модерацию',
+    'moderate' => 'Модерировать',
+    'activate' => 'Активировать',
 
     'name' => 'Название',
     'title' => 'Название',
@@ -76,6 +79,8 @@ return [
     'sort' => 'Место',
     'cost' => 'Цена',
     'quantity' => 'Количество',
+    'date' => 'Дата',
+    'time' => 'Время',
     'date_from' => 'Дата начала',
     'date_to' => 'Дата конца',
     'image' => 'Изображение',
@@ -84,6 +89,7 @@ return [
     'files' => 'Файлы',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Разделения категории',
 
     'photo' => [
         'plural' => 'Изображения',
@@ -167,6 +173,7 @@ return [
         'reviews' => 'Обзоры',
         'main_category' => 'Главная категория',
         'additional_categories' => 'Дополнительные категории',
+        'no_product_left' => 'Нет товара',
     ],
 
     'modification' => [

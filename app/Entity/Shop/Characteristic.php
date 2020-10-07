@@ -13,6 +13,7 @@ use Eloquent;
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
+ * @property string $status
  * @property string $type
  * @property string $default
  * @property boolean $required
@@ -37,15 +38,30 @@ class Characteristic extends BaseModel
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';
 
+    const STATUS_DRAFT = 0;
+    const STATUS_MODERATION = 1;
+    const STATUS_ACTIVE = 2;
+
     protected $table = 'shop_characteristics';
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'type', 'default', 'required', 'variants',
+        'name_uz', 'name_ru', 'name_en', 'status', 'type', 'default', 'required', 'variants',
     ];
 
     protected $casts = [
         'variants' => 'array',
     ];
+
+
+    public function moderate(): void
+    {
+        if ($this->status !== self::STATUS_MODERATION) {
+            throw new \DomainException('Characteristic is not sent to moderation.');
+        }
+        $this->update([
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
 
     public function categoriesList(): array
     {
@@ -64,6 +80,21 @@ class Characteristic extends BaseModel
     public function typeName(): string
     {
         return self::typesList()[$this->type];
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status === self::STATUS_DRAFT;
+    }
+
+    public function isOnModeration(): bool
+    {
+        return $this->status === self::STATUS_MODERATION;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
     }
 
     public function isString(): bool

@@ -3,6 +3,14 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.characteristics.edit', $characteristic) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+
+        @if ($characteristic->isOnModeration())
+            <form method="POST" action="{{ route('admin.shop.characteristics.moderate', $characteristic) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary">@lang('adminlte.publish')</button>
+            </form>
+        @endif
+
         <form method="POST" action="{{ route('admin.shop.characteristics.destroy', $characteristic) }}" class="mr-1">
             @csrf
             @method('DELETE')

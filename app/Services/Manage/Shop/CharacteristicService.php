@@ -19,6 +19,7 @@ class CharacteristicService
                 'name_uz' => $request->name_uz,
                 'name_ru' => $request->name_ru,
                 'name_en' => $request->name_en,
+                'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
@@ -46,6 +47,7 @@ class CharacteristicService
                 'name_uz' => $request->name_uz,
                 'name_ru' => $request->name_ru,
                 'name_en' => $request->name_en,
+                'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
@@ -62,6 +64,12 @@ class CharacteristicService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function moderate(int $id): void
+    {
+        $advert = Characteristic::findOrFail($id);
+        $advert->moderate();
     }
 
     private function addCategories(Characteristic $characteristic, array $categories)
