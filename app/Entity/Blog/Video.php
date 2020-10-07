@@ -51,7 +51,7 @@ class Video extends BaseModel
     protected $table = 'blog_videos';
 
     protected $fillable = [
-        'title_ru', 'title_en', 'title_uz', 'description_uz', 'description_en', 'description_ru', 'body_en', 'body_ru',
+        'id', 'title_ru', 'title_en', 'title_uz', 'description_uz', 'description_en', 'description_ru', 'body_en', 'body_ru',
         'body_uz', 'user_id', 'category_id', 'is_published', 'poster', 'video'
     ];
 

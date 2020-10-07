@@ -6,9 +6,7 @@ use App\Entity\Blog\Video;
 use Faker\Generator as Faker;
 
 $factory->define(Video::class, function (Faker $faker) {
-    $randomdFile = random_int(1, 4);
-    $poster = 'poster'.$randomdFile.'.jpg';
-    $video = 'poster-video'.$randomdFile.'.mp4';
+    
     return [
         'title_ru'=> $faker->sentence,
         'title_en'=> $faker->sentence,
@@ -21,8 +19,6 @@ $factory->define(Video::class, function (Faker $faker) {
         'description_ru'=> $faker->text(200),
         'category_id'=> random_int(1, 5),
         'is_published'=> $faker->randomElement([true,false]),
-        'poster'=> asset('/images/'.$poster),
-        'video'=> asset('/images/'.$video),
         'created_by' => 1,
         'updated_by' => 1,
     ];
