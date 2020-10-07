@@ -47,7 +47,7 @@ class News extends BaseModel
     protected $table = 'blog_news';
 
     protected $fillable = [
-        'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en', 'body_uz', 'body_ru',
+        'id', 'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en', 'body_uz', 'body_ru',
         'body_en', 'category_id', 'is_published', 'file',
     ];
 

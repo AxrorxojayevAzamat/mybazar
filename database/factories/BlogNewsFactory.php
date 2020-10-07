@@ -21,7 +21,6 @@ $factory->define(News::class, function (Faker $faker) {
         'description_ru'=> $faker->unique()->name,
         'category_id'=> $faker->randomElement($categoryIds),
         'is_published'=> $faker->randomElement([true, false]),
-        'file'=> $faker->imageUrl(),
         'created_by' => 1,
         'updated_by' => 1,
     ];

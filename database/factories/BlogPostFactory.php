@@ -21,7 +21,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'body_en'=> $faker->unique()->name,
         'category_id'=> $faker->randomElement($categoryIds),
         'is_published'=> $faker->randomElement([true, false]),
-        'file'=> $faker->imageUrl(),
         'created_by' => 1,
         'updated_by' => 1,
     ];
