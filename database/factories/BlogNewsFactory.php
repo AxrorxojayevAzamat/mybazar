@@ -3,11 +3,11 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Entity\Blog\News;
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 use Faker\Generator as Faker;
 
 $factory->define(News::class, function (Faker $faker) {
-    $categoryIds = Category::where('type', Category::NEWS)->pluck('id')->toArray();
+    $categoryIds = Category::orderByDesc('id')->pluck('id')->toArray();
 
     return [
         'title_ru'=> $faker->unique()->name,

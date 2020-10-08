@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 use App\Entity\Blog\News;
 
 class NewsController extends Controller

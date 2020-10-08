@@ -4,7 +4,7 @@
 namespace App\Http\Requests\Admin\Shop\Categories;
 
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -37,7 +37,7 @@ class UpdateRequest extends FormRequest
             'description_uz' => 'required|string',
             'description_ru' => 'required|string',
             'description_en' => 'required|string',
-            'slug' => ['required', 'string', 'max:255', Rule::unique('shop_categories')->ignore($this->category->id)],
+            'slug' => ['required', 'string', 'max:255', Rule::unique('categories')->ignore($this->category->id)],
             'parent' => 'nullable|integer|exists:advert_categories,id',
             'brands.*' => 'numeric|min:1|exists:brands,id',
         ];

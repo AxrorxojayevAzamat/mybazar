@@ -21,7 +21,7 @@ class CreateShopProductCategoriesTable extends Migration
         Schema::table('shop_product_categories', function (Blueprint $table) {
             $table->primary(['product_id', 'category_id']);
             $table->foreign('product_id')->references('id')->on('shop_products')->onDelete('restrict');
-            $table->foreign('category_id')->references('id')->on('shop_categories')->onDelete('restrict');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
         });
     }
 

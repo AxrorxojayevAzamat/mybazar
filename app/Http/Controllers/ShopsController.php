@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Store;
 use Illuminate\Http\Request;
 use App\Entity\Shop\Product;

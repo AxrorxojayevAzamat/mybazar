@@ -44,7 +44,7 @@ class CreateShopProductsTable extends Migration
         });
 
         Schema::table('shop_products', function (Blueprint $table) {
-            $table->foreign('main_category_id')->references('id')->on('shop_categories')->onDelete('restrict');
+            $table->foreign('main_category_id')->references('id')->on('categories')->onDelete('restrict');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('restrict');
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');

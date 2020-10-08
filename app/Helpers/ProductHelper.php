@@ -4,7 +4,7 @@
 namespace App\Helpers;
 
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Product;
 
 class ProductHelper

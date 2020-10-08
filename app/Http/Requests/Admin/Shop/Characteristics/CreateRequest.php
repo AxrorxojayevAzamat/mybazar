@@ -34,7 +34,7 @@ class CreateRequest extends FormRequest
             'variants' => 'nullable|string',
             'default' => ['required_with:variants', 'nullable', 'string', 'max:255',
                 Rule::in(array_values(array_map('trim', preg_split('#[\r\n]+#', $this->variants))))],
-            'categories.*' => 'required|numeric|min:1|exists:shop_categories,id',
+            'categories.*' => 'required|numeric|min:1|exists:categories,id',
         ];
     }
 }

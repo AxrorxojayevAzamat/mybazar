@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Blog;
 
 use App\Entity\Blog\Post;
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Blog\Posts\CreateRequest;
 use App\Http\Requests\Admin\Blog\Posts\UpdateRequest;

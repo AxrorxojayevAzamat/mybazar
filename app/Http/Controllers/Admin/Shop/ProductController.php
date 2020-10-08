@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;

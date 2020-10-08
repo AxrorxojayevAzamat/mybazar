@@ -2,11 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Entity\Blog\Video;
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 use Faker\Generator as Faker;
 
 $factory->define(Video::class, function (Faker $faker) {
-    $categoryIds = Category::where('type', Category::VIDEOS)->pluck('id')->toArray();
+    $categoryIds = Category::orderByDesc('id')->pluck('id')->toArray();
     return [
         'title_ru' => $faker->sentence,
         'title_en' => $faker->sentence,

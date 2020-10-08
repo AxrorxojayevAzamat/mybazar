@@ -1,6 +1,6 @@
 <?php
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Http\Router\ProductsPath;
 
 if (! function_exists('products_path')) {

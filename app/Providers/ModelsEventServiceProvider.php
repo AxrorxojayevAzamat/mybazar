@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;

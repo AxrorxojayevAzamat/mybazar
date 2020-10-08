@@ -4,6 +4,7 @@ namespace App\Entity\Blog;
 
 use App\Entity\BaseModel;
 use App\Entity\User\User;
+use App\Entity\Category;
 use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
 use App\Http\Requests\Admin\Blog\News\CreateRequest;
