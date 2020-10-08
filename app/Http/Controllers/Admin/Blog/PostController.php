@@ -104,6 +104,6 @@ class PostController extends Controller
 
     private function getCategoriesList(): array
     {
-        return Category::where('type', Category::POSTS)->pluck('name_ru', 'id')->toArray();
+        return Category::orderByDesc('created_at')->pluck('name_ru', 'id')->toArray();
     }
 }

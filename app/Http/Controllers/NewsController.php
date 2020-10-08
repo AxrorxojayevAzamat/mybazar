@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function show(News $news)
     {
         $news = $news->load(['category']);
-        $categories = Category::where('type', Category::NEWS)->get();
+        $categories = Category::orderByDesc('created_at')->get();
 
         return view("blog.news-inner", compact('news', 'categories'));
     }
