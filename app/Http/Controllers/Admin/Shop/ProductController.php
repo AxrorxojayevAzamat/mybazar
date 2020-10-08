@@ -113,6 +113,39 @@ class ProductController extends Controller
         }
     }
 
+    public function sendToModeration(Product $product)
+    {
+        try {
+            $this->service->sendToModeration($product->id);
+
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function moderate(Product $product)
+    {
+        try {
+            $this->service->moderate($product->id);
+
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function activate(Product $product)
+    {
+        try {
+            $this->service->activate($product->id);
+
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
     public function destroy(Product $product)
     {
         $product->delete();

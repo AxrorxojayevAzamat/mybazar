@@ -38,6 +38,9 @@ return [
     'no' => 'No',
     'draft' => 'Draft',
     'publish' => 'Publish',
+    'send_to_moderation' => 'Send to moderation',
+    'moderate' => 'Moderate',
+    'activate' => 'Activate',
 
     'name' => 'Name',
     'title' => 'Title',
@@ -76,6 +79,8 @@ return [
     'sort' => 'Sort',
     'cost' => 'Cost',
     'quantity' => 'Quantity',
+    'date' => 'Date',
+    'time' => 'Time',
     'date_from' => 'Date from',
     'date_to' => 'Date to',
     'image' => 'Image',
@@ -84,6 +89,7 @@ return [
     'files' => 'Files',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Category splitted',
 
     'photo' => [
         'plural' => 'Photos',
@@ -167,6 +173,7 @@ return [
         'reviews' => 'Reviews',
         'main_category' => 'Main category',
         'additional_categories' => 'Additional categories',
+        'no_product_left' => 'No product left',
     ],
 
     'modification' => [
