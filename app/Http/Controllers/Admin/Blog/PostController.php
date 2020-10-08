@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Blog;
 use App\Entity\Blog\Post;
 use App\Entity\Category;
 use App\Helpers\ImageHelper;
+use App\Helpers\ProductHelper;
 use App\Http\Requests\Admin\Blog\Posts\CreateRequest;
 use App\Http\Requests\Admin\Blog\Posts\UpdateRequest;
 use App\Services\Manage\Blog\PostService;
@@ -32,7 +33,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.posts.create', compact('categories'));
     }
@@ -53,7 +54,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.posts.edit', compact('post', 'categories'));
     }
@@ -102,8 +103,4 @@ class PostController extends Controller
         return response()->json('The file is not deleted!', 400);
     }
 
-    private function getCategoriesList(): array
-    {
-        return Category::orderByDesc('created_at')->pluck('name_ru', 'id')->toArray();
-    }
 }

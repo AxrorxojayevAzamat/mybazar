@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Banners\CreateRequest;
 use App\Http\Requests\Admin\Banners\UpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\ImageHelper;
+use App\Helpers\ProductHelper;
 
 class BannersController extends Controller {
 
@@ -27,7 +28,7 @@ class BannersController extends Controller {
     }
 
     public function create() {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
         return view('admin.banners.create', compact('categories'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Blog;
 use App\Entity\Category;
 use App\Entity\Blog\News;
 use App\Helpers\ImageHelper;
+use App\Helpers\ProductHelper;
 use App\Http\Requests\Admin\Blog\News\CreateRequest;
 use App\Http\Requests\Admin\Blog\News\UpdateRequest;
 use App\Services\Manage\Blog\NewsService;
@@ -31,7 +32,7 @@ class NewsController extends Controller
 
     public function create()
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.news.create', compact('categories'));
     }
@@ -52,7 +53,7 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.news.edit', compact('news', 'categories'));
     }
@@ -101,8 +102,4 @@ class NewsController extends Controller
         return response()->json('The file is not deleted!', 400);
     }
 
-    private function getCategoriesList(): array
-    {
-        return Category::orderByDesc('created_at')->pluck('name_ru', 'id')->toArray();
-    }
 }
