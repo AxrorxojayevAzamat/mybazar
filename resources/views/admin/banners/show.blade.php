@@ -38,6 +38,10 @@
                         <tr><th>{{ trans('adminlte.url') }}</th><td>{!! $banner->url !!}</td></tr>
                         <tr><th>{{ trans('adminlte.slug') }}</th><td>{!! $banner->slug !!}</td></tr>
                         <tr>
+                            <th>{{ trans('adminlte.category.name') }}</th>
+                            <td><a href="{{ route('admin.blog.categories.show', $banner->category) }}"></a></td>
+                        </tr>
+                        <tr>
                             <th>{{ trans('adminlte.is_published') }}</th>
                             <td>{!! $banner->published !!}</td>
                         </tr>

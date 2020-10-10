@@ -177,7 +177,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('discount_ends_at_date', trans('adminlte.product.discount_ends_at'), ['class' => 'col-form-label']); !!}
+                            {!! Form::label('discount_ends_at_date', trans('adminlte.product.discount_ends_at') . ' (' . trans('adminlte.date') . ')', ['class' => 'col-form-label']); !!}
                             {!! Form::date('discount_ends_at_date', old('discount_ends_at_date', $product && $product->discount_ends_at ? date('Y-m-d', $product->discount_ends_at) : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_date') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_date'))
@@ -187,7 +187,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
-                            {!! Form::label('discount_ends_at_time', ' ', ['class' => 'col-form-label']); !!}
+                            {!! Form::label('discount_ends_at_time', '(' . trans('adminlte.time') . ')', ['class' => 'col-form-label']); !!}
                             {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? date('H:i', $product->discount_ends_at) : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_time') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_time'))
@@ -198,17 +198,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            {!! Form::label('status', trans('adminlte.status'), ['class' => 'col-form-label']); !!}
-                            {!! Form::select('status', \App\Helpers\ProductHelper::getStatusList(), old('status', $product ? $product->status : null),
-                                    ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
-                            @if ($errors->has('status'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('weight', trans('adminlte.product.weight'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('weight', old('weight', $product ? $product->weight : null),
@@ -218,7 +208,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('quantity', trans('adminlte.quantity'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('quantity', old('quantity', $product ? $product->quantity : null),

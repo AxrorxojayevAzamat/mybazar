@@ -39,7 +39,7 @@ class CreateRequest extends FormRequest
             'body_uz' => 'required|string',
             'body_ru' => 'required|string',
             'body_en' => 'required|string',
-            'category_id' => 'required|numeric|min:1|exists:blog_categories,id',
+            'category_id' => 'required|numeric|min:1|exists:categories,id',
             'is_published' => 'boolean',
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];

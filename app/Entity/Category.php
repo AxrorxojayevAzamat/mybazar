@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Entity\Shop;
+namespace App\Entity;
 
 use App\Entity\BaseModel;
 use App\Entity\Brand;
 use App\Entity\Store;
+use App\Entity\Shop\Product;
+use App\Entity\Shop\ProductCategory;
+use App\Entity\Shop\CharacteristicCategory;
+use App\Entity\Shop\Characteristic;
+use App\Entity\Shop\CategoryBrand;
 use App\Entity\StoreCategory;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
@@ -52,7 +57,7 @@ class Category extends BaseModel
 {
     use NodeTrait;
 
-    protected $table = 'shop_categories';
+    protected $table = 'categories';
 
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
 

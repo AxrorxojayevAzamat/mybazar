@@ -241,12 +241,6 @@ return [
             'can' => 'manage-users',
         ],
         [
-            'text' => 'blog_categories',
-            'url'  => 'admin/blog/categories',
-            'icon' => 'fas fa-fw fa-newspaper',
-            'can' => 'manage-users',
-        ],
-        [
             'text' => 'news',
             'url'  => 'admin/blog/news',
             'icon' => 'fas fa-fw fa-newspaper',

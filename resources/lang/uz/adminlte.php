@@ -38,6 +38,9 @@ return [
     'no' => 'Yo`q',
     'draft' => 'Qoralama',
     'publish' => 'Nashr etish',
+    'send_to_moderation' => 'Moderatsiyaga yuborish',
+    'moderate' => 'Moderatsiyadan o`tkazish',
+    'activate' => 'Faollashtirish',
 
     'name' => 'Nomi',
     'title' => 'Nomi',
@@ -76,6 +79,8 @@ return [
     'sort' => 'Joylashuvi',
     'cost' => 'Narhi',
     'quantity' => 'Miqdori',
+    'date' => 'Sana',
+    'time' => 'Vaqt',
     'date_from' => 'Boshlanish sana',
     'date_to' => 'Ohirgi sana',
     'image' => 'Tasviri',
@@ -84,6 +89,7 @@ return [
     'files' => 'Fayllar',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Kategoriya bo`lingan',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -167,6 +173,7 @@ return [
         'reviews' => 'Sharhlar',
         'main_category' => 'Asosiy kategoriya',
         'additional_categories' => 'Yordamchi kategoriyalar',
+        'no_product_left' => 'Mahsulot qolmadi',
     ],
 
     'modification' => [

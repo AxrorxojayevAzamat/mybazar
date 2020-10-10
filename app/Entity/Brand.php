@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
 use App\Entity\Shop\Product;
 use App\Entity\User\User;

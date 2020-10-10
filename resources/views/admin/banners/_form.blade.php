@@ -89,6 +89,17 @@
                 </div>
 
                 <div class="col-md-10">
+                    <div class="form-group">
+                        {!! Form::label('category_id', trans('adminlte.category.name'), ['class' => 'col-form-label']); !!}
+                        {!! Form::select('category_id', $categories, old('category_id', $banner ? $banner->category_id : null),
+                        ['class'=>'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('category_id'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="col-md-10">
                     <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
                         {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
                         {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('is_published', $banner ? $banner->is_published : null),
@@ -121,7 +132,7 @@
                         <input id="file-input" class="file" type="file" name="file">
                     </div>
                     @if ($errors->has('file'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('file') }}</strong></span>
+                    <span class="invalid-feedback"><strong>{{ $errors->first('file') }}</strong></span>
                     @endif
                 </div>
             </div>

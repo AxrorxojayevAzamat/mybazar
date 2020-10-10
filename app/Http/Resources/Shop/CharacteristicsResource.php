@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Shop;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\CharacteristicCategory;
 use App\Helpers\LanguageHelper;

@@ -80,6 +80,17 @@ class CharacteristicController extends Controller
         return redirect()->route('admin.shop.characteristics.show', $characteristic);
     }
 
+    public function moderate(Characteristic $characteristic)
+    {
+        try {
+            $this->service->moderate($characteristic->id);
+
+            return redirect()->route('admin.shop.characteristics.show', $characteristic);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
     public function destroy(Characteristic $characteristic)
     {
         $characteristic->delete();

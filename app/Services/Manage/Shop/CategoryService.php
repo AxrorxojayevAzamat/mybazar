@@ -2,7 +2,7 @@
 
 namespace App\Services\Manage\Shop;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
 use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
 use Illuminate\Support\Facades\DB;
@@ -13,15 +13,20 @@ class CategoryService
     {
         DB::beginTransaction();
         try {
+            if ($request->parent) {
+                $parent = Category::findOrFail($request->parent);
+                $this->draftProducts($parent);
+            }
+
             $category = Category::create([
-                'name_uz' => $request['name_uz'],
-                'name_ru' => $request['name_ru'],
-                'name_en' => $request['name_en'],
-                'description_uz' => $request['description_uz'],
-                'description_ru' => $request['description_ru'],
-                'description_en' => $request['description_en'],
-                'slug' => $request['slug'],
-                'parent_id' => $request['parent'],
+                'name_uz' => $request->name_uz,
+                'name_ru' => $request->name_ru,
+                'name_en' => $request->name_en,
+                'description_uz' => $request->description_uz,
+                'description_ru' => $request->description_ru,
+                'description_en' => $request->description_en,
+                'slug' => $request->slug,
+                'parent_id' => $request->parent,
             ]);
 
             $this->addBrands($category, $request->brands);
@@ -40,15 +45,20 @@ class CategoryService
 
         DB::beginTransaction();
         try {
+            if ($request->parent) {
+                $parent = Category::findOrFail($request->parent);
+                $this->draftProducts($parent);
+            }
+
             $category->update([
-                'name_uz' => $request['name_uz'],
-                'name_ru' => $request['name_ru'],
-                'name_en' => $request['name_en'],
-                'description_uz' => $request['description_uz'],
-                'description_ru' => $request['description_ru'],
-                'description_en' => $request['description_en'],
-                'slug' => $request['slug'],
-                'parent_id' => $request['parent'],
+                'name_uz' => $request->name_uz,
+                'name_ru' => $request->name_ru,
+                'name_en' => $request->name_en,
+                'description_uz' => $request->description_uz,
+                'description_ru' => $request->description_ru,
+                'description_en' => $request->description_en,
+                'slug' => $request->slug,
+                'parent_id' => $request->parent,
             ]);
 
             $category->categoryBrands()->delete();
@@ -83,6 +93,16 @@ class CategoryService
         $brands = array_unique($brands);
         foreach ($brands as $i => $brandId) {
             $category->categoryBrands()->create(['brand_id' => $brandId]);
+        }
+    }
+
+    private function draftProducts(Category $category)
+    {
+        foreach ($category->products as $product) {
+            if ($product->isActive()) {
+                $product->setStatusCategorySplitted();
+                $product->update();
+            }
         }
     }
 }

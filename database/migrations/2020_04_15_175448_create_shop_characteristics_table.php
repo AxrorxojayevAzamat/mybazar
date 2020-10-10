@@ -18,6 +18,7 @@ class CreateShopCharacteristicsTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru');
             $table->string('name_en');
+            $table->tinyInteger('status');
             $table->string('type');
             $table->string('default')->nullable();
             $table->boolean('required');

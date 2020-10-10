@@ -3,6 +3,7 @@
 namespace App\Entity\Shop;
 
 use App\Entity\BasePivot;
+use App\Entity\Category;
 use Eloquent;
 
 /**

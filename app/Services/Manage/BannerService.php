@@ -3,6 +3,7 @@
 namespace App\Services\Manage;
 
 use App\Entity\Banner;
+use App\Entity\Category;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Banners\CreateRequest;
 use App\Http\Requests\Admin\Banners\UpdateRequest;
@@ -15,6 +16,7 @@ class BannerService {
     private $nextId;
 
     public function create(CreateRequest $request): Banner {
+        $category = Category::findOrFail($request->category_id);
         if (!$request->file) {
             return Banner::create([
                         'title_uz' => $request->title_uz,
@@ -25,12 +27,13 @@ class BannerService {
                         'description_en' => $request->description_en,
                         'url' => $request->url,
                         'slug' => $request->slug,
+                        'category_id' => $category->id,
                         'is_published' => $request->is_published,
             ]);
         }
 
         $imageName = ImageHelper::getRandomName($request->file);
-        $banner = Banner::add($this->getNextId(), $request, $imageName);
+        $banner = Banner::add($this->getNextId(), $request, $category->id, $imageName);
 
         $this->uploadFile($this->getNextId(), $request->file, $imageName);
 
@@ -39,14 +42,15 @@ class BannerService {
 
     public function update(int $id, UpdateRequest $request): Banner {
         $banner = Banner::findOrFail($id);
+        $category = Category::findOrFail($request->category_id);
 
         if (!$request->file) {
-            $banner->edit($request);
+            $banner->edit($request, $category->id);
         } else {
             Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BANNERS . '/' . $banner->id);
 
             $imageName = ImageHelper::getRandomName($request->file);
-            $banner->edit($request, $imageName);
+            $banner->edit($request, $category->id, $imageName);
 
             $this->uploadFile($banner->id, $request->file, $imageName);
         }

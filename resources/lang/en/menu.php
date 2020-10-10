@@ -17,7 +17,7 @@ return [
     'information'                   => 'Information',
 
     'users'                         => 'Users',
-    'shop_categories'               => 'Shop categories',
+    'shop_categories'               => 'Categories',
     'blog_categories'               => 'Blog categories',
     'brands'                        => 'Brands',
     'products'                      => 'Products',

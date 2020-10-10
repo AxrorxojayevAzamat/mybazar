@@ -3,7 +3,7 @@
 namespace App\Services\Manage\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
@@ -27,6 +27,11 @@ class ProductService
     public function create(CreateRequest $request): Product
     {
         $mainCategory = Category::findOrFail($request->main_category_id);
+
+        if ($mainCategory->children()->exists()) {
+            throw new \Exception('Category ' . $mainCategory->name . ' has children, please choose category with no child category.');
+        }
+
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -45,7 +50,7 @@ class ProductService
                 'price_usd' => $request->price_usd ?? null,
                 'discount' => $request->discount ?? 0,
                 'discount_ends_at' => $request->discount ? $request->discount_ends_at_date . ' ' . $request->discount_ends_at_time . ':00' : null,
-                'status' => $request->status,
+                'status' => Product::STATUS_DRAFT,
                 'weight' => $request->weight ?? null,
                 'quantity' => $request->quantity ?? null,
                 'guarantee' => $request->guarantee ?? false,
@@ -74,6 +79,11 @@ class ProductService
     {
         $product = Product::findOrFail($id);
         $mainCategory = Category::findOrFail($request->main_category_id);
+
+        if ($mainCategory->children()->exists()) {
+            throw new \Exception('Category ' . $mainCategory->name . ' has children, please choose category with no child category.');
+        }
+
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -94,7 +104,7 @@ class ProductService
                 'main_category_id' => $mainCategory->id,
                 'store_id' => $store->id,
                 'brand_id' => $brand->id,
-                'status' => $request->status,
+                'status' => $product->main_photo_id ? Product::STATUS_MODERATION : Product::STATUS_DRAFT,
                 'weight' => $request->weight ?? null,
                 'quantity' => $request->quantity ?? null,
                 'guarantee' => $request->guarantee ?? false,
@@ -116,6 +126,24 @@ class ProductService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function sendToModeration(int $id): void
+    {
+        $product = Product::findOrFail($id);
+        $product->sendToModeration();
+    }
+
+    public function moderate(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->moderate();
+    }
+
+    public function activate(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->activate();
     }
 
     public function addMainPhoto(int $id, UploadedFile $image)
@@ -145,7 +173,7 @@ class ProductService
                     'file' => $imageName,
                     'sort' => 1,
                 ]);
-                $product->update(['main_photo_id' => $photo->id]);
+                $product->update(['main_photo_id' => $photo->id, 'status' => Product::STATUS_MODERATION]);
             }
 
             DB::commit();
@@ -166,7 +194,7 @@ class ProductService
         DB::beginTransaction();
         try {
 
-            $product->update(['main_photo_id' => null]);
+            $product->update(['main_photo_id' => null, 'status' => Product::STATUS_DRAFT]);
             $product->mainPhoto()->delete();
             $this->sortPhotos($product);
 

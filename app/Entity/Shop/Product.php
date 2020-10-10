@@ -5,6 +5,7 @@ namespace App\Entity\Shop;
 use App\Entity\BaseModel;
 use App\Entity\Brand;
 use App\Entity\Store;
+use App\Entity\Category;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
@@ -76,6 +77,7 @@ class Product extends BaseModel
     const STATUS_ACTIVE = 2;
     const STATUS_CLOSED = 3;
     const STATUS_NO_PRODUCT = 4;
+    const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
 
     protected $table = 'shop_products';
 
@@ -90,12 +92,52 @@ class Product extends BaseModel
     ];
 
 
+    public function sendToModeration(): void
+    {
+        if (!$this->isDraft()) {
+            throw new \DomainException('Product is not draft.');
+        }
+        if (!$this->main_photo_id) {
+            throw new \DomainException('Upload main photo.');
+        }
+        $this->update([
+            'status' => self::STATUS_MODERATION,
+        ]);
+    }
+
+    public function moderate(): void
+    {
+        if ($this->status !== self::STATUS_MODERATION) {
+            throw new \DomainException('Product is not sent to moderation.');
+        }
+        $this->update([
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function activate(): void
+    {
+        if ($this->status !== self::STATUS_ACTIVE) {
+            throw new \DomainException('Product is already activated.');
+        } else if ($this->status !== self::STATUS_DRAFT_CATEGORY_SPLITTED) {
+            throw new \DomainException('Product is not drafted after main category split.');
+        }
+        $this->update([
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function setStatusCategorySplitted(): void
+    {
+        $this->status = self::STATUS_DRAFT_CATEGORY_SPLITTED;
+    }
+
     public function isDraft(): bool
     {
         return $this->status === self::STATUS_DRAFT;
     }
 
-    public function isModeration(): bool
+    public function isOnModeration(): bool
     {
         return $this->status === self::STATUS_MODERATION;
     }
@@ -108,6 +150,11 @@ class Product extends BaseModel
     public function isClosed(): bool
     {
         return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function isDraftAfterCategorySplit(): bool
+    {
+        return $this->status === self::STATUS_DRAFT_CATEGORY_SPLITTED;
     }
 
     public function hasProduct(): bool

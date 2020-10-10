@@ -17,8 +17,7 @@ use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
-use App\Entity\Shop\Category as ShopCategory;
-use App\Entity\Blog\Category as BlogCategory;
+use App\Entity\Category as Category;
 use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
 use App\Entity\Blog\Video;
@@ -103,7 +102,7 @@ Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.categories'), route('categories.index'));
 });
 
-//Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+//Breadcrumbs::register('categories.show', function (Crumbs $crumbs, Category $category) {
 //    $crumbs->parent('front-home');
 //    $crumbs->push($category->name, route('categories.show', $category));
 //});
@@ -235,7 +234,7 @@ Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) 
     $crumbs->push(trans('adminlte.create'), route('admin.shop.categories.create'));
 });
 
-Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Category $category) {
     if ($parent = $category->parent) {
         $crumbs->parent('admin.shop.categories.show', $parent);
     } else {
@@ -244,7 +243,7 @@ Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Sh
     $crumbs->push($category->name, route('admin.shop.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, ShopCategory $category) {
+Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.shop.categories.show', $category);
     $crumbs->push(trans('adminlte.edit'), route('admin.shop.categories.edit', $category));
 });
@@ -539,12 +538,12 @@ Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) 
     $crumbs->push(trans('adminlte.create'), route('admin.blog.categories.create'));
 });
 
-Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, BlogCategory $category) {
+Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.blog.categories.index');
     $crumbs->push('sa', route('admin.blog.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, BlogCategory $category) {
+Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.home', $category);
     $crumbs->push(trans('adminlte.edit'), route('admin.blog.categories.edit', $category));
 });

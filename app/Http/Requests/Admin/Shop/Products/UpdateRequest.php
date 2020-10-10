@@ -24,7 +24,6 @@ use Illuminate\Validation\Rule;
  * @property int $main_category_id
  * @property int $store_id
  * @property int $brand_id
- * @property int $status
  * @property int $weight
  * @property int $quantity
  * @property boolean $guarantee
@@ -58,16 +57,16 @@ class UpdateRequest extends FormRequest
             'discount' => 'nullable|numeric|min:0',
             'discount_ends_at_date' => 'nullable|date_format:Y-m-d',
             'discount_ends_at_time' => 'nullable|date_format:H:i',
-            'main_category_id' => 'required|numeric|min:1|exists:shop_categories,id',
+            'main_category_id' => 'required|numeric|min:1|exists:categories,id',
             'store_id' => 'required|numeric|min:1|exists:stores,id',
             'brand_id' => 'required|numeric|min:1|exists:brands,id',
-            'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
+//            'status' => ['required', 'numeric', Rule::in(array_keys(ProductHelper::getStatusList()))],
             'weight' => 'nullable|numeric|min:0',
             'quantity' => 'nullable|numeric|min:0',
             'guarantee' => 'boolean',
             'bestseller' => 'boolean',
             'new' => 'boolean',
-            'categories.*' => 'required|numeric|min:1|exists:shop_categories,id',
+            'categories.*' => 'required|numeric|min:1|exists:categories,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
         ];
     }

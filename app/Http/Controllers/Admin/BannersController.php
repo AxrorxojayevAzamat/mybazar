@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entity\Banner;
+use App\Entity\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Manage\BannerService;
@@ -10,6 +11,7 @@ use App\Http\Requests\Admin\Banners\CreateRequest;
 use App\Http\Requests\Admin\Banners\UpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\ImageHelper;
+use App\Helpers\ProductHelper;
 
 class BannersController extends Controller {
 
@@ -26,7 +28,8 @@ class BannersController extends Controller {
     }
 
     public function create() {
-        return view('admin.banners.create');
+        $categories = ProductHelper::getCategoryList();
+        return view('admin.banners.create', compact('categories'));
     }
 
     public function store(CreateRequest $request) {
@@ -78,6 +81,10 @@ class BannersController extends Controller {
             return response()->json('The file is successfully deleted!');
         }
         return response()->json('The file is not deleted!', 400);
+    }
+
+    private function getCategoriesList(): array {
+        return Category::orderByDesc('created_at')->pluck('name_ru', 'id')->toArray();
     }
 
 }

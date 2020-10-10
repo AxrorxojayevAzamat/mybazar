@@ -2,7 +2,7 @@
 
 use App\Entity\Shop\Characteristic;
 use Illuminate\Database\Seeder;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 
 class ShopCharacteristicCategoriesTableSeeder extends Seeder
 {

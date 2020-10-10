@@ -17,7 +17,7 @@ return [
     'information'                   => 'Информация',
 
     'users'                         => 'Foydalanuvchilar',
-    'shop_categories'               => 'Mahsulot kategoriyalari',
+    'shop_categories'               => 'Kategoriyalar',
     'blog_categories'               => 'Blog kategoriyalari',
     'brands'                        => 'Brendlar',
     'products'                      => 'Mahsulotlar',

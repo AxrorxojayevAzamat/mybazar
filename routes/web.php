@@ -129,11 +129,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+
         Route::resource('characteristics', 'CharacteristicController');
+        Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {
+            Route::post('moderate', 'CharacteristicController@moderate')->name('moderate');
+        });
 
         Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
 
         Route::group(['prefix' => 'products/{product}', 'as' => 'products.'], function () {
+            Route::post('send-to-moderation', 'ProductController@sendToModeration')->name('on-moderation');
+            Route::post('moderate', 'ProductController@moderate')->name('moderate');
+            Route::post('activate', 'ProductController@activate')->name('activate');
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
             Route::post('main-photo', 'ProductController@addMainPhoto');
             Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
