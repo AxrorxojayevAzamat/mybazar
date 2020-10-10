@@ -15,7 +15,7 @@
 }
 .pn-ProductNav {
     /* Make this scrollable when needed */
-    overflow-x: auto;
+    overflow-x: clip;
     /* We don't want vertical scrolling */
     overflow-y: hidden;
     /* For WebKit implementations, provide inertia scrolling */

@@ -3,7 +3,7 @@
 @section('title', 'Compare page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/compare.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/compare.css')}}"> --}}
 @endsection
 
 @section('body')

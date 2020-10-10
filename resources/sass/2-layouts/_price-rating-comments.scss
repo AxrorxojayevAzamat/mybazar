@@ -30,8 +30,9 @@
     }
 }
 .item-action-icons{
-    @include displayFlex(space-between, row, center);
-    position:absolute;
+    @include displayFlex(flex-start, row, center);
+    width: 100%;
+    // position:absolute;
     bottom:0;
     div{
         @include border(1px, $product_info_icons_color, 50%);
@@ -86,11 +87,24 @@
     }
 }
 .selected_cart{
-    @extend .selected_libra;
+    color:white;
+    border:none !important;
+    background:$item_price_color !important;
+    box-shadow: 0px 2px 7px -5px black !important;
+    transition: .4s ease-in-out;
+    i:before{
+        color:white !important;
+    }
 }
 .selected_like{
-    @extend .selected_libra;
+    color:white;
+    border:none !important;
     background:$bg_like_heart !important;
+    box-shadow: 0px 2px 7px -5px black !important;
+    transition: .4s ease-in-out;
+    i:before{
+        color:white !important;
+    }
 }
 .rate{
     width:100%;
@@ -174,6 +188,7 @@
         font-size:135%;
     }
     .comment{
+        margin-left: 20px;
         font-size:14px;
     }
     .current-old-price{
@@ -222,11 +237,11 @@
         font-size: 190%;
     }
     .item-action-icons div {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         i {
-            font-size: 18px;
-            line-height: 30px;
+            font-size: 21px;
+            line-height: 35px;
         }
     }
     .comment{

@@ -3,7 +3,7 @@
 @section('title', 'Home page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/index.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/index.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
 @endsection
 

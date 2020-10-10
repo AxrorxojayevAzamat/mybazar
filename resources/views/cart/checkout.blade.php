@@ -2,7 +2,7 @@
 
 @section('title', 'Checkout page')
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/pay.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/pay.css')}}"> --}}
 @endsection
 
 @section('body')
