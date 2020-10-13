@@ -76,13 +76,23 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="form-group">
                             {!! Form::label('required', trans('adminlte.required'), ['class' => 'col-form-label']); !!}
                             {!! Form::checkbox('required', 1, old('required', $characteristic ? $characteristic->required : null),
                                     ['class'=>'form-control' . ($errors->has('required') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('required'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('required') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            {!! Form::label('hide_in_filters', trans('adminlte.characteristic.hide_in_filters'), ['class' => 'col-form-label']); !!}
+                            {!! Form::checkbox('hide_in_filters', 1, old('hide_in_filters', $characteristic ? $characteristic->hide_in_filters : null),
+                                    ['class'=>'form-control' . ($errors->has('hide_in_filters') ? ' is-invalid' : '')]) !!}
+                            @if ($errors->has('hide_in_filters'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('hide_in_filters') }}</strong></span>
                             @endif
                         </div>
                     </div>

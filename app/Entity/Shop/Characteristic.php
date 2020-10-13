@@ -19,6 +19,7 @@ use Eloquent;
  * @property string $default
  * @property boolean $required
  * @property array $variants
+ * @property boolean $hide_in_filters
  * @property int $created_by
  * @property int $updated_by
  * @property Carbon $created_at
@@ -46,7 +47,7 @@ class Characteristic extends BaseModel
     protected $table = 'shop_characteristics';
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'status', 'type', 'default', 'required', 'variants',
+        'name_uz', 'name_ru', 'name_en', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
     ];
 
     protected $casts = [

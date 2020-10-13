@@ -32,9 +32,11 @@ $factory->define(Characteristic::class, function (Faker $faker) {
         'name_en' => $faker->unique()->name,
         'status' => Characteristic::STATUS_ACTIVE,
         'type' => $type,
+        'status' => Characteristic::STATUS_ACTIVE,
         'default' => $variants ? $faker->randomElement($variants) : null,
         'required' => $faker->boolean,
         'variants' => $variants ?: null,
+        'hide_in_filters' => $faker->boolean,
         'created_by' => 1,
         'updated_by' => 1,
     ];

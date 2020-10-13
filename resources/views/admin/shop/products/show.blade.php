@@ -6,12 +6,12 @@
         @if ($product->isOnModeration())
             <form method="POST" action="{{ route('admin.shop.products.moderate', $product) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-primary">@lang('adminlte.publish')</button>
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
         @elseif ($product->isDraft())
             <form method="POST" action="{{ route('admin.shop.products.on-moderation', $product) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">@lang('adminlte.send_to_moderation')</button>
+                <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.send_to_moderation')</button>
             </form>
         @elseif ($product->isDraftAfterCategorySplit())
             <form method="POST" action="{{ route('admin.shop.products.activate', $product) }}" class="mr-1">

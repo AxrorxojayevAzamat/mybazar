@@ -189,12 +189,14 @@ return [
         'plural' => 'Xarakteristikalar',
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
+        'hide_in_filters' => 'Filtrlarda berkitish',
     ],
 
     'value' => [
         'add' => 'Qiymat qo`shmoq',
         'name' => 'Qiymat',
         'plural' => 'Qiymatlar',
+        'characteristic_value' => 'Xarakteristika qiymati',
     ],
 
     'news' => [

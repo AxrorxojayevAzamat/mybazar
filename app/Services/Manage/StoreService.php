@@ -29,6 +29,7 @@ class StoreService
                     'name_ru' => $request->name_ru,
                     'name_en' => $request->name_en,
                     'slug' => $request->slug,
+                    'status' => Store::STATUS_MODERATION,
                 ]);
             }
 
@@ -85,6 +86,12 @@ class StoreService
         }
 
         return $store;
+    }
+
+    public function moderate(int $id): void
+    {
+        $advert = Store::findOrFail($id);
+        $advert->moderate();
     }
 
     public function getNextId(): int

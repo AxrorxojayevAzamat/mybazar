@@ -189,12 +189,14 @@ return [
         'plural' => 'Characteristics',
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
+        'hide_in_filters' => 'Hide in filters',
     ],
 
     'value' => [
         'add' => 'Add Value',
         'name' => 'Value',
         'plural' => 'Values',
+        'characteristic_value' => 'Characteristic value',
     ],
 
     'news' => [

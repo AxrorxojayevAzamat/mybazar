@@ -18,7 +18,12 @@
                             {!! Form::text('name', request('name'), ['class'=>'form-control', 'placeholder' => trans('adminlte.name')]) !!}
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            {!! Form::select('status', \App\Entity\Store::statusList(), request('status'), ['class'=>'form-control', 'placeholder' => trans('adminlte.status')]) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
                         <div class="form-group">
                             {!! Form::select('category_id', $categories, request('category_id'), ['class'=>'form-control', 'id' => 'category_id', 'placeholder' => trans('adminlte.category.name')]) !!}
                         </div>
@@ -38,8 +43,9 @@
         <thead>
         <tr>
             <th>Logo</th>
-            <th>{{ trans('adminlte.name') }}</th>
+            <th>@lang('adminlte.name')</th>
             <th>Slug</th>
+            <th>@lang('adminlte.status')</th>
         </tr>
         </thead>
         <tbody>
@@ -53,6 +59,7 @@
                 </td>
                 <td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td>
                 <td>{{ $store->slug }}</td>
+                <td>{!! $store->statusLabel() !!}</td>
             </tr>
         @endforeach
 

@@ -20,6 +20,7 @@ class CreateStoresTable extends Migration
             $table->string('name_en');
             $table->string('slug')->unique();
             $table->string('logo');
+            $table->tinyInteger('status');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();
