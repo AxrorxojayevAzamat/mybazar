@@ -189,6 +189,7 @@ return [
         'plural' => 'Characteristics',
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
+        'hide_in_filters' => 'Hide in filters',
     ],
 
     'value' => [

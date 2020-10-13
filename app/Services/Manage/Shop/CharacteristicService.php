@@ -24,6 +24,7 @@ class CharacteristicService
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
                 'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
+                'hide_in_filters' => $request->hide_in_filters,
             ]);
 
             $this->addCategories($characteristic, $request->categories);
@@ -52,6 +53,7 @@ class CharacteristicService
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
                 'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
+                'hide_in_filters' => $request->hide_in_filters,
             ]);
 
             $characteristic->characteristicCategories()->delete();

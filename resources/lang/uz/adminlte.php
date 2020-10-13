@@ -189,6 +189,7 @@ return [
         'plural' => 'Xarakteristikalar',
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
+        'hide_in_filters' => 'Filtrlarda berkitish',
     ],
 
     'value' => [
