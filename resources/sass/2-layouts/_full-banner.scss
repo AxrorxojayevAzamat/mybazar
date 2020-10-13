@@ -6,19 +6,13 @@
     height:200px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
-.full-banner1{
-    background:url('../images/fullbanner1.jpg');
-}
-.full-banner2{
-    background:url('../images/fullbanner2.jpg');
-}
+
 .catalog-banner{
     width: 100%;
     height:370px;
     margin:2% 0;
-    background:url('../images/catalog-view-banner.png');
 }
 @media all and (max-width:1000px){
     .full-banner1,.full-banner2{

@@ -25,6 +25,7 @@
                             <th>{{ trans('adminlte.url') }}</th>
                             <th>{{ trans('adminlte.slug') }}</th>
                             <th>{{ trans('adminlte.author') }}</th>
+                            <th>{{ trans('adminlte.category.name') }}</th>
                             <th>{{ trans('adminlte.is_published') }}</th>
                             <th></th>
                         </tr>
@@ -48,6 +49,7 @@
                                 {{ $banner->createdBy->name }}
                                 @endif
                             </td>
+                            <td><a href="{{ route('admin.blog.categories.show', $banner->category) }}">{{ $banner->category->name }}</a></td>
                             <td>{!! $banner->published !!}</td>
                             <td>
                                 @if ($isAdmin)

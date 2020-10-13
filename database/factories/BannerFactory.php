@@ -4,9 +4,10 @@
 
 use App\Entity\Banner;
 use Faker\Generator as Faker;
+use App\Entity\Category;
 
 $factory->define(Banner::class, function (Faker $faker) {
-    
+    $categoryIds = Category::orderByDesc('id')->pluck('id')->toArray();
 
     return [
         'title_ru'=> $faker->unique()->name,
@@ -17,6 +18,7 @@ $factory->define(Banner::class, function (Faker $faker) {
         'description_ru'=> $faker->unique()->name,
         'url' => $faker->unique()->url,
         'slug' => $faker->unique()->slug(5),
+        'category_id'=> $faker->randomElement($categoryIds),
         'is_published'=> $faker->randomElement([true, false]),
         'file'=> $faker->imageUrl(),
         'created_by' => 1,

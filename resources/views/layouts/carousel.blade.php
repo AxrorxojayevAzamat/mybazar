@@ -9,11 +9,11 @@
             <div class="item">
                 <img src="{{asset('images/slider1.jpg')}}" alt="">
             </div>
-            @foreach($sliders as $slide)
+            {{-- @foreach($sliders as $slide)
                 <div class="item @if ($loop->first) {{ 'active' }} @endif">
                     <img src="{{ $slide->fileOriginal }}" alt="">
                 </div>
-            @endforeach
+            @endforeach --}}
         </div>
         <a class="carousel-control-prev" href="#carousel-index" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

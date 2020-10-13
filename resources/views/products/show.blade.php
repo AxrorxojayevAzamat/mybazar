@@ -3,7 +3,7 @@
 @section('title', $product->name)
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}"> --}}
 @endsection
 
 @section('body')

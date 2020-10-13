@@ -3,7 +3,7 @@
 @section('title', 'Video blog')
 
 @section('styles')
-<link rel="stylesheet" href="{{asset('css/video-blog.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('css/video-blog.css')}}"> --}}
 @endsection
 
 @section('body')

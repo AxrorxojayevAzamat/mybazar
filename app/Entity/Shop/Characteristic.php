@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
 use App\Entity\User\User;
+use App\Entity\Category;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;

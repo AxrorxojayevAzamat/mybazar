@@ -5,6 +5,7 @@ namespace App\Entity\Shop;
 use App\Entity\BaseModel;
 use App\Entity\Brand;
 use App\Entity\Store;
+use App\Entity\Category;
 use App\Entity\User\User;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopCategoriesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShopCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_uz');
             $table->string('name_ru');
@@ -31,8 +31,8 @@ class CreateShopCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('shop_categories', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('shop_categories')->onDelete('restrict');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });
@@ -45,6 +45,6 @@ class CreateShopCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_categories');
+        Schema::dropIfExists('categories');
     }
 }

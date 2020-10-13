@@ -3,7 +3,7 @@
 @section('title', 'Favorites page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/favorites.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/favorites.css')}}"> --}}
 @endsection
 
 @section('body')

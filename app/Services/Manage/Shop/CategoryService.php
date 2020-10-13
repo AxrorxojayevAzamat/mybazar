@@ -2,7 +2,7 @@
 
 namespace App\Services\Manage\Shop;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
 use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
 use Illuminate\Support\Facades\DB;

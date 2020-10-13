@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Blog;
 use App\Entity\Blog\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 
 class CategoryController extends Controller
 {

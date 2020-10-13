@@ -3,7 +3,6 @@
     height:400px;
     background:rgba(117, 0, 255, 0);
     .carousel-control-prev-icon {
-        background:url("../images/slider_prev.svg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -11,8 +10,8 @@
         height:25px;
     }
     .carousel-control-next-icon {
-        @extend .carousel-control-prev-icon;
-        background:url("../images/slider_next.svg");
+        width:25px;
+        height:25px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BasePivot;
 use App\Entity\Brand;
+use App\Entity\Category;
 use Eloquent;
 
 /**

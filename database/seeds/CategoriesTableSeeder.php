@@ -1,9 +1,9 @@
 <?php
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use Illuminate\Database\Seeder;
 
-class ShopCategoriesTableSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {

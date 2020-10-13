@@ -32,7 +32,7 @@ class CreateRequest extends FormRequest
             'description_ru' => 'required|string',
             'description_en' => 'required|string',
             'slug' => 'required|string|max:255',
-            'parent' => 'nullable|integer|exists:shop_categories,id',
+            'parent' => 'nullable|integer|exists:categories,id',
             'brands.*' => 'numeric|min:1|exists:brands,id',
         ];
     }

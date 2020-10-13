@@ -3,7 +3,7 @@
 namespace App\Services\Manage\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;

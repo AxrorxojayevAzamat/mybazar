@@ -3,7 +3,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use Eloquent;
 
 /**
