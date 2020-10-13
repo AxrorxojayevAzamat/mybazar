@@ -15,5 +15,7 @@ mix
     .setPublicPath('public/build')
     .setResourceRoot('/build/')
     .sass('resources/sass/app.scss', 'css')
+    .sass('resources/sass/colorpicker.scss', 'css')
+    .sass('resources/sass/fileinput.scss', 'css')
     .sourceMaps()
     .version()
