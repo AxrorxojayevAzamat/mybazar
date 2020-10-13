@@ -271,10 +271,10 @@ return [
             'can' => 'manage-stores',
         ],
         [
-            'text' => 'shop_categories',
+            'text' => 'categories',
             'url'  => 'admin/shop/categories',
             'icon' => 'fas fa-fw fa-list-alt',
-            'can' => 'manage-shop-categories',
+            'can' => 'manage-categories',
         ],
         [
             'text' => 'marks',

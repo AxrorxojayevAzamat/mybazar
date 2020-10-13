@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryService $service)
     {
-        $this->middleware('can:manage-shop-categories');
+        $this->middleware('can:manage-categories');
         $this->service = $service;
     }
 

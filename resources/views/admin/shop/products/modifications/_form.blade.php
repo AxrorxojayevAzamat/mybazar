@@ -85,7 +85,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-danger card-outline">
+        <div class="card card-fuchsia card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.value.characteristic_value') }}</h3></div>
             <div class="card-body">
                 <div class="col-md-12">
