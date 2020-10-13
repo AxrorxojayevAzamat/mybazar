@@ -86,10 +86,33 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-danger card-outline">
+            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.value.characteristic_value') }}</h3></div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        {!! Form::label('characteristic_id', trans('adminlte.characteristic.name'), ['class' => 'col-form-label']); !!}
+                        {!! Form::select('characteristic_id', $characteristics, $modification ? $modification->characteristic_id : null,
+                            ['class'=>'form-control' . ($errors->has('characteristic_id') ? ' is-invalid' : ''), 'id' => 'characteristic_id',
+                            'placeholder' => '']) !!}
+                        @if ($errors->has('characteristic_id'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('characteristic_id') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-12" id="characteristic-form"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="value-form">
+    <div class="col-md-12">
+        <div class="card card-danger card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.value.name') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
-                    {!! Form::text('value', old('value', $modification ? $modification->value : null), ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'required' => true]) !!}
+                    {!! Form::text('value', old('value', $modification ? $modification->value : null),
+                        ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'id' => 'modification-value']) !!}
                     @if ($errors->has('value'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('value') }}</strong></span>
                     @endif
@@ -99,13 +122,14 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" id="color-form">
     <div class="col-md-12">
         <div class="card card-warning card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.color') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
-                    {!! Form::text('color', old('color', $modification ? $modification->color : null), ['class' => 'form-control' . ($errors->has('color') ? ' is-invalid' : ''), 'id' => 'color']) !!}
+                    {!! Form::text('color', old('color', $modification ? $modification->color : null),
+                        ['class' => 'form-control' . ($errors->has('color') ? ' is-invalid' : ''), 'id' => 'modification-color']) !!}
                     @if ($errors->has('color'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('color') }}</strong></span>
                     @endif
@@ -115,7 +139,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" id="photo_form">
     <div class="col-md-12">
         <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.photo.name') }}</h3></div>
@@ -137,52 +161,4 @@
     <button type="submit" class="btn btn-primary">{{ trans('adminlte.' . ($modification ? 'edit' : 'save')) }}</button>
 </div>
 
-@section($javaScriptSectionName)
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/purify.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/themes/fa/theme.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/uz.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/ru.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/LANG.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-{{--    <script src="{{ mix('js/colorpicker.js', 'build') }}"></script>--}}
-{{--    <script src="{{ mix('js/fileinput.js', 'build') }}"></script>--}}
-
-    <script>
-        $('#color').colorpicker({});
-
-        let fileInput = $("#file-input");
-        let logoUrl = '{{ $modification ? ($modification->photo ? $modification->photoOriginal : null) : null }}';
-
-        if (logoUrl) {
-            let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-            XMLHttpRequest.prototype.send = function(data) {
-                this.setRequestHeader('X-CSRF-Token', token);
-                return send.apply(this, arguments);
-            };
-
-            fileInput.fileinput({
-                initialPreview: [logoUrl],
-                initialPreviewAsData: true,
-                showUpload: false,
-                previewFileType: 'text',
-                browseOnZoneClick: true,
-                overwriteInitial: true,
-                deleteUrl: 'remove-photo',
-                maxFileCount: 1,
-                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
-            });
-        } else {
-            fileInput.fileinput({
-                showUpload: false,
-                previewFileType: 'text',
-                browseOnZoneClick: true,
-                maxFileCount: 1,
-                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
-            });
-        }
-    </script>
-
-@endsection
+@include('admin.shop.products.modifications._scripts')

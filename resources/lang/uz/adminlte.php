@@ -196,6 +196,7 @@ return [
         'add' => 'Qiymat qo`shmoq',
         'name' => 'Qiymat',
         'plural' => 'Qiymatlar',
+        'characteristic_value' => 'Xarakteristika qiymati',
     ],
 
     'news' => [

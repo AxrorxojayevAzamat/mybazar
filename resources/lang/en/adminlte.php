@@ -196,6 +196,7 @@ return [
         'add' => 'Add Value',
         'name' => 'Value',
         'plural' => 'Values',
+        'characteristic_value' => 'Characteristic value',
     ],
 
     'news' => [
