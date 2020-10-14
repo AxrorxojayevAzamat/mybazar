@@ -96,7 +96,7 @@
     .shops-2r-inner{
         // width:67%;
         width:72%;
-        height:100%;
+        // height:100%;
         @include displayFlex(flex-start, row, center);
         .palette-items{
             height:100%;
@@ -109,8 +109,8 @@
                 position:relative;
                 display:flex;
                 img{
-                    width:auto;
-                    height:100%;
+                    // width:auto;
+                    // height:100%;
                 }
                 span.sale.small{
                     font-size:14px;
