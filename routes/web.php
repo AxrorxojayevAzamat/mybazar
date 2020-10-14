@@ -121,6 +121,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('down', 'SlidersController@down')->name('down');
             Route::post('last', 'SlidersController@last')->name('last');
         });
+        
+    Route::resource('discounts', 'DiscountController');
+    Route::group(['prefix' => 'discounts/{discount}', 'as' => 'discounts.'], function () {
+        Route::post('remove-file', 'DiscountController@removeFile')->name('remove-file');
+        Route::post('common', 'DiscountController@common')->name('common');
+        Route::post('rared', 'DiscountController@rared')->name('rared');
+    });
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
@@ -223,6 +230,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         });
 
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
+
+        Route::post('moderate', 'StoreController@moderate')->name('moderate');
     });
 
     Route::resource('brands', 'BrandController');

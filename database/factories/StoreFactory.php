@@ -12,6 +12,7 @@ $factory->define(Store::class, function (Faker $faker) {
         'name_en' => $faker->unique()->name,
         'slug' => $faker->unique()->slug(2),
         'logo' => $faker->imageUrl(),
+        'status' => $faker->randomElement([Store::STATUS_MODERATION, Store::STATUS_ACTIVE]),
         'created_by' => 1,
         'updated_by' => 1,
     ];

@@ -37,6 +37,10 @@ class StoreController extends Controller
             });
         }
 
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+
         if (!empty($value = $request->get('category_id'))) {
             $products = StoreCategory::where('category_id', $value)->pluck('store_id')->toArray();
             $query->whereIn('id', $products);
@@ -86,6 +90,17 @@ class StoreController extends Controller
         $store = $this->service->update($store->id, $request);
 
         return redirect()->route('admin.stores.show', $store);
+    }
+
+    public function moderate(Store $store)
+    {
+        try {
+            $this->service->moderate($store->id);
+
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function destroy(Store $store)

@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin();
         });
 
-        Gate::define('manage-shop-categories', function (User $user) {
+        Gate::define('manage-categories', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
@@ -86,6 +86,10 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-sliders', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+
+        Gate::define('manage-discounts', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
     }

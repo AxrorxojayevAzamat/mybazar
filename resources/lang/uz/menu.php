@@ -17,8 +17,7 @@ return [
     'information'                   => 'Информация',
 
     'users'                         => 'Foydalanuvchilar',
-    'shop_categories'               => 'Kategoriyalar',
-    'blog_categories'               => 'Blog kategoriyalari',
+    'categories'               => 'Kategoriyalar',
     'brands'                        => 'Brendlar',
     'products'                      => 'Mahsulotlar',
     'stores'                        => 'Do`konlar',
@@ -33,5 +32,6 @@ return [
     'posts'                         => 'Maqolalar',
     'news'                          => 'Yangiliklar',
     'videos'                        => 'Videolar',
-    'banners'                        => 'Bannerlar',
+    'banners'                       => 'Bannerlar',
+    'discounts'                     => 'Chegirmalar',
 ];

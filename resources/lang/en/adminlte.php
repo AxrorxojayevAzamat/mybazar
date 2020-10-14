@@ -25,7 +25,8 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
-    'is_published' => 'Is published',
+    'is_published'                => 'Is published',
+    'common'                      => 'Common',
 
     'create' => 'Create',
     'save' => 'Save',
@@ -41,6 +42,10 @@ return [
     'send_to_moderation' => 'Send to moderation',
     'moderate' => 'Moderate',
     'activate' => 'Activate',
+    'inactive' => 'Inactive',
+    'active' => 'Active',
+    'commoned' => 'Commoned',
+    'rared' => 'Rared',
 
     'name' => 'Name',
     'title' => 'Title',
@@ -189,15 +194,21 @@ return [
         'plural' => 'Characteristics',
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
+        'hide_in_filters' => 'Hide in filters',
     ],
 
     'value' => [
         'add' => 'Add Value',
         'name' => 'Value',
         'plural' => 'Values',
+        'characteristic_value' => 'Characteristic value',
     ],
 
     'news' => [
         'name' => 'News',
+    ],
+    
+    'discount' => [
+        
     ],
 ];
