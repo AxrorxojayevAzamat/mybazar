@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -32,6 +33,7 @@ use Eloquent;
  * @property User $updatedBy
  *
  * @property string $name
+ * @method Builder inFilter()
  * @mixin Eloquent
  */
 class Characteristic extends BaseModel
@@ -130,6 +132,16 @@ class Characteristic extends BaseModel
     public function getNameAttribute(): string
     {
         return LanguageHelper::getName($this);
+    }
+
+    ###########################################
+
+
+    ########################################### Scopes
+
+    public function scopeInFilter($query)
+    {
+        return $query->where('hide_in_filters', false);
     }
 
     ###########################################
