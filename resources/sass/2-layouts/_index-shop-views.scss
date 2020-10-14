@@ -1,10 +1,10 @@
 .shops{
     width:100%;
-    height:1100px;
+    height:965px;
     background:$bg_grey_color;
     .outter-shops{
         width:100%;
-        height:975px; 
+        height:860px; 
         background:white;
         position:relative;
         .all-shops{
@@ -146,11 +146,73 @@
         }
     } 
 }
+
+
+
+//Adaptation
+
+
+@media all and (min-width:1800px){
+    .shops {
+        height: 1050px;
+        .outter-shops {
+            height: 910px;
+        }
+    }
+}
+@media all and (min-width:2000px){
+    .shops {
+        height: 1135px;
+        .outter-shops {
+            height: 990px;
+        }
+    }
+}
+@media all and (min-width:2200px){
+    .shops {
+        height: 1150px;
+        .outter-shops {
+            height: 1000px;
+        }
+    }
+}
+@media all and (max-width:1800px){
+    .shops {
+        height: 960px;
+        .outter-shops {
+            height: 830px;
+        }
+    }
+}
+@media all and (max-width:1600px){
+    .shops {
+        height: 900px;
+        .outter-shops {
+            height: 780px;
+        }
+    }
+}
+@media all and (max-width:1522px){
+    .shops {
+        height: 900px;
+        .outter-shops {
+            height: 750px;
+        }
+    }
+}
+@media all and (max-width:1400px){
+    .shops {
+        height: 950px;
+        .outter-shops {
+            height: 840px;
+        }
+    }
+}
 @media all and (max-width:1250px){
     .shops {
-        height: 1075px;
+        height: 960px;
         .outter-shops {
-            height: 975px;
+            height: 855px;
             .all-shops {
                 .shops-2r {
                     .first-item {
@@ -164,49 +226,27 @@
         }
     }
 }
-
-
-//Adaptation
-
-
-@media all and (min-width:1800px){
-    .shops {
-        height: 1160px;
-        .outter-shops {
-            height: 1025px;
-        }
-    }
-}
-@media all and (min-width:2200px){
-    .shops {
-        height: 1200px;
-        .outter-shops {
-            height: 1050px;
-        }
-    }
-}
-
 @media all and (max-width:1140px){
     .shops {
-        height: 1050px;
+        height: 895px;
         .outter-shops {
-            height: 950px;
+            height: 795px;
         }
     }
 }
 @media all and (max-width:922px){
     .shops {
-        height: 1030px;
+        height: 845px;
         .outter-shops {
-            height: 925px;
+            height: 740px;
         }
     }
 }
 @media all and (max-width:799px){
     .shops {
-        height: 1200px;
+        height: 1045px;
         .outter-shops {
-            height: 1100px;
+            height: 950px;
         }
     }
 }
@@ -257,17 +297,17 @@
 }
 @media all and (max-width:500px){
     .shops {
-        height: 1400px;
+        height: 1260px;
         .outter-shops {
-            height: 1315px;
+            height: 1175px;
         }
     }
 }
 @media all and (max-width:420px){
     .shops {
-        height: 1330px;
+        height: 1140px;
         .outter-shops {
-            height: 1250px;
+            height: 1060px;
             .rating:not(:checked) > label {
                 font-size: 125%;
             }
@@ -276,17 +316,17 @@
 }
 @media all and (max-width:380px){
     .shops {
-        height: 1275px;
+        height: 1075px;
         .outter-shops {
-            height: 1200px;
+            height: 1000px;
         }
     }
 }
 @media all and (max-width:325px){
     .shops {
-        height: 1225px;
+        height: 1010px;
         .outter-shops {
-            height: 1150px;
+            height: 935px;
             .rating:not(:checked) > label {
                 font-size: 110%;
             }
