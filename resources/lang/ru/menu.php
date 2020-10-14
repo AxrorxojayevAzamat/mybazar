@@ -34,4 +34,5 @@ return [
     'news'                          => 'Новости',
     'videos'                        => 'Видео',
     'banners'                       => 'Баннеры',
+    'discounts'                     => 'Скидки',
 ];

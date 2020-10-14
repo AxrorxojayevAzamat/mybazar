@@ -33,5 +33,6 @@ return [
     'posts'                         => 'Maqolalar',
     'news'                          => 'Yangiliklar',
     'videos'                        => 'Videolar',
-    'banners'                        => 'Bannerlar',
+    'banners'                       => 'Bannerlar',
+    'discounts'                     => 'Chegirmalar',
 ];

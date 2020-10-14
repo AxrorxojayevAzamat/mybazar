@@ -25,7 +25,8 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
-    'is_published' => 'E`lon qilinganmi',
+    'is_published'                => 'E`lon qilinganmi',
+    'common'                      => 'Umumiy',
 
     'create' => 'Yaratmoq',
     'save' => 'Qo`shmoq',
@@ -41,6 +42,10 @@ return [
     'send_to_moderation' => 'Moderatsiyaga yuborish',
     'moderate' => 'Moderatsiyadan o`tkazish',
     'activate' => 'Faollashtirish',
+    'inactive' => 'Faol emas',
+    'active' => 'Faol',
+    'commoned' => 'Umumiy',
+    'rared' => 'Noyob',
 
     'name' => 'Nomi',
     'title' => 'Nomi',
@@ -199,5 +204,9 @@ return [
 
     'news' => [
         'name' => 'Yangiliklar',
+    ],
+    
+    'discount' => [
+        
     ],
 ];

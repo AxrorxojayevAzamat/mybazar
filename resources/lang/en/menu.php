@@ -34,4 +34,5 @@ return [
     'news'                          => 'News',
     'videos'                        => 'Videos',
     'banners'                       => 'Banners',
+    'discounts'                     => 'Discounts',
 ];

@@ -21,6 +21,7 @@ use App\Entity\Category as Category;
 use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
 use App\Entity\Blog\Video;
+use App\Entity\Discount;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.home'), route('admin.home'));
@@ -656,4 +657,25 @@ Breadcrumbs::register('admin.sliders.show', function (Crumbs $crumbs, Slider $sl
 Breadcrumbs::register('admin.sliders.edit', function (Crumbs $crumbs, Slider $sliders) {
     $crumbs->parent('admin.sliders.show', $sliders);
     $crumbs->push(trans('adminlte.edit'), route('admin.sliders.edit', $sliders));
+});
+
+// Discounts
+Breadcrumbs::register('admin.discounts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.discounts'), route('admin.discounts.index'));
+});
+
+Breadcrumbs::register('admin.discounts.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.discounts.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.discounts.create'));
+});
+
+Breadcrumbs::register('admin.discounts.show', function (Crumbs $crumbs, Discount $discounts) {
+    $crumbs->parent('admin.discounts.index');
+    $crumbs->push($discounts->id, route('admin.discounts.show', $discounts));
+});
+
+Breadcrumbs::register('admin.discounts.edit', function (Crumbs $crumbs, Discount $discounts) {
+    $crumbs->parent('admin.discounts.show', $discounts);
+    $crumbs->push(trans('adminlte.edit'), route('admin.discounts.edit', $discounts));
 });

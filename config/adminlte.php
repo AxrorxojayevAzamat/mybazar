@@ -253,6 +253,12 @@ return [
             'can' => 'manage-users',
         ],
         [
+            'text' => 'discounts',
+            'url'  => 'admin/discounts',
+            'icon' => 'fas fa-fw fa-star',
+            'can' => 'manage-discounts',
+        ],
+        [
             'text' => 'products',
             'url'  => 'admin/shop/products',
             'icon' => 'fas fa-fw fa-box',
