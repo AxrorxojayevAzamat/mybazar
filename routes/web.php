@@ -230,6 +230,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         });
 
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
+
+        Route::post('moderate', 'StoreController@moderate')->name('moderate');
     });
 
     Route::resource('brands', 'BrandController');

@@ -4,6 +4,12 @@
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
         <a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success mr-1">{{ trans('adminlte.store.add_worker') }}</a>
+        @if ($store->isOnModeration())
+            <form method="POST" action="{{ route('admin.stores.moderate', $store) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
+            </form>
+        @endif
         <form method="POST" action="{{ route('admin.stores.destroy', $store) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -24,6 +30,7 @@
                         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $store->name_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $store->name_en }}</td></tr>
                         <tr><th>Slug</th><td>{{ $store->slug }}</td></tr>
+                        <tr><th>@lang('adminlte.status')</th><td>{!! $store->statusLabel() !!}</td></tr>
                         </tbody>
                     </table>
                 </div>

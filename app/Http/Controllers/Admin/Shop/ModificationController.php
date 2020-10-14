@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Shop;
 
+use App\Entity\Shop\Characteristic;
+use App\Entity\Shop\CharacteristicCategory;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
+use App\Helpers\LanguageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Modifications\CreateRequest;
 use App\Http\Requests\Admin\Shop\Modifications\UpdateRequest;
@@ -21,11 +24,17 @@ class ModificationController extends Controller
 
     public function create(Product $product)
     {
-        return view('admin.shop.products.modifications.create', compact('product'));
+        $categories = array_merge($product->mainCategory->ancestors()->pluck('id')->toArray(), [$product->main_category_id]);
+        $characteristics = CharacteristicCategory::whereIn('category_id', $categories)->pluck('characteristic_id')->toArray();
+        $characteristics = Characteristic::whereIn('id', $characteristics)->orderByDesc('updated_at')
+            ->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+
+        return view('admin.shop.products.modifications.create', compact('product', 'characteristics'));
     }
 
     public function store(Product $product, CreateRequest $request)
     {
+        dd($request->all());
         try {
             $modification = $this->service->addModification($product->id, $request);
             return redirect()->route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]);

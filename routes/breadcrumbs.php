@@ -17,7 +17,7 @@ use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
-use App\Entity\Category as Category;
+use App\Entity\Category;
 use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
 use App\Entity\Blog\Video;
@@ -227,7 +227,7 @@ Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) 
 
 Breadcrumbs::register('admin.shop.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push(trans('menu.shop_categories'), route('admin.shop.categories.index'));
+    $crumbs->push(trans('menu.categories'), route('admin.shop.categories.index'));
 });
 
 Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) {

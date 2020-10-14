@@ -314,16 +314,18 @@ class ProductService
         DB::beginTransaction();
         try {
             if (!$request->photo) {
-                $type = $request->color ? Modification::TYPE_COLOR : Modification::TYPE_VALUE;
+                $type = $request->color ? Modification::TYPE_COLOR :
+                    ($request->characteristic_id ? Modification::TYPE_CHARACTERISTIC_VALUE : Modification::TYPE_VALUE);
                 $modification = $product->modifications()->create([
                     'product_id' => $product->id,
                     'name_uz' => $request->name_uz,
                     'name_ru' => $request->name_ru,
                     'name_en' => $request->name_en,
                     'code' => $request->code,
+                    'characteristic_id' => $request->characteristic_id,
                     'price_uzs' => $request->price_uzs,
                     'price_usd' => $request->price_usd,
-                    'value' => $request->value ? $request->value : null,
+                    'value' => $request->value ? $request->value : ($request->characteristic_value ?? null),
                     'color' => $request->color ? ColorHelper::getValidColor($request->color) : null,
                     'type' => $type,
                     'sort' => 1000,
@@ -358,14 +360,16 @@ class ProductService
         $modification = $product->modifications()->where('id', $modificationId)->first();
 
         if ($request->color) {
-            $modification->edit($request, null, $request->color);
+            $modification->editColor($request);
         } else if ($request->value) {
-            $modification->edit($request, $request->value);
+            $modification->editValue($request);
+        } else if ($request->characteristic_value) {
+            $modification->editCharacteristicValue($request);
         } else if ($request->photo) {
             $this->deleteModificationPhoto($modification->id, $modification->photo);
             $imageName = ImageHelper::getRandomName($request->photo);
 
-            $modification->edit($request, null, null, $imageName);
+            $modification->editPhoto($request, $imageName);
 
             ImageHelper::saveThumbnail($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
             ImageHelper::saveOriginal($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);

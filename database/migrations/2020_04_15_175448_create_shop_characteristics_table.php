@@ -23,6 +23,7 @@ class CreateShopCharacteristicsTable extends Migration
             $table->string('default')->nullable();
             $table->boolean('required');
             $table->json('variants')->nullable();
+            $table->boolean('hide_in_filters');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();

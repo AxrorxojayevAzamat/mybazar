@@ -7,7 +7,7 @@
         @if ($characteristic->isOnModeration())
             <form method="POST" action="{{ route('admin.shop.characteristics.moderate', $characteristic) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-primary">@lang('adminlte.publish')</button>
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
         @endif
 

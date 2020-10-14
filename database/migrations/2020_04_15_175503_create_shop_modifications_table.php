@@ -20,6 +20,7 @@ class CreateShopModificationsTable extends Migration
             $table->string('name_ru');
             $table->string('name_en');
             $table->string('code', 20)->unique();
+            $table->unsignedBigInteger('characteristic_id')->nullable();
             $table->integer('price_uzs');
             $table->float('price_usd')->nullable();
             $table->tinyInteger('type');
@@ -33,6 +34,7 @@ class CreateShopModificationsTable extends Migration
         });
 
         Schema::table('shop_modifications', function (Blueprint $table) {
+            $table->foreign('characteristic_id')->references('id')->on('shop_characteristics')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });
