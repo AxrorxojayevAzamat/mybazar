@@ -33,8 +33,9 @@ class DiscountController extends Controller
     public function create()
     {
         $categories = ProductHelper::getCategoryList();
+        $statuses = Discount::statusesList();
 
-        return view('admin.discounts.create', compact('categories'));
+        return view('admin.discounts.create', compact('categories','statuses'));
     }
 
 
@@ -54,7 +55,8 @@ class DiscountController extends Controller
     public function edit(Discount $discount)
     {
         $categories = ProductHelper::getCategoryList();
-        return view('admin.discounts.edit', compact('discount', 'categories'));
+        $statuses = Discount::statusesList();
+        return view('admin.discounts.edit', compact('discount', 'categories','statuses'));
     }
 
     public function update(UpdateRequest $request, Discount $discount)

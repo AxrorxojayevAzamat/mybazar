@@ -51,6 +51,11 @@ class Discount extends BaseModel {
         'id', 'name_ru', 'name_en', 'name_uz', 'description_uz', 'description_en', 'description_ru',
         'start_date', 'end_date', 'category_id', 'common', 'status', 'photo'
     ];
+    
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
 
     public static function add(int $id, CreateRequest $request, int $categoryId, string $photoName): self {
         return static::create([
