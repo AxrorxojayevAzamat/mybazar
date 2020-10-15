@@ -6,8 +6,10 @@ return [
     'search_placeholder' => 'Поиск на myBazar',
     'previous' => 'Предыдущий',
     'next' => 'Следующий',
+    'show_more' => 'Показать ещё',
 
     'color' => 'Цвет',
+    'price' => 'Цена',
     'by_price' => 'По цене',
     'by_date' => 'По дате',
     'by_rating' => 'По оценке',

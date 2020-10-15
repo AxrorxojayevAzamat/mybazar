@@ -6,8 +6,10 @@ return [
     'search_placeholder' => 'Search in myBazar',
     'previous' => 'Previous',
     'next' => 'Next',
+    'show_more' => 'Show more',
 
     'color' => 'Color',
+    'price' => 'Price',
     'by_price' => 'By price',
     'by_date' => 'By date',
     'by_rating' => 'By rating',

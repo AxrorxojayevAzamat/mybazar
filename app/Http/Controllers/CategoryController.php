@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
+use App\Entity\Shop\Characteristic;
+use App\Entity\Shop\CharacteristicCategory;
+use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
+use App\Helpers\LanguageHelper;
 use App\Http\Router\ProductsPath;
 use Illuminate\Http\Request;
 
@@ -37,6 +41,8 @@ class CategoryController extends Controller
         $categoryIds = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->pluck('brand_id')->toArray();
         $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->pluck('store_id')->toArray();
+        $characteristicIds = CharacteristicCategory::whereIn('category_id', $categoryIds)
+            ->distinct()->pluck('characteristic_id')->toArray();
 
         $price = $request->get('by-price');
         $rating = $request->get('by-rating');
@@ -44,6 +50,33 @@ class CategoryController extends Controller
 
         $brands = Brand::whereIn('id', $brandIds)->get();
         $stores = Store::whereIn('id', $storeIds)->get();
+//        $modifications = Modification::select(['shop_modifications.*', 'c.name_' . LanguageHelper::getCurrentLanguagePrefix()])
+        $modifications = Modification::select(['shop_modifications.*', 'c.*'])
+            ->leftJoin('shop_characteristics as c', 'shop_modifications.characteristic_id', '=', 'c.id')
+            ->whereNotNull('shop_modifications.characteristic_id')
+            ->whereIn('c.id', $characteristicIds)->where('c.hide_in_filters', false)
+//            ->groupBy('shop_modifications.characteristic_id', 'shop_modifications.value',
+//                'shop_modifications.id', 'c.name_' . LanguageHelper::getCurrentLanguagePrefix())->distinct()
+            ->orderBy('shop_modifications.characteristic_id')->orderBy('shop_modifications.value')->get();
+
+        if ($modifications->isNotEmpty()) {
+            $tempModifications = [];
+            $modId = $modifications[0]->characteristic_id;
+            $i = 0;
+            foreach ($modifications as $modification) {
+                if ($modId === $modification->characteristic_id) {
+                    $tempModifications[$i][] = $modification;
+                } else {
+                    $modId = $modification->characteristic_id;
+                    $tempModifications[++$i][] = $modification;
+                }
+            }
+            $groupModifications = $tempModifications;
+            unset($tempModifications);
+        } else {
+            $groupModifications = null;
+        }
+        unset($modifications);
 
         $query = Product::where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
 //        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
@@ -87,6 +120,6 @@ class CategoryController extends Controller
 
         $products = $query->paginate(20);
 
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores'));
+        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications'));
     }
 }
