@@ -6,8 +6,10 @@ return [
     'search_placeholder' => 'myBazarda qidirish',
     'previous' => 'Oldingi',
     'next' => 'Keyingi',
+    'show_more' => 'Ko`prog`ini ko`rsatish',
 
     'color' => 'Rangi',
+    'price' => 'Narxi',
     'by_price' => 'Narxi bo`yicha',
     'by_date' => 'Sana bo`yicha',
     'by_rating' => 'Baho bo`yicha',

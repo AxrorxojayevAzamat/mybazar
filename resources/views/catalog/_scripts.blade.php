@@ -19,6 +19,15 @@
                 let brandsInput = $('#brands-hidden-input');
                 let storesInput = $('#stores-hidden-input');
 
+                let i = 0;
+                while ($(`.modifications-checkbox-${i}`).length) {
+                    console.log($('.modifications-checkbox-' + i).length);
+                    const modificationsInput = $('#modifications-' + i + '-hidden-input');
+                    const modifications = getFilter('modifications-checkbox-' + i);
+                    modificationsInput.val(modifications);
+                    i++;
+                }
+
                 brandsInput.val(brands);
                 storesInput.val(stores);
 

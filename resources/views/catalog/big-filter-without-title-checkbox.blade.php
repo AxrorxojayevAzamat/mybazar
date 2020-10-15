@@ -10,7 +10,7 @@
                     <label class="custom-control-label" for="brands-checkbox-{{ $i }}">{{ $brand->name }}</label>
                 </div>
             @endforeach
-            <a class="show-more" href="#">Показать еще</a>
+            <a class="show-more" href="#">@lang('frontend.show_more')</a>
         </div>
         <input type="hidden" name="brands" id="brands-hidden-input">
     @endif
@@ -26,11 +26,11 @@
                     <label class="custom-control-label" for="stores-checkbox-{{ $i }}">{{ $store->name }}</label>
                 </div>
             @endforeach
-            <a class="show-more" href="#">Показать еще</a>
+            <a class="show-more" href="#">@lang('frontend.show_more')</a>
         </div>
         <input type="hidden" name="stores" id="stores-hidden-input">
     @endif
-    <button type="button" class="btn accordion active">Цена</button>
+    <button type="button" class="btn accordion active">@lang('frontend.price')</button>
     <div id="filter3" class="panel">
         <div class="outter-range-slider">
             <div class="form-group">
@@ -44,20 +44,22 @@
         </div>
     </div>
 
-    @if ($modifications->isNotEmpty())
-        @php($storeSlugs = explode(',', request('stores')))
-        <button type="button" class="btn accordion active">@lang('frontend.stores')</button>
-        <div id="filter2" class="panel">
-            @foreach ($stores as $i => $store)
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input stores-checkbox" id="stores-checkbox-{{ $i }}"
-                           value="{{ $store->slug }}" @if (in_array($store->slug, $storeSlugs)) checked @endif>
-                    <label class="custom-control-label" for="stores-checkbox-{{ $i }}">{{ $store->name }}</label>
-                </div>
-            @endforeach
-            <a class="show-more" href="#">Показать еще</a>
-        </div>
-        <input type="hidden" name="stores" id="stores-hidden-input">
+    @if (!empty($groupModifications))
+        @foreach($groupModifications as $i => $modifications)
+            @php($modificationValues = explode(',', request('mod_' . $modifications[0]->characteristic_id)))
+            <button type="button" class="btn accordion active">{{ $modifications[0]->name }}</button>
+            <div id="filter2" class="panel">
+                @foreach ($modifications as $j => $modification)
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input modifications-checkbox-{{ $i }}" id="modifications-checkbox-{{ $i }}-{{ $j }}"
+                               value="{{ $modification->value }}" @if (in_array($modification->value, $modificationValues)) checked @endif>
+                        <label class="custom-control-label" for="modifications-checkbox-{{ $i }}-{{ $j }}">{{ $modification->value }}</label>
+                    </div>
+                @endforeach
+                <a class="show-more" href="#">@lang('frontend.show_more')</a>
+            </div>
+            <input type="hidden" name="mod_{{ $modification->characteristic_id }}" id="modifications-{{ $i }}-hidden-input">
+        @endforeach
     @endif
 
     <input type="submit" id="catalog-filter-button" value="{{ trans('frontend.apply_filter') }}">
