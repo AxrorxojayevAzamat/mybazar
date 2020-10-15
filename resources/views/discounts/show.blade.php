@@ -15,28 +15,20 @@
     <!-- sales body -->
     <section>
         <div class="h4-title sales-body">
-            <h4 class="title">Акции и скидки</h4>
+            <h4 class="title">@lang('frontend.discounts')</h4>
         </div>
         <div class="outter-salesview-body">
             <div class="shop-name">
-                <img src="{{asset('images/salesview-logo.png')}}" alt="">
+                <img src="{{ $discount->photoThumbnail }}" alt="">
                 <div class="name">
-                    <h6>Xiaomi Samarqand Darvoza</h6>
+                    <h6>{{$discount->name}}</h6>
                     <p>Смартфоны и гаджеты</p>
                 </div>
             </div>
             <div class="sales-view-body">
-                <img class="full-width" src="{{asset('images/sales-view1.png')}}" alt="">
+                <img class="full-width" src="{{ $discount->photoOriginal }}" alt="">
                 <div class="description">
-                    <h5 class="title">Черная пятница от магазина Xiaomi Samarqand Darvoza</h5>
-                    <p>Официальный узбекский магазин Xiaomi не перестает приятными радовать нас различными распродажами.
-                        Чтобы получить от официального магазина Xiaomi в Узбекистане щедрый подарок достаточно просто купить определенный товар,
-                        участвующий в акции, а дополнительный гаджет будет идти бонусом, то есть за него не придется платить, или делать что-либо еще.</p>
-                    <br>
-                    <br>
-                    <h6 class="title">Xiaomi Mi 9T 6/64Gb черный</h6>
-                    <p>Грациозная и завораживающая задняя панель Xiaomi Mi 9T оживает и начинает переливаться, когда на нее попадает свет. Благодаря плавным
-                        контурам телефон удобно лежит в руке и выглядит просто восхитительно. 6.39" AMOLED дисплей поражает своей яркостью при каждой разблокировке устройства. </p>
+                    {!! $discount->description !!}
                 </div>
                 <div class="item">
                     <div class="product-img">

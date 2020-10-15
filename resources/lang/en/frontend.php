@@ -21,6 +21,7 @@ return [
     'stores' => 'Stores',
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
+    'discounts' => 'Promotions and Discounts',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -62,7 +63,7 @@ return [
         'favorites' => 'Favorites',
         'popular' => 'Popular',
         'newest' => 'New products',
-        'sales' => 'Sales',
+        'discounts' => 'Sales',
         'shops' => 'Shops',
         'videos' => 'Video Blog',
     ],

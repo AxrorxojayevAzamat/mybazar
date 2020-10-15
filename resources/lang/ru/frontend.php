@@ -21,6 +21,7 @@ return [
     'stores' => 'Магазины',
     'all_categories' => 'Все категории',
     'discount_upper' => 'СКИДКА',
+    'discounts' => 'Акции и скидки',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -62,7 +63,7 @@ return [
         'favorites' => 'Избранное',
         'popular' => 'Популярный',
         'newest' => 'Новые товары',
-        'sales' => 'Акции и скидки',
+        'discounts' => 'Акции и скидки',
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
     ],

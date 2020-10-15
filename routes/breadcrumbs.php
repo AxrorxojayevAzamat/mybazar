@@ -156,19 +156,14 @@ Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.newest'));
 });
 
-Breadcrumbs::register('sales', function (Crumbs $crumbs) {
+Breadcrumbs::register('discounts.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push(trans('frontend.breadcrumb.sales'), route('sales'));
+    $crumbs->push(trans('frontend.breadcrumb.discounts'), route('discounts.index'));
 });
 
-Breadcrumbs::register('sales.show', function (Crumbs $crumbs) {
-    $crumbs->parent('sales');
-    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('sales.show'));
-});
-
-Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
-    $crumbs->parent('sales');
-    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
+Breadcrumbs::register('discounts.show', function (Crumbs $crumbs, Discount $discount) {
+    $crumbs->parent('discounts.index');
+    $crumbs->push($discount->name, route('discounts.show', $discount));
 });
 
 Breadcrumbs::register('shops.index', function (Crumbs $crumbs) {

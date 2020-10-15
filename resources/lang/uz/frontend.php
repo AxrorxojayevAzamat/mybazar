@@ -21,6 +21,7 @@ return [
     'stores' => 'Do`konlar',
     'all_categories' => 'Hamma kategoriyalar',
     'discount_upper' => 'CHEGIRMA',
+    'discounts' => 'Aksiya va Chegirmalar',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
@@ -62,7 +63,7 @@ return [
         'favorites' => 'Sevimlilar',
         'popular' => 'Mashxurlar',
         'newest' => 'Yangi maxsulotlar',
-        'sales' => 'Chegirmalar',
+        'discounts' => 'Chegirmalar',
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
     ],

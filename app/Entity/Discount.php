@@ -146,7 +146,7 @@ class Discount extends BaseModel {
     ###########################################
     ########################################### Scopes
 
-    public function scopeCommon($query) {
+    public function scopeCommoned($query) {
         return $query->where('common', true);
     }
 
