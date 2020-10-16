@@ -6,8 +6,10 @@ return [
     'search_placeholder' => 'Search in myBazar',
     'previous' => 'Previous',
     'next' => 'Next',
+    'show_more' => 'Show more',
 
     'color' => 'Color',
+    'price' => 'Price',
     'by_price' => 'By price',
     'by_date' => 'By date',
     'by_rating' => 'By rating',
@@ -21,6 +23,7 @@ return [
     'stores' => 'Stores',
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
+    'discounts' => 'Promotions and Discounts',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -62,7 +65,7 @@ return [
         'favorites' => 'Favorites',
         'popular' => 'Popular',
         'newest' => 'New products',
-        'sales' => 'Sales',
+        'discounts' => 'Sales',
         'shops' => 'Shops',
         'videos' => 'Video Blog',
     ],

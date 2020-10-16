@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SlidersTableSeeder::class);
         $this->call(ShopValuesTableSeeder::class);
         $this->call(DiscountsTableSeeder::class);
+        $this->call(ShopProductCharacteristicModificationsSeeder::class);
     }
 }

@@ -6,8 +6,10 @@ return [
     'search_placeholder' => 'Поиск на myBazar',
     'previous' => 'Предыдущий',
     'next' => 'Следующий',
+    'show_more' => 'Показать ещё',
 
     'color' => 'Цвет',
+    'price' => 'Цена',
     'by_price' => 'По цене',
     'by_date' => 'По дате',
     'by_rating' => 'По оценке',
@@ -21,6 +23,7 @@ return [
     'stores' => 'Магазины',
     'all_categories' => 'Все категории',
     'discount_upper' => 'СКИДКА',
+    'discounts' => 'Акции и скидки',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -62,7 +65,7 @@ return [
         'favorites' => 'Избранное',
         'popular' => 'Популярный',
         'newest' => 'Новые товары',
-        'sales' => 'Акции и скидки',
+        'discounts' => 'Акции и скидки',
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
     ],
