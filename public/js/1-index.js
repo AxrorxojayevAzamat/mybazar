@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $(window).on('resize', function(){
+        $('[copy-size]').each(function(){
+            var copyEl=$($(this).attr('copy-size'));
+            var targetEl=$(this);
+            targetEl.width(copyEl.width()+ 'px');
+            targetEl.height(copyEl.height()+'px');
+        });
+    });
     
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
@@ -33,6 +41,7 @@ $(document).ready(function(){
         this.classList.toggle("active");
         });
     }
+
 
     $('.d2').hover(
         function(){
