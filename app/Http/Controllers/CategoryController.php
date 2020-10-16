@@ -50,13 +50,10 @@ class CategoryController extends Controller
 
         $brands = Brand::whereIn('id', $brandIds)->get();
         $stores = Store::whereIn('id', $storeIds)->get();
-//        $modifications = Modification::select(['shop_modifications.*', 'c.name_' . LanguageHelper::getCurrentLanguagePrefix()])
         $modifications = Modification::select(['shop_modifications.*', 'c.*'])
             ->leftJoin('shop_characteristics as c', 'shop_modifications.characteristic_id', '=', 'c.id')
             ->whereNotNull('shop_modifications.characteristic_id')
             ->whereIn('c.id', $characteristicIds)->where('c.hide_in_filters', false)
-//            ->groupBy('shop_modifications.characteristic_id', 'shop_modifications.value',
-//                'shop_modifications.id', 'c.name_' . LanguageHelper::getCurrentLanguagePrefix())->distinct()
             ->orderBy('shop_modifications.characteristic_id')->orderBy('shop_modifications.value')->get();
 
         if ($modifications->isNotEmpty()) {
@@ -79,8 +76,6 @@ class CategoryController extends Controller
         unset($modifications);
 
         $query = Product::where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
-//        $products = ProductCategory::whereIn('category_id', $categoryIds)->pluck('product_id')->toArray();
-//        $query->whereIn('id', $products);
 
         if (!empty($value = $request->get('brands'))) {
             $value = explode(',', $value);
@@ -100,6 +95,16 @@ class CategoryController extends Controller
 
         if (!empty($value = $request->get('max_price'))) {
             $query->where('price_uzs', '<=', $value);
+        }
+
+        if (!empty($values = $request->get('modification'))) {
+            $productIds = [];
+            foreach ($values as $i => $value) {
+                $value = explode(',', $value);
+                $productIds = array_merge($productIds, Modification::where('characteristic_id', $i)->whereIn('value', $value)->pluck('product_id')->toArray());
+            }
+            $productIds = array_unique($productIds);
+            if (!empty($productIds)) { $query->whereIn('id', $productIds); }
         }
 
         if (empty($price) && empty($rating) && empty($newItems)) {
