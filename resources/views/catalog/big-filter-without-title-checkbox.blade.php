@@ -45,8 +45,9 @@
     </div>
 
     @if (!empty($groupModifications))
+        @php($modificationArray = request('modification'))
         @foreach($groupModifications as $i => $modifications)
-            @php($modificationValues = explode(',', request('mod_' . $modifications[0]->characteristic_id)))
+            @php($modificationValues = explode(',', $modificationArray[$modifications[0]->characteristic_id]))
             <button type="button" class="btn accordion active">{{ $modifications[0]->name }}</button>
             <div id="filter2" class="panel">
                 @foreach ($modifications as $j => $modification)
@@ -58,7 +59,7 @@
                 @endforeach
                 <a class="show-more" href="#">@lang('frontend.show_more')</a>
             </div>
-            <input type="hidden" name="mod_{{ $modification->characteristic_id }}" id="modifications-{{ $i }}-hidden-input">
+            <input type="hidden" name="modification[{{ $modification->characteristic_id }}]" id="modifications-{{ $i }}-hidden-input">
         @endforeach
     @endif
 
