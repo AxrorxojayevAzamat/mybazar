@@ -63,8 +63,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::patch('update-cart', 'ProductController@update');
     Route::delete('remove-from-cart', 'ProductController@remove');
 
-    Route::get('sales', 'SalesController@sales')->name('sales');
-    Route::get('sales/show', 'SalesController@show')->name('sales.show');
+    Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
+    
+        Route::get('', 'DiscountController@index')->name('index');
+        Route::get('/{discount}', 'DiscountController@show')->name('show');
+    });
 
     Route::group(['prefix' => 'shops', 'as' => 'shops.'], function () {
         Route::get('', 'ShopsController@index')->name('index');
