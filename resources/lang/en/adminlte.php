@@ -114,6 +114,7 @@ return [
         'role_dealer' => 'Dealer',
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
+        'role_manager' => 'Manager',
     ],
 
     'category' => [
