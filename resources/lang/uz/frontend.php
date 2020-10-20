@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
     'send' => 'Jo`natmoq',
@@ -7,6 +7,8 @@ return [
     'previous' => 'Oldingi',
     'next' => 'Keyingi',
     'show_more' => 'Ko`prog`ini ko`rsatish',
+    'compare_products' => 'Maxsulotlarni solishtirish',
+    'go_to_cart' => 'Savatga o`tish',
 
     'color' => 'Rangi',
     'price' => 'Narxi',

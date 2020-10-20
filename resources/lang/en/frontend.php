@@ -7,6 +7,8 @@ return [
     'previous' => 'Previous',
     'next' => 'Next',
     'show_more' => 'Show more',
+    'compare_products' => 'Compare products',
+    'go_to_cart' => 'Go to cart',
 
     'color' => 'Color',
     'price' => 'Price',
