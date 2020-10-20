@@ -15,9 +15,12 @@ return [
     'important'                     => 'Важно',
     'warning'                       => 'Внимание',
     'information'                   => 'Информация',
+    'compare'                       => 'Сравнение',
+    'favorites'                     => 'Избранное',
+    'account'                       => 'Аккаунт',
 
     'users'                         => 'Пользователи',
-    'categories'               => 'Категории',
+    'categories'                    => 'Категории',
     'brands'                        => 'Бренды',
     'products'                      => 'Продукты',
     'stores'                        => 'Магазины',

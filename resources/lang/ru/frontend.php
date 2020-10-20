@@ -7,6 +7,8 @@ return [
     'previous' => 'Предыдущий',
     'next' => 'Следующий',
     'show_more' => 'Показать ещё',
+    'compare_products' => 'Сравнить товары',
+    'go_to_cart' => 'Перейти в корзину',
 
     'color' => 'Цвет',
     'price' => 'Цена',
