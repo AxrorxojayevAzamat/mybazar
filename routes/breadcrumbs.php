@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\Banner;
+use App\Entity\Shop\CharacteristicGroup;
 use App\Entity\Slider;
 use App\Http\Router\ProductsPath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
@@ -108,11 +109,6 @@ Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
 //    $crumbs->push($category->name, route('categories.show', $category));
 //});
 
-Breadcrumbs::register('compare', function (Crumbs $crumbs) {
-    $crumbs->parent('compare');
-    $crumbs->push(trans('frontend.breadcrumb.compare'), route('compare'));
-});
-
 Breadcrumbs::register('delivery', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.delivery'), route('delivery'));
@@ -149,6 +145,11 @@ Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ProductsPath 
 Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('categories.show', products_path($product->mainCategory));
     $crumbs->push($product->name, route('products.show', $product));
+});
+
+Breadcrumbs::register('products.compare', function (Crumbs $crumbs, Product $product, Product $comparingProduct) {
+    $crumbs->parent('products.show', $product);
+    $crumbs->push(trans('frontend.compare_products'), route('products.compare', ['product' => $product, 'comparingProduct' => $comparingProduct]));
 });
 
 Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
@@ -375,6 +376,29 @@ Breadcrumbs::register('admin.shop.products.reviews.index', function (Crumbs $cru
 Breadcrumbs::register('admin.shop.products.reviews.show', function (Crumbs $crumbs, Product $product, ProductReview $review) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push($review->id, route('admin.shop.products.reviews.show', ['product' => $product, 'review' => $review]));
+});
+
+
+// Characteristic groups
+
+Breadcrumbs::register('admin.shop.characteristic-groups.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.characteristic-groups'), route('admin.shop.characteristic-groups.index'));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.characteristic-groups.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.characteristic-groups.create'));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.show', function (Crumbs $crumbs, CharacteristicGroup $group) {
+    $crumbs->parent('admin.shop.characteristic-groups.index');
+    $crumbs->push($group->name, route('admin.shop.characteristic-groups.show', $group));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.edit', function (Crumbs $crumbs, CharacteristicGroup $group) {
+    $crumbs->parent('admin.shop.characteristic-groups.show', $group);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.characteristic-groups.edit', $group));
 });
 
 

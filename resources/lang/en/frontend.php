@@ -7,6 +7,7 @@ return [
     'previous' => 'Previous',
     'next' => 'Next',
     'show_more' => 'Show more',
+    'clear_list' => 'Clear list',
 
     'color' => 'Color',
     'price' => 'Price',
@@ -18,6 +19,7 @@ return [
     'novelty_upper' => 'NEW',
     'popular' => 'Popular',
     'recommend' => 'Recommended',
+    'compare_products' => 'Compare products',
 
     'brand' => 'Brand',
     'stores' => 'Stores',

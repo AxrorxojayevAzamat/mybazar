@@ -151,4 +151,8 @@ class ProductController extends Controller
         }
     }
 
+    public function compare(Product $product, Product $comparingProduct)
+    {
+        return view('compare.compare');
+    }
 }

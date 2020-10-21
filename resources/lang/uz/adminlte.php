@@ -95,6 +95,7 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Kategoriya bo`lingan',
+    'order' => 'Tartib',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -195,6 +196,8 @@ return [
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
         'hide_in_filters' => 'Filtrlarda berkitish',
+        'group_name' => 'Xarakteristika guruhi',
+        'add_group' => 'Xarakteristika guruhi qo`shmoq',
     ],
 
     'value' => [
@@ -207,8 +210,8 @@ return [
     'news' => [
         'name' => 'Yangiliklar',
     ],
-    
+
     'discount' => [
-        
+
     ],
 ];

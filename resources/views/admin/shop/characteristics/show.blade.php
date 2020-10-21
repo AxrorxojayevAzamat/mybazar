@@ -30,6 +30,7 @@
                         <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $characteristic->name_uz }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $characteristic->name_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $characteristic->name_en }}</td></tr>
+                        <tr><th>{{ trans('adminlte.characteristic.group_name') }}</th><td><a href="{{ route('admin.shop.characteristic-groups.show', $characteristic->group) }}">{{ $characteristic->group->name }}</a></td></tr>
                         </tbody>
                     </table>
                 </div>

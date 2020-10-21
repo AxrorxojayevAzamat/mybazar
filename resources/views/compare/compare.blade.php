@@ -9,11 +9,11 @@
 @section('body')
     <section>
         <div class="h4-title compare">
-            <h4 class="title">Сравнение товаров</h4>
+            <h4 class="title">@lang('frontend.compare_products')</h4>
         </div>
         <div class="outter-compare-body">
             <div class="side-filter">
-                <button class="btn">Очистить список</button>
+                <button class="btn">@lang('frontend.clear_list')</button>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                     <label class="form-check-label" for="exampleRadios1">
@@ -369,5 +369,5 @@
 
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{ asset('js/1-index.js') }}"></script>
 @endsection

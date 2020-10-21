@@ -7,6 +7,7 @@ return [
     'previous' => 'Предыдущий',
     'next' => 'Следующий',
     'show_more' => 'Показать ещё',
+    'clear_list' => 'Очистить список',
 
     'color' => 'Цвет',
     'price' => 'Цена',
@@ -18,6 +19,7 @@ return [
     'novelty_upper' => 'НОВИНКА',
     'popular' => 'Популярные',
     'recommend' => 'Рекомендуем',
+    'compare_products' => 'Сравнение товаров',
 
     'brand' => 'Бренд',
     'stores' => 'Магазины',

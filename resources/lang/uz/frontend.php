@@ -7,6 +7,7 @@ return [
     'previous' => 'Oldingi',
     'next' => 'Keyingi',
     'show_more' => 'Ko`prog`ini ko`rsatish',
+    'clear_list' => 'Ro`yxatni tozalamoq',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -18,6 +19,7 @@ return [
     'novelty_upper' => 'YANGI',
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
+    'compare_products' => 'Mahsulotlarni taqqoslash',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',

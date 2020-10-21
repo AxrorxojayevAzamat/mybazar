@@ -265,6 +265,12 @@ return [
             'can' => 'manage-shop-products',
         ],
         [
+            'text' => 'characteristic-groups',
+            'url'  => 'admin/shop/characteristic-groups',
+            'icon' => 'fas fa-fw fa-file',
+            'can' => 'manage-shop-characteristics',
+        ],
+        [
             'text' => 'characteristics',
             'url'  => 'admin/shop/characteristics',
             'icon' => 'fas fa-fw fa-file',
