@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-Auth::routes();
-
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
-    Route::get('logout', 'Auth\LoginController@logout');
+    Auth::routes();
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');

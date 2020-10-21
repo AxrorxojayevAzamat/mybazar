@@ -15,6 +15,9 @@ return [
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
+    'compare'                       => 'Compare',
+    'favorites'                     => 'Favorites',
+    'account'                       => 'Account',
 
     'users'                         => 'Users',
     'categories'                    => 'Categories',

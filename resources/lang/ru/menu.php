@@ -15,6 +15,9 @@ return [
     'important'                     => 'Важно',
     'warning'                       => 'Внимание',
     'information'                   => 'Информация',
+    'compare'                       => 'Сравнение',
+    'favorites'                     => 'Избранное',
+    'account'                       => 'Аккаунт',
 
     'users'                         => 'Пользователи',
     'categories'                    => 'Категории',

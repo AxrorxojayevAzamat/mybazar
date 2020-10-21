@@ -8,6 +8,7 @@ return [
     'next' => 'Next',
     'show_more' => 'Show more',
     'clear_list' => 'Clear list',
+    'go_to_cart' => 'Go to cart',
 
     'color' => 'Color',
     'price' => 'Price',

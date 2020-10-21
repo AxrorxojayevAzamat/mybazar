@@ -8,6 +8,7 @@ return [
     'next' => 'Keyingi',
     'show_more' => 'Ko`prog`ini ko`rsatish',
     'clear_list' => 'Ro`yxatni tozalamoq',
+    'go_to_cart' => 'Savatga o`tish',
 
     'color' => 'Rangi',
     'price' => 'Narxi',

@@ -45,6 +45,7 @@ class User extends Authenticatable
     const ROLE_DEALER = 'diller';
     const ROLE_MODERATOR = 'moderator';
     const ROLE_ADMIN = 'administrator';
+    const ROLE_MANAGER = 'manager';
 
     protected $fillable = [
         'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role',
@@ -102,6 +103,7 @@ class User extends Authenticatable
             self::ROLE_DEALER => trans('adminlte.user.role_dealer'),
             self::ROLE_MODERATOR => trans('adminlte.user.role_moderator'),
             self::ROLE_ADMIN => trans('adminlte.user.role_administrator'),
+            self::ROLE_MANAGER => trans('adminlte.user.role_manager'),
         ];
     }
 
@@ -142,6 +144,11 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isManager(): bool
+    {
+        return $this->role === self::ROLE_MANAGER;
     }
 
     public function isPhoneVerified(): bool

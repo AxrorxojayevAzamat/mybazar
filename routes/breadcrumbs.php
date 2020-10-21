@@ -29,12 +29,16 @@ Breadcrumbs::register('home', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('login', function (Crumbs $crumbs) {
-    $crumbs->parent('home');
-    $crumbs->push(trans('adminlte.sign_in'), route('login'));
+});
+
+Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
+});
+
+Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
-    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
+//    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
 });
 
 Breadcrumbs::register('auth', function (Crumbs $crumbs) {
