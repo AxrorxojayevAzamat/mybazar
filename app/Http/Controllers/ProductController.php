@@ -155,7 +155,7 @@ class ProductController extends Controller
 
     public function compare(Product $product, Product $comparingProduct)
     {
-        if ($product->main_category_id !== $comparingProduct->main_category_id) {
+        if ($product->id === $comparingProduct->id || $product->main_category_id !== $comparingProduct->main_category_id) {
             abort(404);
             throw new \Exception('Products are not the same type!!!');
         }
