@@ -95,6 +95,7 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Category splitted',
+    'order' => 'Order',
 
     'photo' => [
         'plural' => 'Photos',
@@ -196,6 +197,8 @@ return [
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
         'hide_in_filters' => 'Hide in filters',
+        'group_name' => 'Characteristic group',
+        'add_group' => 'Add characteristic group',
     ],
 
     'value' => [
@@ -208,8 +211,8 @@ return [
     'news' => [
         'name' => 'News',
     ],
-    
+
     'discount' => [
-        
+
     ],
 ];

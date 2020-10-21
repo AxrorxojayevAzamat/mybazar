@@ -27,6 +27,7 @@ return [
     'payments'                      => 'To`lov turlari',
     'delivery_methods'              => 'Yetkazib berishlar',
     'marks'                         => 'Belgilar',
+    'characteristic-groups'         => 'Xarakteristikalar guruhlari',
     'characteristics'               => 'Xarakteristikalar',
     'orders'                        => 'Buyurtmalar',
     'order_items'                   => 'Buyurtma buyumlari',

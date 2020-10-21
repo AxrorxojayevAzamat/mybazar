@@ -95,6 +95,7 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Разделения категории',
+    'order' => 'Порядок',
 
     'photo' => [
         'plural' => 'Изображения',
@@ -196,6 +197,8 @@ return [
         'choose' => 'Выбрать Характеристику',
         'variants' => 'Варианты',
         'hide_in_filters' => 'Скрыть в фильтрах',
+        'group_name' => 'Группа характеристик',
+        'add_group' => 'Добавить группу характеристик',
     ],
 
     'value' => [
@@ -208,7 +211,7 @@ return [
     'news' => [
         'name' => 'Новости',
     ],
-    
+
     'discount' => [
 
     ],

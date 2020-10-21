@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 return [
     'send' => 'Jo`natmoq',
@@ -7,7 +7,7 @@ return [
     'previous' => 'Oldingi',
     'next' => 'Keyingi',
     'show_more' => 'Ko`prog`ini ko`rsatish',
-    'compare_products' => 'Maxsulotlarni solishtirish',
+    'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
 
     'color' => 'Rangi',
@@ -20,6 +20,7 @@ return [
     'novelty_upper' => 'YANGI',
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
+    'compare_products' => 'Mahsulotlarni taqqoslash',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',

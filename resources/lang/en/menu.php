@@ -27,6 +27,7 @@ return [
     'payments'                      => 'Payment types',
     'delivery_methods'              => 'Delivery Methods',
     'marks'                         => 'Marks',
+    'characteristic-groups'         => 'Characteristic groups',
     'characteristics'               => 'Characteristics',
     'orders'                        => 'Orders',
     'order_items'                   => 'Order items',

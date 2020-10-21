@@ -52,8 +52,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
     Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
 
-    Route::get('compare', 'CompareController@compare')->name('compare');
-
     Route::get('/delivery', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
     Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
@@ -69,7 +67,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::patch('update-cart', 'ProductController@update')->name('update');
             Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
         });
-
+        Route::get('{product}/compare-with/{comparingProduct}', 'ProductController@compare')->name('compare');
     });
 
     Route::get('add-to-cart/{id}', 'ProductController@addToCart');
@@ -77,7 +75,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::delete('remove-from-cart', 'ProductController@remove');
 
     Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
-    
+
         Route::get('', 'DiscountController@index')->name('index');
         Route::get('/{discount}', 'DiscountController@show')->name('show');
     });
@@ -137,7 +135,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('down', 'SlidersController@down')->name('down');
             Route::post('last', 'SlidersController@last')->name('last');
         });
-        
+
     Route::resource('discounts', 'DiscountController');
     Route::group(['prefix' => 'discounts/{discount}', 'as' => 'discounts.'], function () {
         Route::post('remove-file', 'DiscountController@removeFile')->name('remove-file');
@@ -152,6 +150,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+
+        Route::resource('characteristic-groups', 'CharacteristicGroupController');
+        Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {
+            Route::post('first', 'CharacteristicGroupController@first')->name('first');
+            Route::post('up', 'CharacteristicGroupController@up')->name('up');
+            Route::post('down', 'CharacteristicGroupController@down')->name('down');
+            Route::post('last', 'CharacteristicGroupController@last')->name('last');
+        });
 
         Route::resource('characteristics', 'CharacteristicController');
         Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {

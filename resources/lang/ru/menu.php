@@ -27,6 +27,7 @@ return [
     'payments'                      => 'Типы платежей',
     'delivery_methods'              => 'Доставки',
     'marks'                         => 'Отметки',
+    'characteristic-groups'         => 'Группы Характеристик',
     'characteristics'               => 'Характеристики',
     'orders'                        => 'Заказы',
     'order_items'                   => 'Товары заказа',
