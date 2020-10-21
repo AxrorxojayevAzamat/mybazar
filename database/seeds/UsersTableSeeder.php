@@ -34,9 +34,9 @@ class UsersTableSeeder extends Seeder
 
             SeederImageHelper::uploadImage($profile->user_id, ImageHelper::FOLDER_PROFILES, $imagePath, $imageName);
 
-            SeederImageHelper::changeIdOwner($profile->user_id, ImageHelper::FOLDER_PROFILES);
+//            SeederImageHelper::changeIdOwner($profile->user_id, ImageHelper::FOLDER_PROFILES);
         }
-        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_PROFILES));
+//        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_PROFILES));
     }
 
     }

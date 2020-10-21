@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-//Auth::routes(); // - custom (POST)  
+//Auth::routes(); - custom (POST)  
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
@@ -22,7 +22,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
-//Auth::routes(); //- custom(GET)
+    //Auth::routes(); - custom(GET)
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

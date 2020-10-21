@@ -30,7 +30,7 @@ class SeederImageHelper {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $imageName);
 
-        self::changeThumbnailOwner($id, $folderName, $imageName);
+//        self::changeThumbnailOwner($id, $folderName, $imageName);
     }
 
     public static function saveOriginal(int $id, string $folderName, string $path, string $imageName) {
@@ -38,14 +38,14 @@ class SeederImageHelper {
         ImageHelper::makeDirectory($destinationPath);
         File::copy($path, $destinationPath . '/' . $imageName);
 
-        self::changeOriginalOwner($id, $folderName, $imageName);
+//        self::changeOriginalOwner($id, $folderName, $imageName);
     }
 
     public static function saveVideoFile(int $id, string $folderName, string $path, string $videoName) {
         $destinationPath = ImageHelper::getRealPath($id, $folderName);
         File::copy($path, $destinationPath . DIRECTORY_SEPARATOR . $videoName);
         
-        self::changeVideoOwner($id, $folderName, $videoName);
+//        self::changeVideoOwner($id, $folderName, $videoName);
     }
 
     public static function deleteFolder(string $folderName) {
