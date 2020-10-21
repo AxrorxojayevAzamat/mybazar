@@ -3,7 +3,7 @@
 @section('title', 'Brand view')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/brands.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/brands.css')}}"> --}}
 @endsection
 
 @section('body')

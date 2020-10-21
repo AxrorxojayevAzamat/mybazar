@@ -4,7 +4,7 @@
 namespace App\Http\Requests\Admin\DeliveryMethods;
 
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\DeliveryMethod;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

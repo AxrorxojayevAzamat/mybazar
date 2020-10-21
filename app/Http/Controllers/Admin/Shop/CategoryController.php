@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Helpers\LanguageHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryService $service)
     {
-        $this->middleware('can:manage-shop-categories');
+        $this->middleware('can:manage-categories');
         $this->service = $service;
     }
 

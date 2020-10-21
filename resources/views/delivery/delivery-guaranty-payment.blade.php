@@ -3,7 +3,7 @@
 @section('title', 'Delivery page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/delivery-guaranty-payment.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/delivery-guaranty-payment.css')}}"> --}}
 @endsection
 
 @section('body')

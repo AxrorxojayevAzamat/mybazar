@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\Banner;
+use App\Entity\Shop\CharacteristicGroup;
 use App\Entity\Slider;
 use App\Http\Router\ProductsPath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
@@ -17,23 +18,27 @@ use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
-use App\Entity\Shop\Category as ShopCategory;
-use App\Entity\Blog\Category as BlogCategory;
+use App\Entity\Category;
 use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
 use App\Entity\Blog\Video;
+use App\Entity\Discount;
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
     $crumbs->push(trans('adminlte.home'), route('admin.home'));
 });
 
 Breadcrumbs::register('login', function (Crumbs $crumbs) {
-    $crumbs->parent('home');
-    $crumbs->push(trans('adminlte.sign_in'), route('login'));
+});
+
+Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
+});
+
+Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
-    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
+//    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
 });
 
 Breadcrumbs::register('auth', function (Crumbs $crumbs) {
@@ -103,15 +108,10 @@ Breadcrumbs::register('categories.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.categories'), route('categories.index'));
 });
 
-//Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+//Breadcrumbs::register('categories.show', function (Crumbs $crumbs, Category $category) {
 //    $crumbs->parent('front-home');
 //    $crumbs->push($category->name, route('categories.show', $category));
 //});
-
-Breadcrumbs::register('compare', function (Crumbs $crumbs) {
-    $crumbs->parent('compare');
-    $crumbs->push(trans('frontend.breadcrumb.compare'), route('compare'));
-});
 
 Breadcrumbs::register('delivery', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
@@ -151,24 +151,24 @@ Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $produc
     $crumbs->push($product->name, route('products.show', $product));
 });
 
+Breadcrumbs::register('products.compare', function (Crumbs $crumbs, Product $product, Product $comparingProduct) {
+    $crumbs->parent('products.show', $product);
+    $crumbs->push(trans('frontend.compare_products'), route('products.compare', ['product' => $product, 'comparingProduct' => $comparingProduct]));
+});
+
 Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.newest'));
 });
 
-Breadcrumbs::register('sales', function (Crumbs $crumbs) {
+Breadcrumbs::register('discounts.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push(trans('frontend.breadcrumb.sales'), route('sales'));
+    $crumbs->push(trans('frontend.breadcrumb.discounts'), route('discounts.index'));
 });
 
-Breadcrumbs::register('sales.show', function (Crumbs $crumbs) {
-    $crumbs->parent('sales');
-    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('sales.show'));
-});
-
-Breadcrumbs::register('salesview', function (Crumbs $crumbs) {
-    $crumbs->parent('sales');
-    $crumbs->push('Черная пятница от магазина Xiaomi Samarqand Darvoza', route('salesview'));
+Breadcrumbs::register('discounts.show', function (Crumbs $crumbs, Discount $discount) {
+    $crumbs->parent('discounts.index');
+    $crumbs->push($discount->name, route('discounts.show', $discount));
 });
 
 Breadcrumbs::register('shops.index', function (Crumbs $crumbs) {
@@ -227,7 +227,7 @@ Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) 
 
 Breadcrumbs::register('admin.shop.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push(trans('menu.shop_categories'), route('admin.shop.categories.index'));
+    $crumbs->push(trans('menu.categories'), route('admin.shop.categories.index'));
 });
 
 Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) {
@@ -235,7 +235,7 @@ Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) 
     $crumbs->push(trans('adminlte.create'), route('admin.shop.categories.create'));
 });
 
-Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, ShopCategory $category) {
+Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Category $category) {
     if ($parent = $category->parent) {
         $crumbs->parent('admin.shop.categories.show', $parent);
     } else {
@@ -244,7 +244,7 @@ Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Sh
     $crumbs->push($category->name, route('admin.shop.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, ShopCategory $category) {
+Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.shop.categories.show', $category);
     $crumbs->push(trans('adminlte.edit'), route('admin.shop.categories.edit', $category));
 });
@@ -380,6 +380,29 @@ Breadcrumbs::register('admin.shop.products.reviews.index', function (Crumbs $cru
 Breadcrumbs::register('admin.shop.products.reviews.show', function (Crumbs $crumbs, Product $product, ProductReview $review) {
     $crumbs->parent('admin.shop.products.show', $product);
     $crumbs->push($review->id, route('admin.shop.products.reviews.show', ['product' => $product, 'review' => $review]));
+});
+
+
+// Characteristic groups
+
+Breadcrumbs::register('admin.shop.characteristic-groups.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.characteristic-groups'), route('admin.shop.characteristic-groups.index'));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.characteristic-groups.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.characteristic-groups.create'));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.show', function (Crumbs $crumbs, CharacteristicGroup $group) {
+    $crumbs->parent('admin.shop.characteristic-groups.index');
+    $crumbs->push($group->name, route('admin.shop.characteristic-groups.show', $group));
+});
+
+Breadcrumbs::register('admin.shop.characteristic-groups.edit', function (Crumbs $crumbs, CharacteristicGroup $group) {
+    $crumbs->parent('admin.shop.characteristic-groups.show', $group);
+    $crumbs->push(trans('adminlte.edit'), route('admin.shop.characteristic-groups.edit', $group));
 });
 
 
@@ -539,12 +562,12 @@ Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) 
     $crumbs->push(trans('adminlte.create'), route('admin.blog.categories.create'));
 });
 
-Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, BlogCategory $category) {
+Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.blog.categories.index');
     $crumbs->push('sa', route('admin.blog.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, BlogCategory $category) {
+Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.home', $category);
     $crumbs->push(trans('adminlte.edit'), route('admin.blog.categories.edit', $category));
 });
@@ -657,4 +680,25 @@ Breadcrumbs::register('admin.sliders.show', function (Crumbs $crumbs, Slider $sl
 Breadcrumbs::register('admin.sliders.edit', function (Crumbs $crumbs, Slider $sliders) {
     $crumbs->parent('admin.sliders.show', $sliders);
     $crumbs->push(trans('adminlte.edit'), route('admin.sliders.edit', $sliders));
+});
+
+// Discounts
+Breadcrumbs::register('admin.discounts.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(trans('menu.discounts'), route('admin.discounts.index'));
+});
+
+Breadcrumbs::register('admin.discounts.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.discounts.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.discounts.create'));
+});
+
+Breadcrumbs::register('admin.discounts.show', function (Crumbs $crumbs, Discount $discounts) {
+    $crumbs->parent('admin.discounts.index');
+    $crumbs->push($discounts->id, route('admin.discounts.show', $discounts));
+});
+
+Breadcrumbs::register('admin.discounts.edit', function (Crumbs $crumbs, Discount $discounts) {
+    $crumbs->parent('admin.discounts.show', $discounts);
+    $crumbs->push(trans('adminlte.edit'), route('admin.discounts.edit', $discounts));
 });

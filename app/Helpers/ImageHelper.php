@@ -22,6 +22,8 @@ class ImageHelper
     const FOLDER_NEWS = 'news';
     const FOLDER_POSTS = 'posters';
     const FOLDER_VIDEOS = 'videos';
+    const FOLDER_DISCOUNTS = 'discounts';
+    const FOLDER_PROFILES = 'profiles';
 
     const TYPE_THUMBNAIL = 'thumbs';
     const TYPE_ORIGINAL = 'original';

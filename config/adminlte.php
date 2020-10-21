@@ -241,12 +241,6 @@ return [
             'can' => 'manage-users',
         ],
         [
-            'text' => 'blog_categories',
-            'url'  => 'admin/blog/categories',
-            'icon' => 'fas fa-fw fa-newspaper',
-            'can' => 'manage-users',
-        ],
-        [
             'text' => 'news',
             'url'  => 'admin/blog/news',
             'icon' => 'fas fa-fw fa-newspaper',
@@ -259,10 +253,22 @@ return [
             'can' => 'manage-users',
         ],
         [
+            'text' => 'discounts',
+            'url'  => 'admin/discounts',
+            'icon' => 'fas fa-fw fa-star',
+            'can' => 'manage-discounts',
+        ],
+        [
             'text' => 'products',
             'url'  => 'admin/shop/products',
             'icon' => 'fas fa-fw fa-box',
             'can' => 'manage-shop-products',
+        ],
+        [
+            'text' => 'characteristic-groups',
+            'url'  => 'admin/shop/characteristic-groups',
+            'icon' => 'fas fa-fw fa-file',
+            'can' => 'manage-shop-characteristics',
         ],
         [
             'text' => 'characteristics',
@@ -277,10 +283,10 @@ return [
             'can' => 'manage-stores',
         ],
         [
-            'text' => 'shop_categories',
+            'text' => 'categories',
             'url'  => 'admin/shop/categories',
             'icon' => 'fas fa-fw fa-list-alt',
-            'can' => 'manage-shop-categories',
+            'can' => 'manage-categories',
         ],
         [
             'text' => 'marks',

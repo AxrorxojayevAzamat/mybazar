@@ -17,7 +17,7 @@
         box-shadow: 0px 2px 7px -5px black;
 
         .menu-logo{
-            width:50%;
+            width:35%;
             display: flex;
             align-items:center;
             height:100%;
@@ -38,15 +38,54 @@
             }
         }
         .other-icons{
-            width:47%;
+            width:55%;
             height:100%;
             @include displayFlex(flex-end, row, center);
             a{
                 i{
-                    font-size:22px;
-                    margin-right:30px;
+                    font-size:30px;
+                    margin-right:20px;
                     text-align: center;
                 }
+                button.search {
+                    display: flex;
+                    justify-content: center;
+                    background-color: #0042ff;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                    i{
+                        position: relative;
+                        font-size: 17px;
+                        margin: 0;
+                        span{
+                            width: 18px;
+                            height: 18px;
+                            font-size: 10px;
+                            color: #fff;
+                            line-height: 18px;
+                            position: absolute;
+                            border-radius: 12px;
+                            display: block;
+                            transform: scale(0);
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            margin: auto;
+                            font-family:'CERAPRO-BOLD';
+                            background: #f42c48;
+                            &.counter{
+                                top:-23px;
+                                right:-21px;
+                                transition: .2s linear;
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                }
+                
                 &.cart{
                     i{
                         position: relative;
@@ -359,7 +398,8 @@ nav#menu{
             .other-icons{
                 a{
                     i{
-                        margin-right:20px;
+                        font-size:18px;
+                        margin-right:10px;
                     }
                 }
             }
@@ -385,7 +425,7 @@ nav#menu{
             height:55px;
             .menu-logo{
                 a{
-                    width:30px;
+                    width:50px;
                     height:27px;
                     span{
                         margin:2px 0;
@@ -397,9 +437,33 @@ nav#menu{
             }
             .other-icons{
                 a{
+                    button.search {
+                        margin-right: 5px;
+                    }
                     i{
                         font-size:18px;
-                        margin-right:10px;
+                        margin-right:8px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (max-width:300px){
+    #page{
+        .header{ 
+            .other-icons{
+                a{
+                    button.search {
+                        width: 28px;
+                        height: 28px;
+                        i {
+                            font-size: 13px;
+                        }
+                    }
+                    i{
+                        font-size: 15px;
+                        margin-right: 5px;
                     }
                 }
             }

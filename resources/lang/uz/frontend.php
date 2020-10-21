@@ -4,18 +4,29 @@ return [
     'send' => 'Jo`natmoq',
     'apply_filter' => 'Filtrlarni qo`llamoq',
     'search_placeholder' => 'myBazarda qidirish',
+    'previous' => 'Oldingi',
+    'next' => 'Keyingi',
+    'show_more' => 'Ko`prog`ini ko`rsatish',
+    'clear_list' => 'Ro`yxatni tozalamoq',
+    'go_to_cart' => 'Savatga o`tish',
 
     'color' => 'Rangi',
+    'price' => 'Narxi',
     'by_price' => 'Narxi bo`yicha',
     'by_date' => 'Sana bo`yicha',
     'by_rating' => 'Baho bo`yicha',
     'by_novelty' => 'Yangiligi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
-    'novelty' => 'YANGI',
+    'novelty_upper' => 'YANGI',
+    'popular' => 'Ommabop',
+    'recommend' => 'Tavsiya etiladi',
+    'compare_products' => 'Mahsulotlarni taqqoslash',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
     'all_categories' => 'Hamma kategoriyalar',
+    'discount_upper' => 'CHEGIRMA',
+    'discounts' => 'Aksiya va Chegirmalar',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
@@ -31,6 +42,7 @@ return [
         'interesting_products' => 'Sizga ham yoqishi mumkin',
         'about' => 'Mahsulot haqida',
         'comments' => 'Sharhlar',
+        'day_product' => 'KUN MAHSULOTI',
     ],
 
     'review' => [
@@ -56,7 +68,7 @@ return [
         'favorites' => 'Sevimlilar',
         'popular' => 'Mashxurlar',
         'newest' => 'Yangi maxsulotlar',
-        'sales' => 'Chegirmalar',
+        'discounts' => 'Chegirmalar',
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
     ],

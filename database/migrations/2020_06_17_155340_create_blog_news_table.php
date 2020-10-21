@@ -33,7 +33,7 @@ class CreateBlogNewsTable extends Migration
         });
 
         Schema::table('blog_news', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('blog_categories')->onDelete('restrict');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });

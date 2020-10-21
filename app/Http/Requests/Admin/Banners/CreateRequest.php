@@ -13,6 +13,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $description_en
  * @property string $url
  * @property string $slug
+ * @property int $category_id
  * @property bool $is_published
  * @property \Illuminate\Http\UploadedFile $file
  */
@@ -32,6 +33,7 @@ class CreateRequest extends FormRequest {
             'description_en' => 'required|string',
             'url' => 'required|string',
             'slug' => 'required|string|max:255|unique:banners',
+            'category_id' => 'required|numeric|min:1|exists:categories,id',
             'is_published' => 'boolean',
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];

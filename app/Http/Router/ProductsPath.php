@@ -2,7 +2,7 @@
 
 namespace App\Http\Router;
 
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Support\Facades\Cache;
 

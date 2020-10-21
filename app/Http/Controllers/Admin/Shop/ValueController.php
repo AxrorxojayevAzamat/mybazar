@@ -22,7 +22,7 @@ class ValueController extends Controller
 
     public function create(Product $product)
     {
-        $categories = $product->productCategories()->pluck('category_id')->toArray();
+        $categories = array_merge($product->mainCategory->ancestors()->pluck('id')->toArray(), [$product->main_category_id]);
         $characteristics = CharacteristicCategory::whereIn('category_id', $categories)->pluck('characteristic_id')->toArray();
         $characteristics = Characteristic::whereIn('id', $characteristics)->orderByDesc('updated_at')
             ->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');

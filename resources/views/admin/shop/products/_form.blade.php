@@ -142,7 +142,7 @@
         <div class="card card-green card-outline">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('price_uzs', trans('adminlte.price_uzs'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('price_uzs', old('price_uzs', $product ? $product->price_uzs : null),
@@ -152,7 +152,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('price_usd', trans('adminlte.price_usd'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('price_usd', old('price_usd', $product ? $product->price_usd : null),
@@ -162,7 +162,10 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('discount', trans('adminlte.product.discount'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('discount', old('discount', $product ? $product->discount : null),
@@ -172,20 +175,30 @@
                             @endif
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('status', trans('adminlte.status'), ['class' => 'col-form-label']); !!}
-                            {!! Form::select('status', \App\Helpers\ProductHelper::getStatusList(), old('status', $product ? $product->status : null),
-                                    ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
-                            @if ($errors->has('status'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
+                            {!! Form::label('discount_ends_at_date', trans('adminlte.product.discount_ends_at') . ' (' . trans('adminlte.date') . ')', ['class' => 'col-form-label']); !!}
+                            {!! Form::date('discount_ends_at_date', old('discount_ends_at_date', $product && $product->discount_ends_at ? date('Y-m-d', $product->discount_ends_at) : null),
+                                    ['class'=>'form-control' . ($errors->has('discount_ends_at_date') ? ' is-invalid' : '')]) !!}
+                            @if ($errors->has('discount_ends_at_date'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_date') }}</strong></span>
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            {!! Form::label('discount_ends_at_time', '(' . trans('adminlte.time') . ')', ['class' => 'col-form-label']); !!}
+                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? date('H:i', $product->discount_ends_at) : null),
+                                    ['class'=>'form-control' . ($errors->has('discount_ends_at_time') ? ' is-invalid' : '')]) !!}
+                            @if ($errors->has('discount_ends_at_time'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_time') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('weight', trans('adminlte.product.weight'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('weight', old('weight', $product ? $product->weight : null),
@@ -195,7 +208,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('quantity', trans('adminlte.quantity'), ['class' => 'col-form-label']); !!}
                             {!! Form::number('quantity', old('quantity', $product ? $product->quantity : null),

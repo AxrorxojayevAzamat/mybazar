@@ -20,7 +20,7 @@ class CreateShopCharacteristicCategoriesTable extends Migration
 
         Schema::table('shop_characteristic_categories', function (Blueprint $table) {
             $table->foreign('characteristic_id')->references('id')->on('shop_characteristics')->onDelete('restrict');
-            $table->foreign('category_id')->references('id')->on('shop_categories')->onDelete('restrict');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
         });
     }
 

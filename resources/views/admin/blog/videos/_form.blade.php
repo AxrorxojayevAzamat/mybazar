@@ -106,7 +106,7 @@
                 <div class="col-md-10">
                     <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
                         {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('category_id', $video ? $video->is_published : null),
+                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('is_published', $video ? $video->is_published : null),
                             ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
 
                         @if ($errors->has('is_published'))

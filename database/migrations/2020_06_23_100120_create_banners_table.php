@@ -23,6 +23,7 @@ class CreateBannersTable extends Migration
             $table->text('description_en');
             $table->string('url');
             $table->string('slug')->unique();
+            $table->unsignedInteger('category_id');
             $table->boolean('is_published')->default(false);
             $table->string('file')->nullable();
             $table->unsignedBigInteger('created_by');
@@ -31,6 +32,7 @@ class CreateBannersTable extends Migration
         });
 
         Schema::table('banners', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict');
         });

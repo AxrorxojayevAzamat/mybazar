@@ -3,7 +3,7 @@
 @section('title', 'Shops page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/shop.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/shop.css')}}"> --}}
 @endsection
 
 @section('body')

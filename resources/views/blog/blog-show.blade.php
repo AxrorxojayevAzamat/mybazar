@@ -3,7 +3,7 @@
 @section('title', 'Single blog page')
 
 @section('styles')
-    <link rel="stylesheet" href="{{asset('css/single-blog.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/single-blog.css')}}"> --}}
 @endsection
 
 @section('body')

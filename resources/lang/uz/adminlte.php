@@ -25,7 +25,8 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
-    'is_published' => 'E`lon qilinganmi',
+    'is_published'                => 'E`lon qilinganmi',
+    'common'                      => 'Umumiy',
 
     'create' => 'Yaratmoq',
     'save' => 'Qo`shmoq',
@@ -38,6 +39,13 @@ return [
     'no' => 'Yo`q',
     'draft' => 'Qoralama',
     'publish' => 'Nashr etish',
+    'send_to_moderation' => 'Moderatsiyaga yuborish',
+    'moderate' => 'Moderatsiyadan o`tkazish',
+    'activate' => 'Faollashtirish',
+    'inactive' => 'Faol emas',
+    'active' => 'Faol',
+    'commoned' => 'Umumiy',
+    'rared' => 'Noyob',
 
     'name' => 'Nomi',
     'title' => 'Nomi',
@@ -76,6 +84,8 @@ return [
     'sort' => 'Joylashuvi',
     'cost' => 'Narhi',
     'quantity' => 'Miqdori',
+    'date' => 'Sana',
+    'time' => 'Vaqt',
     'date_from' => 'Boshlanish sana',
     'date_to' => 'Ohirgi sana',
     'image' => 'Tasviri',
@@ -84,6 +94,8 @@ return [
     'files' => 'Fayllar',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Kategoriya bo`lingan',
+    'order' => 'Tartib',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -103,6 +115,7 @@ return [
         'role_dealer' => 'Sotuvchi',
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
+        'role_manager' => 'Meneger',
     ],
 
     'category' => [
@@ -153,6 +166,7 @@ return [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
         'discount' => 'Chegirma',
+        'discount_ends_at' => 'Chegirma tugaydi',
         'moderation' => 'Modeatsiyani kutmoqda',
         'active' => 'Faol',
         'closed' => 'Yopilgan',
@@ -166,6 +180,7 @@ return [
         'reviews' => 'Sharhlar',
         'main_category' => 'Asosiy kategoriya',
         'additional_categories' => 'Yordamchi kategoriyalar',
+        'no_product_left' => 'Mahsulot qolmadi',
     ],
 
     'modification' => [
@@ -181,15 +196,23 @@ return [
         'plural' => 'Xarakteristikalar',
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
+        'hide_in_filters' => 'Filtrlarda berkitish',
+        'group_name' => 'Xarakteristika guruhi',
+        'add_group' => 'Xarakteristika guruhi qo`shmoq',
     ],
 
     'value' => [
         'add' => 'Qiymat qo`shmoq',
         'name' => 'Qiymat',
         'plural' => 'Qiymatlar',
+        'characteristic_value' => 'Xarakteristika qiymati',
     ],
 
     'news' => [
         'name' => 'Yangiliklar',
+    ],
+
+    'discount' => [
+
     ],
 ];

@@ -25,7 +25,8 @@ return [
     'verify_check_your_email'     => 'Before proceeding, please check your email for a verification link.',
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
-    'is_published' => 'Is published',
+    'is_published'                => 'Is published',
+    'common'                      => 'Common',
 
     'create' => 'Create',
     'save' => 'Save',
@@ -38,6 +39,13 @@ return [
     'no' => 'No',
     'draft' => 'Draft',
     'publish' => 'Publish',
+    'send_to_moderation' => 'Send to moderation',
+    'moderate' => 'Moderate',
+    'activate' => 'Activate',
+    'inactive' => 'Inactive',
+    'active' => 'Active',
+    'commoned' => 'Commoned',
+    'rared' => 'Rared',
 
     'name' => 'Name',
     'title' => 'Title',
@@ -76,6 +84,8 @@ return [
     'sort' => 'Sort',
     'cost' => 'Cost',
     'quantity' => 'Quantity',
+    'date' => 'Date',
+    'time' => 'Time',
     'date_from' => 'Date from',
     'date_to' => 'Date to',
     'image' => 'Image',
@@ -84,6 +94,8 @@ return [
     'files' => 'Files',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Category splitted',
+    'order' => 'Order',
 
     'photo' => [
         'plural' => 'Photos',
@@ -103,6 +115,7 @@ return [
         'role_dealer' => 'Dealer',
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
+        'role_manager' => 'Manager',
     ],
 
     'category' => [
@@ -153,6 +166,7 @@ return [
         'add' => 'Add Product',
         'name' => 'Product',
         'discount' => 'Discount',
+        'discount_ends_at' => 'Discount ends at',
         'moderation' => 'Moderation',
         'active' => 'Active',
         'closed' => 'Closed',
@@ -166,6 +180,7 @@ return [
         'reviews' => 'Reviews',
         'main_category' => 'Main category',
         'additional_categories' => 'Additional categories',
+        'no_product_left' => 'No product left',
     ],
 
     'modification' => [
@@ -181,15 +196,23 @@ return [
         'plural' => 'Characteristics',
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
+        'hide_in_filters' => 'Hide in filters',
+        'group_name' => 'Characteristic group',
+        'add_group' => 'Add characteristic group',
     ],
 
     'value' => [
         'add' => 'Add Value',
         'name' => 'Value',
         'plural' => 'Values',
+        'characteristic_value' => 'Characteristic value',
     ],
 
     'news' => [
         'name' => 'News',
+    ],
+
+    'discount' => [
+
     ],
 ];

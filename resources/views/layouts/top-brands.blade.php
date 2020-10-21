@@ -43,12 +43,12 @@
 
         <!-- original two-row brands -->
 
-        <div class="two-rows-brands row">
+        {{-- <div class="two-rows-brands row">
             @foreach($gBrands as $brand)
             <div class="col-1">
                 <img src="{{$brand->logo}}">
             </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </section>

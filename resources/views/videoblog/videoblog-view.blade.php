@@ -5,7 +5,7 @@
 @section('styles')
     <link href="{{asset('css/video-js.css')}}" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{asset('css/videoblog-view.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/videoblog-view.css')}}"> --}}
 @endsection
 
 @section('body')

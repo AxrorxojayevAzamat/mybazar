@@ -3,6 +3,14 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.characteristics.edit', $characteristic) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+
+        @if ($characteristic->isOnModeration())
+            <form method="POST" action="{{ route('admin.shop.characteristics.moderate', $characteristic) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
+            </form>
+        @endif
+
         <form method="POST" action="{{ route('admin.shop.characteristics.destroy', $characteristic) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -22,6 +30,7 @@
                         <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $characteristic->name_uz }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $characteristic->name_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $characteristic->name_en }}</td></tr>
+                        <tr><th>{{ trans('adminlte.characteristic.group_name') }}</th><td><a href="{{ route('admin.shop.characteristic-groups.show', $characteristic->group) }}">{{ $characteristic->group->name }}</a></td></tr>
                         </tbody>
                     </table>
                 </div>

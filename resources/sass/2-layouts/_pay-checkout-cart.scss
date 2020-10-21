@@ -2,7 +2,7 @@
     width:100%;
     background:white;
     padding:2% 10%;
-    @include displayFlex(flex-start, row, start);
+    @include displayFlex(flex-start, row, flex-start);
     .ur-cart{
         width:20%;
         text-align: left;
@@ -78,7 +78,6 @@
         form{
             text-align:start;
             select{
-                background: url("../images/fill-arrow-down.png") no-repeat right;
                 -webkit-appearance: none;
                 background-position-x: 97%;
                 option{
@@ -410,7 +409,7 @@
 }
 @media all and (max-width:800px){
     .outter-pay-checkout-cart{
-        @include displayFlex(flex-start, column, start);
+        @include displayFlex(flex-start, column, flex-start);
         p{
             font-size:16px;
             line-height:22px;
@@ -483,7 +482,7 @@
         padding:2% 8%;
         .inner-pay-checkout-cart{
             .check-labels{
-                @include displayFlex(flex-start, column, start);
+                @include displayFlex(flex-start, column, flex-start);
                 div{
                     margin:1% 0;
                 }

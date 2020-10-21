@@ -4,18 +4,29 @@ return [
     'send' => 'Отправить',
     'apply_filter' => 'Применить фильтр',
     'search_placeholder' => 'Поиск на myBazar',
+    'previous' => 'Предыдущий',
+    'next' => 'Следующий',
+    'show_more' => 'Показать ещё',
+    'clear_list' => 'Очистить список',
+    'go_to_cart' => 'Перейти в корзину',
 
     'color' => 'Цвет',
+    'price' => 'Цена',
     'by_price' => 'По цене',
     'by_date' => 'По дате',
     'by_rating' => 'По оценке',
     'by_novelty' => 'По новизне',
     'log_in_to_review' => 'Пожалуйста, авторизуйтесь, чтобы оставить отзыв!',
-    'novelty' => 'НОВИНКА',
+    'novelty_upper' => 'НОВИНКА',
+    'popular' => 'Популярные',
+    'recommend' => 'Рекомендуем',
+    'compare_products' => 'Сравнение товаров',
 
     'brand' => 'Бренд',
     'stores' => 'Магазины',
     'all_categories' => 'Все категории',
+    'discount_upper' => 'СКИДКА',
+    'discounts' => 'Акции и скидки',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -31,6 +42,7 @@ return [
         'interesting_products' => 'Вам также может понравиться',
         'about' => 'О товаре',
         'comments' => 'Комментарии',
+        'day_product' => 'ТОВАР ДНЯ',
     ],
 
     'review' => [
@@ -56,7 +68,7 @@ return [
         'favorites' => 'Избранное',
         'popular' => 'Популярный',
         'newest' => 'Новые товары',
-        'sales' => 'Акции и скидки',
+        'discounts' => 'Акции и скидки',
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
     ],

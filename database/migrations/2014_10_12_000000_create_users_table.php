@@ -34,15 +34,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('1q2w3e4r5t6y'),
-            'role' => User::ROLE_ADMIN,
-            'status' => User::STATUS_ACTIVE,
-            'email_verified_at' => Carbon::now()->addSeconds(300),
-            'remember_token' => Str::random(10),
-        ]);
     }
 
     /**

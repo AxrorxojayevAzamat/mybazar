@@ -25,7 +25,8 @@ return [
     'verify_check_your_email'     => 'Прежде чем продолжить, проверьте свою электронную почту на наличие ссылки для подтверждения.',
     'verify_if_not_recieved'      => 'Если вы не получили письмо',
     'verify_request_another'      => 'нажмите здесь, чтобы запросить другой',
-    'is_published' => 'Опубликован',
+    'is_published'                => 'Опубликован',
+    'common'                      => 'Общие',
 
     'create' => 'Добавить',
     'save' => 'Добавить',
@@ -38,6 +39,13 @@ return [
     'no' => 'Нет',
     'draft' => 'Черновой вариант',
     'publish' => 'Опубликовать',
+    'send_to_moderation' => 'Отправить на модерацию',
+    'moderate' => 'Модерировать',
+    'activate' => 'Активировать',
+    'inactive' => 'Неактивный',
+    'active' => 'Активный',
+    'commoned' => 'Общий',
+    'rared' => 'Редкий',
 
     'name' => 'Название',
     'title' => 'Название',
@@ -76,6 +84,8 @@ return [
     'sort' => 'Место',
     'cost' => 'Цена',
     'quantity' => 'Количество',
+    'date' => 'Дата',
+    'time' => 'Время',
     'date_from' => 'Дата начала',
     'date_to' => 'Дата конца',
     'image' => 'Изображение',
@@ -84,6 +94,8 @@ return [
     'files' => 'Файлы',
     'url' => 'Url',
     'slug' => 'Slug',
+    'category_splitted' => 'Разделения категории',
+    'order' => 'Порядок',
 
     'photo' => [
         'plural' => 'Изображения',
@@ -103,6 +115,7 @@ return [
         'role_dealer' => 'Дилер',
         'role_moderator' => 'Модератор',
         'role_administrator' => 'Администратор',
+        'role_manager' => 'Менеджер',
     ],
 
     'category' => [
@@ -153,6 +166,7 @@ return [
         'add' => 'Добавить Продукт',
         'name' => 'Продукт',
         'discount' => 'Скидка',
+        'discount_ends_at' => 'Скидка закончится в',
         'moderation' => 'Ждёт модерацию',
         'active' => 'Активный',
         'closed' => 'Закрытый',
@@ -166,6 +180,7 @@ return [
         'reviews' => 'Обзоры',
         'main_category' => 'Главная категория',
         'additional_categories' => 'Дополнительные категории',
+        'no_product_left' => 'Нет товара',
     ],
 
     'modification' => [
@@ -181,15 +196,23 @@ return [
         'plural' => 'Характеристики',
         'choose' => 'Выбрать Характеристику',
         'variants' => 'Варианты',
+        'hide_in_filters' => 'Скрыть в фильтрах',
+        'group_name' => 'Группа характеристик',
+        'add_group' => 'Добавить группу характеристик',
     ],
 
     'value' => [
         'add' => 'Добавить Значению',
         'name' => 'Значение',
         'plural' => 'Значения',
+        'characteristic_value' => 'Значение характеристики',
     ],
 
     'news' => [
         'name' => 'Новости',
+    ],
+
+    'discount' => [
+
     ],
 ];

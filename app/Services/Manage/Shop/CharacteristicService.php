@@ -19,10 +19,12 @@ class CharacteristicService
                 'name_uz' => $request->name_uz,
                 'name_ru' => $request->name_ru,
                 'name_en' => $request->name_en,
+                'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
                 'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
+                'hide_in_filters' => $request->hide_in_filters,
             ]);
 
             $this->addCategories($characteristic, $request->categories);
@@ -46,10 +48,12 @@ class CharacteristicService
                 'name_uz' => $request->name_uz,
                 'name_ru' => $request->name_ru,
                 'name_en' => $request->name_en,
+                'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
                 'required' => $request->required,
                 'default' => $request->variants ? $request->default : null,
                 'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
+                'hide_in_filters' => $request->hide_in_filters,
             ]);
 
             $characteristic->characteristicCategories()->delete();
@@ -62,6 +66,12 @@ class CharacteristicService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function moderate(int $id): void
+    {
+        $advert = Characteristic::findOrFail($id);
+        $advert->moderate();
     }
 
     private function addCategories(Characteristic $characteristic, array $categories)

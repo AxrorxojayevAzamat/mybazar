@@ -3,7 +3,7 @@
 namespace App\Services\Manage\Shop;
 
 use App\Entity\Brand;
-use App\Entity\Shop\Category;
+use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
@@ -27,6 +27,11 @@ class ProductService
     public function create(CreateRequest $request): Product
     {
         $mainCategory = Category::findOrFail($request->main_category_id);
+
+        if ($mainCategory->children()->exists()) {
+            throw new \Exception('Category ' . $mainCategory->name . ' has children, please choose category with no child category.');
+        }
+
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -44,7 +49,8 @@ class ProductService
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
                 'discount' => $request->discount ?? 0,
-                'status' => $request->status,
+                'discount_ends_at' => $request->discount ? $request->discount_ends_at_date . ' ' . $request->discount_ends_at_time . ':00' : null,
+                'status' => Product::STATUS_DRAFT,
                 'weight' => $request->weight ?? null,
                 'quantity' => $request->quantity ?? null,
                 'guarantee' => $request->guarantee ?? false,
@@ -73,6 +79,11 @@ class ProductService
     {
         $product = Product::findOrFail($id);
         $mainCategory = Category::findOrFail($request->main_category_id);
+
+        if ($mainCategory->children()->exists()) {
+            throw new \Exception('Category ' . $mainCategory->name . ' has children, please choose category with no child category.');
+        }
+
         $store = Store::findOrFail($request->store_id);
         $brand = Brand::findOrFail($request->brand_id);
 
@@ -88,11 +99,12 @@ class ProductService
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
-                'discount' => $request->discount ?? null,
+                'discount' => $request->discount ?? 0,
+                'discount_ends_at' => $request->discount ? $request->discount_ends_at_date . ' ' . $request->discount_ends_at_time . ':00' : null,
                 'main_category_id' => $mainCategory->id,
                 'store_id' => $store->id,
                 'brand_id' => $brand->id,
-                'status' => $request->status,
+                'status' => $product->main_photo_id ? Product::STATUS_MODERATION : Product::STATUS_DRAFT,
                 'weight' => $request->weight ?? null,
                 'quantity' => $request->quantity ?? null,
                 'guarantee' => $request->guarantee ?? false,
@@ -114,6 +126,24 @@ class ProductService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function sendToModeration(int $id): void
+    {
+        $product = Product::findOrFail($id);
+        $product->sendToModeration();
+    }
+
+    public function moderate(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->moderate();
+    }
+
+    public function activate(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->activate();
     }
 
     public function addMainPhoto(int $id, UploadedFile $image)
@@ -143,7 +173,7 @@ class ProductService
                     'file' => $imageName,
                     'sort' => 1,
                 ]);
-                $product->update(['main_photo_id' => $photo->id]);
+                $product->update(['main_photo_id' => $photo->id, 'status' => Product::STATUS_MODERATION]);
             }
 
             DB::commit();
@@ -164,7 +194,7 @@ class ProductService
         DB::beginTransaction();
         try {
 
-            $product->update(['main_photo_id' => null]);
+            $product->update(['main_photo_id' => null, 'status' => Product::STATUS_DRAFT]);
             $product->mainPhoto()->delete();
             $this->sortPhotos($product);
 
@@ -284,16 +314,18 @@ class ProductService
         DB::beginTransaction();
         try {
             if (!$request->photo) {
-                $type = $request->color ? Modification::TYPE_COLOR : Modification::TYPE_VALUE;
+                $type = $request->color ? Modification::TYPE_COLOR :
+                    ($request->characteristic_id ? Modification::TYPE_CHARACTERISTIC_VALUE : Modification::TYPE_VALUE);
                 $modification = $product->modifications()->create([
                     'product_id' => $product->id,
                     'name_uz' => $request->name_uz,
                     'name_ru' => $request->name_ru,
                     'name_en' => $request->name_en,
                     'code' => $request->code,
+                    'characteristic_id' => $request->characteristic_id,
                     'price_uzs' => $request->price_uzs,
                     'price_usd' => $request->price_usd,
-                    'value' => $request->value ? $request->value : null,
+                    'value' => $request->value ? $request->value : ($request->characteristic_value ?? null),
                     'color' => $request->color ? ColorHelper::getValidColor($request->color) : null,
                     'type' => $type,
                     'sort' => 1000,
@@ -328,14 +360,16 @@ class ProductService
         $modification = $product->modifications()->where('id', $modificationId)->first();
 
         if ($request->color) {
-            $modification->edit($request, null, $request->color);
+            $modification->editColor($request);
         } else if ($request->value) {
-            $modification->edit($request, $request->value);
+            $modification->editValue($request);
+        } else if ($request->characteristic_value) {
+            $modification->editCharacteristicValue($request);
         } else if ($request->photo) {
             $this->deleteModificationPhoto($modification->id, $modification->photo);
             $imageName = ImageHelper::getRandomName($request->photo);
 
-            $modification->edit($request, null, null, $imageName);
+            $modification->editPhoto($request, $imageName);
 
             ImageHelper::saveThumbnail($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);
             ImageHelper::saveOriginal($modification->id, ImageHelper::FOLDER_MODIFICATIONS, $request->photo, $imageName);

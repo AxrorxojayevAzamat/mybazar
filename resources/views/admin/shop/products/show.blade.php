@@ -3,6 +3,22 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        @if ($product->isOnModeration())
+            <form method="POST" action="{{ route('admin.shop.products.moderate', $product) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
+            </form>
+        @elseif ($product->isDraft())
+            <form method="POST" action="{{ route('admin.shop.products.on-moderation', $product) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.send_to_moderation')</button>
+            </form>
+        @elseif ($product->isDraftAfterCategorySplit())
+            <form method="POST" action="{{ route('admin.shop.products.activate', $product) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-success">@lang('adminlte.activate')</button>
+            </form>
+        @endif
         <a href="{{ route('admin.shop.products.main-photo', $product) }}" class="btn btn-dark mr-1">{{ trans('adminlte.product.add_main_photo') }}</a>
         <a href="{{ route('admin.shop.products.photos', $product) }}" class="btn btn-secondary mr-1">{{ trans('adminlte.product.add_photos') }}</a>
         <a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-warning mr-1">{{ trans('adminlte.value.add') }}</a>

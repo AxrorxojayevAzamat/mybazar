@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin\Blog;
 
 
-use App\Entity\Blog\Category;
+use App\Entity\Category;
 use App\Entity\Blog\Video;
 use App\Helpers\ImageHelper;
+use App\Helpers\ProductHelper;
 use App\Http\Requests\Admin\Blog\Videos\CreateRequest;
 use App\Http\Requests\Admin\Blog\Videos\UpdateRequest;
 use App\Services\Manage\Blog\VideoService;
@@ -32,7 +33,7 @@ class VideoController extends Controller
 
     public function create()
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.videos.create', compact('categories'));
     }
@@ -53,7 +54,7 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
-        $categories = $this->getCategoriesList();
+        $categories = ProductHelper::getCategoryList();
         return view('admin.blog.videos.edit', compact('video', 'categories'));
     }
 
@@ -109,8 +110,4 @@ class VideoController extends Controller
         return response()->json('The video file is not deleted!', 400);
     }
 
-    private function getCategoriesList(): array
-    {
-        return Category::where('type', Category::VIDEOS)->pluck('name_ru', 'id')->toArray();
-    }
 }

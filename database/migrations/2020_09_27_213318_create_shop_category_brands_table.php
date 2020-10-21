@@ -21,7 +21,7 @@ class CreateShopCategoryBrandsTable extends Migration
         Schema::table('shop_category_brands', function (Blueprint $table) {
             $table->primary(['brand_id', 'category_id']);
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('restrict');
-            $table->foreign('category_id')->references('id')->on('shop_categories')->onDelete('restrict');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
         });
     }
 

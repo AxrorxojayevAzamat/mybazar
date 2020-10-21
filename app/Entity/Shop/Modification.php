@@ -18,6 +18,7 @@ use Eloquent;
  * @property string $name_ru
  * @property string $name_en
  * @property string $code
+ * @property int $characteristic_id
  * @property int $price_uzs
  * @property float $price_usd
  * @property int $type
@@ -31,6 +32,7 @@ use Eloquent;
  * @property Carbon $updated_at
  *
  * @property Product $product
+ * @property Characteristic $characteristic
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -44,14 +46,15 @@ use Eloquent;
 class Modification extends BaseModel
 {
     const TYPE_VALUE = 1;
-    const TYPE_COLOR = 2;
-    const TYPE_PHOTO = 3;
+    const TYPE_CHARACTERISTIC_VALUE = 2;
+    const TYPE_COLOR = 3;
+    const TYPE_PHOTO = 4;
 
     protected $table = 'shop_modifications';
 
     protected $fillable = [
         'id', 'product_id', 'name_uz', 'name_ru', 'name_en', 'code', 'price_uzs', 'price_usd', 'type', 'value',
-        'color', 'photo', 'sort',
+        'color', 'photo', 'sort', 'characteristic_id',
     ];
 
     public static function add(int $id, int $productId, CreateRequest $request, int $type, string $photoName): self
@@ -70,33 +73,53 @@ class Modification extends BaseModel
         ]);
     }
 
-    public function edit(UpdateRequest $request, string $value = null, string $color = null, string $photoName = null): void
+    public function editValue(UpdateRequest $request): void
     {
-        $type = $this->type;
-        if ($color) {
-            $this->value = null;
-            $this->color = $color;
-            $this->photo = null;
-            $type = self::TYPE_COLOR;
-        } elseif ($value) {
-            $this->value = $value;
-            $this->color = null;
-            $this->photo = null;
-            $type = self::TYPE_VALUE;
-        } elseif ($photoName) {
-            $this->value = null;
-            $this->color = null;
-            $this->photo = $photoName;
-            $type = self::TYPE_PHOTO;
-        }
+        $this->value = $request->value;
+        $this->color = null;
+        $this->photo = null;
+
+        $this->edit($request, self::TYPE_VALUE);
+    }
+
+    public function editCharacteristicValue(UpdateRequest $request)
+    {
+        $this->value = $request->characteristic_value;
+        $this->color = null;
+        $this->photo = null;
+
+        $this->edit($request, self::TYPE_CHARACTERISTIC_VALUE);
+    }
+
+    public function editColor(UpdateRequest $request)
+    {
+        $this->value = null;
+        $this->color = $request->color;
+        $this->photo = null;
+
+        $this->edit($request, self::TYPE_COLOR);
+    }
+
+    public function editPhoto(UpdateRequest $request, $photoName)
+    {
+        $this->value = null;
+        $this->color = null;
+        $this->photo = $photoName;
+
+        $this->edit($request, self::TYPE_PHOTO);
+    }
+
+    public function edit(UpdateRequest $request, int $type = null)
+    {
         $this->update([
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
             'code' => $request->code,
+            'characteristic_id' => $request->characteristic_id,
             'price_uzs' => $request->price_uzs,
             'price_usd' => $request->price_usd,
-            'type' => $type,
+            'type' => $type ?? $this->type,
         ]);
     }
 
@@ -114,6 +137,7 @@ class Modification extends BaseModel
     {
         return [
             self::TYPE_VALUE => trans('adminlte.value.name'),
+            self::TYPE_CHARACTERISTIC_VALUE => trans('adminlte.value.characteristic_value'),
             self::TYPE_COLOR => trans('adminlte.color'),
             self::TYPE_PHOTO => trans('adminlte.photo.name'),
         ];
