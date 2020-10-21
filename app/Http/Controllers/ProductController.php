@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Entity\Shop\Product;
+use App\Entity\Shop\Value;
 use App\Http\Requests\Products\ReviewRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 class ProductController extends Controller
 {
@@ -153,6 +155,39 @@ class ProductController extends Controller
 
     public function compare(Product $product, Product $comparingProduct)
     {
-        return view('compare.compare');
+        if ($product->main_category_id !== $comparingProduct->main_category_id) {
+            abort(404);
+            throw new \Exception('Products are not the same type!!!');
+        }
+
+        $values = Value::select(['shop_values.*', 'c.*', 'cg.*'])
+            ->leftJoin('shop_characteristics as c', 'shop_values.characteristic_id', '=', 'c.id')
+            ->leftJoin('shop_characteristic_groups as cg', 'c.group_id', '=', 'cg.id')
+            ->where('shop_values.product_id', $product->id)
+            ->orderBy('cg.order')->orderBy('shop_values.sort')->get();
+
+        if ($values->isNotEmpty()) {
+            $tempValues = [];
+            $comparingTempValues = [];
+            $groupId = $values[0]->characteristic->group_id;
+            $i = 0;
+            foreach ($values as $value) {
+                if ($groupId === $value->group_id) {
+                    $tempValues[$i][] = $value;
+                } else {
+                    $groupId = $value->characteristic->group_id;
+                    $tempValues[++$i][] = $value;
+                }
+                $comparingTempValues[$i][] = $comparingProduct->values()->where('characteristic_id', $value->characteristic_id)->first() ?? null;
+            }
+            $groupValues = $tempValues;
+            $comparingGroupValues = $comparingTempValues;
+            unset($tempValues, $comparingTempValues);
+        } else {
+            $groupValues = null;
+            $comparingGroupValues = null;
+        }
+
+        return view('compare.compare', compact('product', 'comparingProduct', 'groupValues', 'comparingGroupValues'));
     }
 }
