@@ -33,9 +33,9 @@ class BlogVideosTableSeeder extends Seeder {
             SeederImageHelper::uploadImage($video->id, ImageHelper::FOLDER_VIDEOS, $imagePath, $imageName);
             SeederImageHelper::uploadVideo($video->id, ImageHelper::FOLDER_VIDEOS, $videoPath, $videoName);
 
-            SeederImageHelper::changeIdOwner($video->id, ImageHelper::FOLDER_VIDEOS);
+//            SeederImageHelper::changeIdOwner($video->id, ImageHelper::FOLDER_VIDEOS);
         }
-        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_VIDEOS));
+//        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_VIDEOS));
     }
 
 }

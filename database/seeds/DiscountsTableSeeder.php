@@ -28,9 +28,9 @@ class DiscountsTableSeeder extends Seeder {
 
             SeederImageHelper::uploadImage($discount->id, ImageHelper::FOLDER_DISCOUNTS, $imagePath, $imageName);
 
-            SeederImageHelper::changeIdOwner($discount->id, ImageHelper::FOLDER_DISCOUNTS);
+//            SeederImageHelper::changeIdOwner($discount->id, ImageHelper::FOLDER_DISCOUNTS);
         }
-        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_DISCOUNTS));
+//        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_DISCOUNTS));
     }
 
 }

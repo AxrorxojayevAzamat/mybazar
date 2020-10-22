@@ -26,9 +26,9 @@ class BlogPostsTableSeeder extends Seeder {
 
             SeederImageHelper::uploadImage($post->id, ImageHelper::FOLDER_POSTS, $imagePath, $imageName);
 
-            SeederImageHelper::changeIdOwner($post->id, ImageHelper::FOLDER_POSTS);
+//            SeederImageHelper::changeIdOwner($post->id, ImageHelper::FOLDER_POSTS);
         }
-        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_POSTS));
+//        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_POSTS));
     }
 
 }
