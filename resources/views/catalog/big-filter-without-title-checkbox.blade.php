@@ -48,7 +48,7 @@
         @php($modificationArray = request('modification'))
         @foreach($groupModifications as $i => $modifications)
             @php($modificationValues = explode(',', $modificationArray[$modifications[0]->characteristic_id]))
-            <button type="button" class="btn accordion active">{{ $modifications[0]->name }}</button>
+            <button type="button" class="btn accordion active">{{ $modifications[0]->characteristic->name }}</button>
             <div id="filter2" class="panel">
                 @foreach ($modifications as $j => $modification)
                     <div class="custom-control custom-checkbox">
