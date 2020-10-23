@@ -44,10 +44,6 @@ class CategoryController extends Controller
         $characteristicIds = CharacteristicCategory::whereIn('category_id', $categoryIds)
             ->distinct()->pluck('characteristic_id')->toArray();
 
-        $price = $request->get('by-price');
-        $rating = $request->get('by-rating');
-        $newItems = $request->get('new-items');
-
         $brands = Brand::whereIn('id', $brandIds)->get();
         $stores = Store::whereIn('id', $storeIds)->get();
         $modifications = Modification::select(['shop_modifications.*', 'c.*'])
@@ -107,16 +103,30 @@ class CategoryController extends Controller
             if (!empty($productIds)) { $query->whereIn('id', $productIds); }
         }
 
+        $price = $request->get('by-price');
+        $rating = $request->get('by-rating');
+        $newItems = $request->get('new-items');
+
         if (empty($price) && empty($rating) && empty($newItems)) {
             $query->orderByDesc('updated_at');
         }
 
         if (!empty($price)) {
-            $query->orderBy('price_uzs');
+            $sign = substr($price, 0);
+            if ($sign === '+') {
+                $query->orderBy('price_uzs');
+            } else {
+                $query->orderByDesc('price_uzs');
+            }
         }
 
         if (!empty($rating)) {
-            $query->orderByDesc('rating');
+            $sign = substr($rating, 0);
+            if ($sign === '+') {
+                $query->orderBy('rating');
+            } else {
+                $query->orderByDesc('rating');
+            }
         }
 
         if (!empty($newItems)) {
