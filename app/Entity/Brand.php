@@ -11,6 +11,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Support\Facades\DB;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property integer $id
@@ -39,6 +40,10 @@ use Illuminate\Support\Facades\DB;
  */
 class Brand extends BaseModel
 {
+    use QueryCacheable;
+
+    public $cacheFor = 3600;
+
     private $nextStatementId;
 
     protected $table = 'brands';
@@ -46,6 +51,13 @@ class Brand extends BaseModel
     protected $fillable = [
         'id', 'name_uz', 'name_ru', 'name_en', 'slug', 'logo',
     ];
+
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'brands',
+        ];
+    }
 
     public static function add(int $id, string $nameUz, string $nameRu, string $nameEn, string $slug, string $logoName): self
     {

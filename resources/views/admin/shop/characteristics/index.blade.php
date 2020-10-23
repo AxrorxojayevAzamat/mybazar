@@ -25,6 +25,11 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
+                            {!! Form::select('group_id', $groups, request('group_id'), ['class'=>'form-control', 'id' => 'group_id', 'placeholder' => trans('adminlte.characteristic.group_name')]) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">{{ trans('adminlte.search') }}</button>
                             <a href="?" class="btn btn-outline-secondary">{{ trans('adminlte.clear') }}</a>
                         </div>
@@ -39,6 +44,7 @@
         <tr>
             <th>{{ trans('adminlte.name') }}</th>
             <th>{{ trans('adminlte.type') }}</th>
+            <th>{{ trans('adminlte.characteristic.group_name') }}</th>
             <th>{{ trans('adminlte.category.name') }}</th>
         </tr>
         </thead>
@@ -50,6 +56,7 @@
                 <td>
                     {{ $characteristic->variants ? 'Select' : $characteristic->typeName() }}
                 </td>
+                <td><a href="{{ route('admin.shop.characteristic-groups.show', $characteristic->group) }}">{{ $characteristic->group->name }}</a></td>
                 <td>
                     @foreach($characteristic->categories as $category)
                         <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
@@ -66,5 +73,6 @@
 @section($javaScriptSectionName)
     <script>
         $('#category_id').select2();
+        $('#group_id').select2();
     </script>
 @endsection

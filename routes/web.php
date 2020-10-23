@@ -13,9 +13,22 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-Auth::routes();
+//Auth::routes(); - custom (POST)  
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+
+    //Auth::routes(); - custom(GET)
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
 
     Route::get('home', 'HomeController@index')->name('home');
@@ -39,8 +52,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
     Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
 
-    Route::get('compare', 'CompareController@compare')->name('compare');
-
     Route::get('/delivery', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
 
     Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
@@ -56,7 +67,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::patch('update-cart', 'ProductController@update')->name('update');
             Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
         });
-
+        Route::get('{product}/compare-with/{comparingProduct}', 'ProductController@compare')->name('compare');
     });
 
     Route::get('add-to-cart/{id}', 'ProductController@addToCart');
@@ -64,7 +75,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::delete('remove-from-cart', 'ProductController@remove');
 
     Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
-    
+
         Route::get('', 'DiscountController@index')->name('index');
         Route::get('/{discount}', 'DiscountController@show')->name('show');
     });
@@ -118,13 +129,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('discard', 'BannersController@discard')->name('discard');
     });
     Route::resource('sliders', 'SlidersController');
-            Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
-            Route::post('first', 'SlidersController@first')->name('first');
-            Route::post('up', 'SlidersController@up')->name('up');
-            Route::post('down', 'SlidersController@down')->name('down');
-            Route::post('last', 'SlidersController@last')->name('last');
-        });
-        
+    Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
+        Route::post('first', 'SlidersController@first')->name('first');
+        Route::post('up', 'SlidersController@up')->name('up');
+        Route::post('down', 'SlidersController@down')->name('down');
+        Route::post('last', 'SlidersController@last')->name('last');
+    });
+
     Route::resource('discounts', 'DiscountController');
     Route::group(['prefix' => 'discounts/{discount}', 'as' => 'discounts.'], function () {
         Route::post('remove-file', 'DiscountController@removeFile')->name('remove-file');
@@ -134,11 +145,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
+    Route::group(['prefix' => 'users/{user}', 'as' => 'users.'], function () {
+            Route::post('remove-avatar', 'UserController@removeAvatar')->name('remove-avatar');
+        });
 
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+
+        Route::resource('characteristic-groups', 'CharacteristicGroupController');
+        Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {
+            Route::post('first', 'CharacteristicGroupController@first')->name('first');
+            Route::post('up', 'CharacteristicGroupController@up')->name('up');
+            Route::post('down', 'CharacteristicGroupController@down')->name('down');
+            Route::post('last', 'CharacteristicGroupController@last')->name('last');
+        });
 
         Route::resource('characteristics', 'CharacteristicController');
         Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {

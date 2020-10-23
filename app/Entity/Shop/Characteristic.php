@@ -9,12 +9,14 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property int $id
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
+ * @property int $group_id
  * @property string $status
  * @property string $type
  * @property string $default
@@ -26,6 +28,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
+ * @property CharacteristicGroup $group
  * @property CharacteristicCategory[] $characteristicCategories
  * @property Category[] $categories
  * @property Value[] $values
@@ -38,6 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Characteristic extends BaseModel
 {
+
     public const TYPE_STRING = 'string';
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';
@@ -48,8 +52,15 @@ class Characteristic extends BaseModel
 
     protected $table = 'shop_characteristics';
 
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'shop_characteristics',
+        ];
+    }
+
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
+        'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
     ];
 
     protected $casts = [
@@ -148,6 +159,11 @@ class Characteristic extends BaseModel
 
 
     ########################################### Relations
+
+    public function group()
+    {
+        return $this->belongsTo(CharacteristicGroup::class, 'group_id', 'id');
+    }
 
     public function characteristicCategories()
     {

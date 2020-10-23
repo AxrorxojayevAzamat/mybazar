@@ -52,6 +52,7 @@
         let valueForm = $('#value-form');
         let colorForm = $('#color-form');
         let photoForm = $('#photo_form');
+        let mainValues = $('#main-values');
 
         $(document).ready(function () {
             $('#characteristic_id').change(function () {
@@ -73,7 +74,9 @@
                             if (data.variants !== null) {
                                 form +=
                                     "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
-                                    "<select id=\"characteristic_value\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\" name=\"characteristic_value\">\n" +
+                                    "<select id=\"characteristic_value\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\" name=\"characteristic_value\"" +
+                                    data.required ? "required" : "" +
+                                    ">\n" +
                                     "   <option value=\"\"></option>\n";
 
                                 $.each(data.variants, function (key, value) {
@@ -95,6 +98,8 @@
 
                                 if (data.required) {
                                     form += " required>";
+                                } else {
+                                    form += ">";
                                 }
                             } else if (data.type === '{{ \App\Entity\Shop\Characteristic::TYPE_INTEGER }}') {
                                 form +=
@@ -104,8 +109,11 @@
 
                                 if (data.required) {
                                     form += " required>";
+                                } else {
+                                    form += ">";
                                 }
                             } else {
+                                console.log('dasdhsadghashgdhjasgdhjasghjdgashjdgsahjkgdkja');
                                 form +=
                                     "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
                                     "<input id=\"characteristic_value\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\"\n" +
@@ -113,7 +121,10 @@
 
                                 if (data.required) {
                                     form += " required>";
+                                } else {
+                                    form += ">";
                                 }
+                                console.log(form);
                             }
 
                             form +=
@@ -121,9 +132,12 @@
                                 "   <span class=\"invalid-feedback\"><strong>{{ $errors->first('characteristic_value') }}</strong></span>\n" +
                                 "@endif";
 
+                                console.log(form);
+
                             characteristicForm.append(form);
-                            valueForm.hide();
-                            colorForm.hide();
+                            mainValues.hide();
+                            // valueForm.hide();
+                            // colorForm.hide();
                             photoForm.hide();
 
                             // $('#modification-value').val(null);
@@ -134,8 +148,9 @@
                         }
                     });
                 } else {
-                    valueForm.show();
-                    colorForm.show();
+                    mainValues.show();
+                    // valueForm.show();
+                    // colorForm.show();
                     photoForm.show();
                     characteristicForm.empty();
                 }

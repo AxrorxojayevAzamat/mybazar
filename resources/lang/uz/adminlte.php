@@ -95,6 +95,14 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Kategoriya bo`lingan',
+    'order' => 'Tartib',
+    'first_name'  => 'Ism',
+    'last_name'  => 'Familiya',
+    'birth_date' => 'Tug`ilgan sana',
+    'gender' => 'Jinsi',
+    'address' => 'Manzil',
+    'male' => 'Erkak',
+    'female' => 'Ayol',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -114,6 +122,7 @@ return [
         'role_dealer' => 'Sotuvchi',
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
+        'role_manager' => 'Meneger',
     ],
 
     'category' => [
@@ -195,6 +204,8 @@ return [
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
         'hide_in_filters' => 'Filtrlarda berkitish',
+        'group_name' => 'Xarakteristika guruhi',
+        'add_group' => 'Xarakteristika guruhi qo`shmoq',
     ],
 
     'value' => [
@@ -207,8 +218,8 @@ return [
     'news' => [
         'name' => 'Yangiliklar',
     ],
-    
+
     'discount' => [
-        
+
     ],
 ];

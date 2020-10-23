@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Shop\CharacteristicCategory;
 use App\Entity\Shop\Characteristic;
+use App\Entity\Shop\CharacteristicGroup;
+use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Shop\Characteristics\CreateRequest;
@@ -41,16 +43,18 @@ class CharacteristicController extends Controller
         $characteristics = $query->paginate(20);
 
         $categories = ProductHelper::getCategoryList();
+        $groups = CharacteristicGroup::orderByDesc('updated_by')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.characteristics.index', compact('characteristics', 'categories'));
+        return view('admin.shop.characteristics.index', compact('characteristics', 'categories', 'groups'));
     }
 
     public function create()
     {
         $categories = ProductHelper::getCategoryList();
         $types = Characteristic::typesList();
+        $groups = CharacteristicGroup::orderByDesc('updated_by')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.characteristics.create', compact('categories', 'types'));
+        return view('admin.shop.characteristics.create', compact('categories', 'types', 'groups'));
     }
 
     public function store(CreateRequest $request)
@@ -69,8 +73,9 @@ class CharacteristicController extends Controller
     {
         $categories = ProductHelper::getCategoryList();
         $types = Characteristic::typesList();
+        $groups = CharacteristicGroup::orderByDesc('updated_by')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.characteristics.edit', compact('characteristic', 'categories', 'types'));
+        return view('admin.shop.characteristics.edit', compact('characteristic', 'categories', 'types', 'groups'));
     }
 
     public function update(UpdateRequest $request, Characteristic $characteristic)

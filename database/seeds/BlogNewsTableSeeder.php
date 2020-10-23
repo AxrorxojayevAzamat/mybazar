@@ -27,8 +27,8 @@ class BlogNewsTableSeeder extends Seeder
 
             SeederImageHelper::uploadImage($post->id, ImageHelper::FOLDER_NEWS, $imagePath, $imageName);
 
-            SeederImageHelper::changeIdOwner($post->id, ImageHelper::FOLDER_NEWS);
+//            SeederImageHelper::changeIdOwner($post->id, ImageHelper::FOLDER_NEWS);
         }
-        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_NEWS));
+//        SeederImageHelper::changeOwner(storage_path('app/public/files/' . ImageHelper::FOLDER_NEWS));
     }
 }

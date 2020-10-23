@@ -23,7 +23,7 @@
     <div class="from-statistics-to-account">
         <div class="dropdown compare-dropdown">
             <a href="#" class="btn dropdown-toggle comparison" role="button" id="dropdownComparison" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mbcompare"><span></span></i> Сравнение
+                <i class="mbcompare"><span></span></i> @lang('menu.compare')
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownComparison">
                 <div class="selected-items">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="bottom-btn">
                     <button class="btn bold switch-to-compare">
-                        Сравнить товары
+                        @lang('frontend.compare_products')
                     </button>
                 </div>
             </div>
@@ -78,7 +78,7 @@
 
         <div class="dropdown cart-dropdown" >
             <a href="#" class="btn dropdown-toggle cart" role="button" id="dropdownCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mbcart"><span class="counter">{{ count((array) session('cart')) }}</span></i> Корзина
+                <i class="mbcart"><span class="counter">{{ count((array) session('cart')) }}</span></i> @lang('menu.carts')
             </a>
             <div class="dropdown-menu"  aria-labelledby="dropdownCart">
                 <div class="selected-items">
@@ -125,12 +125,38 @@
                 </div>
                 <div class="bottom-btn">
                     <button class="btn bold switch-to-cart">
-                        Перейти в корзину
+                        @lang('frontend.go_to_cart')
                     </button>
                 </div>
             </div>
         </div>
-        <a href="#" class=" wish-list"> <i class="mbfavorite"><span></span></i> Избранные</a>
-        <a href="#" class="account bold"><i class="mbaccount"></i> Аккаунт</a>
+        <a href="#" class=" wish-list"> <i class="mbfavorite"><span></span></i> @lang('menu.favorites')</a>
+         <!-- Right Side Of Navbar -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Authentication Links -->
+        @guest
+        <li class="nav-item">
+            <a href="{{ route('login') }}" class="account bold"><i class="mbaccount"></i>@lang('menu.account')</a>
+        </li>
+        @else
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
+        @endguest
+    </ul>
     </div>
 </div>

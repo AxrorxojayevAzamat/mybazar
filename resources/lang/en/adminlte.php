@@ -95,6 +95,14 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Category splitted',
+    'order' => 'Order',
+    'first_name'  => 'Firstname',
+    'last_name'  => 'Lastname',
+    'birth_date' => 'Birth date',
+    'gender' => 'Gender',
+    'address' => 'Address',
+    'male' => 'Male',
+    'female' => 'Female',
 
     'photo' => [
         'plural' => 'Photos',
@@ -114,8 +122,9 @@ return [
         'role_dealer' => 'Dealer',
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
+        'role_manager' => 'Manager',
     ],
-
+    
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',
@@ -195,6 +204,8 @@ return [
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
         'hide_in_filters' => 'Hide in filters',
+        'group_name' => 'Characteristic group',
+        'add_group' => 'Add characteristic group',
     ],
 
     'value' => [
@@ -207,8 +218,8 @@ return [
     'news' => [
         'name' => 'News',
     ],
-    
+
     'discount' => [
-        
+
     ],
 ];

@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
  * @property string $name_uz
  * @property string $name_ru
  * @property string $name_en
+ * @property int $group_id
  * @property string $type
  * @property string $default
  * @property boolean $required
@@ -30,6 +31,7 @@ class CreateRequest extends FormRequest
             'name_uz' => 'required|string|max:255',
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
+            'group_id' => 'required|numeric|min:1|exists:shop_characteristic_groups,id',
             'type' => ['required', 'string', 'max:255', Rule::in(array_keys(Characteristic::typesList()))],
             'required' => 'boolean',
             'variants' => 'nullable|string',

@@ -95,7 +95,15 @@ return [
     'url' => 'Url',
     'slug' => 'Slug',
     'category_splitted' => 'Разделения категории',
-
+    'order' => 'Порядок',
+    'first_name'  => 'Имя',
+    'last_name'  => 'Фамилия',
+    'birth_date' => 'Дата рождения',
+    'gender' => 'Пол',
+    'address' => 'Адрес',
+    'male' => 'Мужчина',
+    'female' => 'Женщина',
+    
     'photo' => [
         'plural' => 'Изображения',
         'name' => 'Изображение',
@@ -114,6 +122,7 @@ return [
         'role_dealer' => 'Дилер',
         'role_moderator' => 'Модератор',
         'role_administrator' => 'Администратор',
+        'role_manager' => 'Менеджер',
     ],
 
     'category' => [
@@ -195,6 +204,8 @@ return [
         'choose' => 'Выбрать Характеристику',
         'variants' => 'Варианты',
         'hide_in_filters' => 'Скрыть в фильтрах',
+        'group_name' => 'Группа характеристик',
+        'add_group' => 'Добавить группу характеристик',
     ],
 
     'value' => [
@@ -207,7 +218,7 @@ return [
     'news' => [
         'name' => 'Новости',
     ],
-    
+
     'discount' => [
 
     ],

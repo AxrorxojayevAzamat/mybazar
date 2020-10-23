@@ -255,8 +255,7 @@ class Product extends BaseModel
 
     public function mainValues()
     {
-        return $this->hasMany(Value::class, 'product_id', 'id')
-            ->where('main', true)->orderBy('sort');
+        return $this->values()->where('main', true);
     }
 
     public function values()

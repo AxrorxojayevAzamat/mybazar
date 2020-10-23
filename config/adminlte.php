@@ -197,6 +197,8 @@ return [
     */
 
     'enabled_laravel_mix' => false,
+    'laravel_mix_css_path' => 'build/css/app.css',
+    'laravel_mix_js_path' => 'build/js/app.js',
 
     /*
     |--------------------------------------------------------------------------
@@ -263,6 +265,12 @@ return [
             'url'  => 'admin/shop/products',
             'icon' => 'fas fa-fw fa-box',
             'can' => 'manage-shop-products',
+        ],
+        [
+            'text' => 'characteristic-groups',
+            'url'  => 'admin/shop/characteristic-groups',
+            'icon' => 'fas fa-fw fa-file',
+            'can' => 'manage-shop-characteristics',
         ],
         [
             'text' => 'characteristics',

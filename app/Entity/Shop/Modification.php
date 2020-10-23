@@ -137,6 +137,7 @@ class Modification extends BaseModel
     {
         return [
             self::TYPE_VALUE => trans('adminlte.value.name'),
+            self::TYPE_CHARACTERISTIC_VALUE => trans('adminlte.value.characteristic_value'),
             self::TYPE_COLOR => trans('adminlte.color'),
             self::TYPE_PHOTO => trans('adminlte.photo.name'),
         ];
@@ -179,6 +180,11 @@ class Modification extends BaseModel
 
 
     ########################################### Relations
+
+    public function characteristic()
+    {
+        return $this->belongsTo(Characteristic::class, 'characteristic_id', 'id');
+    }
 
     public function product()
     {
