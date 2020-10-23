@@ -96,7 +96,14 @@ return [
     'slug' => 'Slug',
     'category_splitted' => 'Разделения категории',
     'order' => 'Порядок',
-
+    'first_name'  => 'Имя',
+    'last_name'  => 'Фамилия',
+    'birth_date' => 'Дата рождения',
+    'gender' => 'Пол',
+    'address' => 'Адрес',
+    'male' => 'Мужчина',
+    'female' => 'Женщина',
+    
     'photo' => [
         'plural' => 'Изображения',
         'name' => 'Изображение',

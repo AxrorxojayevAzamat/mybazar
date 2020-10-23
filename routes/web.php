@@ -26,7 +26,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); 
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
@@ -129,12 +129,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('discard', 'BannersController@discard')->name('discard');
     });
     Route::resource('sliders', 'SlidersController');
-            Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
-            Route::post('first', 'SlidersController@first')->name('first');
-            Route::post('up', 'SlidersController@up')->name('up');
-            Route::post('down', 'SlidersController@down')->name('down');
-            Route::post('last', 'SlidersController@last')->name('last');
-        });
+    Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
+        Route::post('first', 'SlidersController@first')->name('first');
+        Route::post('up', 'SlidersController@up')->name('up');
+        Route::post('down', 'SlidersController@down')->name('down');
+        Route::post('last', 'SlidersController@last')->name('last');
+    });
 
     Route::resource('discounts', 'DiscountController');
     Route::group(['prefix' => 'discounts/{discount}', 'as' => 'discounts.'], function () {
@@ -145,6 +145,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
+    Route::group(['prefix' => 'users/{user}', 'as' => 'users.'], function () {
+            Route::post('remove-avatar', 'UserController@removeAvatar')->name('remove-avatar');
+        });
 
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('categories', 'CategoryController');
