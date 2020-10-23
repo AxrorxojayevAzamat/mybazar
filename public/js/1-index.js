@@ -75,7 +75,7 @@ $(document).ready(function(){
     $('.products-of-day').owlCarousel({
         margin:10,
         nav:false,
-        dots:true,
+        dots:false,
         responsive:{
             0:{
                 items:1
