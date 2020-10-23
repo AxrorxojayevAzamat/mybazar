@@ -1,13 +1,3 @@
-// @font-face{
-//     font-family:'cerapro-bold';
-//     src:url("../fonts/cerapro-bold.ttf");
-//     font-weight:bold;
-// }
-// @font-face{
-//     font-family:'cerapro-regular';
-//     src:url("../fonts/cerapro-regular.ttf");
-//     font-weight:normal;
-// }
 body{
     @include fontRegular;
     background:#ffffff;
@@ -75,7 +65,7 @@ h5.footer.title{
 h6.title{
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: pre-wrap;
+    white-space: nowrap;
     font-size:20px;
     text-align: start;
     width:100%;
@@ -208,11 +198,25 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
         outline:none;
     }
 }
+.owl-carousel{
+    .owl-stage-outer{
+        height:100%;
+    }
+    .owl-stage{
+        height:100%;
+    }
+}
+.owl-carousel.owl-drag {
+    .owl-item{
+    height:100%;
+    }
+}
 button.owl-prev span,
 button.owl-next span{
     color:white;
     font-size:45px;
     line-height:15px;
+    height:22px;
 }
 .outter-products{
     width:100%;
