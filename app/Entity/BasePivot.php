@@ -13,5 +13,7 @@ class BasePivot extends Pivot
 
     public $cacheFor = 3600;
 
+    protected static $flushCacheOnUpdate = true;
+
     public $timestamps = false;
 }

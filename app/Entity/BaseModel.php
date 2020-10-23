@@ -15,6 +15,8 @@ class BaseModel extends Model
 
     public $cacheFor = 3600;
 
+    protected static $flushCacheOnUpdate = true;
+
     public static function boot()
     {
         parent::boot();
