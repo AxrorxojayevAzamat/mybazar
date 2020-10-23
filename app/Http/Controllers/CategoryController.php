@@ -39,14 +39,14 @@ class CategoryController extends Controller
     {
         $category = $path->category;
         $categoryIds = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
-        $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->pluck('brand_id')->toArray();
-        $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->pluck('store_id')->toArray();
+        $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->get()->pluck('brand_id')->toArray();
+        $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->get()->pluck('store_id')->toArray();
         $characteristicIds = CharacteristicCategory::whereIn('category_id', $categoryIds)
-            ->distinct()->pluck('characteristic_id')->toArray();
+            ->distinct()->get()->pluck('characteristic_id')->toArray();
 
         $brands = Brand::whereIn('id', $brandIds)->get();
         $stores = Store::whereIn('id', $storeIds)->get();
-        $modifications = Modification::select(['shop_modifications.*', 'c.*'])
+        $modifications = Modification::with(['characteristic'])->select(['shop_modifications.*', 'c.*'])
             ->leftJoin('shop_characteristics as c', 'shop_modifications.characteristic_id', '=', 'c.id')
             ->whereNotNull('shop_modifications.characteristic_id')
             ->whereIn('c.id', $characteristicIds)->where('c.hide_in_filters', false)
@@ -71,17 +71,17 @@ class CategoryController extends Controller
         }
         unset($modifications);
 
-        $query = Product::where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
+        $query = Product::with(['mainValues'])->where(['status' => Product::STATUS_ACTIVE])->whereIn('main_category_id', $categoryIds);
 
         if (!empty($value = $request->get('brands'))) {
             $value = explode(',', $value);
-            $brandIds = Brand::whereIn('slug', $value)->pluck('id')->toArray();
+            $brandIds = Brand::whereIn('slug', $value)->get()->pluck('id')->toArray();
             $query->whereIn('brand_id', $brandIds);
         }
 
         if (!empty($value = $request->get('stores'))) {
             $value = explode(',', $value);
-            $storeIds = Store::whereIn('slug', $value)->pluck('id')->toArray();
+            $storeIds = Store::whereIn('slug', $value)->get()->pluck('id')->toArray();
             $query->whereIn('store_id', $storeIds);
         }
 
@@ -97,7 +97,7 @@ class CategoryController extends Controller
             $productIds = [];
             foreach ($values as $i => $value) {
                 $value = explode(',', $value);
-                $productIds = array_merge($productIds, Modification::where('characteristic_id', $i)->whereIn('value', $value)->pluck('product_id')->toArray());
+                $productIds = array_merge($productIds, Modification::where('characteristic_id', $i)->whereIn('value', $value)->get()->pluck('product_id')->toArray());
             }
             $productIds = array_unique($productIds);
             if (!empty($productIds)) { $query->whereIn('id', $productIds); }

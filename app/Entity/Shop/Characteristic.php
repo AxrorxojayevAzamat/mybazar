@@ -9,6 +9,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property int $id
@@ -40,6 +41,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Characteristic extends BaseModel
 {
+
     public const TYPE_STRING = 'string';
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';
@@ -49,6 +51,13 @@ class Characteristic extends BaseModel
     const STATUS_ACTIVE = 2;
 
     protected $table = 'shop_characteristics';
+
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'shop_characteristics',
+        ];
+    }
 
     protected $fillable = [
         'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
