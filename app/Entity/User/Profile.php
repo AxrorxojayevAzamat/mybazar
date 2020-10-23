@@ -62,7 +62,7 @@ class Profile extends Model
             'birth_date' => $birthDate,
             'gender'     => $gender,
             'address'    => $address,
-            'avatar'     => $avatar,
+            'avatar'     => $avatar ?? $this->avatar,
         ]);
     }
 

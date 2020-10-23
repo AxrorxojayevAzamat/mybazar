@@ -7,8 +7,6 @@ use App\Entity\User\Profile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
-use App\Http\Requests\Admin\Users\Profile\CreateProfileRequest;
-use App\Http\Requests\Admin\Users\Profile\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use App\Helpers\ImageHelper;
 use Illuminate\Http\UploadedFile;
