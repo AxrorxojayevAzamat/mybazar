@@ -5,6 +5,7 @@ namespace App\Entity\User;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\ImageHelper;
 
 /**
  * @property int $user_id
@@ -15,40 +16,73 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $address
  * @property string $fullName
  * @property string $avatar
+ * 
+ * @property string $avatarThumbnail
+ * @property string $avatarOriginal
+ * @property string $fullName
  *
  * @property User $user
  * @mixin Eloquent
  */
 class Profile extends Model
-{
-    const FEMALE = 1;
-    const MALE = 2;   
-    
-    protected $table = 'profiles';
-    protected $primaryKey = 'user_id';
-    public $timestamps = false; 
-    
-    protected $fillable = [
-        'first_name', 'last_name', 'birth_date', 'gender', 'address', 'avatar',
-    ];
+    {
 
-    protected $casts = [
+    const GENDER_EMPTY = 0;
+    const FEMALE       = 1;
+    const MALE         = 2;
+
+    protected $table      = 'profiles';
+    protected $primaryKey = 'user_id';
+    public $timestamps    = false;
+    protected $fillable   = [
+        'user_id', 'first_name', 'last_name', 'birth_date', 'gender', 'address', 'avatar',
+    ];
+    protected $casts      = [
         'birth_date' => 'datetime',
     ];
 
-    public function edit($firstName, $lastName, $birthDate, $gender = null, $address = null, $avatar = null)
+    public static function new($userId, $firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null): self
     {
-        $this->first_name = $firstName;
-        $this->last_name = $lastName;
-        $this->birth_date = $birthDate;
-        $this->gender = $gender ?? $this->gender;
-        $this->about_uz = $address ?? $this->address;
-        $this->about_ru = $avatar ?? $this->avatar;
+        return static::create([
+                    'user_id'    => $userId,
+                    'first_name' => $firstName,
+                    'last_name'  => $lastName,
+                    'birth_date' => $birthDate,
+                    'gender'     => $gender,
+                    'address'    => $address,
+                    'avatar'     => $avatar,
+        ]);
     }
 
-    public function getImageAttribute(): string
+    public function edit($firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null)
     {
-        return $this->avatar;
+        $this->update([
+            'first_name' => $firstName,
+            'last_name'  => $lastName,
+            'birth_date' => $birthDate,
+            'gender'     => $gender,
+            'address'    => $address,
+            'avatar'     => $avatar ?? $this->avatar,
+        ]);
+    }
+
+    public static function gendersList(): array
+    {
+        return [
+            self::GENDER_EMPTY => '',
+            self::FEMALE       => trans('adminlte.female'),
+            self::MALE         => trans('adminlte.male'),
+        ];
+    }
+
+    public function getAvatarThumbnailAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_PROFILES . '/' . $this->user_id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->avatar;
+    }
+
+    public function getAvatarOriginalAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_PROFILES . '/' . $this->user_id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->avatar;
     }
 
     public function getFullNameAttribute(): string
@@ -56,13 +90,12 @@ class Profile extends Model
         return "$this->last_name $this->first_name";
     }
 
-    
     ########################################### Relations
-    
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
-    } 
+    }
 
     ###########################################
-}
+    }

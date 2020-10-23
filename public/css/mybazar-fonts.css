@@ -1,3 +1,13 @@
+ @font-face{
+       font-family:'cerapro-bold';
+      src:url("../fonts/cerapro-bold.ttf");
+      font-weight:bold;
+   }
+   @font-face{
+      font-family:'cerapro-regular';
+     src:url("../fonts/cerapro-regular.ttf");
+      font-weight:normal;
+ }
 @font-face {
   font-family: 'mybazar';
   src:  url('../fonts/mybazar.eot?tvi5dx');

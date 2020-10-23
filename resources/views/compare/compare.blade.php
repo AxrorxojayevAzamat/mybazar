@@ -12,21 +12,6 @@
             <h4 class="title">@lang('frontend.compare_products')</h4>
         </div>
         <div class="outter-compare-body">
-            <div class="side-filter">
-                <button class="btn">@lang('frontend.clear_list')</button>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Смартфоны и гаджеты
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Телевизоры, аудио и видео
-                    </label>
-                </div>
-            </div>
             <div class="compare-items">
                 <div class="items-view">
                     <div class="item">

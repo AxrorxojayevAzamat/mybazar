@@ -96,6 +96,13 @@ return [
     'slug' => 'Slug',
     'category_splitted' => 'Kategoriya bo`lingan',
     'order' => 'Tartib',
+    'first_name'  => 'Ism',
+    'last_name'  => 'Familiya',
+    'birth_date' => 'Tug`ilgan sana',
+    'gender' => 'Jinsi',
+    'address' => 'Manzil',
+    'male' => 'Erkak',
+    'female' => 'Ayol',
 
     'photo' => [
         'plural' => 'Rasm',

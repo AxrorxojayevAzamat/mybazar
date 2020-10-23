@@ -96,6 +96,13 @@ return [
     'slug' => 'Slug',
     'category_splitted' => 'Category splitted',
     'order' => 'Order',
+    'first_name'  => 'Firstname',
+    'last_name'  => 'Lastname',
+    'birth_date' => 'Birth date',
+    'gender' => 'Gender',
+    'address' => 'Address',
+    'male' => 'Male',
+    'female' => 'Female',
 
     'photo' => [
         'plural' => 'Photos',
@@ -117,7 +124,7 @@ return [
         'role_administrator' => 'Administrator',
         'role_manager' => 'Manager',
     ],
-
+    
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',

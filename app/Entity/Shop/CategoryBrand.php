@@ -6,6 +6,7 @@ use App\Entity\BasePivot;
 use App\Entity\Brand;
 use App\Entity\Category;
 use Eloquent;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property int $category_id
@@ -17,11 +18,20 @@ use Eloquent;
  */
 class CategoryBrand extends BasePivot
 {
+//    use QueryCacheable;
+
     protected $table = 'shop_category_brands';
 
     protected $fillable = [
         'category_id', 'brand_id'
     ];
+
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'shop_category_brands',
+        ];
+    }
 
 
     ########################################### Relations
