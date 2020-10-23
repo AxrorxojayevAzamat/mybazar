@@ -197,6 +197,8 @@ return [
     */
 
     'enabled_laravel_mix' => false,
+    'laravel_mix_css_path' => 'build/css/app.css',
+    'laravel_mix_js_path' => 'build/js/app.js',
 
     /*
     |--------------------------------------------------------------------------

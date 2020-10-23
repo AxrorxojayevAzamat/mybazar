@@ -28,11 +28,10 @@ class ProductController extends Controller
     {
         $user = $product->createdBy;
 
-        $otherProducts = Product::where('created_by', $user->id)->active()
+        $otherProducts = Product::with(['mainPhoto', 'store'])->where('created_by', $user->id)->active()
             ->orderByDesc('created_at')->limit(10)->get();
 
-        $similarProducts = Product::where('main_category_id', $product->main_category_id)->active()
-            ->limit(10)->get();
+        $similarProducts = Product::with(['mainPhoto', 'store'])->where('main_category_id', $product->main_category_id)->active()->limit(10)->get();
 
         $index = 0;
         $length = count($this->times);
@@ -155,7 +154,7 @@ class ProductController extends Controller
 
     public function compare(Product $product, Product $comparingProduct)
     {
-        if ($product->main_category_id !== $comparingProduct->main_category_id) {
+        if ($product->id === $comparingProduct->id || $product->main_category_id !== $comparingProduct->main_category_id) {
             abort(404);
             throw new \Exception('Products are not the same type!!!');
         }

@@ -11,7 +11,7 @@ de:
 	docker exec -it magazin-php sh
 
 ds:
-	docker-compose stop 
+	docker-compose stop
 
 memory:
 	sudo sysctl -w vm.max_map_count=262144

@@ -34,7 +34,6 @@ class ModificationController extends Controller
 
     public function store(Product $product, CreateRequest $request)
     {
-        dd($request->all());
         try {
             $modification = $this->service->addModification($product->id, $request);
             return redirect()->route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]);
@@ -50,7 +49,12 @@ class ModificationController extends Controller
 
     public function edit(Product $product, Modification $modification)
     {
-        return view('admin.shop.products.modifications.edit', compact('product', 'modification'));
+        $categories = array_merge($product->mainCategory->ancestors()->pluck('id')->toArray(), [$product->main_category_id]);
+        $characteristics = CharacteristicCategory::whereIn('category_id', $categories)->pluck('characteristic_id')->toArray();
+        $characteristics = Characteristic::whereIn('id', $characteristics)->orderByDesc('updated_at')
+            ->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+
+        return view('admin.shop.products.modifications.edit', compact('product', 'modification', 'characteristics'));
     }
 
     public function update(UpdateRequest $request, Product $product, Modification $modification)

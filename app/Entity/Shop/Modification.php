@@ -181,6 +181,11 @@ class Modification extends BaseModel
 
     ########################################### Relations
 
+    public function characteristic()
+    {
+        return $this->belongsTo(Characteristic::class, 'characteristic_id', 'id');
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
