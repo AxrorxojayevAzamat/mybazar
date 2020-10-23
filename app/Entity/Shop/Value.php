@@ -31,6 +31,18 @@ class Value extends Model
         'product_id', 'characteristic_id', 'value', 'main', 'sort',
     ];
 
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'shop_values',
+        ];
+    }
+
+    public function isMain(): bool
+    {
+        return $this->main === true;
+    }
+
     public function isCharacteristicIdEqualTo(int $characteristicId): bool
     {
         return $this->characteristic_id === $characteristicId;

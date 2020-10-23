@@ -16,6 +16,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Kalnoy\Nestedset\NodeTrait;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property integer $id
@@ -60,6 +61,13 @@ class Category extends BaseModel
     protected $table = 'categories';
 
     protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
+
+    protected function getCacheBaseTags(): array
+    {
+        return [
+            'categories',
+        ];
+    }
 
     public function getPath(): string
     {

@@ -7,9 +7,14 @@ namespace App\Entity;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 class BaseModel extends Model
 {
+    use QueryCacheable;
+
+    public $cacheFor = 3600;
+
     public static function boot()
     {
         parent::boot();

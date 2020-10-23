@@ -38,7 +38,7 @@ class ProductController extends Controller
         $length = count($this->times);
         $interestingProducts = null;
         while ($index < $length) {
-            $query = Product::where('created_at', '>=', date('Y-m-d H:i:s', time() - $this->times[$index]));
+            $query = Product::with(['mainValues', 'values'])->where('created_at', '>=', date('Y-m-d H:i:s', time() - $this->times[$index]));
             if ($query->exists()) {
                 $interestingProducts = $query->active()->orderByDesc('rating')->orderByDesc('created_at')->limit(10)->get();
                 break;
