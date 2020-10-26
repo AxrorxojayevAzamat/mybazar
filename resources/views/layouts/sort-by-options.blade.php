@@ -3,9 +3,10 @@
 <img src="{{asset('images/filter.svg')}}" alt="" class="navbar-toggler-icon">
 </button>
 <form action="?" method="GET">
-    <button type="submit" class="btn" name="by-price" value="price" ><i></i>@lang('frontend.by_price')</button>
-    <button type="submit" class="btn" name="by-rating" value="rating" ><i></i>@lang('frontend.by_rating')</button>
-    <button type="submit" class="btn" name="new-items" value="is_new" ><i></i>@lang('frontend.by_novelty')</button>
+<input type="radio" id = "by-price" class="btn" name="order_by" value="price"><i></i>@lang('frontend.by_price')
+<input type="radio" id = "by-rating" class="btn" name="order_by" value="rating"><i></i>@lang('frontend.by_rating')
+<input type="radio" id = "by-date" class="btn" name="order_by" value="date" ><i></i>@lang('frontend.by_novelty')
+    
 </form>
 <div class="toggle-view">
     <a class="list-view view-blue-bg" href=""><i class="mblistview_white"></i></a>
