@@ -1,12 +1,4 @@
 $(document).ready(function(){
-    $(window).on('resize', function(){
-        $('[copy-size]').each(function(){
-            var copyEl=$($(this).attr('copy-size'));
-            var targetEl=$(this);
-            targetEl.width(copyEl.width()+ 'px');
-            targetEl.height(copyEl.height()+'px');
-        });
-    });
     
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
@@ -75,7 +67,7 @@ $(document).ready(function(){
     $('.products-of-day').owlCarousel({
         margin:10,
         nav:false,
-        dots:true,
+        dots:false,
         responsive:{
             0:{
                 items:1
@@ -242,14 +234,26 @@ $(document).ready(function(){
         items:3,
         responsive:{
             0:{
-                items:1.5,
+                items:1,
                 nav:false
             },
-            600:{
-                items:1.5,
-                nav:false
+            400:{
+                items:2,
+                nav:true
+            },
+            525:{
+                items:2,
+                nav:true
+            },
+            601:{
+                items:1,
+                nav:true
             },
             800:{
+                items:1,
+                nav:true
+            },
+            900:{
                 items:2,
                 nav:true
             },
