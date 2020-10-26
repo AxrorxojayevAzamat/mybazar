@@ -11,13 +11,36 @@
         let filterForm = $('#catalog-filter-form');
 
         $(document).ready(function () {
+            
+            
+        let defaultRadioButton = $("#" + localStorage.getItem("radioBtn")); 
+        
+        if(defaultRadioButton.selector !== '#null'){
+            defaultRadioButton[0].checked = true;
+        }else{
+           $('#by-price')[0].checked = true;
+        }
             filterButton.click(function (e) {
                 e.preventDefault();
-
-                let brands = getFilter('brands-checkbox');
-                let stores = getFilter('stores-checkbox');
-                let brandsInput = $('#brands-hidden-input');
-                let storesInput = $('#stores-hidden-input');
+                getCatalogFilter();
+            });
+        });
+        
+        
+    $('input[type=radio][name=order_by]').change(function () {
+        
+        localStorage.setItem("radioBtn", this.id);
+        this.checked = true;
+        getCatalogFilter();
+    });
+    
+    function getCatalogFilter(){
+        let brands = getFilter('brands-checkbox');
+        let stores = getFilter('stores-checkbox');
+        let order_by = $('input[type=radio][name=order_by]:checked').val()
+        let brandsInput = $('#brands-hidden-input');
+        let storesInput = $('#stores-hidden-input');
+        let sortFilterInput = $('#sort-hidden-input');
 
                 let i = 0;
                 while ($(`.modifications-checkbox-${i}`).length) {
@@ -30,6 +53,7 @@
 
                 brandsInput.val(brands);
                 storesInput.val(stores);
+                sortFilterInput.val(order_by);
 
                 // let input = '<input name="brands" value="' + brands + '">';
                 // input += '<input name="stores" value="' + stores + '">';
@@ -39,9 +63,9 @@
 
                 console.log(brands);
                 console.log(stores);
-            });
-        });
-
+    }
+    
+    
         function getFilter(className) {
             let filter = '';
             $('.' + className + ':checked').each(function() {
