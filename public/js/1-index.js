@@ -11,14 +11,14 @@ $(document).ready(function(){
     var title_with_checkbox=document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
-        var panel = this.nextElementSibling;
-        if(this.classList.contains('active')){
-            $(panel).slideUp();
-        }
-        else{
-            $(panel).slideDown();
-        }
-        this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if(this.classList.contains('active')){
+                $(panel).slideUp();
+            }
+            else{
+                $(panel).slideDown();
+            }
+            this.classList.toggle("active");
         });
     }
     for (var i = 0; i < title_with_checkbox.length; i++) {
