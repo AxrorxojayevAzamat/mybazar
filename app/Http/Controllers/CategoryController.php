@@ -127,34 +127,26 @@ class CategoryController extends Controller
             if (!empty($productIds)) { $query->whereIn('id', $productIds); }
         }
 
-        $price = $request->get('by-price');
-        $rating = $request->get('by-rating');
-        $newItems = $request->get('new-items');
+//        $price = $request->get('by-price');
+//        $rating = $request->get('by-rating');
+//        $newItems = $request->get('new-items');
+        $orderBy = $request->get('order_by');
 
-        if (empty($price) && empty($rating) && empty($newItems)) {
-            $query->orderByDesc('updated_at');
-        }
+//        if (empty($price) && empty($rating) && empty($newItems)) {
+//            $query->orderByDesc('updated_at');
+//        }
 
-        if (!empty($price)) {
-            $sign = substr($price, 0);
-            if ($sign === '+') {
+        if (!empty($orderBy)) {
+//            dd($request);
+            if ($orderBy === 'price') {
                 $query->orderBy('price_uzs');
-            } else {
-                $query->orderByDesc('price_uzs');
             }
-        }
-
-        if (!empty($rating)) {
-            $sign = substr($rating, 0);
-            if ($sign === '+') {
-                $query->orderBy('rating');
-            } else {
+            if ($orderBy === 'rating') {
                 $query->orderByDesc('rating');
             }
-        }
-
-        if (!empty($newItems)) {
-            $query->orderByDesc('new');
+            if ($orderBy === 'date') {
+                $query->orderByDesc('new');
+            }
         }
 
         $products = $query->paginate(20);
