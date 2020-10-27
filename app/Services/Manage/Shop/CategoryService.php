@@ -82,6 +82,8 @@ class CategoryService
                 $this->draftProducts($parent);
             }
 
+            Category::flushQueryCache();
+
             $category->edit($request);
 
             $category->categoryBrands()->delete();
