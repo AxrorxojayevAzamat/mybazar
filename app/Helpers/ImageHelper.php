@@ -15,6 +15,7 @@ class ImageHelper
     const FOLDER_MARKS = 'marks';
     const FOLDER_STORES = 'stores';
     const FOLDER_PAYMENTS = 'payments';
+    const FOLDER_CATEGORIES = 'categories';
     const FOLDER_PRODUCTS = 'products';
     const FOLDER_MODIFICATIONS = 'modifications';
     const FOLDER_BANNERS = 'banners';

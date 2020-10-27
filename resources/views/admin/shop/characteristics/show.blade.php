@@ -57,7 +57,7 @@
                             <th>{{ trans('menu.categories') }}</th>
                             <td>
                                 @foreach($characteristic->categories as $category)
-                                    <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
+                                    <a href="{{ route('admin.categories.show', $category) }}">{{ $category->name }}</a><br>
                                 @endforeach
                             </td>
                         </tr>

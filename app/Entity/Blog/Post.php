@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Blog\Posts\CreateRequest;
 use App\Http\Requests\Admin\Blog\Posts\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -41,6 +42,8 @@ use Eloquent;
  * @property string $published
  * @property string $fileThumbnail
  * @property string $fileOriginal
+ * @method Builder published()
+ * @method Builder drafted()
  * @mixin Eloquent
  */
 class Post extends BaseModel

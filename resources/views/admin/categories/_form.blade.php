@@ -1,8 +1,14 @@
 @if (!config('adminlte.enabled_laravel_mix'))
+    @php($cssSectionName = 'css')
     @php($javaScriptSectionName = 'js')
 @else
+    @php($cssSectionName = 'mix_adminlte_css')
     @php($javaScriptSectionName = 'mix_adminlte_js')
 @endif
+
+@section($cssSectionName)
+    <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
+@endsection
 
 <div class="row">
     <div class="col-md-12">
@@ -73,8 +79,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="slug" class="col-form-label">Slug</label>
-                    <input id="slug" type="number" step="0.01" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug', $category ? $category->slug : null) }}"
-                           required>
+                    <input id="slug" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ old('slug', $category ? $category->slug : null) }}" required>
                     @if ($errors->has('slug'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
                     @endif
@@ -83,7 +88,7 @@
                 <div class="form-group">
                     {!! Form::label('brands', trans('adminlte.brand.name'), ['class' => 'col-form-label']); !!}
                     {!! Form::select('brands[]', $brands, old('brands', $category ? $category->brandsList() : null),
-                        ['multiple' => true, 'class'=>'form-control' . ($errors->has('brands') ? ' is-invalid' : ''), 'id' => 'brands', 'required' => true]) !!}
+                        ['multiple' => true, 'class'=>'form-control' . ($errors->has('brands') ? ' is-invalid' : ''), 'id' => 'brands']) !!}
                     @if ($errors->has('brands'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('brands') }}</strong></span>
                     @endif
@@ -117,11 +122,52 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-warning card-outline">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="photo-input" class="col-form-label">@lang('adminlte.photo.name')</label>
+                            <div class="file-loading">
+                                <input id="photo-input" class="file" type="file" name="photo">
+                            </div>
+                            @if ($errors->has('photo'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('photo') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="icon-input" class="col-form-label">@lang('adminlte.icon')</label>
+                            <div class="file-loading">
+                                <input id="icon-input" class="file" type="file" name="icon">
+                            </div>
+                            @if ($errors->has('icon'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('icon') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="form-group">
     <button type="submit" class="btn btn-primary">{{ trans('adminlte.' . ($category ? 'edit' : 'save')) }}</button>
 </div>
 
 @section($javaScriptSectionName)
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/purify.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/themes/fa/theme.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/uz.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/ru.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/LANG.js') }}"></script>
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('description_uz');
@@ -129,5 +175,60 @@
         CKEDITOR.replace('description_en');
         $('#brands').select2();
         $('#parent').select2();
+
+        let photoInput = $("#photo-input");
+        let iconInput = $("#icon-input");
+        let photoUrl = '{{ $category ? ($category->photo ? $category->photoOriginal : null) : null }}';
+        let iconUrl = '{{ $category ? ($category->icon ? $category->iconOriginal : null) : null }}';
+
+        let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
+        XMLHttpRequest.prototype.send = function(data) {
+            this.setRequestHeader('X-CSRF-Token', token);
+            return send.apply(this, arguments);
+        };
+
+        if (photoUrl) {
+            photoInput.fileinput({
+                initialPreview: [photoUrl],
+                initialPreviewAsData: true,
+                showUpload: false,
+                previewFileType: 'text',
+                browseOnZoneClick: true,
+                overwriteInitial: true,
+                deleteUrl: 'remove-photo',
+                maxFileCount: 1,
+                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+            });
+        } else {
+            photoInput.fileinput({
+                showUpload: false,
+                previewFileType: 'text',
+                browseOnZoneClick: true,
+                maxFileCount: 1,
+                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+            });
+        }
+
+        if (iconUrl) {
+            iconInput.fileinput({
+                initialPreview: [iconUrl],
+                initialPreviewAsData: true,
+                showUpload: false,
+                previewFileType: 'text',
+                browseOnZoneClick: true,
+                overwriteInitial: true,
+                deleteUrl: 'remove-icon',
+                maxFileCount: 1,
+                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+            });
+        } else {
+            iconInput.fileinput({
+                showUpload: false,
+                previewFileType: 'text',
+                browseOnZoneClick: true,
+                maxFileCount: 1,
+                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+            });
+        }
     </script>
 @endsection

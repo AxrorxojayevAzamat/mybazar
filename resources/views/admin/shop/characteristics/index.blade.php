@@ -59,7 +59,7 @@
                 <td><a href="{{ route('admin.shop.characteristic-groups.show', $characteristic->group) }}">{{ $characteristic->group->name }}</a></td>
                 <td>
                     @foreach($characteristic->categories as $category)
-                        <a href="{{ route('admin.shop.categories.show', $category) }}">{{ $category->name }}</a><br>
+                        <a href="{{ route('admin.categories.show', $category) }}">{{ $category->name }}</a><br>
                     @endforeach
                 </td>
             </tr>

@@ -225,28 +225,28 @@ Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) 
 
 // Categories
 
-Breadcrumbs::register('admin.shop.categories.index', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push(trans('menu.categories'), route('admin.shop.categories.index'));
+    $crumbs->push(trans('menu.categories'), route('admin.categories.index'));
 });
 
-Breadcrumbs::register('admin.shop.categories.create', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.shop.categories.index');
-    $crumbs->push(trans('adminlte.create'), route('admin.shop.categories.create'));
+Breadcrumbs::register('admin.categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.categories.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.categories.create'));
 });
 
-Breadcrumbs::register('admin.shop.categories.show', function (Crumbs $crumbs, Category $category) {
+Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, Category $category) {
     if ($parent = $category->parent) {
-        $crumbs->parent('admin.shop.categories.show', $parent);
+        $crumbs->parent('admin.categories.show', $parent);
     } else {
-        $crumbs->parent('admin.shop.categories.index');
+        $crumbs->parent('admin.categories.index');
     }
-    $crumbs->push($category->name, route('admin.shop.categories.show', $category));
+    $crumbs->push($category->name, route('admin.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.shop.categories.edit', function (Crumbs $crumbs, Category $category) {
-    $crumbs->parent('admin.shop.categories.show', $category);
-    $crumbs->push(trans('adminlte.edit'), route('admin.shop.categories.edit', $category));
+Breadcrumbs::register('admin.categories.edit', function (Crumbs $crumbs, Category $category) {
+    $crumbs->parent('admin.categories.show', $category);
+    $crumbs->push(trans('adminlte.edit'), route('admin.categories.edit', $category));
 });
 
 

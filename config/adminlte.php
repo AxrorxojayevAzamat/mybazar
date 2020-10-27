@@ -286,7 +286,7 @@ return [
         ],
         [
             'text' => 'categories',
-            'url'  => 'admin/shop/categories',
+            'url'  => 'admin/categories',
             'icon' => 'fas fa-fw fa-list-alt',
             'can' => 'manage-categories',
         ],
