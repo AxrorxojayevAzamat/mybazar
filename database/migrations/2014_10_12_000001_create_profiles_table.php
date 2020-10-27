@@ -50,6 +50,25 @@ class CreateProfilesTable extends Migration
             'gender'      => Profile::MALE,
             'address'     => 'Address uz adress uz address address uz',
         ]);
+        DB::table('users')->insert([
+            'name'              => 'user',
+            'email'             => 'user@gmail.com',
+            'password'          => bcrypt('12'),
+            'role'              => User::ROLE_USER,
+            'phone'             => '998991234567',
+            'status'            => User::STATUS_ACTIVE,
+            'email_verified_at' => Carbon::now()->addSeconds(300),
+            'remember_token'    => Str::random(10),
+        ]);
+
+        DB::table('profiles')->insert([
+            'user_id'     => 2,
+            'first_name'  => 'User',
+            'last_name'   => 'User',
+            'birth_date'  => '1987-05-22 00:00:00',
+            'gender'      => Profile::MALE,
+            'address'     => 'User Address uz adress uz address address uz',
+        ]);
     }
 
     /**

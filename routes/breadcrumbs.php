@@ -128,6 +128,15 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.popular'), route('popular'));
 });
 
+// User
+Breadcrumbs::register('user.profile', function (Crumbs $crumbs) {
+});
+
+Breadcrumbs::register('user.edit', function (Crumbs $crumbs, User $user) {
+    $crumbs->parent('user.profile');
+    $crumbs->push($user->name, route('user.edit',$user));
+});
+
 // Categories
 Breadcrumbs::register('categories.inner_category', function (Crumbs $crumbs, ProductsPath $path, ProductsPath $orig) {
     if ($path->category && $parent = $path->category->parent) {
