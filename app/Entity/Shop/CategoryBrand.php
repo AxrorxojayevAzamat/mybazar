@@ -6,7 +6,6 @@ use App\Entity\BasePivot;
 use App\Entity\Brand;
 use App\Entity\Category;
 use Eloquent;
-use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property int $category_id
@@ -18,7 +17,6 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  */
 class CategoryBrand extends BasePivot
 {
-//    use QueryCacheable;
 
     protected $table = 'shop_category_brands';
 

@@ -12,7 +12,10 @@ use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\CategoryBrand;
 use App\Entity\StoreCategory;
 use App\Entity\User\User;
+use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
+use App\Http\Requests\Admin\Shop\Categories\CreateRequest;
+use App\Http\Requests\Admin\Shop\Categories\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
 use Kalnoy\Nestedset\NodeTrait;
@@ -31,6 +34,8 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  * @property integer $left
  * @property integer $right
  * @property integer|null $parent_id
+ * @property string $photo
+ * @property string $icon
  * @property integer $created_by
  * @property integer $updated_by
  * @property Carbon $created_at
@@ -52,21 +57,73 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  * @property string $description
  * @property User $createdBy
  * @property User $updatedBy
+ *
+ * @property string $photoThumbnail
+ * @property string $photoOriginal
+ * @property string $iconThumbnail
+ * @property string $iconOriginal
+ *
  * @mixin Eloquent
  */
 class Category extends BaseModel
 {
     use NodeTrait;
 
+//    public $cacheFor = 0;
+
     protected $table = 'categories';
 
-    protected $fillable = ['name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en', 'slug', 'parent_id'];
+    protected $fillable = [
+        'id', 'name_uz', 'name_ru', 'name_en', 'description_uz', 'description_ru', 'description_en',
+        'slug', 'parent_id', 'icon', 'photo',
+    ];
 
     protected function getCacheBaseTags(): array
     {
         return [
             'categories',
         ];
+    }
+
+    public static function add(int $id, CreateRequest $request, string $photoName, string $iconName): self
+    {
+        return static::create([
+            'id' => $id,
+            'name_uz' => $request->name_uz,
+            'name_ru' => $request->name_ru,
+            'name_en' => $request->name_en,
+            'description_uz' => $request->description_uz,
+            'description_ru' => $request->description_ru,
+            'description_en' => $request->description_en,
+            'parent_id' => $request->parent,
+            'slug' => $request->slug,
+            'photo' => $photoName,
+            'icon' => $iconName,
+        ]);
+    }
+
+    public function edit(UpdateRequest $request): void
+    {
+        $this->update([
+            'name_uz' => $request->name_uz,
+            'name_ru' => $request->name_ru,
+            'name_en' => $request->name_en,
+            'description_uz' => $request->description_uz,
+            'description_ru' => $request->description_ru,
+            'description_en' => $request->description_en,
+            'parent_id' => $request->parent,
+            'slug' => $request->slug,
+        ]);
+    }
+
+    public function setPhoto(string $photoName): void
+    {
+        $this->photo = $photoName;
+    }
+
+    public function setIcon(string $iconName): void
+    {
+        $this->icon = $iconName;
     }
 
     public function getPath(): string
@@ -90,6 +147,26 @@ class Category extends BaseModel
     public function getDescriptionAttribute(): string
     {
         return LanguageHelper::getDescription($this);
+    }
+
+    public function getPhotoThumbnailAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_CATEGORIES . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->photo;
+    }
+
+    public function getPhotoOriginalAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_CATEGORIES . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->photo;
+    }
+
+    public function getIconThumbnailAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_CATEGORIES . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->icon;
+    }
+
+    public function getIconOriginalAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_CATEGORIES . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->icon;
     }
 
     ###########################################

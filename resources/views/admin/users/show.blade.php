@@ -83,19 +83,20 @@
                         <tr>
                             <th>@lang('adminlte.gender')</th>
                             <td>
-                                 @if ($user->profile->gender === \App\Entity\User\Profile::FEMALE)
+                                @if ($user->profile->gender === \App\Entity\User\Profile::FEMALE)
                                 <span class="badge badge-danger">@lang('adminlte.female')</span>
-                                 @elseif ($user->profile->gender === \App\Entity\User\Profile::MALE)
+                                @elseif ($user->profile->gender === \App\Entity\User\Profile::MALE)
                                 <span class="badge badge-secondary">@lang('adminlte.male')</span>
-                                 @elseif ($user->profile->gender === \App\Entity\User\Profile::GENDER_EMPTY)
+                                @elseif ($user->profile->gender === \App\Entity\User\Profile::GENDER_EMPTY)
                                 @endif
-                                </td>
+                            </td>
                         </tr>
                         <tr>
                             <th>@lang('adminlte.address')</th>
                             <td>{{$user->profile->address}}</td>
                         </tr>
                     </tbody>
+                </table>
             </div>
         </div>
     </div>

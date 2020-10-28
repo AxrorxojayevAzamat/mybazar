@@ -69,7 +69,7 @@ class UserController extends Controller
                 $imageName = ImageHelper::getRandomName($request->avatar);
                 $this->uploadAvatar($user->id, $request->avatar, $imageName);
             }
-            Profile::new($user->d, $request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName);
+            Profile::new($user->id, $request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName);
         }
         return redirect()->route('admin.users.show', $user);
     }
@@ -100,7 +100,7 @@ class UserController extends Controller
                 Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PROFILES . '/' . $user->id);
 
                 $imageName = ImageHelper::getRandomName($request->avatar);
-                $user->profile->edit($user->id, $request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName);
+                $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName);
 
                 $this->uploadPoster($user->id, $request->avatar, $imageName);
             }

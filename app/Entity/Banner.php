@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Eloquent;
 use App\Http\Requests\Admin\Banners\CreateRequest;
 use App\Http\Requests\Admin\Banners\UpdateRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -35,6 +36,8 @@ use App\Http\Requests\Admin\Banners\UpdateRequest;
  * @property string $description
  * @property string $fileThumbnail
  * @property string $fileOriginal
+ * @method Builder published()
+ * @method Builder drafted()
  * @mixin Eloquent
  */
 class Banner extends BaseModel {
@@ -109,6 +112,8 @@ class Banner extends BaseModel {
     }
 
     ###########################################
+
+
     ########################################### Scopes
 
     public function scopePublished($query) {
@@ -120,6 +125,8 @@ class Banner extends BaseModel {
     }
 
     ###########################################
+
+
     ########################################### Relations
 
     public function category() {

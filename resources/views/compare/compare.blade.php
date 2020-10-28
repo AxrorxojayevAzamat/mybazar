@@ -61,33 +61,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion" id="fullCharacteristicsCollapse">
+                {{-- <div class="accordion" id="fullCharacteristicsCollapse"> --}}
+                    <div class="row w-100">
                     @foreach($groupValues as $i => $values)
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapse-{{ $i }}" aria-expanded="true" aria-controls="collapseOne">
-                                        {{ $values[0]->characteristic->group->name }}
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapse-{{ $i }}" class="collapse show" aria-labelledby="heading-{{ $i }}" data-parent="#fullCharacteristicsCollapse">
-                                <div class="card-body">
-                                    <div class="item">
-                                        @foreach($values as $j => $value)
-                                            <p class="grey">{{ $value->characteristic->name }}</p>
-                                            <p class="black">{{ $value->value }}</p>
-                                        @endforeach
+                        {{-- {{dd($groupValues)}} --}}
+                        <div class="col-6">
+                            <div class="accordion" id="fullCharacteristicsCollapse{{$i}}">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn " type="button" data-toggle="collapse" data-target="#collapse-{{ $i }}" aria-expanded="true" aria-controls="collapseOne">
+                                                {{ $values[0]->characteristic->group->name }}
+                                            </button>
+                                        </h2>
                                     </div>
-                                    <div class="item">
-                                        @foreach($comparingGroupValues[$i] as $j => $value)
-                                            <p class="grey">{{ $value->characteristic->name }}</p>
-                                            <p class="black">{{ $value->value }}</p>
-                                        @endforeach
+                                    <div id="collapse-{{ $i }}" class="collapse show" aria-labelledby="heading-{{ $i }}" data-parent="#fullCharacteristicsCollapse{{$i}}">
+                                        <div class="card-body">
+                                            <div class="item">
+                                                @foreach($values as $j => $value)
+                                                    <p class="grey">{{ $value->characteristic->name }}</p>
+                                                    <p class="black">{{ $value->value }}</p>
+                                                @endforeach
+                                            </div>
+                                            <div class="item">
+                                                @foreach($comparingGroupValues[$i] as $j => $value)
+                                                    <p class="grey">{{ $value->characteristic->name }}</p>
+                                                    <p class="black">{{ $value->value }}</p>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     @endforeach
                 </div>
             </div>

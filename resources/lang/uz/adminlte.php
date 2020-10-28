@@ -103,6 +103,7 @@ return [
     'address' => 'Manzil',
     'male' => 'Erkak',
     'female' => 'Ayol',
+    'icon' => 'Belgi',
 
     'photo' => [
         'plural' => 'Rasm',
