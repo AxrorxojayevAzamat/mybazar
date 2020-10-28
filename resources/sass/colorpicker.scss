@@ -48,7 +48,7 @@ $bar-size-large: ($bar-size-short * $columns) + ($base-margin * ($columns - 1));
 }
 
 .colorpicker {
-  position: relative;
+  position: absolute;
   display: none;
   font-size: inherit;
   color: inherit;

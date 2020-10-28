@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
 use App\Entity\Shop\Product;
 use App\Entity\User\User;
@@ -11,7 +10,6 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Support\Facades\DB;
-use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property integer $id
@@ -40,10 +38,6 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  */
 class Brand extends BaseModel
 {
-    use QueryCacheable;
-
-    public $cacheFor = 3600;
-
     private $nextStatementId;
 
     protected $table = 'brands';

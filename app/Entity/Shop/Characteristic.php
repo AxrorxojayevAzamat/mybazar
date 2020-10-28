@@ -9,7 +9,6 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @property int $id
@@ -41,7 +40,6 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  */
 class Characteristic extends BaseModel
 {
-
     public const TYPE_STRING = 'string';
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';

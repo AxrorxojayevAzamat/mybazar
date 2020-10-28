@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Banner;
+use App\Entity\Blog\Post;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
@@ -38,6 +40,28 @@ class CategoryController extends Controller
     public function show(Request $request, ProductsPath $path)
     {
         $category = $path->category;
+
+        if (!$category->children) {
+            return $this->childCategoryShow($request, $category);
+        }
+
+        return $this->parentCategoryShow($request, $category);
+    }
+
+    private function parentCategoryShow(Request $request, Category $category)
+    {
+        $children = $category->children()->get()->toTree();
+
+        $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+        $banners = Banner::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+        $banner = $banners->isNotEmpty() ? $banners->random() : null;
+        unset($banners);
+
+        return view('catalog.catalog-section', compact('category', 'children', 'posts', 'banner'));
+    }
+
+    private function childCategoryShow(Request $request, Category $category)
+    {
         $categoryIds = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->get()->pluck('brand_id')->toArray();
         $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->get()->pluck('store_id')->toArray();

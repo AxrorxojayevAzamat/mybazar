@@ -103,6 +103,7 @@ return [
     'address' => 'Address',
     'male' => 'Male',
     'female' => 'Female',
+    'icon' => 'Icon',
 
     'photo' => [
         'plural' => 'Photos',
@@ -124,7 +125,7 @@ return [
         'role_administrator' => 'Administrator',
         'role_manager' => 'Manager',
     ],
-    
+
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Shop\Categories;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @property string $name_uz
@@ -13,6 +14,8 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $description_en
  * @property string $slug
  * @property int $parent
+ * @property UploadedFile $icon
+ * @property UploadedFile $photo
  * @property int[] $brands
  */
 class CreateRequest extends FormRequest
@@ -33,7 +36,9 @@ class CreateRequest extends FormRequest
             'description_en' => 'required|string',
             'slug' => 'required|string|max:255',
             'parent' => 'nullable|integer|exists:categories,id',
-            'brands.*' => 'numeric|min:1|exists:brands,id',
+            'photo' => 'required|image|mimes:jpg,jpeg,png',
+            'icon' => 'required|image|mimes:jpg,jpeg,png',
+            'brands.*' => 'nullable|numeric|min:1|exists:brands,id',
         ];
     }
 }

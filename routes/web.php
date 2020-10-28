@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-//Auth::routes(); - custom (POST)  
+//Auth::routes(); - custom (POST)
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
@@ -121,8 +121,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('publish', 'PostController@publish')->name('publish');
             Route::post('discard', 'PostController@discard')->name('discard');
         });
-
-        Route::resource('categories', 'CategoryController');
     });
 
     Route::resource('banners', 'BannersController');
@@ -131,6 +129,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('publish', 'BannersController@publish')->name('publish');
         Route::post('discard', 'BannersController@discard')->name('discard');
     });
+
     Route::resource('sliders', 'SlidersController');
     Route::group(['prefix' => 'sliders/{slider}', 'as' => 'sliders.'], function () {
         Route::post('first', 'SlidersController@first')->name('first');
@@ -149,11 +148,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
     Route::group(['prefix' => 'users/{user}', 'as' => 'users.'], function () {
-            Route::post('remove-avatar', 'UserController@removeAvatar')->name('remove-avatar');
-        });
+        Route::post('remove-avatar', 'UserController@removeAvatar')->name('remove-avatar');
+    });
+
+    Route::resource('categories', 'CategoryController');
+
+    Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
+        Route::post('first', 'CategoryController@first')->name('first');
+        Route::post('up', 'CategoryController@up')->name('up');
+        Route::post('down', 'CategoryController@down')->name('down');
+        Route::post('last', 'CategoryController@last')->name('last');
+        Route::post('remove-photo', 'CategoryController@removePhoto')->name('remove-photo');
+        Route::post('remove-icon', 'CategoryController@removeIcon')->name('remove-icon');
+    });
 
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
-        Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
 
@@ -216,13 +225,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
                 Route::get('{review}', 'ProductReviewController@show')->name('show');
                 Route::delete('{review}', 'ProductReviewController@destroy')->name('destroy');
             });
-        });
-
-        Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
-            Route::post('first', 'CategoryController@first')->name('first');
-            Route::post('up', 'CategoryController@up')->name('up');
-            Route::post('down', 'CategoryController@down')->name('down');
-            Route::post('last', 'CategoryController@last')->name('last');
         });
 
         Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {

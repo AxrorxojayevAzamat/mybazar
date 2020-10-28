@@ -26,6 +26,8 @@ class CreateCategoriesTable extends Migration
             $table->integer('left');
             $table->integer('right');
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('photo');
+            $table->string('icon');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();
