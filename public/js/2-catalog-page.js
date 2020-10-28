@@ -12,11 +12,11 @@ $(document).ready(function(){
             $('.all-filted-items').toggleClass('list-styles');
         }
     });
-    $('.wrapper-filtered-items nav .sort-by-btn').on('click', function(event){
+    $('.wrapper-filtered-items nav .sort-by-btn label').on('click', function(event){
         event.preventDefault();
-        if($('.wrapper-filtered-items nav .sort-by-btn').hasClass('active')){
-            $('.wrapper-filtered-items nav .sort-by-btn').removeClass('active');
-            $('.wrapper-filtered-items nav .sort-by-btn i').removeClass('mbshow');
+        if($('.wrapper-filtered-items nav .sort-by-btn label').hasClass('active')){
+            $('.wrapper-filtered-items nav .sort-by-btn label').removeClass('active');
+            $('.wrapper-filtered-items nav .sort-by-btn label i').removeClass('mbshow');
         }
         $(this).addClass('active');
         $(this).children('i').addClass('mbshow');
