@@ -10,11 +10,10 @@ class AuthServiceProvider extends ServiceProvider
 {
 
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+            // 'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    public function boot()
-    {
+    public function boot() {
         $this->registerPolicies();
 
         Gate::define('admin-panel', function (User $user) {
@@ -92,5 +91,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-discounts', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
+
+        Gate::define('manage-profile', function (User $user) {
+            return $user->isUser();
+        });
     }
+
 }

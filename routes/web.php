@@ -20,6 +20,8 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::post('/change-password','ProfileController@changePassword');
+
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
     //Auth::routes(); - custom(GET)
@@ -92,9 +94,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::resource('/videos', 'VideosController');
-    Route::get('profile','UserController@index')->name('user.profile');
-    Route::get('profile/{user}','UserController@edit')->name('user.edit');
-    Route::put('profile/{user}','UserController@update')->name('user.update');
+    
+            Route::get('setting','ProfileController@index')->name('user.setting');
+            
+            Route::post('/phone', 'PhoneController@request'); //->name('user.phone');
+            Route::get('/phone', 'PhoneController@form')->name('user.phone');
+            Route::put('/phone', 'PhoneController@verify')->name('user.phone.verify');
+            
+            Route::get('setting/{user}','ProfileController@edit')->name('user.edit');
+            Route::put('setting/{user}','ProfileController@update')->name('user.update');
+            
+    
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
