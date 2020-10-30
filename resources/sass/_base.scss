@@ -425,17 +425,26 @@ nav ol.breadcrumb{
                 }
             }
             .sort-by-btn{
+                width:70%;
                 font-size:16px;
                 margin:0;
-                &.active{
-                    color:$item_price_color;
+                position:relative;
+                @include displayFlex(flex-end, row, flex-end);
+                input{
+                    display:none;
+                }
+                label{
+                    margin:0 2%;
+                    &.active{
+                        color:$item_price_color;
+                    }
                     i:before{
                         font-size:10px;
                         color:$item_price_color;
                         margin-left:10px;
                     }
                 }
-            }
+        }
             div#search-bar.search-bar{
                 width:100%;
                 height:45px;
@@ -845,13 +854,9 @@ form.big-filter-without-title-checkbox{
             position:absolute;
             top:50%;
             right:10px;
-            content: '\002B';
-            transform: rotate(-90deg);
-            transition: 0.4s;
         }
         &.active:after{
-            transform: rotate(90deg);
-            transition: 0.4s;
+            right:-10px;
         }
     }
     .panel{
@@ -927,13 +932,9 @@ form.big-filter-with-title-checkbox{
             position:absolute;
             top:50%;
             right:10px;
-            content: '\002B';
-            transform: rotate(-90deg);
-            transition: 0.4s;
         }
         &.active:after{
-            transform: rotate(90deg);
-            transition: 0.4s;
+            right:-10px;
         }
     }
     .panel{

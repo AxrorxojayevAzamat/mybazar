@@ -10,7 +10,7 @@
         <div class="h4-title pay-body">
             <h4 class="title">Оформление заказа</h4>
         </div>
-        <div class="outter-pay-checkout-cart">
+        <div class="outter-checkout">
             <div class="ur-cart">
                 <button class="btn back-to-address">Назад в корзину</button>
                 <h6>Ваша корзина</h6>

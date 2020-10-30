@@ -178,3 +178,16 @@ form.big-filter-without-title-checkbox button:after {
 .outter-list-of-videos form.big-filter .filter-item label.filter-title:before {
     content: url(../images/gotoresults_searchresulticon.svg);
 }
+
+form.big-filter-with-title-checkbox button:after,
+form.big-filter-without-title-checkbox button:after{
+    content: url(../images/gotoresults_searchresulticon.svg) !important;
+    transform: rotate(-90deg);
+    transition: 0s;
+}
+form.big-filter-with-title-checkbox button.active:after,
+form.big-filter-without-title-checkbox button.active:after{
+    content: url(../images/gotoresults_searchresulticon.svg) !important;
+    transition: 0s;
+    transform: rotate(90deg);
+}

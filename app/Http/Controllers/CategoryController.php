@@ -39,9 +39,9 @@ class CategoryController extends Controller
 
     public function show(Request $request, ProductsPath $path)
     {
-        $category = $path->category;
 
-        if (!$category->children) {
+        $category = $path->category;
+        if (!$category->children->isEmpty()) {
             return $this->childCategoryShow($request, $category);
         }
 
@@ -51,7 +51,7 @@ class CategoryController extends Controller
     private function parentCategoryShow(Request $request, Category $category)
     {
         $children = $category->children()->get()->toTree();
-
+        
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $banners = Banner::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
@@ -150,7 +150,8 @@ class CategoryController extends Controller
         }
 
         $products = $query->paginate(20);
-
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications'));
+        $min_price = Product::select('price_uzs')->min('price_uzs');
+        $max_price = Product::select('price_uzs')->max('price_uzs');
+        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price'));
     }
 }
