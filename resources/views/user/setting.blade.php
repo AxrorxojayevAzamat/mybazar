@@ -116,7 +116,7 @@
     </div>
 </section>
 @endsection
-@section('js')
+@section('script')
 <script src="{{asset('js/1-index.js')}}"></script>
 <script>
 
