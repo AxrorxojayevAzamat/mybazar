@@ -2,9 +2,6 @@
 
 @section('title', 'Popular page')
 
-@section('styles')
-    <link rel="stylesheet" href="{{asset('css/popular-page.css')}}">
-@endsection
 @section('body')
     @section('banner')
         <!-- Slide banner -->
