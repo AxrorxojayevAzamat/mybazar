@@ -5,9 +5,10 @@ namespace App\Http\Requests\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string $token
+ * @property string $current_password
+ * @property string $new_password
  */
-class PhoneVerifyRequest extends FormRequest {
+class PasswordRequest extends FormRequest {
 
     
     public function authorize(): bool
@@ -18,8 +19,8 @@ class PhoneVerifyRequest extends FormRequest {
     public function rules(): array
     {
         return [
-            'phone_verify_token' => 'required|string|max:255',
-            'phone' => 'required|string|min:12|max:12',
+            'current_password' => 'required',
+            'new_password'     => 'required|string|min:2',
         ];
     }
 

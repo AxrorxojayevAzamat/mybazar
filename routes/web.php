@@ -21,6 +21,8 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 Route::post('/change-password','ProfileController@changePassword');
+Route::post('/phone', 'ProfileController@request');
+Route::put('/phone', 'ProfileController@verify')->name('user.phone.verify');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
@@ -97,9 +99,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     
             Route::get('setting','ProfileController@index')->name('user.setting');
             
-            Route::post('/phone', 'PhoneController@request'); //->name('user.phone');
-            Route::get('/phone', 'PhoneController@form')->name('user.phone');
-            Route::put('/phone', 'PhoneController@verify')->name('user.phone.verify');
+            
             
             Route::get('setting/{user}','ProfileController@edit')->name('user.edit');
             Route::put('setting/{user}','ProfileController@update')->name('user.update');

@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Entity\User\User;
 use App\Http\Requests\User\PhoneVerifyRequest;
+use App\Http\Requests\User\PhoneRequest;
 use App\Services\Sms\SmsSender;
 use Carbon\Carbon;
 use Config;
@@ -17,16 +18,16 @@ class PhoneService
         $this->sms = $sms;
     }
 
-    public function request($id) {
+    public function request($id, PhoneRequest $request) {
         $user = $this->getUser($id);
 
-        $token = $user->requestPhoneVerification(Carbon::now());
-        config('sms.send_local') ? '' : $this->sms->send($user->phone, 'Phone verification token: ' . $token);
+        $user->requestPhoneVerification(Carbon::now(),$request['phone']);
+        config('sms.send_local') ? '' : $this->sms->send($request['phone'], 'Phone verification token: ');
     }
 
     public function verify($id, PhoneVerifyRequest $request) {
         $user = $this->getUser($id);
-        $user->verifyPhone($request['token'], Carbon::now());
+        $user->verifyPhone($request['phone_verify_token'], Carbon::now(),$request['phone']);
     }
 
     public function toggleAuth($id): bool {
