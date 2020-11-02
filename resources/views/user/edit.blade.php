@@ -17,6 +17,22 @@
             <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">Profile</h3></div>
                 <div class="card-body">
+                    <form method="POST" action="{{ route('user.phone') }}">
+                                                
+                    <div class="form-group">
+                        {!! Form::label('phone', trans('adminlte.phone') , ['class' => 'col-form-label']); !!}
+                        {!! Form::number('phone',old('phone', $user->phone ? $user->phone : null), ['id' => 'user-phone','class'=>'form-control' . ($errors->has('phone') ? ' is-invalid' : '')]) !!}
+                        @if ($errors->has('phone'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('phone') }}</strong></span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('password', trans('adminlte.password') , ['class' => 'col-form-label']); !!}
+                        {!! Form::password('password', ['class'=>'form-control' . ($errors->has('password') ? ' is-invalid' : '')]) !!}
+                        @if ($errors->has('password'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('password') }}</strong></span>
+                        @endif
+                    </div>
                     <div class="form-group">
                         {!! Form::label('first_name', trans('adminlte.first_name') , ['class' => 'col-form-label']); !!}
                         {!! Form::text('first_name', old('first_name', $user ? ($user->profile ? $user->profile->first_name : null) : null), ['class'=>'form-control' . ($errors->has('first_name') ? ' is-invalid' : '') ]) !!}
@@ -105,36 +121,36 @@
 
 <script>
 
-    let avatarInput = $("#avatar-input");
-    let avatarUrl = '{{ $user ? ($user->profile ? ($user->profile->avatar ? $user->profile->avatarOriginal : null) : null ): null }}';
+let avatarInput = $("#avatar-input");
+let avatarUrl = '{{ $user ? ($user->profile ? ($user->profile->avatar ? $user->profile->avatarOriginal : null) : null ): null }}';
 
-    let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-    XMLHttpRequest.prototype.send = function(data) {
-        this.setRequestHeader('X-CSRF-Token', token);
-        return send.apply(this, arguments);
-    };
+let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
+XMLHttpRequest.prototype.send = function (data) {
+    this.setRequestHeader('X-CSRF-Token', token);
+    return send.apply(this, arguments);
+};
 
-    if (avatarUrl) {
-        avatarInput.fileinput({
-            initialPreview: [avatarUrl],
-            initialPreviewAsData: true,
-            showUpload: false,
-            previewFileType: 'text',
-            browseOnZoneClick: true,
-            overwriteInitial: true,
-            deleteUrl: 'remove-avatar',
-            maxFileCount: 1,
-            allowedFileExtensions: ['jpg', 'jpeg', 'png'],
-        });
-    } else {
-        avatarInput.fileinput({
-            showUpload: false,
-            previewFileType: 'text',
-            browseOnZoneClick: true,
-            maxFileCount: 1,
-            allowedFileExtensions: ['jpg', 'jpeg', 'png'],
-        });
-    }
+if (avatarUrl) {
+    avatarInput.fileinput({
+        initialPreview: [avatarUrl],
+        initialPreviewAsData: true,
+        showUpload: false,
+        previewFileType: 'text',
+        browseOnZoneClick: true,
+        overwriteInitial: true,
+        deleteUrl: 'remove-avatar',
+        maxFileCount: 1,
+        allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+    });
+} else {
+    avatarInput.fileinput({
+        showUpload: false,
+        previewFileType: 'text',
+        browseOnZoneClick: true,
+        maxFileCount: 1,
+        allowedFileExtensions: ['jpg', 'jpeg', 'png'],
+    });
+}
 </script>
 
 @endsection

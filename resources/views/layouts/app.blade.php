@@ -45,6 +45,7 @@
                 @yield('breadcrumbs')
             </div>
         </nav>
+        @include('partials.flash')
         @yield('body')
 
     <!-- NEWS LETTER -->
