@@ -11,7 +11,6 @@ use App\Helpers\ImageHelper;
 use App\Services\Sms\SmsSender;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\JsonHelper;
-//use App\Validators\User\ProfileValidator;
 use App\Services\User\PhoneService;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -57,7 +56,7 @@ class ProfileController extends Controller
             $this->uploadPoster($user->id, $request->avatar, $imageName);
         }
 
-        return redirect()->route('user.profile', $user);
+        return redirect()->route('user.setting');
     }
 
     public function changePassword(PasswordRequest $request) {

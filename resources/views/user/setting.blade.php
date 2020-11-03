@@ -14,9 +14,6 @@
             <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">Profile</h3></div>
                 <div class="card-body">
-                    <form class="body">
-                        @csrf
-
                         <!--change password form-->
                         <div class="card">
                             <div class="form-group">
@@ -27,10 +24,10 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                {!! Form::label('new-password', 'New Password' , ['class' => 'col-form-label']); !!}
-                                {!! Form::password('new-password', ['id' => 'newPassword','class'=>'form-control' . ($errors->has('new-password') ? ' is-invalid' : ''), 'required' => true]) !!}
-                                @if ($errors->has('new-password'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('new-password') }}</strong></span>
+                                {!! Form::label('new_password', 'New Password' , ['class' => 'col-form-label']); !!}
+                                {!! Form::password('new_password', ['id' => 'newPassword','class'=>'form-control' . ($errors->has('new_password') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                @if ($errors->has('new_password'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('new_password') }}</strong></span>
                                 @endif
 
                                 <button id="changePassword" type="button" class="btn btn-sm btn-success">change password</button>
@@ -56,7 +53,6 @@
                             </div>
 
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -64,7 +60,7 @@
     <form method="POST" action="{{ route('user.update', $user) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-
+    
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
@@ -145,8 +141,20 @@
 </form>
 </section>
 @endsection
-@section('script')
+@section('js')
 <script src="{{asset('js/1-index.js')}}"></script>
+
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/purify.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/themes/fa/theme.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/locales/uz.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/locales/ru.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/locales/LANG.js') }}"></script>
+{{--    <script src="{{ mix('js/fileinput.js', 'build') }}"></script>--}}-->
+
 
 @include('user._script')
 
