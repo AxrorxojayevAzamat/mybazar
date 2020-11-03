@@ -10,4 +10,6 @@ return [
             'url' => env('SMS_SMS_UZ_APP_URL'),
         ],
     ],
+    
+    'phone_verify_token_expire' => env('PHONE_VERIFY_TOKEN_EXPIRE',300)
 ];

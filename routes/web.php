@@ -98,13 +98,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::resource('/videos', 'VideosController');
     
             Route::get('setting','ProfileController@index')->name('user.setting');
-            
-            
-            
-            Route::get('setting/{user}','ProfileController@edit')->name('user.edit');
             Route::put('setting/{user}','ProfileController@update')->name('user.update');
-            
-    
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

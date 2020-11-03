@@ -4,12 +4,6 @@
     $(document).ready(function () {
         
         $('#changePassword').on('click', function () {
-        $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
         
             let currentPassword = $('#currentPassword').val();
             let newPassword = $('#newPassword').val();
@@ -40,19 +34,12 @@
     $(document).ready(function () {
         
         $('#changePhone').on('click', function () {
-        $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            
             let userPhone = $('#userPhone').val();
             
             $.ajax({
                 url: '/phone',
                 type: 'POST',
-                data: {
+                data: { 
                     phone: userPhone,
                     
                 },
@@ -74,12 +61,6 @@
     $(document).ready(function () {
         
         $('#confirmPhone').on('click', function () {
-        $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
             let confirmCode = $('#confirmCode').val();
             let userPhone = $('#userPhone').val();
             

@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Config;
 
 /**
  * @property int $id
@@ -131,7 +132,7 @@ class User extends Authenticatable
 
         $this->phone_verified            = false;
         $this->phone_verify_token        = (string) random_int(10000, 99999);
-        $this->phone_verify_token_expire = $now->copy()->addSeconds(300);
+        $this->phone_verify_token_expire = $now->copy()->addSeconds(config('sms.phone_verify_token_expire'));
         $this->saveOrFail();
 
         return $this->phone_verify_token;

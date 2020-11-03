@@ -84,8 +84,8 @@
 <script src="{{asset('js/search-bar.js')}}"></script>
 <script src="{{asset('js/scroll-xNav.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-@yield ('script')
-@stack('script')
+@yield ('js')
+@stack('js')
 
 
 </body>
