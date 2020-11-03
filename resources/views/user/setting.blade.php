@@ -9,148 +9,145 @@
 <!-- body -->
 
 <section>
-    <div class="d-flex flex-row mb-3">
-        <a href="{{ route('user.edit', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">Profile</h3></div>
                 <div class="card-body">
-                    <table class="table table-striped projects">
-                        <tbody>
-                            <tr>
-                                <th>{{ trans('adminlte.image') }}</th>
-                                <td>
-                                    @if ($user->profile->avatar)
-                                    <a href="{{ $user->profile->avatarOriginal }}" target="_blank"><img src="{{ $user->profile->avatarThumbnail }}"></a>
-                                    @endif
-                                </td>
-                            </tr>
+                    <form class="body">
+                        @csrf
 
-                        </tbody>
-                    </table>
-                    <table class="table table-bordered table-striped projects">
-                        <tbody>
-                            <tr>
-                                <th>@lang('adminlte.password')</th>
-                                <td>
+                        <!--change password form-->
+                        <div class="card">
+                            <div class="form-group">
+                                {!! Form::label('current_password', 'Current Password' , ['class' => 'col-form-label']); !!}
+                                {!! Form::password('current_password', ['id' => 'currentPassword','class'=>'form-control' . ($errors->has('current_password') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                @if ($errors->has('current_password'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('current_password') }}</strong></span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('new-password', 'New Password' , ['class' => 'col-form-label']); !!}
+                                {!! Form::password('new-password', ['id' => 'newPassword','class'=>'form-control' . ($errors->has('new-password') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                @if ($errors->has('new-password'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('new-password') }}</strong></span>
+                                @endif
 
-                                    <form class="body">
-                                        @csrf
-                                    <div class="form-group">
-                                        {!! Form::label('current-password', 'Current Password' , ['class' => 'col-form-label']); !!}
-                                        {!! Form::password('current-password', ['id' => 'currentPassword','class'=>'form-control' . ($errors->has('current-password') ? ' is-invalid' : ''), 'required' => true]) !!}
-                                        @if ($errors->has('current-password'))
-                                        <span class="invalid-feedback"><strong>{{ $errors->first('current-password') }}</strong></span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Form::label('new-password', 'New Password' , ['class' => 'col-form-label']); !!}
-                                        {!! Form::password('new-password', ['id' => 'newPassword','class'=>'form-control' . ($errors->has('new-password') ? ' is-invalid' : ''), 'required' => true]) !!}
-                                        @if ($errors->has('new-password'))
-                                        <span class="invalid-feedback"><strong>{{ $errors->first('new-password') }}</strong></span>
-                                        @endif
-                                    </div>
+                                <button id="changePassword" type="button" class="btn btn-sm btn-success">change password</button>
+                            </div>
+                        </div>
+                        <!--change phone form-->
+                        <div class="card">
+                            <div class="form-group">
+                                {!! Form::label('phone', trans('adminlte.phone') , ['class' => 'col-form-label']); !!}
+                                {!! Form::number('phone',old('phone', $user->phone ? $user->phone : null), ['id' => 'userPhone','class'=>'form-control' . ($errors->has('phone') ? ' is-invalid' : '')]) !!}
+                                @if (!$user->isPhoneVerified())
+                                <i>(is not verified)</i><br />
+                                @endif
+                                @if ($errors->has('phone'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('phone') }}</strong></span>
+                                @endif
+                                <button id="changePhone" type="button" class="btn btn-sm btn-success">change phone</button>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('code', 'sms_code' , ['class' => 'col-form-label']); !!}
+                                {!! Form::number('phone_verify_token','',['id' => 'confirmCode','class'=>'form-control']); !!}
+                                <button id="confirmPhone" type="button" class="btn btn-sm btn-success">verify phone</button>
+                            </div>
 
-                                    <button id="changePassword" type="button" class="btn btn-sm btn-success">change paasword</button>
-</form>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>@lang('adminlte.user.name')</th>
-                                <td>{{ $user->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.email')</th>
-                                <td>{{ $user->email }}</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.phone')</th><td>
-                                    @if ($user->phone)
-                                    {{ $user->phone }}
-                                    @if (!$user->isPhoneVerified())
-                                    <i>(is not verified)</i><br />
-                                    <form method="POST" action="{{ route('user.phone') }}">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-success">Verify</button>
-                                    </form>
-                                    @endif
-                                    @endif
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>@lang('adminlte.first_name')</th>
-                                <td>{{$user->profile->first_name}}</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.last_name')</th>
-                                <td>{{$user->profile->last_name}}</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.birth_date')</th>
-                                <td>{{$user->profile->birth_date}}</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.gender')</th>
-                                <td>
-                                    @if ($user->profile->gender === \App\Entity\User\Profile::FEMALE)
-                                    <span class="badge badge-danger">@lang('adminlte.female')</span>
-                                    @elseif ($user->profile->gender === \App\Entity\User\Profile::MALE)
-                                    <span class="badge badge-secondary">@lang('adminlte.male')</span>
-                                    @elseif ($user->profile->gender === \App\Entity\User\Profile::GENDER_EMPTY)
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>@lang('adminlte.address')</th>
-                                <td>{{$user->profile->address}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <form method="POST" action="{{ route('user.update', $user) }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-gray card-outline">
+                <div class="card-header"><h3 class="card-title">Profile</h3></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {!! Form::label('first_name', trans('adminlte.first_name') , ['class' => 'col-form-label']); !!}
+                        {!! Form::text('first_name', old('first_name', $user ? ($user->profile ? $user->profile->first_name : null) : null), ['class'=>'form-control' . ($errors->has('first_name') ? ' is-invalid' : '') ]) !!}
+                        @if ($errors->has('first_name'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('first_name') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('last_name', trans('adminlte.last_name') , ['class' => 'col-form-label']); !!}
+                        {!! Form::text('last_name', old('last_name', $user ? ($user->profile ? $user->profile->last_name : null) : null), ['class'=>'form-control' . ($errors->has('last_name') ? ' is-invalid' : '') ]) !!}
+                        @if ($errors->has('last_name'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('last_name') }}</strong></span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('birth_date', trans('adminlte.birth_date') , ['class' => 'col-form-label']); !!}
+                        {!! Form::date('birth_date', old('birth_date', $user ? ($user->profile ? $user->profile->birth_date : null) : null), ['class'=>'form-control' . ($errors->has('birth_date') ? ' is-invalid' : '') ]) !!}
+                        @if ($errors->has('birth_date'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('birth_date') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('gender', trans('adminlte.gender') , ['class' => 'col-form-label']); !!}
+                        {!! Form::select('gender', $genders, old('gender', $user ? ($user->profile ? $user->profile->gender : null) : null),
+                        ['class'=>'form-control' . ($errors->has('gender') ? ' is-invalid' : '')]) !!}
+                        @if ($errors->has('gender'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('gender') }}</strong></span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('address', trans('adminlte.address') , ['class' => 'col-form-label']); !!}
+                        {!! Form::text('address', old('address', $user ? ($user->profile ? $user->profile->address : null) : null), ['class'=>'form-control' . ($errors->has('address') ? ' is-invalid' : '') ]) !!}
+                        @if ($errors->has('address'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('address') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.files') }}</h3></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="avatar" class="col-form-label">{{ trans('adminlte.image') }}</label>
+                                <div class="file-loading">
+                                    <input id="avatar-input" class="file" type="file" name="avatar" accept=".jpg,.jpeg,.png">
+                                </div>
+                                @if ($errors->has('avatar'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('avatar') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">{{ trans('adminlte.edit') }}</button>
+    </div>
+
+</form>
 </section>
 @endsection
 @section('script')
 <script src="{{asset('js/1-index.js')}}"></script>
-<script>
 
-//////////// changePassword Auth User
-    $(document).ready(function () {
-        
-        $('#changePassword').on('click', function () {
-        $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        
-            let currentPassword = $('#currentPassword').val();
-            let newPassword = $('#newPassword').val();
-            $.ajax({
-                url: '/change-password',
-                type: 'POST',
-                data: {
-                    current_password: currentPassword,
-                    new_password: newPassword
-                },
-                dataType: 'json',
-
-                    
-                success: function (data) {
-                    console.log(data)
-                }
-                    });
-            });
-        });
-
-
-</script>
+@include('user._script')
 
 @endsection

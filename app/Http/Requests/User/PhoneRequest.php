@@ -5,9 +5,9 @@ namespace App\Http\Requests\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string $token
+ * @property string $phone
  */
-class PhoneVerifyRequest extends FormRequest {
+class PhoneRequest extends FormRequest {
 
     
     public function authorize(): bool
@@ -18,7 +18,6 @@ class PhoneVerifyRequest extends FormRequest {
     public function rules(): array
     {
         return [
-            'phone_verify_token' => 'required|string|max:255',
             'phone' => 'required|string|min:12|max:12',
         ];
     }
