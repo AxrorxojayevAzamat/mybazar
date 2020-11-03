@@ -8,7 +8,6 @@ use App\Entity\User\User;
 use App\Http\Requests\Admin\Stores\Users\UpdateRequest;
 use App\Services\Sms\SmsSender;
 use App\Helpers\JsonHelper;
-use App\Services\User\PhoneService;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
 use App\Http\Requests\User\PasswordRequest;
@@ -20,13 +19,11 @@ class ProfileController extends Controller
 
     private $sms;
     private $service;
-    private $userService;
 
-    public function __construct(SmsSender $sms, PhoneService $service, UserService $userService) {
+    public function __construct(SmsSender $sms, UserService $service) {
         $this->middleware('can:manage-profile');
-        $this->sms         = $sms;
-        $this->service     = $service;
-        $this->userService = $userService;
+        $this->sms     = $sms;
+        $this->service = $service;
     }
 
     public function index() {
@@ -44,7 +41,7 @@ class ProfileController extends Controller
 
     public function changePassword(PasswordRequest $request) {
         try {
-            return $this->userService->changePassword($request);
+            return $this->service->changePassword($request);
         } catch (\Exception $e) {
             return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
         }
@@ -68,6 +65,10 @@ class ProfileController extends Controller
         } catch (\Exception $e) {
             return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
         }
+    }
+
+    public function favorites() {
+        return view('user.favorites');
     }
 
 }

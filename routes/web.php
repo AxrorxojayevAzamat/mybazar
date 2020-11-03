@@ -57,10 +57,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
 
     Route::get('/delivery', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
-
-    Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
-
-
     Route::get('popular', 'PopularController@popular')->name('popular');
 
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
@@ -99,6 +95,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     
             Route::get('setting','ProfileController@index')->name('user.setting');
             Route::put('setting/{user}','ProfileController@update')->name('user.update');
+            Route::get('favorites','ProfileController@favorites')->name('user.favorites');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

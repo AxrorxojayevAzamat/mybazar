@@ -2,22 +2,55 @@
 
 namespace App\Services\User;
 
-use App\Entity\User\User;
-use App\Helpers\ImageHelper;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Http\Response;
+use App\Entity\User\User;
+use App\Entity\User\Profile;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use App\Http\Requests\User\PasswordRequest;
-use Illuminate\Http\Request;
-use App\Entity\User\Profile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\User\PhoneVerifyRequest;
+use App\Http\Requests\User\PhoneRequest;
 use App\Helpers\JsonHelper;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
+use App\Services\Sms\SmsSender;
+use App\Helpers\ImageHelper;
+use Carbon\Carbon;
+use Config;
 
 class UserService
 {
+
+    private $sms;
+
+    public function __construct(SmsSender $sms) {
+        $this->sms = $sms;
+    }
+
+    public function request($id, PhoneRequest $request) {
+        $user = $this->getUser($id);
+
+        $user->requestPhoneVerification(Carbon::now(), $request['phone']);
+        config('sms.send_local') ? '' : $this->sms->send($request['phone'], 'Phone verification token: ');
+    }
+
+    public function verify($id, PhoneVerifyRequest $request) {
+        $user = $this->getUser($id);
+        $user->verifyPhone($request['phone_verify_token'], Carbon::now(), $request['phone']);
+    }
+
+    public function toggleAuth($id): bool {
+        $user = $this->getUser($id);
+        if ($user->isPhoneAuthEnabled()) {
+            $user->disablePhoneAuth();
+        } else {
+            $user->enablePhoneAuth();
+        }
+        return $user->isPhoneAuthEnabled();
+    }
 
     public function findUsers(Request $request) {
         /** @var User $user */
@@ -95,24 +128,23 @@ class UserService
     }
 
     public function changePassword(PasswordRequest $request) {
-       
 
-            if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
+
+        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
 //            // The passwords matches
-                return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'Your current password does not matches with the password you provided. Please try again.');
-            }
+            return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'Your current password does not matches with the password you provided. Please try again.');
+        }
 
-            if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
+        if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
 //            //Current password and new password are same
 
-                return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'New Password cannot be same as your current password. Please choose a different password.');
-            }
-            //Change Password
-            $user           = Auth::user();
-            $user->password = bcrypt($request->get('new_password'));
-            $user->save();
-            return JsonHelper::successResponse('Password changed successfully !');
-        
+            return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'New Password cannot be same as your current password. Please choose a different password.');
+        }
+        //Change Password
+        $user           = Auth::user();
+        $user->password = bcrypt($request->get('new_password'));
+        $user->save();
+        return JsonHelper::successResponse('Password changed successfully !');
     }
 
     private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void {
@@ -129,6 +161,10 @@ class UserService
         $request['address'] ? $count++ : 0;
         $request['avatar'] ? $count++ : 0;
         return $count;
+    }
+
+    private function getUser($id): User {
+        return User::findOrFail($id);
     }
 
 }
