@@ -2,17 +2,19 @@
 
 namespace App\Entity\User;
 
-use App\Entity\Shop\OrderItem;
-use App\Entity\Store;
-use App\Entity\StoreUser;
-use App\Http\Requests\Admin\Users\UpdateRequest;
-use Carbon\Carbon;
-use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use App\Entity\Shop\OrderItem;
+use App\Entity\Shop\Product;
+use App\Entity\Store;
+use App\Entity\StoreUser;
+use App\Entity\UserFavorite;
+use App\Http\Requests\Admin\Users\UpdateRequest;
+use Carbon\Carbon;
 use Config;
+use Eloquent;
 
 /**
  * @property int $id
@@ -32,6 +34,8 @@ use Config;
  *
  * @property StoreUser $storeWorker
  * @property Store $store
+ * @property UserFavorite[] $userFavorites
+ * @property Product[] $favorites
  * @property Profile $profile
  *
  * @mixin Eloquent
@@ -208,6 +212,14 @@ class User extends Authenticatable
 
     public function store() {
         return $this->hasOneThrough(Store::class, StoreUser::class, 'user_id', 'store_id', 'id', 'id');
+    }
+
+    public function userFavorites() {
+        return $this->hasMany(UserFavorite::class, 'user_id', 'id');
+    }
+
+    public function favorites() {
+        return $this->belongsToMany(Product::class, 'user_favorites', 'user_id', 'product_id');
     }
 
     ###########################################

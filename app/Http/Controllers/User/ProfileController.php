@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Support\Facades\Auth;
 use App\Entity\User\Profile;
 use App\Entity\User\User;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\Users\UpdateRequest;
-use App\Services\Sms\SmsSender;
 use App\Helpers\JsonHelper;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
 use App\Http\Requests\User\PasswordRequest;
-use Illuminate\Http\Response;
+use App\Services\Sms\SmsSender;
 use App\Services\User\UserService;
 
 class ProfileController extends Controller
@@ -43,7 +43,7 @@ class ProfileController extends Controller
         try {
             return $this->service->changePassword($request);
         } catch (\Exception $e) {
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
+            return JsonHelper::exceptionResponse($e->getMessage());
         }
     }
 
@@ -52,9 +52,9 @@ class ProfileController extends Controller
             $this->service->request(Auth::id(), $request);
             return JsonHelper::successResponse('Phone verify code send successfully !');
         } catch (\Exception $e) {
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
+            return JsonHelper::exceptionResponse($e->getMessage());
         } catch (\DomainException $e) {
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
+            return JsonHelper::exceptionResponse($e->getMessage());
         }
     }
 
@@ -63,12 +63,10 @@ class ProfileController extends Controller
             $this->service->verify(Auth::id(), $request);
             return JsonHelper::successResponse('Phone verified successfully !');
         } catch (\Exception $e) {
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, $e->getMessage());
+            return JsonHelper::exceptionResponse($e->getMessage());
+        } catch (\DomainException $e) {
+            return JsonHelper::exceptionResponse($e->getMessage());
         }
-    }
-
-    public function favorites() {
-        return view('user.favorites');
     }
 
 }

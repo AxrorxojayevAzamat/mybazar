@@ -65,7 +65,7 @@
             let userPhone = $('#userPhone').val();
             
             $.ajax({
-                url: '/phone',
+                url: '/phone-verify',
                 type: 'PUT',
                 data: {
                     phone_verify_token: confirmCode,

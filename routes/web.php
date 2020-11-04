@@ -20,9 +20,13 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-Route::post('/change-password','ProfileController@changePassword');
-Route::post('/phone', 'ProfileController@request');
-Route::put('/phone', 'ProfileController@verify')->name('user.phone.verify');
+Route::group(['as' => 'user.','namespace' => 'User'], function () {
+    Route::post('/change-password','ProfileController@changePassword')->name('change-password');
+    Route::post('/phone', 'ProfileController@request')->name('phone.request');
+    Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
+    Route::post('add-to-favorite','FavoriteController@addToFavorite')->name('add-to-favorite');
+    Route::delete('remove-from-favorite', 'FavoriteController@removeFromFavorite')->name('remove-from-favorite');
+});
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
@@ -93,9 +97,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::resource('/videos', 'VideosController');
     
-            Route::get('setting','ProfileController@index')->name('user.setting');
-            Route::put('setting/{user}','ProfileController@update')->name('user.update');
-            Route::get('favorites','ProfileController@favorites')->name('user.favorites');
+    Route::group(['as' => 'user.','namespace' => 'User'], function () {
+            Route::get('setting','ProfileController@index')->name('setting');
+            Route::put('setting/{user}','ProfileController@update')->name('update');
+            Route::get('favorites','FavoriteController@favorites')->name('favorites');
+            
+            
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

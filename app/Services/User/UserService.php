@@ -2,21 +2,22 @@
 
 namespace App\Services\User;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Entity\User\User;
 use App\Entity\User\Profile;
+use App\Entity\UserFavorite;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
-use App\Helpers\JsonHelper;
 use App\Services\Sms\SmsSender;
+use App\Helpers\JsonHelper;
 use App\Helpers\ImageHelper;
 use Carbon\Carbon;
 use Config;
@@ -132,13 +133,13 @@ class UserService
 
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
 //            // The passwords matches
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'Your current password does not matches with the password you provided. Please try again.');
+            return JsonHelper::badResponse('Your current password does not matches with the password you provided. Please try again.');
         }
 
         if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
 //            //Current password and new password are same
 
-            return JsonHelper::response(Response::HTTP_BAD_REQUEST, 'New Password cannot be same as your current password. Please choose a different password.');
+            return JsonHelper::badResponse('New Password cannot be same as your current password. Please choose a different password.');
         }
         //Change Password
         $user           = Auth::user();
@@ -165,6 +166,40 @@ class UserService
 
     private function getUser($id): User {
         return User::findOrFail($id);
+    }
+    
+     public function addToFavorite(int $id, Request $request): UserFavorite
+    {
+         /** @var User $user */
+        $user = User::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            
+            $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
+//            $userFavorite = $user->favorites()->attach($request->product_id);
+
+            DB::commit();
+
+            return $userFavorite;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+     public function removeFromFavorite(int $id, Request $request): bool
+    {
+         /** @var User $user */
+        $user = User::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $userFavorite = $user->favorites()->detach($request->product_id);
+            DB::commit();
+
+            return $userFavorite;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 
 }
