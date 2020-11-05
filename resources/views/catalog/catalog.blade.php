@@ -20,13 +20,13 @@
         <div class="outter-catalog-view">
 
             <!-- big filter without title checkbox -->
-            @include('catalog.big-filter-without-title-checkbox')
+            @include('layouts.big-filter-without-title-checkbox')
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
                     @include('layouts.sort-by-options')
 
-                    @include('catalog.small-filter-without-title-checkbox')
+                    @include('layouts.small-filter-without-title-checkbox')
                 </nav>
 
                 @include('layouts.list-mosaic-catalog-items')

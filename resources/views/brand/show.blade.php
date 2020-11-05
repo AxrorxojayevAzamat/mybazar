@@ -26,7 +26,7 @@
                 @include('layouts.sort-by-options')
 
                 <!-- small filter without title checkbox -->
-                    @include('filters.small-filter-without-title-checkbox')
+                    @include('layouts.small-filter-without-title-checkbox')
                 </nav>
 
                 <!-- list mosaic brand items -->
