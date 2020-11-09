@@ -38,7 +38,7 @@ Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
-//    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
+    $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
 });
 
 Breadcrumbs::register('auth', function (Crumbs $crumbs) {
@@ -118,11 +118,6 @@ Breadcrumbs::register('delivery', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.delivery'), route('delivery'));
 });
 
-Breadcrumbs::register('favorites', function (Crumbs $crumbs) {
-    $crumbs->parent('front-home');
-    $crumbs->push(trans('frontend.breadcrumb.favorites'), route('favorites'));
-});
-
 Breadcrumbs::register('popular', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.popular'), route('popular'));
@@ -132,12 +127,9 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
 Breadcrumbs::register('user.setting', function (Crumbs $crumbs) {
 });
 
-Breadcrumbs::register('user.phone', function (Crumbs $crumbs) {
-});
-
-Breadcrumbs::register('user.edit', function (Crumbs $crumbs, User $user) {
-    $crumbs->parent('user.setting');
-    $crumbs->push($user->name, route('user.edit',$user));
+Breadcrumbs::register('user.favorites', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.breadcrumb.favorites'), route('user.favorites'));
 });
 
 // Categories

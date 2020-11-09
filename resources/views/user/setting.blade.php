@@ -141,7 +141,7 @@
 </form>
 </section>
 @endsection
-@section('js')
+@section('script')
 <script src="{{asset('js/1-index.js')}}"></script>
 
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
