@@ -1,5 +1,17 @@
+$(window).on("load, resize", function() {
+    var viewportWidth = $(window).width();
+    if (viewportWidth < 1200) {
+            $(".all-filtered-items").addClass("column");
+            console.log('add class');
+    }else{
+        $(".all-filtered-items").removeClass("column");
+    }
+});
+
 $(document).ready(function(){
     
+    $('.select-main-search').niceSelect();
+
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
@@ -404,5 +416,7 @@ $(document).ready(function(){
     });
     
 });
+
+
 
 
