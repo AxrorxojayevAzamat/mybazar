@@ -16,3 +16,5 @@ Route::get('/news', 'Api\NewsController@index');
 Route::get('/posts', 'Api\PostsController@index');
 Route::get('/videos', 'Api\VideosController@index');
 Route::get('/banners', 'Api\BannersController@index');
+
+Route::get('categories/search', 'Api\SearchController@search');

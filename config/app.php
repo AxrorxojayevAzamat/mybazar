@@ -168,6 +168,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\AdminLteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Matchish\ScoutElasticSearch\ElasticSearchServiceProvider::class,
 
         /*
          * Application Service Providers...
