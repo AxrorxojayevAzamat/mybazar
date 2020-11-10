@@ -17,8 +17,15 @@ class SearchController
     public function search(Request $request)
     {
         if (!empty($value = $request->get('search'))) {
+            $categoryId = $request->get('category_id');
+
             $length = 10;
-            $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
+            if ($categoryId) {
+                $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
+                    ->where('category_id', $categoryId)->paginate(10);
+            } else {
+                $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
+            }
             ProductResource::collection($products);
             if (($length -= $products->count()) <= 0) {
                 return response()->json([
@@ -28,7 +35,11 @@ class SearchController
                 ]);
             }
 
-            $brands = Brand::search($value)->paginate($length);
+            if ($categoryId) {
+                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
+            } else {
+                $brands = Brand::search($value)->paginate($length);
+            }
             BrandResource::collection($brands);
             if (($length -= $brands->count()) <= 0) {
                 return response()->json([
@@ -38,7 +49,12 @@ class SearchController
                 ]);
             }
 
-            $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
+            if ($categoryId) {
+                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)
+                    ->where('categories', $categoryId)->paginate($length);
+            } else {
+                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
+            }
             StoreResource::collection($stores);
             return response()->json([
                 'products' => $products->toArray(),

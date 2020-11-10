@@ -62,6 +62,7 @@ class Brand extends BaseModel
             'name_ru' => $this->name_ru,
             'name_en' => $this->name_en,
             'slug' => $this->slug,
+            'categories' => $this->categories()->pluck('id')->toArray(),
         ];
     }
 

@@ -74,6 +74,7 @@ class Store extends BaseModel
             'name_en' => $this->name_en,
             'slug' => $this->slug,
             'status' => $this->status,
+            'categories' => $this->categories()->pluck('id')->toArray(),
         ];
     }
 

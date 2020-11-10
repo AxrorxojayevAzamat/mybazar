@@ -118,6 +118,7 @@ class Product extends BaseModel
             'price_uzs' => $this->price_uzs,
             'price_usd' => $this->price_usd,
             'status' => $this->status,
+            'category_id' => $this->main_category_id,
         ];
     }
 
