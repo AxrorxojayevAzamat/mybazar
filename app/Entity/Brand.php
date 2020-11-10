@@ -10,6 +10,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Support\Facades\DB;
+use Laravel\Scout\Searchable;
 
 /**
  * @property integer $id
@@ -38,6 +39,8 @@ use Illuminate\Support\Facades\DB;
  */
 class Brand extends BaseModel
 {
+    use Searchable;
+
     private $nextStatementId;
 
     protected $table = 'brands';
@@ -45,6 +48,22 @@ class Brand extends BaseModel
     protected $fillable = [
         'id', 'name_uz', 'name_ru', 'name_en', 'slug', 'logo',
     ];
+
+    public function searchableAs(): string
+    {
+        return 'brands_index';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name_uz' => $this->name_uz,
+            'name_ru' => $this->name_ru,
+            'name_en' => $this->name_en,
+            'slug' => $this->slug,
+        ];
+    }
 
     protected function getCacheBaseTags(): array
     {
