@@ -1,6 +1,7 @@
 .list-of-brands{
     width:100%;
     padding:2% 10%;
+    
     .filter-by-alphabet{
         width:100%;
         @include displayFlex(center, column, flex-start);
@@ -20,6 +21,9 @@
         }
         .first-row, .second-row{
             width:100%;
+        }
+        .alphabets-padding {
+            padding: .8rem;
         }
     }
     .filtered-brands{
