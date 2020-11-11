@@ -589,11 +589,11 @@ nav ol.breadcrumb{
                 position:relative;
                 justify-content: flex-start;
                 div{
-                    height:50px;
-                    width:50px;
+                    height:45px;
+                    width:45px;
                     i{
-                        font-size:26px;
-                        line-height:50px;
+                        font-size:22px;
+                        line-height:45px;
                     }
                     &.cart{
                         @include displayFlex(space-between,row, center);
@@ -1184,6 +1184,13 @@ form.small-filter{
         width:90%;
     }
 }
+@media all and (max-width:1465px){
+    .outter-catalog-view{
+        .wrapper-filtered-items{
+            width:80%;
+        }
+    }
+}
 @media all and (max-width:1300px){
     .outter-catalog-view, .outter-brand-view-body{
         form.big-filter{
@@ -1224,20 +1231,24 @@ form.small-filter{
     }
     .outter-catalog-view, .outter-brand-view-body{
         flex-flow:column;
-        form.big-filter{
+        form.big-filter-with-title-checkbox,
+        form.big-filter-without-title-checkbox{
             display: none;
             width:100%;
         }
         .wrapper-filtered-items{
             width:100%;
             nav.sort-types{
-                justify-content: space-evenly;
+                justify-content: space-between;
                 button.navbar-toggler{
                     display: inline-block;
                 }
                 form.small-filter{
                     width:100%;
                     display: inline-block;
+                }
+                .toggle-view{
+                    display:none;
                 }
             }
             .sort-by{
@@ -1330,6 +1341,15 @@ form.small-filter{
     }
     h4.title{
         font-size:24px;
+    }
+    .outter-catalog-view{
+        .wrapper-filtered-items{
+            nav.sort-types{
+                .sort-by-btn{
+                    display:none;
+                }
+            }
+        }
     }
 }
 @media all and(max-width:575px){

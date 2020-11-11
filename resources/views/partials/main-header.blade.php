@@ -4,22 +4,17 @@
             <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
         </a>
     </div>
-    <div id="search-bar" class="search-bar form-control">
-        <div class="input-with-tags">
-            <input id="search-input" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
-        </div>
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @lang('frontend.all_categories')
-            </button>
-            <div class="dropdown-menu animated fadeIn" aria-labelledby="dropdownMenuButton">
-                @foreach ($gCategories as $category)
-                    <a class="dropdown-item" href="{{ route('categories.show', products_path($category)) }}">{{ $category->name }}</a>
-                @endforeach
+    <form id="search-bar" class="search-bar form-control">
+            <div class="input-with-tags">
+                <input id="search-input" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
             </div>
-        </div>
-        <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-    </div>
+            <select class="form-control select-main-search">
+                @foreach ($gCategories as $category)
+                    <option>{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <button class="search btn" type="submit"><i class="mbsearch"></i></button>   
+    </form>
     <div class="from-statistics-to-account">
         <div class="dropdown compare-dropdown">
             <a href="#" class="btn dropdown-toggle comparison" role="button" id="dropdownComparison" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
