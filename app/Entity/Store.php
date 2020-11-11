@@ -11,6 +11,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Searchable;
 
 /**
  * @property int $id
@@ -47,6 +48,8 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Store extends BaseModel
 {
+    use Searchable;
+
     const STATUS_DRAFT = 0;
     const STATUS_MODERATION = 1;
     const STATUS_ACTIVE = 2;
@@ -56,6 +59,29 @@ class Store extends BaseModel
     protected $fillable = [
         'id', 'name_uz', 'name_ru', 'name_en', 'slug', 'status', 'logo',
     ];
+
+    public function searchableAs(): string
+    {
+        return 'stores_index';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name_uz' => $this->name_uz,
+            'name_ru' => $this->name_ru,
+            'name_en' => $this->name_en,
+            'slug' => $this->slug,
+            'status' => $this->status,
+            'categories' => $this->categories()->pluck('id')->toArray(),
+        ];
+    }
+
+    public function shouldBeSearchable(): bool
+    {
+        return $this->isActive();
+    }
 
     public static function add(int $id, string $nameUz, string $nameRu, string $nameEn, string $slug, string $logoName): self
     {

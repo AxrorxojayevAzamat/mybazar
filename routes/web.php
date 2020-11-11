@@ -20,6 +20,14 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::group(['as' => 'user.','namespace' => 'User'], function () {
+    Route::post('/change-password','ProfileController@changePassword')->name('change-password');
+    Route::post('/phone', 'ProfileController@request')->name('phone.request');
+    Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
+    Route::post('add-to-favorite','FavoriteController@addToFavorite')->name('add-to-favorite');
+    Route::delete('remove-from-favorite', 'FavoriteController@removeFromFavorite')->name('remove-from-favorite');
+});
+
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
 
     //Auth::routes(); - custom(GET)
@@ -53,10 +61,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('catalogsection', 'CategoryController@index')->name('catalogsection');
 
     Route::get('/delivery', 'DeliveryGuarantyPaymentController@deliveryGuarantyPayment')->name('delivery'); // delivery, guaranty, payment are combined
-
-    Route::get('favorites', 'FavoritesController@favorites')->name('favorites');
-
-
     Route::get('popular', 'PopularController@popular')->name('popular');
 
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
@@ -92,9 +96,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::resource('/videos', 'VideosController');
-    Route::get('profile','UserController@index')->name('user.profile');
-    Route::get('profile/{user}','UserController@edit')->name('user.edit');
-    Route::put('profile/{user}','UserController@update')->name('user.update');
+    
+    Route::group(['as' => 'user.','namespace' => 'User'], function () {
+            Route::get('setting','ProfileController@index')->name('setting');
+            Route::put('setting/{user}','ProfileController@update')->name('update');
+            Route::get('favorites','FavoriteController@favorites')->name('favorites');
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

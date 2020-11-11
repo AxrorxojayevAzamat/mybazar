@@ -11,6 +11,8 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use App\Entity\UserFavorite;
+use Laravel\Scout\Searchable;
 
 /**
  * @property int $id
@@ -59,6 +61,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property ProductMark[] $productMarks
  * @property Mark[] $marks
  * @property ProductReview[] $reviews
+ * @property UserFavorite[] $userFavorites
+ * @property User[] $favorites
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -72,6 +76,8 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Product extends BaseModel
 {
+    use Searchable;
+
     const STATUS_DRAFT = 0;
     const STATUS_MODERATION = 1;
     const STATUS_ACTIVE = 2;
@@ -91,6 +97,35 @@ class Product extends BaseModel
         'discount_ends_at' => 'datetime',
     ];
 
+    public function searchableAs(): string
+    {
+        return 'shop_products_index';
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name_uz' => $this->name_uz,
+            'name_ru' => $this->name_ru,
+            'name_en' => $this->name_en,
+            'description_uz' => $this->description_uz,
+            'description_ru' => $this->description_ru,
+            'description_en' => $this->description_en,
+            'slug' => $this->slug,
+            'main_photo_original' => optional($this->mainPhoto)->fileOriginal,
+            'main_photo_thumbnail' => optional($this->mainPhoto)->fileThumbnail,
+            'price_uzs' => $this->price_uzs,
+            'price_usd' => $this->price_usd,
+            'status' => $this->status,
+            'category_id' => $this->main_category_id,
+        ];
+    }
+
+    public function shouldBeSearchable(): bool
+    {
+        return $this->isActive();
+    }
 
     public function sendToModeration(): void
     {
@@ -174,9 +209,6 @@ class Product extends BaseModel
 
 
     ########################################### Photos
-
-
-
     ###########################################
 
 
@@ -321,6 +353,15 @@ class Product extends BaseModel
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
-    ###########################################
+    public function userFavorites()
+    {
+        return $this->hasMany(UserFavorite::class, 'product_id', 'id');
+    }
 
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'user_favorites', 'product_id', 'user_id');
+    }
+
+    ###########################################
 }

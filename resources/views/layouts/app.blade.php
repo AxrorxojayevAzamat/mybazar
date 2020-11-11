@@ -45,19 +45,19 @@
                 @yield('breadcrumbs')
             </div>
         </nav>
+        @include('partials.flash')
         @yield('body')
 
     <!-- NEWS LETTER -->
         <section>
             <div class="news-letter">
                 <div class="text">
-                    <h5 class="title">Подписаться на новости</h5>
-                    <p class="description">Оставьте свою эл. почту или телефон номер и будьте в курсе с последними новостями
-                    </p>
+                    <h5 class="title">@lang('footer.subscribe_news')</h5>
+                    <p class="description">@lang('footer.leave_mail_phone_number')</p>
                 </div>
                 <form class="email-form">
-                    <input type="text" id="news-letter-mail-phone" placeholder="Адрес эл.почты или номер телефона">
-                    <button type="submit" class="btn-follow bold">Подписаться</button>
+                    <input type="text" id="news-letter-mail-phone" placeholder="@lang('footer.mail_phone_number')">
+                    <button type="submit" class="btn-follow bold">@lang('footer.subscribe')</button>
                 </form>
             </div>
         </section>
