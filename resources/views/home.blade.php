@@ -15,16 +15,16 @@
     @include ('layouts.products-of-day')
 
     <!-- POPULAR PRODUCTS -->
-    @include ('popular.popular-products')
+    @include ('popular.popular-products')   {{--CHANGEABLE--}}
 
     <!-- NEW PRODUCTS -->
-    @include ('layouts.new-products')
+    @include ('layouts.new-products')   {{--CHANGEABLE--}}
 
     <!-- 3 small banners -->
     @include ('layouts.three-small-banners')
 
     <!-- RECOMMENDED PRODUCTS-->
-    @include ('layouts.recommended-products')   {{-- TODO: fix --}}
+    @include ('layouts.recommended-products')   {{--CHANGEABLE--}}   {{-- TODO: fix --}}
 
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')
