@@ -133,10 +133,10 @@ img.menu-auto-icon:hover {
 form.big-filter-without-title-checkbox button:after {
     content: url("../images/gotoresults_searchresulticon.svg");
 }  
-#carousel-index .carousel-control-prev-icon {
+#carouselIndex .carousel-control-prev-icon {
     background:url("../images/slider_prev.svg");
 }
-#carousel-index .carousel-control-next-icon {
+#carouselIndex .carousel-control-next-icon {
     background:url("../images/slider_next.svg");
 }
 .full-banner1{
@@ -162,15 +162,6 @@ form.big-filter-without-title-checkbox button:after {
 }
 .outter-full-characteristics .accordion-characteristics button:after {
     content: url("../images/gotoresults_searchresulticon.svg");
-}
-.three-small-banners div.first {
-    background: url('../images/fastbuy.jpg');
-}
-.three-small-banners div.second {
-    background: url('../images/gifts.jpg');
-}
-.three-small-banners div.third {
-    background: url('../images/1plus1.jpg');
 }
 .outter-list-of-videos form.big-filter .filter-item .select-all-div:before {
     content: url(../images/gotoresults_searchresulticon.svg);

@@ -4438,14 +4438,14 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   }
 }
 
-#carousel-index {
+#carouselIndex {
   width: 100%;
   height: 400px;
   background: rgba(117, 0, 255, 0);
   margin-top: 4px;
 }
 
-#carousel-index .carousel-control-prev-icon {
+#carouselIndex .carousel-control-prev-icon {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -4453,7 +4453,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   height: 25px;
 }
 
-#carousel-index .carousel-control-next-icon {
+#carouselIndex .carousel-control-next-icon {
   width: 25px;
   height: 25px;
   background-position: center;
@@ -4461,23 +4461,23 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   background-size: cover;
 }
 
-#carousel-index .carousel-indicators li {
+#carouselIndex .carousel-indicators li {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-#carousel-index .carousel-inner {
+#carouselIndex .carousel-inner {
   height: 100%;
   width: 100%;
 }
 
-#carousel-index .carousel-inner .item {
+#carouselIndex .carousel-inner .item {
   height: 100%;
   width: 100%;
 }
 
-#carousel-index .carousel-inner .item img {
+#carouselIndex .carousel-inner .item img {
   width: 100%;
   height: 100%;
 }
@@ -5151,37 +5151,39 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   padding: 2%;
   text-align: end;
   color: white;
+  position: relative;
 }
 
 .three-small-banners div h5 {
   margin-bottom: 4%;
+  z-index: 1;
 }
 
 .three-small-banners div p {
   font-size: 25px;
   line-height: 30px;
+  z-index: 1;
+}
+
+.three-small-banners div button {
+  z-index: 1;
+  font-weight: bold;
+}
+
+.three-small-banners div img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .three-small-banners div.first {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   text-align: start;
-}
-
-.three-small-banners div.second {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.three-small-banners div.third {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .three-small-banners div.third button {
