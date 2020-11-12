@@ -19,6 +19,7 @@
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.1",
+        "matchish/laravel-scout-elasticsearch": "^4.0",
         "mcamara/laravel-localization": "^1.6",
         "rennokki/laravel-eloquent-query-cache": "^2.4"
     },
