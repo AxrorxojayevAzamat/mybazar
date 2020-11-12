@@ -77,7 +77,7 @@
 <script src="{{asset('js/mmenu-index.js')}}"></script>
 <script src="{{asset('js/popper1.16.min.js')}}"></script>
 <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
-{{--<script src="{{asset('js/header-414.js')}}"></script>--}}
+<script src="{{asset('js/header-414.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootnavbar.js')}}"></script>
 <script src="{{asset('js/search-bar.js')}}"></script>
