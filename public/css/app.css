@@ -4467,21 +4467,6 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   border-radius: 50%;
 }
 
-#carouselIndex .carousel-inner {
-  height: 100%;
-  width: 100%;
-}
-
-#carouselIndex .carousel-inner .carousel-item {
-  height: 100%;
-  width: 100%;
-}
-
-#carouselIndex .carousel-inner .carousel-item img {
-  width: 100%;
-  height: 100%;
-}
-
 .carousel-products {
   width: 100%;
   height: 700px;
@@ -7574,6 +7559,10 @@ footer .footer-outter .social-contacts .contacts a.email::before {
 
 .list-of-brands .filter-by-alphabet .first-row, .list-of-brands .filter-by-alphabet .second-row {
   width: 100%;
+}
+
+.list-of-brands .filter-by-alphabet .alphabets-padding {
+  padding: .8rem;
 }
 
 .list-of-brands .filtered-brands {
