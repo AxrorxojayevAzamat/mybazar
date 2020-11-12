@@ -78,10 +78,10 @@
 <script src="{{asset('js/mmenu-index.js')}}"></script>
 <script src="{{asset('js/popper1.16.min.js')}}"></script>
 <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
-{{--<script src="{{asset('js/header-414.js')}}"></script>--}}
+<script src="{{mix('js/header-414.js', 'build')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootnavbar.js')}}"></script>
-<script src="{{asset('js/search-bar.js')}}"></script>
+<script src="{{mix('js/search-bar.js', 'build')}}"></script>
 <script src="{{asset('js/scroll-xNav.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
