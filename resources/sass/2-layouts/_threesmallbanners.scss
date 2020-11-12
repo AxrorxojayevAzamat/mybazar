@@ -12,29 +12,34 @@
         padding:2%;
         text-align:end;
         color:white;
+        position:relative;
         h5{
             margin-bottom:4%;
+            z-index:1;
         }
         p{
             font-size:25px;
             line-height:30px;
+            z-index:1;
+        }
+        button{
+            z-index:1;
+            font-weight: bold;
+        }
+        img{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:0;
+            
         }
         &.first{
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
             align-items:flex-start;
             text-align:start;
         }
-        &.second{
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
         &.third{
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
             button{
                 background:#c011ca !important;
                 color:#ffd821 !important;
@@ -56,11 +61,6 @@
        }
     }
 }
-// @media all and (max-width:1400px){
-//     .three-small-banners{
-      
-//     }
-// }
 @media all and (max-width:1250px){
     .three-small-banners{
         height:1000px;

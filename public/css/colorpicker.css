@@ -1,5 +1,5 @@
 .colorpicker {
-  position: relative;
+  position: absolute;
   display: none;
   font-size: inherit;
   color: inherit;

@@ -9,14 +9,14 @@
 @section('body')
     <section>
         <div class="h4-title brands-alphabet">
-            <h4 class="title">Samsung</h4>
+            <h4 class="title">@lang('frontend.breadcrumb.brands')</h4>
         </div>
         <div class="list-of-brands">
             <div class="filter-by-alphabet">
                 <div class="first-row">
                     <div class="pn-ProductNav_Wrapper">
                         <nav id="pnProductNav" class="pn-ProductNav">
-                            <div id="pnProductNavContents" class="pn-ProductNav_Contents">
+                            <div id="pnProductNavContents" class="pn-ProductNav_Contents alphabets-padding">
                                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                                 <a href="{{ route('brands') . '?brand=' }}" class="pn-ProductNav_Link active">Все</a>
                                 @foreach(\App\Helpers\BrandHelper::getCyrillicList() as $cyrill)
@@ -36,7 +36,7 @@
                 <div class="second-row">
                     <div class="pn-ProductNav_Wrapper">
                         <nav id="pnProductNav" class="pn-ProductNav">
-                            <div id="pnProductNavContents" class="pn-ProductNav_Contents">
+                            <div id="pnProductNavContents" class="pn-ProductNav_Contents alphabets-padding">
                                 @foreach(\App\Helpers\BrandHelper::getLatinList() as $latin)
                                     <a href="{{ route('brands') . '?brand-latin=' . $latin }}" class="pn-ProductNav_Link">{{$latin}}</a>
                                 @endforeach
@@ -53,6 +53,7 @@
                 </div>
             </div>
             <div class="filtered-brands">
+                {{-- {{dd($groups)}} --}}
                 @foreach($groups as $letter => $group)
                     <div class="letter-item">
                         <h6 class="title">
