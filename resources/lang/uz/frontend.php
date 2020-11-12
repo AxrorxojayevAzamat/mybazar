@@ -58,7 +58,7 @@ return [
         'mail' => 'Kirish yoki ro\'yxatdan o\'tish',
         'sms' => 'Kirish yoki ro\'yxatdan o\'tish',
         'blogs_news' => 'Blog va Yangiliklar',
-        'brands' => 'Brandlar',
+        'brands' => 'Brendlar',
         'cart' => 'Savat',
         'checkout' => 'Buyurtma',
         'pay' => 'To\'lov usuli',
