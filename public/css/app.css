@@ -2629,7 +2629,7 @@ form.small-filter .card .card-body a.show-more {
   .outter-products .products .item, .outter-products .all-filtered-items .item {
     height: 500px;
   }
-  .newone, .recommended, .popular-products {
+  .carousel-products {
     height: 565px !important;
   }
   h4.title {
@@ -4472,36 +4472,34 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   width: 100%;
 }
 
-#carouselIndex .carousel-inner .item {
+#carouselIndex .carousel-inner .carousel-item {
   height: 100%;
   width: 100%;
 }
 
-#carouselIndex .carousel-inner .item img {
+#carouselIndex .carousel-inner .carousel-item img {
   width: 100%;
   height: 100%;
 }
 
-.recommended, .popular-products, .newone {
+.carousel-products {
   width: 100%;
   height: 700px;
   background: white;
 }
 
-.recommended .rate, .popular-products .rate, .newone .rate {
+.carousel-products .rate {
   width: 60%;
   margin: 15px 0;
 }
 
-.recommended button.owl-prev,
-.recommended button.owl-next, .popular-products button.owl-prev,
-.popular-products button.owl-next, .newone button.owl-prev,
-.newone button.owl-next {
+.carousel-products button.owl-prev,
+.carousel-products button.owl-next {
   top: 50%;
 }
 
 @media all and (max-width: 1250px) {
-  .recommended .rate, .popular-products .rate, .newone .rate {
+  .carousel-products .rate {
     width: 100%;
   }
 }

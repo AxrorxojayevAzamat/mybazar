@@ -1862,6 +1862,10 @@
                 "scout",
                 "search"
             ],
+            "support": {
+                "issues": "https://github.com/matchish/laravel-scout-elasticsearch/issues",
+                "source": "https://github.com/matchish/laravel-scout-elasticsearch/tree/master"
+            },
             "funding": [
                 {
                     "url": "https://www.patreon.com/matchish",
@@ -8488,5 +8492,5 @@
         "php": "7.2.*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
