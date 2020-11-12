@@ -18,6 +18,7 @@
     @yield('styles')
 
 </head>
+
 <body>
 <!-- page loader -->
 <div class="wrapper-loader">
@@ -25,10 +26,10 @@
 </div>
 
 <div id="page">
-    @include('partials.414.menu')
-    @include('partials.414.header')
+@include('partials.414.menu')
+@include('partials.414.header')
 
-    <!-- FULL CONTENT BODY -->
+<!-- FULL CONTENT BODY -->
     <div class="content container-fluid">
         <!-- All headers 1560 -->
         <section class="navbar-1560">
