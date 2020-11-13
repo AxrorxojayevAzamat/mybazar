@@ -5,6 +5,7 @@ namespace App\Entity;
 /**
  * @property int $store_id
  * @property int $delivery_method_id
+ * @property int $cost
  * @property int $sort
  *
  * @property Store $store
@@ -14,7 +15,7 @@ class StoreDeliveryMethod extends BasePivot
 {
     protected $table = 'store_delivery_methods';
 
-    protected $fillable = ['store_id', 'delivery_method_id', 'sort'];
+    protected $fillable = ['store_id', 'delivery_method_id', 'cost', 'sort'];
 
     public function isIdEqualTo($deliveryMethodId): bool
     {
