@@ -80,18 +80,24 @@ class VideoController extends Controller
 
     public function publish(Video $video)
     {
-        $video->publish();
-        $video->save();
+        try {
+            $this->service->publish($video->id);
 
-        return redirect()->back();
+            return redirect()->route('admin.blog.videos.show', $video);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function discard(Video $video)
     {
-        $video->discard();
-        $video->save();
+        try {
+            $this->service->discard($video->id);
 
-        return redirect()->back();
+            return redirect()->route('admin.blog.videos.show', $video);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function removePoster(Video $video)

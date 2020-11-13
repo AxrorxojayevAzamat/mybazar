@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
                         {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
                         {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $banner ? $banner->status : null),
                         ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}

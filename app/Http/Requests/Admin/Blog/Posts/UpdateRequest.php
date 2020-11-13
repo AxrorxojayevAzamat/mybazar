@@ -6,6 +6,7 @@ namespace App\Http\Requests\Admin\Blog\Posts;
 
 use App\Entity\Blog\Post;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * @property string $title_uz
@@ -18,7 +19,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $body_ru
  * @property string $body_en
  * @property int $category_id
- * @property bool $is_published
+ * @property int $status
  * @property \Illuminate\Http\UploadedFile $file
  *
  * @property Post $post
@@ -43,7 +44,7 @@ class UpdateRequest extends FormRequest
             'body_ru' => 'required|string',
             'body_en' => 'required|string',
             'category_id' => 'required|numeric|min:1|exists:categories,id',
-            'is_published' => 'boolean',
+            'status' => ['required', 'numeric', Rule::in(array_keys(Post::statusList()))],
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

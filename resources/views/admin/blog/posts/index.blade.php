@@ -17,7 +17,7 @@
                                 <th>{{ trans('adminlte.description') }}</th>
                                 <th>{{ trans('adminlte.author') }}</th>
                                 <th>{{ trans('adminlte.category.name') }}</th>
-                                <th>{{ trans('adminlte.is_published') }}</th>
+                                <th>{{ trans('adminlte.status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,7 @@
                                     @endif
                                 </td>
                                 <td><a href="{{ route('admin.categories.show', $post->category) }}">{{ $post->category->name }}</a></td>
-                                <td>{!! $post->published !!}</td>
+                                <td>{!! $post->statusLabel() !!}</td>
                             </tr>
                         @endforeach
 

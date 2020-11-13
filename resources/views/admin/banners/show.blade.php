@@ -29,19 +29,19 @@
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
                         <tr><th>ID</th><td>{{ $banner->id }}</td></tr>
-                        <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $banner->title_uz }}</td></tr>
-                        <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $banner->title_ru }}</td></tr>
-                        <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $banner->title_en }}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! $banner->description_uz !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! $banner->description_ru !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! $banner->description_en !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.url') }}</th><td>{!! $banner->url !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.slug') }}</th><td>{!! $banner->slug !!}</td></tr>
+                        <tr><th>@lang('adminlte.name') Uz</th><td>{{ $banner->title_uz }}</td></tr>
+                        <tr><th>@lang('adminlte.name') Ru</th><td>{{ $banner->title_ru }}</td></tr>
+                        <tr><th>@lang('adminlte.name') En</th><td>{{ $banner->title_en }}</td></tr>
+                        <tr><th>@lang('adminlte.description') Uz</th><td>{!! $banner->description_uz !!}</td></tr>
+                        <tr><th>@lang('adminlte.description') Ru</th><td>{!! $banner->description_ru !!}</td></tr>
+                        <tr><th>@lang('adminlte.description') En</th><td>{!! $banner->description_en !!}</td></tr>
+                        <tr><th>@lang('adminlte.url')</th><td>{!! $banner->url !!}</td></tr>
+                        <tr><th>@lang('adminlte.slug')</th><td>{!! $banner->slug !!}</td></tr>
                         <tr>
-                            <th>{{ trans('adminlte.category.name') }}</th>
+                            <th>@lang('adminlte.category.name')</th>
                             <td><a href="{{ route('admin.categories.show', $banner->category) }}">{{ $banner->category->name }}</a></td>
                         </tr>
-                        <tr><th>{{ trans('adminlte.status') }}</th><td>{!! $banner->statusLabel() !!}</td></tr>
+                        <tr><th>@lang('adminlte.status')</th><td>{!! $banner->statusLabel() !!}</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -71,15 +71,15 @@
                         <table class="table {{--table-bordered--}} table-striped projects">
                             <tbody>
                             <tr>
-                                <th>{{ trans('adminlte.created_by') }}</th>
+                                <th>@lang('adminlte.created_by')</th>
                                 <td><a href="{{ route('admin.users.show', $banner->createdBy) }}">{{ $banner->createdBy->name }}</a></td>
                             </tr>
                             <tr>
-                                <th>{{ trans('adminlte.updated_by') }}</th>
+                                <th>@lang('adminlte.updated_by')</th>
                                 <td><a href="{{ route('admin.users.show', $banner->updatedBy) }}">{{ $banner->updatedBy->name }}</a></td>
                             </tr>
-                            <tr><th>{{ trans('adminlte.created_at') }}</th><td>{{ $banner->created_at }}</td></tr>
-                            <tr><th>{{ trans('adminlte.updated_at') }}</th><td>{{ $banner->updated_at }}</td></tr>
+                            <tr><th>@lang('adminlte.created_at')</th><td>{{ $banner->created_at }}</td></tr>
+                            <tr><th>@lang('adminlte.updated_at')</th><td>{{ $banner->updated_at }}</td></tr>
                             </tbody>
                         </table>
                     </div>

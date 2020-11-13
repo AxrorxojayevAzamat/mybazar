@@ -81,18 +81,24 @@ class PostController extends Controller
 
     public function publish(Post $post)
     {
-        $post->publish();
-        $post->save();
+        try {
+            $this->service->publish($post->id);
 
-        return redirect()->back();
+            return redirect()->route('admin.blog.posts.show', $post);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function discard(Post $post)
     {
-        $post->discard();
-        $post->save();
+        try {
+            $this->service->discard($post->id);
 
-        return redirect()->back();
+            return redirect()->route('admin.blog.posts.show', $post);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function removeFile(Post $post)
