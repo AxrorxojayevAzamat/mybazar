@@ -549,27 +549,6 @@ Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order 
     $crumbs->push($order->id, route('admin.shop.orders.item', ['order' => $order, 'item' => $item]));
 });
 
-// Categories
-Breadcrumbs::register('admin.blog.categories.index', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.home');
-    $crumbs->push(trans('menu.blog_categories'), route('admin.blog.categories.index'));
-});
-
-Breadcrumbs::register('admin.blog.categories.create', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.blog.categories.index');
-    $crumbs->push(trans('adminlte.create'), route('admin.blog.categories.create'));
-});
-
-Breadcrumbs::register('admin.blog.categories.show', function (Crumbs $crumbs, Category $category) {
-    $crumbs->parent('admin.blog.categories.index');
-    $crumbs->push('sa', route('admin.blog.categories.show', $category));
-});
-
-Breadcrumbs::register('admin.blog.categories.edit', function (Crumbs $crumbs, Category $category) {
-    $crumbs->parent('admin.home', $category);
-    $crumbs->push(trans('adminlte.edit'), route('admin.blog.categories.edit', $category));
-});
-
 // Posts
 
 Breadcrumbs::register('admin.blog.posts.index', function (Crumbs $crumbs) {

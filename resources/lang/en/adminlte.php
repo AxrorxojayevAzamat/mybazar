@@ -39,6 +39,7 @@ return [
     'no' => 'No',
     'draft' => 'Draft',
     'publish' => 'Publish',
+    'published' => 'Published',
     'send_to_moderation' => 'Send to moderation',
     'moderate' => 'Moderate',
     'activate' => 'Activate',

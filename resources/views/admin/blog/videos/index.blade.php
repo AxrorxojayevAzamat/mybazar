@@ -44,7 +44,7 @@
                                         {{ $video->createdBy->name }}
                                     @endif
                                 </td>
-                                <td><a href="{{ route('admin.blog.categories.show', $video->category) }}">{{ $video->category->name }}</a></td>
+                                <td><a href="{{ route('admin.categories.show', $video->category) }}">{{ $video->category->name }}</a></td>
                                 <td>{!! $video->published !!}</td>
                                 <td>
                                     @if ($isAdmin)

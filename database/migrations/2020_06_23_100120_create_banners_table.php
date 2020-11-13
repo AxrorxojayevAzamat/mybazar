@@ -24,7 +24,7 @@ class CreateBannersTable extends Migration
             $table->string('url');
             $table->string('slug')->unique();
             $table->unsignedInteger('category_id');
-            $table->boolean('is_published')->default(false);
+            $table->tinyInteger('status');
             $table->string('file')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

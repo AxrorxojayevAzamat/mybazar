@@ -19,7 +19,7 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td><a href="{{ route('admin.blog.categories.show', $category) }}">{{ $category->name }}</a></td>
+                                    <td><a href="{{ route('admin.categories.show', $category) }}">{{ $category->name }}</a></td>
                                     <td>{{ $category->typeName() }}</td>
                                 </tr>
                             @endforeach

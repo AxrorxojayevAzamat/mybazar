@@ -123,11 +123,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         });
     });
 
-    Route::resource('banners', 'BannersController');
+    Route::resource('banners', 'BannerController');
     Route::group(['prefix' => 'banners/{banner}', 'as' => 'banners.'], function () {
-        Route::post('remove-file', 'BannersController@removeFile')->name('remove-file');
-        Route::post('publish', 'BannersController@publish')->name('publish');
-        Route::post('discard', 'BannersController@discard')->name('discard');
+        Route::post('remove-file', 'BannerController@removeFile')->name('remove-file');
+        Route::post('publish', 'BannerController@publish')->name('publish');
+        Route::post('discard', 'BannerController@discard')->name('discard');
     });
 
     Route::resource('sliders', 'SlidersController');

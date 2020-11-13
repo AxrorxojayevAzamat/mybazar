@@ -43,7 +43,7 @@
                                         {{ $post->createdBy->name }}
                                     @endif
                                 </td>
-                                <td><a href="{{ route('admin.blog.categories.show', $post->category) }}">{{ $post->category->name }}</a></td>
+                                <td><a href="{{ route('admin.categories.show', $post->category) }}">{{ $post->category->name }}</a></td>
                                 <td>{!! $post->published !!}</td>
                             </tr>
                         @endforeach

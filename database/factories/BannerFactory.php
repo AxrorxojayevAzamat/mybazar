@@ -19,7 +19,7 @@ $factory->define(Banner::class, function (Faker $faker) {
         'url' => $faker->unique()->url,
         'slug' => $faker->unique()->slug(5),
         'category_id'=> $faker->randomElement($categoryIds),
-        'is_published'=> $faker->randomElement([true, false]),
+        'status'=> $faker->randomElement([Banner::DRAFT, Banner::PUBLISHED]),
         'file'=> $faker->imageUrl(),
         'created_by' => 1,
         'updated_by' => 1,

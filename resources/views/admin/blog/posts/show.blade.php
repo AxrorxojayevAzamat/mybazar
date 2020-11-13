@@ -40,7 +40,7 @@
                         <tr><th>{{ trans('adminlte.body') }} En</th><td>{!! $post->body_en !!}</td></tr>
                         <tr>
                             <th>{{ trans('adminlte.category.name') }}</th>
-                            <td><a href="{{ route('admin.blog.categories.show', $post->category) }}"></a></td>
+                            <td><a href="{{ route('admin.categories.show', $post->category) }}"></a></td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.is_published') }}</th>

@@ -39,6 +39,7 @@ return [
     'no' => 'Yo`q',
     'draft' => 'Qoralama',
     'publish' => 'Nashr etish',
+    'published' => 'Nashr etilgan',
     'send_to_moderation' => 'Moderatsiyaga yuborish',
     'moderate' => 'Moderatsiyadan o`tkazish',
     'activate' => 'Faollashtirish',

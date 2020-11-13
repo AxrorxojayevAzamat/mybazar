@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.banners.edit', $banner) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        <a href="{{ route('admin.banners.edit', $banner) }}" class="btn btn-primary mr-1">@lang('adminlte.edit')</a>
 
         @if (Auth::user()->isAdmin())
             <form method="POST" action="{{ route($banner->is_published ? 'admin.banners.discard' : 'admin.banners.publish', $banner) }}" class="mr-1">
@@ -17,14 +17,14 @@
         <form method="POST" action="{{ route('admin.banners.destroy', $banner) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">{{ trans('adminlte.delete') }}</button>
+            <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.delete')</button>
         </form>
     </div>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary card-outline">
-                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
+                <div class="card-header"><h3 class="card-title">@lang('adminlte.main')</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>
@@ -39,12 +39,9 @@
                         <tr><th>{{ trans('adminlte.slug') }}</th><td>{!! $banner->slug !!}</td></tr>
                         <tr>
                             <th>{{ trans('adminlte.category.name') }}</th>
-                            <td><a href="{{ route('admin.blog.categories.show', $banner->category) }}"></a></td>
+                            <td><a href="{{ route('admin.categories.show', $banner->category) }}"></a></td>
                         </tr>
-                        <tr>
-                            <th>{{ trans('adminlte.is_published') }}</th>
-                            <td>{!! $banner->published !!}</td>
-                        </tr>
+                        <tr><th>{{ trans('adminlte.status') }}</th><td>{!! $banner->statusLabel() !!}</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -55,7 +52,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
-                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.image') }}</h3></div>
+                <div class="card-header"><h3 class="card-title">@lang('adminlte.image')</h3></div>
                 <div class="card-body">
                     @if ($banner->file)
                         <a href="{{ $banner->fileOriginal }}" target="_blank"><img src="{{ $banner->fileThumbnail }}"></a>
@@ -69,7 +66,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-warning card-outline">
-                    <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
+                    <div class="card-header"><h3 class="card-title">@lang('adminlte.others')</h3></div>
                     <div class="card-body">
                         <table class="table {{--table-bordered--}} table-striped projects">
                             <tbody>
