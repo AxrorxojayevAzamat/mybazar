@@ -5,11 +5,11 @@
         <a href="{{ route('admin.banners.edit', $banner) }}" class="btn btn-primary mr-1">@lang('adminlte.edit')</a>
 
         @if (Auth::user()->isAdmin())
-            <form method="POST" action="{{ route($banner->is_published ? 'admin.banners.discard' : 'admin.banners.publish', $banner) }}" class="mr-1">
+            <form method="POST" action="{{ route($banner->isPublished() ? 'admin.banners.discard' : 'admin.banners.publish', $banner) }}" class="mr-1">
                 @csrf
-                <button class="btn{{ $banner->is_published ? ' btn-warning' : ' btn-success' }}"
+                <button class="btn{{ $banner->isPublished() ? ' btn-warning' : ' btn-success' }}"
                         onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
-                    {{ trans($banner->is_published ? 'adminlte.draft' : 'adminlte.publish') }}
+                    {{ trans($banner->isPublished() ? 'adminlte.draft' : 'adminlte.publish') }}
                 </button>
             </form>
         @endif

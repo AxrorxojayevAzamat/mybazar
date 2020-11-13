@@ -114,12 +114,27 @@ class Banner extends BaseModel
 
     public function publish(): void
     {
-        $this->status = self::PUBLISHED;
+        if ($this->status === self::PUBLISHED) {
+            throw new \DomainException('Banner is already published.');
+        }
+        $this->update([
+            'status' => self::PUBLISHED,
+        ]);
     }
 
     public function discard(): void
     {
-        $this->status = self::DRAFT;
+        if ($this->status === self::DRAFT) {
+            throw new \DomainException('Banner is already drafted.');
+        }
+        $this->update([
+            'status' => self::DRAFT,
+        ]);
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::PUBLISHED;
     }
 
     ########################################### Mutators
