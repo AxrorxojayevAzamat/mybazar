@@ -189,4 +189,5 @@ class ProductController extends Controller
 
         return view('compare.compare', compact('product', 'comparingProduct', 'groupValues', 'comparingGroupValues'));
     }
+
 }

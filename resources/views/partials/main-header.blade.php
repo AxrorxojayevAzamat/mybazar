@@ -13,12 +13,13 @@
                     <option>{{ $category->name }}</option>
                 @endforeach
             </select>
-            <button class="search btn" type="submit"><i class="mbsearch"></i></button>   
+            <button class="search btn" type="submit"><i class="mbsearch"></i></button>
     </form>
     <div class="from-statistics-to-account">
         <div class="dropdown compare-dropdown">
             <a href="#" class="btn dropdown-toggle comparison" role="button" id="dropdownComparison" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="mbcompare"><span></span></i> @lang('menu.compare')
+            </a>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownComparison">
                 <div class="selected-items">
@@ -141,11 +142,11 @@
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('user.setting') }}">
-                   
+
                     {{ __('Profile') }}
                 </a>
                 <a class="dropdown-item" href="{{ route('user.favorites') }}">
-                   
+
                     {{ __('Favorites') }}
                 </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
