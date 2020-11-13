@@ -39,7 +39,7 @@
                         <tr><th>{{ trans('adminlte.slug') }}</th><td>{!! $banner->slug !!}</td></tr>
                         <tr>
                             <th>{{ trans('adminlte.category.name') }}</th>
-                            <td><a href="{{ route('admin.categories.show', $banner->category) }}"></a></td>
+                            <td><a href="{{ route('admin.categories.show', $banner->category) }}">{{ $banner->category->name }}</a></td>
                         </tr>
                         <tr><th>{{ trans('adminlte.status') }}</th><td>{!! $banner->statusLabel() !!}</td></tr>
                         </tbody>
