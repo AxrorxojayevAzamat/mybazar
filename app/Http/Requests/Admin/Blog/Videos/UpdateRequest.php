@@ -4,7 +4,7 @@
 namespace App\Http\Requests\Admin\Blog\Videos;
 
 
-use App\Entity\Blog\News;
+use App\Entity\Blog\Video;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -22,7 +22,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property \Illuminate\Http\UploadedFile $poster
  * @property \Illuminate\Http\UploadedFile $video
  *
- * @property News $news
+ * @property Video $news
  */
 class UpdateRequest extends FormRequest
 {

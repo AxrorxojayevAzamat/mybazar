@@ -243,12 +243,6 @@ return [
             'can' => 'manage-users',
         ],
         [
-            'text' => 'news',
-            'url'  => 'admin/blog/news',
-            'icon' => 'fas fa-fw fa-newspaper',
-            'can' => 'manage-users',
-        ],
-        [
             'text' => 'videos',
             'url'  => 'admin/blog/videos',
             'icon' => 'fas fa-fw fa-video',

@@ -19,7 +19,6 @@ use App\Entity\Shop\ProductReview;
 use App\Entity\Store;
 use App\Entity\User\User;
 use App\Entity\Category;
-use App\Entity\Blog\News;
 use App\Entity\Blog\Post;
 use App\Entity\Blog\Video;
 use App\Entity\Discount;
@@ -61,11 +60,6 @@ Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
 Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
     $crumbs->parent('blogs-news');
     $crumbs->push($post->title, route('blogs.show', $post));
-});
-
-Breadcrumbs::register('news.show', function (Crumbs $crumbs, News $news) {
-    $crumbs->parent('blogs-news');
-    $crumbs->push($news->title, route('news.show', $news));
 });
 
 Breadcrumbs::register('brands', function (Crumbs $crumbs) {
@@ -598,28 +592,6 @@ Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $p
     $crumbs->push(trans('adminlte.edit'), route('admin.blog.posts.edit', $post));
 });
 
-
-
-// News
-Breadcrumbs::register('admin.blog.news.index', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.home');
-    $crumbs->push('News', route('admin.blog.news.index'));
-});
-
-Breadcrumbs::register('admin.blog.news.create', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.blog.news.index');
-    $crumbs->push(trans('adminlte.create'), route('admin.blog.news.create'));
-});
-
-Breadcrumbs::register('admin.blog.news.show', function (Crumbs $crumbs, News $news) {
-    $crumbs->parent('admin.blog.news.index');
-    $crumbs->push($news->title_ru, route('admin.blog.news.show', $news));
-});
-
-Breadcrumbs::register('admin.blog.news.edit', function (Crumbs $crumbs, News $news) {
-    $crumbs->parent('admin.blog.news.show', $news);
-    $crumbs->push(trans('adminlte.edit'), route('admin.blog.news.edit', $news));
-});
 
 // Videos
 

@@ -48,7 +48,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('blogs-news', 'BlogController@blogsNews')->name('blogs-news');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
-    Route::get('news/{news}', 'NewsController@show')->name('news.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
 
@@ -96,7 +95,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::resource('/videos', 'VideosController');
-    
+
     Route::group(['as' => 'user.','namespace' => 'User'], function () {
             Route::get('setting','ProfileController@index')->name('setting');
             Route::put('setting/{user}','ProfileController@update')->name('update');
@@ -107,12 +106,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
-        Route::resource('news', 'NewsController');
-        Route::group(['prefix' => 'news/{news}', 'as' => 'news.'], function () {
-            Route::post('remove-file', 'NewsController@removeFile')->name('remove-file');
-            Route::post('publish', 'NewsController@publish')->name('publish');
-            Route::post('discard', 'NewsController@discard')->name('discard');
-        });
 
         Route::resource('videos', 'VideoController');
         Route::group(['prefix' => 'videos/{video}', 'as' => 'videos.'], function () {
