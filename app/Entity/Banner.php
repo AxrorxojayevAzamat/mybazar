@@ -100,9 +100,9 @@ class Banner extends BaseModel
         return self::statusList()[$this->status];
     }
 
-    public static function statusLabel($status): string
+    public function statusLabel(): string
     {
-        switch ($status) {
+        switch ($this->status) {
             case self::DRAFT:
                 return '<span class="badge badge-secondary">'. trans('adminlte.draft') . '</span>';
             case self::PUBLISHED:
