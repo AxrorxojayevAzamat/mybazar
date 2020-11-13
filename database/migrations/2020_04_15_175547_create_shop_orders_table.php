@@ -22,7 +22,7 @@ class CreateShopOrdersTable extends Migration
             $table->string('delivery_method_name_en');
             $table->integer('delivery_cost');
             $table->unsignedInteger('payment_type_id');
-            $table->integer('cost');
+            $table->integer('total_cost');
             $table->string('note');
             $table->tinyInteger('status');
             $table->string('cancel_reason');
