@@ -4,15 +4,10 @@
 
 @section('content')
     <div class="row">
+        <p><a href="{{ route('admin.blog.videos.create') }}" class="btn btn-success">@lang('adminlte.create')</a></p>
 
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2>
-                        <a href="{{ route('admin.blog.videos.create') }}" class="btn btn-default pull-right">{{ trans('adminlte.create') }}</a>
-                    </h2>
-                </div>
-
                 <div class="panel-body">
                     <table class="table">
                         <thead>
