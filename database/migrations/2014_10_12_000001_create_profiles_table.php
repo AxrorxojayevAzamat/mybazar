@@ -53,7 +53,7 @@ class CreateProfilesTable extends Migration
         DB::table('users')->insert([
             'name'              => 'user',
             'email'             => 'user@gmail.com',
-            'password'          => bcrypt('12'),
+            'password'          => bcrypt('user'),
             'role'              => User::ROLE_USER,
             'phone'             => '998991234567',
             'status'            => User::STATUS_ACTIVE,

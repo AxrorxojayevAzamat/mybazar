@@ -33,16 +33,16 @@ class VideoService
                 'body_ru' => $request->body_ru,
                 'body_en' => $request->body_en,
                 'category_id' => $category->id,
-                'is_published' => $request->is_published,
+                'status' => $request->status,
             ]);
         }
 
         $imageName = ImageHelper::getRandomName($request->poster);
-        $videoName = ImageHelper::getRandomName($request->video);
+        $videoName = ImageHelper::getRandomName($request->video_file);
         $post = Video::add($this->getNextId(), $request, $category->id, $imageName, $videoName);
 
         $this->uploadPoster($this->getNextId(), $request->poster, $imageName);
-        $this->uploadVideo($this->getNextId(), $request->video, $videoName);
+        $this->uploadVideo($this->getNextId(), $request->video_file, $videoName);
 
         return $post;
     }
@@ -64,6 +64,18 @@ class VideoService
         }
 
         return $video;
+    }
+
+    public function publish(int $id): void
+    {
+        $advert = Video::findOrFail($id);
+        $advert->publish();
+    }
+
+    public function discard(int $id): void
+    {
+        $advert = Video::findOrFail($id);
+        $advert->discard();
     }
 
     public function getNextId(): int

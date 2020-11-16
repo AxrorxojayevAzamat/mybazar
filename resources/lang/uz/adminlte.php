@@ -39,6 +39,7 @@ return [
     'no' => 'Yo`q',
     'draft' => 'Qoralama',
     'publish' => 'Nashr etish',
+    'published' => 'Nashr etilgan',
     'send_to_moderation' => 'Moderatsiyaga yuborish',
     'moderate' => 'Moderatsiyadan o`tkazish',
     'activate' => 'Faollashtirish',
@@ -49,6 +50,7 @@ return [
 
     'name' => 'Nomi',
     'title' => 'Nomi',
+    'menu_title' => 'Menyudagi nomi',
     'description' => 'Tavsifi',
     'body' => 'Asosiy qismi',
     'note' => 'Qo`shimcha ma`lumot',
@@ -222,5 +224,12 @@ return [
 
     'discount' => [
 
+    ],
+
+    'pages' => [
+        'add' => 'Sahifa qo`shmoq',
+        'name' => 'Sahifa',
+        'parent' => 'Ajdod sahifa',
+        'children' => 'Avlod sahifalar',
     ],
 ];

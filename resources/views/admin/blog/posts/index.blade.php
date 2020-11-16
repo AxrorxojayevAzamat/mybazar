@@ -4,15 +4,10 @@
 
 @section('content')
     <div class="row">
+        <p><a href="{{ route('admin.blog.posts.create') }}" class="btn btn-success">@lang('adminlte.create')</a></p>
 
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2>
-                        <a href="{{ route('admin.blog.posts.create') }}" class="btn btn-default pull-right">{{ trans('adminlte.create') }}</a>
-                    </h2>
-                </div>
-
                 <div class="panel-body">
                     <table class="table">
                         <thead>
@@ -22,7 +17,7 @@
                                 <th>{{ trans('adminlte.description') }}</th>
                                 <th>{{ trans('adminlte.author') }}</th>
                                 <th>{{ trans('adminlte.category.name') }}</th>
-                                <th>{{ trans('adminlte.is_published') }}</th>
+                                <th>{{ trans('adminlte.status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +38,8 @@
                                         {{ $post->createdBy->name }}
                                     @endif
                                 </td>
-                                <td><a href="{{ route('admin.blog.categories.show', $post->category) }}">{{ $post->category->name }}</a></td>
-                                <td>{!! $post->published !!}</td>
+                                <td><a href="{{ route('admin.categories.show', $post->category) }}">{{ $post->category->name }}</a></td>
+                                <td>{!! $post->statusLabel() !!}</td>
                             </tr>
                         @endforeach
 

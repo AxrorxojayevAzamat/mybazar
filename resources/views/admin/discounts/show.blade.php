@@ -39,7 +39,7 @@
                         <tr><th>{{ trans('adminlte.date_to') }}</th><td>{{ $discount->end_date }}</td></tr>
                         <tr>
                             <th>{{ trans('adminlte.category.name') }}</th>
-                            <td><a href="{{ route('admin.blog.categories.show', $discount->category) }}"></a></td>
+                            <td><a href="{{ route('admin.categories.show', $discount->category) }}"></a></td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.common') }}</th>
@@ -68,7 +68,7 @@
                                 @endif
                             </td>
                         </tr>
-            
+
                     </table>
                 </div>
             </div>

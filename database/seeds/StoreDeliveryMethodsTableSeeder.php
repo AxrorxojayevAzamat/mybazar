@@ -8,9 +8,10 @@ class StoreDeliveryMethodsTableSeeder extends Seeder
 {
     public function run()
     {
+        $faker = \Faker\Factory::create();
         $deliveryMethodIds = DeliveryMethod::pluck('id')->toArray();
 
-        Store::chunk(100, function ($stores) use ($deliveryMethodIds) {
+        Store::chunk(100, function ($stores) use ($deliveryMethodIds, $faker) {
             $deliveryMethodCount = count($deliveryMethodIds);
 
             /* @var $store Store */
@@ -20,7 +21,7 @@ class StoreDeliveryMethodsTableSeeder extends Seeder
                 $sort = 1;
                 for ($i = 0; $i < $count; $i++) {
                     $key = array_rand($deliveryMethods);
-                    $store->storeDeliveryMethods()->create(['delivery_method_id' => $deliveryMethods[$key], 'sort' => $sort++]);
+                    $store->storeDeliveryMethods()->create(['delivery_method_id' => $deliveryMethods[$key], 'cost' => $faker->numberBetween(1000, 100000),'sort' => $sort++]);
                     unset($deliveryMethods[$key]);
                 }
             }

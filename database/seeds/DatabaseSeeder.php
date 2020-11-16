@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StoreDeliveryMethodsTableSeeder::class);
         $this->call(ShopProductReviewsTableSeeder::class);
         $this->call(BlogPostsTableSeeder::class);
-        $this->call(BlogNewsTableSeeder::class);
         $this->call(BlogVideosTableSeeder::class);
         $this->call(BannersTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
@@ -35,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DiscountsTableSeeder::class);
         $this->call(ShopProductCharacteristicModificationsSeeder::class);
         $this->call(UserFavoritesTableSeeder::class);
+        $this->call(PagesTableSeeder::class);
     }
 }

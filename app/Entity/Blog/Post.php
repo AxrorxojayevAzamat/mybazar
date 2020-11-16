@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $body_ru
  * @property string $body_en
  * @property int $category_id
- * @property bool $is_published
+ * @property int $status
  * @property string $file
  * @property int $created_by
  * @property int $updated_by
@@ -48,11 +48,14 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Post extends BaseModel
 {
+    const DRAFT = 1;
+    const PUBLISHED = 3;
+
     protected $table = 'blog_posts';
 
     protected $fillable = [
         'id', 'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en', 'body_uz', 'body_ru',
-        'body_en', 'category_id', 'is_published', 'file',
+        'body_en', 'category_id', 'status', 'file',
     ];
 
     public static function add(int $id, CreateRequest $request, int $categoryId, string $fileName): self
@@ -69,7 +72,7 @@ class Post extends BaseModel
             'body_ru' => $request->body_ru,
             'body_en' => $request->body_en,
             'category_id' => $categoryId,
-            'is_published' => $request->is_published,
+            'status' => $request->status,
             'file' => $fileName,
         ]);
     }
@@ -87,19 +90,59 @@ class Post extends BaseModel
             'body_ru' => $request->body_ru,
             'body_en' => $request->body_en,
             'category_id' => $categoryId,
-            'is_published' => $request->is_published,
+            'status' => $request->status,
             'file' => $fileName ?: $this->file,
         ]);
     }
 
+    public static function statusList(): array
+    {
+        return [
+            self::DRAFT => trans('adminlte.draft'),
+            self::PUBLISHED => trans('adminlte.published'),
+        ];
+    }
+
+    public function statusName(): string
+    {
+        return self::statusList()[$this->status];
+    }
+
+    public function statusLabel(): string
+    {
+        switch ($this->status) {
+            case self::DRAFT:
+                return '<span class="badge badge-secondary">' . trans('adminlte.draft') . '</span>';
+            case self::PUBLISHED:
+                return '<span class="badge badge-success">' . trans('adminlte.published') . '</span>';
+            default:
+                return '<span class="badge badge-secondary">Default</span>';
+        }
+    }
+
     public function publish(): void
     {
-        $this->is_published = true;
+        if ($this->status === self::PUBLISHED) {
+            throw new \DomainException('Banner is already published.');
+        }
+        $this->update([
+            'status' => self::PUBLISHED,
+        ]);
     }
 
     public function discard(): void
     {
-        $this->is_published = false;
+        if ($this->status === self::DRAFT) {
+            throw new \DomainException('Banner is already drafted.');
+        }
+        $this->update([
+            'status' => self::DRAFT,
+        ]);
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::PUBLISHED;
     }
 
 
@@ -122,7 +165,7 @@ class Post extends BaseModel
 
     public function getPublishedAttribute()
     {
-        return ($this->is_published) ? trans('adminlte.yes') : trans('adminlte.no');
+        return $this->status === self::PUBLISHED ? trans('adminlte.yes') : trans('adminlte.no');
     }
 
     public function getFileThumbnailAttribute(): string
@@ -142,12 +185,12 @@ class Post extends BaseModel
 
     public function scopePublished($query)
     {
-        return $query->where('is_published', true);
+        return $query->where('status', self::PUBLISHED);
     }
 
     public function scopeDrafted($query)
     {
-        return $query->where('is_published', false);
+        return $query->where('status', self::DRAFT);
     }
 
     ###########################################
@@ -157,7 +200,7 @@ class Post extends BaseModel
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function createdBy()
