@@ -698,3 +698,5 @@ Breadcrumbs::register('admin.discounts.edit', function (Crumbs $crumbs, Discount
     $crumbs->parent('admin.discounts.show', $discounts);
     $crumbs->push(trans('adminlte.edit'), route('admin.discounts.edit', $discounts));
 });
+
+

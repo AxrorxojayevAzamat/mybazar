@@ -88,6 +88,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('{store}', 'ShopsController@view')->name('show');
     });
 
+
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('', 'CategoryController@index')->name('index');
         Route::get('/{products_path?}', 'CategoryController@show')->name('show')->where('products_path', '.+');
