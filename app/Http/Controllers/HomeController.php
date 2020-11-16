@@ -34,6 +34,7 @@ class HomeController extends Controller
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();
 
+
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
             'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts'));
     }

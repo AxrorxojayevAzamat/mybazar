@@ -89,6 +89,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('{store}', 'ShopsController@view')->name('show');
     });
 
+
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('', 'CategoryController@index')->name('index');
         Route::get('/{products_path?}', 'CategoryController@show')->name('show')->where('products_path', '.+');
@@ -96,7 +97,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::resource('/videos', 'VideosController');
-    
+
     Route::group(['as' => 'user.','namespace' => 'User'], function () {
             Route::get('setting','ProfileController@index')->name('setting');
             Route::put('setting/{user}','ProfileController@update')->name('update');

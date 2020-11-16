@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Shop\Product;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $gCategories = Category::get()->toTree();
             $gBrands = Brand::get();
-            $view->with(compact(['gCategories', 'gBrands']));
+            $discountProducts = Product::where('discount', '>', 0.5 )->limit(3)->get();
+            $view->with(compact(['gCategories', 'gBrands', 'discountProducts']));
         });
     }
 }
