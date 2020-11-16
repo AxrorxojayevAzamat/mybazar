@@ -53,7 +53,6 @@
                 </div>
             </div>
             <div class="filtered-brands">
-                {{-- {{dd($groups)}} --}}
                 @foreach($groups as $letter => $group)
                     <div class="letter-item">
                         <h6 class="title">
@@ -74,5 +73,5 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

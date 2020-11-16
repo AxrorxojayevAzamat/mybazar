@@ -23,7 +23,7 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/shopping-cart.js')}}"></script>
-    <script src="{{asset('js/compare-items.js')}}"></script>
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/shopping-cart.js', 'build')}}"></script>
+    <script src="{{mix('js/compare-items.js', 'build')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

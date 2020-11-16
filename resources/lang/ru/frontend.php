@@ -43,6 +43,7 @@ return [
         'about' => 'О товаре',
         'comments' => 'Комментарии',
         'day_product' => 'ТОВАР ДНЯ',
+        'you_watched' => 'Вы смотрели',
     ],
 
     'review' => [
