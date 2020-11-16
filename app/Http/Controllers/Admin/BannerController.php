@@ -55,6 +55,7 @@ class BannerController extends Controller
     public function update(UpdateRequest $request, Banner $banner)
     {
         $banner = $this->service->update($banner->id, $request);
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.banners.show', $banner);
     }
 
@@ -86,9 +87,10 @@ class BannerController extends Controller
     {
         try {
             $this->service->discard($banner->id);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.banners.show', $banner);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }

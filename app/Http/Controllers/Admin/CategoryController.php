@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(CreateRequest $request)
     {
         $category = $this->service->create($request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.categories.show', $category);
     }
 
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     public function update(UpdateRequest $request, Category $category)
     {
         $category = $this->service->update($category->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.categories.show', $category);
     }
 
@@ -97,7 +97,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $this->service->remove($category->id);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.categories.index');
     }
 
