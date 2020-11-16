@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\AdminLteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
