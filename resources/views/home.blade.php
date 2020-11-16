@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
 @endsection
 
+@section('breadcrumbs', '')
+
 @section('body')
     <!-- Casousel -->
     @include ('layouts.carousel')
@@ -15,12 +17,12 @@
     @include ('layouts.products-of-day')
 
     <!-- POPULAR PRODUCTS -->
-    @include ('layouts.carousel-products', 
+    @include ('layouts.carousel-products',
         ['products' => $bestsellerProducts, "title" => trans('frontend.popular'), 'rate_for' => ['js' => '"B"', 'html' => 'B']])   {{--CHANGEABLE--}}
     {{-- @include ('popular.popular-products')   CHANGEABLE --}}
 
     <!-- NEW PRODUCTS -->
-    @include ('layouts.carousel-products', 
+    @include ('layouts.carousel-products',
         ['products' => $newProducts, "title" => trans('frontend.novelty_upper'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
     {{-- @include ('layouts.new-products')   CHANGEABLE --}}
 
@@ -28,7 +30,7 @@
     @include ('layouts.three-small-banners')
 
     <!-- RECOMMENDED PRODUCTS-->
-    @include ('layouts.carousel-products', 
+    @include ('layouts.carousel-products',
     ['products' => $newProducts, "title" => trans('frontend.recommend'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])   {{--CHANGEABLE--}}
     {{-- @include ('layouts.recommended-products')   CHANGEABLE   TODO: fix --}}
 
