@@ -101,6 +101,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::put('setting/{user}','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites');
     });
+
+    Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
+        Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
@@ -262,6 +266,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
 
         Route::post('moderate', 'StoreController@moderate')->name('moderate');
+    });
+
+    Route::resource('pages', 'PageController');
+    Route::group(['prefix' => 'pages/{page}', 'as' => 'pages.'], function () {
+        Route::post('/first', 'PageController@first')->name('first');
+        Route::post('/up', 'PageController@up')->name('up');
+        Route::post('/down', 'PageController@down')->name('down');
+        Route::post('/last', 'PageController@last')->name('last');
     });
 
     Route::resource('brands', 'BrandController');

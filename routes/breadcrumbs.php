@@ -1,8 +1,10 @@
 <?php
 
 use App\Entity\Banner;
+use App\Entity\Page;
 use App\Entity\Shop\CharacteristicGroup;
 use App\Entity\Slider;
+use App\Http\Router\PagePath;
 use App\Http\Router\ProductsPath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Entity\Brand;
@@ -144,6 +146,19 @@ Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ProductsPath 
     $crumbs->parent('categories.inner_category', $path, $path);
 });
 
+
+// Pages
+Breadcrumbs::register('page', function (Crumbs $crumbs, PagePath $path) {
+    if ($parent = $path->page->parent) {
+        $crumbs->parent('page', $path->withPage($path->page->parent));
+    } else {
+        $crumbs->parent('home');
+    }
+    $crumbs->push($path->page->title, route('page', $path));
+});
+
+
+// Products
 Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('categories.show', products_path($product->mainCategory));
     $crumbs->push($product->name, route('products.show', $product));
@@ -613,6 +628,32 @@ Breadcrumbs::register('admin.banners.show', function (Crumbs $crumbs, Banner $ba
 Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, Banner $banner) {
     $crumbs->parent('admin.banners.show', $banner);
     $crumbs->push(trans('adminlte.edit'), route('admin.banners.edit', $banner));
+});
+
+// Pages
+
+Breadcrumbs::register('admin.pages.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Pages', route('admin.pages.index'));
+});
+
+Breadcrumbs::register('admin.pages.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.pages.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.pages.create'));
+});
+
+Breadcrumbs::register('admin.pages.show', function (Crumbs $crumbs, Page $page) {
+    if ($parent = $page->parent) {
+        $crumbs->parent('admin.pages.show', $parent);
+    } else {
+        $crumbs->parent('admin.pages.index');
+    }
+    $crumbs->push($page->title, route('admin.pages.show', $page));
+});
+
+Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) {
+    $crumbs->parent('admin.pages.show', $page);
+    $crumbs->push(trans('adminlte.edit'), route('admin.pages.edit', $page));
 });
 
 
