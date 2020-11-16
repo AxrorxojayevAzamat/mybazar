@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="dropdown cart-dropdown" >
+        <div class="dropdown cart-dropdown">
             <a href="#" class="btn dropdown-toggle cart" role="button" id="dropdownCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="mbcart"><span class="counter">{{ count((array) session('cart')) }}</span></i> @lang('menu.carts')
             </a>

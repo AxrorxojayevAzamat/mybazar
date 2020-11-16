@@ -80,9 +80,10 @@ class ProductController extends Controller
     {
         try {
             $product = $this->service->create($request);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }
@@ -106,9 +107,10 @@ class ProductController extends Controller
     {
         try {
             $product = $this->service->update($product->id, $request);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }
@@ -117,9 +119,10 @@ class ProductController extends Controller
     {
         try {
             $this->service->sendToModeration($product->id);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }
@@ -139,9 +142,11 @@ class ProductController extends Controller
     {
         try {
             $this->service->activate($product->id);
+            session()->flash('message', 'запись обновлён ');
 
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }
@@ -149,7 +154,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.products.index');
     }
 

@@ -42,6 +42,7 @@ class PostController extends Controller
     public function store(CreateRequest $request)
     {
         $post = $this->service->create($request);
+        session()->flash('message', 'запись обновлён ');
 
         return redirect()->route('admin.blog.posts.show', $post);
     }
@@ -54,6 +55,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+
         $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.posts.edit', compact('post', 'categories'));
@@ -62,7 +64,7 @@ class PostController extends Controller
     public function update(UpdateRequest $request, Post $post)
     {
         $post = $this->service->update($post->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.posts.show', $post);
     }
 
