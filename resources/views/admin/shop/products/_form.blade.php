@@ -5,7 +5,7 @@
     @php($cssSectionName = 'mix_adminlte_css')
     @php($javaScriptSectionName = 'mix_adminlte_js')
 @endif
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary card-outline">
