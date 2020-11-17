@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Banner;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\Product;
+use App\Entity\Store;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Entity\Blog\Post;
@@ -33,9 +35,14 @@ class HomeController extends Controller
         $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();
+        $threeBanners = Banner::where(['is_published' => true])->inRandomOrder()->limit(3)->get();
+        $shops1 = Product::orderByDesc('created_at')->limit(3)->get();
+        $shops2 = Product::orderByDesc('created_at')->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = Product::where(['main_category_id' => $shops2[0]['main_category_id']])->limit(4)->get();
 
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
-            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts'));
+            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems'));
     }
+
 }
