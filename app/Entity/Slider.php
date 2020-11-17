@@ -60,11 +60,11 @@ class Slider extends BaseModel {
     ########################################### Mutators
 
     public function getFileThumbnailAttribute(): string {
-        return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
+        return '/storage/files/' . ImageHelper::FOLDER_SLIDERS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
     }
 
     public function getFileOriginalAttribute(): string {
-        return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
+        return '/storage/files/' . ImageHelper::FOLDER_SLIDERS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
     }
 
     ###########################################
