@@ -1,20 +1,20 @@
 @section('script')
-    <script src="{{asset('js/autoNumeric-2.0-BETA.js')}}"></script>
-    <script src="{{asset('js/autoNumeric.js')}}"></script>
+    <script src="{{asset('js/autoNumeric-2.0-BETA.js', 'build')}}"></script>
+    <script src="{{asset('js/autoNumeric.js', 'build')}}"></script>
 
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/range-slider.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
 
     <script>
         let filterButton = $('#catalog-filter-button');
         let filterForm = $('#catalog-filter-form');
 
         $(document).ready(function () {
-            
-            
-        let defaultRadioButton = $("#" + localStorage.getItem("radioBtn")); 
-        
+
+
+        let defaultRadioButton = $("#" + localStorage.getItem("radioBtn"));
+
         if(defaultRadioButton.selector !== '#null'){
             defaultRadioButton[0].checked = true;
         }else{
@@ -25,15 +25,15 @@
                 getCatalogFilter();
             });
         });
-        
-        
+
+
     $('input[type=radio][name=order_by]').change(function () {
-        
+
         localStorage.setItem("radioBtn", this.id);
         this.checked = true;
         getCatalogFilter();
     });
-    
+
     function getCatalogFilter(){
         let brands = getFilter('brands-checkbox');
         let stores = getFilter('stores-checkbox');
@@ -64,8 +64,8 @@
                 console.log(brands);
                 console.log(stores);
     }
-    
-    
+
+
         function getFilter(className) {
             let filter = '';
             $('.' + className + ':checked').each(function() {

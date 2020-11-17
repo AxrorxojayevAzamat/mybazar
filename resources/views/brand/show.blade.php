@@ -30,7 +30,7 @@
                 </nav>
 
                 <!-- list mosaic brand items -->
-                @include('layouts.list-mosaic-catalog-items', ['products'=>$product])
+                @include('layouts.products-list-grid', ['products'=>$products])
 
                 <!-- pagination -->
                 @include('layouts.pagination')

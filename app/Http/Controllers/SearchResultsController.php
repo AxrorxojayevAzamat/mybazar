@@ -17,7 +17,14 @@ class SearchResultsController extends Controller
         $blogs = Post::orderByDesc('created_at')->where(['is_published' => true])->paginate(20);
         $videos = Videos::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
         $categories = \App\Models\Category::get();
-        return view('pages.search-results',compact('product','products'), compact('blogs','categories'), compact('videos','categories')); //compact ichidigi peremenniyla , view digi blade ga beriladi.
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+        return view('pages.search-results',compact('product','products', 'ratings'), compact('blogs','categories'), compact('videos','categories')); //compact ichidigi peremenniyla , view digi blade ga beriladi.
     }
-    
+
 }

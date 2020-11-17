@@ -2,6 +2,10 @@
 
 @section('title', 'Popular page')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
+@endsection
+
 @section('body')
     @section('banner')
         <!-- Slide banner -->
@@ -31,7 +35,7 @@
                 </nav>
 
                 <!-- list mosaic catalog items -->
-                @include('layouts.list-mosaic-catalog-items')
+                @include('layouts.products-list-grid')
 
                 <!-- pagination -->
                 @include('layouts.pagination')
@@ -62,6 +66,7 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
+    <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 @endsection

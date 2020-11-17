@@ -26,7 +26,7 @@
         </div>
         <div class="inner-videoview">
             <div class="video-player">
-                    <video 
+                    <video
                     onplay="hideOverlay()"
                     onpause="showOverlay()"
                     id="my-video"
@@ -34,17 +34,17 @@
                     controls
                     preload="auto"
                     poster="{{$video->posterOriginal}}"
-                    
+
                     data-setup="{}"
                 >
                         <source src="{{$video->videoFile}}" type="video/mp4" />
-                    
+
                     </p>
 
                     </video>
                     <div class="player-overlay">
                         <h6>{{$video->title}}</h6>
-                    </div> 
+                    </div>
             </div>
             <h6>{{$video->title}}</h6>
             <p>{!!$video->body!!}</p>
@@ -102,6 +102,6 @@
             $(".player-overlay").show();
         }
     </script>
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/video.js')}}"></script>
 @endsection

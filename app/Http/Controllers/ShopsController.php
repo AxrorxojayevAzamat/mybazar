@@ -70,7 +70,18 @@ class ShopsController extends Controller
         $brands = Brand::all();
 
         $products = $query->paginate(20);
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
 
-        return view('shop.shops-view', compact('products', 'brands'));
+        $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
+            ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
+            ->orderByDesc('discount')->limit(9)->get();
+
+        return view('shop.shops-view', compact('products', 'brands', 'ratings', 'dayProducts'));
     }
 }

@@ -9,7 +9,7 @@
                 readOnly: true,
                 starWidth: "24px",
                 normalFill: "#ddd",
-                ratedFill: "#feea3b",
+                ratedFill: "#f1b145",
                 spacing: "7px"
             });
         }

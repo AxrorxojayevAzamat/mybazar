@@ -16,8 +16,8 @@
     <!-- other products of this seller -->
     @include('products.other-products-of-this-seller')
 
-    <!-- single-charachteristics-comments btn-->
     @include('products.singlep-charac-com-btn')
+    <!-- single-charachteristics-comments btn-->
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel" aria-labelledby="pills-about-product-tab">
@@ -43,8 +43,8 @@
 
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
 @endsection
 
 
