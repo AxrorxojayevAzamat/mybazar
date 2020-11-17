@@ -2,24 +2,26 @@
 
 namespace App\Services\Manage;
 
-use Illuminate\Support\Facades\DB;
 use App\Entity\Slider;
+use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Sliders\CreateRequest;
 use App\Http\Requests\Admin\Sliders\UpdateRequest;
-use App\Helpers\ImageHelper;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class SliderService {
+class SliderService
+{
 
     private $nextId;
 
-    public function create(CreateRequest $request): Slider {
+    public function create(CreateRequest $request): Slider
+    {
 
         if (!$request->file) {
             return Slider::create([
-                        'sort' => $request->sort,
-                        'url' => $request->url,
+                'sort' => $request->sort,
+                'url' => $request->url,
             ]);
         }
 
@@ -31,7 +33,23 @@ class SliderService {
         return $post;
     }
 
-    public function update(int $id, UpdateRequest $request): Slider {
+    public function getNextId(): int
+    {
+        if (!$this->nextId) {
+            $nextId = DB::select("select nextval('sliders_id_seq')");
+            return $this->nextId = intval($nextId['0']->nextval);
+        }
+        return $this->nextId;
+    }
+
+    private function uploadFile(int $sliderId, UploadedFile $file, string $imageName): void
+    {
+        ImageHelper::saveThumbnail($sliderId, ImageHelper::FOLDER_SLIDERS, $file, $imageName);
+        ImageHelper::saveOriginal($sliderId, ImageHelper::FOLDER_SLIDERS, $file, $imageName);
+    }
+
+    public function update(int $id, UpdateRequest $request): Slider
+    {
         $slider = Slider::findOrFail($id);
 
         if (!$request->file) {
@@ -48,15 +66,8 @@ class SliderService {
         return $slider;
     }
 
-    public function getNextId(): int {
-        if (!$this->nextId) {
-            $nextId = DB::select("select nextval('sliders_id_seq')");
-            return $this->nextId = intval($nextId['0']->nextval);
-        }
-        return $this->nextId;
-    }
-
-    public function moveSliderToFirst($sliders, int $sliderId): void {
+    public function moveSliderToFirst($sliders, int $sliderId): void
+    {
 
         /* @var $slider Slider */
         foreach ($sliders as $i => $slider) {
@@ -85,7 +96,16 @@ class SliderService {
         }
     }
 
-    public function moveSliderUp($sliders, int $sliderId): void {
+    private function sortSliders($sliders): void
+    {
+        foreach ($sliders as $i => $slider) {
+            $slider->setSort($i + 1);
+            $slider->saveOrFail();
+        }
+    }
+
+    public function moveSliderUp($sliders, int $sliderId): void
+    {
 
         /* @var $slider Slider */
         foreach ($sliders as $i => $slider) {
@@ -117,7 +137,8 @@ class SliderService {
         }
     }
 
-    public function moveSliderDown($sliders, int $sliderId): void {
+    public function moveSliderDown($sliders, int $sliderId): void
+    {
 
         /* @var $slider Slider */
         foreach ($sliders as $i => $slider) {
@@ -150,7 +171,8 @@ class SliderService {
         }
     }
 
-    public function moveSliderToLast($sliders, int $sliderId): void {
+    public function moveSliderToLast($sliders, int $sliderId): void
+    {
 
         /* @var $slider Slider */
         foreach ($sliders as $i => $slider) {
@@ -179,21 +201,10 @@ class SliderService {
         }
     }
 
-    private function sortSliders($sliders): void {
-        foreach ($sliders as $i => $slider) {
-            $slider->setSort($i + 1);
-            $slider->saveOrFail();
-        }
-    }
-
-    public function removeFile(int $id): bool {
+    public function removeFile(int $id): bool
+    {
         $slider = Slider::findOrFail($id);
         return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_SLIDERS . '/' . $slider->id) && $slider->update(['file' => null]);
-    }
-
-    private function uploadFile(int $sliderId, UploadedFile $file, string $imageName): void {
-        ImageHelper::saveThumbnail($sliderId, ImageHelper::FOLDER_SLIDERS, $file, $imageName);
-        ImageHelper::saveOriginal($sliderId, ImageHelper::FOLDER_SLIDERS, $file, $imageName);
     }
 
 }
