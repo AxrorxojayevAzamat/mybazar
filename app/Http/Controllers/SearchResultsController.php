@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Brand;
+use App\Entity\Store;
+use App\Http\Resources\BrandResource;
+use App\Http\Resources\Shop\ProductResource;
+use App\Http\Resources\StoreResource;
 use Illuminate\Http\Request;
 use App\Entity\Shop\Product;
 use App\Models\Post;
@@ -10,14 +15,35 @@ use App\Models\VideosCategory;
 
 class SearchResultsController extends Controller
 {
-    public function searchResults() {
-        $query = Product::orderByDesc('created_at');
-        $product = $query->paginate(12); //paginate() {{$products->links()}} render qlish uchun kere.
-        $products = $query->paginate(12); // boshqa payt, get() ni ishlatsayam boladi
-        $blogs = Post::orderByDesc('created_at')->where(['is_published' => true])->paginate(20);
-        $videos = Videos::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
-        $categories = \App\Models\Category::get();
-        return view('pages.search-results',compact('product','products'), compact('blogs','categories'), compact('videos','categories')); //compact ichidigi peremenniyla , view digi blade ga beriladi.
+    public function searchResults(Request $request) {
+        if (!empty($value = $request->get('search'))) {
+            $categoryId = $request->get('category_id');
+
+            $length = 10;
+            if ($categoryId) {
+                $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
+                    ->where('category_id', $categoryId)->paginate(10);
+            } else {
+                $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
+            }
+
+
+            if ($categoryId) {
+                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
+            } else {
+                $brands = Brand::search($value)->paginate($length);
+            }
+
+
+            if ($categoryId) {
+                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)
+                    ->where('categories', $categoryId)->paginate($length);
+            } else {
+                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
+            }
+        }
+
+        return view('pages.search-results', compact('stores', 'brands', 'products'));
     }
-    
+
 }

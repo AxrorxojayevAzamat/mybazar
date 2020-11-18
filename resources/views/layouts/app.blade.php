@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
+    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
     @yield('styles')
 
 </head>
@@ -85,6 +86,8 @@
 <script src="{{asset('js/scroll-xNav.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('js/jquery.rateyo.js')}}"></script>
+
 @yield ('script')
 @stack('script')
 

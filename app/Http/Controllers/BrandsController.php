@@ -45,7 +45,16 @@ class BrandsController extends Controller {
         $query = Product::orderByDesc('created_at')->where('brand_id', $brand->id);
         $product = $query->paginate(12); //paginate() {{$products->links()}} render qlish uchun kere.
         $products = $query->paginate(12); // boshqa payt, get() ni ishlatsayam boladi
-        return view('brand.show', compact('product', 'products'));
+
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+
+        return view('brand.show', compact('product', 'products', 'ratings'));
     }
 
 }

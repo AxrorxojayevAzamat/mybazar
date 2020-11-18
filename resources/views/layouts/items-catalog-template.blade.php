@@ -15,7 +15,7 @@
             </nav>
 
             <!-- list mosaic catalog items -->
-            @include('layouts.list-mosaic-catalog-items')
+            @include('layouts.products-list-grid')
 
         </div>
     </div>

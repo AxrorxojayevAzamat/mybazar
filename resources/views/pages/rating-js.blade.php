@@ -2,16 +2,23 @@
     <script>
         var type = <?php echo $type; ?>;
         var products = <?php echo json_encode($products); ?>;
-        for( var [i, x] of products.entries()) {
-            // console.log(Number(x.rating).toFixed(1))
-            $('#rateYo_'+ type + i).rateYo({
-                rating: x.rating,
+        var productsIterator = products.length ? products.entries() : null;
+        function ratingProduct(type, element, num) {
+            $('#rateYo_' + type + num).rateYo({
+                rating: element.rating,
                 readOnly: true,
                 starWidth: "24px",
                 normalFill: "#ddd",
-                ratedFill: "#feea3b",
+                ratedFill: "#f1b145",
                 spacing: "7px"
             });
+        }
+        if (productsIterator) {
+            for (var [i, x] of productsIterator) {
+                ratingProduct(type, x, i)
+            }
+        } else {
+            ratingProduct(type, products, 0)
         }
     </script>
 @endpush

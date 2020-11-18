@@ -59,6 +59,11 @@ Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.blogs_news'), route('blogs-news'));
 });
 
+Breadcrumbs::register('search', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('frontend.breadcrumb.search'), route('search'));
+});
+
 Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
     $crumbs->parent('blogs-news');
     $crumbs->push($post->title, route('blogs.show', $post));

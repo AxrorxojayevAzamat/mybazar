@@ -45,6 +45,6 @@
 
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
 @endsection

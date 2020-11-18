@@ -1,6 +1,6 @@
 <!-- PAGINATION  -->
 <nav class="products-pagination" aria-label="Page navigation example">
-    {{ $products->links() }}
+{{--    {{ $products->links() }}--}}
 {{--                <ul class="pagination">--}}
 {{--                    <!-- <li class="page-item">--}}
 {{--                        <a class="page-link" href="#" aria-label="Previous">--}}

@@ -9,8 +9,16 @@ class PopularController extends Controller
 {
     public function popular() {
         $query = Product::orderByDesc('created_at');
-        $product = $query->paginate(12); //paginate() {{$products->links()}} render qlish uchun kere.
         $products = $query->paginate(12); // boshqa payt, get() ni ishlatsayam boladi
-        return view('popular.popular',compact('product','products')); //compact ichidigi peremenniyla , view digi blade ga beriladi.
+
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+
+        return view('popular.popular', compact('products', 'ratings')); //compact ichidigi peremenniyla , view digi blade ga beriladi.
     }
 }
