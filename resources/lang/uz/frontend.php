@@ -71,6 +71,7 @@ return [
         'discounts' => 'Chegirmalar',
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
+        'search' => 'Qidiruv',
     ],
 
     'nav' => [

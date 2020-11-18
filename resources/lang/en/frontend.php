@@ -71,6 +71,7 @@ return [
         'discounts' => 'Sales',
         'shops' => 'Shops',
         'videos' => 'Video Blog',
+        'search' => 'Search',
     ],
 
     'nav' => [

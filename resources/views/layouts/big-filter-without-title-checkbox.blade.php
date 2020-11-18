@@ -1,5 +1,5 @@
 <form action="?" class="big-filter-without-title-checkbox" id="catalog-filter-form">
-    @if ($brands->isNotEmpty())
+    @if (isset($brands))
         @php($brandSlugs = explode(',', request('brands')))
         <button type="button" class="btn accordion active">@lang('frontend.brand')</button>
         <div id="filter2" class="panel">
@@ -15,7 +15,7 @@
         <input type="hidden" name="brands" id="brands-hidden-input">
     @endif
 
-    @if ($stores->isNotEmpty())
+    @if (isset($stores))
         @php($storeSlugs = explode(',', request('stores')))
         <button type="button" class="btn accordion active">@lang('frontend.stores')</button>
         <div id="filter2" class="panel">
