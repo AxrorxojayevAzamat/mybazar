@@ -6,7 +6,7 @@
                     <a href="#"><img src="{{ $shop->store->logoOriginal }}" alt=""></a>
                     <div>
                         <h6 class="title">{!! $shop->store->name !!}</h6>
-                        <p class="sub-title">{!! $shop->maincategory->name !!}</p>
+                                            <p class="sub-title">{!! $shop->maincategory->name !!}</p>
                     </div>
                 </div>
                 <div class="product-images">

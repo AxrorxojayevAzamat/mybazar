@@ -41,7 +41,7 @@
     @include ('layouts.full-banner1')   {{-- TODO: fix --}}
 
     <!-- SHOPS -->
-    @include ('layouts.index-shops')   {{-- TODO: fix --}}
+    @include ('layouts.index-shops',['products' => $shops2ThreeItems,'rate_for' => ['js' => '"E"', 'html' => 'E']])   {{-- TODO: fix --}}
 
     <!-- FULL BANNER 2 -->
     @include ('layouts.full-banner2')   {{-- TODO: fix --}}

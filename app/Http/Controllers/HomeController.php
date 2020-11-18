@@ -36,9 +36,9 @@ class HomeController extends Controller
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();
         $threeBanners = Banner::where(['is_published' => true])->inRandomOrder()->limit(3)->get();
-        $shops1 = Product::orderByDesc('created_at')->limit(3)->get();
-        $shops2 = Product::orderByDesc('created_at')->inRandomOrder()->limit(1)->get();
-        $shops2ThreeItems = Product::where(['main_category_id' => $shops2[0]['main_category_id']])->limit(4)->get();
+        $shops1 = $query->where(['status' => Product::STATUS_ACTIVE])->limit(3)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['main_category_id' => $shops2[0]['main_category_id'],'status' => Product::STATUS_ACTIVE])->limit(4)->get();
 
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
