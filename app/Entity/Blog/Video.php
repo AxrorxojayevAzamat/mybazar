@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Blog\Videos\CreateRequest;
 use App\Http\Requests\Admin\Blog\Videos\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -43,6 +44,8 @@ use Eloquent;
  * @property string $posterThumbnail
  * @property string $posterOriginal
  * @property string $videoFile
+ * @method Builder published()
+ * @method Builder drafted()
  * @mixin Eloquent
  */
 class Video extends BaseModel
