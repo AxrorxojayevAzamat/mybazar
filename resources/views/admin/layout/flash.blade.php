@@ -1,4 +1,3 @@
-hey
 @if (session('message'))
 
     <div class="alert" style="background-color: #279c01; color: white;">
