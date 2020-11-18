@@ -25,18 +25,16 @@ function min_func(mix_arg, type, file) {
 const mixFiles = type => args => {
     if(type === 'js') {
         for(let x of args) {
-            mix
-                .js(`${r_path}${type}/${x}.${type}`, `${type}`)
-                min_func(mix, type, x)
+            mix.js(`${r_path}${type}/${x}.${type}`, `${type}`)
+            min_func(mix, type, x)
         }
-        
+
     } else if (type === 'css') {
         for(let x of args) {
-            mix
-                .sass(`${r_path}sass/${x}.scss`, `${type}`)
-                min_func(mix, type, x)
-        } 
-    }     
+            mix.sass(`${r_path}sass/${x}.scss`, `${type}`)
+            min_func(mix, type, x)
+        }
+    }
 }
 
 const mixCss = mixFiles('css');
@@ -45,9 +43,6 @@ const mixJs = mixFiles('js');
 mix
     .setPublicPath('public/build')
     .setResourceRoot('/build/')
-    
-
 mixCss(css_files)
 mixJs(js_files)
-    
 mix.version()

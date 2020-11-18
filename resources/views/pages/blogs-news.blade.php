@@ -33,7 +33,7 @@
 
                         <!--sort-by options  -->
                         @include('layouts.sort-by-options')
-                        
+
                         <!-- small filter without title checkbox -->
                         @include('layouts.big-filter-with-listof-checkbox')
                     </nav>
@@ -50,7 +50,7 @@
 
         <div class="tab-pane fade show" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
             <!-- blog body -->
-            
+
         </div>
     <div>
     <!-- recently watched -->
@@ -66,5 +66,5 @@
 
 
 @section('script')
-<script src="{{asset('js/1-index.js')}}"></script>
+            <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

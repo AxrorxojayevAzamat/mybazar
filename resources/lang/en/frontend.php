@@ -43,6 +43,7 @@ return [
         'about' => 'About product',
         'comments' => 'Comments',
         'day_product' => 'PRODUCT OF THE DAY',
+        'you_watched' => 'You watched',
     ],
 
     'review' => [
