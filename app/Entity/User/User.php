@@ -56,7 +56,8 @@ class User extends Authenticatable
     const ROLE_MANAGER = 'manager';
 
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role',
+        'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role', 'phone_verified',
+        'phone_verify_token', 'phone_verify_token_expire',
     ];
 
     protected $hidden = [
@@ -179,7 +180,12 @@ class User extends Authenticatable
 
     public function verifyPhone(): void
     {
+        if (!$this->isWait()) {
+            throw new \DomainException('User is already verified.');
+        }
+
         $this->update([
+            'status' => self::STATUS_ACTIVE,
             'phone_verified' => true,
             'phone_verify_token' => null,
             'phone_verify_token_expire' => null,
@@ -190,6 +196,10 @@ class User extends Authenticatable
     {
         if (!$this->isWait()) {
             throw new \DomainException('User is already verified.');
+        }
+
+        if ($this->isPhoneVerified()) {
+            throw new \DomainException('Phone is already verified.');
         }
 
         $this->update([

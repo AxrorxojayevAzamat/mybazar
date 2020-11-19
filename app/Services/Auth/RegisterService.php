@@ -80,7 +80,7 @@ class RegisterService
     {
         $user = User::findOrFail($id);
 
-        if ($token !== $user->phone_verify_token) {
+        if ($token !== (int)$user->phone_verify_token) {
             throw new \DomainException(trans('auth.incorrect_verify_token'));
         }
 
