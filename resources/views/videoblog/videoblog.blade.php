@@ -62,6 +62,7 @@
             </nav>
 
             <div class="all-filtered-videos">
+{{--                {{dd($videos)}}}--}}
                 @foreach($videos as $video)
                 <a href="{{ route('videos.show', $video) }}">
                     <div class="video-item">
@@ -83,7 +84,9 @@
 </section>
 
 <!-- recently viewed -->
-@include('layouts.recently-viewed')
+@include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
+{{--@include('layouts.recently-viewed')--}}
 @endsection
 
 @section('script')

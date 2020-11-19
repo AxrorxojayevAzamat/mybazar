@@ -78,6 +78,7 @@ return [
         'new_products' => 'New products',
         'stock' => 'Stock',
         'discount' => 'Discount',
+        'discount_stock' => 'Discount and Stock',
         'top_brands' => 'Top brands',
         'blog' => 'Blog',
         'videos' => 'Video Blog',
