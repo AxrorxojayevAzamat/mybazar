@@ -209,6 +209,10 @@ Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Video $video) {
     $crumbs->push($video->title, route('videos.show',$video));
 });
 
+Breadcrumbs::register('stores.list', function (Crumbs $crumbs, Store $stores) {
+    $crumbs->parent('stores.index');
+    $crumbs->push($stores->id, route('stores.list', $stores));
+});
 
 
 ################################### Admin
@@ -703,5 +707,6 @@ Breadcrumbs::register('admin.discounts.edit', function (Crumbs $crumbs, Discount
     $crumbs->parent('admin.discounts.show', $discounts);
     $crumbs->push(trans('adminlte.edit'), route('admin.discounts.edit', $discounts));
 });
+
 
 
