@@ -74,9 +74,9 @@ Breadcrumbs::register('brands', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.brands'), route('brands'));
 });
 
-Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
+Breadcrumbs::register('brands.show', function (Crumbs $crumbs, Brand $brand) {
     $crumbs->parent('brands');
-    $crumbs->push($brand->name, route('brands.show',$brand));
+    $crumbs->push($brand->name, route('brands.show', $brand));
 });
 
 Breadcrumbs::register('cart', function (Crumbs $crumbs) {
@@ -204,14 +204,24 @@ Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.videos'), route('videos.index'));
 });
 
-Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Video $video) {
+Breadcrumbs::register('videos.show', function (Crumbs $crumbs, Video $video) {
     $crumbs->parent('videos.index');
-    $crumbs->push($video->title, route('videos.show',$video));
+    $crumbs->push($video->title, route('videos.show', $video));
 });
 
-Breadcrumbs::register('stores.list', function (Crumbs $crumbs, Store $stores) {
+Breadcrumbs::register('stores.index', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+});
+
+Breadcrumbs::register('stores.show', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+});
+
+Breadcrumbs::register('stores.view', function (Crumbs $crumbs) {
     $crumbs->parent('stores.index');
-    $crumbs->push($stores->id, route('stores.list', $stores));
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
 });
 
 

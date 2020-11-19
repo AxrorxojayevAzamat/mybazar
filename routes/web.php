@@ -119,7 +119,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
     Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
         Route::get('', 'StoresController@index')->name('index');
-        Route::get('/{stores}', 'StoresController@storesList')->name('list');
+        Route::get('{store}', 'StoresController@store')->name('show');
+        Route::get('view/{id}', 'StoresController@view')->name('view');
     });
 });
 
