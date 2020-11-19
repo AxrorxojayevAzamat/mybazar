@@ -150,8 +150,8 @@ class RegisterController extends Controller
             return redirect()->route('login')->with('error', trans('auth.phone_not_found'));
         }
 
-        $this->service->verifyPhone($user->id, $request->token);
         try {
+            $this->service->verifyPhone($user->id, $request->token);
             return redirect()->route('login')->with('success', trans('auth.phone_verified'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());

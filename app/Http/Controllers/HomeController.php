@@ -26,9 +26,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        $this->sms->send('998997961879', '32145');
-        dd('dghasgdsagdsa');
-
         $query = Product::orderByDesc('created_at');
         $bestsellerProducts = $query->where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])->limit(12)->get();
         $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])

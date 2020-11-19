@@ -39,7 +39,7 @@
                 <form action="{{ $login_url }}" method="post">
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input name="email" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ trans
+                        <input name="email_or_phone" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ trans
                         ('auth.email_phone_or_username') }}" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
