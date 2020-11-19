@@ -70,7 +70,7 @@ class LoginController extends Controller
             $emailOrPhone = trim($emailOrPhone, '+');
             $username = 'phone';
         } else {
-            $username = 'username';
+            $username = 'name';
         }
 
         return [
