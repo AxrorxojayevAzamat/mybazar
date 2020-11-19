@@ -38,6 +38,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
+    Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
+    Route::get('verify/email/resend', 'Auth\RegisterController@resendEmailShow')->name('resend.email.show');
+    Route::post('verify/email/resend', 'Auth\RegisterController@resendEmail')->name('resend.email.verification');
+    Route::get('verify/phone', 'Auth\RegisterController@phone')->name('phone.verification');
+    Route::post('verify/phone', 'Auth\RegisterController@verifyPhone')->name('verify.phone');
+    Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
+    Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
