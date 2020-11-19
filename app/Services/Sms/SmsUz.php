@@ -23,8 +23,8 @@ class SmsUz implements SmsSender
     public function sendSms(int $number, string $text)
     {
         $body = [
-            'username' => 'wifi_auth',
-            'password' => 'wifi_farruh',
+            'username' => 'shak',
+            'password' => 'ttt_Sending_sms',
             'smsc' => 'smsc2',
             'from' => 'TTT', // 6200
             'to' => $number, // 998998824459
@@ -33,15 +33,16 @@ class SmsUz implements SmsSender
             'text' => $text
         ];
 
+        $state = false;
         $output = '';
         $url1 = $this->url . http_build_query($body);
         $handle = curl_init();
         curl_setopt($handle, CURLOPT_URL, $url1);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         if (!curl_errno($handle)) {
-            $state = true;
             $output = curl_exec($handle);
             curl_close($handle);
+            $state = true;
         }
 
         return response()->json([

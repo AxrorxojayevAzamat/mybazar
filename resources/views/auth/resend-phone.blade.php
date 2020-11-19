@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('body')
 
     <form method="POST" action="{{ route('resend.phone.show') }}">
         @csrf

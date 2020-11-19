@@ -38,6 +38,16 @@ Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
 Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::for('email.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.email_verification'), route('email.verification'));
+});
+
+Breadcrumbs::for('phone.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.phone_verification'), route('phone.verification'));
+});
+
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.home'), route('front-home'));
 });

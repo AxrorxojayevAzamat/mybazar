@@ -67,9 +67,10 @@ class LoginController extends Controller
         if (UserHelper::isEmail($emailOrPhone)) {
             $username = 'email';
         } elseif (UserHelper::isPhoneNumber($emailOrPhone)) {
+            $emailOrPhone = trim($emailOrPhone, '+');
             $username = 'phone';
         } else {
-            $username = 'username';
+            $username = 'name';
         }
 
         return [

@@ -12,14 +12,18 @@ use App\Helpers\ProductHelper;
 use App\Entity\Blog\Post;
 use App\Entity\Slider;
 use App\Entity\Blog\Video;
+use App\Services\Sms\SmsSender;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function __construct()
+    private $sms;
+
+    public function __construct(SmsSender $sms)
     {
 //        $this->middleware('auth');
+        $this->sms = $sms;
     }
 
     public function index()
