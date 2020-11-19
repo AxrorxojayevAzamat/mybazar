@@ -27,6 +27,16 @@ class RegisterService
 
     public function create(RegisterRequest $request): User
     {
+        $user = User::where(function ($query) use ($request) {
+            $query->where('name', $request->name)
+                ->orWhere('email', $request->email_or_phone)
+                ->orWhere('phone', $request->email_or_phone);
+        })->first();
+
+        if ($user) {
+            throw new \DomainException(trans('auth.user_exists'));
+        }
+
         $user = User::register(
             $request->name,
             $request->email_or_phone,

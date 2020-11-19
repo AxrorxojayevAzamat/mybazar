@@ -18,6 +18,7 @@ return [
 
     'username' => 'Username',
     'email_or_phone' => 'Email address or phone number',
+    'email_phone_or_username' => 'Email address, phone number or username',
     'email' => 'Email address',
     'phone' => 'Phone number',
     'password' => 'Password',
@@ -26,6 +27,8 @@ return [
     'registration' => 'Registration',
     'register' => 'Register',
     'login' => 'Login',
+    'phone_verification' => 'Phone number verification',
+    'email_verification' => 'Email address verification',
     'remember_me' => 'Remember me',
     'resend' => 'Resend',
     'forgot_password' => 'Forgot your password?',
@@ -55,4 +58,5 @@ return [
     'missing_token' => 'Missing token info.',
     'invalid_auth_token' => 'Invalid auth token.',
     'account_not_verified' => 'Your account is not verified.',
+    'user_exists' => 'User with this username, email or phone exists.',
 ];

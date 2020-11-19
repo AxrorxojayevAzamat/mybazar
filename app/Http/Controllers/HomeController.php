@@ -10,18 +10,25 @@ use App\Helpers\ProductHelper;
 use App\Entity\Blog\Post;
 use App\Entity\Slider;
 use App\Entity\Blog\Video;
+use App\Services\Sms\SmsSender;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function __construct()
+    private $sms;
+
+    public function __construct(SmsSender $sms)
     {
 //        $this->middleware('auth');
+        $this->sms = $sms;
     }
 
     public function index()
     {
+        $this->sms->send('998997961879', '32145');
+        dd('dghasgdsagdsa');
+
         $query = Product::orderByDesc('created_at');
         $bestsellerProducts = $query->where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])->limit(12)->get();
         $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])

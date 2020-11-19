@@ -44,12 +44,16 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        event(new Registered($user = $this->service->create($request)));
+        try {
+            event(new Registered($user = $this->service->create($request)));
 
-        $this->guard()->login($user);
+            $this->guard()->login($user);
 
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            return $this->registered($request, $user)
+                ?: redirect($this->redirectPath());
+        } catch (\DomainException $e) {
+            return redirect('register')->with('error', trans('auth.user_exists'));
+        }
     }
 
     protected function registered(RegisterRequest $request, User $user)
@@ -87,12 +91,11 @@ class RegisterController extends Controller
     public function verifyEmail(string $token)
     {
         if (!$user = User::where('verify_token', $token)->first()) {
-            return redirect()->route('login')
-                ->with('error', trans('auth.link_not_found'));
+            return redirect()->route('login')->with('error', trans('auth.link_not_found'));
         }
 
+        $this->service->verifyEmail($user->id);
         try {
-            $this->service->verifyEmail($user->id);
             return redirect()->route('login')->with('success', trans('auth.email_verified'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());
@@ -112,11 +115,11 @@ class RegisterController extends Controller
     public function email()
     {
         $session = Session::get('auth');
-        if (!$session || !$phone = $session['email']) {
+        if (!$session || !$email = $session['email']) {
             return redirect()->route('register')->with('success', trans('auth.email_not_found'));
         }
 
-        return view('auth.verify-email');
+        return view('auth.verify-email', compact('email'));
     }
 
     public function resendPhoneShow(Request $request)

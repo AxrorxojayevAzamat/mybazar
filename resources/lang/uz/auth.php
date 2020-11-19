@@ -18,6 +18,7 @@ return [
 
     'username' => 'Foydalanuvchi nomi',
     'email_or_phone' => 'Elektron pochta yoki telefon raqami',
+    'email_phone_or_username' => 'Elektron pochta, telefon raqami yoki foydalanuvchi nomi',
     'email' => 'Elektron pochta',
     'phone' => 'Telefon raqami',
     'password' => 'Parol',
@@ -26,6 +27,8 @@ return [
     'registration' => 'Ro‘yxatdan o‘tmoq',
     'register' => 'Ro‘yxatdan o‘tish',
     'login' => 'Kirish',
+    'phone_verification' => 'Telefon raqamni tasdiqlash',
+    'email_verification' => 'Elektron pochtani tasdiqlash',
     'remember_me' => 'Eslab qolmoq',
     'resend' => 'Qayta yubormoq',
     'forgot_password' => 'Parolingizni unutdingizmi?',
@@ -55,4 +58,5 @@ return [
     'missing_token' => 'Belgilangan ma‘lumot topilmadi.',
     'invalid_auth_token' => 'Autentifikatsiya tokeni noto‘g‘ri.',
     'account_not_verified' => 'Sizning profilingiz tasdiqlanmagan.',
+    'user_exists' => 'Bunday foydalanuvchi nomi, elektron pochtasi yoki telefon raqami bilan bo‘lgan foydalanuvchi mavjud.',
 ];

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('body')
 
     <form class="d-inline" method="POST" action="{{ route('resend.email.verification') }}">
         @csrf
