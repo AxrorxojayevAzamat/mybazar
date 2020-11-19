@@ -43,6 +43,7 @@ return [
         'about' => 'Mahsulot haqida',
         'comments' => 'Sharhlar',
         'day_product' => 'KUN MAHSULOTI',
+        'you_watched' => 'Siz tomosha qildingiz',
     ],
 
     'review' => [
@@ -71,6 +72,7 @@ return [
         'discounts' => 'Chegirmalar',
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
+        'search' => 'Qidiruv',
     ],
 
     'nav' => [

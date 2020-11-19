@@ -53,5 +53,5 @@
 
 
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

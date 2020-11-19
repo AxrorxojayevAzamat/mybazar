@@ -1,6 +1,7 @@
 @section('script')
-    <script src="{{asset('js/1-index.js')}}"></script>
-    <script src="{{asset('js/2-catalog-page.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
+    <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 
     <script>
         let valueModification = $('.value-modification');
@@ -37,7 +38,7 @@
                 e.preventDefault();
 
                 let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-                XMLHttpRequest.prototype.send = function(data) {
+                XMLHttpRequest.prototype.send = function (data) {
                     this.setRequestHeader('X-CSRF-Token', token);
                     return send.apply(this, arguments);
                 };

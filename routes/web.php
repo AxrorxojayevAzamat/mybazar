@@ -50,11 +50,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
 
+    Route::get('search', function (){
+        return view('pages.search-results', ['something' => 'something']);
+    })->name('search');
+
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');
 
-    Route::get('blogs-news', 'BlogController@blogsNews')->name('blogs-news');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');

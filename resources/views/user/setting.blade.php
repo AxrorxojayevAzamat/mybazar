@@ -60,7 +60,7 @@
     <form method="POST" action="{{ route('user.update', $user) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
@@ -142,7 +142,7 @@
 </section>
 @endsection
 @section('script')
-<script src="{{asset('js/1-index.js')}}"></script>
+<script src="{{mix('js/1-index.js', 'build')}}"></script>
 
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>

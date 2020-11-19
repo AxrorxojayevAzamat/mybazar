@@ -43,6 +43,7 @@ return [
         'about' => 'О товаре',
         'comments' => 'Комментарии',
         'day_product' => 'ТОВАР ДНЯ',
+        'you_watched' => 'Вы смотрели',
     ],
 
     'review' => [
@@ -71,6 +72,7 @@ return [
         'discounts' => 'Акции и скидки',
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
+        'search' => 'Искать',
     ],
 
     'nav' => [

@@ -43,7 +43,7 @@ class MarkController extends Controller
     public function store(CreateRequest $request)
     {
         $mark = $this->service->create($request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.marks.show', $mark);
     }
 
@@ -60,14 +60,14 @@ class MarkController extends Controller
     public function update(UpdateRequest $request, Mark $mark)
     {
         $mark = $this->service->update($mark->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.marks.show', $mark);
     }
 
     public function destroy(Mark $mark)
     {
         $mark->delete();
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.marks.index');
     }
 

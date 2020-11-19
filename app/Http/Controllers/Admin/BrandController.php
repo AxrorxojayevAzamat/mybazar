@@ -46,7 +46,7 @@ class BrandController extends Controller
     public function store(CreateRequest $request)
     {
         $brand = $this->service->create($request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.brands.show', $brand);
     }
 
@@ -63,7 +63,8 @@ class BrandController extends Controller
     public function update(UpdateRequest $request, Brand $brand)
     {
         $brand = $this->service->update($brand->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
+//        session()->flash('error', 'Произошла ошибка');
         return redirect()->route('admin.brands.show', $brand);
     }
 
@@ -72,7 +73,8 @@ class BrandController extends Controller
         Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BRANDS . '/' . $brand->id);
 
         $brand->delete();
-
+        session()->flash('message', 'запись обновлён ');
+//        session()->flash('error', 'Произошла ошибка');
         return redirect()->route('admin.brands.index');
     }
 

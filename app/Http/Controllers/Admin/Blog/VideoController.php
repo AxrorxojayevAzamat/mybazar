@@ -42,6 +42,7 @@ class VideoController extends Controller
     public function store(CreateRequest $request)
     {
         $video = $this->service->create($request);
+        session()->flash('message', 'запись обновлён ');
 
         return redirect()->route('admin.blog.videos.show', $video);
     }
@@ -61,7 +62,7 @@ class VideoController extends Controller
     public function update(UpdateRequest $request, Video $video)
     {
         $video = $this->service->update($video->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.videos.show', $video);
     }
 
@@ -74,7 +75,7 @@ class VideoController extends Controller
         Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_VIDEOS . '/' . $video->id);
 
         $video->delete();
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.videos.index');
     }
 
@@ -93,9 +94,10 @@ class VideoController extends Controller
     {
         try {
             $this->service->discard($video->id);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.blog.videos.show', $video);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }

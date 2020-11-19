@@ -42,6 +42,7 @@ class PostController extends Controller
     public function store(CreateRequest $request)
     {
         $post = $this->service->create($request);
+        session()->flash('message', 'запись обновлён ');
 
         return redirect()->route('admin.blog.posts.show', $post);
     }
@@ -54,6 +55,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+
         $categories = ProductHelper::getCategoryList();
 
         return view('admin.blog.posts.edit', compact('post', 'categories'));
@@ -62,7 +64,7 @@ class PostController extends Controller
     public function update(UpdateRequest $request, Post $post)
     {
         $post = $this->service->update($post->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.posts.show', $post);
     }
 
@@ -75,7 +77,7 @@ class PostController extends Controller
         Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_POSTS . '/' . $post->id);
 
         $post->delete();
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.posts.index');
     }
 
@@ -83,9 +85,10 @@ class PostController extends Controller
     {
         try {
             $this->service->publish($post->id);
-
+            session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.blog.posts.show', $post);
         } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
             return back()->with('error', $e->getMessage());
         }
     }
