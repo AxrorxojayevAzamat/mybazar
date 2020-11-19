@@ -4,5 +4,5 @@ namespace App\Services\Sms;
 
 interface SmsSender
 {
-    public function send($number, $text): void;
+    public function send(int $number, string $text): void;
 }
