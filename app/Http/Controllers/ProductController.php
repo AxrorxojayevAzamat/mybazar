@@ -138,7 +138,6 @@ class ProductController extends Controller
                 'disadvantages' => $request->disadvantages,
                 'comment' => $request->comment,
             ]);
-
             $product->update([
                 'rating' => $totalRating,
                 'number_of_reviews' => $numberOfReviews,
@@ -148,7 +147,6 @@ class ProductController extends Controller
             return redirect()->back();
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
             return back()->with('error', $e->getMessage());
         }
     }
