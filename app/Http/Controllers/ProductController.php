@@ -138,7 +138,6 @@ class ProductController extends Controller
                 'disadvantages' => $request->disadvantages,
                 'comment' => $request->comment,
             ]);
-
             $product->update([
                 'rating' => $totalRating,
                 'number_of_reviews' => $numberOfReviews,
