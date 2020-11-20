@@ -18,12 +18,12 @@
     <!-- Single body blog -->
     @include('blog.blog-show-body')
 
-
     <!-- recently viewed -->
-    @include('layouts.recently-viewed')
+    @include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 @endsection
 
 @section('script')
-<script src="{{mix('js/1-index.js', 'build')}}"></script>
-    <script src="{{mix('js/3-popular-page.js', 'build')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{asset('js/3-popular-page.js')}}"></script>
 @endsection

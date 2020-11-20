@@ -13,7 +13,7 @@ class VideosController extends Controller
     public function index()
     {
 
-        $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
+        $videos = Video::orderByDesc('created_at')->with(['category'])->paginate(20);
         $categories = Category::orderByDesc('created_at')->get();
 //        $parentIds = [];
 //        foreach($categories as $i => $category) {
@@ -28,7 +28,7 @@ class VideosController extends Controller
     public function show(Video $video)
     {
         $video = $video->load(['category']);
-        $videos = Video::orderByDesc('created_at')->limit(3)->get();
+        $videos = Video::where('id', '!=', $video->id)->orderByDesc('created_at')->limit(20)->get()->random(3);
         $categories = $this->getCategories();
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         return view('videoblog.videoblog-view', compact('video', 'categories', 'recentProducts', 'videos'));
