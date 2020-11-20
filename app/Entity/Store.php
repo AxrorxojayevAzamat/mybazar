@@ -161,6 +161,10 @@ class Store extends BaseModel
     {
         return $this->status === self::STATUS_ACTIVE;
     }
+    public function fourProduct(){
+        $products = Product::where(['store_id' => $this->id])->orderBy('created_at')->limit(4)->get();
+        return $products;
+    }
 
     public function categoriesList(): array
     {

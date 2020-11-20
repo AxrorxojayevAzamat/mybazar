@@ -117,6 +117,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
         Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
     });
+    Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
+        Route::get('', 'StoresController@index')->name('index');
+        Route::get('{store}', 'StoresController@store')->name('show');
+        Route::get('view/{id}', 'StoresController@view')->name('view');
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {

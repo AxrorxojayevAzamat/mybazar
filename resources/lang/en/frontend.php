@@ -23,7 +23,10 @@ return [
     'compare_products' => 'Compare products',
 
     'brand' => 'Brand',
-    'stores' => 'Stores',
+    'stores' => [
+        'index' =>'stores page',
+        'show' =>'store'
+    ],
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
@@ -88,4 +91,5 @@ return [
         'shops' => 'Shops',
         'pay' => 'Payment',
     ],
+
 ];

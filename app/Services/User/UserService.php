@@ -167,14 +167,14 @@ class UserService
     private function getUser($id): User {
         return User::findOrFail($id);
     }
-    
+
      public function addToFavorite(int $id, Request $request): UserFavorite
     {
          /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
-            
+
             $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
 //            $userFavorite = $user->favorites()->attach($request->product_id);
 

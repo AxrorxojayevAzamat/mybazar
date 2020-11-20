@@ -9,7 +9,7 @@
             </ol>
             <div class="carousel-inner">
                 @foreach( $sliders as $i => $slider)
-                    <div class=" carousel-item{{ $i === 1 ? ' active' : '' }}">
+                    <div class=" carousel-item{{ $i === 1 ? ' active' : '' }}" >
                         <img class="d-block w-100" src="{{ $slider->fileOriginal }}">
                     </div>
                 @endforeach
