@@ -35,15 +35,25 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password'), route('password.reset'));
+});
+
+Breadcrumbs::register('password.reset.email', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password_email'), route('password.reset.email'));
+});
+
 Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
-Breadcrumbs::for('email.verification', function (Crumbs $crumbs) {
+Breadcrumbs::register('email.verification', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push(trans('auth.email_verification'), route('email.verification'));
 });
 
-Breadcrumbs::for('phone.verification', function (Crumbs $crumbs) {
+Breadcrumbs::register('phone.verification', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push(trans('auth.phone_verification'), route('phone.verification'));
 });

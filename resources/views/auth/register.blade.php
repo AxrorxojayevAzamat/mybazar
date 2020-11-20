@@ -30,7 +30,7 @@
                             <div class="col-md-6">
                                 <input id="email_or_phone" class="form-control @error('email_or_phone') is-invalid @enderror" name="email_or_phone" value="{{ old('email_or_phone') }}" required autocomplete="email_or_phone">
 
-                                @error('email')
+                                @error('email_or_phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -161,21 +161,20 @@ class User extends Authenticatable
         $this->saveOrFail();
     }
 
-    public function requestPhoneVerification(Carbon $now, string $phone): string
+    public function requestPhoneVerification(): void
     {
-        if (empty($phone)) {
-            throw new \DomainException('Phone number is empty.');
-        }
-        if (!empty($this->phone_verify_token) && $this->phone_verify_token_expire && $this->phone_verify_token_expire->gt($now)) {
-            throw new \DomainException('Token is already requested.');
-        }
+        $this->update([
+            'phone_verified' => false,
+            'phone_verify_token' => (string)random_int(10000, 99999),
+            'phone_verify_token_expire' => Carbon::now()->copy()->addSeconds(config('sms.phone_verify_token_expire')),
+        ]);
+    }
 
-        $this->phone_verified = false;
-        $this->phone_verify_token = (string)random_int(10000, 99999);
-        $this->phone_verify_token_expire = $now->copy()->addSeconds(config('sms.phone_verify_token_expire'));
-        $this->saveOrFail();
-
-        return $this->phone_verify_token;
+    public function requestEmailVerification(): void
+    {
+        $this->update([
+            'verify_token' => Str::uuid(),
+        ]);
     }
 
     public function verifyPhone(): void
@@ -206,6 +205,19 @@ class User extends Authenticatable
             'status' => self::STATUS_ACTIVE,
             'verify_token' => null,
         ]);
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = bcrypt($password);
+    }
+
+    public function isTokenValid(string $token): bool
+    {
+        if ($this->verify_token === $token) {
+            return true;
+        }
+        return !$this->isPhoneVerified() && $this->phone_verify_token === $token && $this->phone_verify_token_expire->gt(Carbon::now());
     }
 
     public function isWait(): bool
