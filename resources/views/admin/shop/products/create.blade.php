@@ -5,7 +5,7 @@
         @csrf
 
         @include('partials.admin._nav')
-
+        @include ('admin.layout.flash')
         @include('admin.shop.products._form', ['product' => null])
     {!! Form::close() !!}
 @endsection

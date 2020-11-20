@@ -95,6 +95,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-profile', function (User $user) {
             return $user->isUser();
         });
+
+        Gate::define('manage-pages', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
     }
 
 }

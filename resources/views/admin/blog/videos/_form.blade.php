@@ -9,7 +9,7 @@
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary card-outline">
@@ -104,13 +104,12 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
-                        {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('is_published', $video ? $video->is_published : null),
-                            ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
-
-                        @if ($errors->has('is_published'))
-                            <span class="invalid-feedback"><strong>{{ $errors->first('is_published') }}</strong></span>
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                        {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
+                        {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $video ? $video->status : null),
+                        ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('status'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -137,16 +136,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('poster', trans('adminlte.video'), ['class' => 'control-label']) !!}
-                                <div class="file-loading">
-                                    <input id="video-input" class="file" type="file" name="video" accept=".video/mp4">
-                                </div>
-                                @if ($errors->has('video'))
-                                    <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
-                                @endif
+                        <div class="form-group">
+                            {!! Form::label('video', trans('adminlte.video'), ['class' => 'control-label']) !!}
+                            <div class="file-loading">
+                                <input id="video-input" class="file" type="file" name="video" accept=".video/mp4">
                             </div>
+                            @if ($errors->has('video'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -175,6 +172,7 @@
         CKEDITOR.replace('body_ru');
         CKEDITOR.replace('body_uz');
         CKEDITOR.replace('body_en');
+        $('#category_id').select2();
 
         let posterInput = $("#poster-input");
         let posterUrl = '{{ $video ? ($video->poster ? $video->posterOriginal : null) : null }}';
@@ -220,7 +218,7 @@
                 overwriteInitial: true,
                 deleteUrl: 'remove-video',
                 maxFileCount: 1,
-                allowedFileExtensions: ['mp4'],
+                // allowedFileExtensions: ['mp4'],
             });
         } else {
             videoInput.fileinput({
@@ -228,7 +226,7 @@
                 previewFileType: 'text',
                 browseOnZoneClick: true,
                 maxFileCount: 1,
-                allowedFileExtensions: ['mp4'],
+                // allowedFileExtensions: ['mp4'],
             });
         }
     </script>

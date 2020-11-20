@@ -50,7 +50,8 @@ class DeliveryController extends Controller
             'min_weight' => $request->min_weight,
             'max_weight' => $request->max_weight,
         ]);
-
+        session()->flash('message', 'запись обновлён ');
+//        session()->flash('error', 'Произошла ошибка');
         return redirect()->route('admin.deliveries.show', $delivery);
     }
 

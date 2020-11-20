@@ -13,7 +13,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\CreateRequest;
 use App\Http\Requests\Admin\Stores\UpdateRequest;
 use App\Services\Manage\StoreService;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class StoreController extends Controller
 {
@@ -55,6 +57,7 @@ class StoreController extends Controller
 
     public function create()
     {
+//        session()->flash('message', 'fuUUUUUUUUUCK');
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
@@ -65,13 +68,17 @@ class StoreController extends Controller
 
     public function store(CreateRequest $request)
     {
+        dd($request);
         $store = $this->service->create($request);
+        session()->flash('message', 'zapiz dobavlen');
+        dd(session('message'));
 
-        return redirect()->route('admin.stores.show', $store);
+        return redirect()->route('admin.stores.create', 'store');
     }
 
     public function show(Store $store)
     {
+//        dd();
         return view('admin.stores.show', compact('store'));
     }
 
@@ -88,6 +95,7 @@ class StoreController extends Controller
     public function update(UpdateRequest $request, Store $store)
     {
         $store = $this->service->update($store->id, $request);
+        session()->flash('message', 'Запись добавлена');
 
         return redirect()->route('admin.stores.show', $store);
     }
@@ -106,6 +114,7 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         $store->delete();
+        session()->flash('message', 'Запись добавлена');
 
         return redirect()->route('admin.stores.index');
     }

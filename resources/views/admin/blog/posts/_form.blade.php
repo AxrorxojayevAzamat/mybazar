@@ -9,7 +9,7 @@
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary card-outline">
@@ -104,13 +104,12 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
-                        {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('category_id', $post ? $post->is_published : null),
-                            ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
-
-                        @if ($errors->has('is_published'))
-                            <span class="invalid-feedback"><strong>{{ $errors->first('is_published') }}</strong></span>
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                        {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
+                        {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $post ? $post->status : null),
+                        ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('status'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -157,6 +156,7 @@
         CKEDITOR.replace('body_ru');
         CKEDITOR.replace('body_uz');
         CKEDITOR.replace('body_en');
+        $('#category_id').select2();
 
         let fileInput = $("#file-input");
         let fileUrl = '{{ $post ? ($post->file ? $post->fileOriginal : null) : null }}';

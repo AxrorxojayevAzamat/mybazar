@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin\Banners;
 
+use App\Entity\Banner;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * @property string $title_uz
@@ -14,7 +16,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $url
  * @property string $slug
  * @property int $category_id
- * @property bool $is_published
+ * @property int $status
  * @property \Illuminate\Http\UploadedFile $file
  */
 class CreateRequest extends FormRequest {
@@ -34,7 +36,7 @@ class CreateRequest extends FormRequest {
             'url' => 'required|string',
             'slug' => 'required|string|max:255|unique:banners',
             'category_id' => 'required|numeric|min:1|exists:categories,id',
-            'is_published' => 'boolean',
+            'status' => ['required', 'numeric', Rule::in(array_keys(Banner::statusList()))],
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

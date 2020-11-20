@@ -9,7 +9,7 @@
 @section($cssSectionName)
 <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary card-outline">
@@ -47,7 +47,7 @@
                             @if ($errors->has('description_ru'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('description_ru') }}</strong></span>
                             @endif
-                        </div>                       
+                        </div>
                     </div>
                     <div class="tab-pane" id="english" role="tabpanel">
                         <div class="form-group">
@@ -94,19 +94,18 @@
                         {!! Form::select('category_id', $categories, old('category_id', $banner ? $banner->category_id : null),
                         ['class'=>'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
                         @if ($errors->has('category_id'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                            <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                         @endif
                     </div>
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
-                        {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('is_published', $banner ? $banner->is_published : null),
-                        ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
-
-                        @if ($errors->has('is_published'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('is_published') }}</strong></span>
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                        {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
+                        {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $banner ? $banner->status : null),
+                        ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('status'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -158,12 +157,13 @@
 {{--    <script src="{{ mix('js/fileinput.js', 'build') }}"></script>--}}
 
 <script>
-    CKEDITOR.replace('body_ru');
-    CKEDITOR.replace('body_uz');
-    CKEDITOR.replace('body_en');
+    CKEDITOR.replace('description_uz');
+    CKEDITOR.replace('description_ru');
+    CKEDITOR.replace('description_en');
+    $('#category_id').select2();
 
     let fileInput = $("#file-input");
-    let fileUrl = null;
+    let fileUrl = '{{ $banner ? ($banner->file ? $banner->fileOriginal : null) : null }}';
 
     if (fileUrl) {
         let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');

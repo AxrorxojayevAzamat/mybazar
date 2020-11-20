@@ -106,12 +106,12 @@ class Brand extends BaseModel
 
     public function getLogoThumbnailAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_BRANDS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->logo;
+        return '/storage/files/' . ImageHelper::FOLDER_BRANDS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->logo;
     }
 
     public function getLogoOriginalAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_BRANDS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->logo;
+        return '/storage/files/' . ImageHelper::FOLDER_BRANDS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->logo;
     }
 
     public function getNextIdAttribute(): int

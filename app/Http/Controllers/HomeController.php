@@ -10,14 +10,18 @@ use App\Helpers\ProductHelper;
 use App\Entity\Blog\Post;
 use App\Entity\Slider;
 use App\Entity\Blog\Video;
+use App\Services\Sms\SmsSender;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function __construct()
+    private $sms;
+
+    public function __construct(SmsSender $sms)
     {
 //        $this->middleware('auth');
+        $this->sms = $sms;
     }
 
     public function index()
@@ -29,8 +33,8 @@ class HomeController extends Controller
             ->orderByDesc('discount')->limit(9)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
-        $posts = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
-        $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
+        $posts = Post::published()->orderByDesc('created_at')->limit(12)->get();
+        $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();
 

@@ -1,26 +1,18 @@
-@extends('layouts.default-layout')
+@extends('layouts.app')
 
-@section('title', 'News page')
-@include ('includes.common-style')
+@section('title', trans('frontend.breadcrumb.search'))
+
+{{--@include ('includes.common-style')--}}
+
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/blog-news.css')}}"> --}}
 @endsection
 
 @section('body')
-    @extends ('layouts.menu')
-@section('page')
-    <!-- All headers 1560 -->
-    <section class="navbar-1560">
-        @include('layouts.top-header')
-        @include('layouts.main-header')
-        @include('layouts.nav-header')
-    </section>
-
-    <!-- BREADCRUMB -->
-    @include('layouts.breadcrumb-blog')
 
     <!-- products-brands-shops-blogs-video btn -->
     @include('layouts.products-brands-shops-videos-btn')
+{{--    salom--}}
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">
@@ -31,21 +23,22 @@
 
                 <div class="wrapper-filtered-items">
 
-                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11 категориях</h6>
+                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11
+                        категориях</h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
 
                         <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
+                    @include('layouts.sort-by-options')
 
-                        <!-- small filter without title checkbox -->
+                    <!-- small filter without title checkbox -->
                         @include('layouts.small-filter-without-title-checkbox')
                     </nav>
 
                     <!-- list mosaic catalog items -->
-                    @include('layouts.products-list-grid', ['products'=>$product])
+                {{--                    @include('layouts.list-mosaic-catalog-items', ['products'=>$product])--}}
 
-                    <!-- pagination -->
+                <!-- pagination -->
                     @include('layouts.pagination')
 
                 </div>
@@ -59,19 +52,20 @@
 
                 <div class="wrapper-filtered-items">
 
-                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11 категориях</h6>
+                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11
+                        категориях</h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
 
                         <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
+                    @include('layouts.sort-by-options')
 
-                        <!-- small filter without title checkbox -->
+                    <!-- small filter without title checkbox -->
                         @include('layouts.small-filter-without-title-checkbox')
                     </nav>
 
                     <!-- list mosaic catalog items -->
-                    @include('layouts.products-list-grid', ['products'=>$product])
+                    {{--                    @include('layouts.list-mosaic-catalog-items', ['products'=>$product])--}}
 
                 </div>
             </div>
@@ -84,19 +78,20 @@
 
                 <div class="wrapper-filtered-items">
 
-                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11 категориях</h6>
+                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11
+                        категориях</h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
 
                         <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
+                    @include('layouts.sort-by-options')
 
-                        <!-- small filter without title checkbox -->
+                    <!-- small filter without title checkbox -->
                         @include('layouts.small-filter-without-title-checkbox')
                     </nav>
 
                     <!-- shop items -->
-                    @include('layouts.shops-items')
+                    {{--                    @include('layouts.shops-items')--}}
 
                 </div>
             </div>
@@ -106,23 +101,24 @@
             <!-- blogs body -->
             <div class="outter-catalog-view">
                 <!-- big filter without title checkbox -->
-                @include('layouts.big-filter-with-listof-checkbox')
+                {{--                @include('layouts.big-filter-with-listof-checkbox')--}}
 
                 <div class="wrapper-filtered-items">
 
-                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11 категориях</h6>
+                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11
+                        категориях</h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
 
                         <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
+                    @include('layouts.sort-by-options')
 
-                        <!-- small filter without title checkbox -->
+                    <!-- small filter without title checkbox -->
                         @include('layouts.small-filter-without-title-checkbox')
                     </nav>
 
                     <!-- blog items -->
-                    @include('layouts.blog-items',  ['categories'=>$blogs])
+                    {{--                    @include('layouts.blog-items',  ['categories'=>$blogs])--}}
 
                 </div>
             </div>
@@ -135,14 +131,15 @@
 
                 <div class="wrapper-filtered-items">
 
-                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11 категориях</h6>
+                    <h6>По запросу " <span class="search-tag">телевизор</span> " найдено 1114 результатов в 11
+                        категориях</h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
 
                         <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
+                    @include('layouts.sort-by-options')
 
-                        <!-- small filter without title checkbox -->
+                    <!-- small filter without title checkbox -->
                         @include('layouts.small-filter-without-title-checkbox')
                     </nav>
 
@@ -152,17 +149,16 @@
                 </div>
             </div>
         </div>
-    <div>
+        <div>
 
-    <!-- NEWS LETTER -->
-    @include ('layouts.news-letter')
+            <!-- NEWS LETTER -->
+        {{--    @include ('layouts.news-letter')--}}
 
-<!-- FOOTER -->
-@include ('layouts.footer')
-@endsection
+        <!-- FOOTER -->
+    {{--@include ('layouts.footer')--}}
 @endsection
 
 
 @section('script')
-            <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    {{--<script src="{{asset('js/1-index.js')}}"></script>--}}
 @endsection

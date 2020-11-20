@@ -24,8 +24,8 @@ class CreateBlogPostsTable extends Migration
             $table->text('body_uz');
             $table->text('body_ru');
             $table->text('body_en');
-            $table->integer('category_id')->unsigned();
-            $table->boolean('is_published')->default(false);
+            $table->unsignedBigInteger('category_id');
+            $table->tinyInteger('status');
             $table->string('file')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

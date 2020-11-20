@@ -42,7 +42,7 @@ class DiscountController extends Controller
     public function store(CreateRequest $request)
     {
         $discount = $this->service->create($request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.discounts.show', $discount);
     }
 
@@ -62,7 +62,7 @@ class DiscountController extends Controller
     public function update(UpdateRequest $request, Discount $discount)
     {
         $discount = $this->service->update($discount->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.blog.discounts.show', $discount);
     }
 

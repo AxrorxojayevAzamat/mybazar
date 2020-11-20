@@ -17,7 +17,7 @@
         </div>
         <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="pills-news">
             <!-- blog body -->
-            @include('blog.news-body')
+{{--            @include('blog.news-body')--}}
         </div>
     <div>
     <!-- recently watched -->

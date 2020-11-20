@@ -38,17 +38,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
+    Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
+    Route::get('verify/email/resend', 'Auth\RegisterController@resendEmailShow')->name('resend.email.show');
+    Route::post('verify/email/resend', 'Auth\RegisterController@resendEmail')->name('resend.email.verification');
+    Route::get('verify/phone', 'Auth\RegisterController@phone')->name('phone.verification');
+    Route::post('verify/phone', 'Auth\RegisterController@verifyPhone')->name('verify.phone');
+    Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
+    Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
+
+    Route::get('search', function (){
+        return view('pages.search-results', ['something' => 'something']);
+    })->name('search');
 
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');
 
-    Route::get('blogs-news', 'BlogController@blogsNews')->name('blogs-news');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
-    Route::get('news/{news}', 'NewsController@show')->name('news.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
 
@@ -103,17 +113,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::put('setting/{user}','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites');
     });
+
+    Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
+        Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
+    });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
-        Route::resource('news', 'NewsController');
-        Route::group(['prefix' => 'news/{news}', 'as' => 'news.'], function () {
-            Route::post('remove-file', 'NewsController@removeFile')->name('remove-file');
-            Route::post('publish', 'NewsController@publish')->name('publish');
-            Route::post('discard', 'NewsController@discard')->name('discard');
-        });
 
         Route::resource('videos', 'VideoController');
         Route::group(['prefix' => 'videos/{video}', 'as' => 'videos.'], function () {
@@ -131,11 +139,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         });
     });
 
-    Route::resource('banners', 'BannersController');
+    Route::resource('banners', 'BannerController');
     Route::group(['prefix' => 'banners/{banner}', 'as' => 'banners.'], function () {
-        Route::post('remove-file', 'BannersController@removeFile')->name('remove-file');
-        Route::post('publish', 'BannersController@publish')->name('publish');
-        Route::post('discard', 'BannersController@discard')->name('discard');
+        Route::post('remove-file', 'BannerController@removeFile')->name('remove-file');
+        Route::post('publish', 'BannerController@publish')->name('publish');
+        Route::post('discard', 'BannerController@discard')->name('discard');
     });
 
     Route::resource('sliders', 'SlidersController');
@@ -270,6 +278,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
 
         Route::post('moderate', 'StoreController@moderate')->name('moderate');
+    });
+
+    Route::resource('pages', 'PageController');
+    Route::group(['prefix' => 'pages/{page}', 'as' => 'pages.'], function () {
+        Route::post('/first', 'PageController@first')->name('first');
+        Route::post('/up', 'PageController@up')->name('up');
+        Route::post('/down', 'PageController@down')->name('down');
+        Route::post('/last', 'PageController@last')->name('last');
     });
 
     Route::resource('brands', 'BrandController');

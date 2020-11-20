@@ -44,7 +44,7 @@
                                         {{ $discount->createdBy->name }}
                                     @endif
                                 </td>
-                                <td><a href="{{ route('admin.blog.categories.show', $discount->category) }}">{{ $discount->category->name }}</a></td>
+                                <td><a href="{{ route('admin.categories.show', $discount->category) }}">{{ $discount->category->name }}</a></td>
                                 <td>{!! $discount->commoned !!}</td>
                                 <td>
                                     @if ($isAdmin)
