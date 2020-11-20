@@ -235,6 +235,7 @@ Breadcrumbs::register('stores.view', function (Crumbs $crumbs) {
 });
 
 
+
 ################################### Admin
 
 Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
