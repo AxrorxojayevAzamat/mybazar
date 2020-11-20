@@ -79,6 +79,7 @@ return [
         'new_products' => 'Yangi maxsulotlar',
         'stock' => 'Aksiyalar',
         'discount' => 'Chegirmalar',
+        'discount_stock' => 'Chegirma va Aksiya',
         'top_brands' => 'Top brandlar',
         'blog' => 'Vlog',
         'videos' => 'Videolar',
