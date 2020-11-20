@@ -148,8 +148,8 @@ class ProductController extends Controller
             return redirect()->back();
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
-            return back()->with('error', $e->getMessage());
+//            dd($e->getMessage());
+            return back()->with('error', 'You can\'t add comment and rating' );
         }
     }
 

@@ -16,6 +16,8 @@ class BlogController extends Controller
     public function blogsNews()
     {
         $blogs = Post::orderByDesc('created_at')->where(['is_published' => true])->paginate(20);
+//        $categories = \App\Entity\Category::get();
+        $news = News::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
         $categories = Category::get();
 
         return view('blog.blogs-news', compact('blogs', 'categories'));
