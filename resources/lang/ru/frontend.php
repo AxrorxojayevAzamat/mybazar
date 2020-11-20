@@ -79,6 +79,7 @@ return [
         'new_products' => 'Новые товары',
         'stock' => 'Акции',
         'discount' => 'Скидки',
+        'discount_stock' => 'Скидка и Aкции',
         'top_brands' => 'Топ бренды',
         'blog' => 'Блог',
         'videos' => 'Видеоролики',

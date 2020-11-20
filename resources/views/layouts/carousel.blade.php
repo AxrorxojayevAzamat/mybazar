@@ -10,7 +10,7 @@
             <div class="carousel-inner">
                 @foreach( $sliders as $i => $slider)
                     <div class=" carousel-item{{ $i === 1 ? ' active' : '' }}" >
-                        <img class="d-block w-100" src="{{ asset($slider->file) }}">
+                        <img class="d-block w-100" src="{{ $slider->fileOriginal }}">
                     </div>
                 @endforeach
             </div>
