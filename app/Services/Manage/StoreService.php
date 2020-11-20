@@ -2,6 +2,7 @@
 
 namespace App\Services\Manage;
 
+use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Entity\StoreDeliveryMethod;
 use App\Entity\StoreUser;
@@ -342,4 +343,10 @@ class StoreService
         ImageHelper::saveThumbnail($storeId, ImageHelper::FOLDER_STORES, $logo, $imageName);
         ImageHelper::saveOriginal($storeId, ImageHelper::FOLDER_STORES, $logo, $imageName);
     }
+
+    public static function fourProduct($id){
+        $products = Product::where(['store_id' => $id])->limit(4)->get();
+        return $products;
+    }
+
 }
