@@ -57,7 +57,6 @@ class StoreController extends Controller
 
     public function create()
     {
-//        session()->flash('message', 'fuUUUUUUUUUCK');
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');

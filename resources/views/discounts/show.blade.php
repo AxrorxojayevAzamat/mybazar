@@ -21,7 +21,7 @@
             <img src="{{ $discount->photoThumbnail }}" alt="">
             <div class="name">
                 <h6>{!! $discount->name !!}</h6>
-                <p>{!! $discount->maincategory->name !!}</p>
+                <p>{!! $discount->category->name !!}</p>
             </div>
         </div>
         <div class="sales-view-body">

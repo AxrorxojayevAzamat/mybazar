@@ -36,7 +36,7 @@
         <section class="navbar-1560">
             @include('partials.top-header')
             @include('partials.main-header')
-            @include('partials.nav-header')
+          {{--  @include('partials.nav-header')--}}
         </section>
 
         @yield('banner')

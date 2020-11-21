@@ -27,7 +27,7 @@ class BlogController extends Controller
     {
         $post = $blog->load(['category']);
         $categories = Category::get();
-        $lastBlogs = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(3)->get();
+        $lastBlogs = Post::orderByDesc('created_at')->where(['status' => true])->limit(3)->get();
 
         return view('blog.blog-show', compact('post', 'categories', 'lastBlogs'));
     }

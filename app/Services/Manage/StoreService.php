@@ -125,10 +125,10 @@ class StoreService
         $this->addDeliveryMethods($store, $request->delivery_methods);
     }
 
-    private function addCategories(Store $store, array $categories): void
+    private function addCategories(Store $store, array $categories)
     {
         $categories = array_unique($categories);
-        foreach ($categories as $i => $categoryId) {
+        foreach ($categories as  $categoryId) {
             $store->storeCategories()->create(['category_id' => $categoryId]);
         }
     }

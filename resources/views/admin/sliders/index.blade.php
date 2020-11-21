@@ -11,7 +11,7 @@
                 <h2>
                     Sliders
 
-                    <a href="{{ route('admin.sliders.create') }}" class="btn btn-default pull-right">Create New</a>
+                    <a href="{{ route('admin.sliders.create') }}" class="btn btn-success pull-right">Create New</a>
                 </h2>
             </div>
 

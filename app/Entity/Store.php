@@ -11,6 +11,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
