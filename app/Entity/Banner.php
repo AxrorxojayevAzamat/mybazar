@@ -64,7 +64,7 @@ class Banner extends BaseModel
             'description_en' => $request->description_en,
             'url' => $request->url,
             'slug' => $request->slug,
-            'category_id' => $request->categoryId,
+            'category_id' => $categoryId,
             'status' => $request->status,
             'file' => $fileName,
         ]);
