@@ -15,6 +15,7 @@
             @endforeach
         </select>
         <button class="search btn" type="submit"><i class="mbsearch"></i></button>
+
     </form>
     <div class="from-statistics-to-account">
         <div class="dropdown compare-dropdown">
@@ -177,4 +178,5 @@
             @endguest
         </ul>
     </div>
+    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>
 </div>
