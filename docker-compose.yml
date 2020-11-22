@@ -79,6 +79,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
     container_name: magazin_elasticsearch
+    restart: unless-stopped
     environment:
       - node.name=mybazaar-es
       - cluster.name=mybazaar-es-docker-cluster
