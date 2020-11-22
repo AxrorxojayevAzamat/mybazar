@@ -158,6 +158,7 @@ return [
         'add' => 'Yetkizib berish turi qo`shmoq',
         'name' => 'Yetkizib berish turi',
         'choose' => 'Yetkizib berish turini tanlamoq',
+        'sort' => 'Sortgani qiymati',
         'min_weight' => 'Minimum vazni',
         'max_weight' => 'Maksimum vazni',
         'index' => 'Yetkazib berish indeksi',

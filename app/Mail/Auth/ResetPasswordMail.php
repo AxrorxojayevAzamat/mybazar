@@ -6,7 +6,7 @@ use App\Entity\User\User;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyMail extends Mailable
+class ResetPasswordMail extends Mailable
 {
     use SerializesModels;
 
@@ -20,7 +20,7 @@ class VerifyMail extends Mailable
     public function build()
     {
         return $this
-            ->subject(trans('auth.signup_confirmation'))
-            ->markdown('emails.auth.register.verify');
+            ->subject(trans('auth.reset_password_confirmation'))
+            ->markdown('emails.auth.register.reset-password');
     }
 }

@@ -45,6 +45,7 @@ class CreateRequest extends FormRequest
             'category_id' => 'required|numeric|min:1|exists:categories,id',
             'status' => ['required', 'numeric', Rule::in(array_keys(Video::statusList()))],
             'poster' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'mimes:mp4,mov,ogg,qt | max:200000',
         ];
     }
 }

@@ -28,7 +28,7 @@ class VideosController extends Controller
     public function show(Video $video)
     {
         $video = $video->load(['category']);
-        $videos = Video::where('id', '!=', $video->id)->orderByDesc('created_at')->limit(20)->get()->random(3);
+        $videos = Video::orderByDesc('created_at')->limit(3)->get();
         $categories = $this->getCategories();
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         return view('videoblog.videoblog-view', compact('video', 'categories', 'recentProducts', 'videos'));

@@ -25,6 +25,7 @@ class CharacteristicService
                 'default' => $request->variants ? $request->default : null,
                 'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
                 'hide_in_filters' => $request->hide_in_filters,
+                'group_id' => $request->group_id,
             ]);
 
             $this->addCategories($characteristic, $request->categories);

@@ -178,7 +178,7 @@ return [
 
     'register_url' => 'register',
 
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => 'password/reset/request',
 
     'password_email_url' => 'password/email',
 

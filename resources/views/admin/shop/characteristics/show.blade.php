@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -40,7 +40,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-green card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-body">
                     <table class="table table-bordered table-striped projects">
                         <tbody>

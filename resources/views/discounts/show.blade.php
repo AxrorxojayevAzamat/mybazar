@@ -20,8 +20,8 @@
         <div class="shop-name">
             <img src="{{ $discount->photoThumbnail }}" alt="">
             <div class="name">
-                <h6>{{$discount->name}}</h6>
-                <p>Смартфоны и гаджеты</p>
+                <h6>{!! $discount->name !!}</h6>
+                <p>{!! $discount->category->name !!}</p>
             </div>
         </div>
         <div class="sales-view-body">
@@ -34,6 +34,11 @@
         </div>
     </div>
 </section>
+<nav class="products-pagination" aria-label="Page navigation example">
+    <ul class="pagination">
+        {!! $product->links() !!}
+    </ul>
+</nav>
 @endsection
 @section('script')
     <script src="{{mix('js/1-index.js', 'build')}}"></script>

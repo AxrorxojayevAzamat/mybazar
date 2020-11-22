@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2>
-                        <a href="{{ route('admin.discounts.create') }}" class="btn btn-default pull-right">{{ trans('adminlte.create') }}</a>
+                        <a href="{{ route('admin.discounts.create') }}" class="btn btn-success pull-right">{{ trans('adminlte.create') }}</a>
                     </h2>
                 </div>
 
