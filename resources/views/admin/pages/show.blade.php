@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">@lang('adminlte.main')</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -48,7 +48,7 @@
     @if (Auth::user()->isAdmin())
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-warning card-outline">
+                <div class="card card-gray card-outline">
                     <div class="card-header"><h3 class="card-title">@lang('adminlte.others')</h3></div>
                     <div class="card-body">
                         <table class="table {{--table-bordered--}} table-striped projects">
@@ -73,7 +73,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-green card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">@lang('adminlte.pages.children')</h3></div>
                 <div class="card-body">
                     <table class="table">
