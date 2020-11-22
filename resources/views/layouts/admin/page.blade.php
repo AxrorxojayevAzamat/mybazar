@@ -211,8 +211,8 @@
 
                 </div>
             </div>
-
-            <div class="content">
+                @include('admin.layout.errorSummary')
+                <div class="content">
                 <div class="{{config('adminlte.classes_content', 'container-fluid')}}">
                     @section('breadcrumbs', Breadcrumbs::render())
                     @yield('breadcrumbs')
