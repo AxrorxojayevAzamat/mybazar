@@ -96,6 +96,24 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('cost', trans('adminlte.delivery.cost'), ['class' => 'col-form-label']); !!}
+                            {!! Form::text('cost', old('cost', $store ? $store->cost : null), ['class'=>'form-control' . ($errors->has('cost') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('cost'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('cost') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('sort', trans('adminlte.delivery.sort'), ['class' => 'col-form-label']); !!}
+                            {!! Form::text('sort', old('sort', $store ? $store->sort : null), ['class'=>'form-control' . ($errors->has('sort') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('sort'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('sort') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -36,6 +36,7 @@ class CreateRequest extends FormRequest
             'delivery_methods.*' => 'numeric|min:1|exists:delivery_methods,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
             'categories.*' => 'numeric|min:1|exists:categories,id',
+            'cost' => 'numeric',
         ];
     }
 }

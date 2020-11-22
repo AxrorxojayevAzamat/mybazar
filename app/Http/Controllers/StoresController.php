@@ -17,7 +17,7 @@ class StoresController extends Controller
             $stores = $query->where('name_en', 'like', '%' . $request->get('shopName') . '%');
         }
         $stores = $query->paginate(12);
-        $categories = Category::all();
+        $categories = Category::where('parent_id', null)->get();
         return view('stores.index', compact('stores', 'categories'));
     }
 
@@ -26,7 +26,7 @@ class StoresController extends Controller
         $arrayStores = StoreCategory::where(['category_id' => $id])->pluck('store_id');
         $query = Store::where(['status' => Store::STATUS_ACTIVE]);
         $stores = $query->whereIn('id', $arrayStores)->get();
-        $categories = Category::all();
+        $categories = Category::where('parent_id', null)->get();
         return view('stores.index', compact('stores', 'categories'));
     }
 
