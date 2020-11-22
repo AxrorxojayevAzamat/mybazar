@@ -46,7 +46,7 @@
                 <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
 {{--                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.stock') }}</a>--}}
                 <a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
-{{--                <a href="{{ route('blogs-news') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blog') }}</a>--}}
+                <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
                 <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a>
                 <a href="{{ route('delivery') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a>
                 <a href="{{ route('shops.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a>

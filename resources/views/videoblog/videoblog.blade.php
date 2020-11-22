@@ -13,9 +13,10 @@
 @endsection
 <!-- list of videos -->
 <section>
-    <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
-    </div>
+    @include('blog._blog-news-btn')
+{{--    <div class="h4-title video-blog">--}}
+{{--        <h4 class="title">Видеоролики</h4>--}}
+{{--    </div>--}}
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">

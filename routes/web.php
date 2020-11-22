@@ -58,6 +58,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');
 
+    Route::get('blogs', 'BlogController@blogs')->name('blogs');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');

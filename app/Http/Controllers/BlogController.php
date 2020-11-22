@@ -14,12 +14,13 @@ class BlogController extends Controller
 //        $this->middleware('auth');
     }
 
-    public function blogsNews()
+    public function blogs()
     {
         $blogs = Post::published()->orderByDesc('created_at')->paginate(20);
         $categories = Category::get();
+        $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
 
-        return view('blog.blogs-news', compact('blogs', 'categories'));
+        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts'));
     }
 
     public function show(Post $blog)
