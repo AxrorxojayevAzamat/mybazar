@@ -21,6 +21,7 @@ return [
     'popular' => 'Популярные',
     'recommend' => 'Рекомендуем',
     'compare_products' => 'Сравнение товаров',
+    'number_found_product' => 'По запросу << <span class="search-tag"> :query </span> >> найдено :result результатов в :category категориях',
 
     'brand' => 'Бренд',
     'stores' => 'Магазины',

@@ -21,6 +21,7 @@ return [
     'popular' => 'Popular',
     'recommend' => 'Recommended',
     'compare_products' => 'Compare products',
+    'number_found_product' => 'For << :query >> query found :result results in :category categories',
 
     'brand' => 'Brand',
     'stores' => 'Stores',
