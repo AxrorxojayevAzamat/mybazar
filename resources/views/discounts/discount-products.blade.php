@@ -1,9 +1,12 @@
 @if($product)
     @foreach($product as $item)
         @include('pages.rating-js', ['products' => $product, 'type' => $rate_for['js']])
+        <div class="description">
+            {!! $item->description !!}
+        </div>
         <div class="item">
             <div class="product-img">
-                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->main_photo_id }}" alt=""></a>
+                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail }}" alt=""></a>
             </div>
             <!-- description -->
             <div class="description ">
@@ -42,12 +45,11 @@
             </div>
             <!-- end description -->
         </div>
-        {{--        <div class="description">--}}
-        {{--            <h6 class="title">Xiaomi Mi 9T 6/64Gb черный</h6>--}}
-        {{--            <p>Грациозная и завораживающая задняя панель Xiaomi Mi 9T оживает и начинает переливаться, когда--}}
-        {{--                на нее попадает свет. Благодаря плавным--}}
-        {{--                контурам телефон удобно лежит в руке и выглядит просто восхитительно. 6.39" AMOLED дисплей--}}
-        {{--                поражает своей яркостью при каждой разблокировке устройства. </p>--}}
-        {{--        </div>--}}
+
     @endforeach
+    <nav class="products-pagination" aria-label="Page navigation example">
+        <ul class="pagination">
+            {!! $product->links() !!}
+        </ul>
+    </nav>
 @endif
