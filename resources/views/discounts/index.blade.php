@@ -12,6 +12,9 @@
     <div class="h4-title sales-body">
         <h4 class="title">@lang('frontend.discounts')</h4>
     </div>
+    <!-- full page banner -->
+    <div class="sales-full-banner"></div>
+    <!-- end of full page banner -->
     <div class="outter-sales">
         <div class="sales-banners">
             @foreach($discounts as $discount)
@@ -22,11 +25,6 @@
             </div>
             @endif
             @endforeach
-
-            <!-- full page banner -->
-            <div class="sales-full-banner"></div>
-            <!-- end of full page banner -->
-
         </div>
 
         <!-- PAGINATION  -->

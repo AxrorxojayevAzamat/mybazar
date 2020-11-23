@@ -59,6 +59,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');
 
+    Route::get('blogs', 'BlogController@blogs')->name('blogs');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
@@ -199,6 +200,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('characteristics', 'CharacteristicController');
         Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {
             Route::post('moderate', 'CharacteristicController@moderate')->name('moderate');
+            Route::post('draft', 'CharacteristicController@draft')->name('draft');
         });
 
         Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
@@ -207,6 +209,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('send-to-moderation', 'ProductController@sendToModeration')->name('on-moderation');
             Route::post('moderate', 'ProductController@moderate')->name('moderate');
             Route::post('activate', 'ProductController@activate')->name('activate');
+            Route::post('draft', 'ProductController@draft')->name('draft');
+            Route::post('close', 'ProductController@close')->name('close');
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
             Route::post('main-photo', 'ProductController@addMainPhoto');
             Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
@@ -284,6 +288,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
 
         Route::post('moderate', 'StoreController@moderate')->name('moderate');
+        Route::post('draft', 'StoreController@draft')->name('draft');
     });
 
     Route::resource('pages', 'PageController');

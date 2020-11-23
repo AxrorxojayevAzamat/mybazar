@@ -13,6 +13,7 @@ class ShopsController extends Controller
     public function index(Request $request)
     {
         $query = Product::orderByDesc('created_at');
+        $stores = Store::where(['status' => Store::STATUS_ACTIVE])->paginate(12);
 
         if (!empty($value = $request->get('categories'))) {
             $value = explode(',', $value);
@@ -30,7 +31,7 @@ class ShopsController extends Controller
 
         $categories = Category::where('parent_id', null)->get();
 
-        return view('shop.shops', compact('products', 'categories'));
+        return view('shop.shops', compact('products', 'categories','stores'));
     }
 
     public function view(Request $request, Store $store)

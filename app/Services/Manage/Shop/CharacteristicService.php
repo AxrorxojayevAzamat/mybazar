@@ -75,6 +75,12 @@ class CharacteristicService
         $advert->moderate();
     }
 
+    public function draft(int $id): void
+    {
+        $advert = Characteristic::findOrFail($id);
+        $advert->draft();
+    }
+
     private function addCategories(Characteristic $characteristic, array $categories)
     {
         $categories = array_unique($categories);

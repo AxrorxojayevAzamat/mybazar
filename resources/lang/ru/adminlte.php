@@ -43,6 +43,7 @@ return [
     'send_to_moderation' => 'Отправить на модерацию',
     'moderate' => 'Модерировать',
     'activate' => 'Активировать',
+    'close' => 'Закрыть',
     'inactive' => 'Неактивный',
     'active' => 'Активный',
     'commoned' => 'Общий',

@@ -49,5 +49,8 @@
         {!! $stores->links() !!}
     </ul>
 </nav>
+@include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"V"', 'html' => 'V']])
 @endsection
+
 

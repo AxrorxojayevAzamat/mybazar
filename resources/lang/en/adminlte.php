@@ -43,6 +43,7 @@ return [
     'send_to_moderation' => 'Send to moderation',
     'moderate' => 'Moderate',
     'activate' => 'Activate',
+    'close' => 'Close',
     'inactive' => 'Inactive',
     'active' => 'Active',
     'commoned' => 'Commoned',
