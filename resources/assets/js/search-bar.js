@@ -76,7 +76,6 @@ var any_input = document.getElementsByClassName('bordered-input');
         }
     });
     document.addEventListener('click', (e) => {
-      console.log(e.target.tagName);
       if (e.target.tagName === 'I') {
         const tagLabel = e.target.getAttribute('data-item');
         const index = tags.indexOf(tagLabel);

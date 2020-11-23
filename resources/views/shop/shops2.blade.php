@@ -4,14 +4,14 @@
         @foreach($shops2 as $shop)
             <div class="first-item">
                 <div class="shop-name-logo">
-                    <img src="{{ $shop->store->logoOriginal }}" alt="">
+                    <a href="#"><img src="{{ $shop->store->logoOriginal }}" alt=""></a>
                     <div>
-                        <h6 class="title">{!! $shop->store->name !!}"</h6>
+                        <h6 class="title"><a href="#">{!! $shop->store->name !!}"</a></h6>
                         <p class="sub-title"><a href="{{ route('categories.show', products_path($shop->mainCategory)) }}">{!! $shop->maincategory->name !!}</a></p>
                     </div>
                 </div>
                 <div class="single-img">
-                    <img src="{{ $shop->mainPhoto }}" alt="">
+                    <a href="#"><img src="{{ $shop->mainPhoto }}" alt=""></a>
                 </div>
             </div>
         @endforeach

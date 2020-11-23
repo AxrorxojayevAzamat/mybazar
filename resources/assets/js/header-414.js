@@ -61,17 +61,16 @@ $(document).ready(function () {
             success: function (data) {
                 let body_cart = '';
                 for (let i = 0; i < data.products.length; i++){
-                    body_cart += `<a class='dropdown-item animated fadeInDown' href="#">
-                        <div class='product-img'>
-                        <img src="{{asset('images/popular1.png')}}">
-                        </div>
-                        <div class='description'>
-                            <h5 class='title'>${data.products[i].name_uz}</h5>
-                            <p class='price'>${data.products[i].price_uzs}</p>
-                        </div>
-                        <button class="btn delete-btn" data-name=''><i class="mbexit_mobile"></i>
-                        </button>
-                    </a>`;
+                    body_cart += `<li class="item" >
+            <div class='product-img'>
+                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
+            </div>
+            <div class='description'>
+                <a href="#"><h5 class='title'>${data.products[i].name_uz}</h5></a>
+                <p class='price'>${data.products[i].name_uzs}</p>
+            </div>
+            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
+        </li>`;
                 }
 
 
