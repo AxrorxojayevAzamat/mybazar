@@ -1,28 +1,28 @@
 <div class="shops-2r">
     <div class="first-item">
         <div class="shop-name-logo">
-            <img src="{{asset('images/palette.png')}}" alt="">
+            <a href="#"><img src="{{asset('images/palette.png')}}" alt=""></a>
             <div>
-                <h6 class="title">OOO "Pallete Colgate"</h6>
-                <p class="sub-title">Чистота</p>
+                <h6 class="title"><a href="#">OOO "Pallete Colgate"</a></h6>
+                <p class="sub-title"><a href="#">Чистота</a></p>
             </div>
         </div>
         <div class="single-img">
-        <img src="{{asset('images/pallete1.png')}}" alt="">
+            <a href="#"><img src="{{asset('images/pallete1.png')}}" alt=""></a>
         </div>
     </div>
     <div class="shops-2r-inner owl-carousel owl-theme">
         <div class="palette-items">
             <div class="product-img">
-                <img src="{{asset('images/recomended2.png')}}" alt="">
+                <a href="#"><img src="{{asset('images/recomended2.png')}}" alt=""></a>
                 <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА
                 </span>
             </div>
             <div class="description">
-                <h6 class="title">Беспроводная колонка Sast V8, черный</h6>
-                <p class="sub-title">Колонки</p>
+                <h6 class="title"><a href="#">Беспроводная колонка Sast V8, черный</a></h6>
+                <p class="sub-title"><a href="#">Колонки</a></p>
                 <div class="rate">
                     <div class="rating stars">
                         <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>
@@ -48,15 +48,15 @@
         </div>
         <div class="palette-items">
             <div class="product-img">
-                <img src="{{asset('images/recomended2.png')}}" alt="">
+                <a href="#"><img src="{{asset('images/recomended2.png')}}" alt=""></a>
                 <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА
                 </span>
             </div>
             <div class="description">
-                <h6 class="title">Беспроводная колонка Sast V8, черный</h6>
-                <p class="sub-title">Колонки</p>
+                <h6 class="title"><a href="#">Беспроводная колонка Sast V8, черный</a></h6>
+                <p class="sub-title"><a href="#">Колонки</a></p>
                 <div class="rate">
                     <div class="rating stars">
                         <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>
@@ -82,15 +82,15 @@
         </div>
         <div class="palette-items" >
             <div class="product-img">
-                <img src="{{asset('images/recomended2.png')}}" alt="">
+                <a href="#"><img src="{{asset('images/recomended2.png')}}" alt=""></a>
                 <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА
                 </span>
             </div>
             <div class="description">
-                <h6 class="title">Беспроводная колонка Sast V8, черный</h6>
-                <p class="sub-title">Колонки</p>
+                <h6 class="title"><a href="#">Беспроводная колонка Sast V8, черный</a></h6>
+                <p class="sub-title"><a href="#">Колонки</a></p>
                 <div class="rate">
                     <div class="rating stars">
                         <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>
@@ -116,15 +116,15 @@
         </div>
         <div class="palette-items" >
             <div class="product-img">
-                <img src="{{asset('images/recomended2.png')}}" alt="">
+                <a href="#"><img src="{{asset('images/recomended2.png')}}" alt=""></a>
                 <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА
                 </span>
             </div>
             <div class="description">
-                <h6 class="title">Беспроводная колонка Sast V8, черный</h6>
-                <p class="sub-title">Колонки</p>
+                <h6 class="title"><a href="#">Беспроводная колонка Sast V8, черный</a></h6>
+                <p class="sub-title"><a href="#">Колонки</a></p>
                 <div>
                     <div class="rate">
                         <div class="rating stars">

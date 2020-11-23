@@ -27,22 +27,23 @@ $(document).ready(function(){
         $(".compare-items").fadeOut();
     });
 
-     // compare dropdown delete button
-    $('#dropdownComparison + .compare-items .selected-items li .delete-btn').click(function(event){
-        event.preventDefault()
-        this.parentNode.remove();
-    });
-
-    // cart dropdown delete button
-    $('#dropdownCart + .cart-items .selected-items li').on("click", ".delete-btn", function(event){
-        this.parentNode.remove();
-    });
-
     // click outside compare items
     $('body').on('click',function(event){
-        if(!(event.target.id == 'compareItems' || $(event.target).parent('#compareItems').length)) {
-            $(".compare-items").hasClass('in').fadeOut().removeClass('in');
-            console.log('ejhffghfjg');
+        if(!(event.target.id == 'dropdownComparison' || event.target.id == 'compareItems' || $(event.target).parents('#compareItems').length)) {
+         
+            if($("#compareItems").hasClass('in')){
+                $("#compareItems").fadeOut().removeClass('in');
+            }
+        }
+        if(!(event.target.id == 'dropdownCart' || event.target.id == 'cartItems' || $(event.target).parents('#cartItems').length)) {
+         
+            if($("#cartItems").hasClass('in')){
+                $("#cartItems").fadeOut().removeClass('in');
+            }
+        }
+        // dropdown delete button
+        if($(event.target).hasClass('delete-btn')){
+            $(event.target).parent('.item').remove();
         }
     });
 

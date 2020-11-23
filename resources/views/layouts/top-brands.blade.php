@@ -1,54 +1,43 @@
 <section>
     <div class="top-brands">
         <h4 class="title">Топ бренды</h4>
-        <!-- responsive one-row -->
         <div class="one-row-brands owl-carousel owl-theme">
             <div class="item">
-                <img src="{{asset('images/apple_brand.png')}}">
+                <a href="#"><img src="{{asset('images/apple_brand.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/mi_brand.png')}}">
+                <a href="#"><img src="{{asset('images/mi_brand.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/samsung.png')}}">
+                <a href="#"><img src="{{asset('images/samsung.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/huawei.png')}}">
+                <a href="#"><img src="{{asset('images/huawei.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/zte.png')}}">
+                <a href="#"><img src="{{asset('images/zte.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/yota.png')}}">
+                <a href="#"><img src="{{asset('images/yota.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/vivo.png')}}">
+                <a href="#"><img src="{{asset('images/vivo.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/adidas.png')}}">
+                <a href="#"><img src="{{asset('images/adidas.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/nike.png')}}">
+                <a href="#"><img src="{{asset('images/nike.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/starbucks.png')}}">
+                <a href="#"><img src="{{asset('images/starbucks.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/delonghi.png')}}">
+                <a href="#"><img src="{{asset('images/delonghi.png')}}"></a>
             </div>
             <div class="item">
-                <img src="{{asset('images/macdonals.png')}}">
+                <a href="#"><img src="{{asset('images/macdonals.png')}}"></a>
             </div>
         </div>
-
-        <!-- original two-row brands -->
-
-        {{-- <div class="two-rows-brands row">
-            @foreach($gBrands as $brand)
-            <div class="col-1">
-                <img src="{{$brand->logo}}">
-            </div>
-            @endforeach
-        </div> --}}
     </div>
 </section>

@@ -499,6 +499,14 @@ h6.title {
   color: #0b2546;
 }
 
+h6.title a {
+  color: #0b2546;
+}
+
+h6.title a:hover, h6.title a.active {
+  color: #d1d8e0;
+}
+
 p.description {
   color: white;
   font-size: 20px;
@@ -509,6 +517,14 @@ p.sub-title {
   color: #a4b0be;
   font-size: 18px;
   text-align: left;
+}
+
+p.sub-title a {
+  color: #a4b0be;
+}
+
+p.sub-title a:hover, p.sub-title a.active {
+  color: #d1d8e0;
 }
 
 .btn-yellow {
@@ -3668,10 +3684,9 @@ nav#menu .mm-navbar__title span {
 
 .main-header .from-statistics-to-account ul.navbar-right li {
   list-style: none;
-  cursor: pointer;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li a {
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle {
   color: #0b2546;
   text-decoration: none;
   position: relative;
@@ -3685,19 +3700,23 @@ nav#menu .mm-navbar__title span {
   cursor: pointer;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li a:focus, .main-header .from-statistics-to-account ul.navbar-right li a:after {
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle:focus, .main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle:after {
   background: #f6f7f9;
   color: black;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li a i {
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle.account i:before {
+  font-weight: bold;
+}
+
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle i {
   font-size: 22px;
   line-height: 36px;
   margin-right: 5px;
   position: relative;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li a span {
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle i span {
   width: 18px;
   height: 18px;
   font-size: 10px;
@@ -3717,50 +3736,13 @@ nav#menu .mm-navbar__title span {
   background: #f42c48;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li a span.counter {
+.main-header .from-statistics-to-account ul.navbar-right li a.dropdownToggle i span.counter {
   top: -23px;
   right: -21px;
   -webkit-transition: .2s linear;
   transition: .2s linear;
   -webkit-transform: scale(1);
           transform: scale(1);
-}
-
-.main-header .from-statistics-to-account ul.navbar-right li a.wish-list i {
-  position: relative;
-}
-
-.main-header .from-statistics-to-account ul.navbar-right li a.wish-list i span {
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
-  color: #fff;
-  line-height: 18px;
-  position: absolute;
-  border-radius: 12px;
-  display: block;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  font-family: 'CERAPRO-BOLD';
-  background: #f42c48;
-}
-
-.main-header .from-statistics-to-account ul.navbar-right li a.wish-list i span.counter {
-  top: -23px;
-  right: -21px;
-  -webkit-transition: .2s linear;
-  transition: .2s linear;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.main-header .from-statistics-to-account ul.navbar-right li a.account i:before {
-  font-weight: bold;
 }
 
 .main-header .from-statistics-to-account ul.navbar-right li .compare-items,
@@ -3807,6 +3789,7 @@ nav#menu .mm-navbar__title span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: default;
 }
 
 .main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item:hover,
@@ -3815,14 +3798,9 @@ nav#menu .mm-navbar__title span {
   background-color: #ecf0f4 !important;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item:hover h5.title,
-.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item:hover h5.title {
+.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item:hover a h5.title,
+.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item:hover a h5.title {
   color: #0042ff;
-}
-
-.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item.no-hover:hover,
-.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item.no-hover:hover {
-  background: white !important;
 }
 
 .main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .product-img,
@@ -3832,8 +3810,8 @@ nav#menu .mm-navbar__title span {
   margin-right: 10px;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .product-img img,
-.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item .product-img img {
+.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .product-img a img,
+.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item .product-img a img {
   width: auto;
   height: 100%;
 }
@@ -3843,8 +3821,8 @@ nav#menu .mm-navbar__title span {
   width: 70%;
 }
 
-.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .description h5.title,
-.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item .description h5.title {
+.main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .description a h5.title,
+.main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item .description a h5.title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -5927,7 +5905,11 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
           align-items: center;
 }
 
-.top-brands .one-row-brands .item img {
+.top-brands .one-row-brands .item a {
+  height: 100%;
+}
+
+.top-brands .one-row-brands .item a img {
   width: auto;
   height: 100%;
 }
