@@ -20,11 +20,6 @@ $(document).ready(function () {
 
         let data = {};
         data.search = inputValue;
-        // $.ajaxSetup({
-        //     headers:{
-        //
-        //     }
-        // })
 
         $.ajax({
             url: 'api/search',
