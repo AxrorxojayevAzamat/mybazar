@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entity\Blog\Post;
 use App\Entity\Category;
+use App\Entity\Shop\Product;
 
 class BlogController extends Controller
 {
@@ -19,8 +20,8 @@ class BlogController extends Controller
 //        $categories = \App\Entity\Category::get();
 //        $news = News::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
         $categories = Category::get();
-
-        return view('blog.blogs', compact('blogs', 'categories'));
+        $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
+        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts'));
     }
 
     public function show(Post $blog)
