@@ -52,9 +52,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
 
-    Route::get('search', function (){
-        return view('pages.search-results', ['something' => 'something']);
-    })->name('search');
+    Route::get('search', 'SearchResultsController@searchResults')->name('search');
+    Route::get('search-product-filter', 'SearchResultsController@SearchFilter')->name('search-product-filter');
 
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
