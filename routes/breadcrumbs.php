@@ -35,7 +35,27 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password'), route('password.reset'));
+});
+
+Breadcrumbs::register('password.reset.email', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password_email'), route('password.reset.email'));
+});
+
 Breadcrumbs::register('register', function (Crumbs $crumbs) {
+});
+
+Breadcrumbs::register('email.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.email_verification'), route('email.verification'));
+});
+
+Breadcrumbs::register('phone.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.phone_verification'), route('phone.verification'));
 });
 
 Breadcrumbs::register('front-home', function (Crumbs $crumbs) {
@@ -79,9 +99,9 @@ Breadcrumbs::register('brands', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.brands'), route('brands'));
 });
 
-Breadcrumbs::register('brands.show', function (Crumbs $crumbs,Brand $brand) {
+Breadcrumbs::register('brands.show', function (Crumbs $crumbs, Brand $brand) {
     $crumbs->parent('brands');
-    $crumbs->push($brand->name, route('brands.show',$brand));
+    $crumbs->push($brand->name, route('brands.show', $brand));
 });
 
 Breadcrumbs::register('cart', function (Crumbs $crumbs) {
@@ -209,11 +229,25 @@ Breadcrumbs::register('videos.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.videos'), route('videos.index'));
 });
 
-Breadcrumbs::register('videos.show', function (Crumbs $crumbs,Video $video) {
+Breadcrumbs::register('videos.show', function (Crumbs $crumbs, Video $video) {
     $crumbs->parent('videos.index');
-    $crumbs->push($video->title, route('videos.show',$video));
+    $crumbs->push($video->title, route('videos.show', $video));
 });
 
+Breadcrumbs::register('stores.index', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+});
+
+Breadcrumbs::register('stores.show', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+});
+
+Breadcrumbs::register('stores.view', function (Crumbs $crumbs) {
+    $crumbs->parent('stores.index');
+    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+});
 
 
 ################################### Admin
@@ -708,5 +742,6 @@ Breadcrumbs::register('admin.discounts.edit', function (Crumbs $crumbs, Discount
     $crumbs->parent('admin.discounts.show', $discounts);
     $crumbs->push(trans('adminlte.edit'), route('admin.discounts.edit', $discounts));
 });
+
 
 

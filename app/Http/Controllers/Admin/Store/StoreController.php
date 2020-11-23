@@ -57,7 +57,6 @@ class StoreController extends Controller
 
     public function create()
     {
-//        session()->flash('message', 'fuUUUUUUUUUCK');
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
@@ -66,20 +65,18 @@ class StoreController extends Controller
         return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods'));
     }
 
-    public function store(CreateRequest $request)
-    {
-        dd($request);
-        $store = $this->service->create($request);
-        session()->flash('message', 'zapiz dobavlen');
-        dd(session('message'));
-
-        return redirect()->route('admin.stores.create', 'store');
-    }
-
     public function show(Store $store)
     {
 //        dd();
         return view('admin.stores.show', compact('store'));
+    }
+
+    public function store(CreateRequest $request)
+    {
+        $store = $this->service->create($request);
+        session()->flash('message', 'zapiz dobavlen');
+
+        return redirect()->route('admin.stores.create', 'store');
     }
 
     public function edit(Store $store)

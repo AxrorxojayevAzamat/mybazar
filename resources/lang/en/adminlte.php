@@ -158,6 +158,7 @@ return [
         'add' => 'Add Delivery Method',
         'name' => 'Delivery Method',
         'choose' => 'Choose Delivery Method',
+        'sort' => 'Sort delivery',
         'min_weight' => 'Minimum weight',
         'max_weight' => 'Maximum weight',
         'index' => 'Delivery index',

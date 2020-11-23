@@ -12,7 +12,7 @@
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
@@ -53,7 +53,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.photo.name') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">

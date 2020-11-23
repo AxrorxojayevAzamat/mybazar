@@ -36,7 +36,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -71,7 +71,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -104,7 +104,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.additional') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -129,7 +129,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -229,7 +229,7 @@
     </div>
 
     <div class="card" id="values">
-        <div class="card-header card-green with-border">{{ trans('adminlte.value.name') }}</div>
+        <div class="card-header card-gray with-border">{{ trans('adminlte.value.name') }}</div>
         <div class="card-body">
             <p><a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-success">{{ trans('adminlte.value.add') }}</a></p>
             <table class="table table-bordered table-striped">

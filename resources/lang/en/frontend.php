@@ -24,7 +24,10 @@ return [
     'number_found_product' => 'For << :query >> query found :result results in :category categories',
 
     'brand' => 'Brand',
-    'stores' => 'Stores',
+    'stores' => [
+        'index' =>'stores page',
+        'show' =>'store'
+    ],
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
@@ -80,6 +83,7 @@ return [
         'new_products' => 'New products',
         'stock' => 'Stock',
         'discount' => 'Discount',
+        'discount_stock' => 'Discount and Stock',
         'top_brands' => 'Top brands',
         'blog' => 'Blog',
         'videos' => 'Video Blog',
@@ -88,4 +92,5 @@ return [
         'shops' => 'Shops',
         'pay' => 'Payment',
     ],
+
 ];

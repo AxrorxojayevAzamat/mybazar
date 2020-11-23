@@ -11,6 +11,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -160,6 +161,10 @@ class Store extends BaseModel
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
+    }
+    public function fourProduct(){
+        $products = Product::where(['store_id' => $this->id])->orderBy('created_at')->limit(4)->get();
+        return $products;
     }
 
     public function categoriesList(): array

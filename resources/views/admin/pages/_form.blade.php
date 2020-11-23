@@ -11,7 +11,7 @@
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -31,6 +31,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_uz', 'Tavsifi', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_uz', old('description_uz', $page ? $page->description_uz : null),
                                 ['class' => 'form-control' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
                             @if ($errors->has('description_uz'))
@@ -63,6 +64,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_ru', 'Описание', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_ru', old('description_ru', $page ? $page->description_ru : null),
                                 ['class' => 'form-control' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
                             @if ($errors->has('description_ru'))
@@ -95,6 +97,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_en', 'Description', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_en', old('description_en', $page ? $page->description_en : null),
                                 ['class' => 'form-control' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
                             @if ($errors->has('description_en'))

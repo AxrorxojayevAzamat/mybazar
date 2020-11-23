@@ -33,11 +33,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     //Auth::routes(); - custom(GET)
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('password/reset/request', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('password/reset/email', 'Auth\ForgotPasswordController@resetEmail')->name('password.reset.email');
+    Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset/request', 'Auth\ForgotPasswordController@resetRequest')->name('password.reset.request');
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
+    Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
+    Route::get('verify/email/resend', 'Auth\RegisterController@resendEmailShow')->name('resend.email.show');
+    Route::post('verify/email/resend', 'Auth\RegisterController@resendEmail')->name('resend.email.verification');
+    Route::get('verify/phone', 'Auth\RegisterController@phone')->name('phone.verification');
+    Route::post('verify/phone', 'Auth\RegisterController@verifyPhone')->name('verify.phone');
+    Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
+    Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
@@ -107,6 +117,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
         Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
+    });
+    Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
+        Route::get('', 'StoresController@index')->name('index');
+        Route::get('{store}', 'StoresController@store')->name('show');
+        Route::get('view/{id}', 'StoresController@view')->name('view');
     });
 });
 

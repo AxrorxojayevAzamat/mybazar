@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Entity\Banner;
 use App\Entity\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Manage\BannerService;
 use App\Http\Requests\Admin\Banners\CreateRequest;
