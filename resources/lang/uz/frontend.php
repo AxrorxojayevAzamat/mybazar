@@ -21,6 +21,7 @@ return [
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
     'compare_products' => 'Mahsulotlarni taqqoslash',
+    'number_found_product' => '<< :query >> qidiruvi uchun :category ta toifadagi :result ta natija topildi',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',

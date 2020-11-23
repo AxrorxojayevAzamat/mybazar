@@ -120,6 +120,17 @@ class Store extends BaseModel
         ]);
     }
 
+
+    public function draft(): void
+    {
+        if ($this->status !== self::STATUS_DRAFT) {
+            throw new \DomainException('Store is already draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
     public static function statusList(): array
     {
         return [

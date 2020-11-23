@@ -67,14 +67,13 @@ class StoreController extends Controller
 
     public function show(Store $store)
     {
-//        dd();
         return view('admin.stores.show', compact('store'));
     }
 
     public function store(CreateRequest $request)
     {
         $store = $this->service->create($request);
-        session()->flash('message', 'zapiz dobavlen');
+        session()->flash('message', 'zapiz dobavlen');  // TODO: translate
 
         return redirect()->route('admin.stores.create', 'store');
     }
@@ -101,6 +100,17 @@ class StoreController extends Controller
     {
         try {
             $this->service->moderate($store->id);
+
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function draft(Store $store)
+    {
+        try {
+            $this->service->draft($store->id);
 
             return redirect()->route('admin.stores.show', $store);
         } catch (\Exception $e) {

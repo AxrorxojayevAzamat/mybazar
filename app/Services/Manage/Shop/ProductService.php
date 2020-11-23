@@ -146,6 +146,18 @@ class ProductService
         $advert->activate();
     }
 
+    public function draft(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->draft();
+    }
+
+    public function close(int $id): void
+    {
+        $advert = Product::findOrFail($id);
+        $advert->close();
+    }
+
     public function addMainPhoto(int $id, UploadedFile $image)
     {
         $this->addPhoto($id, $image, true);

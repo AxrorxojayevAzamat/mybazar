@@ -95,6 +95,12 @@ class StoreService
         $advert->moderate();
     }
 
+    public function draft(int $id): void
+    {
+        $advert = Store::findOrFail($id);
+        $advert->draft();
+    }
+
     public function getNextId(): int
     {
         if (!$this->nextId) {

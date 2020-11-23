@@ -52,9 +52,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
 
-    Route::get('search', function (){
-        return view('pages.search-results', ['something' => 'something']);
-    })->name('search');
+    Route::get('search', 'SearchResultsController@searchResults')->name('search');
+    Route::get('search-product-filter', 'SearchResultsController@SearchFilter')->name('search-product-filter');
 
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
@@ -200,6 +199,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('characteristics', 'CharacteristicController');
         Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {
             Route::post('moderate', 'CharacteristicController@moderate')->name('moderate');
+            Route::post('draft', 'CharacteristicController@draft')->name('draft');
         });
 
         Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
@@ -208,6 +208,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('send-to-moderation', 'ProductController@sendToModeration')->name('on-moderation');
             Route::post('moderate', 'ProductController@moderate')->name('moderate');
             Route::post('activate', 'ProductController@activate')->name('activate');
+            Route::post('draft', 'ProductController@draft')->name('draft');
+            Route::post('close', 'ProductController@close')->name('close');
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
             Route::post('main-photo', 'ProductController@addMainPhoto');
             Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
@@ -285,6 +287,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
 
         Route::post('moderate', 'StoreController@moderate')->name('moderate');
+        Route::post('draft', 'StoreController@draft')->name('draft');
     });
 
     Route::resource('pages', 'PageController');
