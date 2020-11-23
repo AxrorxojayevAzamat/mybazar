@@ -117,8 +117,8 @@ class ProductController extends Controller
 
     public function sendToModeration(Product $product)
     {
+        $this->service->sendToModeration($product->id);
         try {
-            $this->service->sendToModeration($product->id);
             session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
@@ -142,6 +142,32 @@ class ProductController extends Controller
     {
         try {
             $this->service->activate($product->id);
+            session()->flash('message', 'запись обновлён ');
+
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function draft(Product $product)
+    {
+        try {
+            $this->service->draft($product->id);
+            session()->flash('message', 'запись обновлён ');
+
+            return redirect()->route('admin.shop.products.show', $product);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Произошла ошибка');
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function close(Product $product)
+    {
+        try {
+            $this->service->close($product->id);
             session()->flash('message', 'запись обновлён ');
 
             return redirect()->route('admin.shop.products.show', $product);

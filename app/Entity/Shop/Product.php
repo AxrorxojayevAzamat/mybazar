@@ -82,7 +82,6 @@ class Product extends BaseModel
     const STATUS_MODERATION = 1;
     const STATUS_ACTIVE = 2;
     const STATUS_CLOSED = 3;
-    const STATUS_NO_PRODUCT = 4;
     const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
 
     protected $table = 'shop_products';
@@ -129,12 +128,14 @@ class Product extends BaseModel
 
     public function sendToModeration(): void
     {
-        if (!$this->isDraft()) {
-            throw new \DomainException('Product is not draft.');
+        if (!$this->isDraft() && !$this->isClosed()) {
+            throw new \DomainException('Product is not draft or closed.');
         }
+
         if (!$this->main_photo_id) {
             throw new \DomainException('Upload main photo.');
         }
+
         $this->update([
             'status' => self::STATUS_MODERATION,
         ]);
@@ -159,6 +160,26 @@ class Product extends BaseModel
         }
         $this->update([
             'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function draft(): void
+    {
+        if ($this->status === self::STATUS_DRAFT) {
+            throw new \DomainException('Product is already draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
+    public function close(): void
+    {
+        if ($this->status === self::STATUS_CLOSED) {
+            throw new \DomainException('Product is already closed.');
+        }
+        $this->update([
+            'status' => self::STATUS_CLOSED,
         ]);
     }
 
@@ -190,11 +211,6 @@ class Product extends BaseModel
     public function isDraftAfterCategorySplit(): bool
     {
         return $this->status === self::STATUS_DRAFT_CATEGORY_SPLITTED;
-    }
-
-    public function hasProduct(): bool
-    {
-        return $this->status !== self::STATUS_NO_PRODUCT;
     }
 
     public function categoriesList(): array
