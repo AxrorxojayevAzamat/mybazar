@@ -4,10 +4,10 @@
             <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
         </a>
     </div>
-    <form id="search-bar" class="search-bar form-control">
+    <form action="/search" id="search-bar" class="search-bar form-control" method="GET">
         <div class="input-with-tags">
-            <input id="search-input" class="main-search-bordered-input" type="search"
-                   placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+            <input name="search" id="search-input" class="main-search-bordered-input" type="search"
+                   placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput" value="{{ session('search') ? session('search') : '' }}">
         </div>
         <select class="form-control select-main-search">
             @foreach ($gCategories as $category)
@@ -15,6 +15,7 @@
             @endforeach
         </select>
         <button class="search btn" type="submit"><i class="mbsearch"></i></button>
+
     </form>
     <div class="from-statistics-to-account">
         <div class="dropdown compare-dropdown">
@@ -177,18 +178,5 @@
             @endguest
         </ul>
     </div>
+    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>
 </div>
-
-<script>
-    // $(document).ready(function () {
-    //     let searchInput = $('#search-input');
-    //
-    //     searchInput.onkeyup(function(e){
-    //         e.preventDefault();
-    //
-    //         let inputValue = searchInput.val();
-    //         console.log(inputValue);
-    //     })
-    // })
-
-</script>
