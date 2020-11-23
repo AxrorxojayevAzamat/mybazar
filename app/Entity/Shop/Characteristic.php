@@ -76,6 +76,17 @@ class Characteristic extends BaseModel
         ]);
     }
 
+
+    public function draft(): void
+    {
+        if ($this->status !== self::STATUS_DRAFT) {
+            throw new \DomainException('Characteristic is already in draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
     public function categoriesList(): array
     {
         return $this->characteristicCategories()->pluck('category_id')->toArray();

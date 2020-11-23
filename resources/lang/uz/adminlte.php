@@ -43,6 +43,7 @@ return [
     'send_to_moderation' => 'Moderatsiyaga yuborish',
     'moderate' => 'Moderatsiyadan o`tkazish',
     'activate' => 'Faollashtirish',
+    'close' => 'Yopmoq',
     'inactive' => 'Faol emas',
     'active' => 'Faol',
     'commoned' => 'Umumiy',
