@@ -36,12 +36,9 @@
                     controls
                     preload="auto"
                     poster="{{$video->posterOriginal}}"
-
                     data-setup="{}"
                 >
                     <source src="{{$video->videoFile}}" type="video/mp4"/>
-
-                    </p>
 
                 </video>
                 <div class="player-overlay">
