@@ -364,6 +364,10 @@ Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
     $crumbs->parent('admin.shop.products.index');
     $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
 });
+Breadcrumbs::register('admin.shop.store', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
+});
 
 Breadcrumbs::register('admin.shop.products.show', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.shop.products.index');

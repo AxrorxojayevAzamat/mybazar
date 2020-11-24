@@ -187,6 +187,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+        Route::get('{store}/store', 'ProductController@create')->name('store');
 
         Route::resource('characteristic-groups', 'CharacteristicGroupController');
         Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {

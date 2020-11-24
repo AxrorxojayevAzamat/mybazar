@@ -30,6 +30,7 @@ use Illuminate\Validation\Rule;
  * @property boolean $new
  * @property int[] $categories
  * @property int[] $marks
+ * @property int[] $discounts
  */
 class CreateRequest extends FormRequest
 {
@@ -65,6 +66,7 @@ class CreateRequest extends FormRequest
             'new' => 'boolean',
             'categories.*' => 'required|numeric|min:1|exists:categories,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
+            'discounts.*' => 'numeric|min:1|exists:discounts,id',
         ];
     }
 }
