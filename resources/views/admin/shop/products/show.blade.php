@@ -3,17 +3,28 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-        @if ($product->isOnModeration())
+        @if ($product->isOnModeration() && Gate::check('moderate-products'))
             <form method="POST" action="{{ route('admin.shop.products.moderate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
-        @elseif ($product->isDraft())
+        @elseif ($product->isDraft() || $product->isClosed())
             <form method="POST" action="{{ route('admin.shop.products.on-moderation', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.send_to_moderation')</button>
             </form>
-        @elseif ($product->isDraftAfterCategorySplit())
+        @elseif($product->isActive())
+            <form method="POST" action="{{ route('admin.shop.products.close', $product) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.close')</button>
+            </form>
+            @can('moderate-products')
+                <form method="POST" action="{{ route('admin.shop.products.draft', $product) }}" class="mr-1">
+                    @csrf
+                    <button class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.draft')</button>
+                </form>
+            @endcan
+        @elseif ($product->isDraftAfterCategorySplit() && Gate::check('moderate-products'))
             <form method="POST" action="{{ route('admin.shop.products.activate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success">@lang('adminlte.activate')</button>
@@ -36,7 +47,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -71,7 +82,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -104,7 +115,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.additional') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -129,7 +140,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -229,7 +240,7 @@
     </div>
 
     <div class="card" id="values">
-        <div class="card-header card-green with-border">{{ trans('adminlte.value.name') }}</div>
+        <div class="card-header card-gray with-border">{{ trans('adminlte.value.name') }}</div>
         <div class="card-body">
             <p><a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-success">{{ trans('adminlte.value.add') }}</a></p>
             <table class="table table-bordered table-striped">

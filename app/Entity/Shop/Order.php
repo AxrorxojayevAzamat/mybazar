@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $delivery_method_name_en
  * @property int $delivery_cost
  * @property int $payment_type_id
- * @property int $cost
+ * @property int $total_cost
  * @property string $note
  * @property int $status
  * @property string $cancel_reason
@@ -46,7 +46,7 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', 'delivery_method_id', 'delivery_method_name_uz', 'delivery_method_name_ru', 'delivery_method_name_en', 'delivery_cost',
-        'payment_type_id', 'cost', 'note', 'status', 'cancel_reason', 'phone', 'name', 'delivery_index', 'delivery_address',
+        'payment_type_id', 'total_cost', 'note', 'status', 'cancel_reason', 'phone', 'name', 'delivery_index', 'delivery_address',
     ];
 
     protected $casts = [

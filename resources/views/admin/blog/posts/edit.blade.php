@@ -1,7 +1,7 @@
 @extends('layouts.admin.page')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.blog.posts.update', $news) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.blog.posts.update', $post) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

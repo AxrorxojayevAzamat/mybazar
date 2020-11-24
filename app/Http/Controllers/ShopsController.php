@@ -13,6 +13,7 @@ class ShopsController extends Controller
     public function index(Request $request)
     {
         $query = Product::orderByDesc('created_at');
+        $stores = Store::where(['status' => Store::STATUS_ACTIVE])->paginate(12);
 
         if (!empty($value = $request->get('categories'))) {
             $value = explode(',', $value);
@@ -30,7 +31,7 @@ class ShopsController extends Controller
 
         $categories = Category::where('parent_id', null)->get();
 
-        return view('shop.shops', compact('products', 'categories'));
+        return view('shop.shops', compact('products', 'categories','stores'));
     }
 
     public function view(Request $request, Store $store)
@@ -70,7 +71,18 @@ class ShopsController extends Controller
         $brands = Brand::all();
 
         $products = $query->paginate(20);
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
 
-        return view('shop.shops-view', compact('products', 'brands'));
+        $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
+            ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
+            ->orderByDesc('discount')->limit(9)->get();
+
+        return view('shop.shops-view', compact('products', 'brands', 'ratings', 'dayProducts'));
     }
 }

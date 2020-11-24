@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\User\User;
-use Carbon\Carbon;
-use Eloquent;
-use Illuminate\Database\Eloquent\Model;
 use App\Helpers\ImageHelper;
 use App\Http\Requests\Admin\Sliders\CreateRequest;
 use App\Http\Requests\Admin\Sliders\UpdateRequest;
+use Carbon\Carbon;
+use Eloquent;
 
 /**
  * @property int $id
@@ -27,21 +26,24 @@ use App\Http\Requests\Admin\Sliders\UpdateRequest;
  * @property string $fileOriginal
  * @mixin Eloquent
  */
-class Slider extends BaseModel {
+class Slider extends BaseModel
+{
 
     protected $table = 'sliders';
-    protected $fillable = ['url', 'sort', 'file'];
+    protected $fillable = ['id', 'url', 'sort', 'file'];
 
-    public static function add(int $id, CreateRequest $request, string $fileName): self {
+    public static function add(int $id, CreateRequest $request, string $fileName): self
+    {
         return static::create([
-                    'id' => $id,
-                    'sort' => $request->sort,
-                    'url' => $request->url,
-                    'file' => $fileName,
+            'id' => $id,
+            'sort' => $request->sort,
+            'url' => $request->url,
+            'file' => $fileName,
         ]);
     }
 
-    public function edit(UpdateRequest $request, string $fileName = null): void {
+    public function edit(UpdateRequest $request, string $fileName = null): void
+    {
         $this->update([
             'sort' => $request->sort,
             'url' => $request->url,
@@ -49,32 +51,38 @@ class Slider extends BaseModel {
         ]);
     }
 
-    public function setSort($sort): void {
+    public function setSort($sort): void
+    {
         $this->sort = $sort;
     }
 
-    public function isIdEqualTo($id): bool {
+    public function isIdEqualTo($id): bool
+    {
         return $this->id == $id;
     }
 
     ########################################### Mutators
 
-    public function getFileThumbnailAttribute(): string {
-        return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
+    public function getFileThumbnailAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_SLIDERS . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->file;
     }
 
-    public function getFileOriginalAttribute(): string {
-        return '/storage/images/' . ImageHelper::FOLDER_BANNERS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
+    public function getFileOriginalAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_SLIDERS . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->file;
     }
 
     ###########################################
     ########################################### Relations
 
-    public function createdBy() {
+    public function createdBy()
+    {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
-    public function updatedBy() {
+    public function updatedBy()
+    {
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 

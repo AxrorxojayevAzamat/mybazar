@@ -37,9 +37,16 @@ class FavoriteController extends Controller
         $products  = $query->paginate(20);
         $min_price = Product::select('price_uzs')->min('price_uzs');
         $max_price = Product::select('price_uzs')->max('price_uzs');
-        
-       
-        return view('user.favorites', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price'));
+
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+
+        return view('user.favorites', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price', 'ratings'));
     }
 
     public function addToFavorite(Request $request) {

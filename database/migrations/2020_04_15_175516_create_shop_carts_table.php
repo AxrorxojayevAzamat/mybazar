@@ -17,7 +17,7 @@ class CreateShopCartsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('modification_id');
+            $table->unsignedBigInteger('modification_id')->nullable();
             $table->integer('quantity');
             $table->timestamps();
         });

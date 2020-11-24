@@ -69,7 +69,7 @@ class Category extends BaseModel
 {
     use NodeTrait;
 
-//    public $cacheFor = 0;
+    public $cacheFor = 0;
 
     protected $table = 'categories';
 

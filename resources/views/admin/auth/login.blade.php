@@ -39,8 +39,8 @@
                 <form action="{{ $login_url }}" method="post">
                     {{ csrf_field() }}
                     <div class="input-group mb-3">
-                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ trans
-                        ('adminlte.user.name') }}" autofocus>
+                        <input name="email_or_phone" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{ trans
+                        ('auth.email_phone_or_username') }}" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -79,18 +79,35 @@
                         </div>
                     </div>
                 </form>
+
                 <p class="mt-2 mb-1">
-                    <a href="{{ $password_reset_url }}">
+                    <a href="{{ route('password.reset.request') }}">
                         {{ trans('adminlte.i_forgot_my_password') }}
                     </a>
                 </p>
                 @if ($register_url)
                     <p class="mb-0">
-                        <a href="{{ $register_url }}">
+                        <a href="{{ route('register') }}">
                             {{ trans('adminlte.register_a_new_membership') }}
                         </a>
                     </p>
                 @endif
+
+{{--                <div class="col-md-4">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">Auth by Networks</div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <ul class="list-unstyled">--}}
+{{--                                <li>--}}
+{{--                                    <a href="{{ route('login.network', ['network' => 'facebook']) }}"><span class="fa fa-facebook-square">Facebook</span> Facebook</a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="{{ route('login.network', ['network' => 'twitter']) }}"><span class="fa fa-twitter-square"></span> Twitter</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

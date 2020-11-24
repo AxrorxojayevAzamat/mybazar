@@ -9,10 +9,10 @@
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -25,6 +25,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_uz', 'Tavsifi', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_uz', old('description_uz', $post ? $post->description_uz : null),
                                 ['class' => 'form-control' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
                             @if ($errors->has('description_uz'))
@@ -50,6 +51,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_ru', 'Описание', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_ru', old('description_ru', $post ? $post->description_ru : null),
                                 ['class' => 'form-control' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
                             @if ($errors->has('description_ru'))
@@ -75,6 +77,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_en', 'Description', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_en', old('description_en', $post ? $post->description_en : null),
                                 ['class' => 'form-control' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
                             @if ($errors->has('description_en'))
@@ -104,13 +107,12 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
-                        {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('category_id', $post ? $post->is_published : null),
-                            ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
-
-                        @if ($errors->has('is_published'))
-                            <span class="invalid-feedback"><strong>{{ $errors->first('is_published') }}</strong></span>
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                        {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
+                        {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $post ? $post->status : null),
+                        ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('status'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -121,7 +123,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.image') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
@@ -157,6 +159,7 @@
         CKEDITOR.replace('body_ru');
         CKEDITOR.replace('body_uz');
         CKEDITOR.replace('body_en');
+        $('#category_id').select2();
 
         let fileInput = $("#file-input");
         let fileUrl = '{{ $post ? ($post->file ? $post->fileOriginal : null) : null }}';

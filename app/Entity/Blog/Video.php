@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Blog\Videos\CreateRequest;
 use App\Http\Requests\Admin\Blog\Videos\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -24,7 +25,7 @@ use Eloquent;
  * @property string $body_ru
  * @property string $body_en
  * @property int $category_id
- * @property bool $is_published
+ * @property int $status
  * @property string $poster
  * @property string $video
  * @property int $created_by
@@ -43,15 +44,20 @@ use Eloquent;
  * @property string $posterThumbnail
  * @property string $posterOriginal
  * @property string $videoFile
+ * @method Builder published()
+ * @method Builder drafted()
  * @mixin Eloquent
  */
 class Video extends BaseModel
 {
+    const DRAFT = 1;
+    const PUBLISHED = 3;
+
     protected $table = 'blog_videos';
 
     protected $fillable = [
         'id', 'title_ru', 'title_en', 'title_uz', 'description_uz', 'description_en', 'description_ru', 'body_en', 'body_ru',
-        'body_uz', 'user_id', 'category_id', 'is_published', 'poster', 'video'
+        'body_uz', 'user_id', 'category_id', 'status', 'poster', 'video'
     ];
 
     public static function add(int $id, CreateRequest $request, int $categoryId, string $posterName, string $videoName): self
@@ -68,7 +74,7 @@ class Video extends BaseModel
             'body_ru' => $request->body_ru,
             'body_en' => $request->body_en,
             'category_id' => $categoryId,
-            'is_published' => $request->is_published,
+            'status' => $request->status,
             'poster' => $posterName,
             'video' => $videoName,
         ]);
@@ -87,20 +93,60 @@ class Video extends BaseModel
             'body_ru' => $request->body_ru,
             'body_en' => $request->body_en,
             'category_id' => $categoryId,
-            'is_published' => $request->is_published,
+            'status' => $request->status,
             'poster' => $posterName ?: $this->poster,
             'video' => $videoName ?: $this->video,
         ]);
     }
 
+    public static function statusList(): array
+    {
+        return [
+            self::DRAFT => trans('adminlte.draft'),
+            self::PUBLISHED => trans('adminlte.published'),
+        ];
+    }
+
+    public function statusName(): string
+    {
+        return self::statusList()[$this->status];
+    }
+
+    public function statusLabel(): string
+    {
+        switch ($this->status) {
+            case self::DRAFT:
+                return '<span class="badge badge-secondary">' . trans('adminlte.draft') . '</span>';
+            case self::PUBLISHED:
+                return '<span class="badge badge-success">' . trans('adminlte.published') . '</span>';
+            default:
+                return '<span class="badge badge-secondary">Default</span>';
+        }
+    }
+
     public function publish(): void
     {
-        $this->is_published = true;
+        if ($this->status === self::PUBLISHED) {
+            throw new \DomainException('Banner is already published.');
+        }
+        $this->update([
+            'status' => self::PUBLISHED,
+        ]);
     }
 
     public function discard(): void
     {
-        $this->is_published = false;
+        if ($this->status === self::DRAFT) {
+            throw new \DomainException('Banner is already drafted.');
+        }
+        $this->update([
+            'status' => self::DRAFT,
+        ]);
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === self::PUBLISHED;
     }
 
 
@@ -123,7 +169,7 @@ class Video extends BaseModel
 
     public function getPublishedAttribute()
     {
-        return ($this->is_published) ? trans('adminlte.yes') : trans('adminlte.no');
+        return $this->status === self::PUBLISHED ? trans('adminlte.yes') : trans('adminlte.no');
     }
 
     public function getPosterThumbnailAttribute(): string
@@ -148,12 +194,12 @@ class Video extends BaseModel
 
     public function scopePublished($query)
     {
-        return $query->where('is_published', true);
+        return $query->where('status', self::PUBLISHED);
     }
 
     public function scopeDrafted($query)
     {
-        return $query->where('is_published', false);
+        return $query->where('status', self::DRAFT);
     }
 
     ###########################################
@@ -163,7 +209,7 @@ class Video extends BaseModel
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function createdBy()

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
     <link rel="stylesheet" href="{{ mix('css/colorpicker.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary card-outline">

@@ -4,6 +4,7 @@
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}"> --}}
+    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
 @endsection
 
 @section('body')
@@ -12,9 +13,6 @@
 
     <!-- similar products -->
     @include('products.similar-products')
-
-    <!-- other products of this seller -->
-    @include('products.other-products-of-this-seller')
 
     <!-- single-charachteristics-comments btn-->
     @include('products.singlep-charac-com-btn')
@@ -35,10 +33,19 @@
     </div>
 
     <!-- u will also like -->
-    @include('products.u-will-also-like')
+    @include ('layouts.carousel-products',
+        ['products' => $interestingProducts, "title" => trans('frontend.product.interesting_products'), 'rate_for' => ['js' => '"I"', 'html' => 'I']])
+{{--        @include('products.u-will-also-like')--}}
+
+    <!-- other products of this seller -->
+    @include ('layouts.carousel-products',
+        ['products' => $otherProducts, "title" => trans('frontend.product.similar_products'), 'rate_for' => ['js' => '"O"', 'html' => 'O']])
+    {{-- @include('products.other-products-of-this-seller') --}}
 
     <!-- recently viewed -->
-    @include('layouts.recently-viewed')
+    @include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
+    {{--    @include('layouts.recently-viewed')--}}
 @endsection
 
 @include('products._scripts')

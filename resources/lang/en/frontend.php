@@ -21,9 +21,13 @@ return [
     'popular' => 'Popular',
     'recommend' => 'Recommended',
     'compare_products' => 'Compare products',
+    'number_found_product' => 'For << :query >> query found :result results in :category categories',
 
     'brand' => 'Brand',
-    'stores' => 'Stores',
+    'stores' => [
+        'index' =>'stores page',
+        'show' =>'store'
+    ],
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
@@ -43,6 +47,7 @@ return [
         'about' => 'About product',
         'comments' => 'Comments',
         'day_product' => 'PRODUCT OF THE DAY',
+        'you_watched' => 'You watched',
     ],
 
     'review' => [
@@ -57,7 +62,7 @@ return [
         'auth' => 'Login or register',
         'mail' => 'Login or register',
         'sms' => 'Login or register',
-        'blogs_news' => 'Blog and News',
+        'blogs' => 'Blogs',
         'brands' => 'Brands',
         'cart' => 'Cart',
         'checkout' => 'Checkout',
@@ -71,18 +76,21 @@ return [
         'discounts' => 'Sales',
         'shops' => 'Shops',
         'videos' => 'Video Blog',
+        'search' => 'Search',
     ],
 
     'nav' => [
         'new_products' => 'New products',
         'stock' => 'Stock',
         'discount' => 'Discount',
+        'discount_stock' => 'Discount and Stock',
         'top_brands' => 'Top brands',
-        'blog' => 'Blog',
+        'blogs' => 'Blogs',
         'videos' => 'Video Blog',
         'delivery' => 'Delivery',
         'business' => 'For Business',
         'shops' => 'Shops',
         'pay' => 'Payment',
     ],
+
 ];

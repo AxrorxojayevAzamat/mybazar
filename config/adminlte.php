@@ -178,7 +178,7 @@ return [
 
     'register_url' => 'register',
 
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => 'password/reset/request',
 
     'password_email_url' => 'password/email',
 
@@ -228,7 +228,7 @@ return [
             'text' => 'sliders',
             'url'  => 'admin/sliders',
             'icon' => 'fas fa-fw fa-images',
-            'can' => 'manage-users',
+            'can' => 'manage-sliders',
         ],
         [
             'text' => 'banners',
@@ -240,19 +240,19 @@ return [
             'text' => 'posts',
             'url'  => 'admin/blog/posts',
             'icon' => 'fas fa-fw fa-newspaper',
-            'can' => 'manage-users',
-        ],
-        [
-            'text' => 'news',
-            'url'  => 'admin/blog/news',
-            'icon' => 'fas fa-fw fa-newspaper',
-            'can' => 'manage-users',
+            'can' => 'manage-blog-posts',
         ],
         [
             'text' => 'videos',
             'url'  => 'admin/blog/videos',
             'icon' => 'fas fa-fw fa-video',
-            'can' => 'manage-users',
+            'can' => 'manage-blog-videos',
+        ],
+        [
+            'text' => 'pages',
+            'url'  => 'admin/pages',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can' => 'manage-pages',
         ],
         [
             'text' => 'discounts',

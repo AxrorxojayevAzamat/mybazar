@@ -33,22 +33,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     //Auth::routes(); - custom(GET)
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
-    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('password/reset/request', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('password/reset/email', 'Auth\ForgotPasswordController@resetEmail')->name('password.reset.email');
+    Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset/request', 'Auth\ForgotPasswordController@resetRequest')->name('password.reset.request');
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
+    Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
+    Route::get('verify/email/resend', 'Auth\RegisterController@resendEmailShow')->name('resend.email.show');
+    Route::post('verify/email/resend', 'Auth\RegisterController@resendEmail')->name('resend.email.verification');
+    Route::get('verify/phone', 'Auth\RegisterController@phone')->name('phone.verification');
+    Route::post('verify/phone', 'Auth\RegisterController@verifyPhone')->name('verify.phone');
+    Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
+    Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
+
+    Route::get('search', 'SearchResultsController@searchResults')->name('search');
+    Route::get('search-product-filter', 'SearchResultsController@SearchFilter')->name('search-product-filter');
 
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');
 
-    Route::get('blogs-news', 'BlogController@blogsNews')->name('blogs-news');
+    Route::get('blogs', 'BlogController@blogs')->name('blogs');
     Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
-    Route::get('news/{news}', 'NewsController@show')->name('news.show');
     Route::get('brands', 'BrandsController@brands')->name('brands');
     Route::get('brands/{brand}', 'BrandsController@show')->name('brands.show');
 
@@ -89,6 +101,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('{store}', 'ShopsController@view')->name('show');
     });
 
+
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
         Route::get('', 'CategoryController@index')->name('index');
         Route::get('/{products_path?}', 'CategoryController@show')->name('show')->where('products_path', '.+');
@@ -96,23 +109,26 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::resource('/videos', 'VideosController');
-    
+
     Route::group(['as' => 'user.','namespace' => 'User'], function () {
             Route::get('setting','ProfileController@index')->name('setting');
             Route::put('setting/{user}','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites');
+    });
+
+    Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
+        Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
+    });
+    Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
+        Route::get('', 'StoresController@index')->name('index');
+        Route::get('{store}', 'StoresController@store')->name('show');
+        Route::get('view/{id}', 'StoresController@view')->name('view');
     });
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
-        Route::resource('news', 'NewsController');
-        Route::group(['prefix' => 'news/{news}', 'as' => 'news.'], function () {
-            Route::post('remove-file', 'NewsController@removeFile')->name('remove-file');
-            Route::post('publish', 'NewsController@publish')->name('publish');
-            Route::post('discard', 'NewsController@discard')->name('discard');
-        });
 
         Route::resource('videos', 'VideoController');
         Route::group(['prefix' => 'videos/{video}', 'as' => 'videos.'], function () {
@@ -130,11 +146,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         });
     });
 
-    Route::resource('banners', 'BannersController');
+    Route::resource('banners', 'BannerController');
     Route::group(['prefix' => 'banners/{banner}', 'as' => 'banners.'], function () {
-        Route::post('remove-file', 'BannersController@removeFile')->name('remove-file');
-        Route::post('publish', 'BannersController@publish')->name('publish');
-        Route::post('discard', 'BannersController@discard')->name('discard');
+        Route::post('remove-file', 'BannerController@removeFile')->name('remove-file');
+        Route::post('publish', 'BannerController@publish')->name('publish');
+        Route::post('discard', 'BannerController@discard')->name('discard');
     });
 
     Route::resource('sliders', 'SlidersController');
@@ -184,6 +200,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::resource('characteristics', 'CharacteristicController');
         Route::group(['prefix' => 'characteristics/{characteristic}', 'as' => 'characteristics.'], function () {
             Route::post('moderate', 'CharacteristicController@moderate')->name('moderate');
+            Route::post('draft', 'CharacteristicController@draft')->name('draft');
         });
 
         Route::post('marks/{mark}/remove-photo', 'MarkController@removeLogo')->name('remove-photo');
@@ -192,6 +209,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
             Route::post('send-to-moderation', 'ProductController@sendToModeration')->name('on-moderation');
             Route::post('moderate', 'ProductController@moderate')->name('moderate');
             Route::post('activate', 'ProductController@activate')->name('activate');
+            Route::post('draft', 'ProductController@draft')->name('draft');
+            Route::post('close', 'ProductController@close')->name('close');
             Route::get('main-photo', 'ProductController@mainPhoto')->name('main-photo');
             Route::post('main-photo', 'ProductController@addMainPhoto');
             Route::post('remove-main-photo', 'ProductController@removeMainPhoto')->name('remove-main-photo');
@@ -269,6 +288,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         Route::post('remove-logo', 'StoreController@removeLogo')->name('remove-logo');
 
         Route::post('moderate', 'StoreController@moderate')->name('moderate');
+        Route::post('draft', 'StoreController@draft')->name('draft');
+    });
+
+    Route::resource('pages', 'PageController');
+    Route::group(['prefix' => 'pages/{page}', 'as' => 'pages.'], function () {
+        Route::post('/first', 'PageController@first')->name('first');
+        Route::post('/up', 'PageController@up')->name('up');
+        Route::post('/down', 'PageController@down')->name('down');
+        Route::post('/last', 'PageController@last')->name('last');
     });
 
     Route::resource('brands', 'BrandController');

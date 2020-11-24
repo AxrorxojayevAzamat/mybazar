@@ -55,7 +55,9 @@
     @php( $dashboard_url = $dashboard_url ? url($dashboard_url) : '' )
 @endif
 
+
 @section('body')
+
     <div class="wrapper">
         @if(config('adminlte.layout_topnav') || View::getSection('layout_topnav'))
         <nav class="main-header navbar {{config('adminlte.classes_topnav_nav', 'navbar-expand-md')}} {{config('adminlte.classes_topnav', 'navbar-white navbar-light')}}">
@@ -206,10 +208,11 @@
             <div class="content-header">
                 <div class="{{config('adminlte.classes_content_header', 'container-fluid')}}">
                     @yield('content_header')
+
                 </div>
             </div>
-
-            <div class="content">
+                @include('admin.layout.errorSummary')
+                <div class="content">
                 <div class="{{config('adminlte.classes_content', 'container-fluid')}}">
                     @section('breadcrumbs', Breadcrumbs::render())
                     @yield('breadcrumbs')

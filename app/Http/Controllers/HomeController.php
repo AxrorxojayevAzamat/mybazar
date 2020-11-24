@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Banner;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\Product;
+use App\Entity\Store;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Entity\Blog\Post;
 use App\Entity\Slider;
 use App\Entity\Blog\Video;
+use App\Services\Sms\SmsSender;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function __construct()
+    private $sms;
+
+    public function __construct(SmsSender $sms)
     {
 //        $this->middleware('auth');
+        $this->sms = $sms;
     }
 
     public function index()
@@ -29,12 +35,18 @@ class HomeController extends Controller
             ->orderByDesc('discount')->limit(9)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
-        $posts = Post::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
-        $videos = Video::orderByDesc('created_at')->where(['is_published' => true])->limit(12)->get();
+        $posts = Post::published()->orderByDesc('created_at')->limit(12)->get();
+        $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();
+        $threeBanners = Banner::published()->inRandomOrder()->limit(3)->get();
+        $shops1 = $query->where(['status' => Product::STATUS_ACTIVE])->limit(3)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(4)->get();
+
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
-            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts'));
+            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems'));
     }
+
 }

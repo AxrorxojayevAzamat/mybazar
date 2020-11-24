@@ -42,17 +42,15 @@
     <div class="pn-ProductNav_Wrapper">
         <nav id="pnProductNav" class="pn-ProductNav">
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
-                <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                 <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.stock') }}</a>
+                <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
+{{--                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.stock') }}</a>--}}
                 <a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.blog') }}</a>
+                <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
                 <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a>
                 <a href="{{ route('delivery') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a>
-                    <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.business') }}</a>
                 <a href="{{ route('shops.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a>
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a>
+                <a href="{{ route('pay') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a>
                 <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
             </div>
         </nav>

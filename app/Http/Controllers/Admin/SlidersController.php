@@ -31,6 +31,7 @@ class SlidersController extends Controller {
 
     public function store(CreateRequest $request) {
         $slider = $this->service->create($request);
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.sliders.show', $slider);
     }
 
@@ -44,6 +45,7 @@ class SlidersController extends Controller {
 
     public function update(UpdateRequest $request, Slider $slider) {
         $slider = $this->service->update($slider->id, $request);
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.sliders.show', $slider);
     }
 

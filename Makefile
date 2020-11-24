@@ -1,6 +1,9 @@
 du: memory
 	docker-compose up -d
 
+dup: memory
+	docker-compose up
+
 dd:
 	docker-compose down
 

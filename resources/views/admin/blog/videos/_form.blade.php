@@ -9,10 +9,10 @@
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -25,6 +25,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_uz', 'Tavsifi', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_uz', old('description_uz', $video ? $video->description_uz : null),
                                 ['class' => 'form-control' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
                             @if ($errors->has('description_uz'))
@@ -50,6 +51,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_ru', 'Описание', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_ru', old('description_ru', $video ? $video->description_ru : null),
                                 ['class' => 'form-control' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
                             @if ($errors->has('description_ru'))
@@ -75,6 +77,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('description_en', 'Description', ['class' => 'col-form-label']); !!}
+                            <br>
                             {!! Form::textarea('description_en', old('description_en', $video ? $video->description_en : null),
                                 ['class' => 'form-control' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
                             @if ($errors->has('description_en'))
@@ -104,13 +107,12 @@
                 </div>
 
                 <div class="col-md-10">
-                    <div class="form-group{{ $errors->has('is_published') ? ' has-error' : '' }}">
-                        {!! Form::label('is_published', trans('adminlte.is_published'), ['class' => 'control-label']) !!}
-                        {!! Form::select('is_published', [1 => 'On', 2 => 'Off'], old('is_published', $video ? $video->is_published : null),
-                            ['class'=>'form-control' . ($errors->has('is_published') ? ' is-invalid' : ''), 'required' => true]) !!}
-
-                        @if ($errors->has('is_published'))
-                            <span class="invalid-feedback"><strong>{{ $errors->first('is_published') }}</strong></span>
+                    <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                        {!! Form::label('status', trans('adminlte.status'), ['class' => 'control-label']) !!}
+                        {!! Form::select('status', \App\Entity\Banner::statusList(), old('status', $video ? $video->status : null),
+                        ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('status'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
                         @endif
                     </div>
                 </div>
@@ -121,7 +123,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.files') }}</h3></div>
             <div class="card-body">
                 <div class="row">
@@ -137,16 +139,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('poster', trans('adminlte.video'), ['class' => 'control-label']) !!}
-                                <div class="file-loading">
-                                    <input id="video-input" class="file" type="file" name="video" accept=".video/mp4">
-                                </div>
-                                @if ($errors->has('video'))
-                                    <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
-                                @endif
+                        <div class="form-group">
+                            {!! Form::label('video', trans('adminlte.video'), ['class' => 'control-label']) !!}
+                            <div class="file-loading">
+                                <input id="video-input" class="file" type="file" name="video">
                             </div>
+                            @if ($errors->has('video'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -175,6 +175,7 @@
         CKEDITOR.replace('body_ru');
         CKEDITOR.replace('body_uz');
         CKEDITOR.replace('body_en');
+        $('#category_id').select2();
 
         let posterInput = $("#poster-input");
         let posterUrl = '{{ $video ? ($video->poster ? $video->posterOriginal : null) : null }}';
@@ -220,6 +221,7 @@
                 overwriteInitial: true,
                 deleteUrl: 'remove-video',
                 maxFileCount: 1,
+                allowedFileTypes: ['video'],
                 allowedFileExtensions: ['mp4'],
             });
         } else {
@@ -228,6 +230,7 @@
                 previewFileType: 'text',
                 browseOnZoneClick: true,
                 maxFileCount: 1,
+                allowedFileTypes: ['video'],
                 allowedFileExtensions: ['mp4'],
             });
         }

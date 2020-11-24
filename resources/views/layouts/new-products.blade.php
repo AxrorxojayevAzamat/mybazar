@@ -3,6 +3,7 @@
         <div class="h4-title">
             <h4 class="title">@lang('frontend.novelty_upper')</h4>
         </div>
+
         <div class="outter-products">
             <div class="products owl-carousel owl-theme">
                 @foreach($newProducts as $product)

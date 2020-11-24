@@ -16,6 +16,7 @@ class CreateStoreDeliveryMethodsTable extends Migration
         Schema::create('store_delivery_methods', function (Blueprint $table) {
             $table->unsignedBigInteger('store_id');
             $table->unsignedInteger('delivery_method_id');
+            $table->integer('cost');
             $table->integer('sort');
         });
 

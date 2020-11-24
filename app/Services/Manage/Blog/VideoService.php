@@ -33,7 +33,7 @@ class VideoService
                 'body_ru' => $request->body_ru,
                 'body_en' => $request->body_en,
                 'category_id' => $category->id,
-                'is_published' => $request->is_published,
+                'status' => $request->status,
             ]);
         }
 
@@ -64,6 +64,18 @@ class VideoService
         }
 
         return $video;
+    }
+
+    public function publish(int $id): void
+    {
+        $advert = Video::findOrFail($id);
+        $advert->publish();
+    }
+
+    public function discard(int $id): void
+    {
+        $advert = Video::findOrFail($id);
+        $advert->discard();
     }
 
     public function getNextId(): int

@@ -9,10 +9,10 @@
 @section($cssSectionName)
 <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -30,7 +30,7 @@
                             @if ($errors->has('description_uz'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('description_uz') }}</strong></span>
                             @endif
-                        </div>                        
+                        </div>
                     </div>
                     <div class="tab-pane" id="russian" role="tabpanel">
                         <div class="form-group">
@@ -47,7 +47,7 @@
                             @if ($errors->has('description_ru'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('description_ru') }}</strong></span>
                             @endif
-                        </div>                        
+                        </div>
                     </div>
                     <div class="tab-pane" id="english" role="tabpanel">
                         <div class="form-group">
@@ -64,7 +64,7 @@
                             @if ($errors->has('description_en'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('description_en') }}</strong></span>
                             @endif
-                        </div>                        
+                        </div>
                     </div>
                 </div>
 
@@ -132,7 +132,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.files') }}</h3></div>
             <div class="card-body">
                 <div class="row">
@@ -206,7 +206,7 @@
             allowedFileExtensions: ['jpg', 'jpeg', 'png'],
         });
     }
-       
+
 </script>
 
 @endsection

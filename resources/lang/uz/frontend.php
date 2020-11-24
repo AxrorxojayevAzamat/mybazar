@@ -21,6 +21,7 @@ return [
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
     'compare_products' => 'Mahsulotlarni taqqoslash',
+    'number_found_product' => '<< :query >> qidiruvi uchun :category ta toifadagi :result ta natija topildi',
 
     'brand' => 'Brend',
     'stores' => 'Do`konlar',
@@ -43,6 +44,7 @@ return [
         'about' => 'Mahsulot haqida',
         'comments' => 'Sharhlar',
         'day_product' => 'KUN MAHSULOTI',
+        'you_watched' => 'Siz tomosha qildingiz',
     ],
 
     'review' => [
@@ -57,7 +59,7 @@ return [
         'auth' => 'Kirish yoki ro\'yxatdan o\'tish',
         'mail' => 'Kirish yoki ro\'yxatdan o\'tish',
         'sms' => 'Kirish yoki ro\'yxatdan o\'tish',
-        'blogs_news' => 'Blog va Yangiliklar',
+        'blogs' => 'Bloglar',
         'brands' => 'Brendlar',
         'cart' => 'Savat',
         'checkout' => 'Buyurtma',
@@ -71,14 +73,16 @@ return [
         'discounts' => 'Chegirmalar',
         'shops' => 'Do\'konlar',
         'videos' => 'Videolar',
+        'search' => 'Qidiruv',
     ],
 
     'nav' => [
         'new_products' => 'Yangi maxsulotlar',
         'stock' => 'Aksiyalar',
         'discount' => 'Chegirmalar',
+        'discount_stock' => 'Chegirma va Aksiya',
         'top_brands' => 'Top brandlar',
-        'blog' => 'Vlog',
+        'blogs' => 'Bloglar',
         'videos' => 'Videolar',
         'delivery' => 'Yetkazib berish',
         'business' => 'Biznes uchun',

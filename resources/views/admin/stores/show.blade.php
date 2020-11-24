@@ -4,12 +4,20 @@
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
         <a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success mr-1">{{ trans('adminlte.store.add_worker') }}</a>
-        @if ($store->isOnModeration())
+        @if ($store->isOnModeration() && Gate::check('moderate-stores'))
             <form method="POST" action="{{ route('admin.stores.moderate', $store) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
         @endif
+
+        @if ($store->isActive())
+            <form method="POST" action="{{ route('admin.stores.draft', $store) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.draft')</button>
+            </form>
+        @endif
+
         <form method="POST" action="{{ route('admin.stores.destroy', $store) }}" class="mr-1">
             @csrf
             @method('DELETE')
@@ -20,7 +28,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -53,7 +61,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -91,7 +99,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-green card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -108,7 +116,7 @@
     </div>
 
     <div class="card" id="users">
-        <div class="card-header card-green with-border">{{ trans('adminlte.store.worker') }}</div>
+        <div class="card-header card-gray with-border">{{ trans('adminlte.store.worker') }}</div>
         <div class="card-body">
             <p><a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success">{{ trans('adminlte.store.add_worker') }}</a></p>
             <table class="table table-bordered table-striped">
@@ -147,7 +155,7 @@
     </div>
 
     <div class="card" id="delivery_methods">
-        <div class="card-header card-green with-border">{{ trans('menu.delivery_methods') }}</div>
+        <div class="card-header card-gray with-border">{{ trans('menu.delivery_methods') }}</div>
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead>

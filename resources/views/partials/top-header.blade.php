@@ -4,13 +4,11 @@
         <a href="#" class="email">info@mybazar.com</a>
     </div>
     <div class="hot-news owl-carousel owl-theme">
-        <a href="#">
-            <span class="bold">РАСПРОДАЖА КНИГ!</span>
-            Снизили цены на более 3 тысячи книг
-        </a>
-        <a href="#">
-            Купить кондиционер со скидкой 30%
-        </a>
+        @foreach($discountProducts as $product)
+            <a href="{{ route('products.show', $product) }}">
+                @lang('header.discount', ['product' => $product->name, 'discount'=> $product->discount * 100])
+            </a>
+        @endforeach
     </div>
     <div class="lang">
         @foreach(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalesOrder() as $localeCode => $properties)

@@ -12,6 +12,9 @@
     <div class="h4-title sales-body">
         <h4 class="title">@lang('frontend.discounts')</h4>
     </div>
+    <!-- full page banner -->
+    <div class="sales-full-banner"></div>
+    <!-- end of full page banner -->
     <div class="outter-sales">
         <div class="sales-banners">
             @foreach($discounts as $discount)
@@ -22,40 +25,23 @@
             </div>
             @endif
             @endforeach
-
-            <!-- full page banner -->
-            <div class="sales-full-banner"></div>
-            <!-- end of full page banner -->
-
         </div>
 
         <!-- PAGINATION  -->
         <nav class="products-pagination" aria-label="Page navigation example">
             <ul class="pagination">
-                <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li> -->
-                <li class="page-item active"><a href="#">1</a></li>
-                <li class="page-item"><a href="#">2</a></li>
-                <li class="page-item"><a href="#">3</a></li>
-                <li class="page-item">
-                    <a href="#" aria-label="Next">
-                        <i class="mbnext_page"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a href="#">10</a></li>
+                 {!! $discounts->links() !!}
             </ul>
         </nav>
     </div>
 </section>
 
 <!-- recently viewed -->
-@include('layouts.recently-viewed')
+@include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 @endsection
 
 @section('script')
-<script src="{{asset('js/1-index.js')}}"></script>
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+
 @endsection

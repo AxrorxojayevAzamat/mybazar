@@ -96,6 +96,17 @@ class CharacteristicController extends Controller
         }
     }
 
+    public function draft(Characteristic $characteristic)
+    {
+        try {
+            $this->service->draft($characteristic->id);
+
+            return redirect()->route('admin.shop.characteristics.show', $characteristic);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
     public function destroy(Characteristic $characteristic)
     {
         $characteristic->delete();

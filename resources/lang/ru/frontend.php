@@ -21,6 +21,7 @@ return [
     'popular' => 'Популярные',
     'recommend' => 'Рекомендуем',
     'compare_products' => 'Сравнение товаров',
+    'number_found_product' => 'По запросу << <span class="search-tag"> :query </span> >> найдено :result результатов в :category категориях',
 
     'brand' => 'Бренд',
     'stores' => 'Магазины',
@@ -43,6 +44,7 @@ return [
         'about' => 'О товаре',
         'comments' => 'Комментарии',
         'day_product' => 'ТОВАР ДНЯ',
+        'you_watched' => 'Вы смотрели',
     ],
 
     'review' => [
@@ -57,7 +59,7 @@ return [
         'auth' => 'Вход или регистрация',
         'mail' => 'Вход или регистрация',
         'sms' => 'Вход или регистрация',
-        'blogs_news' => 'Блог и новости',
+        'blogs' => 'Блоги',
         'brands' => 'Все бренды',
         'cart' => 'Корзина',
         'checkout' => 'Оформление заказа',
@@ -71,14 +73,16 @@ return [
         'discounts' => 'Акции и скидки',
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
+        'search' => 'Искать',
     ],
 
     'nav' => [
         'new_products' => 'Новые товары',
         'stock' => 'Акции',
         'discount' => 'Скидки',
+        'discount_stock' => 'Скидка и Aкции',
         'top_brands' => 'Топ бренды',
-        'blog' => 'Блог',
+        'blogs' => 'Блоги',
         'videos' => 'Видеоролики',
         'delivery' => 'Доставка',
         'business' => 'Для бизнеса',

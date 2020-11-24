@@ -4,11 +4,12 @@
             <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
         </a>
     </div>
-    <form id="search-bar" class="search-bar form-control">
-            <div class="input-with-tags">
-                <input id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
-            </div>
-            <div class="autocomplete-tags">
+    <form action="/search" id="search-bar" class="search-bar form-control" method="GET">
+        <div class="input-with-tags">
+            <input name="search" id="search-input" class="main-search-bordered-input" type="search"
+                   placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput" value="{{ session('search') ? session('search') : '' }}">
+        </div>
+        <div class="autocomplete-tags">
                 <a href="#">
                     <div class="item with-icon">
                         <i class="mbsearch_resulticon"></i>
@@ -41,12 +42,13 @@
                     </div>
                 </a> 
             </div>
-            <select class="form-control select-main-search">
-                @foreach ($gCategories as $category)
-                    <option>{{ $category->name }}</option>
-                @endforeach
-            </select>
-            <button class="search btn" type="submit"><i class="mbsearch"></i></button>   
+        <select class="form-control select-main-search">
+            @foreach ($gCategories as $category)
+                <option>{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <button class="search btn" type="submit"><i class="mbsearch"></i></button>
+
     </form>
     <div class="from-statistics-to-account">
         <ul class="navbar-right">
@@ -94,7 +96,7 @@
                             </div>
                             <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
                         </li>
-                        
+
                     </ul>
                     <div class="bottom-btn">
                         <button class="btn bold switch-to-compare">
@@ -105,57 +107,7 @@
             </li>
 
             <li>
-                <a href="#" id="dropdownCart" class="dropdownToggle"><i class="mbcart"><span>{{ count((array) session('cart')) }}</span></i> @lang('menu.carts')</a>
-                <div class="cart-items" id="cartItems">
-                    <ul class="selected-items">
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                       
-                    </ul>
-                    <div class="bottom-btn">
-                        <button class="btn bold switch-to-compare">
-                            @lang('frontend.compare_products')
-                        </button>
-                    </div>
-                </div>
+                @include('cart.header-show')
             </li>
 
             <li>
@@ -174,11 +126,11 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('user.setting') }}">
-                    
+
                         {{ __('Profile') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('user.favorites') }}">
-                    
+
                         {{ __('Favorites') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -195,4 +147,5 @@
             @endguest
         </ul>
     </div>
+    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>
 </div>

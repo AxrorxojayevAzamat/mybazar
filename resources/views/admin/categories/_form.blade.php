@@ -9,10 +9,10 @@
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
 @endsection
-
+@include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -75,7 +75,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-green card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="form-group">
                     <label for="slug" class="col-form-label">Slug</label>
@@ -124,7 +124,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-warning card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">

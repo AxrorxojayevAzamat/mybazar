@@ -33,7 +33,7 @@ class PostService
                 'body_ru' => $request->body_ru,
                 'body_en' => $request->body_en,
                 'category_id' => $category->id,
-                'is_published' => $request->is_published,
+                'status' => $request->status,
             ]);
         }
 
@@ -62,6 +62,18 @@ class PostService
         }
 
         return $post;
+    }
+
+    public function publish(int $id): void
+    {
+        $advert = Post::findOrFail($id);
+        $advert->publish();
+    }
+
+    public function discard(int $id): void
+    {
+        $advert = Post::findOrFail($id);
+        $advert->discard();
     }
 
     public function getNextId(): int

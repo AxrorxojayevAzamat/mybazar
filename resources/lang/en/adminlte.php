@@ -39,9 +39,11 @@ return [
     'no' => 'No',
     'draft' => 'Draft',
     'publish' => 'Publish',
+    'published' => 'Published',
     'send_to_moderation' => 'Send to moderation',
     'moderate' => 'Moderate',
     'activate' => 'Activate',
+    'close' => 'Close',
     'inactive' => 'Inactive',
     'active' => 'Active',
     'commoned' => 'Commoned',
@@ -49,6 +51,7 @@ return [
 
     'name' => 'Name',
     'title' => 'Title',
+    'menu_title' => 'Menu title',
     'description' => 'Description',
     'body' => 'Body',
     'note' => 'Note',
@@ -156,6 +159,7 @@ return [
         'add' => 'Add Delivery Method',
         'name' => 'Delivery Method',
         'choose' => 'Choose Delivery Method',
+        'sort' => 'Sort delivery',
         'min_weight' => 'Minimum weight',
         'max_weight' => 'Maximum weight',
         'index' => 'Delivery index',
@@ -222,5 +226,12 @@ return [
 
     'discount' => [
 
+    ],
+
+    'pages' => [
+        'add' => 'Add page',
+        'name' => 'Page',
+        'parent' => 'Parent page',
+        'children' => 'Child pages',
     ],
 ];

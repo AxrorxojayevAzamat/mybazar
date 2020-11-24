@@ -45,7 +45,7 @@ class CategoryService
                 $this->uploadPhoto($this->getNextId(), $request->icon, $iconName);
             }
 
-            $this->addBrands($category, $request->brands);
+            !$request->brands ? : $this->addBrands($category, $request->brands);
 
             DB::commit();
             return $category;
@@ -87,7 +87,7 @@ class CategoryService
             $category->edit($request);
 
             $category->categoryBrands()->delete();
-            $this->addBrands($category, $request->brands);
+            !$request->brands ? : $this->addBrands($category, $request->brands);
 
             DB::commit();
             return $category;

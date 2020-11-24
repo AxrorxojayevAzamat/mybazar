@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2>
-                        <a href="{{ route('admin.discounts.create') }}" class="btn btn-default pull-right">{{ trans('adminlte.create') }}</a>
+                        <a href="{{ route('admin.discounts.create') }}" class="btn btn-success pull-right">{{ trans('adminlte.create') }}</a>
                     </h2>
                 </div>
 
@@ -44,7 +44,7 @@
                                         {{ $discount->createdBy->name }}
                                     @endif
                                 </td>
-                                <td><a href="{{ route('admin.blog.categories.show', $discount->category) }}">{{ $discount->category->name }}</a></td>
+                                <td><a href="{{ route('admin.categories.show', $discount->category) }}">{{ $discount->category->name }}</a></td>
                                 <td>{!! $discount->commoned !!}</td>
                                 <td>
                                     @if ($isAdmin)

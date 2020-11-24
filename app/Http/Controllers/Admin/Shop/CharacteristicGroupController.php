@@ -44,8 +44,8 @@ class CharacteristicGroupController extends Controller
     public function store(CreateRequest $request)
     {
         $group = $this->service->create($request);
-
-        return redirect()->route('admin.shop.characteristics.groups.show', $group);
+        session()->flash('message', 'запись обновлён ');
+        return redirect()->route('admin.shop.characteristic-groups.show', $group);
     }
 
     public function show(CharacteristicGroup $characteristicGroup)
@@ -61,14 +61,15 @@ class CharacteristicGroupController extends Controller
     public function update(UpdateRequest $request, CharacteristicGroup $characteristicGroup)
     {
         $this->service->update($characteristicGroup->id, $request);
-
+        session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.characteristic-groups.show', $characteristicGroup);
     }
 
     public function destroy(CharacteristicGroup $characteristicGroup)
     {
         $characteristicGroup->delete();
-
+        session()->flash('message', 'запись обновлён ');
+//        session()->flash('error', 'Произошла ошибка');
         return redirect()->route('admin.shop.characteristic-groups.index');
     }
 

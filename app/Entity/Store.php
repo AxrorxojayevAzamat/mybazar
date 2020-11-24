@@ -11,6 +11,7 @@ use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -119,6 +120,17 @@ class Store extends BaseModel
         ]);
     }
 
+
+    public function draft(): void
+    {
+        if ($this->status !== self::STATUS_DRAFT) {
+            throw new \DomainException('Store is already draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
     public static function statusList(): array
     {
         return [
@@ -160,6 +172,10 @@ class Store extends BaseModel
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
+    }
+    public function fourProduct(){
+        $products = Product::where(['store_id' => $this->id])->orderBy('created_at')->limit(4)->get();
+        return $products;
     }
 
     public function categoriesList(): array
@@ -208,12 +224,12 @@ class Store extends BaseModel
 
     public function getLogoThumbnailAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_STORES . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->logo;
+        return '/storage/files/' . ImageHelper::FOLDER_STORES . '/' . $this->id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->logo;
     }
 
     public function getLogoOriginalAttribute(): string
     {
-        return '/storage/images/' . ImageHelper::FOLDER_STORES . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->logo;
+        return '/storage/files/' . ImageHelper::FOLDER_STORES . '/' . $this->id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->logo;
     }
 
     ###########################################

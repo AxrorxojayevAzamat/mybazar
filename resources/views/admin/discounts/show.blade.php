@@ -23,7 +23,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -39,7 +39,7 @@
                         <tr><th>{{ trans('adminlte.date_to') }}</th><td>{{ $discount->end_date }}</td></tr>
                         <tr>
                             <th>{{ trans('adminlte.category.name') }}</th>
-                            <td><a href="{{ route('admin.blog.categories.show', $discount->category) }}"></a></td>
+                            <td><a href="{{ route('admin.categories.show', $discount->category) }}"></a></td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.common') }}</th>
@@ -68,7 +68,7 @@
                                 @endif
                             </td>
                         </tr>
-            
+
                     </table>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     @if (Auth::user()->isAdmin())
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-warning card-outline">
+                <div class="card card-gray card-outline">
                     <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                     <div class="card-body">
                         <table class="table {{--table-bordered--}} table-striped projects">

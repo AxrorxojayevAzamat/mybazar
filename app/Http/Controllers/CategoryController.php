@@ -69,8 +69,15 @@ class CategoryController extends Controller
         $products = $query->paginate(20);
         $min_price = Product::select('price_uzs')->min('price_uzs');
         $max_price = Product::select('price_uzs')->max('price_uzs');
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
 
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price'));
+        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price', 'ratings'));
     }
 
 }

@@ -29,7 +29,7 @@
                     @include('layouts.small-filter-without-title-checkbox')
                 </nav>
 
-                @include('layouts.list-mosaic-catalog-items')
+                @include('layouts.products-list-grid')
 
                 @include('layouts.pagination')
 

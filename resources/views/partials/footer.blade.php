@@ -94,12 +94,12 @@
         <div class="social-contacts">
             <img src="{{asset('images/mybazar_logo_footer.svg')}}" alt="" class="footer-logo">
             <div class="footer-icons">
-                <a href=""><i class="mbfacebook"></i></a>
-                <a href=""><i class="mbtelegram"></i></a>
-                <a href=""><i class="mbwhatsapp"></i></a>
-                <a href=""><i class="mbvkontakte"></i></a>
-                <a href=""><i class="mbinstagram"></i></a>
-                <a href=""><i class="mbtelegram"></i></a>
+                <a href="https://www.facebook.com"><i class="mbfacebook"></i></a>
+                <a href="https://web.telegram.org/"><i class="mbtelegram"></i></a>
+                <a href="https://www.whatsapp.com"><i class="mbwhatsapp"></i></a>
+                <a href="https://vk.com"><i class="mbvkontakte"></i></a>
+                <a href="https://twitter.com"><i class="mbtwitter"></i></a>
+                <a href="https://www.instagram.com"><i class="mbinstagram"></i></a>
             </div>
             <div class="contacts">
                 <a href="tel" class="bold tel">+998 92 123 45 67</a>

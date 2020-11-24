@@ -24,8 +24,8 @@ class CreateBlogVideosTable extends Migration
             $table->text('body_uz');
             $table->text('body_ru');
             $table->text('body_en');
-            $table->unsignedInteger('category_id');
-            $table->boolean('is_published')->default(false);
+            $table->unsignedBigInteger('category_id');
+            $table->tinyInteger('status');
             $table->string('poster')->nullable();
             $table->string('video')->nullable();
             $table->unsignedBigInteger('created_by');

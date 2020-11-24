@@ -2,6 +2,7 @@
 
 namespace App\Services\Manage;
 
+use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Entity\StoreDeliveryMethod;
 use App\Entity\StoreUser;
@@ -39,7 +40,7 @@ class StoreService
             $this->addCategories($store, $request->categories);
             $this->addMarks($store, $request->marks);
             $this->addPayments($store, $request->payments);
-            $this->addDeliveryMethods($store, $request->delivery_methods);
+            $this->addDeliveryMethods($store, $request->delivery_methods, $request->cost, $request->sort);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -94,6 +95,12 @@ class StoreService
         $advert->moderate();
     }
 
+    public function draft(int $id): void
+    {
+        $advert = Store::findOrFail($id);
+        $advert->draft();
+    }
+
     public function getNextId(): int
     {
         if (!$this->nextId) {
@@ -124,10 +131,10 @@ class StoreService
         $this->addDeliveryMethods($store, $request->delivery_methods);
     }
 
-    private function addCategories(Store $store, array $categories): void
+    private function addCategories(Store $store, array $categories)
     {
         $categories = array_unique($categories);
-        foreach ($categories as $i => $categoryId) {
+        foreach ($categories as $categoryId) {
             $store->storeCategories()->create(['category_id' => $categoryId]);
         }
     }
@@ -148,11 +155,15 @@ class StoreService
         }
     }
 
-    private function addDeliveryMethods(Store $store, array $deliveryMethods): void
+    private function addDeliveryMethods(Store $store, array $deliveryMethods, $cost, $sort): void
     {
         $deliveryMethods = array_unique($deliveryMethods);
         foreach ($deliveryMethods as $i => $deliveryMethodId) {
-            $store->storeDeliveryMethods()->create(['delivery_method_id' => $deliveryMethodId]);
+            $store->storeDeliveryMethods()->create([
+                'delivery_method_id' => $deliveryMethodId,
+                'cost' => $cost,
+                'sort' => $sort,
+            ]);
         }
     }
 
@@ -342,4 +353,11 @@ class StoreService
         ImageHelper::saveThumbnail($storeId, ImageHelper::FOLDER_STORES, $logo, $imageName);
         ImageHelper::saveOriginal($storeId, ImageHelper::FOLDER_STORES, $logo, $imageName);
     }
+
+    public static function fourProduct($id)
+    {
+        $products = Product::where(['store_id' => $id])->limit(4)->get();
+        return $products;
+    }
+
 }

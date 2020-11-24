@@ -1,6 +1,8 @@
 <?php
 
 use App\Entity\Category;
+use App\Entity\Page;
+use App\Http\Router\PagePath;
 use App\Http\Router\ProductsPath;
 
 if (! function_exists('products_path')) {
@@ -9,5 +11,14 @@ if (! function_exists('products_path')) {
     {
         return app()->make(ProductsPath::class)
             ->withCategory($category);
+    }
+
+    if (! function_exists('page_path')) {
+
+        function page_path(Page $page)
+        {
+            return app()->make(PagePath::class)
+                ->withPage($page);
+        }
     }
 }
