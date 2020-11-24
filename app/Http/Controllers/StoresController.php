@@ -16,9 +16,10 @@ class StoresController extends Controller
         if (!empty($request->get('shopName'))) {
             $stores = $query->where('name_en', 'like', '%' . $request->get('shopName') . '%');
         }
+        $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         $stores = $query->paginate(12);
         $categories = Category::where('parent_id', null)->get();
-        return view('stores.index', compact('stores', 'categories'));
+        return view('stores.index', compact('stores', 'categories','recentProducts'));
     }
 
     public function store($id)
@@ -33,7 +34,7 @@ class StoresController extends Controller
     public function view($id, Request $request)
     {
         $store = Store::findOrFail($id);
-        $products = Product::where(['store_id' => $id])->where(['status' => Product::STATUS_ACTIVE])->paginate(20);
-        return view('stores.view', compact('store', 'products'));
+        $product = Product::where(['store_id' => $id])->where(['status' => Product::STATUS_ACTIVE])->paginate(20);
+        return view('stores.view', compact('store', 'product'));
     }
 }

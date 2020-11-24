@@ -13,7 +13,7 @@ class VideosController extends Controller
     public function index()
     {
 
-        $videos = Video::orderByDesc('created_at')->where(['status' => true])->with(['category'])->paginate(20);
+        $videos = Video::orderByDesc('created_at')->with(['category'])->paginate(20);
         $categories = Category::orderByDesc('created_at')->get();
 //        $parentIds = [];
 //        foreach($categories as $i => $category) {

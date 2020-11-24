@@ -1661,3 +1661,8 @@ video::-webkit-media-text-track-display {
   outline: none;
   background: none;
 }
+
+.video-js {
+    width: 100%;
+    height: 100%;
+}
