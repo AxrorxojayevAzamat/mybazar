@@ -31,7 +31,7 @@ class BlogController extends Controller
         $lastBlogs = Post::published()->orderByDesc('created_at')->where('id', '!=', $post->id)->limit(20)->get()->random(3);
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
 
-        return view('blog.blog-show', compact('post', 'categories', 'lastBlogs'));
+        return view('blog.blog-show', compact('post', 'categories', 'lastBlogs', 'recentProducts'));
     }
 
 }
