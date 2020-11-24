@@ -16,10 +16,9 @@ use App\Helpers\ImageHelper;
  * @property string $address
  * @property string $fullName
  * @property string $avatar
- * 
+ *
  * @property string $avatarThumbnail
  * @property string $avatarOriginal
- * @property string $fullName
  *
  * @property User $user
  * @mixin Eloquent

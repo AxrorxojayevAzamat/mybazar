@@ -1,8 +1,8 @@
-<ul class="nav nav-pills page-tabs" id="pills-tab" role="tablist">
+<ul class="nav nav-pills page-tabs">
   <li class="nav-item">
-    <a class="nav-link active" id="pills-blog" data-toggle="pill" href="#pills-blog" role="tab" aria-controls="pills-blog" aria-selected="true">Блог</a>
+    <a class="nav-link {{ (request()->is('*/blogs')) ? 'active' : '' }}" href="{{ route('blogs') }}">Блог</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false">Новости</a>
+    <a class="nav-link {{ (request()->is('*/videos')) ? 'active' : '' }}" href="{{ route('videos.index') }}">Видеоролики</a>
   </li>
 </ul>

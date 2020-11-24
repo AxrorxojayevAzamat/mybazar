@@ -1,3 +1,4 @@
+<input type="hidden" value="{{ Auth::user() }}" id="user_info">
 <div class="item">
     <div class="product-img">
         @if ($product->mainPhoto)
@@ -25,10 +26,89 @@
             <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
         </div>
         <div class="item-action-icons">
-            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
-            <div class="libra"  data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
+            <div class="cart" onclick="addCart({{ $product->id }}, {{ Auth::user() }})" data-name="{{ $product->name }}"
+                 data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
+                    class="mbcart"></i></div>
+            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
+                 data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
             <div class="like"><i class="mbfavorite"></i></div>
         </div>
         <p class="sub-title bottom">{{ $product->store->name }}</p>
     </div>
 </div>
+
+
+<script>
+    function addCart(id, auth) {
+        console.log(auth);
+        let product_id = {};
+        product_id.data = [];
+        if (auth == undefined) {//adding cart for non-registered users
+            if (localStorage.getItem('product_id')) {
+                let cart_products = '';
+                let exist = false;
+                let product_id = localStorage.getItem('product_id')
+                let cart_product_check = product_id.split(',');
+                for (let i = 0; i <= cart_product_check.length; i++) {
+                    console.log('hello')
+                    if (cart_product_check[i] == id) {
+                        console.log('exists')
+                        exist = true;
+                    } else {
+                        console.log('loging')
+                    }
+                }
+                if (!exist) {
+                    cart_products += product_id;
+                    cart_products += id + ',';
+                    localStorage.setItem('product_id', cart_products + '');
+                } else {
+                    console.log('exist');
+                }
+            } else {
+                localStorage.setItem('product_id', id + ',');
+            }
+        } else {//cart for registered users
+            product_id.product_id = id;
+
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            })
+
+            $.ajax({
+                url: 'add-cart',
+                method: 'POST',
+                data: product_id,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                }, error: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        //     }
+        // })
+        //
+        // $.ajax({
+        //     url: 'remove-cart',
+        //     method: 'POST',
+        //     data: product_id,
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         console.log(data);
+        //     }, error: function (data) {
+        //         console.log(data);
+        //     }
+        // })
+
+    }
+</script>

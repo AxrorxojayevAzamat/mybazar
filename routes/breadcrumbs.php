@@ -74,9 +74,9 @@ Breadcrumbs::register('sms', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.sms'), route('sms'));
 });
 
-Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
+Breadcrumbs::register('blogs', function (Crumbs $crumbs) {
     $crumbs->parent('home');
-    $crumbs->push(trans('frontend.breadcrumb.blogs_news'), route('blogs-news'));
+    $crumbs->push(trans('frontend.breadcrumb.blogs'), route('blogs'));
 });
 
 Breadcrumbs::register('search', function (Crumbs $crumbs) {
@@ -90,7 +90,7 @@ Breadcrumbs::register('search-product-filter', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
-    $crumbs->parent('blogs-news');
+    $crumbs->parent('blogs');
     $crumbs->push($post->title, route('blogs.show', $post));
 });
 

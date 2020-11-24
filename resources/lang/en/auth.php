@@ -16,6 +16,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'auth_by_network' => 'Authorize by network',
     'username' => 'Username',
     'email_or_phone' => 'Email address or phone number',
     'email_phone_or_username' => 'Email address, phone number or username',
