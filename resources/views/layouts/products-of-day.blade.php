@@ -53,3 +53,23 @@
 </section>
 @include('pages.rating-js', ['products' => $dayProducts, 'type' => '"D"'])
 
+{{--<script>--}}
+{{--    // let u = $('#user_info').val();--}}
+{{--    // console.log(u);--}}
+{{--    function addCart(id, auth){--}}
+{{--        console.log('info');--}}
+{{--        let product_id = {};--}}
+{{--        product_id.id = id;--}}
+{{--        $.ajax({--}}
+{{--            url: '/add-cart',--}}
+{{--            method: 'POST',--}}
+{{--            data: product_id,--}}
+{{--            dataType: 'json',--}}
+{{--            success: function (data){--}}
+{{--                console.log(data);--}}
+{{--            },error: function (data){--}}
+{{--                console.log(data);--}}
+{{--            }--}}
+{{--        })--}}
+{{--    }--}}
+{{--</script>--}}
