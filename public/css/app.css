@@ -3538,6 +3538,7 @@ nav#menu .mm-navbar__title span {
           align-items: center;
   border: 1px solid #d1d8e0;
   border-radius: 23px;
+  position: relative;
 }
 
 .main-header form.search-bar .input-with-tags {
@@ -3612,6 +3613,149 @@ nav#menu .mm-navbar__title span {
   color: transparent;
 }
 
+.main-header form.search-bar .autocomplete-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 40px;
+  width: 95%;
+  margin: 0 auto;
+  position: absolute;
+  top: 45px;
+  z-index: 1;
+  background: white;
+  -webkit-box-shadow: 0px 2px 7px -5px black;
+          box-shadow: 0px 2px 7px -5px black;
+  display: none;
+}
+
+.main-header form.search-bar .autocomplete-tags a {
+  display: block;
+  width: 100%;
+}
+
+.main-header form.search-bar .autocomplete-tags .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: 100%;
+  position: relative;
+  height: 40px;
+  cursor: pointer;
+}
+
+.main-header form.search-bar .autocomplete-tags .item.brand, .main-header form.search-bar .autocomplete-tags .item.product {
+  height: 55px;
+}
+
+.main-header form.search-bar .autocomplete-tags .item:after {
+  content: "";
+  width: 93%;
+  position: absolute;
+  top: 100%;
+  display: inherit;
+  margin: auto auto auto 7%;
+  border-top: 1px solid #DFDFDF;
+}
+
+.main-header form.search-bar .autocomplete-tags .item:hover {
+  background-color: #ecf0f4;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.main-header form.search-bar .autocomplete-tags .item:hover .description h6.title, .main-header form.search-bar .autocomplete-tags .item:hover h6.title {
+  color: #0042ff;
+}
+
+.main-header form.search-bar .autocomplete-tags .item i.mbgotoresults_searchresulticon {
+  position: absolute;
+  top: 40%;
+  right: 4%;
+  font-size: 12px;
+}
+
+.main-header form.search-bar .autocomplete-tags .item i.mbsearch_resulticon {
+  font-size: 20px;
+  margin-right: 10px;
+  line-height: 40px;
+  padding: 0 5px;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .image {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  margin-left: 7px;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description h6.title {
+  font-size: 20px;
+  line-height: 22px;
+  color: black;
+  margin: 0;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description p.sub-title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description p.sub-title.brand {
+  color: #a4b0be;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description p.sub-title.price {
+  font-weight: bold;
+  color: #07108f;
+}
+
+.main-header form.search-bar .autocomplete-tags .item .description p.sub-title.price span {
+  font-weight: normal;
+}
+
 .main-header form.search-bar .nice-select.select-main-search {
   width: auto;
   -webkit-box-shadow: none;
@@ -3628,6 +3772,7 @@ nav#menu .mm-navbar__title span {
 }
 
 .main-header form.search-bar .nice-select.select-main-search .list {
+  width: 100%;
   border: none;
   border-radius: 0;
   color: #212529;
@@ -3796,11 +3941,13 @@ nav#menu .mm-navbar__title span {
 .main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item:hover {
   color: #000 !important;
   background-color: #ecf0f4 !important;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
 }
 
 .main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item:hover a h5.title,
 .main-header .from-statistics-to-account ul.navbar-right li .cart-items ul li.item:hover a h5.title {
-  color: #0042ff;
+  color: #0042ff !important;
 }
 
 .main-header .from-statistics-to-account ul.navbar-right li .compare-items ul li.item .product-img,

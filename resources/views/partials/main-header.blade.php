@@ -6,7 +6,40 @@
     </div>
     <form id="search-bar" class="search-bar form-control">
             <div class="input-with-tags">
-                <input id="search-input" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+                <input id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+            </div>
+            <div class="autocomplete-tags">
+                <a href="#">
+                    <div class="item with-icon">
+                        <i class="mbsearch_resulticon"></i>
+                        <h6 class="title">Xiaomi Mi Max 2</h6>
+                        <i class="mbgotoresults_searchresulticon"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="item brand">
+                        <div class="image">
+                            <img src="{{asset('images/mi_brand.png')}}" alt="">
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Xiaomi</h6>
+                            <p class="sub-title brand">Бренд</p>
+                        </div>
+                        <i class="mbgotoresults_searchresulticon"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="item product">
+                        <div class="image">
+                            <img src="{{asset('images/mi_brand.png')}}" alt="">
+                        </div>
+                        <div class="description">
+                            <h6 class="title">Xiaomi</h6>
+                            <p class="sub-title price">3 698 334 <span>сум</span></p>
+                        </div>
+                        <i class="mbgotoresults_searchresulticon"></i>
+                    </div>
+                </a> 
             </div>
             <select class="form-control select-main-search">
                 @foreach ($gCategories as $category)
