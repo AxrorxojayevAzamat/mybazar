@@ -26,8 +26,11 @@
             <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
         </div>
         <div class="item-action-icons">
-            <div class="cart" onclick="addCart({{ $product->id }}, {{ Auth::user() }})" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
-            <div class="libra"  data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
+            <div class="cart" onclick="addCart({{ $product->id }}, {{ Auth::user() }})" data-name="{{ $product->name }}"
+                 data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
+                    class="mbcart"></i></div>
+            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
+                 data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
             <div class="like"><i class="mbfavorite"></i></div>
         </div>
         <p class="sub-title bottom">{{ $product->store->name }}</p>
@@ -36,51 +39,76 @@
 
 
 <script>
-    function addCart(id, auth){
+    function addCart(id, auth) {
         console.log(auth);
         let product_id = {};
         product_id.data = [];
-        if (auth == undefined){
-            // console.log(localStorage.getItem('product_id'));
-            if (localStorage.getItem('product_id')){
+        if (auth == undefined) {//adding cart for non-registered users
+            if (localStorage.getItem('product_id')) {
                 let cart_products = '';
                 let exist = false;
                 let product_id = localStorage.getItem('product_id')
                 let cart_product_check = product_id.split(',');
-                for(let i = 0; i <= cart_product_check.length; i++){
+                for (let i = 0; i <= cart_product_check.length; i++) {
                     console.log('hello')
-                    if (cart_product_check[i] == id){
+                    if (cart_product_check[i] == id) {
                         console.log('exists')
                         exist = true;
-                    }else {
+                    } else {
                         console.log('loging')
                     }
                 }
-                if (!exist){
+                if (!exist) {
                     cart_products += product_id;
                     cart_products += id + ',';
                     localStorage.setItem('product_id', cart_products + '');
-                }else{
+                } else {
                     console.log('exist');
                 }
-            }else {
+            } else {
                 localStorage.setItem('product_id', id + ',');
             }
-        }else{
-            console.log('ajax')
+        } else {//cart for registered users
             product_id.product_id = id;
+
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            })
+
             $.ajax({
-                url: 'api/add-cart',
+                url: 'add-cart',
                 method: 'POST',
                 data: product_id,
                 dataType: 'json',
-                success: function (data){
+                success: function (data) {
                     console.log(data);
-                },error: function (data){
+                }, error: function (data) {
                     console.log(data);
                 }
             })
         }
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        //     }
+        // })
+        //
+        // $.ajax({
+        //     url: 'remove-cart',
+        //     method: 'POST',
+        //     data: product_id,
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         console.log(data);
+        //     }, error: function (data) {
+        //         console.log(data);
+        //     }
+        // })
 
     }
 </script>

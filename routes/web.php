@@ -20,6 +20,9 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::post('add-cart', 'CartController@add');
+Route::post('remove-cart', 'CartController@remove');
+
 Route::group(['as' => 'user.','namespace' => 'User'], function () {
     Route::post('/change-password','ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
@@ -124,6 +127,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('{store}', 'StoresController@store')->name('show');
         Route::get('view/{id}', 'StoresController@view')->name('view');
     });
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
