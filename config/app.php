@@ -170,6 +170,7 @@ return [
         App\Providers\AdminLteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Matchish\ScoutElasticSearch\ElasticSearchServiceProvider::class,
+        SocialiteProviders\Manager\ServiceProvider::class,
 
         /*
          * Application Service Providers...

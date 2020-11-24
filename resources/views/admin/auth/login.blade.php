@@ -93,28 +93,39 @@
                     </p>
                 @endif
 
-{{--                <div class="col-md-4">--}}
-{{--                    <div class="card">--}}
-{{--                        <div class="card-header">Auth by Networks</div>--}}
-{{--                        <div class="card-body">--}}
-{{--                            <ul class="list-unstyled">--}}
-{{--                                <li>--}}
-{{--                                    <a href="{{ route('login.network', ['network' => 'facebook']) }}"><span class="fa fa-facebook-square">Facebook</span> Facebook</a>--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <a href="{{ route('login.network', ['network' => 'twitter']) }}"><span class="fa fa-twitter-square"></span> Twitter</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div class="col-md-12" style="margin-top: 10px">
+                    <div class="card">
+                        <div class="card-header">@lang('auth.auth_by_network')</div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="{{ route('login.network', ['network' => 'facebook']) }}"><i class="fa fa-facebook-square"></i>Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('login.network', ['network' => 'google']) }}"><i class="fa fa-google-plus-square"></i>Google</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('login.network', ['network' => 'telegram']) }}"><i class="fa fa-telegram-plane"></i>Telegram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @stop
 
 @section('adminlte_js')
+{{--    {!! Socialite::driver('telegram')->getScript() !!}--}}
+{{--    <script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-login="uzmybazaar_bot" data-size="medium" data-auth-url="https://d732d8bf76bc.ngrok.io/login/telegram/callback" data-request-access="write"></script>--}}
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+{{--    <script>--}}
+{{--        $(document).ready(function (e) {--}}
+
+{{--        });--}}
+{{--    </script>--}}
+
     @stack('js')
     @yield('js')
 @stop

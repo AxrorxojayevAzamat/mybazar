@@ -5,7 +5,7 @@ deploy_development:
   script:
   - rsync -av -O * /var/www/shop.dev/ --no-perms --no-owner --no-group
   - cd /var/www/shop.dev/
-#   - composer install
+   - composer install
 #  - composer update
   - composer dump-autoload
 #  - php artisan migrate:fresh --seed
