@@ -47,11 +47,13 @@
                 let exist = false;
                 let product_id = localStorage.getItem('product_id')
                 let cart_product_check = product_id.split(',');
-                for(let i = 0; i < cart_product_check.length; i++){
-                    if (cart_product_check[i] === id){
+                for(let i = 0; i <= cart_product_check.length; i++){
+                    console.log('hello')
+                    if (cart_product_check[i] == id){
+                        console.log('exists')
                         exist = true;
                     }else {
-                        exist = false;
+                        console.log('loging')
                     }
                 }
                 if (!exist){
