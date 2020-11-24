@@ -7,6 +7,7 @@ use App\Entity\Shop\Cart;
 use App\Entity\Shop\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -15,9 +16,12 @@ class CartController extends Controller
 //        if (!userAuth()){
 //        $cartProduct = Cart::where('user_id', '==', 'id');
 //        $cartProduct = Cart::all();
+        dd(Session::get('product_id'));
+        dd(session('product_id'));
 
-        if (session('cart')){
-            $cartProduct = Product::whereIn('id', session('cart'));
+        if (session('product_id')){
+            dd('product id');
+            $cartProduct = Product::whereIn('id', session('product_id'));
             return response()->json([
                 'cartProduct' => $cartProduct->toArray(),
             ]);
@@ -48,5 +52,22 @@ class CartController extends Controller
         return [];
 //    }
 
+    }
+
+    public function add(Request $request){
+//        dd($request);
+        if ($request->has('product_id')) {
+//            if (user_auth){
+//
+//            }else{
+//            dd($request->get('product_id'));
+            Session::put('product_id', $request->get('product_id'));
+//            session()->put('product_id', $request->get('product_id'));
+//            dd(session('product_id'));
+            return 'saved';
+//        }
+        }
+
+        return 'there is  no info';
     }
 }
