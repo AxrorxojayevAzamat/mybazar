@@ -46,7 +46,7 @@ return [
         'bot' => env('TELEGRAM_BOT_NAME'),  // The bot's username
         'client_id' => null,
         'client_secret' => env('TELEGRAM_TOKEN'),
-//        'redirect' => env('APP_URL') . '/login/telegram/callback',
-        'redirect' => 'https://d732d8bf76bc.ngrok.io/login/telegram/callback',
+        'redirect' => env('APP_URL') . '/login/telegram/callback',
+//        'redirect' => 'https://d732d8bf76bc.ngrok.io/login/telegram/callback',
     ],
 ];
