@@ -142,7 +142,7 @@
                         <div class="form-group">
                             {!! Form::label('video', trans('adminlte.video'), ['class' => 'control-label']) !!}
                             <div class="file-loading">
-                                <input id="video-input" class="file" type="file" name="video" accept=".video/mp4">
+                                <input id="video-input" class="file" type="file" name="video">
                             </div>
                             @if ($errors->has('video'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
@@ -221,7 +221,8 @@
                 overwriteInitial: true,
                 deleteUrl: 'remove-video',
                 maxFileCount: 1,
-                // allowedFileExtensions: ['mp4'],
+                allowedFileTypes: ['video'],
+                allowedFileExtensions: ['mp4'],
             });
         } else {
             videoInput.fileinput({
@@ -229,7 +230,8 @@
                 previewFileType: 'text',
                 browseOnZoneClick: true,
                 maxFileCount: 1,
-                // allowedFileExtensions: ['mp4'],
+                allowedFileTypes: ['video'],
+                allowedFileExtensions: ['mp4'],
             });
         }
     </script>

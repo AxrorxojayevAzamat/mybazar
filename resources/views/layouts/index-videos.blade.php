@@ -9,7 +9,7 @@
                 @foreach($videos as $video)
                 <a href="/videos/{{$video->id}}">
                     <div class="video-item">
-                        <img src="/storage/videos/{{$video->poster}}" alt="" class="poster">
+                        <img src="{{$video->posterOriginal}}" alt="" class="poster">
                         <div class="video-overlay">
                             <h6>{{$video->title}}</h6>
                             <button class="btn play">
