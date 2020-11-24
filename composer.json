@@ -17,11 +17,13 @@
         "jeroennoten/laravel-adminlte": "^3.1",
         "kalnoy/nestedset": "^5.0",
         "laravel/framework": "^6.2",
+        "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.1",
         "matchish/laravel-scout-elasticsearch": "^4.0",
         "mcamara/laravel-localization": "^1.6",
-        "rennokki/laravel-eloquent-query-cache": "^2.4"
+        "rennokki/laravel-eloquent-query-cache": "^2.4",
+        "socialiteproviders/telegram": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

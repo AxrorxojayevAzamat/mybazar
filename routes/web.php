@@ -35,14 +35,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     //Auth::routes(); - custom(GET)
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::get('logout', 'Auth\LoginController@logout');
+
+    Route::get('/login/{network}', 'Auth\NetworkController@redirect')->name('login.network');
+    Route::get('/login/{network}/callback', 'Auth\NetworkController@callback');
+
     Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
     Route::get('password/reset/request', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::get('password/reset/email', 'Auth\ForgotPasswordController@resetEmail')->name('password.reset.email');
     Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset/request', 'Auth\ForgotPasswordController@resetRequest')->name('password.reset.request');
+
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
-    Route::get('logout', 'Auth\LoginController@logout');
+
+
     Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
     Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
     Route::get('verify/email/resend', 'Auth\RegisterController@resendEmailShow')->name('resend.email.show');

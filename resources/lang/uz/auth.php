@@ -16,6 +16,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'auth_by_network' => 'Tarmoq orqali avtorizatsiya qilish',
     'username' => 'Foydalanuvchi nomi',
     'email_or_phone' => 'Elektron pochta yoki telefon raqami',
     'email_phone_or_username' => 'Elektron pochta, telefon raqami yoki foydalanuvchi nomi',

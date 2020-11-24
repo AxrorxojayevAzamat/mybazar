@@ -5,6 +5,7 @@ namespace App\Entity\User;
 use App\Entity\Shop\Cart;
 use App\Helpers\UserHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -41,8 +42,11 @@ use Eloquent;
  * @property Product[] $favorites
  * @property Profile $profile
  * @property Cart[] $cart
+ * @property Network[] $networks
  *
  * @mixin Eloquent
+ *
+ * @method Builder byNetwork(string $network, string $identity)
  */
 class User extends Authenticatable
 {
@@ -96,6 +100,28 @@ class User extends Authenticatable
         return $user;
     }
 
+    public static function registerByNetwork(string $network, string $identity, $email = null, $phone = null): self
+    {
+        $user = static::create([
+            'name' => $network . '_' . $identity,
+            'email' => $email,
+            'phone' => $phone,
+            'password' => null,
+            'verify_token' => null,
+            'role' => self::ROLE_USER,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+
+        $user->networks()->create([
+            'network' => $network,
+            'identity' => $identity,
+            'emails_json' => $email ? [$email] : null,
+            'phones_json' => $phone ? [$phone] : null,
+        ]);
+
+        return $user;
+    }
+
     public static function new($name, $email, $role, $password): self
     {
         return static::create([
@@ -117,6 +143,16 @@ class User extends Authenticatable
         ], $password ? ['password' => bcrypt($password)] : []);
 
         $this->update($attributes);
+    }
+
+    public function attachNetwork(string $network, string $identity, $email = null, $phone = null): void
+    {
+        $this->networks()->create([
+            'network' => $network,
+            'identity' => $identity,
+            'emails_json' => $email ? [$email] : null,
+            'phones_json' => $phone ? [$phone] : null,
+        ]);
     }
 
     public static function rolesList(): array
@@ -274,6 +310,18 @@ class User extends Authenticatable
             ->where('shop_order_items.id', $productId)->where('o.user_id', $this->id)->exists();
     }
 
+    ########################################### Scopes
+
+    public function scopeByNetwork(Builder $query, string $network, string $identity): Builder
+    {
+        return $query->whereHas('networks', function(Builder $query) use ($network, $identity) {
+            $query->where('network', $network)->where('identity', $identity);
+        });
+    }
+
+    ###########################################
+
+
     ########################################### Relations
 
     public function profile()
@@ -304,6 +352,11 @@ class User extends Authenticatable
     public function carts()
     {
         return $this->hasMany(Cart::class, 'user_id', 'id');
+    }
+
+    public function networks()
+    {
+        return $this->hasMany(Network::class, 'user_id', 'id');
     }
 
     ###########################################
