@@ -22,7 +22,7 @@
     <div class="outter-videoview">
         <form action="#" method="GET">
             <div id="search-bar" class="search-bar form-control">
-                <input id="search-input" class="bordered-input" type="search" placeholder="Поиск по блогам и новостям">
+                <input id="search-input" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
                 <button class="search btn" type="submit"><i class="mbsearch"></i></button>
             </div>
         </form>

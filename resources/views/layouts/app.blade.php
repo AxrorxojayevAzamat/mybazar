@@ -22,9 +22,9 @@
 
 <body>
 <!-- page loader -->
-<div class="wrapper-loader">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
+{{--<div class="wrapper-loader">--}}
+{{--    <span class="loader"><span class="loader-inner"></span></span>--}}
+{{--</div>--}}
 
 <div id="page">
 @include('partials.414.menu')
