@@ -114,11 +114,23 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('discounts', trans('adminlte.product.discount'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('discounts[]', $discounts, old('discounts', $store ? $store->discountsList() : null),
+                                ['multiple' => true, 'class'=>'form-control' . ($errors->has('discounts') ? ' is-invalid' : ''), 'id' => 'discounts']) !!}
+                            @if ($errors->has('discounts'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('discounts') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -158,6 +170,7 @@
         $('#marks').select2();
         $('#payments').select2();
         $('#delivery_methods').select2();
+        $('#discounts').select2();
 
         let fileInput = $("#file-input");
         let logoUrl = '{{ $store ? ($store->logo ? $store->logoOriginal : null) : null }}';

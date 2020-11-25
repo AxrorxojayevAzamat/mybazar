@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopProductDiscounts;
 use App\Entity\Shop\Value;
 use App\Entity\Store;
 use App\Helpers\ColorHelper;
@@ -65,6 +66,7 @@ class ProductService
 
             $this->addCategories($product, $request->categories);
             $this->addMarks($product, $request->marks);
+            $this->addDiscounts($product, $request->discounts);
 
             DB::commit();
 
@@ -316,6 +318,15 @@ class ProductService
         $marks = array_unique($marks);
         foreach ($marks as $i => $markId) {
             $product->productMarks()->create(['mark_id' => $markId]);
+        }
+    }
+
+    private function addDiscounts(Product $product, array $discounts): void
+    {
+        $discounts = array_unique($discounts);
+        $shopProductDiscounts = new ShopProductDiscounts();
+        foreach ($discounts as $i => $discount) {
+            $shopProductDiscounts->create(['product_id' => $product->id,'discount_id' => $discount]);
         }
     }
 
