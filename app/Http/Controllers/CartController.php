@@ -11,22 +11,30 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
-//        dd(Auth::user());
-        if ($request->has('product_id')) {
+        $user = Auth::user();
+//        dd($user);
+        if ($request->has('product_id') and $user !== null) {
 
-//            dd($request->product_id);
+            if (gettype($request->product_id) !== 'array'){
+                $cart = $user->carts()->create([
+                    'product_id' => $request->product_id,
+                    'quantity' => $request->quantity ?? 1,
+                ]);
+            }else{
+                foreach ($request->product_id as $i => $product_id){
+                    $cart = $user->carts()->create([
+                        'product_id' => $request->product_id[$i],
+                        'quantity' => $request->quantity ?? 1,
+                    ]);
+                }
+            }
 
-            $user = Auth::user();
-//            dd(Auth::user());
-            $cart = $user->carts()->create([
-                'product_id' => $request->product_id,
-                'quantity' => $request->quantity ?? 1,
-            ]);
 
-            return $cart;
+
+            return ['message' => 'success'];;
         }
 
-        return 'there is  no info';
+        return ['message' => 'error'];
     }
 
     public function remove(Request $request)
