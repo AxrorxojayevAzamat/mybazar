@@ -91,6 +91,10 @@
 @yield ('script')
 @stack('script')
 
+<script>
+    let a = document.querySelectorAll("img");
+    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
+</script>
 
 </body>
 </html>
