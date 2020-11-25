@@ -5,25 +5,25 @@
 @section('body')
     <section>
         <div class="h4-title pay-body">
-            <h4 class="title">Корзина</h4>
+            <h4 class="title">@lang('frondend.cart.cart')</h4>
         </div>
         <div class="outter-cart">
             <div class="ur-cart">
-                <h6>Ваша корзина</h6>
-                <p class="first"> В корзине:<span> 2 шт.</span></p>
-                <p> Общий вес товаров:<span> 16 570 гр.</span></p>
-                <p> Скидка:<span class="sale"> 25%</span></p>
-                <p> Сумма скидки:<span class="sale"> -564 500 сум</span></p>
+                <h6>@lang('frondend.cart.your_cart')</h6>
+                <p class="first"> @lang('frondend.cart.in_cart')<span> 2 @lang('frondend.cart.items').</span></p>
+                <p> @lang('frondend.cart.total_weight_of_goods')<span> 16 570 @lang('frondend.cart.gr').</span></p>
+                <p> @lang('frondend.cart.discount')<span class="sale"> 25%</span></p>
+                <p> @lang('frondend.cart.sum_of_discount')<span class="sale"> -564 500 @lang('frondend.cart.sum')</span></p>
                 <div class="go-to-checkout-page-buttons">
                     <div>
-                        <p class="overall"> Всего к оплате</p>
-                        <p class="total-checkout">10 231 749 <span>сум</span></p>
+                        <p class="overall"> @lang('frondend.cart.all_to_pay')</p>
+                        <p class="total-checkout">10 231 749 <span>@lang('frondend.cart.sum')</span></p>
                     </div>
-                    <button class="btn make-order">Оформить заказ </button>
+                    <button class="btn make-order">@lang('frondend.cart.checkout_order')</button>
                 </div>
             </div>
             <div class="inner-pay-checkout-cart">
-                <button class="clear-list">Очистить список</button>
+                <button class="clear-list">@lang('frondend.cart.clear_list')</button>
                 <div class="all-items">
                     <div class="item">
                         <div class="product-img">
@@ -31,10 +31,10 @@
                         </div>
                         <!-- description -->
                         <div class="description ">
-                            <h6 class="title">Телевизор Samsung QE55Q77RAU</h6>
-                            <p class="sub-title">Телевизоры</p>
+                            <h6 class="title">@lang('frondend.cart.tv') Samsung QE55Q77RAU</h6>
+                            <p class="sub-title">@lang('frondend.cart.tvs')</p>
                             <div class="current-old-price horizontal">
-                                <h5 class="price">741 640 <span>сум</span></h5>
+                                <h5 class="price">741 640 <span>@lang('frondend.cart.sum')</span></h5>
                                 <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
                             </div>
                             <div class="count-div">
@@ -47,8 +47,8 @@
                                 <div class="like"><i class="mbfavorite"></i></div>
                             </div>
                             <div class="delivery-options">
-                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
-                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
+                                <div><i class="mbdelievery"></i> @lang('frondend.cart.delivery_in_day')</div>
+                                <div><i class="mbbox"></i>@lang('frondend.cart.callback_until_8_april')</div>
                             </div>
                             <p class="sub-title bottom">ООО “Malika Savdo”</p>
                         </div>
@@ -61,10 +61,10 @@
                         </div>
                         <!-- description -->
                         <div class="description ">
-                            <h6 class="title">Телевизор Samsung QE55Q77RAU</h6>
-                            <p class="sub-title">Телевизоры</p>
+                            <h6 class="title">@lang('frondend.cart.tv') Samsung QE55Q77RAU</h6>
+                            <p class="sub-title">@lang('frondend.cart.tvs')</p>
                             <div class="current-old-price horizontal">
-                                <h5 class="price">741 640 <span>сум</span></h5>
+                                <h5 class="price">741 640 <span>@lang('frondend.cart.sum')</span></h5>
                                 <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
                             </div>
                             <div class="count-div">
@@ -77,8 +77,8 @@
                                 <div class="like"><i class="mbfavorite"></i></div>
                             </div>
                             <div class="delivery-options">
-                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
-                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
+                                <div><i class="mbdelievery"></i>@lang('frondend.cart.delivery_in_day')</div>
+                                <div><i class="mbbox"></i>@lang('frondend.cart.callback_until_8_april')</div>
                             </div>
                             <p class="sub-title bottom">ООО “Malika Savdo”</p>
                         </div>
@@ -89,9 +89,9 @@
             </div>
         </div>
     </section>
-    
+
     <!-- u might also like -->
-    
+
 @endsection
 
 
