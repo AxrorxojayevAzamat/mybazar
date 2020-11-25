@@ -47,8 +47,8 @@
                                 <div class="like"><i class="mbfavorite"></i></div>
                             </div>
                             <div class="delivery-options">
-                                <div><i class="mbdelievery"></i> @lang('frondend.cart.delivery_in_day')</div>
-                                <div><i class="mbbox"></i>@lang('frondend.cart.callback_until_8_april')</div>
+                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
+                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
                             </div>
                             <p class="sub-title bottom">ООО “Malika Savdo”</p>
                         </div>
@@ -77,8 +77,8 @@
                                 <div class="like"><i class="mbfavorite"></i></div>
                             </div>
                             <div class="delivery-options">
-                                <div><i class="mbdelievery"></i>@lang('frondend.cart.delivery_in_day')</div>
-                                <div><i class="mbbox"></i>@lang('frondend.cart.callback_until_8_april')</div>
+                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
+                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
                             </div>
                             <p class="sub-title bottom">ООО “Malika Savdo”</p>
                         </div>

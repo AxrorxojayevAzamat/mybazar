@@ -53,13 +53,16 @@ $(document).ready(function () {
         })
         console.log(inputValue);
     });
-    cart.click(function () {
+
+    cart.click(function (e) {
+        e.preventDefault();
         console.log('click');
         $.ajax({
             url: 'api/cart',
             method: 'GET',
             success: function (data) {
                 let body_cart = '';
+                console.log(data.products.length);
                 for (let i = 0; i < data.products.length; i++){
                     body_cart += `<li class="item" >
             <div class='product-img'>
@@ -67,7 +70,7 @@ $(document).ready(function () {
             </div>
             <div class='description'>
                 <a href="#"><h5 class='title'>${data.products[i].name_uz}</h5></a>
-                <p class='price'>${data.products[i].name_uzs}</p>
+                <p class='price'>${data.products[i].price_uzs}</p>
             </div>
             <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
         </li>`;
