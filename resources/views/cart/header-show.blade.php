@@ -6,9 +6,9 @@
 
     </ul>
     <div class="bottom-btn">
-        <button class="btn bold switch-to-compare">
-            @lang('frontend.compare_products')
-        </button>
+        <a class="btn bold switch-to-compare" href="{{ route('cart') }}">
+            @lang('frontend.go_to_cart')
+        </a>
     </div>
 </div>
 {{--@endif--}}

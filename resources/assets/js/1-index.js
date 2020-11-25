@@ -11,6 +11,12 @@ $(document).ready(function () {
 
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
+        let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
+        XMLHttpRequest.prototype.send = function (data) {
+            this.setRequestHeader('X-CSRF-Token', token);
+            return send.apply(this, arguments);
+        };
+        // console.
         if (cart_product !== null) {
             console.log(cart_product);
             let cart_product_check = cart_product.split(',');
@@ -25,11 +31,7 @@ $(document).ready(function () {
             data.product_id = [];
             data.product_id = cart_product_check;
 
-            let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-            XMLHttpRequest.prototype.send = function (data) {
-                this.setRequestHeader('X-CSRF-Token', token);
-                return send.apply(this, arguments);
-            };
+
 
             $.ajax({
                 url: 'add-cart',

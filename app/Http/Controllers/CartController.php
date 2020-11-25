@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index(Request $request){
+
+
+        return view('cart.cart');
+    }
+
+
     public function add(Request $request)
     {
         $user = Auth::user();

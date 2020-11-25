@@ -1,4 +1,4 @@
-<input type="hidden" value="{{ Auth::user() }}" id="user_info">
+
 <div class="item">
     <div class="product-img">
         @if ($product->mainPhoto)
@@ -26,7 +26,7 @@
             <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
         </div>
         <div class="item-action-icons">
-            <div class="cart" onclick="addCart({{ $product->id }}, {{ Auth::user() }})" data-name="{{ $product->name }}"
+            <div class="cart" onclick="addCart({{ $product->id }})" data-name="{{ $product->name }}"
                  data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
                     class="mbcart"></i></div>
             <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
@@ -37,57 +37,3 @@
     </div>
 </div>
 
-
-<script>
-    function addCart(id, auth) {
-        console.log(auth);
-        let product_id = {};
-        product_id.data = [];
-        if (auth == undefined) {//adding cart for non-registered users
-
-        } else {//cart for registered users
-            product_id.product_id = id;
-
-
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                }
-            })
-
-            $.ajax({
-                url: 'add-cart',
-                method: 'POST',
-                data: product_id,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                }, error: function (data) {
-                    console.log(data);
-                }
-            })
-        }
-
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        //     }
-        // })
-        //
-        // $.ajax({
-        //     url: 'remove-cart',
-        //     method: 'POST',
-        //     data: product_id,
-        //     dataType: 'json',
-        //     success: function (data) {
-        //         console.log(data);
-        //     }, error: function (data) {
-        //         console.log(data);
-        //     }
-        // })
-
-    }
-
-    function nonRegisteredUsersCar
-</script>

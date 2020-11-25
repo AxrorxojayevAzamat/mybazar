@@ -137,6 +137,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('view/{id}', 'StoresController@view')->name('view');
     });
 
+    Route::get('cart-list', 'CartController@index')->name('cart');
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
