@@ -42,22 +42,23 @@ services:
       - magazin
 
   db:
+    build: docker/psql
     ports:
       - 11:5432
-    image: postgres:12.2-alpine
     container_name: magazin-db
     restart: unless-stopped
     volumes:
-      - /var/lib/postgresql/data
+      - ./storage/docker/psql:/var/lib/postgresql/data:cached
     environment:
       - POSTGRES_DB=magazin
-      - POSTGRES_USER=magazin
+      - POSTGRES_USER=dev_shop
       - POSTGRES_PASSWORD=magazin
     networks:
       - magazin
 
   node:
     image: node:14.1.0-alpine3.11
+    restart: unless-stopped
     volumes:
       - ./:/var/www/html/
     tty: true

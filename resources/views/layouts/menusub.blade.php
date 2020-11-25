@@ -3,6 +3,7 @@
 <ul class="dropdown-menu d2" aria-labelledby="navbarDropdown{{$category->id}}">
     @foreach($childrenCategories as $i => $child)
         <li class="nav-item dropdown">
+{{--            <img class="menu-discount-icon" src="{{$category->iconOriginal}}">--}}
             <a class="dropdown-item{{ count($child->children) ? ' first-dropdown' : '' }}" href="{{route('categories.show', products_path($child))}}">
                 {{ $child->name }}
             </a>
