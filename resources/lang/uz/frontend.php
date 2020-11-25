@@ -89,4 +89,8 @@ return [
         'shops' => 'Do\'konlar',
         'pay' => 'To\'lovlar',
     ],
+    'blogs' => 'Bloglar',
+    'videos' => 'Videolar',
+    'search_blogs' => 'Bloglarni qidirish',
+    'search_videos' => 'Videolarni qidirish',
 ];
