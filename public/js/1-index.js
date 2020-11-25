@@ -38,20 +38,8 @@ $(document).ready(function(){
         }
     });
 
-    // main search select 
     $('.select-main-search').niceSelect();
 
-     // show more on filter
-     $(".show-more").click( function () {
-        if($(this.previousSibling.previousSibling).hasClass("show-more-height")) {
-            $(this).text("Cкрыть");
-        } else {
-            $(this).text("Показать еще");
-        }
-        $(this.previousSibling.previousSibling).toggleClass("show-more-height");
-    }); 
-
-    // выбрать все в фильтре чекбокс
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
@@ -59,6 +47,16 @@ $(document).ready(function(){
             $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
         }
     });
+
+    
+    $("#showMore").click( function () {
+        if($(".panel .custom-control").hasClass("show-more-height")) {
+            $('#showMore').text("Показать еще");
+        } else {
+            $('#showMore').text("Показать меньше");
+        }
+        $(this.previousSibling.previousSibling).toggleClass("show-more-height");
+    }); 
 
     var acc = document.getElementsByClassName("accordion");
     var title_with_checkbox=document.getElementsByClassName("checkAll-label");
@@ -74,7 +72,6 @@ $(document).ready(function(){
             this.classList.toggle("active");
         });
     }
-
     for (var i = 0; i < title_with_checkbox.length; i++) {
         title_with_checkbox[i].addEventListener("click", function() {
         var panel = this.nextElementSibling;
@@ -88,7 +85,7 @@ $(document).ready(function(){
         });
     }
 
-// весь каталог 2 банера
+
     $('.d2').hover(
         function(){
             // When hover the #slide_img img hide the div.shadow
