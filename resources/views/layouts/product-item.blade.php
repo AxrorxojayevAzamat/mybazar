@@ -44,30 +44,7 @@
         let product_id = {};
         product_id.data = [];
         if (auth == undefined) {//adding cart for non-registered users
-            if (localStorage.getItem('product_id')) {
-                let cart_products = '';
-                let exist = false;
-                let product_id = localStorage.getItem('product_id')
-                let cart_product_check = product_id.split(',');
-                for (let i = 0; i <= cart_product_check.length; i++) {
-                    console.log('hello')
-                    if (cart_product_check[i] == id) {
-                        console.log('exists')
-                        exist = true;
-                    } else {
-                        console.log('loging')
-                    }
-                }
-                if (!exist) {
-                    cart_products += product_id;
-                    cart_products += id + ',';
-                    localStorage.setItem('product_id', cart_products + '');
-                } else {
-                    console.log('exist');
-                }
-            } else {
-                localStorage.setItem('product_id', id + ',');
-            }
+
         } else {//cart for registered users
             product_id.product_id = id;
 
@@ -111,4 +88,6 @@
         // })
 
     }
+
+    function nonRegisteredUsersCar
 </script>
