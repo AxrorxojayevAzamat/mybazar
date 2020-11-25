@@ -4,6 +4,7 @@
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
         <a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success mr-1">{{ trans('adminlte.store.add_worker') }}</a>
+        <a href="{{ route('admin.shop.store', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.product.add') }}</a>
         @if ($store->isOnModeration() && Gate::check('moderate-stores'))
             <form method="POST" action="{{ route('admin.stores.moderate', $store) }}" class="mr-1">
                 @csrf

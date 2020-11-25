@@ -3,7 +3,7 @@ use App\Services\Manage\StoreService;
 ?>
 <div class="all-filtered-shops">
     @foreach($stores as $store)
-        <div class="item ">
+        <div class="item">
             <div class="shop-name-logo">
                 <img src="{{ $store->logoThumbnail }}" alt="">
                 <div>
@@ -14,7 +14,7 @@ use App\Services\Manage\StoreService;
                 <?php $products = StoreService::fourProduct($store->id);?>
                 @foreach($products as $product)
                     <a href="{{ url('products/show/'.$product->id) }}"><img
-                            src="{{ $product->main_photo_thumbnail }}" alt=""></a>
+                            src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
                 @endforeach
             </div>
         </div>

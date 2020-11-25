@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\Cart;
 use App\Helpers\UserHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -41,6 +42,7 @@ use Eloquent;
  * @property UserFavorite[] $userFavorites
  * @property Product[] $favorites
  * @property Profile $profile
+ * @property Cart[] $cart
  * @property Network[] $networks
  *
  * @mixin Eloquent
@@ -390,6 +392,11 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->belongsToMany(Product::class, 'user_favorites', 'user_id', 'product_id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'id');
     }
 
     public function networks()
