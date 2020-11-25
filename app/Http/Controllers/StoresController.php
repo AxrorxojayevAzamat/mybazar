@@ -6,27 +6,23 @@ use App\Entity\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
+use App\Helpers\LanguageHelper;
+use DB;
 use Illuminate\Http\Request;
 
 class StoresController extends Controller
 {
-    public function index(Request $request,$order = null)
+    public function index(Request $request, $order = null)
     {
         $query = Store::where(['status' => Store::STATUS_ACTIVE]);
         if (!empty($request->get('shopName'))) {
-            $stores = $query->where('name_en', 'like', '%' . $request->get('shopName') . '%');
+            $selector = $query->where('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'ilike', '%' .$request->get('shopName'). '%');
+            $stores = $selector->paginate(12);
         }
-//        if ($order){
-//           switch ($order){
-//               case $order = 'price':
-//            $stores = $query->orderBy('price', 'desc');
-//           }
-//
-//        }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         $stores = $query->paginate(12);
         $categories = Category::where('parent_id', null)->get();
-        return view('stores.index', compact('stores', 'categories','recentProducts'));
+        return view('stores.index', compact('stores', 'categories', 'recentProducts'));
     }
 
     public function store($id)
