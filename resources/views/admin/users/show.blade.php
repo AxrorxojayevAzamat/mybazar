@@ -4,6 +4,12 @@
 
 <div class="d-flex flex-row mb-3">
     <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+    @if ($user->isManagerRoleRequested())
+        <form method="POST" action="{{ route('admin.users.request.manager-role.approve', $user) }}" class="mr-1">
+            @csrf
+            <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('frontend.manager.approve')</button>
+        </form>
+    @endif
     <form method="POST" action="{{ route('admin.users.destroy', $user) }}" class="mr-1">
         @csrf
         @method('DELETE')

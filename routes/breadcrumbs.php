@@ -264,6 +264,11 @@ Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('menu.users'), route('admin.users.index'));
 });
 
+Breadcrumbs::register('admin.users.requests', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.users.index');
+    $crumbs->push(trans('adminlte.user.requests'), route('admin.users.requests'));
+});
+
 Breadcrumbs::register('admin.users.create', function (Crumbs $crumbs) {
     $crumbs->parent('admin.users.index');
     $crumbs->push(trans('adminlte.create'), route('admin.users.create'));
