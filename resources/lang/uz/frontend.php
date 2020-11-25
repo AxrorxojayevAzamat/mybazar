@@ -99,4 +99,8 @@ return [
         'not_requested' => 'Foydalanuvchi so‘rov jo‘natmagan.',
         'approve' => 'Tasdiqlamoq',
     ],
+    'blogs' => 'Bloglar',
+    'videos' => 'Videolar',
+    'search_blogs' => 'Bloglarni qidirish',
+    'search_videos' => 'Videolarni qidirish',
 ];

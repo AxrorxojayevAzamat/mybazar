@@ -26,7 +26,7 @@
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
                         <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}" href="{{ route('categories.show', products_path($category)) }}">
-                            <img class="menu-discount-icon" src="{{$category->icon}}"> {{$category->name}}
+                            <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
                         </a>
 
                         @if(count($category->children))

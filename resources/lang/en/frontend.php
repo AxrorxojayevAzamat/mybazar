@@ -92,6 +92,10 @@ return [
         'shops' => 'Shops',
         'pay' => 'Payment',
     ],
+    'blogs' => 'Blogs',
+    'videos' => 'Videos',
+    'search_blogs' => 'Search blogs',
+    'search_videos' => 'Search videos',
 
     'manager' => [
         'request_manager_role' => 'Request manager role',
