@@ -7,6 +7,8 @@ use App\Entity\Shop\Cart;
 use App\Entity\Shop\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -16,8 +18,9 @@ class CartController extends Controller
 //        $cartProduct = Cart::where('user_id', '==', 'id');
 //        $cartProduct = Cart::all();
 
-        if (session('cart')){
-            $cartProduct = Product::whereIn('id', session('cart'));
+        if (session('product_id')){
+            dd('product id');
+            $cartProduct = Product::whereIn('id', session('product_id'));
             return response()->json([
                 'cartProduct' => $cartProduct->toArray(),
             ]);
@@ -49,4 +52,6 @@ class CartController extends Controller
 //    }
 
     }
+
+
 }

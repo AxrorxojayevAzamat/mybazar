@@ -9,7 +9,7 @@
         </div>
         <div class="outter-cart">
             <div class="ur-cart">
-                <h6>Ваша корзина</h6>
+                <h6>Ваша корзина {{ trans('frontend.') }}</h6>
                 <p class="first"> В корзине:<span> 2 шт.</span></p>
                 <p> Общий вес товаров:<span> 16 570 гр.</span></p>
                 <p> Скидка:<span class="sale"> 25%</span></p>
@@ -89,9 +89,9 @@
             </div>
         </div>
     </section>
-    
+
     <!-- u might also like -->
-    
+
 @endsection
 
 

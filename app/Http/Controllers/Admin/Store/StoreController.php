@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Store;
 
 use App\Entity\DeliveryMethod;
+use App\Entity\Discount;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
 use App\Entity\Store;
@@ -58,11 +59,12 @@ class StoreController extends Controller
     public function create()
     {
         $categories = ProductHelper::getCategoryList();
+        $discounts = Discount::orderByDesc('created_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods'));
+        return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods','discounts'));
     }
 
     public function show(Store $store)
@@ -83,9 +85,10 @@ class StoreController extends Controller
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $discounts = Discount::orderByDesc('created_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments', 'deliveryMethods'));
+        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments', 'deliveryMethods','discounts'));
     }
 
     public function update(UpdateRequest $request, Store $store)

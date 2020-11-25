@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Shop;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Discount;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
@@ -66,14 +67,19 @@ class ProductController extends Controller
         return view('admin.shop.products.index', compact('products', 'categories', 'stores', 'brands'));
     }
 
-    public function create()
+    public function create(Store $store)
     {
+        if ($store){
+            $discounts = ProductHelper::getDiscounts($store->id);
+        }else{
+            $discounts = [];
+            $store = null;
+        }
         $categories = ProductHelper::getCategoryList();
-        $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.create', compact('categories', 'stores', 'brands', 'marks'));
+        return view('admin.shop.products.create', compact('categories', 'store', 'brands', 'marks','discounts'));
     }
 
     public function store(CreateRequest $request)

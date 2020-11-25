@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Category;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\User\User;
 use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
@@ -185,6 +186,13 @@ class Store extends BaseModel
             return [];
         }
         return $categories->pluck('category_id')->toArray();
+    }
+
+    public function discountsList(): array
+    {
+       $storeDiscount= ShopDiscounts::where(['store_id'=>$this->id])->pluck('discount_id');
+        return Discount::whereIn('id', $storeDiscount)->pluck('id')->toArray();
+
     }
 
     public function marksList(): array

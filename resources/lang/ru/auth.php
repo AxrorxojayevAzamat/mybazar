@@ -16,6 +16,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'auth_by_network' => 'Авторизоваться по социальной сети',
     'username' => 'Имя пользователя',
     'email_or_phone' => 'Электронная почта или номер телефона',
     'email_phone_or_username' => 'Электронная почта, номер телефона или имя пользователя',

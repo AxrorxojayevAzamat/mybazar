@@ -26,7 +26,7 @@
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
                         <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}" href="{{ route('categories.show', products_path($category)) }}">
-                            <img class="menu-discount-icon" src="{{asset('images/discount.svg')}}"> {{$category->name}}
+                            <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
                         </a>
 
                         @if(count($category->children))
@@ -44,7 +44,6 @@
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
                 <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
                 <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
-{{--                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.stock') }}</a>--}}
                 <a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
                 <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
                 <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a>

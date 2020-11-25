@@ -29,7 +29,7 @@
             <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
         </div>
         <div class="item-action-icons">
-            <div class="cart" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
+            <div class="cart" onclick="addCart({{ $product->id }})" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
             <div class="libra" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbtocompare"></i></div>
@@ -43,3 +43,21 @@
     </div>
     <!-- end description -->
 </div>
+
+<script>
+    function addCart(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+</script>

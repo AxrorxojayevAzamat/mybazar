@@ -27,23 +27,27 @@ class UserService
 
     private $sms;
 
-    public function __construct(SmsSender $sms) {
+    public function __construct(SmsSender $sms)
+    {
         $this->sms = $sms;
     }
 
-    public function request($id, PhoneRequest $request) {
+    public function request($id, PhoneRequest $request)
+    {
         $user = $this->getUser($id);
 
         $user->requestPhoneVerification(Carbon::now(), $request['phone']);
-        config('sms.send_local') ? '' : $this->sms->send($request['phone'], 'Phone verification token: ');
+        config('sms.send_local') ?: $this->sms->send($request['phone'], 'Phone verification token: ');
     }
 
-    public function verify($id, PhoneVerifyRequest $request) {
+    public function verify($id, PhoneVerifyRequest $request)
+    {
         $user = $this->getUser($id);
         $user->verifyPhone($request['phone_verify_token'], Carbon::now(), $request['phone']);
     }
 
-    public function toggleAuth($id): bool {
+    public function toggleAuth($id): bool
+    {
         $user = $this->getUser($id);
         if ($user->isPhoneAuthEnabled()) {
             $user->disablePhoneAuth();
@@ -53,7 +57,8 @@ class UserService
         return $user->isPhoneAuthEnabled();
     }
 
-    public function findUsers(Request $request) {
+    public function findUsers(Request $request)
+    {
         /** @var User $user */
         $query = User::orderByDesc('id');
 
@@ -79,7 +84,35 @@ class UserService
         return $query;
     }
 
-    public function store(CreateRequest $request) {
+    public function findUsersRequested(Request $request)
+    {
+        /** @var User $user */
+        $query = User::where('manager_request_status', User::MANAGER_REQUESTED)->orderByDesc('updated_at');
+
+        if (!empty($value = $request->get('id'))) {
+            $query->where('id', $value);
+        }
+
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('email'))) {
+            $query->where('email', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+
+        if (!empty($value = $request->get('role'))) {
+            $query->where('role', $value);
+        }
+        return $query;
+    }
+
+    public function store(CreateRequest $request)
+    {
         /** @var User $user */
         $user = User::new($request['name'], $request['email'], $request['role'], $request['password']);
         if ($this->isProfile($request)) {
@@ -93,7 +126,8 @@ class UserService
         return $user;
     }
 
-    public function update($id, UpdateRequest $request) {
+    public function update($id, UpdateRequest $request)
+    {
         /** @var User $user */
         $user = User::findOrFail($id);
 
@@ -112,8 +146,8 @@ class UserService
         return $user;
     }
 
-    public function updateProfile($id, UpdateRequest $request): void {
-        /** @var User $user */
+    public function updateProfile($id, UpdateRequest $request): User
+    {
         $user = User::findOrFail($id);
 
         if (!$request->avatar) {
@@ -126,9 +160,18 @@ class UserService
 
             $this->uploadAvatar($user->id, $request->avatar, $imageName);
         }
+
+        return $user;
     }
 
-    public function changePassword(PasswordRequest $request) {
+    public function approveManagerRoleRequest(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->approveManagerRoleRequest();
+    }
+
+    public function changePassword(PasswordRequest $request)
+    {
 
 
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
@@ -142,18 +185,20 @@ class UserService
             return JsonHelper::badResponse('New Password cannot be same as your current password. Please choose a different password.');
         }
         //Change Password
-        $user           = Auth::user();
+        $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
         return JsonHelper::successResponse('Password changed successfully !');
     }
 
-    private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void {
+    private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void
+    {
         ImageHelper::saveThumbnail($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
         ImageHelper::saveOriginal($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
     }
 
-    private function isProfile(CreateRequest $request): bool {
+    private function isProfile(CreateRequest $request): bool
+    {
         $count = 0;
         $request['first_name'] ? $count++ : 0;
         $request['last_name'] ? $count++ : 0;
@@ -164,13 +209,14 @@ class UserService
         return $count;
     }
 
-    private function getUser($id): User {
+    private function getUser($id): User
+    {
         return User::findOrFail($id);
     }
 
-     public function addToFavorite(int $id, Request $request): UserFavorite
+    public function addToFavorite(int $id, Request $request): UserFavorite
     {
-         /** @var User $user */
+        /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
@@ -186,9 +232,10 @@ class UserService
             throw $e;
         }
     }
-     public function removeFromFavorite(int $id, Request $request): bool
+
+    public function removeFromFavorite(int $id, Request $request): bool
     {
-         /** @var User $user */
+        /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
@@ -200,6 +247,12 @@ class UserService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function requestManagerRole(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->requestManagerRole();
     }
 
 }

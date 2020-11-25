@@ -5,11 +5,10 @@
         </a>
     </div>
     <form action="/search" id="search-bar" class="search-bar form-control" method="GET">
-        <div class="input-with-tags">
-            <input name="search" id="search-input" class="main-search-bordered-input" type="search"
-                   placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput" value="{{ session('search') ? session('search') : '' }}">
-        </div>
-        <div class="autocomplete-tags">
+            <div class="input-with-tags">
+                <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+            </div>
+            <div class="autocomplete-tags">
                 <a href="#">
                     <div class="item with-icon">
                         <i class="mbsearch_resulticon"></i>
@@ -40,15 +39,14 @@
                         </div>
                         <i class="mbgotoresults_searchresulticon"></i>
                     </div>
-                </a> 
+                </a>
             </div>
-        <select class="form-control select-main-search">
-            @foreach ($gCategories as $category)
-                <option>{{ $category->name }}</option>
-            @endforeach
-        </select>
-        <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-
+            <select class="form-control select-main-search">
+                @foreach ($gCategories as $category)
+                    <option>{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <button class="search btn" type="submit"><i class="mbsearch"></i></button>
     </form>
     <div class="from-statistics-to-account">
         <ul class="navbar-right">
@@ -120,7 +118,7 @@
             </li>
             @else
             <li>
-                <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -133,12 +131,24 @@
 
                         {{ __('Favorites') }}
                     </a>
+
+                    @if(Auth::user()->isUser())
+                        <a
+                            class="dropdown-item" href="{{ route('user.manager.request') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('request-manager-form').submit();"
+                        >@lang('frontend.manager.request_manager_role')</a>
+
+                        <form id="request-manager-form" action="{{ route('user.manager.request') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+
                     <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

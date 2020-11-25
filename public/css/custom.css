@@ -8,7 +8,7 @@
     src: url("../fonts/CERAPRO-REGULAR.TTF");
     font-weight: normal;
 }
-  
+
 @keyframes loader {
     0% { transform: rotate(0deg);}
     25% { transform: rotate(180deg);}
@@ -55,9 +55,9 @@
 
 /* content */
 
-.dropdown-menu > li a:hover img.menu-discount-icon, .dropdown-menu > li.show:hover img.menu-discount-icon, .dropdown-menu > li.show > a:hover img.menu-discount-icon {
-    content: url('../images/discount_hover.svg');
-}
+/*.dropdown-menu > li a:hover img.menu-discount-icon, .dropdown-menu > li.show:hover img.menu-discount-icon, .dropdown-menu > li.show > a:hover img.menu-discount-icon {*/
+/*    content: url('../images/discount_hover.svg');*/
+/*}*/
 .dropdown-menu > li a:hover img.menu-tv-icon, .dropdown-menu > li.show:hover img.menu-tv-icon, .dropdown-menu > li.show > a:hover img.menu-tv-icon {
     content: url('../images/tv_hover.svg');
 }
@@ -91,9 +91,9 @@
 .dropdown-menu > li a:hover img.menu-auto-icon, .dropdown-menu > li.show:hover img.menu-auto-icon, .dropdown-menu > li.show > a:hover img.menu-auto-icon {
     content: url('../images/auto_hover.svg');
 }
-img.menu-discount-icon:hover {
-    content: url('../images/discount_hover.svg');
-}
+/*img.menu-discount-icon:hover {*/
+/*    content: url('../images/discount_hover.svg');*/
+/*}*/
 img.menu-tv-icon:hover {
     content: url('../images/tv_hover.svg');
 }
@@ -132,7 +132,7 @@ img.menu-auto-icon:hover {
 }
 form.big-filter-without-title-checkbox button:after {
     content: url("../images/gotoresults_searchresulticon.svg");
-}  
+}
 #carouselIndex .carousel-control-prev-icon {
     background:url("../images/slider_prev.svg");
 }
