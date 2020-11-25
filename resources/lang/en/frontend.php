@@ -93,4 +93,13 @@ return [
         'pay' => 'Payment',
     ],
 
+    'manager' => [
+        'request_manager_role' => 'Request manager role',
+        'already_requested' => 'You have already requested.',
+        'already_approved' => 'You have already approved.',
+        'not_user' => 'You are not an user.',
+        'requested_successfully' => 'Your request is sent successfully.',
+        'not_requested' => 'User did not requested.',
+        'approve' => 'Approve',
+    ],
 ];

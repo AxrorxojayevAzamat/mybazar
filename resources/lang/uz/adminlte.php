@@ -127,6 +127,7 @@ return [
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
         'role_manager' => 'Meneger',
+        'requests' => 'Menejer roliga so`rovlar',
     ],
 
     'category' => [
