@@ -118,7 +118,7 @@
             </li>
             @else
             <li>
-                <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -131,12 +131,24 @@
 
                         {{ __('Favorites') }}
                     </a>
+
+                    @if(Auth::user()->isUser())
+                        <a
+                            class="dropdown-item" href="{{ route('user.manager.request') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('request-manager-form').submit();"
+                        >@lang('frontend.manager.request_manager_role')</a>
+
+                        <form id="request-manager-form" action="{{ route('user.manager.request') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+
                     <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

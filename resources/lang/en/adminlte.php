@@ -127,6 +127,7 @@ return [
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
         'role_manager' => 'Manager',
+        'requests' => 'Manager role requests',
     ],
 
     'category' => [

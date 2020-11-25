@@ -5,7 +5,9 @@ namespace App\Helpers;
 
 
 use App\Entity\Category;
+use App\Entity\Discount;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopDiscounts;
 
 class ProductHelper
 {
@@ -24,15 +26,15 @@ class ProductHelper
     {
         switch ($status) {
             case Product::STATUS_DRAFT:
-                return '<span class="badge badge-secondary">'. trans('adminlte.draft') . '</span>';
+                return '<span class="badge badge-secondary">' . trans('adminlte.draft') . '</span>';
             case Product::STATUS_MODERATION:
-                return '<span class="badge badge-warning">'. trans('adminlte.product.moderation') . '</span>';
+                return '<span class="badge badge-warning">' . trans('adminlte.product.moderation') . '</span>';
             case Product::STATUS_ACTIVE:
-                return '<span class="badge badge-success">'. trans('adminlte.product.active') . '</span>';
+                return '<span class="badge badge-success">' . trans('adminlte.product.active') . '</span>';
             case Product::STATUS_CLOSED:
-                return '<span class="badge badge-danger">'. trans('adminlte.product.closed') . '</span>';
+                return '<span class="badge badge-danger">' . trans('adminlte.product.closed') . '</span>';
             case Product::STATUS_DRAFT_CATEGORY_SPLITTED:
-                return '<span class="badge badge-danger">'. trans('adminlte.category_splitted') . '</span>';
+                return '<span class="badge badge-danger">' . trans('adminlte.category_splitted') . '</span>';
             default:
                 return '<span class="badge badge-danger">Default</span>';
         }
@@ -51,5 +53,11 @@ class ProductHelper
             $categoryIds[$category->id] = $name . $category->name;
         }
         return $categoryIds;
+    }
+
+    public static function getDiscounts($value)
+    {
+        $discountStore = ShopDiscounts::where(['store_id' => $value])->pluck('discount_id');
+        return Discount::whereIn('id', $discountStore)->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id')->toArray();
     }
 }

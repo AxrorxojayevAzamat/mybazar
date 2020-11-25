@@ -16,6 +16,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property int[] $delivery_methods
  * @property int[] $marks
  * @property int[] $categories
+ * @property int[] $discounts
  */
 class CreateRequest extends FormRequest
 {
@@ -36,6 +37,7 @@ class CreateRequest extends FormRequest
             'delivery_methods.*' => 'numeric|min:1|exists:delivery_methods,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
             'categories.*' => 'numeric|min:1|exists:categories,id',
+            'discounts.*' => 'numeric|min:1|exists:discounts,id',
             'cost' => 'numeric',
         ];
     }

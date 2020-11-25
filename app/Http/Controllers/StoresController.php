@@ -10,12 +10,19 @@ use Illuminate\Http\Request;
 
 class StoresController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,$order = null)
     {
         $query = Store::where(['status' => Store::STATUS_ACTIVE]);
         if (!empty($request->get('shopName'))) {
             $stores = $query->where('name_en', 'like', '%' . $request->get('shopName') . '%');
         }
+//        if ($order){
+//           switch ($order){
+//               case $order = 'price':
+//            $stores = $query->orderBy('price', 'desc');
+//           }
+//
+//        }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         $stores = $query->paginate(12);
         $categories = Category::where('parent_id', null)->get();

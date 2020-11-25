@@ -2,7 +2,9 @@
 
 namespace App\Services\Manage;
 
+use App\Entity\Discount;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreDeliveryMethod;
 use App\Entity\StoreUser;
@@ -36,11 +38,11 @@ class StoreService
 
             $imageName = ImageHelper::getRandomName($request->logo);
             $store = Store::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
-
             $this->addCategories($store, $request->categories);
             $this->addMarks($store, $request->marks);
             $this->addPayments($store, $request->payments);
             $this->addDeliveryMethods($store, $request->delivery_methods, $request->cost, $request->sort);
+            $this->addDiscounts($store, $request->discounts);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -152,6 +154,15 @@ class StoreService
         $payments = array_unique($payments);
         foreach ($payments as $i => $paymentId) {
             $store->storePayments()->create(['payment_id' => $paymentId]);
+        }
+    }
+
+    private function addDiscounts(Store $store, array $discounts): void
+    {
+        $shopDiscounts = new ShopDiscounts();
+        $discounts = array_unique($discounts);
+        foreach ($discounts as $i => $discount) {
+            $shopDiscounts->create(['store_id' => $store->id,'discount_id' => $discount]);
         }
     }
 

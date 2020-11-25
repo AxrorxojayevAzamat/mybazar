@@ -89,6 +89,16 @@ return [
         'shops' => 'Магазины',
         'pay' => 'Оплата',
     ],
+
+    'manager' => [
+        'request_manager_role' => 'Запросить роль менеджера',
+        'already_requested' => 'Вы уже отправили запрос.',
+        'already_approved' => 'Ваш запрос уже одобрен.',
+        'not_user' => 'Вы не простой пользователь.',
+        'requested_successfully' => 'Ваш запрос успешно отправлен.',
+        'not_requested' => 'Пользователь не отправлял запрос.',
+        'approve' => 'Утвердить',
+    ],
     'blogs' => 'Блоги',
     'videos' => 'Видеоролики',
     'search_blogs' => 'Поиск по блогам',

@@ -2,6 +2,7 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\Cart;
 use App\Helpers\UserHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -34,12 +35,14 @@ use Eloquent;
  * @property boolean $phone_auth
  * @property string $role
  * @property string $status
+ * @property int $manager_request_status
  *
  * @property StoreUser $storeWorker
  * @property Store $store
  * @property UserFavorite[] $userFavorites
  * @property Product[] $favorites
  * @property Profile $profile
+ * @property Cart[] $cart
  * @property Network[] $networks
  *
  * @mixin Eloquent
@@ -59,9 +62,13 @@ class User extends Authenticatable
     const ROLE_ADMIN = 'administrator';
     const ROLE_MANAGER = 'manager';
 
+    const MANAGER_NOT_REQUESTED = 0;
+    const MANAGER_REQUESTED = 1;
+    const MANAGER_REQUEST_APPROVED = 2;
+
     protected $fillable = [
         'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role', 'phone_verified',
-        'phone_verify_token', 'phone_verify_token_expire',
+        'phone_verify_token', 'phone_verify_token_expire', 'manager_request_status',
     ];
 
     protected $hidden = [
@@ -150,6 +157,41 @@ class User extends Authenticatable
             'identity' => $identity,
             'emails_json' => $email ? [$email] : null,
             'phones_json' => $phone ? [$phone] : null,
+        ]);
+    }
+
+    public function requestManagerRole(): void
+    {
+        if ($this->manager_request_status === self::MANAGER_REQUESTED) {
+            throw new \DomainException(trans('frontend.manager.already_requested'));
+        }
+
+        if ($this->manager_request_status === self::MANAGER_REQUEST_APPROVED) {
+            throw new \DomainException(trans('frontend.manager.already_approved'));
+        }
+
+        if ($this->role !== self::ROLE_USER) {
+            throw new \DomainException(trans('frontend.manager.not_user'));
+        }
+
+        $this->update([
+            'manager_request_status' => self::MANAGER_REQUESTED,
+        ]);
+    }
+
+    public function approveManagerRoleRequest(): void
+    {
+        if ($this->manager_request_status === self::MANAGER_REQUEST_APPROVED || $this->role === self::ROLE_MANAGER) {
+            throw new \DomainException(trans('frontend.manager.already_approved'));
+        }
+
+        if ($this->manager_request_status !== self::MANAGER_REQUESTED) {
+            throw new \DomainException(trans('frontend.manager.not_requested'));
+        }
+
+        $this->update([
+            'manager_request_status' => self::MANAGER_REQUEST_APPROVED,
+            'role' => self::ROLE_MANAGER,
         ]);
     }
 
@@ -301,6 +343,11 @@ class User extends Authenticatable
         return (bool)$this->phone_auth;
     }
 
+    public function isManagerRoleRequested(): bool
+    {
+        return $this->manager_request_status === self::MANAGER_REQUESTED && $this->role === self::ROLE_USER;
+    }
+
     public function haveBoughtProduct(int $productId): bool
     {
         return OrderItem::select('shop_order_items.*')
@@ -345,6 +392,11 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->belongsToMany(Product::class, 'user_favorites', 'user_id', 'product_id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'id');
     }
 
     public function networks()

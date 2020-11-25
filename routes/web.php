@@ -20,6 +20,9 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::post('add-cart', 'CartController@add');
+Route::post('remove-cart', 'CartController@remove');
+
 Route::group(['as' => 'user.','namespace' => 'User'], function () {
     Route::post('/change-password','ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
@@ -55,6 +58,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::post('verify/phone', 'Auth\RegisterController@verifyPhone')->name('verify.phone');
     Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
     Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
+
+    Route::post('profile/request-manager-role', 'User\ProfileController@requestManagerRole')->name('user.manager.request');
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
@@ -131,6 +136,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('{store}', 'StoresController@store')->name('show');
         Route::get('view/{id}', 'StoresController@view')->name('view');
     });
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
@@ -176,9 +182,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::get('', 'HomeController@index')->name('home');
+
+    Route::get('users/manager-role-requests', 'UserController@requestsIndex')->name('users.requests');
     Route::resource('users', 'UserController');
     Route::group(['prefix' => 'users/{user}', 'as' => 'users.'], function () {
         Route::post('remove-avatar', 'UserController@removeAvatar')->name('remove-avatar');
+        Route::post('approve-manager-request', 'UserController@approveManagerRoleRequest')->name('request.manager-role.approve');
     });
 
     Route::resource('categories', 'CategoryController');
@@ -195,6 +204,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
         Route::resource('products', 'ProductController');
         Route::resource('marks', 'MarkController');
+        Route::get('{store}/store', 'ProductController@create')->name('store');
 
         Route::resource('characteristic-groups', 'CharacteristicGroupController');
         Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {
