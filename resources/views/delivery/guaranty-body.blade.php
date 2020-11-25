@@ -10,9 +10,9 @@
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn " type="button" data-toggle="collapse" data-target="#guarantyCollapseOne" aria-expanded="true" aria-controls="guarantyCollapseOne">
-                            Гарантия качества
+                            @lang('frontend.guaranty.btn1')
                         </button>
-                        <p>Согласно предыдущему, принцип восприятия неестественно притягивает комплексный анализ ситуации.</p> 
+                        <p>@lang('frontend.guaranty.p1')</p>
                     </h2>
                 </div>
                 <div id="guarantyCollapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#guarantyCollapse">
@@ -37,9 +37,9 @@
                 <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#guarantyCollapseTwo" aria-expanded="true" aria-controls="guarantyCollapseTwo">
-                            Условия гарантии
+                            @lang('frontend.guaranty.btn2')
                         </button>
-                        <p>Мониторинг активности неоднозначен. Пул лояльных изданий охватывает формирование имиджа.</p> 
+                        <p>@lang('frontend.guaranty.p2')</p>
                     </h2>
                 </div>
                 <div id="guarantyCollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#guarantyCollapse">
@@ -64,10 +64,9 @@
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#guarantyCollapseThree" aria-expanded="true" aria-controls="guarantyCollapseThree">
-                            Гарантия ремонта или замены товара за 72 часа
+                            @lang('frontend.guaranty.btn3')
                         </button>
-                        <p>Жизненный цикл продукции, безусловно, вполне вероятен. <br>
-Маркетингово-ориентированное издание изменяет коллективный анализ рыночных цен. </p> 
+                        <p>@lang('frontend.guaranty.p3')</p>
                     </h2>
                 </div>
                 <div id="guarantyCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#guarantyCollapse">
@@ -92,10 +91,9 @@
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#guarantyCollapseThree" aria-expanded="true" aria-controls="guarantyCollapseThree">
-                            Качественное гарантийное обслуживание
+                            @lang('frontend.guaranty.btn4')
                         </button>
-                        <p>Узнавание бренда методически определяет креативный департамент маркетинга и продаж. <br>
-                            Коммуникация, пренебрегая деталями, синхронизирует анализ зарубежного опыта. </p> 
+                        <p>@lang('frontend.guaranty.p4')</p>
                     </h2>
                 </div>
                 <div id="guarantyCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#guarantyCollapse">

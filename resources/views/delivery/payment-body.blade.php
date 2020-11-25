@@ -10,13 +10,13 @@
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn " type="button" data-toggle="collapse" data-target="#paymentCollapseOne" aria-expanded="true" aria-controls="paymentCollapseOne">
-                            Онлайн-оплата банковскими картами 
+                            @lang('frontend.payment.btn1')
                             <div class="cart-logos">
                                 <img src="{{asset('images/cart-logo1.png')}}" alt="">
                                 <img src="{{asset('images/cart-logo2.png')}}" alt="">
                             </div>
                         </button>
-                        <p>Согласно предыдущему, принцип восприятия неестественно притягивает комплексный анализ ситуации.</p> 
+                        <p>@lang('frontend.payment.p1')</p>
                     </h2>
                 </div>
                 <div id="paymentCollapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#paymentCollapse">
@@ -41,13 +41,13 @@
                 <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#paymentCollapseTwo" aria-expanded="true" aria-controls="paymentCollapseTwo">
-                          Оплата банковской картой при получении заказа 
+                            @lang('frontend.payment.btn2')
                           <div class="cart-logos">
                                 <img src="{{asset('images/cart-logo1.png')}}" alt="">
                                 <img src="{{asset('images/cart-logo2.png')}}" alt="">
                             </div>
                         </button>
-                        <p>Мониторинг активности неоднозначен. Пул лояльных изданий охватывает формирование имиджа.</p> 
+                        <p>@lang('frontend.payment.p2')</p>
                     </h2>
                 </div>
                 <div id="paymentCollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#paymentCollapse">
@@ -72,15 +72,14 @@
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#paymentCollapseThree" aria-expanded="true" aria-controls="paymentCollapseThree">
-                            Онлайн оплата банковскими картами
+                            @lang('frontend.payment.btn4')
                             <div class="cart-logos">
                                 <img src="{{asset('images/cart-logo3.png')}}" alt="">
                                 <img src="{{asset('images/cart-logo4.png')}}" alt="">
                                 <img src="{{asset('images/cart-logo5.png')}}" alt="">
                             </div>
                         </button>
-                        <p>Жизненный цикл продукции, безусловно, вполне вероятен. <br>
-                            Маркетингово-ориентированное издание изменяет коллективный анализ рыночных цен. </p> 
+                        <p>@lang('frontend.payment.p4') </p>
                     </h2>
                 </div>
                 <div id="paymentCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#paymentCollapse">
@@ -105,10 +104,9 @@
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#paymentCollapseThree" aria-expanded="true" aria-controls="paymentCollapseThree">
-                            Наличный и безналичный расчет
+                            @lang('frontend.payment.btn3')
                         </button>
-                        <p>Узнавание бренда методически определяет креативный департамент маркетинга и продаж. <br>
-                            Коммуникация, пренебрегая деталями, синхронизирует анализ зарубежного опыта. </p> 
+                        <p>@lang('frontend.payment.p3') </p>
                     </h2>
                 </div>
                 <div id="paymentCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#paymentCollapse">

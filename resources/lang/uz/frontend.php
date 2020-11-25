@@ -147,6 +147,46 @@ return [
         'in_detail' => 'Batafsil',
     ],
 
+    'delivery' => [
+        'delivery' => 'Yetkazib berish',
+        'warranty' => 'Kafolat',
+        'payment' => 'To\'lov',
+        'btn1' => 'Kurerlik xizmati orqali etkazib berish',
+        'p1' => 'Maykl Meskon ta\'kidlaganidek, jamoatchilikni rag\'batlantirish murakkab reytinglarni o\'zgartirmoqda',
+        'btn2' => 'Do\'konlarga etkazib berish',
+        'p2' => 'Mahsulotning hayotiy tsikli korporativ identifikatsiyani keltirib chiqaradi. <br>
+                                 Raqobatchi raqobatbardosh. Yuqoridagi misollarni umumlashtirish uchun PR, faoliyatni monitoringini neytrallashtiradi.',
+        'btn3' => '"O\'zbekiston pochtasi" AJ',
+        'p3' => 'Hayot darajasini noto\'g\'ri ko\'tarish rol o\'ynaydigan mahsulot turlarini yaratadi. <br>
+                                 Mahsulot xarajatlaridan qat\'i nazar, konstruktiv maqsadli trafikni targ\'ib qiladi. <br>
+                                 OAV avtoritetni hisobga olmasdan, an\'anaviy ijodiy kanalni muvozanatlashtiradi. ',
+    ],
+
+    'guaranty' => [
+        'btn1' => 'Sifat tekshiruvi',
+        'p1' => 'Oldingisiga ko\'ra, idrok printsipi g\'ayritabiiy ravishda vaziyatni har tomonlama tahlil qilishni o\'ziga jalb qiladi.',
+        'btn2' => 'Kafolat shartlari',
+        'p2' => 'Faoliyat monitoringi noaniq. Sadoqatli nashrlar havzasi imidjning shakllanishini qamrab oladi.',
+        'btn3' => '72 soat ichida tovarlarni ta\'mirlash yoki almashtirish kafolati',
+        'p3' => 'Mahsulotning hayotiy tsikli, albatta, juda mumkin. <br>
+                 Marketingga yo\'naltirilgan nashr bozor narxlarining kollektiv tahlilini o\'zgartirmoqda. ',
+        'btn4' => 'Sifat kafolati xizmati',
+        'p4' => 'Tovar xabardorligi ijodiy marketing va savdo bo\'limini uslubiy ravishda belgilaydi. <br>
+                Aloqa, tafsilotlarni e\'tiborsiz qoldirish, chet el tajribasini tahlil qilishni sinxronizatsiya qiladi.',
+    ],
+
+    'payment' => [
+        'btn1' => 'Bank kartalari orqali onlayn to\'lov',
+        'p1' => 'Oldingisiga ko\'ra, idrok printsipi g\'ayritabiiy ravishda vaziyatni har tomonlama tahlil qilishni o\'ziga jalb qiladi.',
+        'btn2' => 'Buyurtmani olgandan keyin kredit karta orqali to\'lov',
+        'p2' => 'Faoliyat monitoringi noaniq. Sadoqatli nashrlar havzasi imidjning shakllanishini qamrab oladi.',
+        'btn3' => 'Bank kartalari orqali onlayn to\'lov',
+        'p3' => 'Mahsulotning hayotiy tsikli, albatta, juda mumkin. <br>
+                 Marketingga yo\'naltirilgan nashr bozor narxlarining kollektiv tahlilini o\'zgartirmoqda. ',
+        'btn4' => 'Naqd va naqdsiz to\'lovlar',
+        'p4' => 'Tovar xabardorligi ijodiy marketing va savdo bo\'limini uslubiy ravishda belgilaydi. <br>
+                Aloqa, tafsilotlarni e\'tiborsiz qoldirish, chet el tajribasini tahlil qilishni sinxronizatsiya qiladi.',
+    ],
     'blogs' => 'Bloglar',
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',
