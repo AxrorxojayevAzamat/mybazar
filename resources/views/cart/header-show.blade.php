@@ -6,9 +6,11 @@
 
     </ul>
     <div class="bottom-btn">
-        <a class="btn bold switch-to-compare" href="{{ route('cart') }}">
-            @lang('frontend.go_to_cart')
-        </a>
+{{--        <form action="/cart-list" method="GET" id="goToCart">--}}
+            <a class="btn bold switch-to-compare" href="{{ route('cart') }}">
+                @lang('frontend.go_to_cart')
+            </a>
+{{--        </form>--}}
     </div>
 </div>
 {{--@endif--}}

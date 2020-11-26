@@ -85,6 +85,10 @@ $(document).ready(function () {
         });
     });
 
+    // $('#goToCart').submit(function (){
+    //     console.log('submit');
+    // })
+
 
 
 });
