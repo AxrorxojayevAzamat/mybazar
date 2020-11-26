@@ -38,7 +38,6 @@ class ProductController extends Controller
         $storeIds = [];
         if (Auth::user()->isManager()) {
             $storeIds = StoreUser::where('user_id', Auth::id())->pluck('store_id')->toArray();
-            $query->where('created_by', Auth::id());
         }
 
         if (!empty($value = $request->get('name'))) {
