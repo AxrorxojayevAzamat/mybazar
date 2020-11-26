@@ -14,6 +14,7 @@ use App\Http\Requests\User\PhoneRequest;
 use App\Http\Requests\User\PasswordRequest;
 use App\Services\Sms\SmsSender;
 use App\Services\User\UserService;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -91,5 +92,62 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    public function addEmailShow(Request $request)
+    {
+        return view('user.add-email');
+    }
+
+    public function addPhoneShow(Request $request)
+    {
+        return view('user.add-phone');
+    }
+
+    public function addEmail(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|max:50',
+        ]);
+
+        $email = $request['email'];
+
+        $this->service->addEmail(Auth::id(), $email);
+
+        return redirect()->route('profile.email.verification');
+    }
+
+    public function addPhone(Request $request)
+    {
+        $this->validate($request, [
+            'phone' => ['required', 'string', 'regex:/^\+?998[0-9]{9}$/'],
+        ]);
+
+        $phone = trim($request['phone'], '+');
+
+        $this->service->addPhone(Auth::id(), $phone);
+
+        return redirect()->route('profile.phone.verification');
+    }
+
+    public function phone()
+    {
+        $session = Session::get('auth');
+        if (!$session || !$phone = $session['phone_number']) {
+            return redirect()->route('register')->with('error', trans('auth.phone_not_found'));
+        }
+
+        return view('auth.verify-phone', compact('phone'));
+    }
+
+    public function email()
+    {
+        $session = Session::get('auth');
+        if (!$session || !$email = $session['email']) {
+            return redirect()->route('register')->with('error', trans('auth.email_not_found'));
+        }
+
+        return view('auth.verify-email', compact('email'));
+    }
+
 
 }

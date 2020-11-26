@@ -4,8 +4,14 @@
 
 <div class="d-flex flex-row mb-3">
     <a href="{{ route('user.setting', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+    @if (!$user->email)
+        <a href="{{ route('profile.add-email-show') }}" class="btn btn-primary mr-1">{{ trans('auth.add_email') }}</a>
+    @endif
+    @if (!$user->phone)
+        <a href="{{ route('profile.add-phone-show') }}" class="btn btn-primary mr-1">{{ trans('auth.add_phone') }}</a>
+    @endif
     @if (!$user->isManagerRoleRequested() && !$user->isManager())
-        <form method="POST" action="{{ route('user.manager.request', $user) }}" class="mr-1">
+        <form method="POST" action="{{ route('profile.manager.request', $user) }}" class="mr-1">
             @csrf
             <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('frontend.manager.request_manager_role')</button>
         </form>

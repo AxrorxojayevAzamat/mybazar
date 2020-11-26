@@ -59,7 +59,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
     Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
-    Route::post('profile/request-manager-role', 'User\ProfileController@requestManagerRole')->name('user.manager.request');
+    Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'User'], function () {
+        Route::get('add-email', 'ProfileController@addEmailShow')->name('add-email-show');
+        Route::get('add-phone', 'ProfileController@addPhoneShow')->name('add-phone-show');
+        Route::post('add-email', 'ProfileController@addEmail')->name('add-email');
+        Route::post('add-phone', 'ProfileController@addPhone')->name('add-phone');
+        Route::get('verify/email', 'ProfileController@email')->name('email.verification');
+        Route::get('verify/phone', 'ProfileController@phone')->name('phone.verification');
+
+        Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
+    });
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
