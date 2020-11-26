@@ -35,6 +35,10 @@ use Eloquent;
  * @property boolean $phone_auth
  * @property string $role
  * @property string $status
+ * @property bool $email_verified
+ * @property Carbon $email_verified_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property int $manager_request_status
  *
  * @property StoreUser $storeWorker
@@ -68,7 +72,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role', 'phone_verified',
-        'phone_verify_token', 'phone_verify_token_expire', 'manager_request_status',
+        'phone_verify_token', 'phone_verify_token_expire', 'manager_request_status', 'email_verified_at', 'email_verified'
     ];
 
     protected $hidden = [
@@ -76,6 +80,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'email_verified' => 'boolean',
+        'email_verified_at' => 'datetime',
         'phone_verified' => 'boolean',
         'phone_verify_token_expire' => 'datetime',
         'phone_auth' => 'boolean',
@@ -230,15 +236,6 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function unverifyPhone(): void
-    {
-        $this->phone_verified = false;
-        $this->phone_verify_token = null;
-        $this->phone_verify_token_expire = null;
-        $this->phone_auth = false;
-        $this->saveOrFail();
-    }
-
     public function requestPhoneVerification(): void
     {
         $this->update([
@@ -252,6 +249,34 @@ class User extends Authenticatable
     {
         $this->update([
             'verify_token' => Str::uuid(),
+        ]);
+    }
+
+    public function requestEmailAddVerification(string $email): void
+    {
+        if ($this->email && $this->email_verified) {
+            throw new \DomainException(trans('auth.email_already_added'));
+        }
+
+        $this->update([
+            'email' => $email,
+            'email_verified' => false,
+            'email_verified_at' => null,
+            'verify_token' => Str::uuid(),
+        ]);
+    }
+
+    public function requestPhoneAddVerification(string $phone): void
+    {
+        if ($this->phone && $this->phone_verified) {
+            throw new \DomainException(trans('auth.phone_already_added'));
+        }
+
+        $this->update([
+            'phone' => $phone,
+            'phone_verified' => false,
+            'phone_verify_token' => (string)random_int(10000, 99999),
+            'phone_verify_token_expire' => Carbon::now()->copy()->addSeconds(config('sms.phone_verify_token_expire')),
         ]);
     }
 
@@ -282,6 +307,8 @@ class User extends Authenticatable
         $this->update([
             'status' => self::STATUS_ACTIVE,
             'verify_token' => null,
+            'email_verified' => true,
+            'email_verified_at' => Carbon::now(),
         ]);
     }
 

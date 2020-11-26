@@ -19,6 +19,9 @@ class LoginController extends Controller
 
     protected $redirectTo = '/';
 
+    private $isEmail = false;
+    private $isPhone = false;
+
     public function __construct()
     {
         session(['url.intended' => url()->previous()]);
@@ -66,9 +69,11 @@ class LoginController extends Controller
 
         if (UserHelper::isEmail($emailOrPhone)) {
             $username = 'email';
+            $this->isEmail = true;
         } elseif (UserHelper::isPhoneNumber($emailOrPhone)) {
             $emailOrPhone = trim($emailOrPhone, '+');
             $username = 'phone';
+            $this->isPhone = true;
         } else {
             $username = 'name';
         }
@@ -83,12 +88,21 @@ class LoginController extends Controller
     {
         if ($user->isWait()) {
             $this->guard()->logout();
-            if ($user->email && $user->verify_token) {
+
+            if ($this->isEmail && $user->verify_token) {
                 return back()->with('error', trans('auth.need_to_confirm_email'));
-            } elseif ($user->phone) {
+            } elseif ($this->isPhone) {
                 return back()->with('error', trans('auth.verify_your_phone'));
             }
+
             return back()->with('error', trans('auth.account_not_verified'));
+        } else if ($user->isActive()) {
+            if ($this->isEmail && !$user->email_verified) {
+                return back()->with('error', trans('auth.email_not_verified'));
+            } else if ($this->isPhone && !$user->phone_verified) {
+                return back()->with('error', trans('auth.phone_not_verified'));
+
+            }
         }
 //        if ($user->isPhoneAuthEnabled()) {
 //            Auth::logout();

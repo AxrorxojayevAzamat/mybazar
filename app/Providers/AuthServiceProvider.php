@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Entity\Shop\Product;
+use App\Entity\Store;
 use App\Entity\User\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -32,7 +34,15 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator() || $user->isManager();
         });
 
-        Gate::define('moderate-stores', function (User $user) {
+        Gate::define('show-own-store', function (User $user, Store $store) {
+            return $user->isAdmin() || $user->isModerator() || $user->storeWorker()->where('store_id', $store->id)->exists();
+        });
+
+        Gate::define('edit-own-store', function (User $user, Store $store) {
+            return $user->isAdmin() || $user->storeWorker()->where('store_id', $store->id)->exists();
+        });
+
+        Gate::define('alter-stores-status', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
@@ -50,6 +60,22 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('manage-shop-products', function (User $user) {
             return $user->isAdmin() || $user->isModerator() || $user->isManager();
+        });
+
+        Gate::define('show-own-product', function (User $user, Product $product) {
+            return $user->isAdmin() || $user->isModerator() || in_array($product->store_id, $user->storeWorker()->pluck('store_id')->toArray());
+        });
+
+        Gate::define('edit-own-product', function (User $user, Product $product) {
+            return $user->isAdmin() || in_array($product->store_id, $user->storeWorker()->pluck('store_id')->toArray());
+        });
+
+        Gate::define('close-own-product', function (User $user, Product $product) {
+            return $user->isAdmin() || $user->isModerator() || in_array($product->store_id, $user->storeWorker()->pluck('id')->toArray());
+        });
+
+        Gate::define('alter-products-status', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
         });
 
         Gate::define('manage-shop-characteristics', function (User $user) {
@@ -109,10 +135,6 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('moderate-characteristics', function (User $user) {
-            return $user->isAdmin() || $user->isModerator();
-        });
-
-        Gate::define('moderate-products', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
     }

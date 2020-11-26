@@ -49,6 +49,8 @@ return [
     'send_reset_link_or_code' => 'Send password reset link or sms code',
     'reset' => 'Reset',
     'thanks' => 'Thanks',
+    'add_phone' => 'Add phone',
+    'add_email' => 'Add email',
 
     'email_verified' => 'Your e-mail is verified. You can now login.',
     'phone_verified' => 'Your phone is verified. You can now login.',
@@ -68,4 +70,10 @@ return [
     'account_not_verified' => 'Your account is not verified.',
     'user_exists' => 'User with this username, email or phone exists.',
     'user_not_found' => 'User with this email or phone not found.',
+    'email_not_verified' => 'Your email is not verified.',
+    'phone_not_verified' => 'Your phone number is not verified.',
+    'email_already_verified' => 'Your email is already verified.',
+    'phone_already_verified' => 'Your phone number is already verified.',
+    'email_already_added' => 'Email address is already added.',
+    'phone_already_added' => 'Phone number is already added.',
 ];
