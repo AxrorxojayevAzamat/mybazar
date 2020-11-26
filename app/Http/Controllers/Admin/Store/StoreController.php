@@ -15,10 +15,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\CreateRequest;
 use App\Http\Requests\Admin\Stores\UpdateRequest;
 use App\Services\Manage\StoreService;
-use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Gate;
 
 class StoreController extends Controller
 {
@@ -78,6 +77,10 @@ class StoreController extends Controller
 
     public function show(Store $store)
     {
+        if (!Gate::allows('show-own-store', $store)) {
+            abort(404);
+        }
+
         return view('admin.stores.show', compact('store'));
     }
 
@@ -91,6 +94,10 @@ class StoreController extends Controller
 
     public function edit(Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
@@ -102,6 +109,10 @@ class StoreController extends Controller
 
     public function update(UpdateRequest $request, Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $store = $this->service->update($store->id, $request);
         session()->flash('message', 'Запись добавлена');
 
@@ -110,6 +121,10 @@ class StoreController extends Controller
 
     public function moderate(Store $store)
     {
+        if (!Gate::allows('alter-stores-status', $store)) {
+            abort(404);
+        }
+
         try {
             $this->service->moderate($store->id);
 
@@ -121,6 +136,10 @@ class StoreController extends Controller
 
     public function draft(Store $store)
     {
+        if (!Gate::allows('alter-stores-status', $store)) {
+            abort(404);
+        }
+
         try {
             $this->service->draft($store->id);
 
@@ -132,6 +151,10 @@ class StoreController extends Controller
 
     public function destroy(Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $store->delete();
         session()->flash('message', 'Запись добавлена');
 
