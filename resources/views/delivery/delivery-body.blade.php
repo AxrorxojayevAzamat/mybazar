@@ -10,9 +10,9 @@
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
                         <button class="btn " type="button" data-toggle="collapse" data-target="#deliveryCollapseOne" aria-expanded="true" aria-controls="deliveryCollapseOne">
-                            Доставка курьерской службой
+                            @lang('frontend.delivery.btn1')
                         </button>
-                        <p>Как отмечает Майкл Мескон, стимулирование коммьюнити переворачивает комплексный рейтинг</p> 
+                        <p>@lang('frontend.delivery.p1')</p>
                     </h2>
                 </div>
                 <div id="deliveryCollapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#deliveryCollapse">
@@ -37,10 +37,9 @@
                 <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#deliveryCollapseTwo" aria-expanded="true" aria-controls="deliveryCollapseTwo">
-                            Доставка в магазины
+                            @lang('frontend.delivery.btn2')
                         </button>
-                        <p>Жизненный цикл продукции индуцирует фирменный стиль. <br>
-                                Конкурент конкурентоспособен. PR, суммируя приведенные примеры, нейтрализует мониторинг активности.</p> 
+                        <p>@lang('frontend.delivery.p2')</p>
                     </h2>
                 </div>
                 <div id="deliveryCollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#deliveryCollapse">
@@ -65,11 +64,9 @@
                 <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                         <button class="btn" type="button" data-toggle="collapse" data-target="#deliveryCollapseThree" aria-expanded="true" aria-controls="deliveryCollapseThree">
-                            АО "Почта Узбекистана"
+                            @lang('frontend.delivery.btn3')
                         </button>
-                        <p>Повышение жизненных стандартов неверно порождает ролевой продуктовый ассортимент. <br>
-                                Продукт раскручивает конструктивный целевой трафик, не считаясь с затратами. <br>
-                                Медиа без оглядки на авторитеты уравновешивает креативный традиционный канал. </p> 
+                        <p>@lang('frontend.delivery.p3')</p>
                     </h2>
                 </div>
                 <div id="deliveryCollapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#deliveryCollapse">

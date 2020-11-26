@@ -6,7 +6,7 @@
             <div class="one-row-brands owl-carousel owl-theme">
                 @foreach($brands as $brand)
                     <div class="item">
-                        <a href="#"><img src="{{ $brand->logoThumbnail }}"></a>
+                        <a href="{{ $brand->logoOriginal }}"><img src="{{ $brand->logoOriginal }}"></a>
                     </div>
                 @endforeach
             </div>

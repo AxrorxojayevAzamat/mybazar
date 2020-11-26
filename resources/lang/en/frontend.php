@@ -92,10 +92,6 @@ return [
         'shops' => 'Shops',
         'pay' => 'Payment',
     ],
-    'blogs' => 'Blogs',
-    'videos' => 'Videos',
-    'search_blogs' => 'Search blogs',
-    'search_videos' => 'Search videos',
 
     'manager' => [
         'request_manager_role' => 'Request manager role',
@@ -106,4 +102,97 @@ return [
         'not_requested' => 'User did not requested.',
         'approve' => 'Approve',
     ],
+
+    'cart' => [
+        'cart' => 'Cart',
+        'your_cart' => 'Your cart',
+        'in_cart' => 'In cart',
+        'item' => 'item',
+        'items' => 'items',
+        'total_weight_of_goods' => 'Total weight of goods',
+        'gr' => 'gr',
+        'discount' => 'Discount',
+        'sum_of_discount' => 'Discount amount',
+        'sum' => 'sum',
+        'all_to_pay' => 'Total payable',
+        'checkout_order' => 'Checkout',
+        'clear_list' => 'Clear the list',
+        'tv' => 'TV',
+        'tvs' => 'TVs',
+        'delivery_in_day' => 'Delivery within 24 hours',
+        'callback_until_8_april' => 'Pickup, from April 8',
+        'back_to_cart' => 'Back to cart',
+        'present_datas_for_get_order' => 'Provide information to receive your order ',
+        'country' => 'Country',
+        'city' => 'City',
+        'select' => 'Please select',
+        'locality' => 'Locality',
+        'district' => 'District',
+        'street' => 'Street',
+        'house' => 'House',
+        'apartment' => 'Apartment',
+        'contacts' => 'Contacts',
+        'name' => 'Name',
+        'number_of_phone' => 'Tel. number',
+        'wishlist_optional' => 'Wishlist (optional)',
+        'back_to_products' => 'Back to products',
+        'payment_method' => 'Payment method',
+        'back_to_address' => 'Back to address',
+        'select_method_of_payment' => 'Select a Payment Method',
+        'online_pay' => 'Online payment',
+        'in_cash' => 'In cash',
+        'from_card' => 'With card',
+        'add_card' => 'Add card',
+        'pay' => 'Pay',
+        'delivery_period' => 'Delivery period:',
+        'hours' => 'hours',
+        'due_to_that_we_deliver_some_goods_via_courier_services' => 'Due to that, we deliver some goods via courier services.',
+        'in_detail' => 'In detail',
+    ],
+
+    'delivery' => [
+        'delivery' => 'Delivery',
+        'warranty' => 'Guaranty',
+        'payment' => 'Payment',
+        'btn1' => 'Courier delivery',
+        'p1' => 'As Michael Mescon points out, community incentives are reversing complex rankings',
+        'btn2' => 'Delivery to shops',
+        'p2' => 'The product life cycle induces a corporate identity. <br>
+                                 The competitor is competitive. PR, to summarize the above examples, neutralizes activity monitoring.',
+        'btn3' => 'JSC "Post of Uzbekistan"',
+        'p3' => 'Raising living standards incorrectly creates a role-playing product range. <br>
+                                 The product promotes constructive targeted traffic, regardless of costs. <br>
+                                 The media without regard to authority balances the creative traditional channel. ',
+    ],
+
+    'guaranty' => [
+        'btn1' => 'Quality assurance',
+        'p1' => 'According to the previous one, the principle of perception unnaturally attracts a comprehensive analysis of the situation.',
+        'btn2' => 'Warranty terms',
+        'p2' => 'Activity monitoring is ambiguous. The pool of loyal publications covers the formation of the image.',
+        'btn3' => 'Guaranteed to repair or replace goods within 72 hours',
+        'p3' => 'The life cycle of a product is certainly very likely. <br>
+                 The marketing-oriented publication is changing the collective analysis of market prices.',
+        'btn4' => 'Quality warranty service',
+        'p4' => 'Brand awareness methodically defines the creative marketing and sales department. <br>
+                             Communication, neglecting details, synchronizes the analysis of foreign experience.',
+    ],
+
+    'payment' => [
+        'btn1' => 'Online payment by bank cards',
+        'p1' => 'According to the previous one, the principle of perception unnaturally attracts a complex analysis of the situation. ',
+        'btn2' => 'Payment by credit card upon receipt of the order',
+        'p2' => 'Activity monitoring is ambiguous. The pool of loyal publications covers the formation of the image.',
+        'btn3' => 'Online payment by bank cards',
+        'p3' => 'The life cycle of a product is certainly very likely. <br>
+                             The marketing-oriented publication is changing the collective analysis of market prices.',
+        'btn4' => 'Cash and non-cash payments',
+        'p4' => 'Brand awareness methodically defines the creative marketing and sales department. <br>
+                             Communication, neglecting details, synchronizes the analysis of foreign experience. ',
+    ],
+
+    'blogs' => 'Blogs',
+    'videos' => 'Videos',
+    'search_blogs' => 'Search blogs',
+    'search_videos' => 'Search videos',
 ];
