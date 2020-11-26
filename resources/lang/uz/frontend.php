@@ -28,6 +28,7 @@ return [
     'all_categories' => 'Hamma kategoriyalar',
     'discount_upper' => 'CHEGIRMA',
     'discounts' => 'Aksiya va Chegirmalar',
+    'profile' => 'Profil',
 
     'product' => [
         'price' => ':price <span>so`m</span>',

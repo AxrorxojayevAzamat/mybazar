@@ -153,6 +153,11 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
 Breadcrumbs::register('user.setting', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::register('user.profile', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.profile'), route('user.profile'));
+});
+
 Breadcrumbs::register('user.favorites', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.favorites'), route('user.favorites'));
@@ -365,9 +370,9 @@ Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('menu.products'), route('admin.shop.products.index'));
 });
 
-Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.stores.products.create', function (Crumbs $crumbs, Store $store) {
     $crumbs->parent('admin.shop.products.index');
-    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
+    $crumbs->push(trans('adminlte.create'), route('admin.stores.products.create', $store));
 });
 Breadcrumbs::register('admin.shop.store', function (Crumbs $crumbs) {
     $crumbs->parent('admin.shop.products.index');

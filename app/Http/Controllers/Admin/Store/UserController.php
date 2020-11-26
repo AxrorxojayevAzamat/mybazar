@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\Users\CreateRequest;
 use App\Http\Requests\Admin\Stores\Users\UpdateRequest;
 use App\Services\Manage\StoreService;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -16,12 +17,16 @@ class UserController extends Controller
 
     public function __construct(StoreService $service)
     {
-        $this->middleware('can:manage-stores');
+        $this->middleware('can:manage-store-users');
         $this->service = $service;
     }
 
     public function create(Store $store)
     {
+//        if (Gate::allows('manage-store-users')) {
+//            abort(403);
+//        }
+
         $roles = StoreUser::rolesList();
 
         return view('admin.stores.users.create', compact('store', 'roles'));

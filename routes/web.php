@@ -124,6 +124,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::group(['as' => 'user.','namespace' => 'User'], function () {
             Route::get('setting','ProfileController@index')->name('setting');
+            Route::get('profile','ProfileController@show')->name('profile');
             Route::put('setting/{user}','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites');
     });
@@ -202,9 +203,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
-        Route::resource('products', 'ProductController');
+        Route::resource('products', 'ProductController')->except('create');
+
         Route::resource('marks', 'MarkController');
-        Route::get('{store}/store', 'ProductController@create')->name('store');
 
         Route::resource('characteristic-groups', 'CharacteristicGroupController');
         Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {
@@ -285,7 +286,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::resource('stores', 'Store\StoreController');
+    Route::get('stores/{store}/products/create', 'Shop\ProductController@create')->name('stores.products.create');
     Route::group(['prefix' => 'stores/{store}', 'namespace' => 'Store', 'as' => 'stores.'], function () {
+
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
             Route::get('create', 'UserController@create')->name('create');
             Route::post('', 'UserController@add')->name('add');

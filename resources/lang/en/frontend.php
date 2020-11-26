@@ -31,6 +31,7 @@ return [
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
+    'profile' => 'Profile',
 
     'product' => [
         'price' => ':price <span>sums</span>',
