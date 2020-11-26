@@ -20,6 +20,7 @@ class CartController extends Controller
         foreach ($cart_product as $i => $product_id) {
             $cart_product_id[$i] = $product_id->product_id;
         }
+//        dd($cart_product_id);
 
         $products = Product::whereIn('id', $cart_product_id)->get();
 
@@ -27,7 +28,9 @@ class CartController extends Controller
         $cart_product_weight = 0;
         $cart_product_discount = 0;
         $cart_product_total = 0;
+
         foreach ($products as $i => $product) {
+//            dd($product);
             $cart_product_weight += $product->weight;
             $cart_product_total += $product->price_uzs;
             $cart_product_discount += $product->discount;
@@ -35,10 +38,11 @@ class CartController extends Controller
 
         $cart_product_discount_amount = $cart_product_total * $cart_product_discount;
         $cart_product_total = $cart_product_total - $cart_product_discount_amount;
-//        dd($cart_product_discount);
+//        dd($cart_product_id);
 
         return view('cart.cart', compact('products', 'cart_product_total',
-            'cart_product_count', 'cart_product_weight', 'cart_product_discount'));
+            'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
+            'cart_product_id'));
     }
 
 
@@ -71,12 +75,18 @@ class CartController extends Controller
 
     public function remove(Request $request)
     {
-        if ($request->has('product_id')) {
-            $user = Auth::user();
-            $cart_delete = Cart::where('product_id', $request->product_id)/*->where('user_id', $user)*/ ->delete();
-            return $cart_delete;
+        $user = Auth::user();
+        if ($request->has('product_id') and $user !== null) {
+            if (gettype($request->product_id) !== 'array') {
+                $cart_delete = Cart::where('product_id', $request->product_id)->where('user_id', $user->id)->delete();
+                return ['data' => 'success'];
+            } else {
+                $cart_delete = Cart::whereIn('product_id', $request->product_id)->where('user_id', $user->id)->delete();
+                return ['data' => 'success'];
+            }
+        } else {
+            return ['data' => 'error'];
         }
-        return 'There is no info';
     }
 
 }
