@@ -77,7 +77,7 @@ class StoreController extends Controller
         $store = $this->service->create($request);
         session()->flash('message', 'zapiz dobavlen');  // TODO: translate
 
-        return redirect()->route('admin.stores.create', 'store');
+        return redirect()->route('admin.stores.show', 'store');
     }
 
     public function edit(Store $store)
