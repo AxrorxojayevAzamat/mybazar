@@ -14,7 +14,7 @@ use App\Services\Manage\StoreService;
                 <?php $products = StoreService::fourProduct($store->id);?>
                 @foreach($products as $product)
                     <a href="{{ url('products/show/'.$product->id) }}"><img
-                            src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
+                            src="{{ $product->mainPhoto->fileThumbnail ?? '' }}" alt=""></a>
                 @endforeach
             </div>
         </div>
