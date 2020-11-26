@@ -110,21 +110,21 @@ $(document).ready(function () {
     //     });
     // });
 
-    $(".panel .custom-checkbox a:lt(5)").show();
-    $(".show-more").click( function () {
-        var numElem = document.getElementsByClassName('custom-checkbox').length();
-    });
+    // $(".panel .custom-checkbox a:lt(5)").show();
+    // $(".show-more").click( function () {
+    //     var numElem = document.getElementsByClassName('custom-checkbox').length();
+    // });
 
 
-     // show more on filter
-    //  $(".show-more").click( function () {
-    //     if($(this.previousSibling.previousSibling).hasClass("show-more-height")) {
-    //         $(this).text("Cкрыть");
-    //     } else {
-    //         $(this).text("Показать еще");
-    //     }
-    //     $(this.previousSibling.previousSibling).toggleClass("show-more-height");
-    // }); 
+    //  show more on filter
+     $(".show-more").click( function () {
+        if($(this.previousSibling.previousSibling).hasClass("show-more-height")) {
+            $(this).text("Cкрыть");
+        } else {
+            $(this).text("Показать еще");
+        }
+        $(this.previousSibling.previousSibling).toggleClass("show-more-height");
+    }); 
 
     // выбрать все в фильтре чекбокс
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
