@@ -48,13 +48,14 @@ services:
     container_name: magazin-db
     restart: unless-stopped
     volumes:
-      - ./storage/docker/psql:/var/lib/postgresql/data:cached
+      - ./docker/psql/db-cache:/var/lib/postgresql
     environment:
       - POSTGRES_DB=magazin
       - POSTGRES_USER=dev_shop
       - POSTGRES_PASSWORD=magazin
     networks:
       - magazin
+
 
   node:
     image: node:14.1.0-alpine3.11
