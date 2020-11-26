@@ -33,7 +33,7 @@ class CreateRequest extends FormRequest
             'name_en' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:stores',
             'logo' => 'required|image|mimes:jpg,jpeg,png',
-            'payments.*' => 'nullable|numeric|min:1|exists:brands,id',
+            'payments.*' => 'nullable|numeric|min:1|exists:payments,id',
             'delivery_methods.*' => 'nullable|numeric|min:1|exists:delivery_methods,id',
             'marks.*' => 'nullable|numeric|min:1|exists:shop_marks,id',
             'categories.*' => 'nullable|numeric|min:1|exists:categories,id',

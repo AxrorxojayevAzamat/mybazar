@@ -22,9 +22,9 @@
 
 <body>
 <!-- page loader -->
-<div class="wrapper-loader">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
+{{--<div class="wrapper-loader">--}}
+{{--    <span class="loader"><span class="loader-inner"></span></span>--}}
+{{--</div>--}}
 
 <div id="page">
 @include('partials.414.menu')
@@ -91,6 +91,10 @@
 @yield ('script')
 @stack('script')
 
+<script>
+    let a = document.querySelectorAll("img");
+    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
+</script>
 
 </body>
 </html>
