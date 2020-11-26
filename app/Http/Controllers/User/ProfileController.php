@@ -36,6 +36,12 @@ class ProfileController extends Controller
         return view('user.setting', compact('user', 'genders'));
     }
 
+    public function show()
+    {
+        $user = Auth::user();
+        return view('user.show', compact('user'));
+    }
+
     public function update(UpdateRequest $request, User $user)
     {
         $user = $this->service->updateProfile($user->id, $request);

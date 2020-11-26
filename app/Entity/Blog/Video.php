@@ -149,6 +149,11 @@ class Video extends BaseModel
         return $this->status === self::PUBLISHED;
     }
 
+    public function isDraft(): bool
+    {
+        return $this->status === self::DRAFT;
+    }
+
 
     ########################################### Mutators
 

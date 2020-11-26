@@ -43,7 +43,7 @@ class LoginController extends Controller
         $authenticate = $this->attemptLogin($request);
 
         if ($authenticate) {
-            if (Auth::user()->isAdmin()) {
+            if (Auth::user()->isAdmin() || Auth::user()->isManager()) {
                 session(['url.intended' => route('admin.home')]);
                 $this->redirectTo = route('admin.home');
             }
