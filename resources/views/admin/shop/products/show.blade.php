@@ -1,5 +1,7 @@
 @extends('layouts.admin.page')
 
+@php($user = Auth::user())
+
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
@@ -96,7 +98,9 @@
                                 @endforeach
                             </td>
                         </tr>
-                        <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @if ($user->isAdmin() || $user->isModerator())
+                            <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @endif
                         <tr><th>{{ trans('adminlte.brand.name') }}</th><td><a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a></td></tr>
                         <tr>
                             <th>{{ trans('menu.marks') }}</th>

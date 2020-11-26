@@ -123,7 +123,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('user.setting') }}">
+                    <a class="dropdown-item" href="{{ route('user.profile') }}">
 
                         {{ __('Profile') }}
                     </a>
@@ -132,7 +132,7 @@
                         {{ __('Favorites') }}
                     </a>
 
-                    @if(Auth::user()->isUser())
+                    @if(Auth::user()->isUser() && Auth::user()->isManagerRoleRequested())
                         <a
                             class="dropdown-item" href="{{ route('user.manager.request') }}"
                             onclick="event.preventDefault();

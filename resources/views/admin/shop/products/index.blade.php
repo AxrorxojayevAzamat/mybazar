@@ -7,7 +7,7 @@
 @endif
 
 @section('content')
-    <p><a href="{{ route('admin.shop.products.create') }}" class="btn btn-success">{{ trans('adminlte.product.add') }}</a></p>
+{{--    <p><a href="{{ route('admin.shop.products.create') }}" class="btn btn-success">{{ trans('adminlte.product.add') }}</a></p>--}}
 
     <div class="card mb-4">
 {{--        <div class="card-header">Filter</div>--}}

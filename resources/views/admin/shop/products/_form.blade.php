@@ -88,7 +88,7 @@
                         <div class="form-group">
                             {!! Form::label('main_category_id', trans('adminlte.product.main_category'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('main_category_id', $categories, old('main_category_id', $product ? $product->main_category_id : null),
-                                ['class'=>'form-control' . ($errors->has('main_category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                ['class'=>'form-control' . ($errors->has('main_category_id') ? ' is-invalid' : ''), 'placeholder' => '', 'required' => true]) !!}
                             @if ($errors->has('main_category_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('main_category_id') }}</strong></span>
                             @endif
@@ -114,7 +114,7 @@
                         <div class="form-group">
                             {!! Form::label('brand_id', trans('adminlte.brand.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('brand_id', $brands, old('brand_id', $product ? $product->brand_id : null),
-                                ['class'=>'form-control' . ($errors->has('brand_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                ['class'=>'form-control' . ($errors->has('brand_id') ? ' is-invalid' : ''), 'placeholder' => '', 'required' => true]) !!}
                             @if ($errors->has('brand_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('brand_id') }}</strong></span>
                             @endif

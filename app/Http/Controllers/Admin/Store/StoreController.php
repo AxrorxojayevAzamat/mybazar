@@ -8,6 +8,7 @@ use App\Entity\Payment;
 use App\Entity\Shop\Mark;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
+use App\Entity\StoreUser;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,7 @@ use App\Http\Requests\Admin\Stores\UpdateRequest;
 use App\Services\Manage\StoreService;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use mysql_xdevapi\Exception;
 
 class StoreController extends Controller
@@ -32,6 +34,12 @@ class StoreController extends Controller
     {
         $query = Store::orderByDesc('updated_at');
 
+        $storeIds = [];
+
+        if (Auth::user()->isManager()) {
+            $storeIds = StoreUser::where('user_id', Auth::id())->pluck('store_id')->toArray();
+        }
+
         if (!empty($value = $request->get('name'))) {
             $query->where(function ($query) use ($value) {
                 $query->where('name_uz', 'ilike', '%' . $value . '%')
@@ -45,9 +53,10 @@ class StoreController extends Controller
         }
 
         if (!empty($value = $request->get('category_id'))) {
-            $products = StoreCategory::where('category_id', $value)->pluck('store_id')->toArray();
-            $query->whereIn('id', $products);
+            $storeIds = array_intersect($storeIds, StoreCategory::where('category_id', $value)->pluck('store_id')->toArray());
         }
+
+        empty($storeIds) ? : $query->whereIn('id', $storeIds);
 
         $stores = $query->paginate(20);
 
@@ -77,7 +86,7 @@ class StoreController extends Controller
         $store = $this->service->create($request);
         session()->flash('message', 'zapiz dobavlen');  // TODO: translate
 
-        return redirect()->route('admin.stores.create', 'store');
+        return redirect()->route('admin.stores.show', 'store');
     }
 
     public function edit(Store $store)

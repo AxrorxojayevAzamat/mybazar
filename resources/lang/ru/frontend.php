@@ -28,6 +28,7 @@ return [
     'all_categories' => 'Все категории',
     'discount_upper' => 'СКИДКА',
     'discounts' => 'Акции и скидки',
+    'profile' => 'Профиль',
 
     'product' => [
         'price' => ':price <span>сум</span>',

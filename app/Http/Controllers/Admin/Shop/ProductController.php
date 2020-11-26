@@ -10,6 +10,7 @@ use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
 use App\Entity\Store;
+use App\Entity\StoreUser;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,7 @@ use App\Http\Requests\Admin\Shop\Products\CreateRequest;
 use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
 use App\Services\Manage\Shop\ProductService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
@@ -33,6 +35,11 @@ class ProductController extends Controller
     {
         $query = Product::orderByDesc('updated_at');
 
+        $storeIds = [];
+        if (Auth::user()->isManager()) {
+            $storeIds = StoreUser::where('user_id', Auth::id())->pluck('store_id')->toArray();
+        }
+
         if (!empty($value = $request->get('name'))) {
             $query->where(function ($query) use ($value) {
                 $query->where('name_uz', 'ilike', '%' . $value . '%')
@@ -43,7 +50,10 @@ class ProductController extends Controller
 
         if (!empty($value = $request->get('store_id'))) {
             $query->where('store_id', $value);
+            $storeIds = array_intersect($storeIds, [$value]);
         }
+
+        empty($storeIds) ? : $query->whereIn('store_id', $storeIds);
 
         if (!empty($value = $request->get('brand_id'))) {
             $query->where('brand_id', $value);
@@ -69,17 +79,18 @@ class ProductController extends Controller
 
     public function create(Store $store)
     {
-        if ($store){
+        if ($store) {
             $discounts = ProductHelper::getDiscounts($store->id);
-        }else{
+        } else {
             $discounts = [];
             $store = null;
         }
         $categories = ProductHelper::getCategoryList();
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.create', compact('categories', 'store', 'brands', 'marks','discounts'));
+        return view('admin.shop.products.create', compact('categories', 'store', 'stores', 'brands', 'marks', 'discounts'));
     }
 
     public function store(CreateRequest $request)
