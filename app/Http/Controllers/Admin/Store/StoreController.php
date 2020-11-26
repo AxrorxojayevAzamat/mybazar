@@ -6,6 +6,7 @@ use App\Entity\DeliveryMethod;
 use App\Entity\Discount;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
 use App\Entity\StoreUser;
@@ -78,7 +79,9 @@ class StoreController extends Controller
 
     public function show(Store $store)
     {
-        return view('admin.stores.show', compact('store'));
+        $storeDiscount= ShopDiscounts::where(['store_id'=>$store->id])->pluck('discount_id');
+        $discounts = Discount::whereIn('id', $storeDiscount)->get();
+        return view('admin.stores.show', compact('store','discounts'));
     }
 
     public function store(CreateRequest $request)

@@ -136,7 +136,10 @@ class StoreService
         $this->addPayments($store, $request->payments);
 
         $store->storeDeliveryMethods()->delete();
-        $this->addDeliveryMethods($store, $request->delivery_methods);
+        $this->addDeliveryMethods($store, $request->delivery_methods,$request->cost,$request->sort);
+
+        $store->discountsDelete();
+        $this->addDiscounts($store, $request->discounts);
     }
 
     private function addUser(Store $store)
