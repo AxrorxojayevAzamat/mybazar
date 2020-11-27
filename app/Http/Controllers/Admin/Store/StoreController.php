@@ -6,6 +6,7 @@ use App\Entity\DeliveryMethod;
 use App\Entity\Discount;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
 use App\Entity\StoreUser;
