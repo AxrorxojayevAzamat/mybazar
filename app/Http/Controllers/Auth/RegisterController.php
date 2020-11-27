@@ -98,11 +98,7 @@ class RegisterController extends Controller
         try {
             $this->service->verifyEmail($user->id);
 
-            if (!Auth::guest() && !Auth::user()->isAdmin()) {
-                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.email_verified'));
-            }
-
-            return redirect()->route('login')->with('success', trans('auth.email_verified'));
+            return redirect()->route('login')->with('success', trans('auth.email_verified_login'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());
         }
@@ -159,11 +155,7 @@ class RegisterController extends Controller
         try {
             $this->service->verifyPhone($user->id, $request->token);
 
-            if (!Auth::guest() && !Auth::user()->isAdmin()) {
-                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.phone_verified'));
-            }
-
-            return redirect()->route('login')->with('success', trans('auth.phone_verified'));
+            return redirect()->route('login')->with('success', trans('auth.phone_verified_login'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());
         }

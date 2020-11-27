@@ -52,8 +52,10 @@ return [
     'add_phone' => 'Add phone',
     'add_email' => 'Add email',
 
-    'email_verified' => 'Your e-mail is verified. You can now login.',
-    'phone_verified' => 'Your phone is verified. You can now login.',
+    'email_verified_login' => 'Your e-mail is verified. You can now login.',
+    'phone_verified_login' => 'Your phone is verified. You can now login.',
+    'email_verified' => 'Your e-mail is verified.',
+    'phone_verified' => 'Your phone is verified.',
     'password_successfully_reset' => 'Your password is successfully reset.',
 
     'invalid_params' => 'Invalid params.',

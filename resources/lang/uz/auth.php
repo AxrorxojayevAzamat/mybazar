@@ -52,8 +52,10 @@ return [
     'add_phone' => 'Telefon raqami qo‘shmoq',
     'add_email' => 'Elektron pochta qo‘shmoq',
 
-    'email_verified' => 'Sizning elektron pochtangiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
-    'phone_verified' => 'Sizning telefon raqamingiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'email_verified_login' => 'Sizning elektron pochtangiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'phone_verified_login' => 'Sizning telefon raqamingiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'email_verified' => 'Sizning elektron pochtangiz tasdiqlandi.',
+    'phone_verified' => 'Sizning telefon raqamingiz tasdiqlandi.',
     'password_successfully_reset' => 'Parolingiz qayta tiklandi.',
 
     'invalid_params' => 'Noto‘g‘ri parametrlar.',

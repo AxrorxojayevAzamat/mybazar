@@ -97,9 +97,9 @@ class LoginController extends Controller
 
             return back()->with('error', trans('auth.account_not_verified'));
         } else if ($user->isActive()) {
-            if ($this->isEmail && !$user->email_verified) {
+            if ($this->isEmail && !$user->email_verified && !($user->isAdmin() || $user->isModerator())) {
                 return back()->with('error', trans('auth.email_not_verified'));
-            } else if ($this->isPhone && !$user->phone_verified) {
+            } else if ($this->isPhone && !$user->phone_verified && !($user->isAdmin() || $user->isModerator())) {
                 return back()->with('error', trans('auth.phone_not_verified'));
 
             }
