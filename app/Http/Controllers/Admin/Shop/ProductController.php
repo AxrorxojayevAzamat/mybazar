@@ -9,6 +9,8 @@ use App\Entity\Shop\Mark;
 use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
+use App\Entity\Shop\ShopDiscounts;
+use App\Entity\Shop\ShopProductDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreUser;
 use App\Helpers\LanguageHelper;
@@ -111,8 +113,9 @@ class ProductController extends Controller
         if (!Gate::allows('show-own-product', $product)) {
             abort(404);
         }
-
-        return view('admin.shop.products.show', compact('product'));
+        $productDiscounts= ShopProductDiscounts::where(['product_id'=>$product->id])->pluck('discount_id');
+        $discounts = Discount::whereIn('id', $productDiscounts)->get();
+        return view('admin.shop.products.show', compact('product','discounts'));
     }
 
     public function edit(Product $product)
