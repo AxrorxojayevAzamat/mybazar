@@ -49,7 +49,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./storage/docker/psql:/var/lib/postgresql/data
-      - ./storage/docker/psql:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=magazin
       - POSTGRES_USER=dev_shop

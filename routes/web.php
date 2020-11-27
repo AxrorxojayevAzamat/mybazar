@@ -14,25 +14,24 @@ use Illuminate\Support\Facades\Route;
  */
 
 //Auth::routes(); - custom (POST)
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+Route::post('login', 'Auth\LoginController@login'); // TODO duplicate
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');// TODO duplicate
+Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');// TODO duplicate
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');// TODO duplicate
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');// TODO duplicate
 
 Route::post('add-cart', 'CartController@add');
 Route::post('remove-cart', 'CartController@remove');
 
-Route::group(['as' => 'user.','namespace' => 'User'], function () {
-    Route::post('/change-password','ProfileController@changePassword')->name('change-password');
+Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
+    Route::post('/change-password', 'ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
     Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
-    Route::post('add-to-favorite','FavoriteController@addToFavorite')->name('add-to-favorite');
+    Route::post('add-to-favorite', 'FavoriteController@addToFavorite')->name('add-to-favorite');
     Route::delete('remove-from-favorite', 'FavoriteController@removeFromFavorite')->name('remove-from-favorite');
 });
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
-
     //Auth::routes(); - custom(GET)
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::get('logout', 'Auth\LoginController@logout');
@@ -48,7 +47,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
-
 
     Route::get('verify/email', 'Auth\RegisterController@email')->name('email.verification');
     Route::get('verify/email/{token}', 'Auth\RegisterController@verifyEmail')->name('verify.email');
@@ -114,7 +112,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::delete('remove-from-cart', 'ProductController@remove');
 
     Route::group(['prefix' => 'discounts', 'as' => 'discounts.'], function () {
-
         Route::get('', 'DiscountController@index')->name('index');
         Route::get('/{discount}', 'DiscountController@show')->name('show');
     });
@@ -143,6 +140,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
         Route::get('/{page_path}', 'PageController@show')->name('show')->where('page_path', '.+');
     });
+
     Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
         Route::get('', 'StoresController@index')->name('index');
         Route::get('{store}', 'StoresController@store')->name('show');
@@ -151,13 +149,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::get('cart-list', 'CartController@index')->name('cart');
-
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
-    App::setLocale("ru");
-    Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
 
+
+//--------------- Dashboard ------------------//
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
+    Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
         Route::resource('videos', 'VideoController');
         Route::group(['prefix' => 'videos/{video}', 'as' => 'videos.'], function () {
             Route::post('remove-poster', 'VideoController@removePoster')->name('remove-poster');
