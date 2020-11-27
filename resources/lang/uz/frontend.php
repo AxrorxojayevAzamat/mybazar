@@ -18,6 +18,7 @@ return [
     'by_novelty' => 'Yangiligi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
     'novelty_upper' => 'YANGI',
+    'novelty' => 'Yangi',
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
     'compare_products' => 'Mahsulotlarni taqqoslash',
@@ -188,6 +189,24 @@ return [
         'p4' => 'Tovar xabardorligi ijodiy marketing va savdo bo\'limini uslubiy ravishda belgilaydi. <br>
                 Aloqa, tafsilotlarni e\'tiborsiz qoldirish, chet el tajribasini tahlil qilishni sinxronizatsiya qiladi.',
     ],
+
+    'pages' => [
+        'login_or_register' => 'Kirish yoki ro\'yxatdan o\'tish',
+        'by_num_phone' => 'Telefon raqami bo\'yicha',
+        'get_sms_code' => 'SMS kodini oling',
+        'login_by' => 'Bilan kirish',
+        'login_by_password' => 'Parol bilan kirish',
+
+        'phone_num_or_email' => 'Telefon raqami yoki elektron pochta manzili',
+        'forgot_passwoed' => 'Parolni unutdingizmi?',
+        'password' => 'Parol',
+        'enter' => 'Kirish',
+        'remember' => 'Esingizda bo\'lsin',
+
+        'enter_code_from_sms' => 'SMS-dan kodni kiriting',
+        'send_again_after_59_sec' => '59 soniyadan keyin qayta yuboring',
+    ],
+
     'blogs' => 'Bloglar',
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',

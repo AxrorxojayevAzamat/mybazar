@@ -18,6 +18,7 @@ return [
     'by_novelty' => 'By novelty',
     'log_in_to_review' => 'Please, log in to send a review!',
     'novelty_upper' => 'NEW',
+    'novelty' => 'New',
     'popular' => 'Popular',
     'recommend' => 'Recommended',
     'compare_products' => 'Compare products',
@@ -190,6 +191,23 @@ return [
         'btn4' => 'Cash and non-cash payments',
         'p4' => 'Brand awareness methodically defines the creative marketing and sales department. <br>
                              Communication, neglecting details, synchronizes the analysis of foreign experience. ',
+    ],
+
+    'pages' => [
+        'login_or_register' => 'Login or register',
+        'by_num_phone' => 'By phone number',
+        'get_sms_code' => 'Get SMS code',
+        'login_by' => 'Login with',
+        'login_by_password' => 'Login with password',
+
+        'phone_num_or_email' => 'Phone number or E-mail',
+        'forgot_passwoed' => 'Forgot your password?',
+        'password' => 'Password',
+        'enter' => 'entrance',
+        'remember' => 'Remember',
+
+        'enter_code_from_sms' => 'Enter code from SMS',
+        'send_again_after_59_sec' => 'Resend 59 seconds later',
     ],
 
     'blogs' => 'Blogs',
