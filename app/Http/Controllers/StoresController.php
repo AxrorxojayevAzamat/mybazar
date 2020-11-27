@@ -20,6 +20,10 @@ class StoresController extends Controller
             $selector = $query->where('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'ilike', '%' . $request->get('shopName') . '%');
             $stores = $selector->paginate(12);
         }
+        if (!empty($request->get('name'))) {
+            $selector = $query->orderBy('name_' . LanguageHelper::getCurrentLanguagePrefix());
+            $stores = $selector->paginate(12);
+        }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
         $stores = $query->paginate(12);
         $categories = Category::where('parent_id', null)->get();

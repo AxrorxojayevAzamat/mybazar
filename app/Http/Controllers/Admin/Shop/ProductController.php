@@ -117,20 +117,27 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $store = $product->store;
         if (!Gate::allows('edit-own-product', $product)) {
             abort(404);
         }
-
+        if ($store) {
+            $discounts = ProductHelper::getDiscounts($store->id);
+        } else {
+            $discounts = [];
+            $store = null;
+        }
         $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands', 'marks'));
+        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands', 'marks','store','discounts'));
     }
 
     public function update(UpdateRequest $request, Product $product)
     {
+
         if (!Gate::allows('edit-own-product', $product)) {
             abort(404);
         }

@@ -120,6 +120,9 @@ class ProductService
             $product->productMarks()->delete();
             $this->addMarks($product, $request->marks);
 
+            $product->discountsDelete();
+            $this->addDiscounts($product, $request->discounts);
+
 
             DB::commit();
 
