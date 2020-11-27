@@ -153,6 +153,31 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
 Breadcrumbs::register('user.setting', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::register('user.profile', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.profile'), route('user.profile'));
+});
+
+Breadcrumbs::register('profile.add-email-show', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_email'), route('profile.add-email-show'));
+});
+
+Breadcrumbs::register('profile.add-phone-show', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_phone'), route('profile.add-phone-show'));
+});
+
+Breadcrumbs::register('profile.email.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.email_verification'), route('profile.email.verification'));
+});
+
+Breadcrumbs::register('profile.phone.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.phone_verification'), route('profile.phone.verification'));
+});
+
 Breadcrumbs::register('user.favorites', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.favorites'), route('user.favorites'));
@@ -365,10 +390,11 @@ Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('menu.products'), route('admin.shop.products.index'));
 });
 
-Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.stores.products.create', function (Crumbs $crumbs, Store $store) {
     $crumbs->parent('admin.shop.products.index');
-    $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
+    $crumbs->push(trans('adminlte.create'), route('admin.stores.products.create', $store));
 });
+
 Breadcrumbs::register('admin.shop.store', function (Crumbs $crumbs) {
     $crumbs->parent('admin.shop.products.index');
     $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
@@ -621,7 +647,7 @@ Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order 
 
 Breadcrumbs::register('admin.blog.posts.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Posts', route('admin.blog.posts.index'));
+    $crumbs->push(trans('menu.posts'), route('admin.blog.posts.index'));
 });
 
 Breadcrumbs::register('admin.blog.posts.create', function (Crumbs $crumbs) {
@@ -644,7 +670,7 @@ Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $p
 
 Breadcrumbs::register('admin.blog.videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Videos', route('admin.blog.videos.index'));
+    $crumbs->push(trans('menu.videos'), route('admin.blog.videos.index'));
 });
 
 Breadcrumbs::register('admin.blog.videos.create', function (Crumbs $crumbs) {
@@ -665,7 +691,7 @@ Breadcrumbs::register('admin.blog.videos.edit', function (Crumbs $crumbs, Video 
 // Banners
 Breadcrumbs::register('admin.banners.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Banners', route('admin.banners.index'));
+    $crumbs->push(trans('menu.banners'), route('admin.banners.index'));
 });
 
 Breadcrumbs::register('admin.banners.create', function (Crumbs $crumbs) {
@@ -687,7 +713,7 @@ Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, Banner $ba
 
 Breadcrumbs::register('admin.pages.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Pages', route('admin.pages.index'));
+    $crumbs->push(trans('menu.pages'), route('admin.pages.index'));
 });
 
 Breadcrumbs::register('admin.pages.create', function (Crumbs $crumbs) {
@@ -713,7 +739,7 @@ Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) 
 // Sliders
 Breadcrumbs::register('admin.sliders.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Sliders', route('admin.sliders.index'));
+    $crumbs->push(trans('adminlte.sliders.slider'), route('admin.sliders.index'));
 });
 
 Breadcrumbs::register('admin.sliders.create', function (Crumbs $crumbs) {

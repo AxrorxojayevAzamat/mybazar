@@ -31,6 +31,7 @@ return [
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
+    'profile' => 'Profile',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -150,8 +151,50 @@ return [
         'in_detail' => 'In detail',
     ],
 
+    'delivery' => [
+        'delivery' => 'Delivery',
+        'warranty' => 'Guaranty',
+        'payment' => 'Payment',
+        'btn1' => 'Courier delivery',
+        'p1' => 'As Michael Mescon points out, community incentives are reversing complex rankings',
+        'btn2' => 'Delivery to shops',
+        'p2' => 'The product life cycle induces a corporate identity. <br>
+                                 The competitor is competitive. PR, to summarize the above examples, neutralizes activity monitoring.',
+        'btn3' => 'JSC "Post of Uzbekistan"',
+        'p3' => 'Raising living standards incorrectly creates a role-playing product range. <br>
+                                 The product promotes constructive targeted traffic, regardless of costs. <br>
+                                 The media without regard to authority balances the creative traditional channel. ',
+    ],
+
+    'guaranty' => [
+        'btn1' => 'Quality assurance',
+        'p1' => 'According to the previous one, the principle of perception unnaturally attracts a comprehensive analysis of the situation.',
+        'btn2' => 'Warranty terms',
+        'p2' => 'Activity monitoring is ambiguous. The pool of loyal publications covers the formation of the image.',
+        'btn3' => 'Guaranteed to repair or replace goods within 72 hours',
+        'p3' => 'The life cycle of a product is certainly very likely. <br>
+                 The marketing-oriented publication is changing the collective analysis of market prices.',
+        'btn4' => 'Quality warranty service',
+        'p4' => 'Brand awareness methodically defines the creative marketing and sales department. <br>
+                             Communication, neglecting details, synchronizes the analysis of foreign experience.',
+    ],
+
+    'payment' => [
+        'btn1' => 'Online payment by bank cards',
+        'p1' => 'According to the previous one, the principle of perception unnaturally attracts a complex analysis of the situation. ',
+        'btn2' => 'Payment by credit card upon receipt of the order',
+        'p2' => 'Activity monitoring is ambiguous. The pool of loyal publications covers the formation of the image.',
+        'btn3' => 'Online payment by bank cards',
+        'p3' => 'The life cycle of a product is certainly very likely. <br>
+                             The marketing-oriented publication is changing the collective analysis of market prices.',
+        'btn4' => 'Cash and non-cash payments',
+        'p4' => 'Brand awareness methodically defines the creative marketing and sales department. <br>
+                             Communication, neglecting details, synchronizes the analysis of foreign experience. ',
+    ],
+
     'blogs' => 'Blogs',
     'videos' => 'Videos',
     'search_blogs' => 'Search blogs',
     'search_videos' => 'Search videos',
+    'show_more' => 'Show more',
 ];

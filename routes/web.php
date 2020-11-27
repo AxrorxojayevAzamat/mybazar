@@ -57,7 +57,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('verify/phone/resend', 'Auth\RegisterController@resendPhoneShow')->name('resend.phone.show');
     Route::post('verify/phone/resend', 'Auth\RegisterController@resendPhone')->name('resend.phone.verification');
 
-    Route::post('profile/request-manager-role', 'User\ProfileController@requestManagerRole')->name('user.manager.request');
+    Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'User'], function () {
+        Route::get('add-email', 'ProfileController@addEmailShow')->name('add-email-show');
+        Route::get('add-phone', 'ProfileController@addPhoneShow')->name('add-phone-show');
+        Route::post('add-email', 'ProfileController@addEmail')->name('add-email');
+        Route::post('add-phone', 'ProfileController@addPhone')->name('add-phone');
+        Route::get('verify/email', 'ProfileController@email')->name('email.verification');
+        Route::get('verify/phone', 'ProfileController@phone')->name('phone.verification');
+        Route::get('verify/email/{token}', 'ProfileController@verifyEmail')->name('verify.email');
+        Route::post('verify/phone', 'ProfileController@verifyPhone')->name('verify.phone');
+
+        Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
+    });
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('', 'HomeController@index')->name('front-home');
@@ -119,10 +130,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::resource('/videos', 'VideosController');
 
-    Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
-        Route::get('setting', 'ProfileController@index')->name('setting');
-        Route::put('setting/{user}', 'ProfileController@update')->name('update');
-        Route::get('favorites', 'FavoriteController@favorites')->name('favorites');
+    Route::group(['as' => 'user.','namespace' => 'User'], function () {
+            Route::get('setting','ProfileController@index')->name('setting');
+            Route::get('profile','ProfileController@show')->name('profile');
+            Route::put('setting/{user}','ProfileController@update')->name('update');
+            Route::get('favorites','FavoriteController@favorites')->name('favorites');
     });
 
     Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
@@ -132,11 +144,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['prefix' => 'stores', 'as' => 'stores.'], function () {
         Route::get('', 'StoresController@index')->name('index');
         Route::get('{store}', 'StoresController@store')->name('show');
-        Route::get('view/{id}', 'StoresController@view')->name('view');
+        Route::get('view/{store}', 'StoresController@view')->name('view');
+        Route::get('stores', 'StoresController@view')->name('store');
     });
 
     Route::get('cart-list', 'CartController@index')->name('cart');
 });
+
 
 
 //--------------- Dashboard ------------------//
@@ -202,9 +216,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::group(['prefix' => 'shop', 'as' => 'shop.', 'namespace' => 'Shop'], function () {
-        Route::resource('products', 'ProductController');
+        Route::resource('products', 'ProductController')->except('create');
+
         Route::resource('marks', 'MarkController');
-        Route::get('{store}/store', 'ProductController@create')->name('store');
 
         Route::resource('characteristic-groups', 'CharacteristicGroupController');
         Route::group(['prefix' => 'characteristic-groups/{group}', 'as' => 'characteristics.groups.'], function () {
@@ -285,7 +299,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     });
 
     Route::resource('stores', 'Store\StoreController');
+    Route::get('stores/{store}/products/create', 'Shop\ProductController@create')->name('stores.products.create');
     Route::group(['prefix' => 'stores/{store}', 'namespace' => 'Store', 'as' => 'stores.'], function () {
+
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
             Route::get('create', 'UserController@create')->name('create');
             Route::post('', 'UserController@add')->name('add');

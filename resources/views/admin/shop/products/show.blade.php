@@ -1,30 +1,34 @@
 @extends('layouts.admin.page')
 
+@php($user = Auth::user())
+
 @section('content')
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-        @if ($product->isOnModeration() && Gate::check('moderate-products'))
+        @can('edit-own-product', $product)
+            <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        @endcan
+        @if ($product->isOnModeration() && Gate::allows('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.moderate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
-        @elseif ($product->isDraft() || $product->isClosed())
+        @elseif (($product->isDraft() || $product->isClosed()) && Gate::allows('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.on-moderation', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.send_to_moderation')</button>
             </form>
-        @elseif($product->isActive())
+        @elseif($product->isActive() && Gate::allows('close-own-product', $product))
             <form method="POST" action="{{ route('admin.shop.products.close', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.close')</button>
             </form>
-            @can('moderate-products')
+            @can('alter-products-status')
                 <form method="POST" action="{{ route('admin.shop.products.draft', $product) }}" class="mr-1">
                     @csrf
                     <button class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.draft')</button>
                 </form>
             @endcan
-        @elseif ($product->isDraftAfterCategorySplit() && Gate::check('moderate-products'))
+        @elseif ($product->isDraftAfterCategorySplit() && Gate::check('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.activate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success">@lang('adminlte.activate')</button>
@@ -96,7 +100,9 @@
                                 @endforeach
                             </td>
                         </tr>
-                        <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @if ($user->isAdmin() || $user->isModerator())
+                            <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @endif
                         <tr><th>{{ trans('adminlte.brand.name') }}</th><td><a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a></td></tr>
                         <tr>
                             <th>{{ trans('menu.marks') }}</th>

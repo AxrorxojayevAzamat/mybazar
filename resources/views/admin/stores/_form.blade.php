@@ -16,7 +16,7 @@
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
-                    {!! Form::label('name_uz', 'Nomi', ['class' => 'col-form-label']); !!}
+                    {!! Form::label('name_uz', trans('adminlte.name') . ' Uz', ['class' => 'col-form-label']); !!}
                     {!! Form::text('name_uz', old('name_uz', $store ? $store->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'required' => true]) !!}
                     @if ($errors->has('name_uz'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('name_uz') }}</strong></span>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('name_ru', 'Название', ['class' => 'col-form-label']); !!}
+                    {!! Form::label('name_ru', trans('adminlte.name') . ' Ru', ['class' => 'col-form-label']); !!}
                     {!! Form::text('name_ru', old('name_ru', $store ? $store->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'required' => true]) !!}
                     @if ($errors->has('name_ru'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('name_ru') }}</strong></span>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('name_en', 'Name', ['class' => 'col-form-label']); !!}
+                    {!! Form::label('name_en', trans('adminlte.name') . ' En', ['class' => 'col-form-label']); !!}
                     {!! Form::text('name_en', old('name_en', $store ? $store->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
                     @if ($errors->has('name_en'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
@@ -135,7 +135,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-gray card-outline">
-            <div class="card-header"><h3 class="card-title">Logo</h3></div>
+            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.logo') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
                     <div class="file-loading">

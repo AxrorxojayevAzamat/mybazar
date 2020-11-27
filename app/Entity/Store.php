@@ -195,6 +195,12 @@ class Store extends BaseModel
 
     }
 
+    public  function discountsDelete(){
+        $discount = ShopDiscounts::where(['store_id' => $this->id])->get();
+        foreach ($discount as $value){
+            $value->delete();
+        }
+    }
     public function marksList(): array
     {
         $marks = $this->storeMarks();

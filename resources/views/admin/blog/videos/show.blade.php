@@ -5,11 +5,11 @@
         <a href="{{ route('admin.blog.videos.edit', $video) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
 
         @if (Auth::user()->isAdmin())
-            <form method="POST" action="{{ route($video->is_published ? 'admin.blog.videos.discard' : 'admin.blog.videos.publish', $video) }}" class="mr-1">
+            <form method="POST" action="{{ route($video->isPublished() ? 'admin.blog.videos.discard' : 'admin.blog.videos.publish', $video) }}" class="mr-1">
                 @csrf
-                <button class="btn{{ $video->is_published ? ' btn-warning' : ' btn-success' }}"
+                <button class="btn{{ $video->isPublished() ? ' btn-warning' : ' btn-success' }}"
                         onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">
-                    {{ trans($video->is_published ? 'adminlte.draft' : 'adminlte.publish') }}
+                    {{ trans($video->isPublished() ? 'adminlte.draft' : 'adminlte.publish') }}
                 </button>
             </form>
         @endif
@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
-                <div class="card-header"><h3 class="card-title">Logo</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.logo') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
                         <tbody>

@@ -8,7 +8,7 @@
                 <label class="custom-control-label" for="brands-checkbox-{{ $i }}">{{ $category['name'] }}</label>
             </div>
         @endforeach
-        <a class="show-more" href="#">Показать еще</a>
+        <a class="show-more" href="#">@lang('frontend.show_more')</a>
     </div>
     <input type="hidden" name="brands" id="brands-hidden-input">
 @endif

@@ -3,8 +3,10 @@
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.stores.edit', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-        <a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success mr-1">{{ trans('adminlte.store.add_worker') }}</a>
-        <a href="{{ route('admin.shop.store', $store) }}" class="btn btn-primary mr-1">{{ trans('adminlte.product.add') }}</a>
+        <a href="{{ route('admin.stores.products.create', $store) }}" class="btn btn-warning mr-1">{{ trans('adminlte.product.add') }}</a>
+        @if (Auth::user()->isAdmin())
+            <a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success mr-1">{{ trans('adminlte.store.add_worker') }}</a>
+        @endif
         @if ($store->isOnModeration() && Gate::check('moderate-stores'))
             <form method="POST" action="{{ route('admin.stores.moderate', $store) }}" class="mr-1">
                 @csrf
@@ -50,7 +52,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
-                <div class="card-header"><h3 class="card-title">Logo</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.logo') }}</h3></div>
                 <div class="card-body">
                     @if ($store->logo)
                         <a href="{{ $store->logoOriginal }}" target="_blank"><img src="{{ $store->logoThumbnail }}"></a>
@@ -91,6 +93,14 @@
                                 @endforeach
                             </td>
                         </tr>
+                        <tr>
+                            <th>{{ trans('menu.discounts') }}</th>
+                            <td>
+                                @foreach($discounts as $discount)
+                                    <a href="{{ route('admin.discounts.show', $discount) }}">{{ $discount->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -119,7 +129,9 @@
     <div class="card" id="users">
         <div class="card-header card-gray with-border">{{ trans('adminlte.store.worker') }}</div>
         <div class="card-body">
-            <p><a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success">{{ trans('adminlte.store.add_worker') }}</a></p>
+            @if (Auth::user()->isAdmin())
+                <p><a href="{{ route('admin.stores.users.create', $store) }}" class="btn btn-success">{{ trans('adminlte.store.add_worker') }}</a></p>
+            @endif
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>

@@ -27,6 +27,7 @@ class StoreUser extends BasePivot
         return [
             User::ROLE_DEALER => trans('adminlte.user.role_dealer'),
             User::ROLE_MODERATOR => trans('adminlte.user.role_moderator'),
+            User::ROLE_MANAGER => trans('adminlte.user.role_manager'),
             User::ROLE_ADMIN => trans('adminlte.user.role_administrator'),
         ];
     }

@@ -6,7 +6,7 @@
         </div>
         <div class="item">
             <div class="product-img">
-                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail }}" alt=""></a>
+                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail ?? '' }}" alt=""></a>
             </div>
             <!-- description -->
             <div class="description ">
@@ -38,8 +38,8 @@
                     <div class="like"><i class="mbfavorite"></i></div>
                 </div>
                 <div class="delivery-options">
-                    <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
-                    <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
+                    <div><i class="mbdelievery"></i> @lang('frontend.cart.delivery_in_day')</div>
+                    <div><i class="mbbox"></i>@lang('frontend.cart.callback_until_8_april')</div>
                 </div>
                 <p class="sub-title bottom">{!! $item->store->name !!}</p>
             </div>
