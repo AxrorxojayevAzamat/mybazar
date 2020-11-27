@@ -192,4 +192,6 @@ return [
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',
     'search_videos' => 'Videolarni qidirish',
+    'show_more' => 'ko\'proq ko\'rsatish',
+
 ];

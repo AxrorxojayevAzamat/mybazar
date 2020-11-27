@@ -44,11 +44,11 @@
             <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-5"  >
             <label class="custom-control-label" for="smallcustomCheck2-5">Toshiba</label>
         </div>
-        <a class="show-more" href="#">Показать еще</a>
+        <a class="show-more" href="#">@lang('frontend.show_more')</a>
     </div>
     <button type="button" class="btn accordion active " >Цена</button>
     <div id="filter3"  class="panel">
-        <div class="outter-range-slider">	
+        <div class="outter-range-slider">
             <div class="form-group">
                 <input type="text" class=" js-input-from form-control" value="0" />
                 <span>-</span>
@@ -57,7 +57,7 @@
             <div class="range-slider">
                 <input type="text" class="js-range-slider" value="" />
             </div>
-        
+
         </div>
     </div>
     <button type="button" class="btn accordion active "  >Диоганаль</button>
