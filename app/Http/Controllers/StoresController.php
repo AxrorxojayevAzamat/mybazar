@@ -17,7 +17,7 @@ class StoresController extends Controller
     {
         $query = Store::where(['status' => Store::STATUS_ACTIVE]);
         if (!empty($request->get('shopName'))) {
-            $selector = $query->where('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'ilike', '%' .$request->get('shopName'). '%');
+            $selector = $query->where('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'ilike', '%' . $request->get('shopName') . '%');
             $stores = $selector->paginate(12);
         }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
@@ -35,7 +35,7 @@ class StoresController extends Controller
         return view('stores.index', compact('stores', 'categories'));
     }
 
-    public function view(Request $request,Store $store)
+    public function view(Request $request, Store $store)
     {
         $query = Product::where(['status' => Product::STATUS_ACTIVE])->where(['store_id' => $store->id]);
 //        dd($request->get('order'));
@@ -73,7 +73,7 @@ class StoresController extends Controller
 
         $products = $query->paginate(20);
         $ratings = [];
-        foreach($products as $i => $product) {
+        foreach ($products as $i => $product) {
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
@@ -83,7 +83,7 @@ class StoresController extends Controller
             ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
             ->orderByDesc('discount')->limit(9)->get();
 
-        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts','store'));
+        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store'));
 
     }
 }

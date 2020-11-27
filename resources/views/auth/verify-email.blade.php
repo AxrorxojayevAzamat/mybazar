@@ -15,14 +15,16 @@
                     @endif
 
                     @lang('auth.check_your_email')
-                    @lang('auth.if_email_link_not_received')
-                    <form class="d-inline" method="POST" action="{{ route('resend.email.verification') }}">
-                        @csrf
-                        <div class="form-group">
-                            <input id="email" type="hidden" class="form-control" name="email" value="{{ $email }}" required>
-                        </div>
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">@lang('auth.click_to_receive_another')</button>.
-                    </form>
+                    @if (Auth::guest())
+                        @lang('auth.if_email_link_not_received')
+                        <form class="d-inline" method="POST" action="{{ route('resend.email.verification') }}">
+                            @csrf
+                            <div class="form-group">
+                                <input id="email" type="hidden" class="form-control" name="email" value="{{ $email }}" required>
+                            </div>
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">@lang('auth.click_to_receive_another')</button>.
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
