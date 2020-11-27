@@ -196,4 +196,5 @@ return [
     'videos' => 'Videos',
     'search_blogs' => 'Search blogs',
     'search_videos' => 'Search videos',
+    'show_more' => 'Show more',
 ];

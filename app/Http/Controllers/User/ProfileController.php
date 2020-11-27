@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\Auth\VerifyPhoneRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Entity\User\Profile;
@@ -132,21 +133,62 @@ class ProfileController extends Controller
     public function phone()
     {
         $session = Session::get('auth');
-        if (!$session || !$phone = $session['phone_number']) {
+        $user = Auth::user();
+        if (($user && !$phone = $user->phone) || (!$session || !$phone = $session['phone_number'])) {
             return redirect()->route('register')->with('error', trans('auth.phone_not_found'));
         }
 
-        return view('auth.verify-phone', compact('phone'));
+        return view('auth.verify-phone', compact('phone', 'user'));
     }
 
     public function email()
     {
         $session = Session::get('auth');
-        if (!$session || !$email = $session['email']) {
+        $user = Auth::user();
+        if (($user && !$email = $user->email) || (!$session || !$email = $session['email'])) {
             return redirect()->route('register')->with('error', trans('auth.email_not_found'));
         }
 
         return view('auth.verify-email', compact('email'));
+    }
+
+    public function verifyEmail(string $token)
+    {
+        if (!$user = User::where('verify_token', $token)->first()) {
+            return redirect()->route('login')->with('error', trans('auth.link_not_found'));
+        }
+
+        try {
+            $this->service->verifyEmail($user->id);
+
+            if (!Auth::guest() && !Auth::user()->isAdmin()) {
+                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.email_verified'));
+            }
+
+            return redirect()->route('user.profile')->with('success', trans('auth.email_verified'));
+        } catch (\DomainException $e) {
+            return redirect()->route('user.profile')->with('error', $e->getMessage());
+        }
+    }
+
+    public function verifyPhone(VerifyPhoneRequest $request)
+    {
+        $phone = trim($request->phone,'+');
+        if (!$user = User::where('phone', $phone)->first()) {
+            return redirect()->route('login')->with('error', trans('auth.phone_not_found'));
+        }
+
+        try {
+            $this->service->verifyPhone($user->id, $request->token);
+
+            if (!Auth::user()->isAdmin()) {
+                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.phone_verified'));
+            }
+
+            return redirect()->route('admin.home')->with('success', trans('auth.phone_verified_login'));
+        } catch (\DomainException $e) {
+            return redirect('/')->with('error', $e->getMessage());
+        }
     }
 
 

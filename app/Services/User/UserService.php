@@ -270,7 +270,28 @@ class UserService
     {
         $user = User::findOrFail($id);
         $user->requestPhoneAddVerification($phone);
-        Session::put('auth', ['phone' => $user->phone]);
+        Session::put('auth', ['phone_number' => $user->phone]);
         $this->sms->send($user->phone, $user->phone_verify_token);
+    }
+
+    public function verifyEmail(int $id): void
+    {
+        $user = User::findOrFail($id);
+        $user->verifyMail();
+    }
+
+    public function verifyPhone(int $id, int $token): void
+    {
+        $user = User::findOrFail($id);
+
+        if ($token !== (int)$user->phone_verify_token) {
+            throw new \DomainException(trans('auth.incorrect_verify_token'));
+        }
+
+        if ($user->phone_verify_token_expire->lt(Carbon::now())) {
+            throw new \DomainException(trans('auth.token_expired'));
+        }
+
+        $user->verifyPhone();
     }
 }

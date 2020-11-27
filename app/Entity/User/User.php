@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Entity\Shop\OrderItem;
@@ -121,6 +122,8 @@ class User extends Authenticatable
             'verify_token' => null,
             'role' => self::ROLE_USER,
             'status' => self::STATUS_ACTIVE,
+            'email_verified' => $email ? true : false,
+            'phone_verified' => $phone ? true : false,
         ]);
 
         $user->networks()->create([
@@ -282,8 +285,12 @@ class User extends Authenticatable
 
     public function verifyPhone(): void
     {
-        if (!$this->isWait()) {
+        if (Auth::guest() && !$this->isWait()) {
             throw new \DomainException('User is already verified.');
+        }
+
+        if ($this->isPhoneVerified()) {
+            throw new \DomainException('Phone is already verified.');
         }
 
         $this->update([
@@ -296,12 +303,12 @@ class User extends Authenticatable
 
     public function verifyMail(): void
     {
-        if (!$this->isWait()) {
+        if (Auth::guest() && !$this->isWait()) {
             throw new \DomainException('User is already verified.');
         }
 
-        if ($this->isPhoneVerified()) {
-            throw new \DomainException('Phone is already verified.');
+        if ($this->isEmailVerified()) {
+            throw new \DomainException('Email is already verified.');
         }
 
         $this->update([
@@ -363,6 +370,11 @@ class User extends Authenticatable
     public function isPhoneVerified(): bool
     {
         return $this->phone_verified;
+    }
+
+    public function isEmailVerified(): bool
+    {
+        return $this->email_verified;
     }
 
     public function isPhoneAuthEnabled(): bool
