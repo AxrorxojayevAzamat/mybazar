@@ -93,6 +93,14 @@
                                 @endforeach
                             </td>
                         </tr>
+                        <tr>
+                            <th>{{ trans('menu.discounts') }}</th>
+                            <td>
+                                @foreach($discounts as $discount)
+                                    <a href="{{ route('admin.discounts.show', $discount) }}">{{ $discount->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -133,11 +133,15 @@
                                 </li>
                                 @endif
                                 <li class="user-footer">
-                                    @if($profile_url)
-                                    <a href="{{ $profile_url }}" class="btn btn-default btn-flat">Profile</a>
+                                    @if (Auth::user()->isAdmin())
+                                        @if($profile_url)
+                                            <a href="{{ $profile_url }}" class="btn btn-default btn-flat">@lang('frontend.profile')</a>
+                                        @endif
+                                    @else
+                                        <a href="{{ route('user.profile') }}" class="btn btn-default btn-flat">@lang('frontend.profile')</a>
                                     @endif
 
-                                    <a class="btn btn-default btn-flat float-right @if(!$profile_url)btn-block @endif" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a class="btn btn-default btn-flat float-right @if(!$profile_url)btn-block @endif" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="margin-top: 5px;">
                                         <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte.log_out') }}
                                     </a>
                                     <form id="logout-form" action="{{ $logout_url }}" method="POST" style="display: none;">

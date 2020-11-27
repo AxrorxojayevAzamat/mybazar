@@ -69,7 +69,7 @@ class ResetPasswordController extends Controller
             return redirect()->route('password.reset.request')->with('error', trans('auth.incorrect_verify_token'));
         }
 
-        $this->resetPassword($user, $request['password']);
+        $this->resetPassword($user, $request['password'], $emailOrPhone);
 
         Session::remove('auth');
 
@@ -78,15 +78,20 @@ class ResetPasswordController extends Controller
         return redirect()->route('login')->with('success', trans('auth.reset'));
     }
 
-    protected function resetPassword(User $user, string $password)
+    protected function resetPassword(User $user, string $password, $emailOrPhone)
     {
         $user->setPassword($password);
+
+        if (UserHelper::isEmail($emailOrPhone)) {
+            $user->email_verified = true;
+        } else if (UserHelper::isPhoneNumber($emailOrPhone)) {
+            $user->phone_verified = true;
+        }
 
         $user->setRememberToken(Str::random(60));
         $user->verify_token = null;
         $user->phone_verify_token = null;
         $user->phone_verify_token_expire = null;
-        !$user->phone ? : $user->phone_verified = true;
 
         $user->save();
 

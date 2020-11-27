@@ -7,7 +7,7 @@ use App\Services\Manage\StoreService;
             <div class="shop-name-logo">
                 <img src="{{ $store->logoThumbnail }}" alt="">
                 <div>
-                    <h6 class="title"><a href="{{ route('stores.view',['id' => $store->id]) }}">{!! $store->name !!}</a></h6>
+                    <h6 class="title"><a href="{{ route('stores.view',$store) }}">{!! $store->name !!}</a></h6>
                 </div>
             </div>
             <div class="product-images">

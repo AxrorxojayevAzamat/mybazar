@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
@@ -34,10 +35,55 @@ class StoresController extends Controller
         return view('stores.index', compact('stores', 'categories'));
     }
 
-    public function view($id, Request $request)
+    public function view(Request $request,Store $store)
     {
-        $store = Store::findOrFail($id);
-        $product = Product::where(['store_id' => $id])->where(['status' => Product::STATUS_ACTIVE])->paginate(20);
-        return view('stores.view', compact('store', 'product'));
+        $query = Product::where(['status' => Product::STATUS_ACTIVE])->where(['store_id' => $store->id]);
+//        dd($request->get('order'));
+        if (!empty($value = $request->get('brands'))) {
+            $value = explode(',', $value);
+            $brandIds = Brand::whereIn('slug', $value)->pluck('id')->toArray();
+            $query->whereIn('brand_id', $brandIds);
+        }
+
+        if (!empty($value = $request->get('min_price'))) {
+            $query->where('price_uzs', '>=', $value);
+        }
+
+        if (!empty($value = $request->get('max_price'))) {
+            $query->where('price_uzs', '<=', $value);
+        }
+
+        if (empty($request->get('order'))) {
+            $query->orderByDesc('updated_at');
+        }
+
+        if (!empty($request->get('order')) && $request->get('order') == 'price') {
+            $query->orderByDesc('price_uzs');
+        }
+
+        if (!empty($request->get('order')) && $request->get('order') == 'rating') {
+            $query->orderByDesc('rating');
+        }
+
+        if (!empty($request->get('order')) && $request->get('order') == 'new') {
+            $query->orderByDesc('new');
+        }
+
+        $brands = Brand::all();
+
+        $products = $query->paginate(20);
+        $ratings = [];
+        foreach($products as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+        $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
+            ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
+            ->orderByDesc('discount')->limit(9)->get();
+
+        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts','store'));
+
     }
 }

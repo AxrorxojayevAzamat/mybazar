@@ -11,6 +11,7 @@ use App\Services\Auth\RegisterService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -94,8 +95,13 @@ class RegisterController extends Controller
             return redirect()->route('login')->with('error', trans('auth.link_not_found'));
         }
 
-        $this->service->verifyEmail($user->id);
         try {
+            $this->service->verifyEmail($user->id);
+
+            if (!Auth::guest() && !Auth::user()->isAdmin()) {
+                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.email_verified'));
+            }
+
             return redirect()->route('login')->with('success', trans('auth.email_verified'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());
@@ -106,7 +112,7 @@ class RegisterController extends Controller
     {
         $session = Session::get('auth');
         if (!$session || !$phone = $session['phone_number']) {
-            return redirect()->route('register')->with('success', trans('auth.phone_not_found'));
+            return redirect()->route('register')->with('error', trans('auth.phone_not_found'));
         }
 
         return view('auth.verify-phone', compact('phone'));
@@ -116,7 +122,7 @@ class RegisterController extends Controller
     {
         $session = Session::get('auth');
         if (!$session || !$email = $session['email']) {
-            return redirect()->route('register')->with('success', trans('auth.email_not_found'));
+            return redirect()->route('register')->with('error', trans('auth.email_not_found'));
         }
 
         return view('auth.verify-email', compact('email'));
@@ -152,6 +158,11 @@ class RegisterController extends Controller
 
         try {
             $this->service->verifyPhone($user->id, $request->token);
+
+            if (!Auth::guest() && !Auth::user()->isAdmin()) {
+                return redirect()->route('user.profile', Auth::user())->with('success', trans('auth.phone_verified'));
+            }
+
             return redirect()->route('login')->with('success', trans('auth.phone_verified'));
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());

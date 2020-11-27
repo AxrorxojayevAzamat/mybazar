@@ -134,12 +134,12 @@
 
                     @if(Auth::user()->isUser() && Auth::user()->isManagerRoleRequested())
                         <a
-                            class="dropdown-item" href="{{ route('user.manager.request') }}"
+                            class="dropdown-item" href="{{ route('profile.manager.request') }}"
                             onclick="event.preventDefault();
                             document.getElementById('request-manager-form').submit();"
                         >@lang('frontend.manager.request_manager_role')</a>
 
-                        <form id="request-manager-form" action="{{ route('user.manager.request') }}" method="POST" style="display: none;">
+                        <form id="request-manager-form" action="{{ route('profile.manager.request') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     @endif
