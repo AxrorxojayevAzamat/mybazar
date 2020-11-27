@@ -94,6 +94,7 @@ return [
     'image' => 'Tasviri',
     'poster' => 'Poster',
     'video' => 'Video fayli',
+    'logo' => 'Logotip',
     'files' => 'Fayllar',
     'url' => 'Url',
     'slug' => 'Slug',
@@ -119,6 +120,7 @@ return [
     'user' => [
         'name' => 'Foydalanuvchi Nomi',
         'add' => 'Foydalanuvchi qo`shmoq',
+        'profile' => 'Profil',
         'role' => 'Roli',
         'waiting' => 'Kutish',
         'active' => 'Faol',
@@ -128,6 +130,11 @@ return [
         'role_administrator' => 'Administrator',
         'role_manager' => 'Meneger',
         'requests' => 'Menejer roliga so`rovlar',
+    ],
+    'sliders' =>[
+        'slider' => 'slayder',
+        'create new slider' => 'Yangi slayder qo`shish',
+        'sort' => 'Sort'
     ],
 
     'category' => [
