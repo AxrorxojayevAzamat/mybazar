@@ -46,6 +46,9 @@
     @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
     {{--    @include('layouts.recently-viewed')--}}
+    @include ('layouts.carousel-products',
+      ['products' => $shopProducts, "title" => trans('frontend.product.shop_product'), 'rate_for' => ['js' => '"P"', 'html' => 'P']])
+    {{--    @include('layouts.recently-viewed')--}}
 @endsection
 
 @include('products._scripts')

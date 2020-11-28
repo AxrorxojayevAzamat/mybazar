@@ -46,6 +46,9 @@ return [
         'comments' => 'Sharhlar',
         'day_product' => 'KUN MAHSULOTI',
         'you_watched' => 'Siz tomosha qildingiz',
+        'shop_product' => 'Ushbu do`konga tegishli tovarlar',
+        'no_charasteric' => 'Xarakteristikalar mavjud emas',
+        'all_charasteric' => 'Barcha xarakteristikalar',
     ],
 
     'review' => [

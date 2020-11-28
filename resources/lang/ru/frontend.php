@@ -46,6 +46,9 @@ return [
         'comments' => 'Комментарии',
         'day_product' => 'ТОВАР ДНЯ',
         'you_watched' => 'Вы смотрели',
+        'shop_product' => 'Магазин товаров',
+        'no_charasteric' => 'Нет характеристики',
+        'all_charasteric' => 'Общие характеристики',
     ],
 
     'review' => [

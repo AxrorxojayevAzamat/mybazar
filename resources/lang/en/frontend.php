@@ -49,6 +49,9 @@ return [
         'comments' => 'Comments',
         'day_product' => 'PRODUCT OF THE DAY',
         'you_watched' => 'You watched',
+        'shop_product' => 'Shop products',
+        'no_charasteric' => 'There is no characteristic',
+        'all_charasteric' => 'All characteristic',
     ],
 
     'review' => [
