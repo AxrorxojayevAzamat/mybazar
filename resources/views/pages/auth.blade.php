@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Auth page')
+@section('title', trans('frontend.title.auth_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/auth.css')}}"> --}}

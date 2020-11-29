@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mail page')
+@section('title', trans('frontend.title.mail_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/auth.css')}}"> --}}

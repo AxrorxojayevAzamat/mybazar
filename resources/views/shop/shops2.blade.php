@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="current-old-price horizontal">
-                            <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>сум</span></h5>
+                            <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
                         </div>
                         <div class="item-action-icons">
                             <div class="libra"><i class="mbtocompare"></i></div>

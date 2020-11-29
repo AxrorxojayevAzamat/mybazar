@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Favorites page')
+@section('title', trans('frontend.title.favorites_page'))
 
 
 @section('styles')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'SMS page')
+@section('title', trans('frontend.title.sms_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/auth.css')}}"> --}}

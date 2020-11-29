@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Popular page')
+@section('title', trans('frontend.title.popular_page'))
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">

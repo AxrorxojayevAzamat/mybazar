@@ -43,7 +43,7 @@
 {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
-                            <span>{{ $product->number_of_reviews }} отзывов</span>
+                            <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
