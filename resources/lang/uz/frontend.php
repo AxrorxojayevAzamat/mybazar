@@ -16,6 +16,7 @@ return [
     'by_date' => 'Sana bo`yicha',
     'by_rating' => 'Baho bo`yicha',
     'by_novelty' => 'Yangiligi bo`yicha',
+    'by_name' => 'Nomi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
     'novelty_upper' => 'YANGI',
     'popular' => 'Ommabop',

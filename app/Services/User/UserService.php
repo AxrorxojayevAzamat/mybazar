@@ -217,15 +217,17 @@ class UserService
         return User::findOrFail($id);
     }
 
-    public function addToFavorite(int $id, Request $request): UserFavorite
+    public function addToFavorite(int $id, $product)
     {
         /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
-
-            $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
-//            $userFavorite = $user->favorites()->attach($request->product_id);
+            if (!$user->classFavorite($product->id)){
+                $userFavorite = $user->userFavorites()->create(['product_id' => $product->id]);
+            }else{
+                $userFavorite = $user->favorites()->detach($product->id);
+            }
 
             DB::commit();
 

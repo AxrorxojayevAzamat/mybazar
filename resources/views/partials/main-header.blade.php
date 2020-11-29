@@ -109,7 +109,7 @@
             </li>
 
             <li>
-                <a href="#" class="wish-list dropdownToggle"> <i class="mbfavorite"><span></span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
             </li>
 
             @guest

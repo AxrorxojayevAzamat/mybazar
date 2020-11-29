@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use App\Entity\UserFavorite;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -270,6 +271,15 @@ class Product extends BaseModel
 
     }
 
+    public function classFavorite($id):bool
+    {
+        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
+        if ($productIds->exists()){
+            return true;
+        }
+
+        return false;
+    }
 
     ###########################################
 

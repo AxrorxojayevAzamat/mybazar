@@ -138,6 +138,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('profile','ProfileController@show')->name('profile');
             Route::put('setting/{user}','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites');
+            Route::get('add-to-favorite/{product}','FavoriteController@addToFavorite')->name('favorites.add');
     });
 
     Route::group(['prefix' => 'pages', 'as' => 'pages.'], function () {
