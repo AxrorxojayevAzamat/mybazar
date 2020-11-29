@@ -242,15 +242,6 @@ return [
         'video_blog' => 'Video blog',
     ],
 
-       'delivery_page' => 'Delivery page',
-        'home_page' => 'Home page',
-        'auth_page' => 'Auth page',
-        'mail_page' => 'Mail page',
-        'popular_page' => 'Popular page',
-        'favorites_page' => 'Favorites page',
-        'productviewpage_characteristics' => 'Productviewpage characteristics',
-    ],
-
     'blogs' => 'Blogs',
     'videos' => 'Videos',
     'search_blogs' => 'Search blogs',
