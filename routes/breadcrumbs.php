@@ -647,7 +647,7 @@ Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order 
 
 Breadcrumbs::register('admin.blog.posts.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Posts', route('admin.blog.posts.index'));
+    $crumbs->push(trans('menu.posts'), route('admin.blog.posts.index'));
 });
 
 Breadcrumbs::register('admin.blog.posts.create', function (Crumbs $crumbs) {
@@ -670,7 +670,7 @@ Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $p
 
 Breadcrumbs::register('admin.blog.videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Videos', route('admin.blog.videos.index'));
+    $crumbs->push(trans('menu.videos'), route('admin.blog.videos.index'));
 });
 
 Breadcrumbs::register('admin.blog.videos.create', function (Crumbs $crumbs) {
@@ -691,7 +691,7 @@ Breadcrumbs::register('admin.blog.videos.edit', function (Crumbs $crumbs, Video 
 // Banners
 Breadcrumbs::register('admin.banners.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Banners', route('admin.banners.index'));
+    $crumbs->push(trans('menu.banners'), route('admin.banners.index'));
 });
 
 Breadcrumbs::register('admin.banners.create', function (Crumbs $crumbs) {
@@ -713,7 +713,7 @@ Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, Banner $ba
 
 Breadcrumbs::register('admin.pages.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Pages', route('admin.pages.index'));
+    $crumbs->push(trans('menu.pages'), route('admin.pages.index'));
 });
 
 Breadcrumbs::register('admin.pages.create', function (Crumbs $crumbs) {
@@ -739,7 +739,7 @@ Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) 
 // Sliders
 Breadcrumbs::register('admin.sliders.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Sliders', route('admin.sliders.index'));
+    $crumbs->push(trans('adminlte.sliders.slider'), route('admin.sliders.index'));
 });
 
 Breadcrumbs::register('admin.sliders.create', function (Crumbs $crumbs) {

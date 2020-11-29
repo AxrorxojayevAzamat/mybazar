@@ -94,6 +94,7 @@ return [
     'image' => 'Image',
     'poster' => 'Poster',
     'video' => 'Video',
+    'logo' => 'Logo',
     'files' => 'Files',
     'url' => 'Url',
     'slug' => 'Slug',
@@ -118,6 +119,7 @@ return [
 
     'user' => [
         'name'  => 'Username',
+        'profile'  => 'Profile',
         'add' => 'Add User',
         'role' => 'Role',
         'waiting' => 'Waiting',
@@ -129,7 +131,11 @@ return [
         'role_manager' => 'Manager',
         'requests' => 'Manager role requests',
     ],
-
+    'sliders' =>[
+        'slider' => 'slider',
+        'create new slider' => 'Create new slider',
+        'sort' => 'Saralash'
+    ],
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',

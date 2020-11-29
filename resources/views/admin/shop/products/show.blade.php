@@ -137,6 +137,14 @@
                         <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $product->rating }}</td></tr>
                         <tr><th>{{ trans('adminlte.number_of_reviews') }}</th><td>{{ $product->number_of_reviews }}</td></tr>
+                        <tr>
+                            <th>{{ trans('menu.discounts') }}</th>
+                            <td>
+                                @foreach($discounts as $discount)
+                                    <a href="{{ route('admin.discounts.show', $discount) }}">{{ $discount->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

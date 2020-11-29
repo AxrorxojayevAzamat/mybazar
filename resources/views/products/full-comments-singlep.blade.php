@@ -2,8 +2,10 @@
     <div class="outter-full-comments">
         <div class="comments">
             <div class="sort-by">
-                <button class="btn sort-by-btn by-price">@lang('frontend.by_date')<i></i></button>
-                <button class="btn sort-by-btn by-rating">@lang('frontend.by_rating')<i></i></button>
+                @if($product->reviews()->count() > 0)
+                    <button class="btn sort-by-btn by-price">@lang('frontend.by_date')<i></i></button>
+                    <button class="btn sort-by-btn by-rating">@lang('frontend.by_rating')<i></i></button>
+                @endif
             </div>
             @foreach($product->reviews()->limit(5)->orderByDesc('created_at')->get() as $review)
                 <div class="item">
@@ -33,7 +35,7 @@
                     <h6>@lang('frontend.review.disadvantages')</h6>
                     <p>{{ $review->disadvantages }}</p>
 
-                    <h6>Коментарий</h6>
+                    <h6>{{ trans('frontend.product.comments') }}</h6>
                     <p>{{ $review->comment }}</p>
                 </div>
             @endforeach
@@ -70,7 +72,7 @@
                     <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}">
                 </form>
             @else
-                <p>@lang('frontend.log_in_to_review')</p>
+                <p class="text-center">@lang('frontend.log_in_to_review')</p>
             @endif
 
         </div>

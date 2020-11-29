@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
 use App\Entity\Brand;
+use App\Entity\Discount;
 use App\Entity\Store;
 use App\Entity\Category;
 use App\Entity\User\User;
@@ -256,6 +257,19 @@ class Product extends BaseModel
     {
         return strtotime($this->discount_ends_at) - time();
     }
+    public  function discountsDelete(){
+        $discount = ShopProductDiscounts::where(['product_id' => $this->id])->get();
+        foreach ($discount as $value){
+            $value->delete();
+        }
+    }
+    public function discountsList(): array
+    {
+        $productDiscount= ShopProductDiscounts::where(['product_id'=>$this->id])->pluck('discount_id');
+        return Discount::whereIn('id', $productDiscount)->pluck('id')->toArray();
+
+    }
+
 
     ###########################################
 

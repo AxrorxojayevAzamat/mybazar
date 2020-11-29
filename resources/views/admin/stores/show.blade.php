@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
-                <div class="card-header"><h3 class="card-title">Logo</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.logo') }}</h3></div>
                 <div class="card-body">
                     @if ($store->logo)
                         <a href="{{ $store->logoOriginal }}" target="_blank"><img src="{{ $store->logoThumbnail }}"></a>
