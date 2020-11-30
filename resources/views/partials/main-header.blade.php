@@ -80,7 +80,9 @@
             </li>
 
             <li>
-                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle">
+                    <i class="mbfavorite"><span class="@if(Auth::user() && Auth::user()->favorites()->exists()) <?= 'counter'?> @endif">{{ Auth::user() ? Auth::user()->favorites()->count() : "" }}</span></i> @lang('menu.favorites')
+                </a>
             </li>
 
             @guest
