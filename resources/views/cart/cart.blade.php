@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Cart page')
+@section('title', trans('frontend.title.cart_page'))
 
 @section('body')
     <section>

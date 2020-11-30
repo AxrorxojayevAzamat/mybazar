@@ -1,6 +1,6 @@
 <div class="outter-full-characteristics">
     <div class="accordion-characteristics">
-        <button type="button" class="btn accordion active">{{ trans('frontend.product.all_characteristics') }}</button>
+        <button type="button" class="btn accordion active">@lang('frontend.all_charactires')</button>
         <div id="filter1" class="panel">
             @if(count($product->values) > 0)
             @foreach($product->values as $value)

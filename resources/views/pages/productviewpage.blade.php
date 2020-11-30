@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Productviewpage characteristics')
+@section('title', trans('frontend.title.productviewpage_characteristics'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}"> --}}

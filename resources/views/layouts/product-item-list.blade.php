@@ -52,21 +52,21 @@ if ($product->classFavorite($product->id)) {
 </div>
 
 <script>
-    function addCart(id){
-        let product_id = {};
-        product_id.id = id;
-        $.ajax({
-            url: '/add-cart',
-            method: 'POST',
-            data: product_id,
-            dataType: 'json',
-            success: function (data){
-                console.log(data);
-            },error: function (data){
-                console.log(data);
-            }
-        })
-    }
+    // function addCart(id){
+    //     let product_id = {};
+    //     product_id.id = id;
+    //     $.ajax({
+    //         url: '/add-cart',
+    //         method: 'POST',
+    //         data: product_id,
+    //         dataType: 'json',
+    //         success: function (data){
+    //             console.log(data);
+    //         },error: function (data){
+    //             console.log(data);
+    //         }
+    //     })
+    // }
     function addToFavorite(id){
         let product_id = {};
         product_id.id = id;
