@@ -1,4 +1,3 @@
-@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 <section>
     <div class="outter-single-product-with-des">
         <h4 class="title">{{ $product->name }}</h4>
@@ -44,7 +43,7 @@
 {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
-                            <span>{{ $product->number_of_reviews }} {{ trans('frontend.product.comments') }}</span>
+                            <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
@@ -122,6 +121,7 @@
         </div>
     </div>
 </section>
+@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
 <script>
     function addToFavorite(id){

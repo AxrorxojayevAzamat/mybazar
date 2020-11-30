@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home page')
+@section('title', trans('frontend.title.home_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/index.css')}}"> --}}

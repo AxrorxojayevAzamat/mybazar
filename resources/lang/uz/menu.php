@@ -2,19 +2,19 @@
 
 return [
     'main_navigation'               => 'ASOSIY MENYU',
-    'blog'                          => 'Блог',
-    'pages'                         => 'Страницы',
-    'account_settings'              => 'НАСТРОЙКИ ПРОФИЛЯ',
-    'profile'                       => 'Профиль',
-    'change_password'               => 'Изменить пароль',
-    'multilevel'                    => 'Многоуровневое меню',
-    'level_one'                     => 'Уровень 1',
-    'level_two'                     => 'Уровень 2',
-    'level_three'                   => 'Уровень 3',
+    'blog'                          => 'Blog',
+    'pages'                         => 'Sahifalar',
+    'account_settings'              => 'PROFILNI SOZLASH',
+    'profile'                       => 'Profil',
+    'change_password'               => 'Parolni o\'gartirish',
+    'multilevel'                    => 'Ko\'p bosqichli menyu',
+    'level_one'                     => 'Daraja 1',
+    'level_two'                     => 'Daraja 2',
+    'level_three'                   => 'Daraja 3',
     'labels'                        => 'Метки',
-    'important'                     => 'Важно',
-    'warning'                       => 'Внимание',
-    'information'                   => 'Информация',
+    'important'                     => 'Muhim',
+    'warning'                       => 'Diqqat',
+    'information'                   => 'Ma\'lumot',
     'compare'                       => 'Solishtirish',
     'favorites'                     => 'Sevimlilar',
     'account'                       => 'Akkount',
@@ -38,4 +38,15 @@ return [
     'videos'                        => 'Videolar',
     'banners'                       => 'Bannerlar',
     'discounts'                     => 'Chegirmalar',
+
+    'whole_catalog'                 => 'Butun katalog',
+
+
+    'the_team'                      => 'Jamoa',
+    'management'                    => 'Menejment',
+    'sales'                         => 'Sotish',
+    'development'                   => 'Rivojlanish',
+    'our_address'                   => 'Bizning manzilimiz',
+
+
 ];

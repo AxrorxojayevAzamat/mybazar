@@ -27,7 +27,7 @@
                                 <span class="invalid-feedback"><strong>{{ $errors->first('new_password') }}</strong></span>
                             @endif
                         </div>
-                        <button id="change-password" type="submit" class="btn btn-sm btn-success">change password</button>
+                        <button id="change-password" type="submit" class="btn btn-sm btn-success">@lang('menu.change_passwor')</button>
                     </div>
                 </div>
                 <div class="card" style="margin-bottom: 20px;">
@@ -37,18 +37,18 @@
                             {!! Form::label('phone', trans('adminlte.phone') , ['class' => 'col-form-label']); !!}
                             {!! Form::number('phone',old('phone', $user->phone ? $user->phone : null), ['id' => 'userPhone','class'=>'form-control' . ($errors->has('phone') ? ' is-invalid' : '')]) !!}
                             @if (!$user->isPhoneVerified())
-                                <i>(is not verified)</i><br/>
+                                <i>@lang('frontend.is_not_verified')</i><br/>
                             @endif
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('phone') }}</strong></span>
                             @endif
-                            <button id="changePhone" type="button" class="btn btn-sm btn-success">change phone
+                            <button id="changePhone" type="button" class="btn btn-sm btn-success">@lang('frontend.change_phone')
                             </button>
                         </div>
                         <div class="form-group">
                             {!! Form::label('code', 'sms_code' , ['class' => 'col-form-label']); !!}
                             {!! Form::number('phone_verify_token','',['id' => 'confirmCode','class'=>'form-control']); !!}
-                            <button id="confirmPhone" type="button" class="btn btn-sm btn-success">verify phone
+                            <button id="confirmPhone" type="button" class="btn btn-sm btn-success">@lang('frontend.verify_phone')
                             </button>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card card-gray card-outline">
-                                        <div class="card-header"><h3 class="card-title">Profile</h3></div>
+                                        <div class="card-header"><h3 class="card-title">@lang('frontend.profile')</h3></div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 {!! Form::label('first_name', trans('adminlte.first_name') , ['class' => 'col-form-label']); !!}

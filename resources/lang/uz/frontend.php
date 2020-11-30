@@ -19,6 +19,7 @@ return [
     'by_name' => 'Nomi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
     'novelty_upper' => 'YANGI',
+    'novelty' => 'Yangi',
     'popular' => 'Ommabop',
     'recommend' => 'Tavsiya etiladi',
     'compare_products' => 'Mahsulotlarni taqqoslash',
@@ -192,10 +193,67 @@ return [
         'p4' => 'Tovar xabardorligi ijodiy marketing va savdo bo\'limini uslubiy ravishda belgilaydi. <br>
                 Aloqa, tafsilotlarni e\'tiborsiz qoldirish, chet el tajribasini tahlil qilishni sinxronizatsiya qiladi.',
     ],
+
+    'pages' => [
+        'login_or_register' => 'Kirish yoki ro\'yxatdan o\'tish',
+        'by_num_phone' => 'Telefon raqami bo\'yicha',
+        'get_sms_code' => 'SMS kodini oling',
+        'login_by' => 'Bilan kirish',
+        'login_by_password' => 'Parol bilan kirish',
+
+        'phone_num_or_email' => 'Telefon raqami yoki elektron pochta manzili',
+        'forgot_passwoed' => 'Parolni unutdingizmi?',
+        'password' => 'Parol',
+        'enter' => 'Kirish',
+        'remember' => 'Esingizda bo\'lsin',
+
+        'enter_code_from_sms' => 'SMS-dan kodni kiriting',
+        'send_again_after_59_sec' => '59 soniyadan keyin qayta yuboring',
+    ],
+
+    'title' => [
+        'single_blog_page' => 'Yagona blog sahifasi',
+        'dashboard' => 'Uskunalar paneli',
+        'blogs_page' => 'Bloglar sahifasi',
+        'single_news_page' => 'Yagona yangiliklar sahifasi',
+        'brands' => 'Brendlar',
+        'brand_view' => 'Brend ko\'rinishi',
+        'news_page' => 'Yangiliklar sahifasi',
+        'cart_page' => 'Savat sahifasi',
+        'checkout_page' => 'To\'lov sahifasi',
+        'pay_page' => 'Tekshirish sahifasi',
+        'catalog_page' => 'Katalog sahifasi',
+        'catalog_section_page' => 'Katalog bo\'limi sahifasi',
+        'compare_page' => 'Solishtirish sahifasi',
+        'sms_page' => 'SMS sahifasi',
+        'sales_page' => 'Sotish sahifasi',
+        'sales_view' => 'Sotishni ko\'rish',
+        'shop_view' => 'Do\'kon sahifasi',
+        'shops_page' => 'Do\'konlar sahifasi',
+        'delivery_page' => 'Yetkazib berish sahifasi',
+        'home_page' => 'Bosh sahifa',
+        'auth_page' => 'Mualliflik sahifasi',
+        'mail_page' => 'Pochta sahifasi',
+        'popular_page' => 'Mashhur tovarlar sahifasi',
+        'favorites_page' => 'Sevimli tovarlar sahifasi',
+        'productviewpage_characteristics' =>  'Tovarlar xarakteristikasi',
+        'video_blog' =>  'Video blog',
+    ],
+
     'blogs' => 'Bloglar',
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',
     'search_videos' => 'Videolarni qidirish',
     'show_more' => 'ko\'proq ko\'rsatish',
+
+    'all_charactires' => 'Umumiy xususiyatlar',
+    'reviews' => 'sharhlar',
+
+    'is_not_verified' => '(tasdiqlanmadi)',
+    'change_phone' => 'Telefon raqamni o\'zgartirish',
+    'verify_phone' => 'Telefon raqamni tasdiqlash',
+    'profile' => 'Profil',
+
+    'products' => 'Tovarlar',
 
 ];

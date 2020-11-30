@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pay page')
+@section('title', trans('frontend.title.pay_page'))
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/pay.css')}}"> --}}
 @endsection
