@@ -15,7 +15,7 @@ use App\Entity\User\User;
 use App\Entity\User\Profile;
 use App\Entity\UserFavorite;
 use App\Http\Requests\Admin\Users\CreateRequest;
-use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -176,21 +176,21 @@ class UserService
         $user->approveManagerRoleRequest();
     }
 
-    public function changePassword(PasswordRequest $request)
+    public function changePassword(PasswordRequest $request): bool
     {
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
-            return JsonHelper::badResponse('Your current password does not matches with the password you provided. Please try again.');
+            throw new \DomainException('Your current password does not matches with the password you provided. Please try again.');
         }
 
         if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
-            return JsonHelper::badResponse('New Password cannot be same as your current password. Please choose a different password.');
+            throw new \DomainException('New Password cannot be same as your current password. Please choose a different password.');
         }
 
         $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
 
-        return JsonHelper::successResponse('Password changed successfully !');
+        return true;
     }
 
     private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void

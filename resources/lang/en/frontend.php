@@ -258,6 +258,8 @@ return [
     'change_email' => 'Change email',
     'change_phone' => 'Change phone number',
     'verify_phone' => 'Verify phone number',
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
     'profile' => 'Profile',
 
     'products' => 'Products',

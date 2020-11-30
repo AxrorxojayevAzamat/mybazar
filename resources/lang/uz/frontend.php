@@ -255,6 +255,8 @@ return [
     'change_email' => 'Elektron pochtani o\'zgartirish',
     'change_phone' => 'Telefon raqamni o\'zgartirish',
     'verify_phone' => 'Telefon raqamni tasdiqlash',
+    'current_password' => 'Hozirgi parol',
+    'new_password' => 'Yangi parol',
     'profile' => 'Profil',
 
     'products' => 'Tovarlar',

@@ -255,6 +255,8 @@ return [
     'change_email' => 'Изменить электронную почту',
     'change_phone' => 'Изменить номер телефона',
     'verify_phone' => 'Подтвердить номер телефона',
+    'current_password' => 'Действующий пароль',
+    'new_password' => 'Новый пароль',
     'profile' => 'Профиль',
 
     'products' => 'Товары',
