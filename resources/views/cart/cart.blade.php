@@ -67,11 +67,6 @@
             let product_id = {};
             product_id.data = [];
             product_id.product_id = id;
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            //     }
-            // })
 
             $.ajax({
                 url: '/remove-cart',
@@ -79,8 +74,18 @@
                 data: product_id,
                 dataType: 'json',
                 success: function (data) {
-                    location.reload();
-                    console.log(data);
+                    if (data.data == 'success'){
+                        location.reload();
+                    }else{
+                        let product_id_local = localStorage.getItem('product_id');
+                        product_id_local = product_id_local.replace(id + ',', '');
+                        localStorage.removeItem('product_id');
+                        localStorage.setItem('product_id',product_id_local);
+                        $('#' + id).hide();
+
+
+                    }
+
                 }, error: function (data) {
                     console.log(data);
                 }

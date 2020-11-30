@@ -345,4 +345,3 @@ Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedir
         Route::resource('deliveries', 'DeliveryController');
     });
 });
-
