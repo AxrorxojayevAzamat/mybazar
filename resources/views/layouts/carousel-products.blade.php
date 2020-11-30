@@ -17,22 +17,15 @@
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;
-        //
-        // let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-        // XMLHttpRequest.prototype.send = function (data) {
-        //     this.setRequestHeader('X-CSRF-Token', token);
-        //     return send.apply(this, arguments);
-        // };
 
         $.ajax({
-            url: 'add-cart',
+            url: '/add-cart',
             method: 'POST',
             data: product_id,
             dataType: 'json',
             success: function (data) {
                 if (data.message == 'success'){
                     localStorage.removeItem('product_id');
-                    // delete $.ajaxSettings.headers['X-CSRF-Token'];
                     console.log('exists');
                 }else{
                     nonRegisteredUsersCart(id);
