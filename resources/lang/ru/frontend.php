@@ -30,6 +30,7 @@ return [
     'discount_upper' => 'СКИДКА',
     'discounts' => 'Акции и скидки',
     'profile' => 'Профиль',
+    'social_networks' => 'Социальные сети',
 
     'product' => [
         'price' => ':price <span>сум</span>',

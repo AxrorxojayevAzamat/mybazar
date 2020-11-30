@@ -33,6 +33,7 @@ return [
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
     'profile' => 'Profile',
+    'social_networks' => 'Social networks',
 
     'product' => [
         'price' => ':price <span>sums</span>',

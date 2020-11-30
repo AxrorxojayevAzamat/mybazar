@@ -387,6 +387,11 @@ class User extends Authenticatable
         return $this->manager_request_status === self::MANAGER_REQUESTED && $this->role === self::ROLE_USER;
     }
 
+    public function isNetworkExists(string $network): bool
+    {
+        return $this->networks()->where('network', $network)->exists();
+    }
+
     public function haveBoughtProduct(int $productId): bool
     {
         return OrderItem::select('shop_order_items.*')

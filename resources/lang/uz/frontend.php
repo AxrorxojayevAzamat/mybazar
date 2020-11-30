@@ -30,6 +30,7 @@ return [
     'discount_upper' => 'CHEGIRMA',
     'discounts' => 'Aksiya va Chegirmalar',
     'profile' => 'Profil',
+    'social_networks' => 'Ijtimoiy tarmoqlar',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
