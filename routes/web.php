@@ -26,7 +26,6 @@ Route::get('admin',function (){
     return redirect('ru/admin');
 });
 
-
 Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::post('/change-password', 'ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
