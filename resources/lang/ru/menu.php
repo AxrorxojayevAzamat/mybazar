@@ -38,4 +38,13 @@ return [
     'videos'                        => 'Видео',
     'banners'                       => 'Баннеры',
     'discounts'                     => 'Скидки',
+
+    'whole_catalog'                 => 'Весь каталог',
+
+    'the_team'                      => 'Команда'
+    'management'                    => 'Управление'
+    'sales'                         => 'Продажи'
+    'development'                   => 'Развитие'
+    'our_address'                   => 'Наш адресс'
+
 ];

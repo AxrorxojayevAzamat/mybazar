@@ -38,4 +38,13 @@ return [
     'videos'                        => 'Videos',
     'banners'                       => 'Banners',
     'discounts'                     => 'Discounts',
+
+    'whole_catalog'                 => 'Whole catalog',
+
+    'the_team'                      => 'The team'
+    'management'                    => 'Management'
+    'sales'                         => 'Sales'
+    'development'                   => 'Development'
+    'our_address'                   => 'Our address'
+
 ];

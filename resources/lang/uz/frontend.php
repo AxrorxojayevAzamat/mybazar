@@ -253,4 +253,7 @@ return [
     'change_phone' => 'Telefon raqamni o\'zgartirish',
     'verify_phone' => 'Telefon raqamni tasdiqlash',
     'profile' => 'Profil',
+
+    'products' => 'Tovarlar'
+
 ];

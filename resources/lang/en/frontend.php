@@ -256,4 +256,7 @@ return [
     'change_phone' => 'Change phone number ',
     'verify_phone' => 'Verify phone number',
     'profile' => 'Profile',
+
+    'products' => 'Products'
+
 ];
