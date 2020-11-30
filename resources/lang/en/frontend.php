@@ -16,6 +16,7 @@ return [
     'by_date' => 'By date',
     'by_rating' => 'By rating',
     'by_novelty' => 'By novelty',
+    'by_name' => 'By name',
     'log_in_to_review' => 'Please, log in to send a review!',
     'novelty_upper' => 'NEW',
     'novelty' => 'New',

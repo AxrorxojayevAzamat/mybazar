@@ -8,38 +8,9 @@
             <div class="input-with-tags">
                 <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
             </div>
-            <div class="autocomplete-tags">
-                <a href="#">
-                    <div class="item with-icon">
-                        <i class="mbsearch_resulticon"></i>
-                        <h6 class="title">Xiaomi Mi Max 2</h6>
-                        <i class="mbgotoresults_searchresulticon"></i>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item brand">
-                        <div class="image">
-                            <img src="{{asset('images/mi_brand.png')}}" alt="">
-                        </div>
-                        <div class="description">
-                            <h6 class="title">Xiaomi</h6>
-                            <p class="sub-title brand">Бренд</p>
-                        </div>
-                        <i class="mbgotoresults_searchresulticon"></i>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item product">
-                        <div class="image">
-                            <img src="{{asset('images/mi_brand.png')}}" alt="">
-                        </div>
-                        <div class="description">
-                            <h6 class="title">Xiaomi</h6>
-                            <p class="sub-title price">3 698 334 <span>сум</span></p>
-                        </div>
-                        <i class="mbgotoresults_searchresulticon"></i>
-                    </div>
-                </a>
+            <div class="autocomplete-tags" id="droping">
+
+
             </div>
             <select class="form-control select-main-search">
                 @foreach ($gCategories as $category)
@@ -109,7 +80,7 @@
             </li>
 
             <li>
-                <a href="#" class="wish-list dropdownToggle"> <i class="mbfavorite"><span></span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
             </li>
 
             @guest
@@ -157,5 +128,5 @@
             @endguest
         </ul>
     </div>
-    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>
+{{--    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>--}}
 </div>

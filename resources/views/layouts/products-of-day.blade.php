@@ -1,6 +1,13 @@
 <section>
     <div id="products-of-day" class=" products-of-day owl-carousel owl-theme">
         @foreach($dayProducts as $product)
+            <?php
+            if ($product->classFavorite($product->id)) {
+                $className = "selected_like";
+            }else{
+                $className = '';
+            }
+            ?>
             <div class="product-item" >
                 <div class="top">
                     <h5 class="bold title">@lang('frontend.product.day_product')</h5>
@@ -43,7 +50,7 @@
                         <div class="item-action-icons">
                             <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
                             <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbtocompare"></i></div>
-                            <div class="like"><i class="mbfavorite"></i></div>
+                            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
                         </div>
                     </div>
                 </div>
@@ -51,25 +58,19 @@
         @endforeach
     </div>
 </section>
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: 'add-to-favorite/'+id,
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+</script>
 @include('pages.rating-js', ['products' => $dayProducts, 'type' => '"D"'])
-
-{{--<script>--}}
-{{--    // let u = $('#user_info').val();--}}
-{{--    // console.log(u);--}}
-{{--    function addCart(id, auth){--}}
-{{--        console.log('info');--}}
-{{--        let product_id = {};--}}
-{{--        product_id.id = id;--}}
-{{--        $.ajax({--}}
-{{--            url: '/add-cart',--}}
-{{--            method: 'POST',--}}
-{{--            data: product_id,--}}
-{{--            dataType: 'json',--}}
-{{--            success: function (data){--}}
-{{--                console.log(data);--}}
-{{--            },error: function (data){--}}
-{{--                console.log(data);--}}
-{{--            }--}}
-{{--        })--}}
-{{--    }--}}
-{{--</script>--}}

@@ -403,6 +403,16 @@ class User extends Authenticatable
         });
     }
 
+    public function classFavorite($id):bool
+    {
+        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
+        if ($productIds->exists()){
+            return true;
+        }
+
+        return false;
+    }
+
     ###########################################
 
 

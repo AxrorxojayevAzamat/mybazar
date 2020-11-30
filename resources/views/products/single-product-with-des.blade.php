@@ -100,7 +100,7 @@
                         >
                             <i class="mbtocompare"></i>
                         </div>
-                        <div class="like"><i class="mbfavorite"></i></div>
+                        <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
                     </div>
                     <div class="delivery-options">
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
@@ -122,3 +122,18 @@
 </section>
 @include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: '{{ route('user.favorites.add',$product) }}',
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+</script>

@@ -19,6 +19,13 @@
     @if($shops2ThreeItems)
         <div class="shops-2r-inner owl-carousel owl-theme">
             @foreach($shops2ThreeItems as $shops2ThreeItem)
+                <?php
+                if ($shops2ThreeItem->classFavorite($shops2ThreeItem->id)) {
+                    $className = "selected_like";
+                }else{
+                    $className = '';
+                }
+                ?>
                 <div class="palette-items">
                     <div class="product-img">
                         <img src="{{ $shop->mainPhoto }}" alt="">
@@ -44,7 +51,7 @@
                         <div class="item-action-icons">
                             <div class="libra"><i class="mbtocompare"></i></div>
                             <div class="cart"><i class="mbcart"></i></div>
-                            <div class="like"><i class="mbfavorite"></i></div>
+                            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                         </div>
                     </div>
                 </div>
@@ -52,4 +59,19 @@
         </div>
 </div>
 @endif
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: 'add-to-favorite/'+id,
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+</script>
 
