@@ -159,7 +159,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 });
 
 //--------------- Dashboard ------------------//
-Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],function (){
+Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
         Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
             Route::resource('videos', 'VideoController');
@@ -346,4 +346,3 @@ Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedir
         Route::resource('deliveries', 'DeliveryController');
     });
 });
-
