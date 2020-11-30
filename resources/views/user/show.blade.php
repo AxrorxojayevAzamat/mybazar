@@ -4,10 +4,10 @@
 
 <div class="d-flex flex-row mb-3">
     <a href="{{ route('user.setting', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-    @if (!$user->email)
+    @if (!$user->email || !$user->isEmailVerified())
         <a href="{{ route('profile.add-email-show') }}" class="btn btn-primary mr-1">{{ trans('auth.add_email') }}</a>
     @endif
-    @if (!$user->phone)
+    @if (!$user->phone || !$user->isPhoneVerified())
         <a href="{{ route('profile.add-phone-show') }}" class="btn btn-primary mr-1">{{ trans('auth.add_phone') }}</a>
     @endif
     @if (!$user->isManagerRoleRequested() && !$user->isManager())
@@ -32,6 +32,9 @@
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('adminlte.phone') }}</th><td>{{ $user->phone }}</td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.user.role') }}</th><td>{{ $user->roleName() }}</td>
