@@ -153,9 +153,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     Route::get('cart-list', 'CartController@index')->name('cart');
+    Route::get('cart-header', 'CartController@showHeader');
+
 });
-
-
 
 //--------------- Dashboard ------------------//
 Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],function (){

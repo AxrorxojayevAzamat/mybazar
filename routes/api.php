@@ -19,5 +19,5 @@ Route::get('/banners', 'Api\BannersController@index');
 
 Route::get('search', 'Api\SearchController@search');
 
-Route::get('cart', 'Api\Shop\CartController@index');
+
 
