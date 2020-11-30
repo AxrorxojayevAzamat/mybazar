@@ -126,6 +126,8 @@ class User extends Authenticatable
             'phone_verified' => $phone ? true : false,
         ]);
 
+        $user->profile()->create();
+
         $user->networks()->create([
             'network' => $network,
             'identity' => $identity,
@@ -257,9 +259,9 @@ class User extends Authenticatable
 
     public function requestEmailAddVerification(string $email): void
     {
-        if ($this->email && $this->email_verified) {
-            throw new \DomainException(trans('auth.email_already_added'));
-        }
+//        if ($this->email && $this->email_verified) {
+//            throw new \DomainException(trans('auth.email_already_added'));
+//        }
 
         $this->update([
             'email' => $email,
@@ -271,9 +273,9 @@ class User extends Authenticatable
 
     public function requestPhoneAddVerification(string $phone): void
     {
-        if ($this->phone && $this->phone_verified) {
-            throw new \DomainException(trans('auth.phone_already_added'));
-        }
+//        if ($this->phone && $this->phone_verified) {
+//            throw new \DomainException(trans('auth.phone_already_added'));
+//        }
 
         $this->update([
             'phone' => $phone,

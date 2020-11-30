@@ -40,14 +40,20 @@
                             <th>{{ trans('adminlte.user.name') }}</th><td>{{ $user->name }}</td>
                         </tr>
                         <tr>
-                            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
+                            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }} <a href="{{ route('profile.add-email-show') }}" class="btn btn-primary mr-1">{{ trans('frontend.change_email') }}</a></td>
                         </tr>
                         <tr>
-                            <th>{{ trans('adminlte.phone') }}</th><td>{{ $user->phone }}</td>
+                            <th>{{ trans('adminlte.phone') }}</th><td>{{ $user->phone }} <a href="{{ route('profile.add-phone-show') }}" class="btn btn-primary mr-1">{{ trans('frontend.change_phone') }}</a></td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.user.role') }}</th><td>{{ $user->roleName() }}</td>
                         </tr>
+                        @if ($user->profile)
+                            <tr><th>{{ trans('adminlte.full_name') }}</th><td>{{ $user->profile->fullName }}</td></tr>
+                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->birth_date }}</td></tr>
+                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->genderName() }}</td></tr>
+                            <tr><th>{{ trans('adminlte.address') }}</th><td>{{ $user->profile->address }}</td></tr>
+                        @endif
                         <tr>
                             <th>{{ trans('adminlte.status') }}</th>
                             <td>

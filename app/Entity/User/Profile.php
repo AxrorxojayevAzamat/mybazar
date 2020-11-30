@@ -24,32 +24,32 @@ use App\Helpers\ImageHelper;
  * @mixin Eloquent
  */
 class Profile extends Model
-    {
+{
 
     const GENDER_EMPTY = 0;
-    const FEMALE       = 1;
-    const MALE         = 2;
+    const FEMALE = 1;
+    const MALE = 2;
 
-    protected $table      = 'profiles';
+    protected $table = 'profiles';
     protected $primaryKey = 'user_id';
-    public $timestamps    = false;
-    protected $fillable   = [
+    public $timestamps = false;
+    protected $fillable = [
         'user_id', 'first_name', 'last_name', 'birth_date', 'gender', 'address', 'avatar',
     ];
-    protected $casts      = [
+    protected $casts = [
         'birth_date' => 'datetime',
     ];
 
     public static function new($userId, $firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null): self
     {
         return static::create([
-                    'user_id'    => $userId,
-                    'first_name' => $firstName,
-                    'last_name'  => $lastName,
-                    'birth_date' => $birthDate,
-                    'gender'     => $gender,
-                    'address'    => $address,
-                    'avatar'     => $avatar,
+            'user_id' => $userId,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'birth_date' => $birthDate,
+            'gender' => $gender,
+            'address' => $address,
+            'avatar' => $avatar,
         ]);
     }
 
@@ -57,11 +57,11 @@ class Profile extends Model
     {
         $this->update([
             'first_name' => $firstName,
-            'last_name'  => $lastName,
+            'last_name' => $lastName,
             'birth_date' => $birthDate,
-            'gender'     => $gender,
-            'address'    => $address,
-            'avatar'     => $avatar ?? $this->avatar,
+            'gender' => $gender,
+            'address' => $address,
+            'avatar' => $avatar ?? $this->avatar,
         ]);
     }
 
@@ -69,9 +69,14 @@ class Profile extends Model
     {
         return [
             self::GENDER_EMPTY => '',
-            self::FEMALE       => trans('adminlte.female'),
-            self::MALE         => trans('adminlte.male'),
+            self::FEMALE => trans('adminlte.female'),
+            self::MALE => trans('adminlte.male'),
         ];
+    }
+
+    public function genderName(): string
+    {
+        return self::gendersList()[$this->gender];
     }
 
     public function getAvatarThumbnailAttribute(): string
@@ -97,4 +102,4 @@ class Profile extends Model
     }
 
     ###########################################
-    }
+}
