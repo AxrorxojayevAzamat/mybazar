@@ -9,6 +9,7 @@ return [
     'show_more' => 'Ko`prog`ini ko`rsatish',
     'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
+    'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -31,6 +32,7 @@ return [
     'discount_upper' => 'CHEGIRMA',
     'discounts' => 'Aksiya va Chegirmalar',
     'profile' => 'Profil',
+    'social_networks' => 'Ijtimoiy tarmoqlar',
 
     'product' => [
         'price' => ':price <span>so`m</span>',
@@ -250,8 +252,11 @@ return [
     'reviews' => 'sharhlar',
 
     'is_not_verified' => '(tasdiqlanmadi)',
+    'change_email' => 'Elektron pochtani o\'zgartirish',
     'change_phone' => 'Telefon raqamni o\'zgartirish',
     'verify_phone' => 'Telefon raqamni tasdiqlash',
+    'current_password' => 'Hozirgi parol',
+    'new_password' => 'Yangi parol',
     'profile' => 'Profil',
 
     'products' => 'Tovarlar',

@@ -9,6 +9,7 @@ return [
     'show_more' => 'Показать ещё',
     'clear_list' => 'Очистить список',
     'go_to_cart' => 'Перейти в корзину',
+    'cart_none' => 'Вы еще ничего не сохранили в корзину',
 
     'color' => 'Цвет',
     'price' => 'Цена',
@@ -31,6 +32,7 @@ return [
     'discount_upper' => 'СКИДКА',
     'discounts' => 'Акции и скидки',
     'profile' => 'Профиль',
+    'social_networks' => 'Социальные сети',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -213,7 +215,7 @@ return [
 
     'title' => [
         'single_blog_page' => 'Единая страница блога',
-        'dashboard' => 'Админ панел',
+        'dashboard' => 'Панель инструментов',
         'blogs_page' => 'Страница блогов',
         'single_news_page' => 'Единая страница новостей',
         'brands' => 'Бренды',
@@ -250,8 +252,11 @@ return [
     'reviews' => 'отзывов',
 
     'is_not_verified' => '(не проверено)',
+    'change_email' => 'Изменить электронную почту',
     'change_phone' => 'Изменить номер телефона',
     'verify_phone' => 'Подтвердить номер телефона',
+    'current_password' => 'Действующий пароль',
+    'new_password' => 'Новый пароль',
     'profile' => 'Профиль',
 
     'products' => 'Товары',
