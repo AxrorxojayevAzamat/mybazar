@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Entity\User\Profile;
 use App\Entity\User\User;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Helpers\JsonHelper;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -44,19 +44,22 @@ class ProfileController extends Controller
         return view('user.show', compact('user'));
     }
 
-    public function update(UpdateRequest $request, User $user)
+    public function update(UpdateRequest $request)
     {
+        $user = Auth::user();
         $user = $this->service->updateProfile($user->id, $request);
 
-        return redirect()->route('user.setting');
+        return redirect()->route('user.profile');
     }
 
     public function changePassword(PasswordRequest $request)
     {
         try {
-            return $this->service->changePassword($request);
+            $this->service->changePassword($request);
+
+            return redirect()->route('user.profile')->with('success', trans('auth.password_successfully_reset'));
         } catch (\Exception $e) {
-            return JsonHelper::exceptionResponse($e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

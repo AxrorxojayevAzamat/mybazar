@@ -48,12 +48,6 @@
                         <tr>
                             <th>{{ trans('adminlte.user.role') }}</th><td>{{ $user->roleName() }}</td>
                         </tr>
-                        @if ($user->profile)
-                            <tr><th>{{ trans('adminlte.full_name') }}</th><td>{{ $user->profile->fullName }}</td></tr>
-                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->birth_date }}</td></tr>
-                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->genderName() }}</td></tr>
-                            <tr><th>{{ trans('adminlte.address') }}</th><td>{{ $user->profile->address }}</td></tr>
-                        @endif
                         <tr>
                             <th>{{ trans('adminlte.status') }}</th>
                             <td>
