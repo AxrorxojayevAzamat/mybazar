@@ -16,6 +16,7 @@ return [
     'by_date' => 'By date',
     'by_rating' => 'By rating',
     'by_novelty' => 'By novelty',
+    'by_name' => 'By name',
     'log_in_to_review' => 'Please, log in to send a review!',
     'novelty_upper' => 'NEW',
     'popular' => 'Popular',
@@ -49,6 +50,9 @@ return [
         'comments' => 'Comments',
         'day_product' => 'PRODUCT OF THE DAY',
         'you_watched' => 'You watched',
+        'shop_product' => 'Shop products',
+        'no_charasteric' => 'There is no characteristic',
+        'all_charasteric' => 'All characteristic',
     ],
 
     'review' => [
@@ -196,4 +200,5 @@ return [
     'videos' => 'Videos',
     'search_blogs' => 'Search blogs',
     'search_videos' => 'Search videos',
+    'show_more' => 'Show more',
 ];

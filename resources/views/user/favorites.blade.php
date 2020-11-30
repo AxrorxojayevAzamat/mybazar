@@ -15,7 +15,12 @@
     </div>
     <div class="outter-catalog-view">
         <!-- big filter without title checkbox -->
-        @include('layouts.big-filter-without-title-checkbox')
+        <ul class="list-group">
+            @foreach($categorys as $category)
+                <li class="list-group-item"><a href="?categoryId={{ $category->id }}">{!! $category->name !!}</a></li>
+            @endforeach
+        </ul>
+
 
         <div class="wrapper-filtered-items">
 

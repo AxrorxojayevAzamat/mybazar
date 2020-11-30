@@ -64,7 +64,7 @@
                             <input type="checkbox" class="custom-control-input" id="smallcustomCheck2-5"  >
                             <label class="custom-control-label" for="smallcustomCheck2-5">Toshiba</label>
                         </div>
-                        <a class="show-more" href="#">Показать еще</a>
+                        <a class="show-more" href="#">@lang('frontend.show_more')</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="filterThree" data-parent="#catalogFilter">
                     <div class="card-body">
-                    <div class="outter-range-slider">	
+                    <div class="outter-range-slider">
                         <div class="form-group">
                             <input type="text" class=" js-input-from form-control" value="0" />
                             <span>-</span>
@@ -88,7 +88,7 @@
                         <div class="range-slider">
                             <input type="text" class="js-range-slider" value="" />
                         </div>
-                    
+
                     </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </ul>
     </form>
 </div>

@@ -5,6 +5,7 @@ namespace App\Mail\Auth;
 use App\Entity\User\User;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyMail extends Mailable
 {
@@ -20,7 +21,7 @@ class VerifyMail extends Mailable
     public function build()
     {
         return $this
-            ->subject(trans('auth.signup_confirmation'))
+            ->subject(Auth::guest() ? trans('auth.signup_confirmation') : trans('auth.verify_email'))
             ->markdown('emails.auth.register.verify');
     }
 }

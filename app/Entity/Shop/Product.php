@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
 use App\Entity\Brand;
+use App\Entity\Discount;
 use App\Entity\Store;
 use App\Entity\Category;
 use App\Entity\User\User;
@@ -12,6 +13,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use App\Entity\UserFavorite;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -255,6 +257,28 @@ class Product extends BaseModel
     public function getDiscountExpiresAtAttribute(): int
     {
         return strtotime($this->discount_ends_at) - time();
+    }
+    public  function discountsDelete(){
+        $discount = ShopProductDiscounts::where(['product_id' => $this->id])->get();
+        foreach ($discount as $value){
+            $value->delete();
+        }
+    }
+    public function discountsList(): array
+    {
+        $productDiscount= ShopProductDiscounts::where(['product_id'=>$this->id])->pluck('discount_id');
+        return Discount::whereIn('id', $productDiscount)->pluck('id')->toArray();
+
+    }
+
+    public function classFavorite($id):bool
+    {
+        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
+        if ($productIds->exists()){
+            return true;
+        }
+
+        return false;
     }
 
     ###########################################

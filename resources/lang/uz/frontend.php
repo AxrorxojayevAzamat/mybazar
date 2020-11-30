@@ -16,6 +16,7 @@ return [
     'by_date' => 'Sana bo`yicha',
     'by_rating' => 'Baho bo`yicha',
     'by_novelty' => 'Yangiligi bo`yicha',
+    'by_name' => 'Nomi bo`yicha',
     'log_in_to_review' => 'Sharh qoldirish tizimga kiring, iltimos!',
     'novelty_upper' => 'YANGI',
     'popular' => 'Ommabop',
@@ -46,6 +47,9 @@ return [
         'comments' => 'Sharhlar',
         'day_product' => 'KUN MAHSULOTI',
         'you_watched' => 'Siz tomosha qildingiz',
+        'shop_product' => 'Ushbu do`konga tegishli tovarlar',
+        'no_charasteric' => 'Xarakteristikalar mavjud emas',
+        'all_charasteric' => 'Barcha xarakteristikalar',
     ],
 
     'review' => [
@@ -192,4 +196,6 @@ return [
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',
     'search_videos' => 'Videolarni qidirish',
+    'show_more' => 'ko\'proq ko\'rsatish',
+
 ];

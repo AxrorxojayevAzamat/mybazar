@@ -49,9 +49,13 @@ return [
     'send_reset_link_or_code' => 'Parolni tiklash havolasini yoki kodini yuborish',
     'reset' => 'Parolni tiklamoq',
     'thanks' => 'Rahmat',
+    'add_phone' => 'Telefon raqami qo‘shmoq',
+    'add_email' => 'Elektron pochta qo‘shmoq',
 
-    'email_verified' => 'Sizning elektron pochtangiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
-    'phone_verified' => 'Sizning telefon raqamingiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'email_verified_login' => 'Sizning elektron pochtangiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'phone_verified_login' => 'Sizning telefon raqamingiz tasdiqlandi. Siz endi tizimga kirishingiz mumkin.',
+    'email_verified' => 'Sizning elektron pochtangiz tasdiqlandi.',
+    'phone_verified' => 'Sizning telefon raqamingiz tasdiqlandi.',
     'password_successfully_reset' => 'Parolingiz qayta tiklandi.',
 
     'invalid_params' => 'Noto‘g‘ri parametrlar.',
@@ -68,4 +72,10 @@ return [
     'account_not_verified' => 'Sizning profilingiz tasdiqlanmagan.',
     'user_exists' => 'Bunday foydalanuvchi nomi, elektron pochtasi yoki telefon raqami bilan bo‘lgan foydalanuvchi mavjud.',
     'user_not_found' => 'Ushbu elektron pochta yoki telefon raqamiga ega foydalanuvchi topilmadi.',
+    'email_not_verified' => 'Sizning elektron pochtangiz tasdiqlanmagan.',
+    'phone_not_verified' => 'Sizning telefon raqamingiz tasdiqlanmagan.',
+    'email_already_verified' => 'Sizning elektron pochtangiz allaqachon tasdiqlangan.',
+    'phone_already_verified' => 'Sizning telefon raqamingiz allaqachon tasdiqlangan.',
+    'email_already_added' => 'Elektron pochta manzili allaqachon qo‘shilgan.',
+    'phone_already_added' => 'Telefon raqami allaqachon qo‘shilgan.',
 ];

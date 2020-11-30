@@ -2,11 +2,14 @@
 
 namespace App\Services\User;
 
+use App\Mail\Auth\VerifyMail;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Entity\User\User;
 use App\Entity\User\Profile;
@@ -214,15 +217,17 @@ class UserService
         return User::findOrFail($id);
     }
 
-    public function addToFavorite(int $id, Request $request): UserFavorite
+    public function addToFavorite(int $id, $product)
     {
         /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
-
-            $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
-//            $userFavorite = $user->favorites()->attach($request->product_id);
+            if (!$user->classFavorite($product->id)){
+                $userFavorite = $user->userFavorites()->create(['product_id' => $product->id]);
+            }else{
+                $userFavorite = $user->favorites()->detach($product->id);
+            }
 
             DB::commit();
 
@@ -255,4 +260,40 @@ class UserService
         $user->requestManagerRole();
     }
 
+    public function addEmail(int $id, string $email)
+    {
+        $user = User::findOrFail($id);
+        $user->requestEmailAddVerification($email);
+        Session::put('auth', ['email' => $user->email]);
+        Mail::to($user->email)->send(new VerifyMail($user));
+    }
+
+    public function addPhone(int $id, string $phone)
+    {
+        $user = User::findOrFail($id);
+        $user->requestPhoneAddVerification($phone);
+        Session::put('auth', ['phone_number' => $user->phone]);
+        $this->sms->send($user->phone, $user->phone_verify_token);
+    }
+
+    public function verifyEmail(int $id): void
+    {
+        $user = User::findOrFail($id);
+        $user->verifyMail();
+    }
+
+    public function verifyPhone(int $id, int $token): void
+    {
+        $user = User::findOrFail($id);
+
+        if ($token !== (int)$user->phone_verify_token) {
+            throw new \DomainException(trans('auth.incorrect_verify_token'));
+        }
+
+        if ($user->phone_verify_token_expire->lt(Carbon::now())) {
+            throw new \DomainException(trans('auth.token_expired'));
+        }
+
+        $user->verifyPhone();
+    }
 }

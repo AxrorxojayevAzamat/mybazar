@@ -2,6 +2,9 @@
 
 namespace App\Services\Manage;
 
+use App\Entity\Category;
+use App\Entity\UserFavorite;
+use App\Helpers\LanguageHelper;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use App\Entity\Brand;
@@ -10,24 +13,11 @@ use App\Entity\Shop\CharacteristicCategory;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
-use App\Entity\StoreCategory;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+
 
 class FilterService
 {
-
-    public function brandByCategoryId(array $categoryIds): Collection
-    {
-        $brandIds = CategoryBrand::whereIn('category_id', $categoryIds)->get()->pluck('brand_id')->toArray();
-        return Brand::whereIn('id', $brandIds)->get();
-    }
-
-    public function storeByCategoryId(array $categoryIds): Collection
-    {
-        $storeIds = StoreCategory::whereIn('category_id', $categoryIds)->get()->pluck('store_id')->toArray();
-        return Store::whereIn('id', $storeIds)->get();
-    }
-
     public function groupModificationByCategoryId(array $categoryIds): array
     {
         $groupModifications = null;
@@ -59,11 +49,27 @@ class FilterService
         return $groupModifications;
     }
 
-    public function productById($productIds, Request $request): Builder
-    {
-        $query = Product::with(['mainValues'])->where(['status' => Product::STATUS_ACTIVE])->whereIn('id', $productIds);
+    public  function categorysList(array $categoryIds){
+        $model = Category::whereIn('id',$categoryIds)->get();
+        return $model;
+    }
 
-        return $this->productByQuery($query, $request);
+    public function productById(array $productIds, Request $request)
+    {
+      $model = Product::whereIn('id',$productIds);
+        if (!empty($request->get('categoryId'))) {
+            $model->where(['main_category_id' => $request->get('categoryId')]);
+            return $model;
+        }
+
+        if (!empty($request->get('order'))) {
+            if ($request->get('order') === 'name'){
+                $model->orderBy('name_' . LanguageHelper::getCurrentLanguagePrefix());
+                return $model;
+            }
+        }
+
+      return $model;
     }
 
     public function productByCategoryId($categoryIds, Request $request): Builder

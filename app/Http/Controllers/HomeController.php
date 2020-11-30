@@ -42,7 +42,7 @@ class HomeController extends Controller
         $threeBanners = Banner::published()->inRandomOrder()->limit(3)->get();
         $shops1 = $query->where(['status' => Product::STATUS_ACTIVE])->limit(3)->get();
         $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
-        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(4)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
 
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',

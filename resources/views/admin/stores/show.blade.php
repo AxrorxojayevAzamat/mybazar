@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-gray card-outline">
-                <div class="card-header"><h3 class="card-title">Logo</h3></div>
+                <div class="card-header"><h3 class="card-title">{{ trans('adminlte.logo') }}</h3></div>
                 <div class="card-body">
                     @if ($store->logo)
                         <a href="{{ $store->logoOriginal }}" target="_blank"><img src="{{ $store->logoThumbnail }}"></a>
@@ -90,6 +90,14 @@
                             <td>
                                 @foreach($store->payments as $payment)
                                     <a href="{{ route('admin.payments.show', $payment) }}">{{ $payment->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ trans('menu.discounts') }}</th>
+                            <td>
+                                @foreach($discounts as $discount)
+                                    <a href="{{ route('admin.discounts.show', $discount) }}">{{ $discount->name }}</a><br>
                                 @endforeach
                             </td>
                         </tr>

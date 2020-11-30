@@ -80,7 +80,7 @@
             </li>
 
             <li>
-                <a href="#" class="wish-list dropdownToggle"> <i class="mbfavorite"><span></span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
             </li>
 
             @guest
@@ -105,12 +105,12 @@
 
                     @if(Auth::user()->isUser() && Auth::user()->isManagerRoleRequested())
                         <a
-                            class="dropdown-item" href="{{ route('user.manager.request') }}"
+                            class="dropdown-item" href="{{ route('profile.manager.request') }}"
                             onclick="event.preventDefault();
                             document.getElementById('request-manager-form').submit();"
                         >@lang('frontend.manager.request_manager_role')</a>
 
-                        <form id="request-manager-form" action="{{ route('user.manager.request') }}" method="POST" style="display: none;">
+                        <form id="request-manager-form" action="{{ route('profile.manager.request') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     @endif

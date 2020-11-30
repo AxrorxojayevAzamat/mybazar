@@ -1,3 +1,4 @@
+@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 <section>
     <div class="outter-single-product-with-des">
         <h4 class="title">{{ $product->name }}</h4>
@@ -43,7 +44,7 @@
 {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
-                            <span>{{ $product->number_of_reviews }} отзывов</span>
+                            <span>{{ $product->number_of_reviews }} {{ trans('frontend.product.comments') }}</span>
                         </div>
                     </div>
 
@@ -91,8 +92,7 @@
                         <div class="cart" id="cart-button"
                              data-name="{{ $product->name }}"
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
-                             data-price="{{ $product->currentPriceUzs }}"
-                        >
+                             data-price="{{ $product->currentPriceUzs }}" >
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
                         <div class="libra" data-name="{{ $product->name }}"
@@ -101,16 +101,39 @@
                         >
                             <i class="mbtocompare"></i>
                         </div>
-                        <div class="like"><i class="mbfavorite"></i></div>
+                        <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
                     </div>
                     <div class="delivery-options">
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
                         <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+                    </div>
+                    <div class="first-item">
+                        <div class="shop-name-logo">
+                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
+                            <div>
+                                <p class="sub-title">{!! $product->name !!}</p>
+                                <b class="title"><a href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: '{{ route('user.favorites.add',$product) }}',
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+</script>
