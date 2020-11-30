@@ -23,7 +23,6 @@ class CartController extends Controller
             foreach ($cart_product as $i => $product_id) {
                 $cart_product_id[$i] = $product_id->product_id;
             }
-//        dd($cart_product_id);
 
             $products = Product::whereIn('id', $cart_product_id)->get();
 
@@ -107,9 +106,17 @@ class CartController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->has('product_id') and $user !== null){
+        if ($user !== null){
 
-            $products = Cart::where('user_id', $user->id)->get();
+            $cartProduct = Cart::where('user_id', $user->id)->get();
+            $products_id = [];
+            foreach($cartProduct as $i => $product_id){
+                $products_id[$i] = $product_id->product_id;
+            };
+
+
+            $products = Product::whereIn('id', $products_id)->get();
+//            dd($products);
             return response()->json([
                 'products' => $products,
             ]);
@@ -127,7 +134,6 @@ class CartController extends Controller
             }
 
         }
-//    }
 
     }
 

@@ -229,6 +229,11 @@ class Product extends BaseModel
         return $this->productMarks()->pluck('mark_id')->toArray();
     }
 
+    public function discountsList(): array
+    {
+        return $this->productDiscounts()->pluck('discount_id')->toArray();
+    }
+
 
     ########################################### Photos
     ###########################################
@@ -260,27 +265,10 @@ class Product extends BaseModel
     {
         return strtotime($this->discount_ends_at) - time();
     }
-    public  function discountsDelete(){
-        $discount = ProductDiscount::where(['product_id' => $this->id])->get();
-        foreach ($discount as $value){
-            $value->delete();
-        }
-    }
-    public function discountsList(): array
+
+    public function classFavorite($id): bool
     {
-        $productDiscount= ProductDiscount::where(['product_id'=>$this->id])->pluck('discount_id');
-        return Discount::whereIn('id', $productDiscount)->pluck('id')->toArray();
-
-    }
-
-    public function classFavorite($id):bool
-    {
-        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
-        if ($productIds->exists()){
-            return true;
-        }
-
-        return false;
+        return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
 
     ###########################################
