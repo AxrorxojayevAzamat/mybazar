@@ -213,7 +213,7 @@ return [
 
     'title' => [
         'single_blog_page' => 'Yagona blog sahifasi',
-        'dashboard' => 'Uskunalar paneli',
+        'dashboard' => 'Boshqaruv paneli',
         'blogs_page' => 'Bloglar sahifasi',
         'single_news_page' => 'Yagona yangiliklar sahifasi',
         'brands' => 'Brendlar',

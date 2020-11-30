@@ -6,7 +6,7 @@
         <div class="outter-products">
             <div class="products owl-carousel owl-theme">
                 @foreach ($products as $product)
-                    @include('layouts.product-item')
+                    @include('layouts.prorduct-item')
 
                 @endforeach
             </div>
