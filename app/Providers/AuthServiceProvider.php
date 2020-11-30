@@ -34,6 +34,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator() || $user->isManager();
         });
 
+        Gate::define('moderate-stores', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+
         Gate::define('show-own-store', function (User $user, Store $store) {
             return $user->isAdmin() || $user->isModerator() || $user->storeWorker()->where('store_id', $store->id)->exists();
         });

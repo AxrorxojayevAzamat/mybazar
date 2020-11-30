@@ -64,7 +64,7 @@ class CreateRequest extends FormRequest
             'guarantee' => 'boolean',
             'bestseller' => 'boolean',
             'new' => 'boolean',
-            'categories.*' => 'required|numeric|min:1|exists:categories,id',
+            'categories.*' => 'nullable|numeric|min:1|exists:categories,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
             'discounts.*' => 'numeric|min:1|exists:discounts,id',
         ];

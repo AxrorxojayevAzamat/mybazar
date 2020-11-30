@@ -65,6 +65,8 @@ use Laravel\Scout\Searchable;
  * @property ProductReview[] $reviews
  * @property UserFavorite[] $userFavorites
  * @property User[] $favorites
+ * @property ProductDiscount[] $productDiscounts
+ * @property Discount[] $discounts
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -259,14 +261,14 @@ class Product extends BaseModel
         return strtotime($this->discount_ends_at) - time();
     }
     public  function discountsDelete(){
-        $discount = ShopProductDiscounts::where(['product_id' => $this->id])->get();
+        $discount = ProductDiscount::where(['product_id' => $this->id])->get();
         foreach ($discount as $value){
             $value->delete();
         }
     }
     public function discountsList(): array
     {
-        $productDiscount= ShopProductDiscounts::where(['product_id'=>$this->id])->pluck('discount_id');
+        $productDiscount= ProductDiscount::where(['product_id'=>$this->id])->pluck('discount_id');
         return Discount::whereIn('id', $productDiscount)->pluck('id')->toArray();
 
     }
@@ -383,6 +385,16 @@ class Product extends BaseModel
     public function reviews()
     {
         return $this->hasMany(ProductReview::class, 'product_id', 'id');
+    }
+
+    public function productDiscounts()
+    {
+        return $this->hasMany(ProductDiscount::class, 'product_id', 'id');
+    }
+
+    public function discounts()
+    {
+        return $this->belongsToMany(Discount::class, 'shop_product_discounts', 'product_id', 'discount_id');
     }
 
     public function createdBy()

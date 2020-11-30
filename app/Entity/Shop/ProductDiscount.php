@@ -3,9 +3,19 @@
 namespace App\Entity\Shop;
 
 use App\Entity\Discount;
+use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 
-class ShopProductDiscounts extends Model
+/**
+ * @property int $product_id
+ * @property int $discount_id
+ *
+ * @property Product $product
+ * @property Discount $discount
+ *
+ * @mixin Eloquent
+ */
+class ProductDiscount extends Model
 {
     protected $table = 'shop_product_discounts';
 
