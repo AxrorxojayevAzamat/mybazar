@@ -213,7 +213,7 @@ return [
 
     'title' => [
         'single_blog_page' => 'Единая страница блога',
-        'dashboard' => 'Щиток приборов',
+        'dashboard' => 'Панель инструментов',
         'blogs_page' => 'Страница блогов',
         'single_news_page' => 'Единая страница новостей',
         'brands' => 'Бренды',
