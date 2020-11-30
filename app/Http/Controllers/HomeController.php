@@ -38,8 +38,8 @@ class HomeController extends Controller
             ->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
         $threeBanners = Banner::published()->inRandomOrder()->limit(3)->get();
+        $posts = Post::published()->orderByDesc('created_at')->limit(6)->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
-        $posts = Post::published()->orderByDesc('created_at')->limit(12)->get();
         $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
         $sliders = Slider::orderByDesc('sort')->get();
         $slidersCount = $sliders->count();

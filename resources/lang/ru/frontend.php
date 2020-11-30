@@ -246,7 +246,6 @@ return [
     'videos' => 'Видеоролики',
     'search_blogs' => 'Поиск по блогам',
     'search_videos' => 'Поиск по видео',
-    'show_more' => 'Показать еще',
 
     'all_charactires' => 'Общие характеристики',
     'reviews' => 'отзывов',
@@ -257,7 +256,6 @@ return [
     'verify_phone' => 'Подтвердить номер телефона',
     'current_password' => 'Действующий пароль',
     'new_password' => 'Новый пароль',
-    'profile' => 'Профиль',
 
     'products' => 'Товары',
 ];
