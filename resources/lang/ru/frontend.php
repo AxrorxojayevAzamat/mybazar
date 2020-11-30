@@ -254,5 +254,5 @@ return [
     'verify_phone' => 'Подтвердить номер телефона',
     'profile' => 'Профиль',
 
-    'products' => 'Товары'
+    'products' => 'Товары',
 ];

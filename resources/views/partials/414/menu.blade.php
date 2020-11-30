@@ -38,9 +38,9 @@
         <li><a href="#">{{ trans('frontend.nav.stock') }} </a></li>
         <li><a href="#">{{ trans('frontend.nav.discount') }}</a></li>
         <li>
-            <span>{{transt('frontend.products')}}</span>
+            <span>{{trans('frontend.products')}}</span>
             <ul>
-                <li><a href="#about/history">{{transt('frontend.history')}}</a></li>
+                <li><a href="#about/history">{{trans('frontend.history')}}</a></li>
                 <li>
                     <span>{{trans('menu.the_team')}}</span>
                     <ul>

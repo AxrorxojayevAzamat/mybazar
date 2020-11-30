@@ -254,6 +254,6 @@ return [
     'verify_phone' => 'Telefon raqamni tasdiqlash',
     'profile' => 'Profil',
 
-    'products' => 'Tovarlar'
+    'products' => 'Tovarlar',
 
 ];

@@ -42,11 +42,11 @@ return [
     'whole_catalog'                 => 'Butun katalog',
 
 
-    'the_team'                      => 'Jamoa'
-    'management'                    => 'Menejment'
-    'sales'                         => 'Sotish'
-    'development'                   => 'Rivojlanish'
-    'our_address'                   => 'Bizning manzilimiz'
+    'the_team'                      => 'Jamoa',
+    'management'                    => 'Menejment',
+    'sales'                         => 'Sotish',
+    'development'                   => 'Rivojlanish',
+    'our_address'                   => 'Bizning manzilimiz',
 
 
 ];
