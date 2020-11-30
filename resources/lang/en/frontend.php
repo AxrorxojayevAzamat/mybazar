@@ -9,6 +9,7 @@ return [
     'show_more' => 'Show more',
     'clear_list' => 'Clear list',
     'go_to_cart' => 'Go to cart',
+    'cart_none' => 'You have not saved anything to your cart yet',
 
     'color' => 'Color',
     'price' => 'Price',

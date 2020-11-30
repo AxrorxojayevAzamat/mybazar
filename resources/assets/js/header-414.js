@@ -8,7 +8,7 @@ $('.header').on('click', '.search-toggle', function (e) {
 });
 
 $(document).ready(function () {
-
+    $('#cart_none').hide();
     let droping = $('#droping');
     let cart = $('#dropdownCart');
     droping.hide();
@@ -91,7 +91,7 @@ $(document).ready(function () {
         console.log('loging')
         e.preventDefault();
         let cart_product = localStorage.getItem('product_id');
-        if (cart_product !== null) {
+        if (cart_product !== null || cart_product == '') {
             console.log(cart_product);
             let cart_product_check = cart_product.split(',');
             for (let i = 0; i <= cart_product_check.length; i++) {
@@ -111,6 +111,9 @@ $(document).ready(function () {
                 data: data,
                 dataType: 'json',
                 success: function (data) {
+                    $('#goToCart').show();
+                    $('#cart_none').hide();
+                    $('#card_body').show();
                     let body_cart = '';
                     console.log(data.products.length);
                     for (let i = 0; i < data.products.length; i++) {
@@ -135,17 +138,25 @@ $(document).ready(function () {
                 method: 'GET',
                 success: function (data) {
                     let body_cart = '';
-                    console.log(data.products.length);
-                    for (let i = 0; i < data.products.length; i++) {
-                        body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
-                            '<img src=""></a></div><div class="description">' +
-                            '<a href="#"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
-                            '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
-                            '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
-                            '<i class="mbexit_mobile"></i></button> </li>';
+                    console.log(data.data)
+                    if (data.data == 'error'){
+                        $('#goToCart').hide();
+                        $('#cart_none').show();
+                        $('#card_body').hide();
                     }
-
-
+                    else{
+                        $('#goToCart').show();
+                        $('#cart_none').hide();
+                        $('#card_body').show();
+                        for (let i = 0; i < data.products.length; i++) {
+                            body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
+                                '<img src=""></a></div><div class="description">' +
+                                '<a href="#"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
+                                '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
+                                '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
+                                '<i class="mbexit_mobile"></i></button> </li>';
+                        }
+                    }
                     $('#card_body').html(body_cart);
                     console.log(data);
                 }, error: function (data) {

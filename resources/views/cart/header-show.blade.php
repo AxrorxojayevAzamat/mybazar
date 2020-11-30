@@ -5,6 +5,7 @@
 
 
     </ul>
+    <div id="cart_none" class="cart-none-text">{{ trans('frontend.cart_none') }}</div>
     <div class="bottom-btn">
         <form action="/cart-list" method="GET" id="goToCart">
             <input type="hidden" id="cart_products_id" name="product_id">

@@ -9,6 +9,7 @@ return [
     'show_more' => 'Ko`prog`ini ko`rsatish',
     'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
+    'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
