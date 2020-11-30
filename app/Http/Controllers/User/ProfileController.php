@@ -64,7 +64,7 @@ class ProfileController extends Controller
     {
         try {
             $this->service->request(Auth::id(), $request);
-            return JsonHelper::successResponse('Phone verify code send successfully !');
+            return JsonHelper::successResponse('Phone verify code send successfully!');
         } catch (\DomainException $e) {
             return JsonHelper::exceptionResponse($e->getMessage());
         } catch (\Exception $e) {
@@ -112,9 +112,13 @@ class ProfileController extends Controller
 
         $email = $request['email'];
 
-        $this->service->addEmail(Auth::id(), $email);
+        try {
+            $this->service->addEmail(Auth::id(), $email);
+            return redirect()->route('profile.email.verification');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
 
-        return redirect()->route('profile.email.verification');
     }
 
     public function addPhone(Request $request)
@@ -125,9 +129,13 @@ class ProfileController extends Controller
 
         $phone = trim($request['phone'], '+');
 
-        $this->service->addPhone(Auth::id(), $phone);
+        try {
+            $this->service->addPhone(Auth::id(), $phone);
 
-        return redirect()->route('profile.phone.verification');
+            return redirect()->route('profile.phone.verification');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function phone()

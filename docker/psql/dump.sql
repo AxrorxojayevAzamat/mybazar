@@ -2294,6 +2294,8 @@ COPY public.user_favorites (user_id, product_id) FROM stdin;
 
 COPY public.user_networks (user_id, network, identity, emails_json, phones_json) FROM stdin;
 3	google	104537922165315928317	["1710136.nasriddinbek.bektemirov@gmail.com"]	\N
+5	google	116852667327811565568	["a.abdualiym@gmail.com"]	\N
+6	telegram	129683416	\N	\N
 \.
 
 
@@ -2304,7 +2306,9 @@ COPY public.user_networks (user_id, network, identity, emails_json, phones_json)
 COPY public.users (id, name, email, phone, phone_verified, password, balance, verify_token, phone_verify_token, phone_verify_token_expire, phone_auth, role, status, email_verified_at, remember_token, created_at, updated_at, manager_request_status, email_verified) FROM stdin;
 2	user	user@gmail.com	998991234567	f	$2y$10$wc9c1EJjS5Ip3rCa4oE0pujvxflEgUlTJYyc1./zcye9CeBJrU4ZO	0	\N	\N	\N	f	user	9	2020-11-18 14:20:41	2hAYZFPzv7	\N	\N	0	f
 3	google_104537922165315928317	1710136.nasriddinbek.bektemirov@gmail.com	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-11-26 15:10:42	2020-11-26 15:10:42	0	f
-1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	G6YwhFP2LNH1jmn1xaYAmTY5OjU5Z6oeKte0XsFSfT6bXk8Ee4hGjmB54xmb	\N	\N	0	f
+5	google_116852667327811565568	a.abdualiym@gmail.com	998977772129	f	\N	0	\N	27508	2020-11-27 18:23:20	f	user	9	\N	\N	2020-11-27 18:17:03	2020-11-27 18:18:20	0	t
+6	telegram_129683416	\N	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-11-30 10:59:30	2020-11-30 10:59:30	0	f
+1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	RkD4GkqB2RAE2HfskPXCl6QR9MBiLxiEEe8SF3OmTkY7xQqaaYAIFQRoeXUO	\N	\N	0	f
 \.
 
 
@@ -2501,7 +2505,7 @@ SELECT pg_catalog.setval('public.stores_id_seq', 16, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+SELECT pg_catalog.setval('public.users_id_seq', 6, true);
 
 
 --

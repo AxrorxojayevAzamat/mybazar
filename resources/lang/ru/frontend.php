@@ -31,6 +31,7 @@ return [
     'discount_upper' => 'СКИДКА',
     'discounts' => 'Акции и скидки',
     'profile' => 'Профиль',
+    'social_networks' => 'Социальные сети',
 
     'product' => [
         'price' => ':price <span>сум</span>',
@@ -213,7 +214,7 @@ return [
 
     'title' => [
         'single_blog_page' => 'Единая страница блога',
-        'dashboard' => 'Щиток приборов',
+        'dashboard' => 'Панель инструментов',
         'blogs_page' => 'Страница блогов',
         'single_news_page' => 'Единая страница новостей',
         'brands' => 'Бренды',
@@ -250,6 +251,7 @@ return [
     'reviews' => 'отзывов',
 
     'is_not_verified' => '(не проверено)',
+    'change_email' => 'Изменить электронную почту',
     'change_phone' => 'Изменить номер телефона',
     'verify_phone' => 'Подтвердить номер телефона',
     'profile' => 'Профиль',

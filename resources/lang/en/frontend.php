@@ -34,6 +34,7 @@ return [
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
     'profile' => 'Profile',
+    'social_networks' => 'Social networks',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -253,7 +254,8 @@ return [
     'reviews' => 'reviews',
 
     'is_not_verified' => '(is not verified )',
-    'change_phone' => 'Change phone number ',
+    'change_email' => 'Change email',
+    'change_phone' => 'Change phone number',
     'verify_phone' => 'Verify phone number',
     'profile' => 'Profile',
 

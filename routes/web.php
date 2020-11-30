@@ -137,7 +137,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('setting','ProfileController@index')->name('setting');
             Route::get('profile','ProfileController@show')->name('profile');
             Route::put('setting/{user}','ProfileController@update')->name('update');
-            Route::get('favorites','FavoriteController@favorites')->name('favorites');
+            Route::get('favorites','FavoriteController@favorites')->name('favorites')->middleware('auth');
             Route::get('add-to-favorite/{product}','FavoriteController@addToFavorite')->name('favorites.add');
     });
 

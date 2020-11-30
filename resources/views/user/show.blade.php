@@ -16,6 +16,15 @@
             <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('frontend.manager.request_manager_role')</button>
         </form>
     @endif
+    @if (!$user->isNetworkExists('facebook'))
+        <a href="{{ route('login.network', ['network' => 'facebook']) }}" class="btn btn-primary mr-1"><i class="fa fa-facebook-square"></i>Facebook</a>
+    @endif
+    @if (!$user->isNetworkExists('google'))
+        <a href="{{ route('login.network', ['network' => 'google']) }}" class="btn btn-primary mr-1"><i class="fa fa-facebook-square"></i>Google</a>
+    @endif
+    @if (!$user->isNetworkExists('telegram'))
+        <a href="{{ route('login.network', ['network' => 'telegram']) }}" class="btn btn-primary mr-1"><i class="fa fa-facebook-square"></i>Telegram</a>
+    @endif
 </div>
 
 <div class="row">
@@ -31,14 +40,20 @@
                             <th>{{ trans('adminlte.user.name') }}</th><td>{{ $user->name }}</td>
                         </tr>
                         <tr>
-                            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }}</td>
+                            <th>{{ trans('adminlte.email') }}</th><td>{{ $user->email }} <a href="{{ route('profile.add-email-show') }}" class="btn btn-primary mr-1">{{ trans('frontend.change_email') }}</a></td>
                         </tr>
                         <tr>
-                            <th>{{ trans('adminlte.phone') }}</th><td>{{ $user->phone }}</td>
+                            <th>{{ trans('adminlte.phone') }}</th><td>{{ $user->phone }} <a href="{{ route('profile.add-phone-show') }}" class="btn btn-primary mr-1">{{ trans('frontend.change_phone') }}</a></td>
                         </tr>
                         <tr>
                             <th>{{ trans('adminlte.user.role') }}</th><td>{{ $user->roleName() }}</td>
                         </tr>
+                        @if ($user->profile)
+                            <tr><th>{{ trans('adminlte.full_name') }}</th><td>{{ $user->profile->fullName }}</td></tr>
+                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->birth_date }}</td></tr>
+                            <tr><th>{{ trans('adminlte.birth_date') }}</th><td>{{ $user->profile->genderName() }}</td></tr>
+                            <tr><th>{{ trans('adminlte.address') }}</th><td>{{ $user->profile->address }}</td></tr>
+                        @endif
                         <tr>
                             <th>{{ trans('adminlte.status') }}</th>
                             <td>
@@ -47,6 +62,20 @@
                                 @endif
                                 @if ($user->status === \App\Entity\User\User::STATUS_ACTIVE)
                                 <span class="badge badge-primary">@lang('adminlte.user.active')</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>@lang('frontend.social_networks')</th>
+                            <td>
+                                @if ($user->isNetworkExists('facebook'))
+                                    <i class="fa fa-facebook-square"></i>Facebook
+                                @endif
+                                @if ($user->isNetworkExists('google'))
+                                    <i class="fa fa-google-plus-square"></i>Google
+                                @endif
+                                @if ($user->isNetworkExists('telegram'))
+                                    <i class="fa fa-telegram-plane"></i>Telegram
                                 @endif
                             </td>
                         </tr>

@@ -145,8 +145,8 @@ class ProductController extends Controller
             abort(404);
         }
 
+        $product = $this->service->update($product->id, $request);
         try {
-            $product = $this->service->update($product->id, $request);
             session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
