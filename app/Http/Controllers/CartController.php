@@ -116,7 +116,6 @@ class CartController extends Controller
 
 
             $products = Product::whereIn('id', $products_id)->get();
-//            dd($products);
             return response()->json([
                 'products' => $products,
             ]);
