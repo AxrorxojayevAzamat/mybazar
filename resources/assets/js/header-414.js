@@ -139,7 +139,7 @@ $(document).ready(function () {
                 success: function (data) {
                     let body_cart = '';
                     console.log(data.data)
-                    if (data.data == 'error'){
+                    if (data.data == 'error' || data.products.length == 0){
                         $('#goToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
