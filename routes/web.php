@@ -26,6 +26,7 @@ Route::get('admin',function (){
     return redirect('ru/admin');
 });
 
+
 Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::post('/change-password', 'ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
@@ -137,7 +138,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('setting','ProfileController@index')->name('setting');
             Route::get('profile','ProfileController@show')->name('profile');
             Route::put('setting/{user}','ProfileController@update')->name('update');
-            Route::get('favorites','FavoriteController@favorites')->name('favorites');
+            Route::get('favorites','FavoriteController@favorites')->name('favorites')->middleware('auth');
             Route::get('add-to-favorite/{product}','FavoriteController@addToFavorite')->name('favorites.add');
     });
 
