@@ -94,16 +94,16 @@
         <div class="social-contacts">
             <img src="{{asset('images/mybazar_logo_footer.svg')}}" alt="" class="footer-logo">
             <div class="footer-icons">
-                <a href="https://www.facebook.com"><i class="mbfacebook"></i></a>
-                <a href="https://web.telegram.org/"><i class="mbtelegram"></i></a>
-                <a href="https://www.whatsapp.com"><i class="mbwhatsapp"></i></a>
-                <a href="https://vk.com"><i class="mbvkontakte"></i></a>
-                <a href="https://twitter.com"><i class="mbtwitter"></i></a>
-                <a href="https://www.instagram.com"><i class="mbinstagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="mbfacebook"></i></a>
+                <a href="https://web.telegram.org/" target="_blank"><i class="mbtelegram"></i></a>
+                <a href="https://www.whatsapp.com" target="_blank"><i class="mbwhatsapp"></i></a>
+                <a href="https://vk.com" target="_blank"><i class="mbvkontakte"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="mbtwitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="mbinstagram"></i></a>
             </div>
             <div class="contacts">
-                <a href="tel" class="bold tel">+998 92 123 45 67</a>
-                <a href="#" class="email">info@mybazar.com</a>
+                <a href="tel:" class="bold tel">+998 92 123 45 67</a>
+                <a href="info@mybazar.com" class="email" target="_blank">info@mybazar.com</a>
             </div>
         </div>
     </div>

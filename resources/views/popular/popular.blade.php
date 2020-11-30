@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Popular page')
+@section('title', trans('frontend.title.popular_page'))
 
 @section('styles')
     <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
@@ -14,9 +14,9 @@
 
     <!-- POPULAR NEW RECOMMENDED BUTTONS -->
     <div class="new-popular-recommended-btn">
-        <button class="btn active">Популярные</button>
-        <button class="btn">Новинки</button>
-        <button class="btn">Рекомендуемые</button>
+        <button class="btn active">@lang('frontend.popular')</button>
+        <button class="btn">@lang('frontend.novelty')</button>
+        <button class="btn">@lang('frontend.recommend')</button>
     </div>
 
     <!-- POPULAR VIEW  -->
@@ -44,7 +44,7 @@
     </section>
 
     <div class="h4-title">
-        <h4 class="title">Магазины</h4>
+        <h4 class="title">@lang('frontend.stores')</h4>
     </div>
     <!-- SHOPS 1 -->
     <section class="popular-shops">

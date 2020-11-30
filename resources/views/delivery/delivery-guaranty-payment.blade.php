@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Delivery page')
+@section('title', trans('frontend.title.delivery_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/delivery-guaranty-payment.css')}}"> --}}

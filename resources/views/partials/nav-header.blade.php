@@ -17,7 +17,7 @@
                         </div> -->
                         <i class="mbcatalog"></i>
                     </div>
-                    Весь каталог
+                    @lang('menu.whole_catalog')
                 </a>
                 <!-- first dropdown -->
 

@@ -120,7 +120,7 @@ class ProductService
             $product->productMarks()->delete();
             $this->addMarks($product, $request->marks);
 
-            $product->discounts()->delete();
+            $product->productDiscounts()->delete();
             $this->addDiscounts($product, $request->discounts);
 
 

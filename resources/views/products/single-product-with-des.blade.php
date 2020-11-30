@@ -1,4 +1,3 @@
-@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 <section>
     <div class="outter-single-product-with-des">
         <h4 class="title">{{ $product->name }}</h4>
@@ -44,7 +43,7 @@
 {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
-                            <span>{{ $product->number_of_reviews }} {{ trans('frontend.product.comments') }}</span>
+                            <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
@@ -92,7 +91,8 @@
                         <div class="cart" id="cart-button"
                              data-name="{{ $product->name }}"
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
-                             data-price="{{ $product->currentPriceUzs }}" >
+                             data-price="{{ $product->currentPriceUzs }}"
+                             onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
                         <div class="libra" data-name="{{ $product->name }}"
@@ -121,6 +121,7 @@
         </div>
     </div>
 </section>
+@include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
 <script>
     function addToFavorite(id){
@@ -135,5 +136,56 @@
                 console.log(data);
             }
         })
+    }
+    function addCart(id) {
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.message == 'success'){
+                    localStorage.removeItem('product_id');
+                    console.log('exists');
+                }else{
+                    nonRegisteredUsersCart(id);
+                    console.log($.ajaxSettings.headers);
+                    console.log('isnotexists');
+                }
+            }, error: function (data) {
+
+            }
+        })
+
+    }
+    function nonRegisteredUsersCart(id){
+        if (localStorage.getItem('product_id')) {
+            let cart_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('product_id')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                console.log('hello')
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                } else {
+                    console.log('loging')
+                }
+            }
+            if (!exist) {
+                cart_products += product_id;
+                cart_products += id + ',';
+                localStorage.setItem('product_id', cart_products + '');
+            } else {
+                console.log('exist');
+            }
+        } else {
+            localStorage.setItem('product_id', id + ',');
+        }
     }
 </script>

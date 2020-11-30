@@ -194,7 +194,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             {!! Form::label('discount_ends_at_time', '(' . trans('adminlte.time') . ')', ['class' => 'col-form-label']); !!}
-                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('Y-m-d') : null),
+                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('H:i') : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_time') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_time'))
                                 <span
