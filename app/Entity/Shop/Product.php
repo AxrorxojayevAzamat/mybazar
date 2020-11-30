@@ -258,27 +258,25 @@ class Product extends BaseModel
     {
         return strtotime($this->discount_ends_at) - time();
     }
-    public  function discountsDelete(){
+
+    public function discountsDelete()
+    {
         $discount = ShopProductDiscounts::where(['product_id' => $this->id])->get();
-        foreach ($discount as $value){
+        foreach ($discount as $value) {
             $value->delete();
         }
     }
+
     public function discountsList(): array
     {
-        $productDiscount= ShopProductDiscounts::where(['product_id'=>$this->id])->pluck('discount_id');
+        $productDiscount = ShopProductDiscounts::where(['product_id' => $this->id])->pluck('discount_id');
         return Discount::whereIn('id', $productDiscount)->pluck('id')->toArray();
 
     }
 
-    public function classFavorite($id):bool
+    public function classFavorite($id): bool
     {
-        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
-        if ($productIds->exists()){
-            return true;
-        }
-
-        return false;
+        return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
 
     ###########################################
