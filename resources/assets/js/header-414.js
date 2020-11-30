@@ -92,6 +92,7 @@ $(document).ready(function () {
 
     cart.click(function (e) {
         e.preventDefault();
+        console.log('loging')
         let cart_product = localStorage.getItem('product_id');
         if (cart_product !== null) {
             console.log(cart_product);
