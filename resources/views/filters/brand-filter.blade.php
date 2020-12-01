@@ -9,8 +9,6 @@
                 <label class="custom-control-label" for="brands-checkbox-{{ $i }}">{{ $brand['name'] }}</label>
             </div>
         @endforeach
-        
-    
     </div>
     <input type="hidden" name="brands" id="brands-hidden-input">
 @endif
