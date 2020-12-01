@@ -40,7 +40,8 @@ class HomeController extends Controller
         $recomended = Product::limit(12)->where('number_of_reviews','>=',30)->get();
         $threeBanners = Banner::published()->where('type', Banner::TYPE_SHORT)->inRandomOrder()->limit(3)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->inRandomOrder()->first();
-        $longBanner2 = Banner::published()->where('type', Banner::TYPE_LONG)->where('id', '!=', $longBanner1->id)->inRandomOrder()->first();
+        $longBanner2 = Banner::published()->where('type', Banner::TYPE_LONG)
+            ->where('id', '!=', $longBanner1 ? $longBanner1->id : 0)->inRandomOrder()->first();
         $posts = Post::published()->orderByDesc('created_at')->limit(6)->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
