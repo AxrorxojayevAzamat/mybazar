@@ -37,6 +37,9 @@
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')
 
+    <!-- TOP BRANDS  -->
+    @include ('layouts.top-brands')   {{-- TODO: fix --}}
+
     <!-- FULL BANNER 1 -->
     @include ('layouts.full-banner1')   {{-- TODO: fix --}}
 
@@ -45,9 +48,6 @@
 
     <!-- FULL BANNER 2 -->
     @include ('layouts.full-banner2')   {{-- TODO: fix --}}
-
-    <!-- TOP BRANDS  -->
-    @include ('layouts.top-brands')   {{-- TODO: fix --}}
 
     <!-- VIDEOS -->
     @include ('layouts.index-videos')   {{-- TODO: fix --}}

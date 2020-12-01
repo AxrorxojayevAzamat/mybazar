@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Entity\User\Profile;
 use App\Entity\User\User;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Helpers\JsonHelper;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -44,19 +44,22 @@ class ProfileController extends Controller
         return view('user.show', compact('user'));
     }
 
-    public function update(UpdateRequest $request, User $user)
+    public function update(UpdateRequest $request)
     {
+        $user = Auth::user();
         $user = $this->service->updateProfile($user->id, $request);
 
-        return redirect()->route('user.setting');
+        return redirect()->route('user.profile');
     }
 
     public function changePassword(PasswordRequest $request)
     {
         try {
-            return $this->service->changePassword($request);
+            $this->service->changePassword($request);
+
+            return redirect()->route('user.profile')->with('success', trans('auth.password_successfully_reset'));
         } catch (\Exception $e) {
-            return JsonHelper::exceptionResponse($e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -64,7 +67,7 @@ class ProfileController extends Controller
     {
         try {
             $this->service->request(Auth::id(), $request);
-            return JsonHelper::successResponse('Phone verify code send successfully !');
+            return JsonHelper::successResponse('Phone verify code send successfully!');
         } catch (\DomainException $e) {
             return JsonHelper::exceptionResponse($e->getMessage());
         } catch (\Exception $e) {
@@ -112,9 +115,13 @@ class ProfileController extends Controller
 
         $email = $request['email'];
 
-        $this->service->addEmail(Auth::id(), $email);
+        try {
+            $this->service->addEmail(Auth::id(), $email);
+            return redirect()->route('profile.email.verification');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
 
-        return redirect()->route('profile.email.verification');
     }
 
     public function addPhone(Request $request)
@@ -125,9 +132,13 @@ class ProfileController extends Controller
 
         $phone = trim($request['phone'], '+');
 
-        $this->service->addPhone(Auth::id(), $phone);
+        try {
+            $this->service->addPhone(Auth::id(), $phone);
 
-        return redirect()->route('profile.phone.verification');
+            return redirect()->route('profile.phone.verification');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function phone()
