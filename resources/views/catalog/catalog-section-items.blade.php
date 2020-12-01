@@ -30,7 +30,7 @@
 
     <div>
         @if ($banner)
-            <img src="{{ $banner->fileOriginal }}" alt="">
+            <img src="{{ $banner->fileCustom }}" alt="">
         @endif
     </div>
 </div>
