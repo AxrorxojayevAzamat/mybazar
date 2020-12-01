@@ -36,6 +36,7 @@ class ModificationController extends Controller
     {
         try {
             $modification = $this->service->addModification($product->id, $request);
+
             return redirect()->route('admin.shop.products.modifications.show', ['product' => $product, 'modification' => $modification]);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

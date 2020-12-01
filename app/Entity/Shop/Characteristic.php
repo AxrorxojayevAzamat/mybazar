@@ -43,6 +43,7 @@ class Characteristic extends BaseModel
     public const TYPE_STRING = 'string';
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';
+    public const TYPE_COLOR = 'color';
 
     const STATUS_DRAFT = 0;
     const STATUS_MODERATION = 1;
@@ -98,6 +99,7 @@ class Characteristic extends BaseModel
             self::TYPE_STRING => 'String',
             self::TYPE_INTEGER => 'Integer',
             self::TYPE_FLOAT => 'Float',
+            self::TYPE_COLOR => 'Color',
         ];
     }
 
@@ -124,6 +126,11 @@ class Characteristic extends BaseModel
     public function isString(): bool
     {
         return $this->type === self::TYPE_STRING;
+    }
+
+    public function isColor(): bool
+    {
+        return $this->type === self::TYPE_COLOR;
     }
 
     public function isInteger(): bool
