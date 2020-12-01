@@ -45,7 +45,7 @@ class CharacteristicGroupController extends Controller
     {
         $group = $this->service->create($request);
         session()->flash('message', 'запись обновлён ');
-        return redirect()->route('admin.shop.characteristics.groups.show', $group);
+        return redirect()->route('admin.shop.characteristic-groups.show', $group);
     }
 
     public function show(CharacteristicGroup $characteristicGroup)

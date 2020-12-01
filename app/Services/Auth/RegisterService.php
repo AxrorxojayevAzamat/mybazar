@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -37,11 +38,21 @@ class RegisterService
             throw new \DomainException(trans('auth.user_exists'));
         }
 
-        $user = User::register(
-            $request->name,
-            $request->email_or_phone,
-            $request->password
-        );
+        DB::beginTransaction();
+        try {
+            $user = User::register(
+                $request->name,
+                $request->email_or_phone,
+                $request->password
+            );
+
+            $user->profile()->create();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
 
         if ($user->email) {
             Session::put('auth', ['email' => $user->email]);

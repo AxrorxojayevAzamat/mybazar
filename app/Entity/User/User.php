@@ -2,10 +2,13 @@
 
 namespace App\Entity\User;
 
+use App\Entity\Shop\Cart;
 use App\Helpers\UserHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Entity\Shop\OrderItem;
@@ -33,14 +36,23 @@ use Eloquent;
  * @property boolean $phone_auth
  * @property string $role
  * @property string $status
+ * @property bool $email_verified
+ * @property Carbon $email_verified_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property int $manager_request_status
  *
  * @property StoreUser $storeWorker
  * @property Store $store
  * @property UserFavorite[] $userFavorites
  * @property Product[] $favorites
  * @property Profile $profile
+ * @property Cart[] $cart
+ * @property Network[] $networks
  *
  * @mixin Eloquent
+ *
+ * @method Builder byNetwork(string $network, string $identity)
  */
 class User extends Authenticatable
 {
@@ -55,9 +67,13 @@ class User extends Authenticatable
     const ROLE_ADMIN = 'administrator';
     const ROLE_MANAGER = 'manager';
 
+    const MANAGER_NOT_REQUESTED = 0;
+    const MANAGER_REQUESTED = 1;
+    const MANAGER_REQUEST_APPROVED = 2;
+
     protected $fillable = [
         'name', 'email', 'phone', 'password', 'verify_token', 'status', 'balance', 'role', 'phone_verified',
-        'phone_verify_token', 'phone_verify_token_expire',
+        'phone_verify_token', 'phone_verify_token_expire', 'manager_request_status', 'email_verified_at', 'email_verified'
     ];
 
     protected $hidden = [
@@ -65,6 +81,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'email_verified' => 'boolean',
+        'email_verified_at' => 'datetime',
         'phone_verified' => 'boolean',
         'phone_verify_token_expire' => 'datetime',
         'phone_auth' => 'boolean',
@@ -94,6 +112,32 @@ class User extends Authenticatable
         return $user;
     }
 
+    public static function registerByNetwork(string $network, string $identity, $email = null, $phone = null): self
+    {
+        $user = static::create([
+            'name' => $network . '_' . $identity,
+            'email' => $email,
+            'phone' => $phone,
+            'password' => null,
+            'verify_token' => null,
+            'role' => self::ROLE_USER,
+            'status' => self::STATUS_ACTIVE,
+            'email_verified' => $email ? true : false,
+            'phone_verified' => $phone ? true : false,
+        ]);
+
+        $user->profile()->create();
+
+        $user->networks()->create([
+            'network' => $network,
+            'identity' => $identity,
+            'emails_json' => $email ? [$email] : null,
+            'phones_json' => $phone ? [$phone] : null,
+        ]);
+
+        return $user;
+    }
+
     public static function new($name, $email, $role, $password): self
     {
         return static::create([
@@ -115,6 +159,51 @@ class User extends Authenticatable
         ], $password ? ['password' => bcrypt($password)] : []);
 
         $this->update($attributes);
+    }
+
+    public function attachNetwork(string $network, string $identity, $email = null, $phone = null): void
+    {
+        $this->networks()->create([
+            'network' => $network,
+            'identity' => $identity,
+            'emails_json' => $email ? [$email] : null,
+            'phones_json' => $phone ? [$phone] : null,
+        ]);
+    }
+
+    public function requestManagerRole(): void
+    {
+        if ($this->manager_request_status === self::MANAGER_REQUESTED) {
+            throw new \DomainException(trans('frontend.manager.already_requested'));
+        }
+
+        if ($this->manager_request_status === self::MANAGER_REQUEST_APPROVED) {
+            throw new \DomainException(trans('frontend.manager.already_approved'));
+        }
+
+        if ($this->role !== self::ROLE_USER) {
+            throw new \DomainException(trans('frontend.manager.not_user'));
+        }
+
+        $this->update([
+            'manager_request_status' => self::MANAGER_REQUESTED,
+        ]);
+    }
+
+    public function approveManagerRoleRequest(): void
+    {
+        if ($this->manager_request_status === self::MANAGER_REQUEST_APPROVED || $this->role === self::ROLE_MANAGER) {
+            throw new \DomainException(trans('frontend.manager.already_approved'));
+        }
+
+        if ($this->manager_request_status !== self::MANAGER_REQUESTED) {
+            throw new \DomainException(trans('frontend.manager.not_requested'));
+        }
+
+        $this->update([
+            'manager_request_status' => self::MANAGER_REQUEST_APPROVED,
+            'role' => self::ROLE_MANAGER,
+        ]);
     }
 
     public static function rolesList(): array
@@ -152,36 +241,58 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function unverifyPhone(): void
+    public function requestPhoneVerification(): void
     {
-        $this->phone_verified = false;
-        $this->phone_verify_token = null;
-        $this->phone_verify_token_expire = null;
-        $this->phone_auth = false;
-        $this->saveOrFail();
+        $this->update([
+            'phone_verified' => false,
+            'phone_verify_token' => (string)random_int(10000, 99999),
+            'phone_verify_token_expire' => Carbon::now()->copy()->addSeconds(config('sms.phone_verify_token_expire')),
+        ]);
     }
 
-    public function requestPhoneVerification(Carbon $now, string $phone): string
+    public function requestEmailVerification(): void
     {
-        if (empty($phone)) {
-            throw new \DomainException('Phone number is empty.');
-        }
-        if (!empty($this->phone_verify_token) && $this->phone_verify_token_expire && $this->phone_verify_token_expire->gt($now)) {
-            throw new \DomainException('Token is already requested.');
-        }
+        $this->update([
+            'verify_token' => Str::uuid(),
+        ]);
+    }
 
-        $this->phone_verified = false;
-        $this->phone_verify_token = (string)random_int(10000, 99999);
-        $this->phone_verify_token_expire = $now->copy()->addSeconds(config('sms.phone_verify_token_expire'));
-        $this->saveOrFail();
+    public function requestEmailAddVerification(string $email): void
+    {
+//        if ($this->email && $this->email_verified) {
+//            throw new \DomainException(trans('auth.email_already_added'));
+//        }
 
-        return $this->phone_verify_token;
+        $this->update([
+            'email' => $email,
+            'email_verified' => false,
+            'email_verified_at' => null,
+            'verify_token' => Str::uuid(),
+        ]);
+    }
+
+    public function requestPhoneAddVerification(string $phone): void
+    {
+//        if ($this->phone && $this->phone_verified) {
+//            throw new \DomainException(trans('auth.phone_already_added'));
+//        }
+
+        $this->update([
+            'phone' => $phone,
+            'phone_verified' => false,
+            'phone_verify_token' => (string)random_int(10000, 99999),
+            'phone_verify_token_expire' => Carbon::now()->copy()->addSeconds(config('sms.phone_verify_token_expire')),
+        ]);
     }
 
     public function verifyPhone(): void
     {
-        if (!$this->isWait()) {
+        if (Auth::guest() && !$this->isWait()) {
             throw new \DomainException('User is already verified.');
+        }
+
+        if ($this->isPhoneVerified()) {
+            throw new \DomainException('Phone is already verified.');
         }
 
         $this->update([
@@ -194,18 +305,33 @@ class User extends Authenticatable
 
     public function verifyMail(): void
     {
-        if (!$this->isWait()) {
+        if (Auth::guest() && !$this->isWait()) {
             throw new \DomainException('User is already verified.');
         }
 
-        if ($this->isPhoneVerified()) {
-            throw new \DomainException('Phone is already verified.');
+        if ($this->isEmailVerified()) {
+            throw new \DomainException('Email is already verified.');
         }
 
         $this->update([
             'status' => self::STATUS_ACTIVE,
             'verify_token' => null,
+            'email_verified' => true,
+            'email_verified_at' => Carbon::now(),
         ]);
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = bcrypt($password);
+    }
+
+    public function isTokenValid(string $token): bool
+    {
+        if ($this->verify_token === $token) {
+            return true;
+        }
+        return !$this->isPhoneVerified() && $this->phone_verify_token === $token && $this->phone_verify_token_expire->gt(Carbon::now());
     }
 
     public function isWait(): bool
@@ -248,9 +374,24 @@ class User extends Authenticatable
         return $this->phone_verified;
     }
 
+    public function isEmailVerified(): bool
+    {
+        return $this->email_verified;
+    }
+
     public function isPhoneAuthEnabled(): bool
     {
         return (bool)$this->phone_auth;
+    }
+
+    public function isManagerRoleRequested(): bool
+    {
+        return $this->manager_request_status === self::MANAGER_REQUESTED && $this->role === self::ROLE_USER;
+    }
+
+    public function isNetworkExists(string $network): bool
+    {
+        return $this->networks()->where('network', $network)->exists();
     }
 
     public function haveBoughtProduct(int $productId): bool
@@ -259,6 +400,28 @@ class User extends Authenticatable
             ->leftJoin('shop_orders as o', 'shop_order_items.order_id', '=', 'o.id')
             ->where('shop_order_items.id', $productId)->where('o.user_id', $this->id)->exists();
     }
+
+    ########################################### Scopes
+
+    public function scopeByNetwork(Builder $query, string $network, string $identity): Builder
+    {
+        return $query->whereHas('networks', function(Builder $query) use ($network, $identity) {
+            $query->where('network', $network)->where('identity', $identity);
+        });
+    }
+
+    public function classFavorite($id):bool
+    {
+        $productIds = UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id]);
+        if ($productIds->exists()){
+            return true;
+        }
+
+        return false;
+    }
+
+    ###########################################
+
 
     ########################################### Relations
 
@@ -285,6 +448,16 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this->belongsToMany(Product::class, 'user_favorites', 'user_id', 'product_id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'id');
+    }
+
+    public function networks()
+    {
+        return $this->hasMany(Network::class, 'user_id', 'id');
     }
 
     ###########################################

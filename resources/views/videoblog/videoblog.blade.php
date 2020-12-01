@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Video blog')
+@section('title', trans('frontend.title.video_blog'))
 
 @section('styles')
 {{-- <link rel="stylesheet" href="{{asset('css/video-blog.css')}}"> --}}
@@ -13,9 +13,10 @@
 @endsection
 <!-- list of videos -->
 <section>
-    <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
-    </div>
+    @include('blog._blog-news-btn')
+{{--    <div class="h4-title video-blog">--}}
+{{--        <h4 class="title">Видеоролики</h4>--}}
+{{--    </div>--}}
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
@@ -37,7 +38,7 @@
                 </button>
 
                 <div id="search-bar" class="search-bar form-control">
-                    <input id="search-input" type="search" placeholder="Поиск по блогам и новостям">
+                    <input id="search-input" type="search" placeholder="@lang('frontend.search_videos')">
                     <button class="search btn" type="submit"><i class="mbsearch"></i></button>
                 </div>
 
@@ -62,6 +63,7 @@
             </nav>
 
             <div class="all-filtered-videos">
+{{--                {{dd($videos)}}}--}}
                 @foreach($videos as $video)
                 <a href="{{ route('videos.show', $video) }}">
                     <div class="video-item">
@@ -83,7 +85,9 @@
 </section>
 
 <!-- recently viewed -->
-@include('layouts.recently-viewed')
+@include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
+{{--@include('layouts.recently-viewed')--}}
 @endsection
 
 @section('script')

@@ -4,6 +4,7 @@ namespace App\Entity\Shop;
 
 use App\Entity\BaseModel;
 use App\Entity\Brand;
+use App\Entity\Discount;
 use App\Entity\Store;
 use App\Entity\Category;
 use App\Entity\User\User;
@@ -12,6 +13,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use App\Entity\UserFavorite;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -63,6 +65,8 @@ use Laravel\Scout\Searchable;
  * @property ProductReview[] $reviews
  * @property UserFavorite[] $userFavorites
  * @property User[] $favorites
+ * @property ProductDiscount[] $productDiscounts
+ * @property Discount[] $discounts
  * @property User $createdBy
  * @property User $updatedBy
  *
@@ -78,12 +82,11 @@ class Product extends BaseModel
 {
     use Searchable;
 
-    const STATUS_DRAFT = 0;
-    const STATUS_MODERATION = 1;
-    const STATUS_ACTIVE = 2;
-    const STATUS_CLOSED = 3;
-    const STATUS_NO_PRODUCT = 4;
-    const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
+    public const STATUS_DRAFT = 0;
+    public const STATUS_MODERATION = 1;
+    public const STATUS_ACTIVE = 2;
+    public const STATUS_CLOSED = 3;
+    public const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
 
     protected $table = 'shop_products';
 
@@ -119,6 +122,8 @@ class Product extends BaseModel
             'price_usd' => $this->price_usd,
             'status' => $this->status,
             'category_id' => $this->main_category_id,
+            'brand_id' => $this->brand_id,
+            'store_id' => $this->store_id,
         ];
     }
 
@@ -129,12 +134,14 @@ class Product extends BaseModel
 
     public function sendToModeration(): void
     {
-        if (!$this->isDraft()) {
-            throw new \DomainException('Product is not draft.');
+        if (!$this->isDraft() && !$this->isClosed()) {
+            throw new \DomainException('Product is not draft or closed.');
         }
+
         if (!$this->main_photo_id) {
             throw new \DomainException('Upload main photo.');
         }
+
         $this->update([
             'status' => self::STATUS_MODERATION,
         ]);
@@ -159,6 +166,26 @@ class Product extends BaseModel
         }
         $this->update([
             'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function draft(): void
+    {
+        if ($this->status === self::STATUS_DRAFT) {
+            throw new \DomainException('Product is already draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
+    public function close(): void
+    {
+        if ($this->status === self::STATUS_CLOSED) {
+            throw new \DomainException('Product is already closed.');
+        }
+        $this->update([
+            'status' => self::STATUS_CLOSED,
         ]);
     }
 
@@ -192,11 +219,6 @@ class Product extends BaseModel
         return $this->status === self::STATUS_DRAFT_CATEGORY_SPLITTED;
     }
 
-    public function hasProduct(): bool
-    {
-        return $this->status !== self::STATUS_NO_PRODUCT;
-    }
-
     public function categoriesList(): array
     {
         return $this->productCategories()->pluck('category_id')->toArray();
@@ -205,6 +227,11 @@ class Product extends BaseModel
     public function marksList(): array
     {
         return $this->productMarks()->pluck('mark_id')->toArray();
+    }
+
+    public function discountsList(): array
+    {
+        return $this->productDiscounts()->pluck('discount_id')->toArray();
     }
 
 
@@ -216,12 +243,12 @@ class Product extends BaseModel
 
     public function getNameAttribute(): string
     {
-        return LanguageHelper::getName($this);
+        return htmlspecialchars_decode(LanguageHelper::getName($this));
     }
 
     public function getDescriptionAttribute(): string
     {
-        return LanguageHelper::getDescription($this);
+        return htmlspecialchars_decode(LanguageHelper::getDescription($this));
     }
 
     public function getCurrentPriceUzsAttribute(): int
@@ -237,6 +264,11 @@ class Product extends BaseModel
     public function getDiscountExpiresAtAttribute(): int
     {
         return strtotime($this->discount_ends_at) - time();
+    }
+
+    public function classFavorite($id): bool
+    {
+        return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
 
     ###########################################
@@ -341,6 +373,16 @@ class Product extends BaseModel
     public function reviews()
     {
         return $this->hasMany(ProductReview::class, 'product_id', 'id');
+    }
+
+    public function productDiscounts()
+    {
+        return $this->hasMany(ProductDiscount::class, 'product_id', 'id');
+    }
+
+    public function discounts()
+    {
+        return $this->belongsToMany(Discount::class, 'shop_product_discounts', 'product_id', 'discount_id');
     }
 
     public function createdBy()

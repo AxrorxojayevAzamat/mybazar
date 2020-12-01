@@ -43,6 +43,7 @@ return [
     'send_to_moderation' => 'Send to moderation',
     'moderate' => 'Moderate',
     'activate' => 'Activate',
+    'close' => 'Close',
     'inactive' => 'Inactive',
     'active' => 'Active',
     'commoned' => 'Commoned',
@@ -93,6 +94,7 @@ return [
     'image' => 'Image',
     'poster' => 'Poster',
     'video' => 'Video',
+    'logo' => 'Logo',
     'files' => 'Files',
     'url' => 'Url',
     'slug' => 'Slug',
@@ -117,6 +119,7 @@ return [
 
     'user' => [
         'name'  => 'Username',
+        'profile'  => 'Profile',
         'add' => 'Add User',
         'role' => 'Role',
         'waiting' => 'Waiting',
@@ -126,8 +129,13 @@ return [
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
         'role_manager' => 'Manager',
+        'requests' => 'Manager role requests',
     ],
-
+    'sliders' =>[
+        'slider' => 'slider',
+        'create new slider' => 'Create new slider',
+        'sort' => 'Saralash'
+    ],
     'category' => [
         'add' => 'Add Category',
         'name' => 'Category',
@@ -158,6 +166,7 @@ return [
         'add' => 'Add Delivery Method',
         'name' => 'Delivery Method',
         'choose' => 'Choose Delivery Method',
+        'sort' => 'Sort delivery',
         'min_weight' => 'Minimum weight',
         'max_weight' => 'Maximum weight',
         'index' => 'Delivery index',
@@ -176,6 +185,7 @@ return [
         'add' => 'Add Product',
         'name' => 'Product',
         'discount' => 'Discount',
+        'discounts_list' => 'Discounts list',
         'discount_ends_at' => 'Discount ends at',
         'moderation' => 'Moderation',
         'active' => 'Active',

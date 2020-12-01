@@ -18,3 +18,6 @@ Route::get('/videos', 'Api\VideosController@index');
 Route::get('/banners', 'Api\BannersController@index');
 
 Route::get('search', 'Api\SearchController@search');
+
+
+

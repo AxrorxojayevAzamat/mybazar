@@ -7,10 +7,30 @@
             <div class="products owl-carousel owl-theme">
                 @foreach ($products as $product)
                     @include('layouts.product-item')
+
                 @endforeach
             </div>
         </div>
     </div>
 </section>
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: 'add-to-favorite/'+ id,
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+
+
+
+</script>
 
 @include('pages.rating-js', ['products' => $products, 'type' => $rate_for['js']])
+

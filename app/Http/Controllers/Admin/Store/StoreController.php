@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Admin\Store;
 
 use App\Entity\DeliveryMethod;
+use App\Entity\Discount;
 use App\Entity\Payment;
 use App\Entity\Shop\Mark;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
+use App\Entity\StoreUser;
 use App\Helpers\LanguageHelper;
 use App\Helpers\ProductHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stores\CreateRequest;
 use App\Http\Requests\Admin\Stores\UpdateRequest;
 use App\Services\Manage\StoreService;
-use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class StoreController extends Controller
 {
@@ -31,6 +34,12 @@ class StoreController extends Controller
     {
         $query = Store::orderByDesc('updated_at');
 
+        $storeIds = [];
+
+        if (Auth::user()->isManager()) {
+            $storeIds = StoreUser::where('user_id', Auth::id())->pluck('store_id')->toArray();
+        }
+
         if (!empty($value = $request->get('name'))) {
             $query->where(function ($query) use ($value) {
                 $query->where('name_uz', 'ilike', '%' . $value . '%')
@@ -44,9 +53,10 @@ class StoreController extends Controller
         }
 
         if (!empty($value = $request->get('category_id'))) {
-            $products = StoreCategory::where('category_id', $value)->pluck('store_id')->toArray();
-            $query->whereIn('id', $products);
+            $storeIds = array_intersect($storeIds, StoreCategory::where('category_id', $value)->pluck('store_id')->toArray());
         }
+
+        empty($storeIds) ? : $query->whereIn('id', $storeIds);
 
         $stores = $query->paginate(20);
 
@@ -57,41 +67,55 @@ class StoreController extends Controller
 
     public function create()
     {
-//        session()->flash('message', 'fuUUUUUUUUUCK');
         $categories = ProductHelper::getCategoryList();
+        $discounts = Discount::orderByDesc('created_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods'));
+        return view('admin.stores.create', compact('categories', 'marks', 'payments', 'deliveryMethods','discounts'));
     }
 
     public function show(Store $store)
     {
-//        dd();
-        return view('admin.stores.show', compact('store'));
+        if (!Gate::allows('show-own-store', $store)) {
+        abort(404);
+    }
+        $storeDiscount= ShopDiscounts::where(['store_id'=>$store->id])->pluck('discount_id');
+        $discounts = Discount::whereIn('id', $storeDiscount)->get();
+        return view('admin.stores.show', compact('store','discounts'));
+
     }
 
     public function store(CreateRequest $request)
     {
         $store = $this->service->create($request);
-        session()->flash('message', 'zapiz dobavlen');
+        session()->flash('message', 'zapiz dobavlen');  // TODO: translate
 
-        return redirect()->route('admin.stores.create', 'store');
+        return redirect()->route('admin.stores.show', 'store');
     }
 
     public function edit(Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $categories = ProductHelper::getCategoryList();
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $payments = Payment::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
+        $discounts = Discount::orderByDesc('created_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $deliveryMethods = DeliveryMethod::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments', 'deliveryMethods'));
+        return view('admin.stores.edit', compact('store', 'categories', 'marks', 'payments', 'deliveryMethods','discounts'));
     }
 
     public function update(UpdateRequest $request, Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $store = $this->service->update($store->id, $request);
         session()->flash('message', 'Запись добавлена');
 
@@ -100,6 +124,10 @@ class StoreController extends Controller
 
     public function moderate(Store $store)
     {
+        if (!Gate::allows('alter-stores-status', $store)) {
+            abort(404);
+        }
+
         try {
             $this->service->moderate($store->id);
 
@@ -109,8 +137,27 @@ class StoreController extends Controller
         }
     }
 
+    public function draft(Store $store)
+    {
+        if (!Gate::allows('alter-stores-status', $store)) {
+            abort(404);
+        }
+
+        try {
+            $this->service->draft($store->id);
+
+            return redirect()->route('admin.stores.show', $store);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
     public function destroy(Store $store)
     {
+        if (!Gate::allows('edit-own-store', $store)) {
+            abort(404);
+        }
+
         $store->delete();
         session()->flash('message', 'Запись добавлена');
 

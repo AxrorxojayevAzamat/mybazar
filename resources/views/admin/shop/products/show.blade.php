@@ -1,19 +1,34 @@
 @extends('layouts.admin.page')
 
+@php($user = Auth::user())
+
 @section('content')
     <div class="d-flex flex-row mb-3">
-        <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
-        @if ($product->isOnModeration())
+        @can('edit-own-product', $product)
+            <a href="{{ route('admin.shop.products.edit', $product) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
+        @endcan
+        @if ($product->isOnModeration() && Gate::allows('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.moderate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
             </form>
-        @elseif ($product->isDraft())
+        @elseif (($product->isDraft() || $product->isClosed()) && Gate::allows('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.on-moderation', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.send_to_moderation')</button>
             </form>
-        @elseif ($product->isDraftAfterCategorySplit())
+        @elseif($product->isActive() && Gate::allows('close-own-product', $product))
+            <form method="POST" action="{{ route('admin.shop.products.close', $product) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-danger" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.close')</button>
+            </form>
+            @can('alter-products-status')
+                <form method="POST" action="{{ route('admin.shop.products.draft', $product) }}" class="mr-1">
+                    @csrf
+                    <button class="btn btn-default" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.draft')</button>
+                </form>
+            @endcan
+        @elseif ($product->isDraftAfterCategorySplit() && Gate::check('alter-products-status'))
             <form method="POST" action="{{ route('admin.shop.products.activate', $product) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success">@lang('adminlte.activate')</button>
@@ -36,7 +51,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -45,9 +60,9 @@
                         <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $product->name_uz }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $product->name_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $product->name_en }}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! $product->description_uz !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! $product->description_ru !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! $product->description_en !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! htmlspecialchars_decode($product->description_uz) !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! htmlspecialchars_decode($product->description_ru) !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! htmlspecialchars_decode($product->description_en) !!}</td></tr>
                         <tr><th>Slug</th><td>{{ $product->slug }}</td></tr>
                         </tbody>
                     </table>
@@ -71,7 +86,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.relations') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -85,7 +100,9 @@
                                 @endforeach
                             </td>
                         </tr>
-                        <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @if ($user->isAdmin() || $user->isModerator())
+                            <tr><th>{{ trans('adminlte.store.name') }}</th><td><a href="{{ route('admin.stores.show', $store) }}">{{ $store->name }}</a></td></tr>
+                        @endif
                         <tr><th>{{ trans('adminlte.brand.name') }}</th><td><a href="{{ route('admin.brands.show', $brand) }}">{{ $brand->name }}</a></td></tr>
                         <tr>
                             <th>{{ trans('menu.marks') }}</th>
@@ -104,7 +121,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.additional') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -120,6 +137,14 @@
                         <tr><th>{{ trans('adminlte.new') }}</th><td>{{ $product->new ? 'Да' : 'Нет' }}</td></tr>
                         <tr><th>{{ trans('adminlte.rating') }}</th><td>{{ $product->rating }}</td></tr>
                         <tr><th>{{ trans('adminlte.number_of_reviews') }}</th><td>{{ $product->number_of_reviews }}</td></tr>
+                        <tr>
+                            <th>{{ trans('menu.discounts') }}</th>
+                            <td>
+                                @foreach($discounts as $discount)
+                                    <a href="{{ route('admin.discounts.show', $discount) }}">{{ $discount->name }}</a><br>
+                                @endforeach
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -129,7 +154,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-warning card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.others') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -229,7 +254,7 @@
     </div>
 
     <div class="card" id="values">
-        <div class="card-header card-green with-border">{{ trans('adminlte.value.name') }}</div>
+        <div class="card-header card-gray with-border">{{ trans('adminlte.value.name') }}</div>
         <div class="card-body">
             <p><a href="{{ route('admin.shop.products.values.add', $product) }}" class="btn btn-success">{{ trans('adminlte.value.add') }}</a></p>
             <table class="table table-bordered table-striped">

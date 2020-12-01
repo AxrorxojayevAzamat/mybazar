@@ -15,23 +15,22 @@ var any_input = document.getElementsByClassName('bordered-input');
         }
     }
 
+    // search on focus function
     var search_input = document.getElementsByClassName('main-search-bordered-input');
-
     for (i=0;i<search_input.length;i++){
-        
-        if (search_input[i].parentNode.parentNode.tagName.toString().toLowerCase() == 'div') {
+        if (search_input[i].parentNode.parentNode.tagName.toString().toLowerCase() == 'form') {
             search_input[i].onfocus = function(){
-                // this.parentNode.addCSS('border':'1px solid blue');
-                this.parentNode.parentNode.style.border = '1px solid #0042ff';
+              this.parentNode.parentNode.style.border = '1px solid #0042ff';
+              $('.autocomplete-tags').show()
             }
             search_input[i].onblur = function(){
-                // this.parentNode.addCSS('border':'1px solid grey');
-
                 this.parentNode.parentNode.style.border = '1px solid #d1d8e0';
+                $('.autocomplete-tags').hide();
             }
         }
     }
 
+    // search tags
     const tagContainer = document.querySelector('.input-with-tags');
     const input = document.querySelector('.input-with-tags input');
     
@@ -76,7 +75,6 @@ var any_input = document.getElementsByClassName('bordered-input');
         }
     });
     document.addEventListener('click', (e) => {
-      console.log(e.target.tagName);
       if (e.target.tagName === 'I') {
         const tagLabel = e.target.getAttribute('data-item');
         const index = tags.indexOf(tagLabel);

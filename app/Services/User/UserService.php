@@ -2,17 +2,20 @@
 
 namespace App\Services\User;
 
+use App\Mail\Auth\VerifyMail;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Entity\User\User;
 use App\Entity\User\Profile;
 use App\Entity\UserFavorite;
 use App\Http\Requests\Admin\Users\CreateRequest;
-use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -27,23 +30,27 @@ class UserService
 
     private $sms;
 
-    public function __construct(SmsSender $sms) {
+    public function __construct(SmsSender $sms)
+    {
         $this->sms = $sms;
     }
 
-    public function request($id, PhoneRequest $request) {
+    public function request($id, PhoneRequest $request)
+    {
         $user = $this->getUser($id);
 
         $user->requestPhoneVerification(Carbon::now(), $request['phone']);
-        config('sms.send_local') ? '' : $this->sms->send($request['phone'], 'Phone verification token: ');
+        config('sms.send_local') ?: $this->sms->send($request['phone'], 'Phone verification token: ');
     }
 
-    public function verify($id, PhoneVerifyRequest $request) {
+    public function verify($id, PhoneVerifyRequest $request)
+    {
         $user = $this->getUser($id);
         $user->verifyPhone($request['phone_verify_token'], Carbon::now(), $request['phone']);
     }
 
-    public function toggleAuth($id): bool {
+    public function toggleAuth($id): bool
+    {
         $user = $this->getUser($id);
         if ($user->isPhoneAuthEnabled()) {
             $user->disablePhoneAuth();
@@ -53,7 +60,8 @@ class UserService
         return $user->isPhoneAuthEnabled();
     }
 
-    public function findUsers(Request $request) {
+    public function findUsers(Request $request)
+    {
         /** @var User $user */
         $query = User::orderByDesc('id');
 
@@ -79,7 +87,35 @@ class UserService
         return $query;
     }
 
-    public function store(CreateRequest $request) {
+    public function findUsersRequested(Request $request)
+    {
+        /** @var User $user */
+        $query = User::where('manager_request_status', User::MANAGER_REQUESTED)->orderByDesc('updated_at');
+
+        if (!empty($value = $request->get('id'))) {
+            $query->where('id', $value);
+        }
+
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('email'))) {
+            $query->where('email', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('status'))) {
+            $query->where('status', $value);
+        }
+
+        if (!empty($value = $request->get('role'))) {
+            $query->where('role', $value);
+        }
+        return $query;
+    }
+
+    public function store(CreateRequest $request)
+    {
         /** @var User $user */
         $user = User::new($request['name'], $request['email'], $request['role'], $request['password']);
         if ($this->isProfile($request)) {
@@ -93,7 +129,8 @@ class UserService
         return $user;
     }
 
-    public function update($id, UpdateRequest $request) {
+    public function update($id, UpdateRequest $request)
+    {
         /** @var User $user */
         $user = User::findOrFail($id);
 
@@ -112,9 +149,12 @@ class UserService
         return $user;
     }
 
-    public function updateProfile($id, UpdateRequest $request): void {
-        /** @var User $user */
+    public function updateProfile($id, UpdateRequest $request): User
+    {
         $user = User::findOrFail($id);
+        if (!$user->profile) {
+            $user->profile()->create();
+        }
 
         if (!$request->avatar) {
             $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address);
@@ -126,34 +166,41 @@ class UserService
 
             $this->uploadAvatar($user->id, $request->avatar, $imageName);
         }
+
+        return $user;
     }
 
-    public function changePassword(PasswordRequest $request) {
+    public function approveManagerRoleRequest(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->approveManagerRoleRequest();
+    }
 
-
+    public function changePassword(PasswordRequest $request): bool
+    {
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
-//            // The passwords matches
-            return JsonHelper::badResponse('Your current password does not matches with the password you provided. Please try again.');
+            throw new \DomainException('Your current password does not matches with the password you provided. Please try again.');
         }
 
         if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
-//            //Current password and new password are same
-
-            return JsonHelper::badResponse('New Password cannot be same as your current password. Please choose a different password.');
+            throw new \DomainException('New Password cannot be same as your current password. Please choose a different password.');
         }
-        //Change Password
-        $user           = Auth::user();
+
+        $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return JsonHelper::successResponse('Password changed successfully !');
+
+        return true;
     }
 
-    private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void {
+    private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void
+    {
         ImageHelper::saveThumbnail($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
         ImageHelper::saveOriginal($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
     }
 
-    private function isProfile(CreateRequest $request): bool {
+    private function isProfile(CreateRequest $request): bool
+    {
         $count = 0;
         $request['first_name'] ? $count++ : 0;
         $request['last_name'] ? $count++ : 0;
@@ -164,19 +211,22 @@ class UserService
         return $count;
     }
 
-    private function getUser($id): User {
+    private function getUser($id): User
+    {
         return User::findOrFail($id);
     }
 
-     public function addToFavorite(int $id, Request $request): UserFavorite
+    public function addToFavorite(int $id, $product)
     {
-         /** @var User $user */
+        /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
-
-            $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
-//            $userFavorite = $user->favorites()->attach($request->product_id);
+            if (!$user->classFavorite($product->id)){
+                $userFavorite = $user->userFavorites()->create(['product_id' => $product->id]);
+            }else{
+                $userFavorite = $user->favorites()->detach($product->id);
+            }
 
             DB::commit();
 
@@ -186,9 +236,10 @@ class UserService
             throw $e;
         }
     }
-     public function removeFromFavorite(int $id, Request $request): bool
+
+    public function removeFromFavorite(int $id, Request $request): bool
     {
-         /** @var User $user */
+        /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
@@ -202,4 +253,56 @@ class UserService
         }
     }
 
+    public function requestManagerRole(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->requestManagerRole();
+    }
+
+    public function addEmail(int $id, string $email)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->email !== $email && User::where('email', $email)->exists()) {
+            throw new \DomainException(trans('auth.email_already_added'));
+        }
+
+        $user->requestEmailAddVerification($email);
+        Session::put('auth', ['email' => $user->email]);
+        Mail::to($user->email)->send(new VerifyMail($user));
+    }
+
+    public function addPhone(int $id, string $phone)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->phone !== $phone && User::where('phone', $phone)->exists()) {
+            throw new \DomainException(trans('auth.phone_already_added'));
+        }
+
+        $user->requestPhoneAddVerification($phone);
+        Session::put('auth', ['phone_number' => $user->phone]);
+        $this->sms->send($user->phone, $user->phone_verify_token);
+    }
+
+    public function verifyEmail(int $id): void
+    {
+        $user = User::findOrFail($id);
+        $user->verifyMail();
+    }
+
+    public function verifyPhone(int $id, int $token): void
+    {
+        $user = User::findOrFail($id);
+
+        if ($token !== (int)$user->phone_verify_token) {
+            throw new \DomainException(trans('auth.incorrect_verify_token'));
+        }
+
+        if ($user->phone_verify_token_expire->lt(Carbon::now())) {
+            throw new \DomainException(trans('auth.token_expired'));
+        }
+
+        $user->verifyPhone();
+    }
 }

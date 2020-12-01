@@ -31,6 +31,7 @@ use Illuminate\Validation\Rule;
  * @property boolean $new
  * @property int[] $categories
  * @property int[] $marks
+ * @property int[] $discounts
  *
  * @property Product $product
  */
@@ -45,13 +46,13 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_uz' => 'required|string|max:255',
-            'name_ru' => 'required|string|max:255',
-            'name_en' => 'required|string|max:255',
+            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\'`‘]+$/u'],
+            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/u'],
+            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/'],
             'description_uz' => 'nullable|string',
             'description_ru' => 'nullable|string',
             'description_en' => 'nullable|string',
-            'slug' => ['required', 'string', 'max:255', Rule::unique('shop_products')->ignore($this->product->id)],
+            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9-]+$/', Rule::unique('shop_products')->ignore($this->product->id)],
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
@@ -68,6 +69,7 @@ class UpdateRequest extends FormRequest
             'new' => 'boolean',
             'categories.*' => 'required|numeric|min:1|exists:categories,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
+            'discounts.*' => 'numeric|min:1|exists:discounts,id',
         ];
     }
 }

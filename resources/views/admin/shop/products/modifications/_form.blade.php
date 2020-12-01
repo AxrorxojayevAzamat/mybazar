@@ -13,7 +13,7 @@
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-fuchsia card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.value.characteristic_value') }}</h3></div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -35,7 +35,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-green card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -76,7 +76,7 @@
 
 <div class="row" id="main-values">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
 {{--            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>--}}
             <div class="card-body">
                 <div class="row">

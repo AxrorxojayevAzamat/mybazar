@@ -10,11 +10,11 @@ $factory->define(Discount::class, function (Faker $faker) {
 
 //    $dayOff = Carbon::now()->addDays($faker->numberBetween(2, 9));
 //    $maxDayOff = Carbon::now()->addDays($faker->numberBetween(10, 15));
-    
+
     return [
-        'name_ru' => $faker->sentence,
-        'name_en' => $faker->sentence,
-        'name_uz' => $faker->sentence,
+        'name_ru' => $faker->name,
+        'name_en' => $faker->name,
+        'name_uz' => $faker->name,
         'description_uz' => $faker->text(200),
         'description_en' => $faker->text(200),
         'description_ru' => $faker->text(200),

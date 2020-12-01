@@ -43,7 +43,7 @@
 {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
-                            <span>{{ $product->number_of_reviews }} отзывов</span>
+                            <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@
                              data-name="{{ $product->name }}"
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
                              data-price="{{ $product->currentPriceUzs }}"
-                        >
+                             onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
                         <div class="libra" data-name="{{ $product->name }}"
@@ -101,11 +101,20 @@
                         >
                             <i class="mbtocompare"></i>
                         </div>
-                        <div class="like"><i class="mbfavorite"></i></div>
+                        <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
                     </div>
                     <div class="delivery-options">
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
                         <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+                    </div>
+                    <div class="first-item">
+                        <div class="shop-name-logo">
+                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
+                            <div>
+                                <p class="sub-title">{!! $product->name !!}</p>
+                                <b class="title"><a href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,3 +123,69 @@
 </section>
 @include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: '{{ route('user.favorites.add',$product) }}',
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
+    function addCart(id) {
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.message == 'success'){
+                    localStorage.removeItem('product_id');
+                    console.log('exists');
+                }else{
+                    nonRegisteredUsersCart(id);
+                    console.log($.ajaxSettings.headers);
+                    console.log('isnotexists');
+                }
+            }, error: function (data) {
+
+            }
+        })
+
+    }
+    function nonRegisteredUsersCart(id){
+        if (localStorage.getItem('product_id')) {
+            let cart_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('product_id')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                console.log('hello')
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                } else {
+                    console.log('loging')
+                }
+            }
+            if (!exist) {
+                cart_products += product_id;
+                cart_products += id + ',';
+                localStorage.setItem('product_id', cart_products + '');
+            } else {
+                console.log('exist');
+            }
+        } else {
+            localStorage.setItem('product_id', id + ',');
+        }
+    }
+</script>

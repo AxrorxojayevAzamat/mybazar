@@ -8,7 +8,7 @@
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="uzbek" role="tabpanel">
@@ -24,7 +24,8 @@
                             {!! Form::textarea('description_uz', old('description_uz', $product ? $product->description_uz : null),
                                 ['class' => 'form-control' . $errors->has('description_uz') ? ' is-invalid' : '', 'id' => 'description_uz', 'rows' => 10]); !!}
                             @if ($errors->has('description_uz'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('description_uz') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('description_uz') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -41,7 +42,8 @@
                             {!! Form::textarea('description_ru', old('description_ru', $product ? $product->description_ru : null),
                                 ['class' => 'form-control' . $errors->has('description_ru') ? ' is-invalid' : '', 'id' => 'description_ru', 'rows' => 10]); !!}
                             @if ($errors->has('description_ru'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('description_ru') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('description_ru') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -58,7 +60,8 @@
                             {!! Form::textarea('description_en', old('description_en', $product ? $product->description_en : null),
                                 ['class' => 'form-control' . $errors->has('description_en') ? ' is-invalid' : '', 'id' => 'description_en', 'rows' => 10]); !!}
                             @if ($errors->has('description_en'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('description_en') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('description_en') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -85,7 +88,7 @@
                         <div class="form-group">
                             {!! Form::label('main_category_id', trans('adminlte.product.main_category'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('main_category_id', $categories, old('main_category_id', $product ? $product->main_category_id : null),
-                                ['class'=>'form-control' . ($errors->has('main_category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                ['class'=>'form-control' . ($errors->has('main_category_id') ? ' is-invalid' : ''), 'placeholder' => '', 'required' => true]) !!}
                             @if ($errors->has('main_category_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('main_category_id') }}</strong></span>
                             @endif
@@ -97,25 +100,17 @@
                             {!! Form::select('categories[]', $categories, old('categories', $product ? $product->categoriesList() : null),
                                 ['multiple' => true, 'class'=>'form-control' . ($errors->has('categories') ? ' is-invalid' : ''), 'id' => 'categories', 'required' => true]) !!}
                             @if ($errors->has('categories'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('categories') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('categories') }}</strong></span>
                             @endif
                         </div>
                     </div>
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            {!! Form::label('store_id', trans('adminlte.store.name'), ['class' => 'col-form-label']); !!}
-                            {!! Form::select('store_id', $stores, old('store_id', $product ? $product->store_id : null),
-                                ['class'=>'form-control' . ($errors->has('store_id') ? ' is-invalid' : ''), 'required' => true]) !!}
-                            @if ($errors->has('store_id'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('store_id') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
+                    <input type="hidden" name="store_id" value="{{ $store->id }}">
                     <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('brand_id', trans('adminlte.brand.name'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('brand_id', $brands, old('brand_id', $product ? $product->brand_id : null),
-                                ['class'=>'form-control' . ($errors->has('brand_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                                ['class'=>'form-control' . ($errors->has('brand_id') ? ' is-invalid' : ''), 'placeholder' => '', 'required' => true]) !!}
                             @if ($errors->has('brand_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('brand_id') }}</strong></span>
                             @endif
@@ -131,6 +126,16 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            {!! Form::label('discounts', trans('adminlte.product.discounts_list'), ['class' => 'col-form-label']); !!}
+                            {!! Form::select('discounts[]', $discounts,  old('discounts', $product ? $product->discountsList() : null),
+                                 ['class'=>'form-control' . ($errors->has('discounts') ? ' is-invalid' : ''), 'id' => 'discounts','multiple'=> true]) !!}
+                            @if ($errors->has('discounts'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('discounts') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,7 +144,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-green card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
@@ -181,17 +186,19 @@
                             {!! Form::date('discount_ends_at_date', old('discount_ends_at_date', $product && $product->discount_ends_at ? $product->discount_ends_at->format('Y-m-d') : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_date') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_date'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_date') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_date') }}</strong></span>
                             @endif
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             {!! Form::label('discount_ends_at_time', '(' . trans('adminlte.time') . ')', ['class' => 'col-form-label']); !!}
-                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('Y-m-d') : null),
+                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('H:i') : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_time') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_time'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_time') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('discount_ends_at_time') }}</strong></span>
                             @endif
                         </div>
                     </div>
@@ -226,7 +233,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-red card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
                 <div class="row">
                     <div class="form-group" style="margin-right: 20px;">
@@ -271,8 +278,8 @@
         CKEDITOR.replace('description_en');
         $('#main_category_id').select2();
         $('#categories').select2();
-        $('#store_id').select2();
         $('#brand_id').select2();
         $('#marks').select2();
+        $('#discounts').select2();
     </script>
 @endsection

@@ -1,6 +1,13 @@
 <section>
     <div id="products-of-day" class=" products-of-day owl-carousel owl-theme">
         @foreach($dayProducts as $product)
+            <?php
+            if ($product->classFavorite($product->id)) {
+                $className = "selected_like";
+            }else{
+                $className = '';
+            }
+            ?>
             <div class="product-item" >
                 <div class="top">
                     <h5 class="bold title">@lang('frontend.product.day_product')</h5>
@@ -41,9 +48,9 @@
                             <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
                         </div>
                         <div class="item-action-icons">
-                            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
+                            <div class="cart" data-name="{{ $product->name }}" onclick="addCart({{ $product->id }})" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
                             <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbtocompare"></i></div>
-                            <div class="like"><i class="mbfavorite"></i></div>
+                            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
                         </div>
                     </div>
                 </div>
@@ -51,5 +58,71 @@
         @endforeach
     </div>
 </section>
-@include('pages.rating-js', ['products' => $dayProducts, 'type' => '"D"'])
+<script>
+    function addToFavorite(id){
+        let product_id = {};
+        product_id.id = id;
+        $.ajax({
+            url: 'add-to-favorite/'+id,
+            method: 'GET',
+            success: function (data){
+                console.log(data);
+            },error: function (data){
+                console.log(data);
+            }
+        })
+    }
 
+    function addCart(id) {
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.message == 'success'){
+                    localStorage.removeItem('product_id');
+                    console.log('exists');
+                }else{
+                    nonRegisteredUsersCart(id);
+                    console.log($.ajaxSettings.headers);
+                    console.log('isnotexists');
+                }
+            }, error: function (data) {
+
+            }
+        })
+
+    }
+    function nonRegisteredUsersCart(id){
+        if (localStorage.getItem('product_id')) {
+            let cart_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('product_id')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                console.log('hello')
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                } else {
+                    console.log('loging')
+                }
+            }
+            if (!exist) {
+                cart_products += product_id;
+                cart_products += id + ',';
+                localStorage.setItem('product_id', cart_products + '');
+            } else {
+                console.log('exist');
+            }
+        } else {
+            localStorage.setItem('product_id', id + ',');
+        }
+    }
+</script>
+@include('pages.rating-js', ['products' => $dayProducts, 'type' => '"D"'])

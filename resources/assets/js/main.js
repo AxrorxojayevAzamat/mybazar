@@ -189,4 +189,6 @@
 			cartCountItems[1].innerText = quantity+1;
 		};
   }
+
+
 })();

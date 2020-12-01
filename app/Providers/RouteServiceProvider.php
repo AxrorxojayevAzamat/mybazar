@@ -11,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $namespace = 'App\Http\Controllers';
 
-    public const HOME = '/home';
+    public const HOME = '/';
 
     public function boot()
     {

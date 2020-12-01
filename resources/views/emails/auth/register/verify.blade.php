@@ -3,7 +3,7 @@
 
 @lang('auth.refer_link')
 
-@component('mail::button', ['url' => route('verify.email', ['token' => $user->verify_token])])
+@component('mail::button', ['url' => route(Auth::guest() ? 'verify.email' : 'profile.verify.email', ['token' => $user->verify_token])])
 @lang('auth.verify_email')
 @endcomponent
 

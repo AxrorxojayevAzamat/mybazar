@@ -1,102 +1,115 @@
 @extends('layouts.app')
 
-@section('title', 'Cart page')
+@section('title', trans('frontend.title.cart_page'))
 
 @section('body')
     <section>
         <div class="h4-title pay-body">
-            <h4 class="title">Корзина</h4>
+            <h4 class="title">@lang('frontend.cart.cart')</h4>
         </div>
         <div class="outter-cart">
             <div class="ur-cart">
-                <h6>Ваша корзина</h6>
-                <p class="first"> В корзине:<span> 2 шт.</span></p>
-                <p> Общий вес товаров:<span> 16 570 гр.</span></p>
-                <p> Скидка:<span class="sale"> 25%</span></p>
-                <p> Сумма скидки:<span class="sale"> -564 500 сум</span></p>
+                <h6>@lang('frontend.cart.your_cart')</h6>
+                @if(isset($cart_product_count))
+                    <p class="first"> @lang('frontend.cart.in_cart')<span> {{ $cart_product_count }} @lang('frontend.cart.items').</span></p>
+                @endif
+                @if(isset($cart_product_weight))
+                    <p> @lang('frontend.cart.total_weight_of_goods')<span> {{ $cart_product_weight }} @lang('frontend.cart.gr').</span></p>
+                @endif
+                @if(isset($cart_product_discount))
+                    <p> @lang('frontend.cart.discount')<span class="sale"> {{ $cart_product_discount * 100 }}%</span></p>
+                @endif
+                @if(isset($cart_product_discount_amount))
+                    <p> @lang('frontend.cart.sum_of_discount')<span class="sale"> -{{ $cart_product_discount_amount }} @lang('frontend.cart.sum')</span>
+                    </p>
+                @endif
                 <div class="go-to-checkout-page-buttons">
                     <div>
-                        <p class="overall"> Всего к оплате</p>
-                        <p class="total-checkout">10 231 749 <span>сум</span></p>
+                        <p class="overall"> @lang('frontend.cart.all_to_pay')</p>
+                        @if(isset($cart_product_total))
+                            <p class="total-checkout">{{ $cart_product_total }} <span>@lang('frontend.cart.sum')</span></p>
+                        @endif
                     </div>
-                    <button class="btn make-order">Оформить заказ </button>
+                    <button class="btn make-order">@lang('frontend.cart.checkout_order')</button>
                 </div>
             </div>
+{{--            {{ dd($cart_product_id) }}--}}
+{{--            @foreach($cart_product_id as $i => $idid)--}}
+{{--                <input type="hidden" value="{{ $idid[$i] }}" class="cart_all_products_id">--}}
+{{--            @endforeach--}}
             <div class="inner-pay-checkout-cart">
-                <button class="clear-list">Очистить список</button>
+                @if(isset($cart_product_id))
+                    <button class="clear-list" onclick="clearAll(@json($cart_product_id))">@lang('frontend.cart.clear_list')</button>
+                @endif
                 <div class="all-items">
-                    <div class="item">
-                        <div class="product-img">
-                            <img src="{{asset('images/tv6.png')}}" alt="">
-                        </div>
-                        <!-- description -->
-                        <div class="description ">
-                            <h6 class="title">Телевизор Samsung QE55Q77RAU</h6>
-                            <p class="sub-title">Телевизоры</p>
-                            <div class="current-old-price horizontal">
-                                <h5 class="price">741 640 <span>сум</span></h5>
-                                <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
-                            </div>
-                            <div class="count-div">
-                                <i class="mbdeleteone"></i>
-                                <div class="number">1</div>
-                                <i class="mbaddone"></i>
-                            </div>
-                            <div class="item-action-icons">
-                                <div class="libra"data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbtocompare"></i></div>
-                                <div class="like"><i class="mbfavorite"></i></div>
-                            </div>
-                            <div class="delivery-options">
-                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
-                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
-                            </div>
-                            <p class="sub-title bottom">ООО “Malika Savdo”</p>
-                        </div>
-                        <!-- end description -->
-                        <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                    </div>
-                    <div class="item">
-                        <div class="product-img">
-                            <img src="{{asset('images/tv6.png')}}" alt="">
-                        </div>
-                        <!-- description -->
-                        <div class="description ">
-                            <h6 class="title">Телевизор Samsung QE55Q77RAU</h6>
-                            <p class="sub-title">Телевизоры</p>
-                            <div class="current-old-price horizontal">
-                                <h5 class="price">741 640 <span>сум</span></h5>
-                                <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
-                            </div>
-                            <div class="count-div">
-                                <i class="mbdeleteone"></i>
-                                <div class="number">1</div>
-                                <i class="mbaddone"></i>
-                            </div>
-                            <div class="item-action-icons">
-                                <div class="libra"data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}" data-price="741640"><i class="mbtocompare"></i></div>
-                                <div class="like"><i class="mbfavorite"></i></div>
-                            </div>
-                            <div class="delivery-options">
-                                <div><i class="mbdelievery"></i> Доставка в течении сутки</div>
-                                <div><i class="mbbox"></i>Самовывоз, с 8 апреля</div>
-                            </div>
-                            <p class="sub-title bottom">ООО “Malika Savdo”</p>
-                        </div>
-                        <!-- end description -->
-                        <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                    </div>
+                    @if(isset($products))
+                        @foreach($products as $i => $product)
+                            @include('cart.cart-card')
+                        @endforeach
+                    @else
+                        <h3>Please create account fist</h3>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- u might also like -->
-    
+
 @endsection
 
 
 @section('script')
     <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script>
+        function removeCartList(id){
+            console.log('working')
+            let product_id = {};
+            product_id.data = [];
+            product_id.product_id = id;
+
+            $.ajax({
+                url: '/remove-cart',
+                method: 'POST',
+                data: product_id,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.data == 'success'){
+                        location.reload();
+                    }else{
+                        let product_id_local = localStorage.getItem('product_id');
+                        product_id_local = product_id_local.replace(id + ',', '');
+                        localStorage.removeItem('product_id');
+                        localStorage.setItem('product_id',product_id_local);
+                        $('#' + id).hide();
+
+
+                    }
+
+                }, error: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+
+        function clearAll(id){
+            let data = {};
+            data.product_id = [];
+            data.product_id = id;
+            $.ajax({
+                url: '/remove-cart',
+                method: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function(data){
+                    location.reload();
+
+                },error: function (data){
+                    console.log(data.message);
+                }
+            })
+        }
+    </script>
 @endsection
 
 

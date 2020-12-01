@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Compare page')
+@section('title', trans('frontend.title.compare_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/compare.css')}}"> --}}

@@ -35,15 +35,25 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
 });
 
+Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password'), route('password.reset'));
+});
+
+Breadcrumbs::register('password.reset.email', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth.reset_password_email'), route('password.reset.email'));
+});
+
 Breadcrumbs::register('register', function (Crumbs $crumbs) {
 });
 
-Breadcrumbs::for('email.verification', function (Crumbs $crumbs) {
+Breadcrumbs::register('email.verification', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push(trans('auth.email_verification'), route('email.verification'));
 });
 
-Breadcrumbs::for('phone.verification', function (Crumbs $crumbs) {
+Breadcrumbs::register('phone.verification', function (Crumbs $crumbs) {
     $crumbs->parent('home');
     $crumbs->push(trans('auth.phone_verification'), route('phone.verification'));
 });
@@ -64,9 +74,9 @@ Breadcrumbs::register('sms', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.sms'), route('sms'));
 });
 
-Breadcrumbs::register('blogs-news', function (Crumbs $crumbs) {
+Breadcrumbs::register('blogs', function (Crumbs $crumbs) {
     $crumbs->parent('home');
-    $crumbs->push(trans('frontend.breadcrumb.blogs_news'), route('blogs-news'));
+    $crumbs->push(trans('frontend.breadcrumb.blogs'), route('blogs'));
 });
 
 Breadcrumbs::register('search', function (Crumbs $crumbs) {
@@ -74,8 +84,13 @@ Breadcrumbs::register('search', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.search'), route('search'));
 });
 
+Breadcrumbs::register('search-product-filter', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('frontend.breadcrumb.search'), route('search-product-filter'));
+});
+
 Breadcrumbs::register('blogs.show', function (Crumbs $crumbs, Post $post) {
-    $crumbs->parent('blogs-news');
+    $crumbs->parent('blogs');
     $crumbs->push($post->title, route('blogs.show', $post));
 });
 
@@ -136,6 +151,31 @@ Breadcrumbs::register('popular', function (Crumbs $crumbs) {
 
 // User
 Breadcrumbs::register('user.setting', function (Crumbs $crumbs) {
+});
+
+Breadcrumbs::register('user.profile', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.profile'), route('user.profile'));
+});
+
+Breadcrumbs::register('profile.add-email-show', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_email'), route('profile.add-email-show'));
+});
+
+Breadcrumbs::register('profile.add-phone-show', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_phone'), route('profile.add-phone-show'));
+});
+
+Breadcrumbs::register('profile.email.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.email_verification'), route('profile.email.verification'));
+});
+
+Breadcrumbs::register('profile.phone.verification', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.phone_verification'), route('profile.phone.verification'));
 });
 
 Breadcrumbs::register('user.favorites', function (Crumbs $crumbs) {
@@ -249,6 +289,11 @@ Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('menu.users'), route('admin.users.index'));
 });
 
+Breadcrumbs::register('admin.users.requests', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.users.index');
+    $crumbs->push(trans('adminlte.user.requests'), route('admin.users.requests'));
+});
+
 Breadcrumbs::register('admin.users.create', function (Crumbs $crumbs) {
     $crumbs->parent('admin.users.index');
     $crumbs->push(trans('adminlte.create'), route('admin.users.create'));
@@ -345,7 +390,12 @@ Breadcrumbs::register('admin.shop.products.index', function (Crumbs $crumbs) {
     $crumbs->push(trans('menu.products'), route('admin.shop.products.index'));
 });
 
-Breadcrumbs::register('admin.shop.products.create', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.stores.products.create', function (Crumbs $crumbs, Store $store) {
+    $crumbs->parent('admin.shop.products.index');
+    $crumbs->push(trans('adminlte.create'), route('admin.stores.products.create', $store));
+});
+
+Breadcrumbs::register('admin.shop.store', function (Crumbs $crumbs) {
     $crumbs->parent('admin.shop.products.index');
     $crumbs->push(trans('adminlte.create'), route('admin.shop.products.create'));
 });
@@ -597,7 +647,7 @@ Breadcrumbs::register('admin.shop.orders.item', function (Crumbs $crumbs, Order 
 
 Breadcrumbs::register('admin.blog.posts.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Posts', route('admin.blog.posts.index'));
+    $crumbs->push(trans('menu.posts'), route('admin.blog.posts.index'));
 });
 
 Breadcrumbs::register('admin.blog.posts.create', function (Crumbs $crumbs) {
@@ -620,7 +670,7 @@ Breadcrumbs::register('admin.blog.posts.edit', function (Crumbs $crumbs, Post $p
 
 Breadcrumbs::register('admin.blog.videos.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Videos', route('admin.blog.videos.index'));
+    $crumbs->push(trans('menu.videos'), route('admin.blog.videos.index'));
 });
 
 Breadcrumbs::register('admin.blog.videos.create', function (Crumbs $crumbs) {
@@ -641,7 +691,7 @@ Breadcrumbs::register('admin.blog.videos.edit', function (Crumbs $crumbs, Video 
 // Banners
 Breadcrumbs::register('admin.banners.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Banners', route('admin.banners.index'));
+    $crumbs->push(trans('menu.banners'), route('admin.banners.index'));
 });
 
 Breadcrumbs::register('admin.banners.create', function (Crumbs $crumbs) {
@@ -663,7 +713,7 @@ Breadcrumbs::register('admin.banners.edit', function (Crumbs $crumbs, Banner $ba
 
 Breadcrumbs::register('admin.pages.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Pages', route('admin.pages.index'));
+    $crumbs->push(trans('menu.pages'), route('admin.pages.index'));
 });
 
 Breadcrumbs::register('admin.pages.create', function (Crumbs $crumbs) {
@@ -689,7 +739,7 @@ Breadcrumbs::register('admin.pages.edit', function (Crumbs $crumbs, Page $page) 
 // Sliders
 Breadcrumbs::register('admin.sliders.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Sliders', route('admin.sliders.index'));
+    $crumbs->push(trans('adminlte.sliders.slider'), route('admin.sliders.index'));
 });
 
 Breadcrumbs::register('admin.sliders.create', function (Crumbs $crumbs) {

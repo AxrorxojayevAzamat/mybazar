@@ -43,6 +43,7 @@ return [
     'send_to_moderation' => 'Moderatsiyaga yuborish',
     'moderate' => 'Moderatsiyadan o`tkazish',
     'activate' => 'Faollashtirish',
+    'close' => 'Yopmoq',
     'inactive' => 'Faol emas',
     'active' => 'Faol',
     'commoned' => 'Umumiy',
@@ -93,6 +94,7 @@ return [
     'image' => 'Tasviri',
     'poster' => 'Poster',
     'video' => 'Video fayli',
+    'logo' => 'Logotip',
     'files' => 'Fayllar',
     'url' => 'Url',
     'slug' => 'Slug',
@@ -118,6 +120,7 @@ return [
     'user' => [
         'name' => 'Foydalanuvchi Nomi',
         'add' => 'Foydalanuvchi qo`shmoq',
+        'profile' => 'Profil',
         'role' => 'Roli',
         'waiting' => 'Kutish',
         'active' => 'Faol',
@@ -126,6 +129,12 @@ return [
         'role_moderator' => 'Moderator',
         'role_administrator' => 'Administrator',
         'role_manager' => 'Meneger',
+        'requests' => 'Menejer roliga so`rovlar',
+    ],
+    'sliders' =>[
+        'slider' => 'slayder',
+        'create new slider' => 'Yangi slayder qo`shish',
+        'sort' => 'Sort'
     ],
 
     'category' => [
@@ -158,6 +167,7 @@ return [
         'add' => 'Yetkizib berish turi qo`shmoq',
         'name' => 'Yetkizib berish turi',
         'choose' => 'Yetkizib berish turini tanlamoq',
+        'sort' => 'Sortgani qiymati',
         'min_weight' => 'Minimum vazni',
         'max_weight' => 'Maksimum vazni',
         'index' => 'Yetkazib berish indeksi',
@@ -176,6 +186,7 @@ return [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
         'discount' => 'Chegirma',
+        'discounts_list' => 'Chegirmalar ro`yxati',
         'discount_ends_at' => 'Chegirma tugaydi',
         'moderation' => 'Modeatsiyani kutmoqda',
         'active' => 'Faol',

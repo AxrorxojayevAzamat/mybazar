@@ -5,12 +5,14 @@ namespace App\Entity;
 use App\Entity\Category;
 use App\Entity\Shop\Mark;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\User\User;
 use App\Helpers\ImageHelper;
 use App\Helpers\LanguageHelper;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 /**
@@ -119,6 +121,17 @@ class Store extends BaseModel
         ]);
     }
 
+
+    public function draft(): void
+    {
+        if ($this->status !== self::STATUS_DRAFT) {
+            throw new \DomainException('Store is already draft.');
+        }
+        $this->update([
+            'status' => self::STATUS_DRAFT,
+        ]);
+    }
+
     public static function statusList(): array
     {
         return [
@@ -175,6 +188,19 @@ class Store extends BaseModel
         return $categories->pluck('category_id')->toArray();
     }
 
+    public function discountsList(): array
+    {
+       $storeDiscount= ShopDiscounts::where(['store_id'=>$this->id])->pluck('discount_id');
+        return Discount::whereIn('id', $storeDiscount)->pluck('id')->toArray();
+
+    }
+
+    public  function discountsDelete(){
+        $discount = ShopDiscounts::where(['store_id' => $this->id])->get();
+        foreach ($discount as $value){
+            $value->delete();
+        }
+    }
     public function marksList(): array
     {
         $marks = $this->storeMarks();

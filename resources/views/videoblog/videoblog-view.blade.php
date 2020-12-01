@@ -1,32 +1,34 @@
 @extends('layouts.app')
 
-@section('title', 'Video blog')
+@section('title', trans('frontend.title.video_blog'))
 
 @section('styles')
-    <link href="{{asset('css/video-js.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/video-js.css')}}" rel="stylesheet"/>
 
     {{-- <link rel="stylesheet" href="{{asset('css/videoblog-view.css')}}"> --}}
 @endsection
 
 @section('body')
-    @section('banner')
-        <!-- Slide banner -->
-        @include ('layouts.slide-banner-catalog')
-    @endsection
+@section('banner')
+    <!-- Slide banner -->
+    @include ('layouts.slide-banner-catalog')
+@endsection
 
-    <!-- list of videos -->
-    <section>
+<!-- list of videos -->
+<section>
     <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
+        <h4 class="title">@lang('frontend.videos')</h4>
     </div>
     <div class="outter-videoview">
-        <div id="search-bar" class="search-bar form-control">
-            <input id="search-input" class="bordered-input" type="search" placeholder="Поиск по блогам и новостям">
-            <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-        </div>
+        <form action="#" method="GET">
+            <div id="search-bar" class="search-bar form-control">
+                <input id="search-input" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
+                <button class="search btn" type="submit"><i class="mbsearch"></i></button>
+            </div>
+        </form>
         <div class="inner-videoview">
             <div class="video-player">
-                    <video
+                <video
                     onplay="hideOverlay()"
                     onpause="showOverlay()"
                     id="my-video"
@@ -34,71 +36,51 @@
                     controls
                     preload="auto"
                     poster="{{$video->posterOriginal}}"
-
                     data-setup="{}"
                 >
-                        <source src="{{$video->videoFile}}" type="video/mp4" />
+                    <source src="{{$video->videoFile}}" type="video/mp4"/>
 
-                    </p>
-
-                    </video>
-                    <div class="player-overlay">
-                        <h6>{{$video->title}}</h6>
-                    </div>
+                </video>
+                <div class="player-overlay">
+                    <h6>{{$video->title}}</h6>
+                </div>
             </div>
             <h6>{{$video->title}}</h6>
             <p>{!!$video->body!!}</p>
-            <div class="small-videos">
-                <a href="#">
-                    <div class="video-item">
-                        <img src="{{asset('images/poster5.jpg')}}" alt="" class="poster">
-                        <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
-                            <button class="btn play">
-                                <div class="arrow-right"></div>
-                            </button>
-                        </div>
-                    </div>
-                </a>
 
-                <a href="#">
-                    <div class="video-item">
-                        <img src="{{asset('images/poster5.jpg')}}" alt="" class="poster">
-                        <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
-                            <button class="btn play">
-                                <div class="arrow-right"></div>
-                            </button>
+            <div class="small-videos">
+                @foreach($videos as $video)
+                    <a href="{{ route('videos.show', $video) }}">
+                        <div class="video-item">
+                            <img src="{{$video->posterOriginal}}" alt="" class="poster">
+                            <div class="video-overlay">
+                                <h6>{{$video->title}}</h6>
+                                <button class="btn play">
+                                    <div class="arrow-right"></div>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="video-item">
-                        <img src="{{asset('images/poster5.jpg')}}" alt="" class="poster">
-                        <div class="video-overlay">
-                            <h6>Alexander 23 - I Hate You So Much [Official Music Video]</h6>
-                            <button class="btn play">
-                                <div class="arrow-right"></div>
-                            </button>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
 
-    <!-- recently viewed -->
-    @include('layouts.recently-viewed')
+<!-- recently viewed -->
+{{--@include('layouts.recently-viewed')--}}
 
+@include ('layouts.carousel-products',
+        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 @endsection
 
 @section('script')
     <script>
-        function hideOverlay(){
+        function hideOverlay() {
             $(".player-overlay").hide();
         }
-        function showOverlay(){
+
+        function showOverlay() {
             $(".player-overlay").show();
         }
     </script>

@@ -2,7 +2,9 @@
 
 namespace App\Services\Manage;
 
+use App\Entity\Discount;
 use App\Entity\Shop\Product;
+use App\Entity\Shop\ShopDiscounts;
 use App\Entity\Store;
 use App\Entity\StoreDeliveryMethod;
 use App\Entity\StoreUser;
@@ -13,6 +15,7 @@ use App\Http\Requests\Admin\stores\UpdateRequest;
 use App\Http\Requests\Admin\Stores\Users\CreateRequest as UserCreateRequest;
 use App\Http\Requests\Admin\Stores\Users\UpdateRequest as UserUpdateRequest;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,22 +28,27 @@ class StoreService
         DB::beginTransaction();
         try {
             if (!$request->logo) {
-                return Store::create([
+                $store = Store::create([
                     'name_uz' => $request->name_uz,
                     'name_ru' => $request->name_ru,
                     'name_en' => $request->name_en,
                     'slug' => $request->slug,
                     'status' => Store::STATUS_MODERATION,
                 ]);
+
+                $this->addUser($store);
+
+                return $store;
             }
 
             $imageName = ImageHelper::getRandomName($request->logo);
             $store = Store::add($this->getNextId(), $request->name_uz, $request->name_ru, $request->name_en, $request->slug, $imageName);
-
-            $this->addCategories($store, $request->categories);
-            $this->addMarks($store, $request->marks);
-            $this->addPayments($store, $request->payments);
-            $this->addDeliveryMethods($store, $request->delivery_methods);
+            $this->addUser($store);
+            $request->categories ? $this->addCategories($store, $request->categories) : null;
+            $request->marks ? $this->addMarks($store, $request->marks) : null;
+            $request->payments ? $this->addPayments($store, $request->payments) : null;
+            $request->delivery_methods ? $this->addDeliveryMethods($store, $request->delivery_methods, $request->cost, $request->sort) : null;
+            $request->discounts ? $this->addDiscounts($store, $request->discounts) : null;
 
             DB::commit();
         } catch (\Exception $e) {
@@ -95,6 +103,12 @@ class StoreService
         $advert->moderate();
     }
 
+    public function draft(int $id): void
+    {
+        $advert = Store::findOrFail($id);
+        $advert->draft();
+    }
+
     public function getNextId(): int
     {
         if (!$this->nextId) {
@@ -122,13 +136,24 @@ class StoreService
         $this->addPayments($store, $request->payments);
 
         $store->storeDeliveryMethods()->delete();
-        $this->addDeliveryMethods($store, $request->delivery_methods);
+        $this->addDeliveryMethods($store, $request->delivery_methods,$request->cost,$request->sort);
+
+        $store->discountsDelete();
+        $this->addDiscounts($store, $request->discounts);
     }
 
-    private function addCategories(Store $store, array $categories): void
+    private function addUser(Store $store)
+    {
+        $store->storeWorkers()->create([
+            'user_id' => Auth::id(),
+            'role' => User::ROLE_ADMIN,
+        ]);
+    }
+
+    private function addCategories(Store $store, array $categories)
     {
         $categories = array_unique($categories);
-        foreach ($categories as $i => $categoryId) {
+        foreach ($categories as $categoryId) {
             $store->storeCategories()->create(['category_id' => $categoryId]);
         }
     }
@@ -149,11 +174,24 @@ class StoreService
         }
     }
 
-    private function addDeliveryMethods(Store $store, array $deliveryMethods): void
+    private function addDiscounts(Store $store, array $discounts): void
+    {
+        $shopDiscounts = new ShopDiscounts();
+        $discounts = array_unique($discounts);
+        foreach ($discounts as $i => $discount) {
+            $shopDiscounts->create(['store_id' => $store->id,'discount_id' => $discount]);
+        }
+    }
+
+    private function addDeliveryMethods(Store $store, array $deliveryMethods, $cost, $sort): void
     {
         $deliveryMethods = array_unique($deliveryMethods);
         foreach ($deliveryMethods as $i => $deliveryMethodId) {
-            $store->storeDeliveryMethods()->create(['delivery_method_id' => $deliveryMethodId]);
+            $store->storeDeliveryMethods()->create([
+                'delivery_method_id' => $deliveryMethodId,
+                'cost' => $cost,
+                'sort' => $sort,
+            ]);
         }
     }
 
@@ -344,7 +382,8 @@ class StoreService
         ImageHelper::saveOriginal($storeId, ImageHelper::FOLDER_STORES, $logo, $imageName);
     }
 
-    public static function fourProduct($id){
+    public static function fourProduct($id)
+    {
         $products = Product::where(['store_id' => $id])->limit(4)->get();
         return $products;
     }

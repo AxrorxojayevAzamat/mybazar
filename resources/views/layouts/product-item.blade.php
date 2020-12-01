@@ -1,3 +1,10 @@
+<?php
+if ($product->classFavorite($product->id)) {
+    $className = "selected_like";
+}else{
+    $className = '';
+}
+?>
 <div class="item">
     <div class="product-img">
         @if ($product->mainPhoto)
@@ -25,10 +32,14 @@
             <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
         </div>
         <div class="item-action-icons">
-            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
-            <div class="libra"  data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
-            <div class="like"><i class="mbfavorite"></i></div>
+            <div class="cart" onclick="addCart({{ $product->id }})" data-name="{{ $product->name }}"
+                 data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
+                    class="mbcart"></i></div>
+            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
+                 data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
+            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
         </div>
         <p class="sub-title bottom">{{ $product->store->name }}</p>
     </div>
 </div>
+

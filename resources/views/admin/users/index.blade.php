@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <p><a href="{{ route('admin.users.create') }}" class="btn btn-success">{{ trans('adminlte.user.add') }}</a></p>
+    <p>
+        <a href="{{ route('admin.users.create') }}" class="btn btn-success">{{ trans('adminlte.user.add') }}</a>
+        <a href="{{ route('admin.users.requests') }}" class="btn btn-success">{{ trans('adminlte.user.requests') }}</a>
+    </p>
 
     <div class="card mb-3">
 {{--        <div class="card-header">Filter</div>--}}

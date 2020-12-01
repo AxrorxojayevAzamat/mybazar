@@ -12,13 +12,13 @@
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-body">
 
 
                 <div class="col-md-10">
                     <div class="form-group">
-                        {!! Form::label('url', 'Url', ['class' => 'col-form-label']); !!}
+                        {!! Form::label('url', trans('adminlte.url'), ['class' => 'col-form-label']); !!}
                         {!! Form::text('url', old('url', $slider ? $slider->url : null), ['class'=>'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'required' => true]) !!}
                         @if ($errors->has('url'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('url') }}</strong></span>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="form-group">
-                        {!! Form::label('sort', 'Sort', ['class' => 'col-form-label']); !!}
+                        {!! Form::label('sort', trans('adminlte.sliders.sort'), ['class' => 'col-form-label']); !!}
                         {!! Form::number('sort', old('sort', $slider ? $slider->sort : null), ['class'=>'form-control' . ($errors->has('sort') ? ' is-invalid' : ''), 'required' => true]) !!}
                         @if ($errors->has('sort'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('sort') }}</strong></span>
@@ -45,7 +45,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-primary card-outline">
+        <div class="card card-gray card-outline">
             <div class="card-header"><h3 class="card-title">{{ trans('adminlte.image') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">

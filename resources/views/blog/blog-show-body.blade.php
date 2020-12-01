@@ -1,11 +1,12 @@
 <section>
     <div class="outter-single-blog-body">
         <div id="search-bar" class="search-bar form-control">
-            <input id="search-input" class="bordered-input" type="search" placeholder="Поиск по блогам и новостям">
+            <input id="search-input" class="bordered-input" type="search" placeholder="@lang('frontend.search_blogs')">
             <button class="search btn" type="submit"><i class="mbsearch"></i></button>
         </div>
         <div class="inner-single-blog-body">
-            <img class="full-width" src="{{asset('images/'.$post->file)}}" alt="">
+{{--            {{dd($post)}}--}}
+            <img class="full-width" src="{{ $post->fileOriginal }}" alt="">
             <div class="description">
                 <h5 class="title">{{$post->title}}</h5>
                 <p>{{$post->description}}</p>
@@ -16,7 +17,7 @@
                 <a href="{{route('blogs.show',$blog)}}">
                     <div class="blog-item">
                         <div class="image">
-                            <img src="{{asset('images/'. $blog->file)}}" alt="">
+                            <img src="{{asset( $blog->fileOriginal)}}" alt="">
                             <div class="image-overlay"></div>
                         </div>
                         <div class="description">

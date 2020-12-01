@@ -38,11 +38,11 @@ class VideoService
         }
 
         $imageName = ImageHelper::getRandomName($request->poster);
-        $videoName = ImageHelper::getRandomName($request->video_file);
+        $videoName = ImageHelper::getRandomName($request->video);
         $post = Video::add($this->getNextId(), $request, $category->id, $imageName, $videoName);
 
         $this->uploadPoster($this->getNextId(), $request->poster, $imageName);
-        $this->uploadVideo($this->getNextId(), $request->video_file, $videoName);
+        $this->uploadVideo($this->getNextId(), $request->video, $videoName);
 
         return $post;
     }

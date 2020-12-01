@@ -1,13 +1,22 @@
 @extends('layouts.admin.page')
 
+@php($user = Auth::user())
+
 @section('content')
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.shop.characteristics.edit', $characteristic) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
 
-        @if ($characteristic->isOnModeration())
+        @if ($characteristic->isOnModeration() && Gate::check('moderate-characteristics'))
             <form method="POST" action="{{ route('admin.shop.characteristics.moderate', $characteristic) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.publish')</button>
+            </form>
+        @endif
+
+        @if ($characteristic->isActive())
+            <form method="POST" action="{{ route('admin.shop.characteristics.draft', $characteristic) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-primary" onclick="return confirm('{{ trans('adminlte.delete_confirmation_message') }}')">@lang('adminlte.draft')</button>
             </form>
         @endif
 
@@ -21,7 +30,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.main') }}</h3></div>
                 <div class="card-body">
                     <table class="table {{--table-bordered--}} table-striped projects">
@@ -40,7 +49,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-green card-outline">
+            <div class="card card-gray card-outline">
                 <div class="card-body">
                     <table class="table table-bordered table-striped projects">
                         <tbody>
