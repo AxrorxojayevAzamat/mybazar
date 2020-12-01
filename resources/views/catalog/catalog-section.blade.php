@@ -16,8 +16,11 @@
             <h4 class="title">@lang('menu.whole_catalog')</h4>
 
         </div>
-
         <div class="outter-catalog-view">
+            <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+                @include('filters.category-filter')
+            </form>
+
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

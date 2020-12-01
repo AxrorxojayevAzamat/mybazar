@@ -28,13 +28,14 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::where(['parent_id' => null])->get();
+        $categories = $category;
 //        dd($category);
 
         $brands = Brand::all();
         $stores = Store::all();
 
 
-        return view('catalog.catalog-section', compact('category', 'brands', 'stores'));
+        return view('catalog.catalog-section', compact('category', 'brands', 'stores', 'categories'));
     }
 
     public function show(Request $request, ProductsPath $path)
@@ -50,18 +51,21 @@ class CategoryController extends Controller
 
     private function parentCategoryShow(Request $request, Category $category)
     {
-        $category = $category->children()->get()->toTree();
-//        dd($children);
+        $categories = $category->children()->get()->toTree();
 
 
-//        $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+        $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+
 //        $banners = Banner::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
-//        $banner = $banners->isNotEmpty() ? $banners->random() : null;
+        $banner = $banners->isNotEmpty() ? $banners->random() : null;
 //        unset($banners);
 
-        $brands = Brand::all();
-        $stores = Store::all();
-        return view('catalog.catalog-section', compact('category', '$stores', '$brands'));
+//        $brands = Brand::all();
+//        $stores = Store::all();
+
+
+        return view('catalog.catalog-section', compact('categories', 'posts'));
+
     }
 
     private function childCategoryShow(Request $request, Category $category)
