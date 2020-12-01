@@ -9,6 +9,7 @@ return [
     'show_more' => 'Ko`prog`ini ko`rsatish',
     'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
+    'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -214,7 +215,7 @@ return [
 
     'title' => [
         'single_blog_page' => 'Yagona blog sahifasi',
-        'dashboard' => 'Uskunalar paneli',
+        'dashboard' => 'Boshqaruv paneli',
         'blogs_page' => 'Bloglar sahifasi',
         'single_news_page' => 'Yagona yangiliklar sahifasi',
         'brands' => 'Brendlar',

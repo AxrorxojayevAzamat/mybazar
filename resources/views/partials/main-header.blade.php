@@ -129,5 +129,4 @@
             @endguest
         </ul>
     </div>
-    <div class="dropingdown" id="droping" style="width: 100%; background-color: black; color: white; position: absolute">Salom alekum</div>
 </div>
