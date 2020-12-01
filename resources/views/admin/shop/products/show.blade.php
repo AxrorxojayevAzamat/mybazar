@@ -60,9 +60,9 @@
                         <tr><th>{{ trans('adminlte.name') }} Uz</th><td>{{ $product->name_uz }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} Ru</th><td>{{ $product->name_ru }}</td></tr>
                         <tr><th>{{ trans('adminlte.name') }} En</th><td>{{ $product->name_en }}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! $product->description_uz !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! $product->description_ru !!}</td></tr>
-                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! $product->description_en !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Uz</th><td>{!! htmlspecialchars_decode($product->description_uz) !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} Ru</th><td>{!! htmlspecialchars_decode($product->description_ru) !!}</td></tr>
+                        <tr><th>{{ trans('adminlte.description') }} En</th><td>{!! htmlspecialchars_decode($product->description_en) !!}</td></tr>
                         <tr><th>Slug</th><td>{{ $product->slug }}</td></tr>
                         </tbody>
                     </table>
