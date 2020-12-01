@@ -186,6 +186,7 @@ return [
         'add' => 'Добавить Продукт',
         'name' => 'Продукт',
         'discount' => 'Скидка',
+        'discounts_list' => 'Список скидок',
         'discount_ends_at' => 'Скидка закончится в',
         'moderation' => 'Ждёт модерацию',
         'active' => 'Активный',

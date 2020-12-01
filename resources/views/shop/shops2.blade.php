@@ -11,7 +11,13 @@
                     </div>
                 </div>
                 <div class="single-img">
-                    <a href="#"><img src="{{ $shop->mainPhoto }}" alt=""></a>
+                    <a href="#">
+                        @if ($shop->mainPhoto)
+                            <div class="big-image">
+                                <img src="{{ $shop->mainPhoto->fileOriginal }}" style="width:100%">
+                            </div>
+                        @endif</a>
+                    </a>
                 </div>
             </div>
         @endforeach
@@ -28,7 +34,11 @@
                 ?>
                 <div class="palette-items">
                     <div class="product-img">
-                        <img src="{{ $shop->mainPhoto }}" alt="">
+                        @if ($shops2ThreeItem->mainPhoto)
+                            <div class="big-image">
+                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
+                            </div>
+                        @endif
                         <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА

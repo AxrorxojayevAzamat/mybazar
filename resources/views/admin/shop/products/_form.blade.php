@@ -128,7 +128,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="form-group">
-                            {!! Form::label('discounts', trans('adminlte.product.discount').' list', ['class' => 'col-form-label']); !!}
+                            {!! Form::label('discounts', trans('adminlte.product.discounts_list'), ['class' => 'col-form-label']); !!}
                             {!! Form::select('discounts[]', $discounts,  old('discounts', $product ? $product->discountsList() : null),
                                  ['class'=>'form-control' . ($errors->has('discounts') ? ' is-invalid' : ''), 'id' => 'discounts','multiple'=> true]) !!}
                             @if ($errors->has('discounts'))
