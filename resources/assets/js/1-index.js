@@ -56,6 +56,18 @@ $(document).ready(function () {
 
     checkCart();
 
+    function writeProductsId(){
+        let cart_products_id = $('#cart_products_id');
+        let saved_carts = localStorage.getItem('product_id');
+        if (saved_carts !== null){
+            saved_carts = saved_carts.slice(0, -1);
+            cart_products_id.val(saved_carts);
+        }else {
+            console.log('error');
+        }
+
+    }
+    writeProductsId();
 
     $("#dropdownComparison").on("click", function () {
         $(".cart-items").fadeOut();
@@ -86,15 +98,68 @@ $(document).ready(function () {
         }
     });
 
+    // main search select 
     $('.select-main-search').niceSelect();
 
-    $('.big-filter-with-title-checkbox div input.checkAll').on('click', function () {
-        if ($(this).is(':checked')) {
-            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', 'checked');
-        } else {
-            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', '');
+    // display filter items with <a> tag and show-more btn
+    var showDefault = 5;
+    var text= ['Скрыть', 'Показать еще'];
+    $('.panel .custom-control').each(function(){
+        var item = $(this).find('a');
+        
+        if(item.length > showDefault){
+            //show only 5 items
+            for(var i=0; i<showDefault; i++){
+                $(item[i]).show().addClass('show');
+            }
+            //if items more than 5, then insert button show-more
+            var btn =$("<div>", {
+                text:text[1],
+                "class":"btn show-more",
+                click:function(){
+                    item.not('.show').stop().slideToggle(500, function() {
+                        btn.text(text[+$(this).is(":hidden")])
+                    })
+                }
+            }).appendTo(this)
+        }else{
+            $(item).show();
+        }  
+    });
+
+    // display filter items with checkbox tag and show-more btn
+    $('.panel').each(function(){
+        var item = $(this).find('.custom-control');
+        
+        if(item.length > showDefault){
+            //show only 5 items
+            for(var i=0; i<showDefault; i++){
+                $(item[i]).show().addClass('show');
+            }
+            //if items more than 5, then insert button show-more
+            var btn =$("<div>", {
+                text:text[1],
+                "class":"btn show-more",
+                click:function(){
+                    item.not('.show').stop().slideToggle(500, function() {
+                        btn.text(text[+$(this).is(":hidden")])
+                    })
+                }
+            }).appendTo(this)
+        }else{
+            $(item).show();
+        }  
+    });
+    
+    // выбрать все в фильтре чекбокс
+    $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
+        if($(this).is(':checked')){
+           $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
+        }else{        
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
         }
     });
+
     var acc = document.getElementsByClassName("accordion");
     var title_with_checkbox = document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
@@ -108,6 +173,7 @@ $(document).ready(function () {
             this.classList.toggle("active");
         });
     }
+
     for (var i = 0; i < title_with_checkbox.length; i++) {
         title_with_checkbox[i].addEventListener("click", function () {
             var panel = this.nextElementSibling;
@@ -120,7 +186,7 @@ $(document).ready(function () {
         });
     }
 
-
+// весь каталог 2 банера
     $('.d2').hover(
         function () {
             // When hover the #slide_img img hide the div.shadow

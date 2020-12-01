@@ -14,6 +14,28 @@ class CartController extends Controller
 
         $user = Auth::user();
         if ($user == null){
+//            dd($request->product_id);
+            $products_id = preg_split("/\,/", $request->product_id);
+            $products = Product::whereIn('id', $products_id)->get();
+            $cart_product_count = count($products);
+            $cart_product_weight = 0;
+            $cart_product_discount = 0;
+            $cart_product_total = 0;
+
+            foreach ($products as $i => $product) {
+//            dd($product);
+                $cart_product_weight += $product->weight;
+                $cart_product_total += $product->price_uzs;
+                $cart_product_discount += $product->discount;
+            }
+
+            $cart_product_discount_amount = $cart_product_total * $cart_product_discount;
+            $cart_product_total = $cart_product_total - $cart_product_discount_amount;
+//        dd($cart_product_id);
+
+            return view('cart.cart', compact('products', 'cart_product_total',
+                'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
+                'cart_product_id'));
             return view('cart.cart');
         }else {
 

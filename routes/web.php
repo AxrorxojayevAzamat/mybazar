@@ -27,7 +27,6 @@ Route::get('admin',function (){
 });
 
 Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
-    Route::post('/change-password', 'ProfileController@changePassword')->name('change-password');
     Route::post('/phone', 'ProfileController@request')->name('phone.request');
     Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
     Route::post('add-to-favorite', 'FavoriteController@addToFavorite')->name('add-to-favorite');
@@ -71,6 +70,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('verify/phone', 'ProfileController@verifyPhone')->name('verify.phone');
 
         Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
+
+        Route::post('change-password', 'ProfileController@changePassword')->name('change-password');
     });
 
     Route::get('home', 'HomeController@index')->name('home');
@@ -136,7 +137,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['as' => 'user.','namespace' => 'User'], function () {
             Route::get('setting','ProfileController@index')->name('setting');
             Route::get('profile','ProfileController@show')->name('profile');
-            Route::put('setting/{user}','ProfileController@update')->name('update');
+            Route::put('setting','ProfileController@update')->name('update');
             Route::get('favorites','FavoriteController@favorites')->name('favorites')->middleware('auth');
             Route::get('add-to-favorite/{product}','FavoriteController@addToFavorite')->name('favorites.add');
     });
@@ -158,7 +159,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 });
 
 //--------------- Dashboard ------------------//
-Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],function (){
+Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-panel']], function () {
         Route::group(['prefix' => 'blog', 'as' => 'blog.', 'namespace' => 'Blog'], function () {
             Route::resource('videos', 'VideoController');
@@ -345,4 +346,3 @@ Route::group(['prefix' => 'ru','name' => '','middleware' => ['localeSessionRedir
         Route::resource('deliveries', 'DeliveryController');
     });
 });
-

@@ -25,7 +25,11 @@
                     <!-- 1 -->
                     @foreach($gCategories as $category)
                     <li class="nav-item dropdown">
-                        <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}" href="{{ route('categories.show', products_path($category)) }}">
+                        <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}"
+                           href="{{ route('categories.show', products_path($category)) }}"
+                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{count($category->children)}})"
+{{--                           onmouseover="showBrands({{$category->brands}})"--}}
+                           onmouseout="removeBanner('{{$category->slug}}')">
                             <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
                         </a>
 
@@ -35,6 +39,9 @@
                         @endif
                     </li>
                     @endforeach
+                    <li class="full-image-banner" >
+                        <img id="category_banner" alt="">
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -61,3 +68,20 @@
         </button>
     </div>
 </nav>
+<script>
+    function setBanner(photo, slug, numberOfChildren, brands) {
+        console.log(typeof numberOfChildren)
+        $(`#categoryBanner_${slug}`).css('display', 'inline')
+
+        $(`#categoryBanner_${slug}`).attr('src', `https://shop.sec.uz${photo}`)
+        if(numberOfChildren !== 0) {
+            console.log(slug)
+            $(`#banner2_${slug}}`).css('display', 'list-item')
+            debugger
+        }
+    }
+    function removeBanner(slug) {
+        $(`#categoryBanner_${slug}`).css('display', 'none')
+        $(`#banner2_${slug}}`).css('display', 'none')
+    }
+</script>

@@ -29,10 +29,17 @@ class NetworkController extends Controller
         $data = Socialite::driver($network)->user();
 
         try {
-            $user = $this->service->auth($network, $data);
-            Auth::login($user);
+            if (!Auth::user()) {
+                $user = $this->service->auth($network, $data);
+                Auth::login($user);
+            } else {
+                $user = $this->service->attach($network, $data);
+            }
             return redirect()->intended();
         } catch (\DomainException $e) {
+            if (Auth::user()) {
+                return redirect()->route('user.profile')->with('error', $e->getMessage());
+            }
             return redirect()->route('login')->with('error', $e->getMessage());
         }
     }

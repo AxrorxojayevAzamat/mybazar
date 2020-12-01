@@ -40,12 +40,12 @@ class ProductService
         try {
             /* @var $product Product */
             $product = Product::make([
-                'name_uz' => $request->name_uz,
-                'name_ru' => $request->name_ru,
-                'name_en' => $request->name_en,
-                'description_uz' => $request->description_uz ?? null,
-                'description_ru' => $request->description_ru ?? null,
-                'description_en' => $request->description_en ?? null,
+                'name_uz' => strip_tags(htmlspecialchars($request->name_uz)),
+                'name_ru' => strip_tags(htmlspecialchars($request->name_ru)),
+                'name_en' => strip_tags(htmlspecialchars($request->name_en)),
+                'description_uz' => $request->description_uz ? htmlspecialchars($request->description_uz) : null,
+                'description_ru' => $request->description_ru ? htmlspecialchars($request->description_ru) : null,
+                'description_en' => $request->description_en ? htmlspecialchars($request->description_en) : null,
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
@@ -92,12 +92,12 @@ class ProductService
         DB::beginTransaction();
         try {
             $product->update([
-                'name_uz' => $request->name_uz,
-                'name_ru' => $request->name_ru,
-                'name_en' => $request->name_en,
-                'description_uz' => $request->description_uz ?? null,
-                'description_ru' => $request->description_ru ?? null,
-                'description_en' => $request->description_en ?? null,
+                'name_uz' => strip_tags(htmlspecialchars($request->name_uz)),
+                'name_ru' => strip_tags(htmlspecialchars($request->name_ru)),
+                'name_en' => strip_tags(htmlspecialchars($request->name_en)),
+                'description_uz' => $request->description_uz ? htmlspecialchars($request->description_uz) : null,
+                'description_ru' => $request->description_ru ? htmlspecialchars($request->description_ru) : null,
+                'description_en' => $request->description_en ? htmlspecialchars($request->description_en) : null,
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,

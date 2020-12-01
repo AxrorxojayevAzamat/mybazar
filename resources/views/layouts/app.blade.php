@@ -74,6 +74,8 @@
     $(document).ready(function () {
         $(".wrapper-loader").fadeOut("slow");
     })
+    let a = document.querySelectorAll("img");
+    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
 </script>
 <script src="{{ asset('js/mmenu.js') }}"></script>
 <script src="{{asset('js/mmenu-index.js')}}"></script>

@@ -82,11 +82,11 @@ class Product extends BaseModel
 {
     use Searchable;
 
-    const STATUS_DRAFT = 0;
-    const STATUS_MODERATION = 1;
-    const STATUS_ACTIVE = 2;
-    const STATUS_CLOSED = 3;
-    const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
+    public const STATUS_DRAFT = 0;
+    public const STATUS_MODERATION = 1;
+    public const STATUS_ACTIVE = 2;
+    public const STATUS_CLOSED = 3;
+    public const STATUS_DRAFT_CATEGORY_SPLITTED = 7;
 
     protected $table = 'shop_products';
 
@@ -243,12 +243,12 @@ class Product extends BaseModel
 
     public function getNameAttribute(): string
     {
-        return LanguageHelper::getName($this);
+        return htmlspecialchars_decode(LanguageHelper::getName($this));
     }
 
     public function getDescriptionAttribute(): string
     {
-        return LanguageHelper::getDescription($this);
+        return htmlspecialchars_decode(LanguageHelper::getDescription($this));
     }
 
     public function getCurrentPriceUzsAttribute(): int
