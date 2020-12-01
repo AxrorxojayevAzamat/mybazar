@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Single news page')
+@section('title', trans('frontend.title.single_news_page'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/video-blog.css')}}"> --}}

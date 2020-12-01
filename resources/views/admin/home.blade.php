@@ -1,6 +1,6 @@
 @extends('layouts.admin.page')
 
-@section('title', 'Dashboard')
+@section('title', trans('frontend.title.dashboard'))
 
 {{--@section('content_header')--}}
 {{--    <h1>Dashboard</h1>--}}

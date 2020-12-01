@@ -1,7 +1,7 @@
 @if (isset($item['search']) && $item['search'])
   <form action="{{ $item['href'] }}" method="{{ $item['method'] }}" class="form-inline ml-2 mr-2">
     <div class="input-group">
-      <input class="form-control form-control-navbar" type="search" name="{{ $item['input_name'] }}" placeholder="{{ $item['text'] }}" aria-label="{{ $item['aria-label'] ?? $item['text'] }}">
+      <input class="form-control form-control-navbar" type="search" name="{{ $item['input_name'] }}" placeholder="{{ trans('adminlte.search') }}" aria-label="{{ $item['aria-label'] ?? $item['text'] }}">
       <div class="input-group-append">
         <button class="btn btn-navbar" type="submit">
           <i class="fas fa-search"></i>

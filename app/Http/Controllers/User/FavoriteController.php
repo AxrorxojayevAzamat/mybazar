@@ -19,24 +19,23 @@ class FavoriteController extends Controller
     private $service;
     private $filterService;
 
-    public function __construct(UserService $service, FilterService $filterService) {
-        $this->middleware('can:manage-profile');
-        $this->service       = $service;
+    public function __construct(UserService $service, FilterService $filterService)
+    {
+
+        $this->service = $service;
         $this->filterService = $filterService;
     }
 
-    public function favorites(Request $request) {
-
-        $productIds  = UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
+    public function favorites(Request $request)
+    {
+        if (Auth::guest()) {
+            return redirect()->guest('login');
+        }
+        $productIds = UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
         $categoryIds = ProductCategory::whereIn('product_id', $productIds)->pluck('category_id')->toArray();
-
-        $brands             = $this->filterService->brandByCategoryId($categoryIds);
-        $stores             = $this->filterService->storeByCategoryId($categoryIds);
-        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryIds);
-        $query              = $this->filterService->productById($productIds, $request);
-        $products  = $query->paginate(20);
-        $min_price = Product::select('price_uzs')->min('price_uzs');
-        $max_price = Product::select('price_uzs')->max('price_uzs');
+        $categorys = $this->filterService->categorysList($categoryIds);
+        $query = $this->filterService->productById($productIds,$request);
+        $products = $query->paginate(20);
 
         $ratings = [];
         foreach($products as $i => $product) {
@@ -46,12 +45,13 @@ class FavoriteController extends Controller
             ];
         }
 
-        return view('user.favorites', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price', 'ratings'));
+        return view('user.favorites', compact('categorys', 'products', 'ratings'));
     }
 
-    public function addToFavorite(Request $request) {
+    public function addToFavorite(Product $product)
+    {
         try {
-            $userFavorite = $this->service->addToFavorite(Auth::user()->id, $request);
+            $userFavorite = $this->service->addToFavorite(Auth::user()->id, $product);
             if (!empty($userFavorite)) {
                 return JsonHelper::successResponse('Product added successfully to Favorite!');
             }
@@ -61,7 +61,8 @@ class FavoriteController extends Controller
         }
     }
 
-    public function removeFromFavorite(Request $request) {
+    public function removeFromFavorite(Request $request)
+    {
         try {
             if ($this->service->removeFromFavorite(Auth::user()->id, $request)) {
                 return JsonHelper::successResponse('Product deleted successfully from Favorite!');

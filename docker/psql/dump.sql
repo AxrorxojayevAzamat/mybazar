@@ -1407,7 +1407,8 @@ CREATE TABLE public.users (
     remember_token character varying(100),
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
-    manager_request_status smallint DEFAULT '0'::smallint NOT NULL
+    manager_request_status smallint DEFAULT '0'::smallint NOT NULL,
+    email_verified boolean DEFAULT false NOT NULL
 );
 
 
@@ -1687,6 +1688,18 @@ COPY public.blog_videos (id, title_uz, title_ru, title_en, description_uz, descr
 --
 
 COPY public.brands (id, name_uz, name_ru, name_en, slug, logo, meta_json, created_by, updated_by, created_at, updated_at) FROM stdin;
+12	Acer	Acer	Acer	acer	rC0QzRJIq7oI1t7AqBRasYbcvGj7ZEcyl2TtF0IL.png	\N	1	1	2020-11-26 16:09:19	2020-11-26 16:11:52
+8	Zara	Zara	Zara	zara	LJU1Km5AowRcEcoWohIllZLr6ZL9fig26aAERwBX.png	\N	1	1	2020-11-26 09:32:28	2020-11-26 16:12:20
+11	Versage	Versage	Versage	versage	QB7K8AAnHfTzCYlBEUGUvWlXFUzawvZxtt1N18g3.png	\N	1	1	2020-11-26 09:33:42	2020-11-26 16:12:36
+10	Artel	Artel	Artel	artel	BYBkzSuPLEjaZSWxxYhtGHaqudHak8D1EKgTGkDl.png	\N	1	1	2020-11-26 09:33:13	2020-11-26 16:12:59
+9	Chanel	Chanel	Chanel	chanel	XE6agzi7yuZ7VdrZCbjWsFKzynyfvp0gbP7PlD9Q.png	\N	1	1	2020-11-26 09:32:54	2020-11-26 16:13:21
+7	Sony	Sony	Sony	sony	7ZUUvd7ADTr2VaDo1qwRUiB6QJkEOYQrSBrCNchh.png	\N	1	1	2020-11-26 09:31:19	2020-11-26 16:13:40
+6	Vitra	Vitra	Vitra	vitra	z9aWWIMuporG1wfKofFZouebBxiV7ZFoHwdYmzIo.png	\N	1	1	2020-11-26 09:31:00	2020-11-26 16:14:01
+5	Dolce gabbana	Dolce gabbana	Dolce gabbana	dolce_gabbana	LAghhpM9Gc9U1394kTqYIaKpZRn5bnZxzIAZAoMM.png	\N	1	1	2020-11-26 09:30:30	2020-11-26 16:14:24
+4	LG	LG	LG	lg	eI7TyYfJPfBcG06ms1V1OO3KRtP6n0CZnnM0RVhr.png	\N	1	1	2020-11-26 09:29:46	2020-11-26 16:14:51
+3	MI	MI	MI	mi	cHnAfAHHDGI0uUxIjIrQnBvK3ekJBDb5YAjXp90K.png	\N	1	1	2020-11-26 09:29:18	2020-11-26 16:15:15
+2	Apple	Apple	Apple	apple	SdSaoeAo95XcToZcx1rEySTgKSMOMeqNkNuOvxl4.png	\N	1	1	2020-11-26 09:28:51	2020-11-26 16:15:36
+1	Samsung	Samsung	Samsung	samsung	FWsnWGlCvDWJlszPGIaJU4l8btZSSxgTjkN8r7Mo.png	\N	1	1	2020-11-26 09:28:03	2020-11-26 16:15:56
 \.
 
 
@@ -1695,33 +1708,33 @@ COPY public.brands (id, name_uz, name_ru, name_en, slug, logo, meta_json, create
 --
 
 COPY public.categories (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, slug, meta_json, "left", "right", parent_id, photo, icon, created_by, updated_by, created_at, updated_at) FROM stdin;
-2	Televizorlar	Телевизоры	Televisions	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Телевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	tvs	\N	2	3	1	ubeIaotuBtU7D7pTIpnMdOx8UilcujOpwHuCqM7g.jpg	02eSznquexKVjvQdkMuqkAZfOaDvoqX38IsjwUlu.png	1	1	2020-11-24 16:08:55	2020-11-25 09:12:49
-15	Noutbuklar	Ноутбуки	Laptops	<p>Barcha yangi noutbuklarni xarid qiling</p>	<p>Покупайте все новые ноутбуки</p>	<p>Shop all new&nbsp;<em>laptops</em></p>	laptops	\N	28	29	14	OMjnA3cQIwpZYqvHHnZwMqvsOQmBqibhK23beBPA.jpg	do4z0U7yjZricdXE91sLLJj22J6Gcc2SNSr0cdMi.png	1	1	2020-11-25 10:29:26	2020-11-25 10:29:26
-25	Foto va video	Фото и видео	Photo and video	<p>Foto va video bu yaxshi narsa</p>	<p>Фото и видео - вещь хорошая</p>	<p>Photo and video is a good thing</p>	photo_video	\N	49	54	\N	RDvoKtIobJBSdmEaPBfsdUNtE4lRSRcTFZnCtAVi.jpg	eqCkG4zWTM1FzcQBqsg1sW4HKfhkD1VDVboJKgy7.png	1	1	2020-11-25 11:23:32	2020-11-25 11:23:32
-14	Komyuterlar	Компьютеры	Computers	<p>Kompyuter - bu kompyuter dasturlash orqali avtomatik ravishda arifmetik yoki mantiqiy operatsiyalar ketma-ketligini bajarishga buyruq beradigan mashina.</p>	<p>Компьютер - это машина, которой можно поручить автоматическое выполнение последовательностей арифметических или логических операций с помощью компьютерного программирования.</p>	<p>A&nbsp;<em>computer</em>&nbsp;is a machine that can be instructed to carry out sequences of arithmetic or logical operations automatically via&nbsp;<em>computer</em>&nbsp;programming.</p>	computers	\N	27	34	\N	0poqn5Rjp6wyWbNeQg7dEJ9UYFH84yrU8XuOgfTx.jpg	o4gKLamrljndVDkQLkZGqpdGMlvI2er4bpZNiUTr.png	1	1	2020-11-25 10:25:33	2020-11-25 10:25:33
-19	Oshxona mebellari	Мебель для кухни	Kitchen furniture	<p>Oshxona mebellarini sotib oling</p>	<p>Купить кухонную мебель</p>	<p>Buy kitchen furniture</p>	kitchen_furniture	\N	36	37	18	34KmgE8ZHu4jjjjRXvaxEUSawy7TgXTHKATt0Me7.jpg	cLU611tkPfZ1A5V8E6rNsHaiV1CproqIEp8rqRpc.png	1	1	2020-11-25 10:46:14	2020-11-25 10:46:14
-21	Muzlatgich	Холодильник	Refrigerator	<p>Sovutgich sizning oshxonangizni ajratib turadi</p>	<p>Холодильник выделяет вашу кухню</p>	<p>A&nbsp;<em>refrigerator</em>&nbsp;sets your kitchen apart</p>	refrigerator	\N	40	41	18	G8R5c1g6bnLxKfhtFEXwT7DI4alOsPaGZpyD3SKR.jpg	d0fsmAtA6g8GGbvfS1k3N8wbmwBHZ6RmmybuywmH.png	1	1	2020-11-25 11:05:32	2020-11-25 11:05:32
-23	O'yinlar	Игры	Games	<p>O&#39;yin - bu o&#39;yinning tuzilgan shakli</p>	<p>Игра - это структурированная форма игры</p>	<p>A game is a structured form of play</p>	games	\N	45	48	\N	LKh8mFDwfpGSNV3gn9wrVZFtM3ycwCrZltEXPvR7.jpg	4QCJi8VB8b29vO0B9LUKllfTwHNDRBkGv1cBGKnF.png	1	1	2020-11-25 11:16:47	2020-11-25 11:16:47
-27	Video kamera	Видеокамера	Videocamera	<p>Videokamera sotib oling</p>	<p>Купить видеокамеру</p>	<p>Buy a videocamera</p>	videocamera	\N	52	53	25	DvoIOF4MdMzPtjRjwZaVgKorkrMIDRBjZO5rwAZk.jpg	okhI4t8rEFB6Uca9hqCr4VQIFsJ3zUQbnSpXjmBw.png	1	1	2020-11-25 11:30:12	2020-11-25 11:30:12
-1	Televizorlar va dvd playerlar	Телевизоры и dvd-плейеры	TVs and dvd players	<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>	<p>Телевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>	<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>	tvs_dvdplayers	\N	1	6	\N	5apR6N5SguWqj2GfbYEcgHFUboVfEKyMUt3BvSUn.jpg	NQrUQFW9YonX23eP84adhpUQPl6v6vKn2J3OY9er.png	1	1	2020-11-23 11:55:53	2020-11-25 09:19:02
-20	Gaz plitalari	Газовые плиты	Gas stoves	<p>Gaz pechkasi - yonuvchan gaz bilan ta&#39;minlanadigan pechka</p>	<p>Газовая плита - это плита, которая работает на горючем газе.</p>	<p>A gas stove is a stove that is fuelled by combustible gas&nbsp;</p>	gas_stoves	\N	38	39	18	zAZ1QWw560QMy5VfhuvEzyrf7m2fyISitCyNNz19.jpg	7mejoXXRMyLZMlf0K832GtWAU4fVYG5CDWkeIfeC.png	1	1	2020-11-25 10:57:55	2020-11-25 10:57:55
-18	Oshxona	Кухня	Cookroom	<p>Oshpazlik uchun oshxona</p>	<p>Кухня или помещение для приготовления еды.</p>	<p>A kitchen or room for cookery.</p>	cookroom	\N	35	44	\N	aEBcLsM170Os14jbgNJgUnqTJwBT0fEQ2zJeHwQl.jpg	yadY7MiCNJFNYFUqNvw3ShdpXyIUDZedLp9ow61j.png	1	1	2020-11-25 10:42:40	2020-11-25 10:42:40
-22	Blenderlar	Блендеры	Blenders	<p>Blender - bu faqat siz uchun moslama</p>	<p>Блендер - это именно то, что вам нужно</p>	<p>A blender is just the appliance for you</p>	blenders	\N	42	43	18	P84666O9Xrcbcag8wOoJTcnjt4u60zLH8ZJlhEuj.jpg	JzEzoNHWBl5MiCtSjRMoCS6dik4rcarfNwxeMxAk.png	1	1	2020-11-25 11:12:04	2020-11-25 11:12:04
-24	Playstation	Playstation	Playstation	<p>PlayStation is a &nbsp;video game brand</p>	<p>PlayStation - это бренд видеоигр</p>	<p>PlayStation is a &nbsp;video game brand</p>	playstation	\N	46	47	23	5zJjJv22f1csu8BTS4xuXf87V3CMjwEsAO4fBgRh.jpg	Q0wB3rUfwQrgAWboPyLB3bwDWUbK3yYhFDHaVSRD.png	1	1	2020-11-25 11:20:14	2020-11-25 11:20:14
-26	FotoKamera	Фотокамера	Fotocamera	<p>Fotokamera sotib oling</p>	<p>Купить камеру</p>	<p>Buy a fotocamera</p>	fotocamera	\N	50	51	25	q98CWKza45lH1WjErrEx3nVma63areH6Q1u5rlGY.jpg	yS68CIhUnqGaTexntQ5NEdiKzXfZvfmCgu6W56no.png	1	1	2020-11-25 11:27:55	2020-11-25 11:27:55
-3	Dvd playerlar	Dvd-плейеры	Dvd players	<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>	<p>елевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	dvd_players	\N	4	5	1	7UeiKwFPQAIut93TjnYNHG9i6GPswCX8SgBLy9Bl.jpg	v0a5wDY1lPNiZCyg6QqtPVCkerFsyWlvrMHfpxLe.png	1	1	2020-11-25 09:17:49	2020-11-25 09:19:34
-5	Oyoq kiyimlar	Oбувь	Shoes	<p>Poyafzal, etik, sandal, poshnali va boshqa ko&#39;plab narsalarni xarid qiling</p>	<p>Купите огромный выбор обуви, сапог, сандалий, каблуков и многого другого.</p>	<p>Shop a huge selection of&nbsp;<em>shoes</em>, boots, sandals, heels and more</p>	shoes	\N	8	9	4	URmSHZojMKVyUsnefRnVMrivCOy7Qbx8qMt8saSp.jpg	pYEMqGug7ybP5COXyAk0QhlAzve6JHpkW0NJzxsH.png	1	1	2020-11-25 09:41:53	2020-11-25 09:41:53
-6	Ko'ylaklar	Платья	Dresses	<p>Ko&#39;ylaklar har qanday uslubda va o&#39;lchamda bo&#39;ladi</p>	<p>Рубашки бывают всех стилей и размеров.</p>	<p><em>Shirts</em>&nbsp;come in all styles and sizes</p>	shirts	\N	10	11	4	nBwJiCsT00s7uZ5c7nXcst2qPCi58RevMxTBrVQH.jpg	SHNMyll41X5VGJJA8iYeuoPyBjdwxeg77prTzYEL.png	1	1	2020-11-25 09:45:23	2020-11-25 09:45:23
-4	Kiyim-kechak	Одежда	Clothing	<p>Kiyim - shaxs tomonidan ishlatiladigan va utilitar va estetik funktsiyalarni bajaradigan mahsulot yoki mahsulotlar to&#39;plami.</p>	<p><strong>Оде́жда</strong>&nbsp;&mdash;&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D0%B4%D0%B5%D0%BB%D0%B8%D0%B5" title="Изделие">изделие</a>&nbsp;или совокупность изделий, надеваемых&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA" title="Человек">человеком</a>&nbsp;и несущих утилитарные и эстетические функции.</p>	<p>Clothing - a product or a set of products worn by a person and carrying utilitarian and aesthetic functions.</p>	clothing	\N	7	14	\N	pW6dPLzFxhgjve7UhN3UFx20C1k6xcDPQAAUciwU.jpg	7889ldmdG2NbUWxF5K1aIrmscyD0O6Dl7Imoiyax.png	1	1	2020-11-25 09:37:28	2020-11-25 09:37:28
-7	Shimlar	Брюки	Pants	<p>Onlaynda bepul etkazib beriladigan shim</p>	<p>Брюки с бесплатной доставкой в интернет-магазине</p>	<p>Trousers with free shipping online</p>	pants	\N	12	13	4	8UMN8FGoONL17ZAuilkRR1t7AaR3tZDj0JZ89haa.jpg	27R8udxm9PjYZMj5Bz73aZ69OJ0yqWLdQHiSzp0P.png	1	1	2020-11-25 09:49:17	2020-11-25 09:49:17
-11	Smartfonlar	Смартфоны	Smartphones	<p>Smartfon - bu uyali aloqa vositalarini birlashtirgan mobil qurilma</p>	<p>Смартфон - это мобильное устройство, сочетающее в себе сотовую</p>	<p>A&nbsp;<em>smartphone</em>&nbsp;is a mobile device that combines cellular&nbsp;</p>	smartphones	\N	21	26	\N	bUTFSrmRmEXHrkM6OaFjnow1Vg1301ut9ZTBEfk1.jpg	kTDzgyRBVCblUDoRhw4td7zhEH2SG0M5Ynk8IpiZ.png	1	1	2020-11-25 10:07:03	2020-11-25 10:07:03
-9	Kir yuvish mashinasi	Стиральная машина	Wash machine	<p>Kir yuvish mashinasi - bu kir yuvish uchun ishlatiladigan maishiy texnika</p>	<p>Стиральная машина - это бытовой прибор, используемый для стирки белья.</p>	<p>A&nbsp;<em>washing machine</em>&nbsp;is a home appliance used to wash laundry</p>	wash_machine	\N	16	17	8	4SlZErCltrqTGwq4gF0oJt6gom7ncES9g59xAmu0.jpg	z1S8fuxqIt7DIsOFTNJnW6vUbA0YXRLeqmeCD9tn.png	1	1	2020-11-25 09:59:55	2020-11-25 10:01:35
-8	Maishiy texnikalar	Бытовая техника	Home appliences	<p>Katta maishiy texnika sotib oling</p>	<p>Приобретайте крупную&nbsp;<em>бытовую технику</em>&nbsp;для дома&nbsp;</p>	<p>Buy large household appliances for your home</p>	home_technics	\N	15	20	\N	nB4lrwBzMaA8KuWdtXC11WQc3z3SGdAQg7x1GyJ8.jpg	YyJ5SVRnWnGbxKI3sUlKwiJ6ugXYoJZwF8JFfq4D.png	1	1	2020-11-25 09:55:48	2020-11-25 09:55:48
-10	Chang yutgich	Пылесос	Vacuum cleaner	<p>Chang yutgich Internetda arzon narxlarda</p>	<p>Пылесос онлайн по низким ценам</p>	<p>Vacuum Cleaner online at low prices</p>	vacuum_cleaner	\N	18	19	8	NjqcQuamijzWK6aEWNtGL57GlwvRC3vxvkWvgBE7.jpg	z1JXRMgfzDLi9aMRNbxLPWBxVKQVqzHOJ2DFDEBz.png	1	1	2020-11-25 10:04:09	2020-11-25 10:04:09
-12	Telefonlar	Телефоны	Phones	<p>Sotib olish uchun yangi telefonlarni onlayn xarid qiling</p>	<p>Покупайте новые телефоны в Интернете, чтобы покупать</p>	<p>Shop new phones online to buy</p>	phones	\N	22	23	11	IgXlxbvMqacuPai9XM5bTbTJDUZGVE0Xd93c9oNa.jpg	HdKuNQT0qA2WVqHmw5lysxy7k4hHdZFjkqHnpWuF.png	1	1	2020-11-25 10:11:58	2020-11-25 10:11:58
-13	Planshet	Планшет	Tablet	<p>Odatda planshetga qisqartirilgan planshet kompyuter mobil qurilmadir</p>	<p>Планшетный компьютер, обычно сокращенно планшет, - это мобильное устройство.</p>	<p>A&nbsp;<em>tablet</em>&nbsp;computer, commonly shortened to&nbsp;<em>tablet</em>, is a mobile device</p>	tablet	\N	24	25	11	pfrYbhyO7jdESSE1T3IPkzc9ezZH5liiAGZ6rK2e.jpg	cJkINyfDWZNLrXhA9U3YqMC3Y66wYmqj6OnqvoIo.png	1	1	2020-11-25 10:15:09	2020-11-25 10:15:09
-16	Monobloklar	Моноблоки	Monoblocks	<p>Monobloklar - bu qiziqarli kompyuter</p>	<p>Моноблоки - забавный компьютер</p>	<p>Monoblocks is a fun computer</p>	monoblocks	\N	30	31	14	lKSRsKMEyVcttijJdUmB1hu1QuQZ4xz9tVSG1jWS.jpg	Wf2DTftl9DMF9EiTUehuC9FeI66HPFLkpopjowqh.png	1	1	2020-11-25 10:34:04	2020-11-25 10:34:04
-17	Statsionar kompyuter	Настольный компьютер	Desktop computer	<p>Statsionar kompyuterlarni sotib oling</p>	<p>Купить настольные компьютеры</p>	<p>Buy&nbsp;<em>desktop computers</em></p>	desktop_computer	\N	32	33	14	iwf5WXKKt9wbOjmpPu0Rn4OKZwP0exRRkIgQYAa0.jpg	5TqgaCHuZPZpeUITUwgIxtoyw7w3uRtuSQvhO1NB.png	1	1	2020-11-25 10:38:52	2020-11-25 10:38:52
+14	Komyuterlar	Компьютеры	Computers	<p>Kompyuter - bu kompyuter dasturlash orqali avtomatik ravishda arifmetik yoki mantiqiy operatsiyalar ketma-ketligini bajarishga buyruq beradigan mashina.</p>	<p>Компьютер - это машина, которой можно поручить автоматическое выполнение последовательностей арифметических или логических операций с помощью компьютерного программирования.</p>	<p>A&nbsp;<em>computer</em>&nbsp;is a machine that can be instructed to carry out sequences of arithmetic or logical operations automatically via&nbsp;<em>computer</em>&nbsp;programming.</p>	computers	\N	27	34	\N	EQTKJCAxneu49c6LLt5JLjcGT45XUNbedDrnrNPD.jpg	o4gKLamrljndVDkQLkZGqpdGMlvI2er4bpZNiUTr.png	1	1	2020-11-25 10:25:33	2020-12-01 10:02:04
+23	O'yinlar	Игры	Games	<p>O&#39;yin - bu o&#39;yinning tuzilgan shakli</p>	<p>Игра - это структурированная форма игры</p>	<p>A game is a structured form of play</p>	games	\N	45	48	\N	hfSrTb8cahbjzYU58Hj4gk2PHnvDi3GZD1Pyboc6.jpg	4QCJi8VB8b29vO0B9LUKllfTwHNDRBkGv1cBGKnF.png	1	1	2020-11-25 11:16:47	2020-12-01 10:21:46
+25	Foto va video	Фото и видео	Photo and video	<p>Foto va video bu yaxshi narsa</p>	<p>Фото и видео - вещь хорошая</p>	<p>Photo and video is a good thing</p>	photo_video	\N	49	54	\N	USFb76NfKFkgUM9psLj6zjt9cduScdyaVGZUi9iy.jpg	eqCkG4zWTM1FzcQBqsg1sW4HKfhkD1VDVboJKgy7.png	1	1	2020-11-25 11:23:32	2020-12-01 10:26:00
+27	Video kamera	Видеокамера	Videocamera	<p>Videokamera sotib oling</p>	<p>Купить видеокамеру</p>	<p>Buy a videocamera</p>	videocamera	\N	52	53	25	qqmalO3T2oIZk0Pk2L0ImNVYhkVqeCM1CA8BGtKh.jpg	okhI4t8rEFB6Uca9hqCr4VQIFsJ3zUQbnSpXjmBw.png	1	1	2020-11-25 11:30:12	2020-12-01 10:28:41
+15	Noutbuklar	Ноутбуки	Laptops	<p>Barcha yangi noutbuklarni xarid qiling</p>	<p>Покупайте все новые ноутбуки</p>	<p>Shop all new&nbsp;<em>laptops</em></p>	laptops	\N	28	29	14	gwRLYcDbDeMXzuQTZv1ak5lervKzsi36liv9pcw0.jpg	do4z0U7yjZricdXE91sLLJj22J6Gcc2SNSr0cdMi.png	1	1	2020-11-25 10:29:26	2020-12-01 10:03:40
+19	Oshxona mebellari	Мебель для кухни	Kitchen furniture	<p>Oshxona mebellarini sotib oling</p>	<p>Купить кухонную мебель</p>	<p>Buy kitchen furniture</p>	kitchen_furniture	\N	36	37	18	Qa7GFuzs3KjxMMtR4ZAigCUeHaFWDBQtWW5LrTyr.jpg	cLU611tkPfZ1A5V8E6rNsHaiV1CproqIEp8rqRpc.png	1	1	2020-11-25 10:46:14	2020-12-01 10:12:04
+21	Muzlatgich	Холодильник	Refrigerator	<p>Sovutgich sizning oshxonangizni ajratib turadi</p>	<p>Холодильник выделяет вашу кухню</p>	<p>A&nbsp;<em>refrigerator</em>&nbsp;sets your kitchen apart</p>	refrigerator	\N	40	41	18	NmSFOBg4dMaJlJeZeNrhJlAYycWFGAYYIqs6nuCN.jpg	d0fsmAtA6g8GGbvfS1k3N8wbmwBHZ6RmmybuywmH.png	1	1	2020-11-25 11:05:32	2020-12-01 10:18:17
+4	Kiyim-kechak	Одежда	Clothing	<p>Kiyim - shaxs tomonidan ishlatiladigan va utilitar va estetik funktsiyalarni bajaradigan mahsulot yoki mahsulotlar to&#39;plami.</p>	<p><strong>Оде́жда</strong>&nbsp;&mdash;&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D0%B4%D0%B5%D0%BB%D0%B8%D0%B5" title="Изделие">изделие</a>&nbsp;или совокупность изделий, надеваемых&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA" title="Человек">человеком</a>&nbsp;и несущих утилитарные и эстетические функции.</p>	<p>Clothing - a product or a set of products worn by a person and carrying utilitarian and aesthetic functions.</p>	clothing	\N	7	14	\N	fBf35VZqRcWZjLZUVW2RbvjRI4MzCf32rdKQdGQH.jpg	7889ldmdG2NbUWxF5K1aIrmscyD0O6Dl7Imoiyax.png	1	1	2020-11-25 09:37:28	2020-12-01 09:49:48
+1	Televizorlar va dvd playerlar	Телевизоры и dvd-плейеры	TVs and dvd players	<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>	<p>Телевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>	<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>	tvs_dvdplayers	\N	1	6	\N	HYu5XeSUreoJ73Mg6QQ0hslmXrojBHkHisSXfbEp.jpg	NQrUQFW9YonX23eP84adhpUQPl6v6vKn2J3OY9er.png	1	1	2020-11-23 11:55:53	2020-12-01 09:57:55
+18	Oshxona	Кухня	Cookroom	<p>Oshpazlik uchun oshxona</p>	<p>Кухня или помещение для приготовления еды.</p>	<p>A kitchen or room for cookery.</p>	cookroom	\N	35	44	\N	reOgbZZafp1ZpJ7zhWCL7wug8YIe9dVDCz4nbdLs.jpg	yadY7MiCNJFNYFUqNvw3ShdpXyIUDZedLp9ow61j.png	1	1	2020-11-25 10:42:40	2020-12-01 10:10:45
+20	Gaz plitalari	Газовые плиты	Gas stoves	<p>Gaz pechkasi - yonuvchan gaz bilan ta&#39;minlanadigan pechka</p>	<p>Газовая плита - это плита, которая работает на горючем газе.</p>	<p>A gas stove is a stove that is fuelled by combustible gas&nbsp;</p>	gas_stoves	\N	38	39	18	OstmVFu0SNdMXklmFRLBPgot9hTfMJxM7zXZyXY8.jpg	7mejoXXRMyLZMlf0K832GtWAU4fVYG5CDWkeIfeC.png	1	1	2020-11-25 10:57:55	2020-12-01 10:16:56
+22	Blenderlar	Блендеры	Blenders	<p>Blender - bu faqat siz uchun moslama</p>	<p>Блендер - это именно то, что вам нужно</p>	<p>A blender is just the appliance for you</p>	blenders	\N	42	43	18	3deAcGRJyi78sspc9oUBwmhQsIJld8fm4pBbyrzt.jpg	JzEzoNHWBl5MiCtSjRMoCS6dik4rcarfNwxeMxAk.png	1	1	2020-11-25 11:12:04	2020-12-01 10:19:41
+24	Playstation	Playstation	Playstation	<p>PlayStation is a &nbsp;video game brand</p>	<p>PlayStation - это бренд видеоигр</p>	<p>PlayStation is a &nbsp;video game brand</p>	playstation	\N	46	47	23	Q0ZyvE8x9JqxwnHtSedZLXGareaPQjxvPAU1ylDb.jpg	Q0wB3rUfwQrgAWboPyLB3bwDWUbK3yYhFDHaVSRD.png	1	1	2020-11-25 11:20:14	2020-12-01 10:23:06
+26	FotoKamera	Фотокамера	Fotocamera	<p>Fotokamera sotib oling</p>	<p>Купить камеру</p>	<p>Buy a fotocamera</p>	fotocamera	\N	50	51	25	6q4jipThhVBx0hfcIDilmLLohoJ5hUv4NL2fNALf.jpg	yS68CIhUnqGaTexntQ5NEdiKzXfZvfmCgu6W56no.png	1	1	2020-11-25 11:27:55	2020-12-01 10:27:35
+6	Ko'ylaklar	Платья	Dresses	<p>Ko&#39;ylaklar har qanday uslubda va o&#39;lchamda bo&#39;ladi</p>	<p>Рубашки бывают всех стилей и размеров.</p>	<p><em>Shirts</em>&nbsp;come in all styles and sizes</p>	shirts	\N	10	11	4	n5iMG6QbaNmxBsfeuZxNviruDpvcJo01omp8SRfD.jpg	SHNMyll41X5VGJJA8iYeuoPyBjdwxeg77prTzYEL.png	1	1	2020-11-25 09:45:23	2020-12-01 09:55:15
+10	Chang yutgich	Пылесос	Vacuum cleaner	<p>Chang yutgich Internetda arzon narxlarda</p>	<p>Пылесос онлайн по низким ценам</p>	<p>Vacuum Cleaner online at low prices</p>	vacuum_cleaner	\N	18	19	8	6avGPzlGwmaNvvSX6KCfgNtKmaHdaGR3ildyf7WF.jpg	z1JXRMgfzDLi9aMRNbxLPWBxVKQVqzHOJ2DFDEBz.png	1	1	2020-11-25 10:04:09	2020-12-01 09:45:38
+8	Maishiy texnikalar	Бытовая техника	Home appliences	<p>Katta maishiy texnika sotib oling</p>	<p>Приобретайте крупную&nbsp;<em>бытовую технику</em>&nbsp;для дома&nbsp;</p>	<p>Buy large household appliances for your home</p>	home_technics	\N	15	20	\N	ajhRPYtGMeG8Q9b27M1ot9vg7iw24yUzF2yLMMKv.jpg	YyJ5SVRnWnGbxKI3sUlKwiJ6ugXYoJZwF8JFfq4D.png	1	1	2020-11-25 09:55:48	2020-12-01 09:48:25
+5	Oyoq kiyimlar	Oбувь	Shoes	<p>Poyafzal, etik, sandal, poshnali va boshqa ko&#39;plab narsalarni xarid qiling</p>	<p>Купите огромный выбор обуви, сапог, сандалий, каблуков и многого другого.</p>	<p>Shop a huge selection of&nbsp;<em>shoes</em>, boots, sandals, heels and more</p>	shoes	\N	8	9	4	BuBkBqw0zqYz7y1UzbnZho08D5YbCwN9SevDStYS.jpg	pYEMqGug7ybP5COXyAk0QhlAzve6JHpkW0NJzxsH.png	1	1	2020-11-25 09:41:53	2020-12-01 09:51:02
+16	Monobloklar	Моноблоки	Monoblocks	<p>Monobloklar - bu qiziqarli kompyuter</p>	<p>Моноблоки - забавный компьютер</p>	<p>Monoblocks is a fun computer</p>	monoblocks	\N	30	31	14	tlAwZtzKM8WP5InyydiNmb6WrdoOS2ETRLFKnxKO.jpg	Wf2DTftl9DMF9EiTUehuC9FeI66HPFLkpopjowqh.png	1	1	2020-11-25 10:34:04	2020-12-01 10:04:50
+17	Statsionar kompyuter	Настольный компьютер	Desktop computer	<p>Statsionar kompyuterlarni sotib oling</p>	<p>Купить настольные компьютеры</p>	<p>Buy&nbsp;<em>desktop computers</em></p>	desktop_computer	\N	32	33	14	E4luO4QXFgflzTbQ6FTwDdtSQyFeLJdhPlbBy05n.jpg	5TqgaCHuZPZpeUITUwgIxtoyw7w3uRtuSQvhO1NB.png	1	1	2020-11-25 10:38:52	2020-12-01 10:06:11
+7	Shimlar	Брюки	Pants	<p>Onlaynda bepul etkazib beriladigan shim</p>	<p>Брюки с бесплатной доставкой в интернет-магазине</p>	<p>Trousers with free shipping online</p>	pants	\N	12	13	4	x9XIsDPaxz9VGN6AYiNFuTnr8KKS56UHr25HxNmz.jpg	27R8udxm9PjYZMj5Bz73aZ69OJ0yqWLdQHiSzp0P.png	1	1	2020-11-25 09:49:17	2020-12-01 09:56:42
+12	Telefonlar	Телефоны	Phones	<p>Sotib olish uchun yangi telefonlarni onlayn xarid qiling</p>	<p>Покупайте новые телефоны в Интернете, чтобы покупать</p>	<p>Shop new phones online to buy</p>	phones	\N	22	23	11	MXCOC1Wazf4RpDyiJL2bUwMR31G9kkl6qEthltr2.jpg	HdKuNQT0qA2WVqHmw5lysxy7k4hHdZFjkqHnpWuF.png	1	1	2020-11-25 10:11:58	2020-12-01 09:43:58
+11	Smartfonlar	Смартфоны	Smartphones	<p>Smartfon - bu uyali aloqa vositalarini birlashtirgan mobil qurilma</p>	<p>Смартфон - это мобильное устройство, сочетающее в себе сотовую</p>	<p>A&nbsp;<em>smartphone</em>&nbsp;is a mobile device that combines cellular&nbsp;</p>	smartphones	\N	21	26	\N	Ark1mnNzegzAsXh9GxtJQbhQWuujnihN9pG0Zwdc.jpg	kTDzgyRBVCblUDoRhw4td7zhEH2SG0M5Ynk8IpiZ.png	1	1	2020-11-25 10:07:03	2020-12-01 09:42:34
+9	Kir yuvish mashinasi	Стиральная машина	Wash machine	<p>Kir yuvish mashinasi - bu kir yuvish uchun ishlatiladigan maishiy texnika</p>	<p>Стиральная машина - это бытовой прибор, используемый для стирки белья.</p>	<p>A&nbsp;<em>washing machine</em>&nbsp;is a home appliance used to wash laundry</p>	wash_machine	\N	16	17	8	R2JdDjW4sZHCWHcT59hWpnEFFQiNoxwHh5yV5eF8.jpg	z1S8fuxqIt7DIsOFTNJnW6vUbA0YXRLeqmeCD9tn.png	1	1	2020-11-25 09:59:55	2020-12-01 09:46:58
+13	Planshet	Планшет	Tablet	<p>Odatda planshetga qisqartirilgan planshet kompyuter mobil qurilmadir</p>	<p>Планшетный компьютер, обычно сокращенно планшет, - это мобильное устройство.</p>	<p>A&nbsp;<em>tablet</em>&nbsp;computer, commonly shortened to&nbsp;<em>tablet</em>, is a mobile device</p>	tablet	\N	24	25	11	NpoqqSrj7kJpW0V5Ml9SAgGsFfq6Kyvp9EczsRtf.jpg	cJkINyfDWZNLrXhA9U3YqMC3Y66wYmqj6OnqvoIo.png	1	1	2020-11-25 10:15:09	2020-12-01 09:44:22
+2	Televizorlar	Телевизоры	Televisions	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Телевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	tvs	\N	2	3	1	HHcmwT0dnYJ6dn2zYRKEszyVRjruueUvxPN1UKjf.jpg	02eSznquexKVjvQdkMuqkAZfOaDvoqX38IsjwUlu.png	1	1	2020-11-24 16:08:55	2020-12-01 09:58:40
+3	Dvd playerlar	Dvd-плейеры	Dvd players	<p>Televizion (televizor), ba&#39;zan tele yoki telliga qisqartirilsa, harakatlanuvchi tasvirlarni monoxrom (qora va oq) yoki rangli va ikki yoki uch o&#39;lchovli va tovushli uzatishda ishlatiladigan telekommunikatsiya vositasidir. Bu atama televizor, televizion ko&#39;rsatuv yoki televidenie orqali uzatilishi mumkin.</p>	<p>елевидение (ТВ), иногда сокращенно до теле или телик, представляет собой телекоммуникационную среду, используемую для передачи движущихся изображений в монохромном (черно-белом) или цветном, а также в двух или трех измерениях и звуке. Термин может относиться к телевизору, телешоу или телепередачам.</p>	<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><strong>Television</strong>&nbsp;(<strong>TV</strong>), sometimes shortened to tele or telly, is a telecommunication medium used for transmitting moving images in monochrome (black and white), or in color, and in two or three dimensions and sound. The term can refer to a&nbsp;<strong>television</strong>&nbsp;set, a&nbsp;<strong>television</strong>&nbsp;show, or the medium of&nbsp;<strong>television</strong>&nbsp;transmission.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>	dvd_players	\N	4	5	1	KBnE5ZaacwR5xzevbgr32rn6x3il0GDCKO9s66Ng.jpg	v0a5wDY1lPNiZCyg6QqtPVCkerFsyWlvrMHfpxLe.png	1	1	2020-11-25 09:17:49	2020-12-01 09:59:26
 \.
 
 
@@ -1730,6 +1743,7 @@ COPY public.categories (id, name_uz, name_ru, name_en, description_uz, descripti
 --
 
 COPY public.delivery_methods (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, cost, min_weight, max_weight, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Flesh delivery	Flesh delivery	Flesh delivery	<p>Flesh delivery -&nbsp;juda tez</p>	<p>Flesh delivery - очень быстро</p>	<p>Flesh delivery - very fast</p>	10000	0.5	20	1	1	2020-11-26 10:24:32	2020-11-26 10:29:36
 \.
 
 
@@ -1738,6 +1752,17 @@ COPY public.delivery_methods (id, name_uz, name_ru, name_en, description_uz, des
 --
 
 COPY public.discounts (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, start_date, end_date, category_id, common, status, photo, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	10 %	10 %	10 %	<p>10&nbsp;% - yaxshi</p>	<p>10 % -&nbsp;хорошo</p>	<p>10 % - good</p>	2020-12-01 00:00:00	2022-01-01 00:00:00	8	t	0	BwDjM4GJG9eUNHCRUzHigP7EEECDVOtMD7mctba6.jpg	1	1	2020-11-26 10:28:26	2020-11-26 10:28:26
+2	Bir kunlik chegirma	Скидка на один день	One day discount	<p>Ajoyib ishlaydi, hatto ko&#39;pincha uni o&#39;zim sotib olaman. Biron bir mahsulotni tanlang va unga chegirma o&#39;rnating. Aytgancha, agar siz uni &quot;Faqat bugun&quot; narx yorlig&#39;i bilan ta&#39;kidlasangiz, unda mahsulot, ayniqsa, lokomotiv mahsuloti bo&#39;lsa, mukammal tarzda uchib ketadi.</p>	<p>Отлично работает, даже зачастую сам на нее покупаюсь. Выделяете какой-то товар и устанавливаете на него скидку. Кстати, если выделить ее ценником &ldquo;Только сегодня&rdquo;, то товар, особенно если это&nbsp;<a href="https://in-scale.ru/blog/a-chto-u-vas-v-kompanii-moloko-i-krevetki">товар-локомотив</a>, будет отлично разлетаться.</p>	<p>Works great, even often I buy it myself. Select some product and set a discount on it. By the way, if you highlight it with the price tag &quot;Only today&quot;, then the product, especially if it is a locomotive product, will fly off perfectly.</p>	2020-12-12 00:00:00	2020-12-12 00:00:00	4	t	1	XIcBvnuRUWKenZh94iuJYBjAgenn5MWiivWFn86Z.jpg	1	1	2020-11-26 13:10:02	2020-11-26 13:10:02
+3	Haftaning kunlari bo'yicha chegirma	Скидка по дням недели	Discount by days of the week	<p>Bir kunlik chegirma bilan deyarli bir xil, ammo haftaning ma&#39;lum bir kuniga bog&#39;liq.</p>	<p>Практически то же самое, что и скидка на один день, но привязывается к конкретному дню недели.</p>	<p>Almost the same as a one day discount, but tied to a specific day of the week.</p>	2020-12-01 00:00:00	2021-02-01 00:00:00	14	t	1	bdDjmQECwvLeDDRwyDq9myCQrRIgibV2A4UW6QTi.jpg	1	1	2020-11-26 13:15:30	2020-11-26 13:15:30
+4	Istalgan davr uchun chegirma	Скидка на любой срок	Discount for any period	<p>Haftaning bir kuni yoki kuniga chegirmalarning analogi, faqat muddat har qanday bo&#39;lishi mumkin. Katta intervallarni o&#39;rnatmaslikni tavsiya qilaman. Foyda, har doimgidek, eng sodda - ochko&#39;zlikda.</p>	<p>Аналог скидок на один день или день недели, только срок может быть любой. Рекомендую не ставить большие интервалы. Выгода как всегда в самом простом &ndash; в жадности.</p>	<p>An analogue of discounts for one day or a day of the week, only the period can be any. I recommend not to set large intervals. The benefit, as always, is in the simplest - in greed.</p>	2021-01-01 00:00:00	2022-01-01 00:00:00	11	t	1	5UwcIQNgLIQr3D1CeI5IDhEyngAEMEfG5kSXbM73.jpg	1	1	2020-11-26 13:19:11	2020-11-26 13:19:11
+5	Muayyan mahsulot uchun chegirma	Скидка на конкретный товар	Discount for a specific product	<p>Mahsulot chegirmalari vaqt bilan cheklangan bo&#39;lishi mumkin (afzalroq), bo&#39;lmasligi mumkin. Ajoyib echim - &quot;Kunning mahsuloti&quot; ni narx yorlig&#39;i bilan ta&#39;kidlash (eski va yangi narxlar bilan).</p>	<p>Скидки на товар могут быть ограниченными по сроку (предпочтительней), могут нет. Отличное решение &ndash; выделить ценником &ldquo;Товар дня&rdquo; (со старой и новой ценой).</p>	<p>Product discounts may be limited in time (preferable), may not. An excellent solution is to highlight the &ldquo;Product of the Day&rdquo; with a price tag (with the old and new prices).</p>	2020-12-10 00:00:00	2020-12-31 00:00:00	15	t	1	qKNRRSuXrChoN9kc3xMH9hMhfBWvhWw4OKmu7ASD.jpg	1	1	2020-11-26 13:21:51	2020-11-26 13:21:51
+6	Oldindan buyurtma qilingan chegirma	Скидка на предварительный заказ	Pre-order discount	<p>Kimki oldinroq buyurtma bersa va shuning uchun pulni erta bersa, u katta chegirmaga ega. Sizning foydangiz juda oddiy - siz ushbu mahsulot uchun pul to&#39;laydigan pul olasiz.</p>	<p>Кто раньше заказывает, а следовательно и отдаёт деньги раньше, тот получает существенную скидку. Ваша прибыль крайне простая &ndash; Вы получаете деньги, которыми оплачиваете этот самый товар.</p>	<p>Whoever orders earlier, and therefore gives the money earlier, receives a substantial discount. Your profit is extremely simple - you get money with which you pay for this very product.</p>	2021-01-01 00:00:00	2021-02-01 00:00:00	19	t	1	VAPAuOD9bHRqhyU4sAkWF4LwAcI1o6ujGQbxvZkF.jpg	1	1	2020-11-26 13:23:42	2020-11-26 13:23:42
+7	Magnit chegirma	Магнитная скидка	Magnetic discount	<p>Xaridlarning ma&#39;lum hajmiga yetganda, chegirma taqdim etiladi. Nima uchun magnit? Chunki u &quot;Top Magnet&quot; texnologiyasi bilan juda yaxshi ishlaydi.</p>	<p>При достижении определённого объема покупок предоставляется скидка. Почему магнитная? Потому что отлично работает с технологией &ldquo;<a href="https://in-scale.ru/blog/texnologiya-magnit-sverxu">Магнит сверху</a>&rdquo;.</p>	<p>Upon reaching a certain volume of purchases, a discount is provided. Why magnetic? Because it works great with the &ldquo;Top Magnet&rdquo; technology.</p>	2021-02-02 00:00:00	2021-03-02 00:00:00	14	t	1	ASLi8IZFr5jFhsuHzupSmUrDCUXDbEnrgyMvVo7P.jpg	1	1	2020-11-26 13:25:37	2020-11-26 13:25:37
+8	Ulgurji chegirma / katta miqdor	Скидка на опт/большую сумму	Wholesale discount / large amount	<p>Mijozdan sotib olish miqdori qancha ko&#39;p bo&#39;lsa, u shunchaki chegirma olishni xohlaydi. Siz marketing strategiyangizni ishlab chiqishda bu bilan o&#39;ynashingiz mumkin.</p>	<p>Чем больше сумма покупки у клиента, тем больше он будет хотеть получить скидку. Можете играть на этом при разработке своей стратеги в маркетинге.</p>	<p>The higher the purchase amount from the customer, the more he will want to get a discount. You can play with this when developing your marketing strategy.</p>	2021-01-01 00:00:00	2021-05-01 00:00:00	11	t	1	N3U5Y3Z2fTxi5kNMaqdm1sfvDQh3FSvHtXMLr8U3.jpg	1	1	2020-11-26 13:28:08	2020-11-26 13:28:08
+9	Yig'ma chegirma	Скидка накопительная	Cumulative discount	<p>Hozirda chegirma turi juda mashhur. Har bir xarid paytida, ma&#39;lum bir foiz mijozning balansiga tushadi va keyinchalik u to&#39;lashi mumkin.</p>	<p>&nbsp;Довольно популярный сейчас вид скидки. С каждой покупки падает определённый процент на баланс клиента, которым в последствии он может расплатиться.</p>	<p>Discount type is quite popular now. With each purchase, a certain percentage falls on the client&#39;s balance, with which he can later pay.</p>	2021-01-01 00:00:00	2021-03-01 00:00:00	8	t	1	a1ae0w2Q36tbjj9UbcBcvCt9FA6BuTN3iP5m73Ik.jpg	1	1	2020-11-26 13:30:42	2020-11-26 13:30:42
+10	Naqd / naqd pulsiz to'lash uchun chegirma	Скидка за оплату наличными/безналичными	Discount for payment in cash / non-cash	<p>Biz hammamiz banklarni yoqtirmaymiz. Aksincha, unday emas. Aksariyat tadbirkorlarga bank kartalari orqali to&#39;lash yoqmaydi.</p>	<p>Мы все не любим банки. Вернее, не так. Большинство предпринимателей не любят оплату банковскими картами.</p>	<p>We all don&#39;t like banks. Or rather, not so. Most entrepreneurs don&#39;t like paying with bank cards.</p>	2021-01-01 00:00:00	2022-03-05 00:00:00	11	t	1	Y22O2vZxcLDH4U815vdtI0019F1AdcDOCEIuWyHO.jpg	1	1	2020-11-26 13:32:34	2020-11-26 13:32:34
+11	Bayram / tadbir uchun chegirma	Скидка на праздник/событие	Holiday / event discount	<p>Shahar kuni, Yangi yil, Rossiya kuni va har qanday professional bayramlar uchun.</p>	<p>День города, Новый год, День России, да на любые профессиональные праздники.</p>	<p>City Day, New Year, Russia Day, and for any professional holidays.</p>	2021-01-01 00:00:00	2021-06-01 00:00:00	11	t	1	cJzKgNym0z1BqTUEieWFlWjn6w5amyrrzeeF8kHM.jpg	1	1	2020-11-26 13:34:53	2020-11-26 13:34:53
 \.
 
 
@@ -1798,6 +1823,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 42	2020_11_23_175234_create_shop_discounts_table	3
 43	2020_11_24_160939_create_shop_product_discounts_table	3
 44	2020_11_24_173147_add_manager_request_status_to_users_table	4
+45	2020_11_26_163433_add_email_verified_to_users_table	5
 \.
 
 
@@ -1814,6 +1840,7 @@ COPY public.pages (id, title_uz, title_ru, title_en, menu_title_uz, menu_title_r
 --
 
 COPY public.payments (id, name_uz, name_ru, name_en, logo, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Karta orqali	По карте	By card	tzGtANlY6HsfF34P9X7geIyScYAWZo2ZYvvhRvJ0.png	1	1	2020-11-26 10:22:06	2020-11-26 10:22:06
 \.
 
 
@@ -1824,6 +1851,7 @@ COPY public.payments (id, name_uz, name_ru, name_en, logo, created_by, updated_b
 COPY public.profiles (user_id, first_name, last_name, birth_date, gender, address, avatar) FROM stdin;
 1	Admin	Adminov	1988-04-21	2	Address uz adress uz address address uz	\N
 2	User	User	1987-05-22	2	User Address uz adress uz address address uz	\N
+7	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -1832,6 +1860,8 @@ COPY public.profiles (user_id, first_name, last_name, birth_date, gender, addres
 --
 
 COPY public.shop_carts (id, user_id, product_id, modification_id, quantity, created_at, updated_at) FROM stdin;
+1	1	21	\N	1	2020-12-01 10:28:53	2020-12-01 10:28:53
+2	1	23	\N	1	2020-12-01 10:28:53	2020-12-01 10:28:53
 \.
 
 
@@ -1840,6 +1870,75 @@ COPY public.shop_carts (id, user_id, product_id, modification_id, quantity, crea
 --
 
 COPY public.shop_category_brands (category_id, brand_id) FROM stdin;
+11	1
+11	2
+11	3
+11	4
+11	10
+12	1
+12	2
+12	3
+12	4
+13	1
+13	2
+13	3
+10	4
+10	10
+9	1
+9	4
+8	1
+8	4
+8	10
+4	5
+4	9
+4	11
+4	8
+5	5
+5	9
+6	9
+6	11
+7	11
+7	8
+1	1
+1	4
+1	7
+1	10
+2	1
+2	4
+14	1
+14	2
+14	3
+14	4
+14	12
+15	1
+15	2
+15	3
+15	12
+16	2
+16	12
+17	1
+17	2
+18	1
+18	4
+18	10
+19	6
+20	1
+20	4
+21	4
+21	10
+22	1
+22	4
+22	10
+23	1
+23	4
+24	1
+25	1
+25	4
+25	10
+26	1
+26	4
+27	4
+27	10
 \.
 
 
@@ -1848,6 +1947,36 @@ COPY public.shop_category_brands (category_id, brand_id) FROM stdin;
 --
 
 COPY public.shop_characteristic_categories (characteristic_id, category_id) FROM stdin;
+1	2
+5	11
+6	11
+7	11
+8	11
+9	11
+10	11
+11	11
+12	11
+13	11
+14	11
+15	2
+16	2
+17	2
+18	2
+19	2
+20	2
+21	2
+22	15
+23	15
+24	15
+25	15
+26	15
+27	15
+28	15
+29	15
+30	15
+31	15
+32	15
+33	15
 \.
 
 
@@ -1856,6 +1985,12 @@ COPY public.shop_characteristic_categories (characteristic_id, category_id) FROM
 --
 
 COPY public.shop_characteristic_groups (id, name_uz, name_ru, name_en, "order", created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Texnik xususiyatlari	Технические характеристики	Specifications	1	1	1	2020-11-26 18:41:19	2020-11-27 15:13:44
+6	Umumiy noutbukning texnik xususiyatlari	Общие хaрактеристики ноутбука	General specifications of the laptop	2	1	1	2020-11-27 15:13:44	2020-11-27 15:13:44
+5	Televizorning asosiy xususiyatlari	Основные характеристики телевизора	Main characteristics of the TV	3	1	1	2020-11-27 14:46:39	2020-11-27 15:13:44
+2	Smartfonning umumiy xususiyatlari	Общие характеристики смартфона	General characteristics of the smartphone	4	1	1	2020-11-27 10:13:17	2020-11-27 15:13:44
+3	Smartfon xotirasi va protsessori	Память и процессор смартфона	Smartphone memory and processor	5	1	1	2020-11-27 10:43:35	2020-11-27 15:13:44
+4	Smartfon kamerasi	Камера смартфона	Smartphone camera	6	1	1	2020-11-27 10:49:07	2020-11-27 15:13:44
 \.
 
 
@@ -1864,6 +1999,36 @@ COPY public.shop_characteristic_groups (id, name_uz, name_ru, name_en, "order", 
 --
 
 COPY public.shop_characteristics (id, name_uz, name_ru, name_en, group_id, status, type, "default", required, variants, hide_in_filters, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Texnik xususiyatlari	Технические характеристики	Specifications	1	2	string	\N	t	[""]	t	1	1	2020-11-26 18:42:03	2020-11-26 18:42:16
+5	Barmoq izi	Отпечаток пальца	Fingerprint	1	2	string	+	t	["+"]	f	1	1	2020-11-27 10:31:36	2020-11-27 10:31:41
+6	SIM-kartaning raqami va turi	Количество и тип SIM-карты	Number and type of SIM card	2	2	integer	2	t	["2"]	f	1	1	2020-11-27 10:32:26	2020-11-27 10:32:30
+7	OS versiyasi	Версия ОС	OS version	2	2	string	Android 10.0	t	["Android 10.0"]	f	1	1	2020-11-27 10:33:58	2020-11-27 10:34:02
+8	Face ID sensori	rДатчик Face ID	Face ID senso	2	2	string	+	t	["+"]	f	1	1	2020-11-27 10:34:54	2020-11-27 10:35:14
+9	Ichki xotira	Объем встроенной памяти	Built-in memory	3	2	string	256GB	t	["256GB"]	f	1	1	2020-11-27 10:44:44	2020-11-27 10:44:49
+10	RAM hajmi	Объем оперативной памяти	RAM size	1	2	string	8 GB	t	["8 GB"]	f	1	1	2020-11-27 10:46:17	2020-11-27 10:46:24
+11	RAM hajmi	Объем оперативной памяти	RAM size	3	2	string	8 GB	t	["8 GB"]	f	1	1	2020-11-27 10:47:27	2020-11-27 10:47:32
+12	Xotira kartasi uyasi	Слот для карт памяти	Memory card slot	3	2	string	1 TB	t	["1 TB"]	f	1	1	2020-11-27 10:48:15	2020-11-27 10:48:19
+13	Old kamera	Фронтальная камера	Front-camera	4	2	string	10MP	t	["10MP"]	f	1	1	2020-11-27 10:49:45	2020-11-27 10:49:49
+14	Asosiy kamera	Основная камера	Main camera	4	2	string	108MP+12MP+12MP	t	["108MP+12MP+12MP"]	f	1	1	2020-11-27 10:50:54	2020-11-27 10:50:59
+15	Devorga o'rnatish	Крепление на стену	Wall Mount	5	2	string	+	t	["+"]	f	1	1	2020-11-27 14:47:26	2020-11-27 14:47:31
+16	Smart TV	Smart TV	Smart TV	5	2	string	+	t	["+"]	f	1	1	2020-11-27 14:48:05	2020-11-27 14:48:10
+17	Yorug'lik sensori	Датчик освещенности	Light sensor	5	2	string	+	t	["+"]	f	1	1	2020-11-27 14:48:59	2020-11-27 14:49:03
+18	Kafolat	Гарантия	Warranty	5	2	string	1 year	t	["1 year"]	f	1	1	2020-11-27 14:49:50	2020-11-27 14:49:54
+19	Diagonal	Диагональ	Diagonal	5	2	string	55"	t	["55\\""]	f	1	1	2020-11-27 14:50:29	2020-11-27 14:50:33
+20	Matritsa	Матрица	The matrix	5	2	string	IPS	t	["IPS"]	f	1	1	2020-11-27 14:51:09	2020-11-27 14:51:14
+21	Operatsion tizim	Операционная система	Operating system	5	2	string	webOS Smart TV	t	["webOS Smart TV"]	f	1	1	2020-11-27 14:51:51	2020-11-27 14:51:55
+22	Protsessor yadrolari soni	Количество ядер процессора	Number of processor cores	6	2	string	4 ядра	t	["4 \\u044f\\u0434\\u0440\\u0430"]	f	1	1	2020-11-27 15:15:07	2020-11-27 15:15:11
+23	Barmoq izi	Отпечаток пальца	Fingerprint	6	2	string	+	t	["+"]	f	1	1	2020-11-27 15:15:57	2020-11-27 15:16:01
+24	Orqa yoritilgan klaviatura	Подсветка клавиатуры	Backlit keyboard	6	2	string	+	t	["+"]	f	1	1	2020-11-27 15:16:50	2020-11-27 15:16:55
+25	Rangi	Цвет	Colour	6	2	string	Grey	t	["Grey"]	f	1	1	2020-11-27 15:17:36	2020-11-27 15:17:40
+26	Diagonalni ko'rsatish	Диагональ дисплея	Display diagonal	6	2	string	13.3"	t	["13.3\\""]	f	1	1	2020-11-27 15:18:37	2020-11-27 15:20:04
+27	Kafolat	Гарантия	Warranty	6	2	string	1 year	t	["1 year"]	f	1	1	2020-11-27 15:23:29	2020-11-27 15:23:34
+28	Kesh xotirasi	Кэш-память	Cache memory	6	2	string	8 МБ	t	["8 \\u041c\\u0411"]	f	1	1	2020-11-27 15:24:35	2020-11-27 15:24:38
+29	Displey o'lchamlari	Разрешение дисплея	Display resolution	6	2	string	2560x1600	t	["2560x1600"]	f	1	1	2020-11-27 15:25:15	2020-11-27 15:25:19
+30	Video karta	Видеокарта	Video card	6	2	string	Intel Iris Plus Graphics	t	["Intel Iris Plus Graphics"]	f	1	1	2020-11-27 15:26:06	2020-11-27 15:26:10
+31	Markaziy protsessor	Процессор	CPU	6	2	string	Intel Core i7 4,1 ГГц	t	["Intel Core i7 4,1 \\u0413\\u0413\\u0446"]	f	1	1	2020-11-27 15:27:12	2020-11-27 15:27:15
+32	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	6	2	string	1 TB SSD	t	["1 TB SSD"]	f	1	1	2020-11-27 15:28:02	2020-11-27 15:28:06
+33	O'lchamlari	Размеры	Dimensions	6	2	string	304.1x212.4x16.1 мм	t	["304.1x212.4x16.1 \\u043c\\u043c"]	f	1	1	2020-11-27 15:28:50	2020-11-27 15:28:56
 \.
 
 
@@ -1880,6 +2045,7 @@ COPY public.shop_delivery_methods (id, name_uz, name_ru, name_en, cost, min_weig
 --
 
 COPY public.shop_discounts (id, store_id, discount_id, created_at, updated_at) FROM stdin;
+1	12	10	\N	\N
 \.
 
 
@@ -1888,6 +2054,8 @@ COPY public.shop_discounts (id, store_id, discount_id, created_at, updated_at) F
 --
 
 COPY public.shop_marks (id, name_uz, name_ru, name_en, slug, photo, meta_json, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Kredit bo'yicha tovarlar	Товар в кредит	Products on credit	products_on_credit	TxAmRgfmz75DaC9hnLW3QWAuAhzmpUsVhB598zbS.jpg	\N	1	1	2020-11-26 10:14:39	2020-11-26 10:14:39
+2	Mebellar	Мебель	Furniture	furniture	DbtyEzO8CGiz2IF1e4DS9y5DVJ4cw3Ocpzok66IP.jpeg	\N	1	1	2020-11-26 10:16:32	2020-11-26 10:16:32
 \.
 
 
@@ -1920,6 +2088,40 @@ COPY public.shop_orders (id, user_id, delivery_method_id, delivery_method_name_u
 --
 
 COPY public.shop_photos (id, product_id, file, sort, created_by, updated_by, created_at, updated_at) FROM stdin;
+1	1	iHppLhLpW191E4uln7JfLeL29wk0xFavb6XsLJqP.jpg	1	1	1	2020-11-26 16:00:51	2020-11-26 16:00:51
+2	2	JLuQ7wtCqho7E8FelwnR2LtVDWQNindeAAsjEG1T.jpg	1	1	1	2020-11-26 16:04:40	2020-11-26 16:04:40
+3	4	oRmUmNI6qa4nPgRaoj4lWZ9N2FzPRk76TGzUlEaS.jpg	1	1	1	2020-11-26 16:26:40	2020-11-26 16:26:40
+4	3	Sl5fRkTgfbxHnh28aInb15PLgZXndLPNzLv40lrJ.jpg	1	1	1	2020-11-26 16:27:30	2020-11-26 16:27:30
+5	5	NdzQP87eYNc1OvKZanjOy0SXgXKt0Oerxmywjqru.jpg	1	1	1	2020-11-26 16:45:03	2020-11-26 16:45:03
+6	6	JFCOqlHEs3p2n3hDkA93qZDaZJMAv3zFhFcrigLN.jpg	1	1	1	2020-11-26 16:47:52	2020-11-26 16:47:52
+7	7	i42Osh4Udv8rAfzmX6CKCAT7MP7IOAk5sNpuFcyA.jpg	1	1	1	2020-11-26 16:52:39	2020-11-26 16:52:39
+8	8	bWHZ7TON0CHlbHyfbBpvOWR6PvcK9l7anXGPPqtI.jpg	1	1	1	2020-11-26 16:58:33	2020-11-26 16:58:33
+9	9	0gHqK9oFndciirjMrn2AH7qpV224alzxgNYhMogj.jpg	1	1	1	2020-11-26 17:02:15	2020-11-26 17:02:15
+10	10	cI8EQURk6p176y2L9yf77AyQI3V5QwemX8jWl59b.jpg	1	1	1	2020-11-26 17:20:48	2020-11-26 17:20:48
+11	11	OrG0gLr8GcrbfA0yOKtTOSyoHeWrNae9xJzRtr5c.jpg	1	1	1	2020-11-26 17:23:18	2020-11-26 17:23:18
+12	12	Iui86OqsYWVhsOWqMpt21lI7wrCC7WQjedE8tphQ.jpg	1	1	1	2020-11-26 17:28:36	2020-11-26 17:28:36
+13	13	fbn8EqEGSmliKy8DSqeCjnBQMZfqeV9sG1oPGP4J.jpg	1	1	1	2020-11-26 17:31:23	2020-11-26 17:31:23
+14	14	221SBKQGABaBI3uMSW1YorVJa5hb9eM6rY4hxteB.jpg	1	1	1	2020-11-26 17:35:46	2020-11-26 17:35:46
+15	15	h67bRiipqvuj2xKTGPIyouuz9lML9kUQtkwh5Z6B.jpg	1	1	1	2020-11-26 17:37:57	2020-11-26 17:37:57
+16	16	v4fWs0OXzLrOS9xq9Vjvca7Op8ZNkuX1VCktVoeD.jpg	1	1	1	2020-11-26 17:57:51	2020-11-26 17:57:51
+17	17	Xeaf45yuGjPu161b3dcXqssB091JwoWdcy2V2SFu.jpg	1	1	1	2020-11-26 18:00:05	2020-11-26 18:00:05
+18	18	X8b3z2SQF6rIvIjmPLgBF9AayaftQmPhV7Y1s0ae.jpg	1	1	1	2020-11-26 18:04:23	2020-11-26 18:04:23
+19	19	MUgreQylJNfIw3YTcpNG8oUmD5cEfThxXO5eF9BV.jpg	1	1	1	2020-11-26 18:06:39	2020-11-26 18:06:39
+20	20	UTFKRkCspOUxPwz8eBi57rUEI0fFM1N9gUFBbsEj.jpg	1	1	1	2020-11-26 18:10:37	2020-11-26 18:10:37
+21	21	r7kcwH6PPDt9wJsDMj1GzQeyeoVHV64iapwlRrmG.jpg	1	1	1	2020-11-26 18:14:02	2020-11-26 18:14:02
+22	22	21vgarwX0CSF0av8lKY3RzQsAWqZdM2aDmWgsy1H.jpg	1	1	1	2020-11-26 18:20:34	2020-11-26 18:20:34
+23	23	ImrO7W061fiot1Y5nThHE1GQBBJfWx7QA8KVNRMA.jpg	1	1	1	2020-11-26 18:32:41	2020-11-26 18:32:41
+34	24	P1KwVgtQjC3sRfeYT3cP5yqOwmGfHjgCv8STPw5U.jpg	3	1	1	2020-11-26 18:56:39	2020-11-26 18:56:39
+24	23	LlUKOTbxGBok14fiKMGBD8Czf7g6iGzsJUM3Iz2e.jpg	2	1	1	2020-11-26 18:33:39	2020-11-26 18:34:08
+25	23	Kn9ovbqBRRW2Ozshrq5Ymw3N2lp9gNwc90U4bLPt.jpg	3	1	1	2020-11-26 18:33:50	2020-11-26 18:34:08
+26	23	urdTdSc2AorkINZbJMurGcXxotB3lRk44iLrM6QL.jpg	4	1	1	2020-11-26 18:34:00	2020-11-26 18:34:08
+27	23	Iu13rrVHfzzOkC8Vgxb9KYegyjmrG4lT78AelhOR.jpg	5	1	1	2020-11-26 18:34:08	2020-11-26 18:34:08
+28	2	NmyFqq1UhWWiiIqdxSBPm6z1WDZLfuifMdihcdsW.jpg	2	1	1	2020-11-26 18:51:42	2020-11-26 18:53:06
+29	2	VpIs2ss7FeIQvJRO6waSkPlYsgFjs1va9wOI6by6.jpg	3	1	1	2020-11-26 18:51:58	2020-11-26 18:53:06
+30	2	uG9VB5Xb7MIz47CKEbcK7LCweh4omJ7mrSsH2eGD.jpg	4	1	1	2020-11-26 18:52:41	2020-11-26 18:53:06
+31	2	qalMSntyTl1hUQ3LT0qIghApb0clfEhN5L16h1xF.jpg	5	1	1	2020-11-26 18:53:06	2020-11-26 18:53:06
+32	24	JUuuFMfsMlksDSwYpzkqfep784dMxlnm3tDgB1SC.jpg	1	1	1	2020-11-26 18:56:19	2020-11-26 18:56:19
+33	24	QfCcNYOwGunNPHxyemteOuI9GoO1HgCc3PJgrhZq.jpg	2	1	1	2020-11-26 18:56:30	2020-11-26 18:56:39
 \.
 
 
@@ -1928,6 +2130,30 @@ COPY public.shop_photos (id, product_id, file, sort, created_by, updated_by, cre
 --
 
 COPY public.shop_product_categories (product_id, category_id) FROM stdin;
+1	15
+11	4
+22	18
+2	14
+8	14
+4	14
+3	14
+9	14
+7	14
+5	14
+6	14
+17	11
+21	11
+24	11
+18	11
+19	11
+20	11
+16	11
+13	8
+14	8
+15	8
+12	4
+10	4
+23	1
 \.
 
 
@@ -1936,6 +2162,30 @@ COPY public.shop_product_categories (product_id, category_id) FROM stdin;
 --
 
 COPY public.shop_product_discounts (id, product_id, discount_id, created_at, updated_at) FROM stdin;
+25	1	10	2020-11-30 12:05:13	2020-11-30 12:05:13
+32	11	10	2020-12-01 10:35:42	2020-12-01 10:35:42
+33	22	10	2020-12-01 10:36:05	2020-12-01 10:36:05
+34	2	10	2020-12-01 10:36:24	2020-12-01 10:36:24
+35	8	10	2020-12-01 10:36:45	2020-12-01 10:36:45
+36	4	10	2020-12-01 10:37:08	2020-12-01 10:37:08
+37	3	10	2020-12-01 10:37:27	2020-12-01 10:37:27
+38	9	10	2020-12-01 10:37:44	2020-12-01 10:37:44
+39	7	10	2020-12-01 10:38:02	2020-12-01 10:38:02
+40	5	10	2020-12-01 10:38:26	2020-12-01 10:38:26
+41	6	10	2020-12-01 10:38:49	2020-12-01 10:38:49
+42	17	10	2020-12-01 10:39:08	2020-12-01 10:39:08
+43	21	10	2020-12-01 10:39:32	2020-12-01 10:39:32
+44	24	10	2020-12-01 10:39:51	2020-12-01 10:39:51
+45	18	10	2020-12-01 10:40:17	2020-12-01 10:40:17
+46	19	10	2020-12-01 10:40:38	2020-12-01 10:40:38
+47	20	10	2020-12-01 10:41:07	2020-12-01 10:41:07
+48	16	10	2020-12-01 10:41:25	2020-12-01 10:41:25
+49	13	10	2020-12-01 10:41:42	2020-12-01 10:41:42
+50	14	10	2020-12-01 10:42:00	2020-12-01 10:42:00
+51	15	10	2020-12-01 10:42:18	2020-12-01 10:42:18
+52	12	10	2020-12-01 10:42:36	2020-12-01 10:42:36
+53	10	10	2020-12-01 10:42:55	2020-12-01 10:42:55
+54	23	10	2020-12-01 10:43:14	2020-12-01 10:43:14
 \.
 
 
@@ -1944,6 +2194,30 @@ COPY public.shop_product_discounts (id, product_id, discount_id, created_at, upd
 --
 
 COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
+1	1
+11	1
+22	1
+2	1
+8	1
+4	1
+3	1
+9	1
+7	1
+5	1
+6	1
+17	1
+21	1
+24	1
+18	1
+19	1
+20	1
+16	1
+13	1
+14	1
+15	1
+12	1
+10	1
+23	1
 \.
 
 
@@ -1952,6 +2226,7 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 --
 
 COPY public.shop_product_reviews (id, product_id, rating, advantages, disadvantages, comment, user_id, created_at, updated_at) FROM stdin;
+1	2	4	dsaf	asdf	sdaf	1	2020-11-26 16:30:33	2020-11-26 16:30:33
 \.
 
 
@@ -1960,6 +2235,30 @@ COPY public.shop_product_reviews (id, product_id, rating, advantages, disadvanta
 --
 
 COPY public.shop_products (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, slug, price_uzs, price_usd, discount, discount_ends_at, main_category_id, store_id, brand_id, status, weight, quantity, guarantee, bestseller, new, rating, number_of_reviews, reject_reason, created_by, updated_by, created_at, updated_at, main_photo_id) FROM stdin;
+3	Apple MacBook Late 2018	Apple MacBook Late 2018	Apple MacBook Late 2018	<h2>Intel Core i5 12&quot;/8GB/512GB SSD, Gold</h2>	<h2>Intel Core i5 12&quot;/8GB/512GB SSD, Gold</h2>	<h2>Intel Core i5 12&quot;/8GB/512GB SSD, Gold</h2>	apple_macbook_2018	13063000	1200	0.0200000000000000004	2020-12-12 00:00:00	15	12	2	2	2	5	f	f	t	\N	0	\N	1	1	2020-11-26 16:07:19	2020-12-01 10:37:30	4
+16	Apple iPhone 12 256GB Blue	Apple iPhone 12 256GB Blue	Apple iPhone 12 256GB Blue	<ul>\r\n\t<li>Версия ОС: iOS 14</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: iOS 14</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: iOS 14</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	apple4234234	14000000	1300	0.0100000000000000002	2020-12-12 00:00:00	12	12	2	2	0.200000000000000011	10	t	t	t	\N	0	\N	1	1	2020-11-26 17:57:39	2020-12-01 10:41:28	16
+11	Excel shoes LM01	Excel shoes LM01	Excel shoes LM01	<h2>LM01, Black</h2>	<h2>LM01, Black</h2>	<h2>LM01, Black</h2>	excel_shoes_lm01	520000	50	0.0200000000000000004	2020-12-21 00:00:00	5	12	5	2	0.5	10	t	t	t	\N	0	\N	1	1	2020-11-26 17:23:06	2020-12-01 10:35:46	11
+9	Видеокарта Asus	Видеокарта Asus	Видеокарта Asus	<h2>TUF-GTX1660-O6G Gaming</h2>	<h2>TUF-GTX1660-O6G Gaming</h2>	<h2>TUF-GTX1660-O6G Gaming</h2>	asus_vga	3300000	310	0.0100000000000000002	2020-12-12 00:00:00	17	12	4	2	0.800000000000000044	10	f	t	t	\N	0	\N	1	1	2020-11-26 17:02:02	2020-12-01 10:37:47	9
+8	Видеокарта Asus VGA CARD	Видеокарта Asus VGA CARD	Видеокарта Asus VGA CARD	<h2>ASUS ROG-STRIX-RTX2080TI-O11G-GAMING</h2>	<h2>ASUS ROG-STRIX-RTX2080TI-O11G-GAMING</h2>	<h2>ASUS ROG-STRIX-RTX2080TI-O11G-GAMING</h2>	asus_vga1	18000000	1700	0.0100000000000000002	2020-12-12 00:00:00	17	12	3	2	0.599999999999999978	10	t	f	t	\N	0	\N	1	1	2020-11-26 16:58:20	2020-12-01 10:36:49	8
+15	Samsung SC5630	Samsung SC5630	Samsung SC5630	<p>SC5630</p>	<p>SC5630</p>	<p>SC5630</p>	samsungfdasfasdf	784000	75	0.0100000000000000002	2020-12-12 00:00:00	10	12	1	2	9	10	f	t	t	\N	0	\N	1	1	2020-11-26 17:37:41	2020-12-01 10:42:22	15
+4	Моноблок Acer Aspire	Моноблок Acer Aspire	Моноблок Acer Aspire	<h2>S24-880D TFT 23,8&quot; 16/2000GB</h2>	<h2>S24-880D TFT 23,8&quot; 16/2000GB</h2>	<h2>S24-880D TFT 23,8&quot; 16/2000GB</h2>	monoblock_acer_aspire	13063000	1200	0.0200000000000000004	2020-12-12 00:00:00	16	12	12	2	10	2	t	f	t	\N	0	\N	1	1	2020-11-26 16:20:41	2020-12-01 10:37:12	3
+13	Пылесос LG	Пылесос LG	Пылесос LG	<h2>VC83209UHAS</h2>	<h2>VC83209UHAS</h2>	<h2>VC83209UHAS</h2>	lg_213123	1980000	180	0.0299999999999999989	2020-02-02 12:00:00	10	12	4	2	7	10	t	t	t	\N	0	\N	1	1	2020-11-26 17:31:09	2020-12-01 10:41:46	13
+12	Salamander 21	Salamander 21	Salamander 21	<h2>Black 42</h2>	<h2>Black 42</h2>	<h2>Black 42</h2>	salamander3123123	265000	24	0.0100000000000000002	2020-12-12 00:00:00	5	12	11	2	1	10	f	t	t	\N	0	\N	1	1	2020-11-26 17:28:24	2020-12-01 10:42:41	12
+5	Моноблок Acer Aspire	Моноблок Acer Aspire	Моноблок Acer Aspire	<h2>C22-865B TFT 21,5&quot; 8/1000GB</h2>	<h2>C22-865B TFT 21,5&quot; 8/1000GB</h2>	<h2>C22-865B TFT 21,5&quot; 8/1000GB</h2>	monoblock_acer	14000000	1300	0.0200000000000000004	2020-12-12 00:00:00	16	12	12	2	10	5	t	t	t	\N	0	\N	1	1	2020-11-26 16:44:49	2020-12-01 10:38:33	5
+10	Excel shoes	Excel shoes	Excel shoes	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	excel_shoes	480000	45	0.0100000000000000002	2020-12-21 00:00:00	5	12	5	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:20:24	2020-12-01 10:43:01	10
+14	Samsung SC5610	Samsung SC5610	Samsung SC5610	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	samsung_fsdgdfsg	721000	70	0.0400000000000000008	2021-05-05 00:30:00	10	12	1	2	8	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:35:29	2020-12-01 10:42:03	14
+1	Asus X509MA	Asus X509MA	Asus X509MA	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	asus_x509	4180000	400	0.0100000000000000002	2020-12-01 00:00:00	15	12	2	2	2	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:00:15	2020-11-30 12:05:18	1
+23	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	<p>Kafolat muddati (oy): 12<br />\r\nSmart TV: Ha</p>	<ul>\r\n\t<li>Гарантийный срок (месяц): 12</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Smart TV: Есть</li>\r\n</ul>	<p>Warranty period (month): 12<br />\r\nSmart TV: Yes</p>	smartv	14317000	1350	0.0100000000000000002	2020-12-12 00:00:00	2	12	4	2	10	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:32:25	2020-12-01 10:43:19	23
+17	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	xiomi312312	2050000	190	0.0100000000000000002	2020-12-21 00:00:00	12	12	3	2	0.149999999999999994	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:59:48	2020-12-01 10:39:13	17
+2	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	apple_macbook	25707000	2400	0.0100000000000000002	2020-12-11 00:00:00	15	12	2	2	2	5	f	t	t	\N	0	\N	1	1	2020-11-26 16:04:28	2020-12-01 10:36:28	2
+22	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	fasdfasdf	5982000	560	0.0100000000000000002	2020-12-12 00:00:00	19	12	6	2	50	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:20:11	2020-12-01 10:36:09	22
+19	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	ipad3242341234	6500000	640	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.5	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:06:12	2020-12-01 10:40:42	19
+6	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	tft_acer_monoblock	10500000	1000	0.0100000000000000002	2020-12-12 00:00:00	16	12	12	2	10	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:47:37	2020-12-01 10:38:53	6
+18	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	samsung4234234	12540000	1180	0	\N	12	12	1	2	0.130000000000000004	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:03:58	2020-12-01 10:40:22	18
+7	MSI Nvidia GeForce	MSI Nvidia GeForce	MSI Nvidia GeForce	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	msi_nvidia_geforce	885000	850	0.0100000000000000002	2020-12-21 00:00:00	17	12	12	2	0.400000000000000022	5	t	t	t	\N	0	\N	1	1	2020-11-26 16:52:25	2020-12-01 10:38:06	7
+21	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	apple3123fsdf	7450000	720	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.200000000000000011	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:13:29	2020-12-01 10:39:37	21
+20	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	samsung42343214	26850000	250	0.0100000000000000002	2020-12-21 00:00:00	13	12	1	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 18:10:14	2020-12-01 10:41:10	20
+24	Samsung Galaxy Note20 Ultra 256GB, Mystic White	Samsung Galaxy Note20 Ultra 256GB, Mystic White	Samsung Galaxy Note20 Ultra 256GB, Mystic White	<p>OS versiyasi: Android 10.0<br />\r\nIchki xotira: 256GB<br />\r\nFace ID sensori: Ha</p>	<p>Версия ОС: Android 10.0<br />\r\nОбъем встроенной памяти: 256GB<br />\r\nДатчик Face ID: Есть</p>	<p>OS version: Android 10.0<br />\r\nBuilt-in Memory: 256GB<br />\r\nFace ID sensor: Yes</p>	samsung_23fsdjfh324	12540000	1180	0.0100000000000000002	2020-12-12 00:00:00	12	12	1	2	0.299999999999999989	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:55:35	2020-12-01 10:39:59	32
 \.
 
 
@@ -1968,6 +2267,20 @@ COPY public.shop_products (id, name_uz, name_ru, name_en, description_uz, descri
 --
 
 COPY public.shop_values (product_id, characteristic_id, value, main, sort) FROM stdin;
+24	6	2	t	1
+24	8	+	t	2
+24	9	256GB	t	3
+24	13	10MP	t	4
+24	14	108MP+12MP+12MP	t	5
+23	20	IPS	t	1
+23	19	55"	t	2
+23	17	+	t	3
+23	16	+	t	4
+2	23	+	t	1
+2	24	+	t	2
+2	25	Grey	t	3
+2	26	13.3"	t	4
+2	29	2560x1600	t	5
 \.
 
 
@@ -1990,6 +2303,7 @@ COPY public.sliders (id, url, sort, file, created_by, updated_by, created_at, up
 --
 
 COPY public.store_categories (store_id, category_id) FROM stdin;
+12	1
 \.
 
 
@@ -1998,6 +2312,7 @@ COPY public.store_categories (store_id, category_id) FROM stdin;
 --
 
 COPY public.store_delivery_methods (store_id, delivery_method_id, cost, sort) FROM stdin;
+12	1	10000	5
 \.
 
 
@@ -2006,6 +2321,7 @@ COPY public.store_delivery_methods (store_id, delivery_method_id, cost, sort) FR
 --
 
 COPY public.store_marks (store_id, mark_id) FROM stdin;
+12	2
 \.
 
 
@@ -2014,6 +2330,7 @@ COPY public.store_marks (store_id, mark_id) FROM stdin;
 --
 
 COPY public.store_payments (store_id, payment_id) FROM stdin;
+12	1
 \.
 
 
@@ -2022,6 +2339,7 @@ COPY public.store_payments (store_id, payment_id) FROM stdin;
 --
 
 COPY public.store_users (store_id, user_id, role) FROM stdin;
+12	1	administrator
 \.
 
 
@@ -2030,6 +2348,7 @@ COPY public.store_users (store_id, user_id, role) FROM stdin;
 --
 
 COPY public.stores (id, name_uz, name_ru, name_en, slug, logo, status, created_by, updated_by, created_at, updated_at) FROM stdin;
+12	Samarqand Darvoza	Самарканд дарвоза	Samarkand darvoza	samarkand_darvoza	YDnvFq2Nuw3InNqtY2FtutpTu9zFVBq6oIljsxlG.png	1	1	1	2020-11-26 15:54:03	2020-11-26 15:54:03
 \.
 
 
@@ -2046,6 +2365,9 @@ COPY public.user_favorites (user_id, product_id) FROM stdin;
 --
 
 COPY public.user_networks (user_id, network, identity, emails_json, phones_json) FROM stdin;
+3	google	104537922165315928317	["1710136.nasriddinbek.bektemirov@gmail.com"]	\N
+5	google	116852667327811565568	["a.abdualiym@gmail.com"]	\N
+6	telegram	129683416	\N	\N
 \.
 
 
@@ -2053,9 +2375,13 @@ COPY public.user_networks (user_id, network, identity, emails_json, phones_json)
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: dev_shop
 --
 
-COPY public.users (id, name, email, phone, phone_verified, password, balance, verify_token, phone_verify_token, phone_verify_token_expire, phone_auth, role, status, email_verified_at, remember_token, created_at, updated_at, manager_request_status) FROM stdin;
-2	user	user@gmail.com	998991234567	f	$2y$10$wc9c1EJjS5Ip3rCa4oE0pujvxflEgUlTJYyc1./zcye9CeBJrU4ZO	0	\N	\N	\N	f	user	9	2020-11-18 14:20:41	2hAYZFPzv7	\N	\N	0
-1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	7ZPCILc2iBUl6KixIibq9i0md8f9lFfj675egKOciqKrHQrDB2SR1hxmO6Lj	\N	\N	0
+COPY public.users (id, name, email, phone, phone_verified, password, balance, verify_token, phone_verify_token, phone_verify_token_expire, phone_auth, role, status, email_verified_at, remember_token, created_at, updated_at, manager_request_status, email_verified) FROM stdin;
+2	user	user@gmail.com	998991234567	f	$2y$10$wc9c1EJjS5Ip3rCa4oE0pujvxflEgUlTJYyc1./zcye9CeBJrU4ZO	0	\N	\N	\N	f	user	9	2020-11-18 14:20:41	2hAYZFPzv7	\N	\N	0	f
+3	google_104537922165315928317	1710136.nasriddinbek.bektemirov@gmail.com	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-11-26 15:10:42	2020-11-26 15:10:42	0	f
+5	google_116852667327811565568	a.abdualiym@gmail.com	998977772129	f	\N	0	\N	27508	2020-11-27 18:23:20	f	user	9	\N	\N	2020-11-27 18:17:03	2020-11-27 18:18:20	0	t
+6	telegram_129683416	\N	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-11-30 10:59:30	2020-11-30 10:59:30	0	f
+7	az11	axrorxojayev@mail.uz	\N	f	$2y$10$QYAWZmeRHSlzEZ/3C8Sm/OSSFDn/psQLSh/jK5wBDRDhUVj4CF9Om	0	3378208c-7fa2-45f6-85ca-267fb67e1599	\N	\N	f	user	0	\N	\N	2020-12-01 10:45:42	2020-12-01 10:45:42	0	f
+1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	GvK2JIsYF6mMeUynKdQ3xWWMIesWl1PeghVMpveD5gSelvoPlcgiCXVPaM8k	\N	\N	0	f
 \.
 
 
@@ -2091,7 +2417,7 @@ SELECT pg_catalog.setval('public.blog_videos_id_seq', 10, true);
 -- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.brands_id_seq', 1, false);
+SELECT pg_catalog.setval('public.brands_id_seq', 12, true);
 
 
 --
@@ -2105,14 +2431,14 @@ SELECT pg_catalog.setval('public.categories_id_seq', 27, true);
 -- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.delivery_methods_id_seq', 1, false);
+SELECT pg_catalog.setval('public.delivery_methods_id_seq', 1, true);
 
 
 --
 -- Name: discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.discounts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.discounts_id_seq', 11, true);
 
 
 --
@@ -2126,7 +2452,7 @@ SELECT pg_catalog.setval('public.failed_jobs_id_seq', 1, false);
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.migrations_id_seq', 44, true);
+SELECT pg_catalog.setval('public.migrations_id_seq', 45, true);
 
 
 --
@@ -2140,28 +2466,28 @@ SELECT pg_catalog.setval('public.pages_id_seq', 1, false);
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.payments_id_seq', 1, false);
+SELECT pg_catalog.setval('public.payments_id_seq', 1, true);
 
 
 --
 -- Name: shop_carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_carts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_carts_id_seq', 2, true);
 
 
 --
 -- Name: shop_characteristic_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_characteristic_groups_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_characteristic_groups_id_seq', 6, true);
 
 
 --
 -- Name: shop_characteristics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_characteristics_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_characteristics_id_seq', 33, true);
 
 
 --
@@ -2175,14 +2501,14 @@ SELECT pg_catalog.setval('public.shop_delivery_methods_id_seq', 1, false);
 -- Name: shop_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_discounts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_discounts_id_seq', 1, true);
 
 
 --
 -- Name: shop_marks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_marks_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_marks_id_seq', 2, true);
 
 
 --
@@ -2210,28 +2536,28 @@ SELECT pg_catalog.setval('public.shop_orders_id_seq', 1, false);
 -- Name: shop_photos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_photos_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_photos_id_seq', 34, true);
 
 
 --
 -- Name: shop_product_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 54, true);
 
 
 --
 -- Name: shop_product_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_product_reviews_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_product_reviews_id_seq', 1, true);
 
 
 --
 -- Name: shop_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_products_id_seq', 1, false);
+SELECT pg_catalog.setval('public.shop_products_id_seq', 24, true);
 
 
 --
@@ -2245,14 +2571,14 @@ SELECT pg_catalog.setval('public.sliders_id_seq', 6, true);
 -- Name: stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.stores_id_seq', 1, false);
+SELECT pg_catalog.setval('public.stores_id_seq', 16, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_id_seq', 8, true);
 
 
 --

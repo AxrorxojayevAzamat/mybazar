@@ -9,9 +9,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2>
-                    Sliders
+                    {{ trans('adminlte.sliders.slider') }}<br>
 
-                    <a href="{{ route('admin.sliders.create') }}" class="btn btn-success pull-right">Create New</a>
+                    <a href="{{ route('admin.sliders.create') }}" class="btn btn-success pull-right">{{ trans('adminlte.sliders.create new slider') }}</a>
                 </h2>
             </div>
 

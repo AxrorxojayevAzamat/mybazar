@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout page')
+@section('title', trans('frontend.title.checkout_page'))
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/pay.css')}}"> --}}
 @endsection

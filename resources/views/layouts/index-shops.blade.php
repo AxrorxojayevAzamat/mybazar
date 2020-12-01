@@ -1,7 +1,7 @@
 <section>
     <div class="shops">
         <div class="h4-title">
-            <h4>Магазины</h4>
+            <h4>{{ trans('frontend.breadcrumb.shops') }}</h4>
         </div>
         <div class="outter-shops">
             <div class="all-shops">
@@ -13,3 +13,4 @@
         </div>
     </div>
 </section>
+

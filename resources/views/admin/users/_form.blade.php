@@ -64,7 +64,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-gray card-outline">
-            <div class="card-header"><h3 class="card-title">Profile</h3></div>
+            <div class="card-header"><h3 class="card-title">{{ trans('adminlte.user.profile') }}</h3></div>
             <div class="card-body">
                 <div class="form-group">
                     {!! Form::label('first_name', trans('adminlte.first_name') , ['class' => 'col-form-label']); !!}

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Video blog')
+@section('title', trans('frontend.title.video_blog'))
 
 @section('styles')
 {{-- <link rel="stylesheet" href="{{asset('css/video-blog.css')}}"> --}}

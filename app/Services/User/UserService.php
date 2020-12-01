@@ -2,17 +2,20 @@
 
 namespace App\Services\User;
 
+use App\Mail\Auth\VerifyMail;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Entity\User\User;
 use App\Entity\User\Profile;
 use App\Entity\UserFavorite;
 use App\Http\Requests\Admin\Users\CreateRequest;
-use App\Http\Requests\Admin\Users\UpdateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests\User\PhoneVerifyRequest;
 use App\Http\Requests\User\PhoneRequest;
@@ -149,6 +152,9 @@ class UserService
     public function updateProfile($id, UpdateRequest $request): User
     {
         $user = User::findOrFail($id);
+        if (!$user->profile) {
+            $user->profile()->create();
+        }
 
         if (!$request->avatar) {
             $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address);
@@ -170,25 +176,21 @@ class UserService
         $user->approveManagerRoleRequest();
     }
 
-    public function changePassword(PasswordRequest $request)
+    public function changePassword(PasswordRequest $request): bool
     {
-
-
         if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
-//            // The passwords matches
-            return JsonHelper::badResponse('Your current password does not matches with the password you provided. Please try again.');
+            throw new \DomainException('Your current password does not matches with the password you provided. Please try again.');
         }
 
         if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
-//            //Current password and new password are same
-
-            return JsonHelper::badResponse('New Password cannot be same as your current password. Please choose a different password.');
+            throw new \DomainException('New Password cannot be same as your current password. Please choose a different password.');
         }
-        //Change Password
+
         $user = Auth::user();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return JsonHelper::successResponse('Password changed successfully !');
+
+        return true;
     }
 
     private function uploadAvatar(int $userId, UploadedFile $file, string $imageName): void
@@ -214,15 +216,17 @@ class UserService
         return User::findOrFail($id);
     }
 
-    public function addToFavorite(int $id, Request $request): UserFavorite
+    public function addToFavorite(int $id, $product)
     {
         /** @var User $user */
         $user = User::findOrFail($id);
         DB::beginTransaction();
         try {
-
-            $userFavorite = $user->userFavorites()->create(['product_id' => $request->product_id]);
-//            $userFavorite = $user->favorites()->attach($request->product_id);
+            if (!$user->classFavorite($product->id)){
+                $userFavorite = $user->userFavorites()->create(['product_id' => $product->id]);
+            }else{
+                $userFavorite = $user->favorites()->detach($product->id);
+            }
 
             DB::commit();
 
@@ -255,4 +259,50 @@ class UserService
         $user->requestManagerRole();
     }
 
+    public function addEmail(int $id, string $email)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->email !== $email && User::where('email', $email)->exists()) {
+            throw new \DomainException(trans('auth.email_already_added'));
+        }
+
+        $user->requestEmailAddVerification($email);
+        Session::put('auth', ['email' => $user->email]);
+        Mail::to($user->email)->send(new VerifyMail($user));
+    }
+
+    public function addPhone(int $id, string $phone)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->phone !== $phone && User::where('phone', $phone)->exists()) {
+            throw new \DomainException(trans('auth.phone_already_added'));
+        }
+
+        $user->requestPhoneAddVerification($phone);
+        Session::put('auth', ['phone_number' => $user->phone]);
+        $this->sms->send($user->phone, $user->phone_verify_token);
+    }
+
+    public function verifyEmail(int $id): void
+    {
+        $user = User::findOrFail($id);
+        $user->verifyMail();
+    }
+
+    public function verifyPhone(int $id, int $token): void
+    {
+        $user = User::findOrFail($id);
+
+        if ($token !== (int)$user->phone_verify_token) {
+            throw new \DomainException(trans('auth.incorrect_verify_token'));
+        }
+
+        if ($user->phone_verify_token_expire->lt(Carbon::now())) {
+            throw new \DomainException(trans('auth.token_expired'));
+        }
+
+        $user->verifyPhone();
+    }
 }

@@ -6,7 +6,7 @@
         </div>
         <div class="item">
             <div class="product-img">
-                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail }}" alt=""></a>
+                <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail ?? '' }}" alt=""></a>
             </div>
             <!-- description -->
             <div class="description ">

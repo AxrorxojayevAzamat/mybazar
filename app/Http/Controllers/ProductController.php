@@ -34,6 +34,7 @@ class ProductController extends Controller
         $similarProducts = Product::with(['mainPhoto', 'store'])->where('main_category_id', $product->main_category_id)->active()->limit(10)->get();
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
 
+        $shopProducts = Product::where(['store_id' => $product->store_id])->limit(8)->get();
         $index = 0;
         $length = count($this->times);
         $interestingProducts = null;
@@ -46,7 +47,7 @@ class ProductController extends Controller
             $index++;
         }
 
-        return view('products.show', compact('product', 'otherProducts', 'similarProducts', 'interestingProducts', 'recentProducts'));
+        return view('products.show', compact('product', 'otherProducts', 'similarProducts', 'interestingProducts', 'recentProducts','shopProducts'));
     }
 
     public function addToCart($id)

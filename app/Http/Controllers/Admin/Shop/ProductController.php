@@ -9,6 +9,8 @@ use App\Entity\Shop\Mark;
 use App\Entity\Shop\Photo;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\ProductCategory;
+use App\Entity\Shop\ShopDiscounts;
+use App\Entity\Shop\ProductDiscount;
 use App\Entity\Store;
 use App\Entity\StoreUser;
 use App\Helpers\LanguageHelper;
@@ -19,6 +21,7 @@ use App\Http\Requests\Admin\Shop\Products\UpdateRequest;
 use App\Services\Manage\Shop\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
@@ -107,23 +110,43 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('admin.shop.products.show', compact('product'));
+        if (!Gate::allows('show-own-product', $product)) {
+            abort(404);
+        }
+        $productDiscounts= ProductDiscount::where(['product_id'=>$product->id])->pluck('discount_id');
+        $discounts = Discount::whereIn('id', $productDiscounts)->get();
+        return view('admin.shop.products.show', compact('product','discounts'));
     }
 
     public function edit(Product $product)
     {
+        $store = $product->store;
+        if (!Gate::allows('edit-own-product', $product)) {
+            abort(404);
+        }
+        if ($store) {
+            $discounts = ProductHelper::getDiscounts($store->id);
+        } else {
+            $discounts = [];
+            $store = null;
+        }
         $categories = ProductHelper::getCategoryList();
         $stores = Store::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $brands = Brand::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
         $marks = Mark::orderByDesc('updated_at')->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id');
 
-        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands', 'marks'));
+        return view('admin.shop.products.edit', compact('product', 'categories', 'stores', 'brands', 'marks','store','discounts'));
     }
 
     public function update(UpdateRequest $request, Product $product)
     {
+
+        if (!Gate::allows('edit-own-product', $product)) {
+            abort(404);
+        }
+
+        $product = $this->service->update($product->id, $request);
         try {
-            $product = $this->service->update($product->id, $request);
             session()->flash('message', 'запись обновлён ');
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
@@ -146,6 +169,10 @@ class ProductController extends Controller
 
     public function moderate(Product $product)
     {
+        if (!Gate::allows('alter-products-status')) {
+            abort(404);
+        }
+
         try {
             $this->service->moderate($product->id);
 
@@ -157,9 +184,13 @@ class ProductController extends Controller
 
     public function activate(Product $product)
     {
+        if (!Gate::allows('alter-products-status')) {
+            abort(404);
+        }
+
         try {
             $this->service->activate($product->id);
-            session()->flash('message', 'запись обновлён ');
+            session()->flash('message', 'запись обновлён');
 
             return redirect()->route('admin.shop.products.show', $product);
         } catch (\Exception $e) {
@@ -170,6 +201,10 @@ class ProductController extends Controller
 
     public function draft(Product $product)
     {
+        if (!Gate::allows('alter-products-status')) {
+            abort(404);
+        }
+
         try {
             $this->service->draft($product->id);
             session()->flash('message', 'запись обновлён ');
@@ -183,6 +218,10 @@ class ProductController extends Controller
 
     public function close(Product $product)
     {
+        if (!Gate::allows('close-own-product', $product)) {
+            abort(404);
+        }
+
         try {
             $this->service->close($product->id);
             session()->flash('message', 'запись обновлён ');
@@ -196,6 +235,10 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        if (!Gate::allows('edit-own-product', $product)) {
+            abort(404);
+        }
+
         $product->delete();
         session()->flash('message', 'запись обновлён ');
         return redirect()->route('admin.shop.products.index');
@@ -226,6 +269,10 @@ class ProductController extends Controller
 
     public function removeMainPhoto(Product $product)
     {
+        if (!Gate::allows('edit-own-product', $product)) {
+            abort(404);
+        }
+
         try {
             $this->service->removeMainPhoto($product->id);
             return response()->json('The main photo is successfully deleted!');

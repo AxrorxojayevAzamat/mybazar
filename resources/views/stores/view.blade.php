@@ -1,57 +1,47 @@
 @extends('layouts.app')
 
-@section('title', $store->name)
+@section('title', trans('frontend.title.shop_view'))
 
 @section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/productviewpage.css')}}"> --}}
-    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/shop.css')}}"> --}}
 @endsection
 
 @section('body')
 @section('banner')
-    <!-- Slide banner -->
-    @include ('layouts.slide-banner-catalog')
+    <!-- Slide Banner shop-view -->
+    @include('layouts.slide-banner-shop-view')
+@endsection
+<!-- PRODUCT OF DAY -->
+@include ('layouts.products-of-day')
+
+<!--SHOPS VIEW -->
+<section>
+    <div class="h4-title catalog-view">
+        <h4 class="title">{!! $store->name !!}</h4>
+    </div>
+    <div class="outter-catalog-view">
+        <!-- big filter without title checkbox -->
+        @include('shop.big-filter-without-title-checkbox')
+
+        <div class="wrapper-filtered-items">
+            <nav class=" navbar navbar-expand-custom sort-types">
+                <!--sort-by options  -->
+            @include('layouts.sort-by-options')
+
+            <!-- small filter without title checkbox -->
+                @include('layouts.small-filter-without-title-checkbox')
+            </nav>
+
+            <!-- list mosaic catalog items -->
+        @include('layouts.products-list-grid', ['products' => $products])
+
+        <!-- pagination -->
+            @include('layouts.pagination')
+
+        </div>
+    </div>
+</section>
 @endsection
 
-<!-- product with description -->
-@include('products.single-product-with-des')
 
-<!-- similar products -->
-@include('products.similar-products')
-
-<!-- single-charachteristics-comments btn-->
-{{--@include('products.singlep-charac-com-btn')--}}
-
-{{--<div class="tab-content" id="pills-tabContent">--}}
-{{--    <div class="tab-pane fade show active" id="pills-about-product" role="tabpanel"--}}
-{{--         aria-labelledby="pills-about-product">--}}
-{{--        <!-- about product -->--}}
-{{--        @include('products.full-des-of-singlep')--}}
-{{--    </div>--}}
-{{--    <div class="tab-pane fade" id="pills-characteristics" role="tabpanel" aria-labelledby="pills-characteristics-tab">--}}
-{{--        <!-- full characteristics of single products -->--}}
-{{--        @include('products.full-characteristics-singlep')--}}
-{{--    </div>--}}
-{{--    <div class="tab-pane fade" id="pills-comments" role="tabpanel" aria-labelledby="pills-comments-tab">--}}
-{{--        <!-- full comments -->--}}
-{{--        @include('products.full-comments-singlep')--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-<!-- u will also like -->
-@include ('layouts.carousel-products',
-    ['products' => $interestingProducts, "title" => trans('frontend.product.interesting_products'), 'rate_for' => ['js' => '"I"', 'html' => 'I']])
-{{--        @include('products.u-will-also-like')--}}
-
-<!-- other products of this seller -->
-@include ('layouts.carousel-products',
-    ['products' => $otherProducts, "title" => trans('frontend.product.similar_products'), 'rate_for' => ['js' => '"O"', 'html' => 'O']])
-{{-- @include('products.other-products-of-this-seller') --}}
-
-<!-- recently viewed -->
-@include ('layouts.carousel-products',
-    ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
-{{--    @include('layouts.recently-viewed')--}}
-@endsection
-
-@include('products._scripts')
+@include('shop._scripts')
