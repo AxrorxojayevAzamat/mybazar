@@ -22,6 +22,7 @@ return [
     'users'                         => 'Пользователи',
     'categories'                    => 'Категории',
     'brands'                        => 'Бренды',
+    'all_brands'                    => 'Все бренды',
     'products'                      => 'Продукты',
     'stores'                        => 'Магазины',
     'payments'                      => 'Типы платежей',
