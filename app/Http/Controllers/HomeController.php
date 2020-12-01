@@ -34,6 +34,7 @@ class HomeController extends Controller
             ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
             ->orderByDesc('discount')->limit(9)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
+        $recomended = Product::limit(12)->where('number_of_reviews','>=',30)->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $posts = Post::published()->orderByDesc('created_at')->limit(12)->get();
         $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
@@ -46,7 +47,7 @@ class HomeController extends Controller
 
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
-            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems'));
+            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems','recomended'));
     }
 
 }

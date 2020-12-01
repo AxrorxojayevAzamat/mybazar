@@ -31,7 +31,7 @@
 
     <!-- RECOMMENDED PRODUCTS-->
     @include ('layouts.carousel-products',
-        ['products' => $newProducts, "title" => trans('frontend.recommend'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])   {{--CHANGEABLE--}}
+        ['products' => $recomended, "title" => trans('frontend.recommend'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])   {{--CHANGEABLE--}}
     {{-- @include ('layouts.recommended-products')   CHANGEABLE   TODO: fix --}}
 
     <!--INDEX BLOG-->
