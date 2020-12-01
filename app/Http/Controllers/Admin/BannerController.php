@@ -50,7 +50,8 @@ class BannerController extends Controller
 
     public function edit(Banner $banner)
     {
-        return view('admin.banners.edit', compact('banner'));
+        $categories = ProductHelper::getCategoryList();
+        return view('admin.banners.edit', compact('banner', 'categories'));
     }
 
     public function update(UpdateRequest $request, Banner $banner)

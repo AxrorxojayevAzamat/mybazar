@@ -29,6 +29,9 @@
     </div>
 
     <div>
+        @if ($banner)
+            <img src="{{ $banner->fileCustom }}" alt="">
+        @endif
 {{--        @if ($banner)--}}
 {{--            <img src="{{ $banner->fileOriginal }}" alt="">--}}
 {{--        @endif--}}

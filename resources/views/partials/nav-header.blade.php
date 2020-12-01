@@ -27,9 +27,9 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}"
                            href="{{ route('categories.show', products_path($category)) }}"
-                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{count($category->children)}})"
-{{--                           onmouseover="showBrands({{$category->brands}})"--}}
-                           onmouseout="removeBanner('{{$category->slug}}')">
+                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{$category->brands}})"
+                           onmouseout="removeBanner('{{$category->slug}}')"
+                        >
                             <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
                         </a>
 
@@ -39,9 +39,9 @@
                         @endif
                     </li>
                     @endforeach
-                    <li class="full-image-banner" >
-                        <img id="category_banner" alt="">
-                    </li>
+{{--                    <li class="full-image-banner" >--}}
+{{--                        <img id="category_banner" alt="">--}}
+{{--                    </li>--}}
                 </ul>
             </li>
         </ul>
@@ -69,19 +69,18 @@
     </div>
 </nav>
 <script>
-    function setBanner(photo, slug, numberOfChildren, brands) {
-        console.log(typeof numberOfChildren)
+    function setBanner(photo, slug, brands, all_brands) {
+        console.log(brands)
         $(`#categoryBanner_${slug}`).css('display', 'inline')
-
+        $(`#banner2_${slug}`).css('display', 'list-item')
         $(`#categoryBanner_${slug}`).attr('src', `https://shop.sec.uz${photo}`)
-        if(numberOfChildren !== 0) {
-            console.log(slug)
-            $(`#banner2_${slug}}`).css('display', 'list-item')
-            debugger
+        for(let x of brands) {
+            $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${x.id}/original/${x.logo}" alt="">`)
         }
     }
     function removeBanner(slug) {
         $(`#categoryBanner_${slug}`).css('display', 'none')
-        $(`#banner2_${slug}}`).css('display', 'none')
+        $(`#banner2_${slug}`).css('display', 'none')
+        $(`#banner2_${slug}`).html('<div class="all-brands">{{trans("menu.all_brands")}}</div>')
     }
 </script>

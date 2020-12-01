@@ -55,8 +55,7 @@ class CategoryController extends Controller
 
 
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
-
-//        $banners = Banner::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+        $banners = Banner::where('category_id', $category->id)->where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
 //        unset($banners);
 
