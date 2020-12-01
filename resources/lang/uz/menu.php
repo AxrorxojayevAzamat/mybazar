@@ -22,6 +22,7 @@ return [
     'users'                         => 'Foydalanuvchilar',
     'categories'                    => 'Kategoriyalar',
     'brands'                        => 'Brendlar',
+    'all_brands'                    => 'Brendlar',
     'products'                      => 'Mahsulotlar',
     'stores'                        => 'Do`konlar',
     'payments'                      => 'To`lov turlari',

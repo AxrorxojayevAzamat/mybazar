@@ -190,9 +190,19 @@ nav#main_navbar{
         left:196%;
         width:220px;
         height:100%;
+        column-count: 2;
+        column-fill: auto;
+        column-gap: 0;
+        .all-brands {
+            color: #0042ff;
+            background-color: #fff;
+            padding: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
         img{
           width:100%;
-          height:100%;
+          height:20%;
         }
       }
       .dropdown{
