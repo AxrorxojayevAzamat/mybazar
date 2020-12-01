@@ -243,12 +243,12 @@ class Product extends BaseModel
 
     public function getNameAttribute(): string
     {
-        return LanguageHelper::getName($this);
+        return htmlspecialchars_decode(LanguageHelper::getName($this));
     }
 
     public function getDescriptionAttribute(): string
     {
-        return LanguageHelper::getDescription($this);
+        return htmlspecialchars_decode(LanguageHelper::getDescription($this));
     }
 
     public function getCurrentPriceUzsAttribute(): int
