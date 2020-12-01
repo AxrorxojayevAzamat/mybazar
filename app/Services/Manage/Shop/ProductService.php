@@ -7,7 +7,7 @@ use App\Entity\Category;
 use App\Entity\Shop\Characteristic;
 use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
-use App\Entity\Shop\ShopProductDiscounts;
+use App\Entity\Shop\ProductDiscount;
 use App\Entity\Shop\Value;
 use App\Entity\Store;
 use App\Helpers\ColorHelper;
@@ -40,12 +40,12 @@ class ProductService
         try {
             /* @var $product Product */
             $product = Product::make([
-                'name_uz' => $request->name_uz,
-                'name_ru' => $request->name_ru,
-                'name_en' => $request->name_en,
-                'description_uz' => $request->description_uz ?? null,
-                'description_ru' => $request->description_ru ?? null,
-                'description_en' => $request->description_en ?? null,
+                'name_uz' => strip_tags(htmlspecialchars($request->name_uz)),
+                'name_ru' => strip_tags(htmlspecialchars($request->name_ru)),
+                'name_en' => strip_tags(htmlspecialchars($request->name_en)),
+                'description_uz' => $request->description_uz ? htmlspecialchars($request->description_uz) : null,
+                'description_ru' => $request->description_ru ? htmlspecialchars($request->description_ru) : null,
+                'description_en' => $request->description_en ? htmlspecialchars($request->description_en) : null,
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
@@ -92,12 +92,12 @@ class ProductService
         DB::beginTransaction();
         try {
             $product->update([
-                'name_uz' => $request->name_uz,
-                'name_ru' => $request->name_ru,
-                'name_en' => $request->name_en,
-                'description_uz' => $request->description_uz ?? null,
-                'description_ru' => $request->description_ru ?? null,
-                'description_en' => $request->description_en ?? null,
+                'name_uz' => strip_tags(htmlspecialchars($request->name_uz)),
+                'name_ru' => strip_tags(htmlspecialchars($request->name_ru)),
+                'name_en' => strip_tags(htmlspecialchars($request->name_en)),
+                'description_uz' => $request->description_uz ? htmlspecialchars($request->description_uz) : null,
+                'description_ru' => $request->description_ru ? htmlspecialchars($request->description_ru) : null,
+                'description_en' => $request->description_en ? htmlspecialchars($request->description_en) : null,
                 'slug' => $request->slug,
                 'price_uzs' => $request->price_uzs,
                 'price_usd' => $request->price_usd ?? null,
@@ -119,6 +119,9 @@ class ProductService
 
             $product->productMarks()->delete();
             $this->addMarks($product, $request->marks);
+
+            $product->productDiscounts()->delete();
+            $this->addDiscounts($product, $request->discounts);
 
 
             DB::commit();
@@ -305,28 +308,33 @@ class ProductService
         }
     }
 
-    private function addCategories(Product $product, array $categories): void
+    private function addCategories(Product $product, array $categories = null): void
     {
-        $categories = array_unique($categories);
-        foreach ($categories as $i => $categoryId) {
-            $product->productCategories()->create(['category_id' => $categoryId]);
+        if ($categories) {
+            $categories = array_unique($categories);
+            foreach ($categories as $i => $categoryId) {
+                $product->productCategories()->create(['category_id' => $categoryId]);
+            }
         }
     }
 
     private function addMarks(Product $product, array $marks): void
     {
-        $marks = array_unique($marks);
-        foreach ($marks as $i => $markId) {
-            $product->productMarks()->create(['mark_id' => $markId]);
+        if ($marks) {
+            $marks = array_unique($marks);
+            foreach ($marks as $i => $markId) {
+                $product->productMarks()->create(['mark_id' => $markId]);
+            }
         }
     }
 
-    private function addDiscounts(Product $product, array $discounts): void
+    private function addDiscounts(Product $product, array $discounts = null): void
     {
-        $discounts = array_unique($discounts);
-        $shopProductDiscounts = new ShopProductDiscounts();
-        foreach ($discounts as $i => $discount) {
-            $shopProductDiscounts->create(['product_id' => $product->id,'discount_id' => $discount]);
+        if ($discounts) {
+            $discounts = array_unique($discounts);
+            foreach ($discounts as $i => $discount) {
+                $product->productDiscounts()->create(['discount_id' => $discount]);
+            }
         }
     }
 

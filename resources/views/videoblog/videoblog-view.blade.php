@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Video blog')
+@section('title', trans('frontend.title.video_blog'))
 
 @section('styles')
     <link href="{{asset('css/video-js.css')}}" rel="stylesheet"/>
@@ -17,7 +17,7 @@
 <!-- list of videos -->
 <section>
     <div class="h4-title video-blog">
-        <h4 class="title">Видеоролики</h4>
+        <h4 class="title">@lang('frontend.videos')</h4>
     </div>
     <div class="outter-videoview">
         <form action="#" method="GET">

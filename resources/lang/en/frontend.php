@@ -9,6 +9,7 @@ return [
     'show_more' => 'Show more',
     'clear_list' => 'Clear list',
     'go_to_cart' => 'Go to cart',
+    'cart_none' => 'You have not saved anything to your cart yet',
 
     'color' => 'Color',
     'price' => 'Price',
@@ -16,8 +17,10 @@ return [
     'by_date' => 'By date',
     'by_rating' => 'By rating',
     'by_novelty' => 'By novelty',
+    'by_name' => 'By name',
     'log_in_to_review' => 'Please, log in to send a review!',
     'novelty_upper' => 'NEW',
+    'novelty' => 'New',
     'popular' => 'Popular',
     'recommend' => 'Recommended',
     'compare_products' => 'Compare products',
@@ -32,6 +35,7 @@ return [
     'discount_upper' => 'DISCOUNT',
     'discounts' => 'Promotions and Discounts',
     'profile' => 'Profile',
+    'social_networks' => 'Social networks',
 
     'product' => [
         'price' => ':price <span>sums</span>',
@@ -49,6 +53,9 @@ return [
         'comments' => 'Comments',
         'day_product' => 'PRODUCT OF THE DAY',
         'you_watched' => 'You watched',
+        'shop_product' => 'Shop products',
+        'no_charasteric' => 'There is no characteristic',
+        'all_charasteric' => 'All characteristic',
     ],
 
     'review' => [
@@ -192,8 +199,69 @@ return [
                              Communication, neglecting details, synchronizes the analysis of foreign experience. ',
     ],
 
+    'pages' => [
+        'login_or_register' => 'Login or register',
+        'by_num_phone' => 'By phone number',
+        'get_sms_code' => 'Get SMS code',
+        'login_by' => 'Login with',
+        'login_by_password' => 'Login with password',
+
+        'phone_num_or_email' => 'Phone number or E-mail',
+        'forgot_passwoed' => 'Forgot your password?',
+        'password' => 'Password',
+        'enter' => 'entrance',
+        'remember' => 'Remember',
+
+        'enter_code_from_sms' => 'Enter code from SMS',
+        'send_again_after_59_sec' => 'Resend 59 seconds later',
+    ],
+
+    'title' => [
+        'single_blog_page' => 'Single blog page',
+        'dashboard' => 'Dashboard',
+        'blogs_page' => 'Blogs page',
+        'single_news_page' => 'Single news page',
+        'brands' => 'Brands',
+        'brand_view' => 'Brand view',
+        'news_page' => 'News page',
+        'cart_page' => 'Cart page',
+        'checkout_page' => 'Checkout page',
+        'pay_page' => 'Pay page',
+        'catalog_page' => 'Catalog page',
+        'catalog_section_page' => 'Catalog section page',
+        'compare_page' => 'Compare page',
+        'sms_page' => 'SMS page',
+        'sales_page' => 'Sales page',
+        'sales_view' => 'Sales view',
+        'shop_view' => 'Shop view',
+        'shops_page' => 'Shops page',
+        'delivery_page' => 'Delivery page',
+        'home_page' => 'Home page',
+        'auth_page' => 'Auth page',
+        'mail_page' => 'Mail page',
+        'popular_page' => 'Popular page',
+        'favorites_page' => 'Favorites page',
+        'productviewpage_characteristics' => 'Productviewpage characteristics',
+        'video_blog' => 'Video blog',
+    ],
+
     'blogs' => 'Blogs',
     'videos' => 'Videos',
     'search_blogs' => 'Search blogs',
     'search_videos' => 'Search videos',
+    'show_more' => 'Show more',
+
+    'all_charactires' => 'General characteristics',
+    'reviews' => 'reviews',
+
+    'is_not_verified' => '(is not verified )',
+    'change_email' => 'Change email',
+    'change_phone' => 'Change phone number',
+    'verify_phone' => 'Verify phone number',
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
+    'profile' => 'Profile',
+
+    'products' => 'Products',
+
 ];

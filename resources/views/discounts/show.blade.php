@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sales view')
+@section('title', trans('frontend.title.sales_view'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/sales.css')}}"> --}}

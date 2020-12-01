@@ -43,13 +43,13 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_uz' => 'required|string|max:255',
-            'name_ru' => 'required|string|max:255',
-            'name_en' => 'required|string|max:255',
+            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\'`‘]+$/u'],
+            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/u'],
+            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/'],
             'description_uz' => 'nullable|string',
             'description_ru' => 'nullable|string',
             'description_en' => 'nullable|string',
-            'slug' => 'required|string|max:255|unique:shop_products',
+            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9-]+$/', 'unique:shop_products'],
             'price_uzs' => 'required|numeric|min:0',
             'price_usd' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0',
@@ -64,7 +64,7 @@ class CreateRequest extends FormRequest
             'guarantee' => 'boolean',
             'bestseller' => 'boolean',
             'new' => 'boolean',
-            'categories.*' => 'required|numeric|min:1|exists:categories,id',
+            'categories.*' => 'nullable|numeric|min:1|exists:categories,id',
             'marks.*' => 'numeric|min:1|exists:shop_marks,id',
             'discounts.*' => 'numeric|min:1|exists:discounts,id',
         ];

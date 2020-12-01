@@ -60,4 +60,9 @@ class ProductHelper
         $discountStore = ShopDiscounts::where(['store_id' => $value])->pluck('discount_id');
         return Discount::whereIn('id', $discountStore)->pluck('name_' . LanguageHelper::getCurrentLanguagePrefix(), 'id')->toArray();
     }
+
+    public static function getTwoProduct($id){
+        $product = Product::where(['main_category_id' => $id])->limit(2)->get();
+        return $product;
+    }
 }

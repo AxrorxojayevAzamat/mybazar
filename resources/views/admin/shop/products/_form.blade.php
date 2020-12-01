@@ -105,11 +105,7 @@
                             @endif
                         </div>
                     </div>
-                            {!! Form::hidden('store_id', $store->id, old('store_id', $product ? $product->store_id : null),
-                                ['class'=>'form-control' . ($errors->has('store_id') ? ' is-invalid' : ''), 'required' => true]) !!}
-                            @if ($errors->has('store_id'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('store_id') }}</strong></span>
-                            @endif
+                    <input type="hidden" name="store_id" value="{{ $store->id }}">
                     <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('brand_id', trans('adminlte.brand.name'), ['class' => 'col-form-label']); !!}
@@ -133,7 +129,7 @@
                     <div class="col-md-10">
                         <div class="form-group">
                             {!! Form::label('discounts', trans('adminlte.product.discount').' list', ['class' => 'col-form-label']); !!}
-                            {!! Form::select('discounts[]', $discounts, old('discounts'),
+                            {!! Form::select('discounts[]', $discounts,  old('discounts', $product ? $product->discountsList() : null),
                                  ['class'=>'form-control' . ($errors->has('discounts') ? ' is-invalid' : ''), 'id' => 'discounts','multiple'=> true]) !!}
                             @if ($errors->has('discounts'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('discounts') }}</strong></span>
@@ -198,7 +194,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             {!! Form::label('discount_ends_at_time', '(' . trans('adminlte.time') . ')', ['class' => 'col-form-label']); !!}
-                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('Y-m-d') : null),
+                            {!! Form::time('discount_ends_at_time', old('discount_ends_at_time', $product && $product->discount_ends_at ? $product->discount_ends_at->format('H:i') : null),
                                     ['class'=>'form-control' . ($errors->has('discount_ends_at_time') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('discount_ends_at_time'))
                                 <span

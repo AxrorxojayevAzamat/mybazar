@@ -56,6 +56,18 @@ $(document).ready(function () {
 
     checkCart();
 
+    function writeProductsId(){
+        let cart_products_id = $('#cart_products_id');
+        let saved_carts = localStorage.getItem('product_id');
+        if (saved_carts !== null){
+            saved_carts = saved_carts.slice(0, -1);
+            cart_products_id.val(saved_carts);
+        }else {
+            console.log('error');
+        }
+
+    }
+    writeProductsId();
 
     $("#dropdownComparison").on("click", function () {
         $(".cart-items").fadeOut();
