@@ -13,7 +13,8 @@
 
     <section>
         <div class="h4-title catalog-section">
-            <h4 class="title">{{ $category->name }}</h4>
+            <h4 class="title">@lang('menu.whole_catalog')</h4>
+
         </div>
 
         <div class="outter-catalog-view">
@@ -32,15 +33,15 @@
     </section>
 
     <!-- TOP BRANDS  -->
-    @include ('layouts.top-brands')
+{{--    @include ('layouts.top-brands')--}}
 
     <!-- shops -->
-    <section class="catalog-section-shop">
-        @include ('shop.shops2')
-    </section>
+{{--    <section class="catalog-section-shop">--}}
+{{--        @include ('shop.shops2')--}}
+{{--    </section>--}}
 
     <!-- TOP sales  -->
-    @include ('layouts.top-sales')
+{{--    @include ('layouts.top-sales')--}}
 @endsection
 
 

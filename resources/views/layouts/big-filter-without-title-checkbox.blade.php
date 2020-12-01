@@ -1,7 +1,7 @@
 <form action="?" class="big-filter-without-title-checkbox" id="catalog-filter-form">
     @if (isset($brands))
         @php($brandSlugs = explode(',', request('brands')))
-        <button type="button" class="btn accordion active">@lang('frontend.brand')</button>
+        <button type="button" class="btn accordion active">{{--@lang('frontend.brand')--}} salom</button>
         <div id="filter2" class="panel">
             @foreach($brands as $i => $brand)
                 <div class="custom-control custom-checkbox">
@@ -17,7 +17,7 @@
 
     @if (isset($stores))
         @php($storeSlugs = explode(',', request('stores')))
-        <button type="button" class="btn accordion active">@lang('frontend.stores')</button>
+        <button type="button" class="btn accordion active">{{--@lang('frontend.stores')--}}salom2</button>
         <div id="filter2" class="panel">
             @foreach ($stores as $i => $store)
                 <div class="custom-control custom-checkbox">
