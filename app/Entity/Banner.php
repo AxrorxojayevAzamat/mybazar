@@ -122,8 +122,8 @@ class Banner extends BaseModel
     public static function typeList(): array
     {
         return [
-            self::TYPE_SHORT => trans('adminlte.brand.short'),
-            self::TYPE_LONG => trans('adminlte.brand.long'),
+            self::TYPE_SHORT => trans('adminlte.brand.short') . ' 487x300px',
+            self::TYPE_LONG => trans('adminlte.brand.long') . ' 1530x200px',
         ];
     }
 
