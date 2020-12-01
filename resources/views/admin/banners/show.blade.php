@@ -42,6 +42,7 @@
                             <td><a href="{{ route('admin.categories.show', $banner->category) }}">{{ $banner->category->name }}</a></td>
                         </tr>
                         <tr><th>@lang('adminlte.status')</th><td>{!! $banner->statusLabel() !!}</td></tr>
+                        <tr><th>@lang('adminlte.type')</th><td>{!! $banner->typeName() !!}</td></tr>
                         </tbody>
                     </table>
                 </div>

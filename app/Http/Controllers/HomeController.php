@@ -37,7 +37,9 @@ class HomeController extends Controller
             ->limit(9)
             ->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
-        $threeBanners = Banner::published()->inRandomOrder()->limit(3)->get();
+        $threeBanners = Banner::published()->where('type', Banner::TYPE_SHORT)->inRandomOrder()->limit(3)->get();
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->inRandomOrder()->first();
+        $longBanner2 = Banner::published()->where('type', Banner::TYPE_LONG)->where('id', '!=', $longBanner1->id)->inRandomOrder()->first();
         $posts = Post::published()->orderByDesc('created_at')->limit(6)->get();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $videos = Video::published()->orderByDesc('created_at')->limit(12)->get();
@@ -48,7 +50,8 @@ class HomeController extends Controller
         $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
-            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems'));
+            'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems',
+            'longBanner1', 'longBanner2'));
     }
 
 }

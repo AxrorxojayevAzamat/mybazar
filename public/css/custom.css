@@ -139,12 +139,12 @@ form.big-filter-without-title-checkbox button:after {
 #carouselIndex .carousel-control-next-icon {
     background:url("../images/slider_next.svg");
 }
-.full-banner1{
-    background:url('../images/fullbanner1.jpg');
-}
-.full-banner2{
-    background:url('../images/fullbanner2.jpg');
-}
+/*.full-banner1{*/
+/*    background:url('../images/fullbanner1.jpg');*/
+/*}*/
+/*.full-banner2{*/
+/*    background:url('../images/fullbanner2.jpg');*/
+/*}*/
 .catalog-banner{
     background:url('../images/catalog-view-banner.png');
 }

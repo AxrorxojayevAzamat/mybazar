@@ -27,6 +27,7 @@ class ImageHelper
     const FOLDER_PROFILES = 'profiles';
 
     const TYPE_THUMBNAIL = 'thumbs';
+    const TYPE_CUSTOM = 'custom';
     const TYPE_ORIGINAL = 'original';
 
     public static function uploadResizedImage(int $id, string $folderName, UploadedFile $image, string $imageName = null): string
@@ -48,6 +49,18 @@ class ImageHelper
 
         $resizeImage = Image::make($image->getRealPath());
         $resizeImage->resize(256, 192, function(Constraint $constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath . '/' . $imageName);
+    }
+
+    public static function saveCustom(int $id, string $folderName, UploadedFile $image, string $imageName, int $width, int $height)
+    {
+        $destinationPath = self::getCustomPath($id, $folderName);
+
+        self::makeDirectory($destinationPath);
+
+        $resizeImage = Image::make($image->getRealPath());
+        $resizeImage->resize($width, $height, function(Constraint $constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $imageName);
     }
@@ -80,6 +93,11 @@ class ImageHelper
     public static function getThumbnailPath(int $id, string $folderName)
     {
         return self::getStoragePath($id, $folderName, self::TYPE_THUMBNAIL);
+    }
+
+    public static function getCustomPath(int $id, string $folderName)
+    {
+        return self::getStoragePath($id, $folderName, self::TYPE_CUSTOM);
     }
 
     public static function getOriginalPath(int $id, string $folderName)

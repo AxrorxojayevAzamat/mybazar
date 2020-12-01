@@ -17,6 +17,7 @@ use Illuminate\Validation\Rule;
  * @property string $slug
  * @property int $category_id
  * @property int $status
+ * @property int $type
  * @property \Illuminate\Http\UploadedFile $file
  *
  * @property Banner $banner
@@ -39,6 +40,7 @@ class UpdateRequest extends FormRequest {
             'slug' => ['required', 'string', 'max:255', Rule::unique('banners')->ignore($this->banner->id)],
             'category_id' => 'required|numeric|min:1|exists:categories,id',
             'status' => ['required', 'numeric', Rule::in(array_keys(Banner::statusList()))],
+            'type' => ['required', 'numeric', Rule::in(array_keys(Banner::typeList()))],
             'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

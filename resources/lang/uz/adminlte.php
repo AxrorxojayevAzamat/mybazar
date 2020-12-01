@@ -147,6 +147,8 @@ return [
         'add' => 'Brend qo`shmoq',
         'name' => 'Brend',
         'choose' => 'Brend tanlamoq',
+        'short' => 'Kalta',
+        'long' => 'Uzun',
     ],
 
     'store' => [
