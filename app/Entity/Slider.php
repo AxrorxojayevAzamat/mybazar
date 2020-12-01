@@ -74,6 +74,8 @@ class Slider extends BaseModel
     }
 
     ###########################################
+
+
     ########################################### Relations
 
     public function createdBy()

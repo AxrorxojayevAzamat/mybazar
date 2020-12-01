@@ -3,7 +3,7 @@
         <div class="three-small-banners">
             @foreach($threeBanners as $banners)
             <div class="first">
-                <img src="{{ $banners->fileOriginal }}" alt="">
+                <img src="{{ $banners->fileCustom }}" alt="">
                 <div class="text-primary">{!! $banners->title !!}</div>
                 <button class="btn-yellow"><a href="{{ $banners->url }}">Подробно</a></button>
             </div>

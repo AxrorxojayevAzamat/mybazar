@@ -886,8 +886,12 @@ form.big-filter-without-title-checkbox{
         font-size:18px;
         padding:10px 0;
         margin-bottom:1%;
-        .custom-conrol{
+        .custom-control{
             margin-bottom:1.5%;
+            @include displayFlex(space-between, column, flex-start);
+            a{
+                display: none;
+            }
         }
         .outter-range-slider{
             display: flex;
@@ -907,12 +911,17 @@ form.big-filter-without-title-checkbox{
                 }
             }
         }
-        a.show-more{
+        .show-more{
+            position:relative;
+            cursor:pointer;
             padding-left:30px;
             color:$title_color;
             font-size:18px;
             margin-top:1%;
             text-decoration: underline;
+            &:hover{
+                color:grey;
+            }
         }
 
     }
@@ -929,100 +938,100 @@ form.big-filter-without-title-checkbox{
         font-weight:bold;
     }
 }
-form.big-filter-with-title-checkbox{
-    width:18%;
-    margin-top:50px;
-    text-align: start;
-    @include displayFlex(flex-start, column, flex-start);
-    button{
-        width:100%;
-        background:transparent;
-        border:none;
-        border-bottom:1px solid $link_hover_color;
-        cursor: pointer;
-        padding: 18px 0;
-        outline: none;
-        font-size: 18px;
-        transition: 0.4s;
-        text-align:left;
-        position:relative;
-        @include fontBold;
-        &:after{
-            width: 10px;
-            height: 10px;
-            position:absolute;
-            top:50%;
-            right:10px;
-        }
-        &.active:after{
-            right:-10px;
-        }
-    }
-    .panel{
-        width:100%;
-        display: block;
-        font-size:18px;
-        padding:10px 0;
-        margin-bottom:1%;
-        .custom-conrol{
-            margin-bottom:1.5%;
-        }
-        .outter-range-slider{
-            display: flex;
-            flex-flow: column;
-            justify-content: center;
-            margin:0 !important;
-            span{
-                font-size:18px;
-                line-height: 40px;
-            }
-            .form-group{
-                @include displayFlex(space-between,row, center);
-                input{
-                    width:45%;
-                    color:$title_color;
-                    border-radius:12px;
-                }
-            }
-        }
-        a.show-more{
-            padding-left:30px;
-            color:$title_color;
-            font-size:18px;
-            margin-top:1%;
-            text-decoration: underline;
-        }
-
-    }
-    input#submit{
-        background:$item_price_color;
-        color:white;
-        font-size:16px;
-        padding:15px 0;
-        width:100%;
-        white-space:nowrap;
-        text-align:center;
-        border-radius:23px;
-        margin:15% auto 0;
-        font-weight:bold;
-    }
-    .filter-item{
-        position:relative;
-        width:100%;
-        .checkAll-first-label{
-            position:absolute;
-            left:0;
-            top:0;
-            &:after,
-            &:before{
-                position:absolute;
-                top:25px;
-                left:-5px;
-            }
-        }
-
-    }
-}
+// form.big-filter-with-title-checkbox{
+//     width:18%;
+//     margin-top:50px;
+//     text-align: start;
+//     @include displayFlex(flex-start, column, flex-start);
+//     button{
+//         width:100%;
+//         background:transparent;
+//         border:none;
+//         border-bottom:1px solid $link_hover_color;
+//         cursor: pointer;
+//         padding: 18px 0;
+//         outline: none;
+//         font-size: 18px;
+//         transition: 0.4s;
+//         text-align:left;
+//         position:relative;
+//         @include fontBold;
+//         &:after{
+//             width: 10px;
+//             height: 10px;
+//             position:absolute;
+//             top:50%;
+//             right:10px;
+//         }
+//         &.active:after{
+//             right:-10px;
+//         }
+//     }
+//     .panel{
+//         width:100%;
+//         display: block;
+//         font-size:18px;
+//         padding:10px 0;
+//         margin-bottom:1%;
+//         .custom-conrol{
+//             margin-bottom:1.5%;
+//         }
+//         .outter-range-slider{
+//             display: flex;
+//             flex-flow: column;
+//             justify-content: center;
+//             margin:0 !important;
+//             span{
+//                 font-size:18px;
+//                 line-height: 40px;
+//             }
+//             .form-group{
+//                 @include displayFlex(space-between,row, center);
+//                 input{
+//                     width:45%;
+//                     color:$title_color;
+//                     border-radius:12px;
+//                 }
+//             }
+//         }
+//         a.show-more{
+//             padding-left:30px;
+//             color:$title_color;
+//             font-size:18px;
+//             margin-top:1%;
+//             text-decoration: underline;
+//         }
+       
+//     }
+//     input#submit{
+//         background:$item_price_color;
+//         color:white;
+//         font-size:16px;
+//         padding:15px 0;
+//         width:100%;
+//         white-space:nowrap;
+//         text-align:center;
+//         border-radius:23px;
+//         margin:15% auto 0;
+//         font-weight:bold;
+//     }
+//     .filter-item{
+//         position:relative;
+//         width:100%;
+//         .checkAll-first-label{
+//             position:absolute;
+//             left:0;
+//             top:0;
+//             &:after,
+//             &:before{
+//                 position:absolute;
+//                 top:25px;
+//                 left:-5px;
+//             }
+//         }
+        
+//     }
+// }
 form.big-filter-with-listof-checkbox{
     width:18%;
     margin-top:5%;
