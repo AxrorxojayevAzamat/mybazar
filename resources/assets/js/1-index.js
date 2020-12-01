@@ -88,44 +88,57 @@ $(document).ready(function () {
 
     // main search select 
     $('.select-main-search').niceSelect();
+
+    // display filter items with <a> tag and show-more btn
+    var showDefault = 5;
+    var text= ['Скрыть', 'Показать еще'];
+    $('.panel .custom-control').each(function(){
+        var item = $(this).find('a');
+        
+        if(item.length > showDefault){
+            //show only 5 items
+            for(var i=0; i<showDefault; i++){
+                $(item[i]).show().addClass('show');
+            }
+            //if items more than 5, then insert button show-more
+            var btn =$("<div>", {
+                text:text[1],
+                "class":"btn show-more",
+                click:function(){
+                    item.not('.show').stop().slideToggle(500, function() {
+                        btn.text(text[+$(this).is(":hidden")])
+                    })
+                }
+            }).appendTo(this)
+        }else{
+            $(item).show();
+        }  
+    });
+
+    // display filter items with checkbox tag and show-more btn
+    $('.panel').each(function(){
+        var item = $(this).find('.custom-control');
+        
+        if(item.length > showDefault){
+            //show only 5 items
+            for(var i=0; i<showDefault; i++){
+                $(item[i]).show().addClass('show');
+            }
+            //if items more than 5, then insert button show-more
+            var btn =$("<div>", {
+                text:text[1],
+                "class":"btn show-more",
+                click:function(){
+                    item.not('.show').stop().slideToggle(500, function() {
+                        btn.text(text[+$(this).is(":hidden")])
+                    })
+                }
+            }).appendTo(this)
+        }else{
+            $(item).show();
+        }  
+    });
     
-    // $(function(){
-    //     var showMax = 5;
-    //     var text = ["Скрыть", "Показать еще"];
-
-    //     $('[data-show-wrapper]').each(function() {
-    //         var link = $(this).find("[data-show-elem]");
-    //         if (link.length > showMax) {
-    //             link = link.slice(showMax).hide();
-    //             var btn = $("<div>", {
-    //                 text: text[1],
-    //                 "class": "btn gray see-more",
-    //                 click: function() {
-    //                     link.stop().slideToggle(500, function() {
-    //                         btn.text(text[+$(this).is(":hidden")])
-    //                     })
-    //                 }
-    //             }).appendTo(this)
-    //         }
-    //     });
-    // });
-
-    // $(".panel .custom-checkbox a:lt(5)").show();
-    // $(".show-more").click( function () {
-    //     var numElem = document.getElementsByClassName('custom-checkbox').length();
-    // });
-
-
-    //  show more on filter
-     $(".show-more").click( function () {
-        if($(this.previousSibling.previousSibling).hasClass("show-more-height")) {
-            $(this).text("Cкрыть");
-        } else {
-            $(this).text("Показать еще");
-        }
-        $(this.previousSibling.previousSibling).toggleClass("show-more-height");
-    }); 
-
     // выбрать все в фильтре чекбокс
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){

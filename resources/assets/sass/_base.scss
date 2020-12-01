@@ -879,12 +879,9 @@ form.big-filter-without-title-checkbox{
         margin-bottom:1%;
         .custom-control{
             margin-bottom:1.5%;
-            &.show-more-height{
-                height:100px;
-                overflow:hidden;
-            }
+            @include displayFlex(space-between, column, flex-start);
             a{
-                display: block;
+                display: none;
             }
         }
         .outter-range-slider{

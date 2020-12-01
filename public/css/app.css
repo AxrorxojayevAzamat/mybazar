@@ -1951,15 +1951,23 @@ form.big-filter-without-title-checkbox .panel {
 
 form.big-filter-without-title-checkbox .panel .custom-control {
   margin-bottom: 1.5%;
-}
-
-form.big-filter-without-title-checkbox .panel .custom-control.show-more-height {
-  height: 100px;
-  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 form.big-filter-without-title-checkbox .panel .custom-control a {
-  display: block;
+  display: none;
 }
 
 form.big-filter-without-title-checkbox .panel .outter-range-slider {
@@ -4589,7 +4597,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 }
 
 #products-of-day .product-item .product-info .product-image img {
-  width: auto;
+  width: 100%;
   height: auto;
 }
 
