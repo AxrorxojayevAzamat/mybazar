@@ -193,11 +193,11 @@ nav#main_navbar{
         column-count: 1;
         column-fill: auto;
         column-gap: 0;
-        background-color: #fff;
+        background-color: transparent;
         padding: 10px;
         .all-brands {
             background-color: #fff;
-            padding: 5px;
+            padding: 5px 0;
             width: 100%;
             a {
                 color: #0042ff;
