@@ -140,7 +140,7 @@ $(document).ready(function () {
                 success: function (data) {
                     let body_cart = '';
                     console.log(data.data)
-                    if (data.data == 'error' || data.data.length == 0){
+                    if (data.data == 'error'){
                         $('#goToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
