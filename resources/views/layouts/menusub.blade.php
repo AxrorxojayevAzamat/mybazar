@@ -15,21 +15,21 @@
                 @include('layouts.menusub', ['children' => $children[$i]->children])
             @endif
         </li>
-        <li class="full-image-banner">
-            <img src="{{asset('images/white.png')}}" id="categoryBanner_{{$child->slug}}" alt="">
+        <li class="full-image-banner" id="full-image-banner_{{$child->slug}}">
+{{--            <img src="{{asset('images/proz.jpg')}}" id="categoryBanner" alt="">--}}
         </li>
         <li id="banner2_{{$child->slug}}" class="full-image-banner2">
-            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>
+{{--            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>--}}
         </li>
     @endforeach
 
     @if (!$banner)
         @php($banner = true)
-        <li class="full-image-banner">
-            <img src="{{asset('images/white.png')}}" id="categoryBanner_{{$category->slug}}" alt="">
+        <li class="full-image-banner" id="full-image-banner_{{$category->slug}}">
+{{--            <img src="{{asset('images/proz.jpg')}}" id="categoryBanner" alt="">--}}
         </li>
         <li id="banner2_{{$category->slug}}" class="full-image-banner2">
-            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>
+{{--            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>--}}
         </li>
     @endif
 </ul>

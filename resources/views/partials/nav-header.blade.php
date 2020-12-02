@@ -71,9 +71,10 @@
 <script>
     function setBanner(photo, slug, brands) {
         console.log(brands)
-        $(`#categoryBanner_${slug}`).css('display', 'inline')
-        $(`#banner2_${slug}`).css('display', 'list-item')
-        $(`#categoryBanner_${slug}`).attr('src', `https://shop.sec.uz${photo}`)
+        $(`#full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
+        $(`#full-image-banner_${slug} img`).css('display', 'inline')
+        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
+        $(`#banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff'})
         for(let i=0; i < 4; i++) {
             if(brands[i]) {
                 $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${brands[i].id}/original/${brands[i].logo}" alt="">`)
@@ -81,7 +82,7 @@
         }
     }
     function removeBanner(slug) {
-        $(`#categoryBanner_${slug}`).css('display', 'none')
+        $(`#full-image-banner_${slug} img`).css('display', 'none')
         $(`#banner2_${slug}`).css('display', 'none')
         $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
     }
