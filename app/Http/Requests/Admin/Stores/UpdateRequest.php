@@ -31,9 +31,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\'`‘]+$/u'],
-            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/u'],
-            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/'],
+            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s\'`‘]+$/u'],
+            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/u'],
+            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/'],
             'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9-]+$/', Rule::unique('stores')->ignore($this->store->id)],
             'logo' => 'image|mimes:jpeg,png,jpg',
             'payments.*' => 'numeric|min:1|exists:payments,id',
