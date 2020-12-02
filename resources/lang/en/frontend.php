@@ -263,5 +263,6 @@ return [
     'profile' => 'Profile',
 
     'products' => 'Products',
+    'ltd' => 'LTD',
 
 ];

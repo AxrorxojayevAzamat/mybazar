@@ -102,10 +102,10 @@
                 <a href="https://www.instagram.com" target="_blank"><i class="mbinstagram"></i></a>
             </div>
             <div class="contacts">
-                <a href="tel:" class="bold tel">+998 92 123 45 67</a>
-                <a href="info@mybazar.com" class="email" target="_blank">info@mybazar.com</a>
+                <a href="tel:+998921234567" class="bold tel">+998 92 123 45 67</a>
+                <a href="mailto:info@mybazar.com" class="email" target="_blank">info@mybazar.com</a>
             </div>
         </div>
     </div>
-    <p>СП ООО "MyBazar" - 2020. @lang('footer.all_rights_reserved')</p>
+    <p>@lang('frontend.ltd') "MyBazar" - 2020. @lang('footer.all_rights_reserved')</p>
 </footer>

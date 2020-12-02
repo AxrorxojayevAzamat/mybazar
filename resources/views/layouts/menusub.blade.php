@@ -19,7 +19,7 @@
             <img src="{{asset('images/white.png')}}" id="categoryBanner_{{$child->slug}}" alt="">
         </li>
         <li id="banner2_{{$child->slug}}" class="full-image-banner2">
-            <div class="all-brands">{{trans('menu.all_brands')}}</div>
+            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>
         </li>
     @endforeach
 
@@ -29,7 +29,7 @@
             <img src="{{asset('images/white.png')}}" id="categoryBanner_{{$category->slug}}" alt="">
         </li>
         <li id="banner2_{{$category->slug}}" class="full-image-banner2">
-            <div class="all-brands">{{trans('menu.all_brands')}}</div>
+            <div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>
         </li>
     @endif
 </ul>

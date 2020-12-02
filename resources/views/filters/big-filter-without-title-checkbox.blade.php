@@ -114,5 +114,5 @@
             <label class="custom-control-label" for="smallcustomCheck5-5">Curved</label>
         </div>
     </div>
-    <input type="submit" id="submit" value="Применить фильтр">
+    <input type="submit" id="submit" value="@lang('frontend.apply_filter')">
 </form>
