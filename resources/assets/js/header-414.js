@@ -115,14 +115,14 @@ $(document).ready(function () {
                     $('#cart_none').hide();
                     $('#card_body').show();
                     let body_cart = '';
-                    console.log(data.products.length);
-                    for (let i = 0; i < data.products.length; i++) {
-                        // console.log(data.images[i]);
-                        body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
-                            '<img src="{{'+ data.products[i] +'->mainPhoto->fileOriginal}}"></a></div><div class="description">' +
-                            '<a href="/products/show/' + data.products[i].id + '"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
-                            '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
-                            '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
+                    console.log(data.data.length);
+                    let origin = window.location.origin;
+                    for (let i = 0; i < data.data.length; i++) {
+                        body_cart += '<li class="item" id="header'+ data.data[i].id + '" ><div class="product-img"><a href="#">' +
+                            '<img src="'+ origin + data.data[i].main_photo +'"></a></div><div class="description">' +
+                            '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
+                            '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
+                            '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
                             '<i class="mbexit_mobile"></i></button> </li>';
                     }
 
@@ -140,7 +140,7 @@ $(document).ready(function () {
                 success: function (data) {
                     let body_cart = '';
                     console.log(data.data)
-                    if (data.data == 'error' || data.products.length == 0){
+                    if (data.data == 'error' || data.data.length == 0){
                         $('#goToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
@@ -149,13 +149,14 @@ $(document).ready(function () {
                         $('#goToCart').show();
                         $('#cart_none').hide();
                         $('#card_body').show();
-                        for (let i = 0; i < data.products.length; i++) {
-                            // console.log(data.products[i].mainPhoto);
-                            body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
-                                '<img src="{{'+ data.products[i] +'->mainPhoto->fileOriginal}}"></a></div><div class="description">' +
-                                '<a href="/products/show/' + data.products[i].id + '"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
-                                '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
-                                '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
+                        console.log(data.data.length);
+                        let origin = window.location.origin;
+                        for (let i = 0; i < data.data.length; i++) {
+                            body_cart += '<li class="item" id="header'+ data.data[i].id + '" ><div class="product-img"><a href="#">' +
+                                '<img src="' + origin + data.data[i].main_photo + '"></a></div><div class="description">' +
+                                '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
+                                '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
+                                '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
                                 '<i class="mbexit_mobile"></i></button> </li>';
                         }
                     }
