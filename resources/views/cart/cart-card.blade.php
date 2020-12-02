@@ -4,7 +4,7 @@
     </div>
     <!-- description -->
     <div class="description ">
-        <h6 class="title">{{ $product->name }}</h6>
+        <a href="{{ route('products.show', $product) }}"><h6 class="title">{{ $product->name }}</h6></a>
         <p class="sub-title">{{ $product->name }}</p>
         <div class="current-old-price horizontal">
             <h5 class="price">{{ $product->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>

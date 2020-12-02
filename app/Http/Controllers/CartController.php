@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entity\Shop\Cart;
 use App\Entity\Shop\Product;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,6 @@ class CartController extends Controller
             $cart_product_total = 0;
 
             foreach ($products as $i => $product) {
-//            dd($product);
                 $cart_product_weight += $product->weight;
                 $cart_product_total += $product->price_uzs;
                 $cart_product_discount += $product->discount;
@@ -31,7 +31,6 @@ class CartController extends Controller
 
             $cart_product_discount_amount = $cart_product_total * $cart_product_discount;
             $cart_product_total = $cart_product_total - $cart_product_discount_amount;
-//        dd($cart_product_id);
 
             return view('cart.cart', compact('products', 'cart_product_total',
                 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
@@ -102,9 +101,10 @@ class CartController extends Controller
 
 
             return ['message' => 'success'];;
+        }else{
+            return ['message' => 'error'];
         }
 
-        return ['message' => 'error'];
     }
 
     public function remove(Request $request)
@@ -144,10 +144,17 @@ class CartController extends Controller
 
         }else{
             if ($request->has('product_id')){
-
                 $products = Product::whereIn('id', $request->product_id)->get();
+                $product_id = [];
+
+                foreach ($products as $i => $product){
+                    $product_id[$i] = $product->id;
+                }
+//                $images = ImageHelper::whereIn('product_id', $product_id)->get();
+
                 return response()->json([
                     'products' => $products,
+//                    'images' => $images
                 ]);
 
             }else{

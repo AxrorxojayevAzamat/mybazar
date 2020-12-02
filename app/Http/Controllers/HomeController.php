@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->limit(9)
             ->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
-        $recomended = Product::limit(12)->where('number_of_reviews','>=',30)->get();
+        $recommended = Product::limit(12)->where('number_of_reviews','>=',30)->get();
         $threeBanners = Banner::published()->where('type', Banner::TYPE_SHORT)->inRandomOrder()->limit(3)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->inRandomOrder()->first();
         $longBanner2 = Banner::published()->where('type', Banner::TYPE_LONG)
@@ -53,7 +53,7 @@ class HomeController extends Controller
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
             'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems',
-            'longBanner1', 'longBanner2', 'recomended'));
+            'longBanner1', 'longBanner2', 'recommended'));
     }
 
 }

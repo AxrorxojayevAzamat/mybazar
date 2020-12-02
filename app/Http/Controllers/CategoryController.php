@@ -29,18 +29,24 @@ class CategoryController extends Controller
     {
         $category = Category::where(['parent_id' => null])->get();
         $categories = $category;
-//        dd($category);
-
-        $brands = Brand::all();
-        $stores = Store::all();
+        $query = Product::orderByDesc('created_at');
 
 
-        return view('catalog.catalog-section', compact('category', 'brands', 'stores', 'categories'));
+        $posts = Post::published()->orderByDesc('updated_by')->get();
+        $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
+        $banner = $banners->isNotEmpty() ? $banners->random() : null;
+        $brands = Brand::orderByDesc('created_at')->limit(24)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
+        $newProducts = $query->limit(12)->where(['new' => true])->get();
+
+
+        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
+
     }
 
     public function show(Request $request, ProductsPath $path)
     {
-//        dd($path);
         $category = $path->category;
         if ($category->children->isEmpty()) {
             return $this->childCategoryShow($request, $category);
@@ -52,18 +58,18 @@ class CategoryController extends Controller
     private function parentCategoryShow(Request $request, Category $category)
     {
         $categories = $category->children()->get()->toTree();
-
+        $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
 
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $banners = Banner::where('category_id', $category->id)->where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
-//        unset($banners);
+        $brands = Brand::orderByDesc('created_at')->limit(24)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
+        $newProducts = $query->limit(12)->where(['new' => true])->get();
 
-//        $brands = Brand::all();
-//        $stores = Store::all();
 
-
-        return view('catalog.catalog-section', compact('categories', 'posts'));
+        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
 
     }
 
