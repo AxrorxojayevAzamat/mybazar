@@ -1,7 +1,7 @@
 @if($brands)
     <section>
         <div class="top-brands">
-            <h4 class="title">Топ бренды</h4>
+            <h4 class="title">@lang('frontend.nav.top_brands')</h4>
             <!-- responsive one-row -->
             <div class="one-row-brands owl-carousel owl-theme">
                 @foreach($brands as $brand)

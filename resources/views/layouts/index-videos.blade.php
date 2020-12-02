@@ -1,7 +1,7 @@
 <section>
     <div class="videos">
         <div class="h4-title">
-            <h4 class="title">Видеоролики</h4>
+            <h4 class="title">@lang('frontend.videos')</h4>
         </div>
         <div class="outter-players">
             <div class="all-players owl-carousel owl-theme">

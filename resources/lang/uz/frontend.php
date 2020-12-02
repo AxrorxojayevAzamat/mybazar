@@ -73,7 +73,7 @@ return [
         'checkout' => 'Buyurtma',
         'pay' => 'To‘lov usuli',
         'categories' => 'Turkumlar',
-        'compare' => 'Solishtirish',
+        'compare' => 'Taqqoslash',
         'delivery' => 'Yetkazib berish usullari',
         'favorites' => 'Sevimlilar',
         'popular' => 'Mashxurlar',
@@ -226,7 +226,7 @@ return [
         'pay_page' => 'Tekshirish sahifasi',
         'catalog_page' => 'Katalog sahifasi',
         'catalog_section_page' => 'Katalog bo\'limi sahifasi',
-        'compare_page' => 'Solishtirish sahifasi',
+        'compare_page' => 'Taqqoslash sahifasi',
         'sms_page' => 'SMS sahifasi',
         'sales_page' => 'Sotish sahifasi',
         'sales_view' => 'Sotishni ko\'rish',
@@ -260,5 +260,6 @@ return [
     'profile' => 'Profil',
 
     'products' => 'Tovarlar',
+    'ltd' => 'MChJ',
 
 ];

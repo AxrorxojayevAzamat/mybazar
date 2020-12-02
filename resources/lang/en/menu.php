@@ -22,7 +22,7 @@ return [
     'users'                         => 'Users',
     'categories'                    => 'Categories',
     'brands'                        => 'Brands',
-    'all_brands'                    => 'All brands',
+    'all_brands'                    => 'ALL BRANDS',
     'products'                      => 'Products',
     'stores'                        => 'Stores',
     'payments'                      => 'Payment types',

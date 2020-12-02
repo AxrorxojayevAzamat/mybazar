@@ -5,7 +5,7 @@
         var productsIterator = products.length ? products.entries() : null;
         function ratingProduct(type, element, num) {
             $('#rateYo_' + type + num).rateYo({
-                rating: element.rating,
+                rating: element.rating || 0.1,
                 readOnly: true,
                 starWidth: "24px",
                 normalFill: "#ddd",

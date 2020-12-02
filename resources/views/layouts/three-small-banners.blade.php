@@ -5,7 +5,7 @@
             <div class="first">
                 <img src="{{ $banners->fileCustom }}" alt="">
                 <div class="text-primary">{!! $banners->title !!}</div>
-                <button class="btn-yellow"><a href="{{ $banners->url }}">Подробно</a></button>
+                <button class="btn-yellow"><a href="{{ $banners->url }}">@lang('frontend.cart.in_detail')</a></button>
             </div>
             @endforeach
 {{--            <div class="second">--}}
