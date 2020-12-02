@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Entity\Shop\Cart;
 use App\Entity\Shop\Product;
 use App\Helpers\ImageHelper;
+use App\Http\Resources\Shop\CartResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class CartController extends Controller
 {
@@ -144,18 +146,13 @@ class CartController extends Controller
 
         }else{
             if ($request->has('product_id')){
-                $products = Product::whereIn('id', $request->product_id)->get();
-                $product_id = [];
+//                dd($request->product_id[0]);
+                $product_id = $request->product_id[0];
+                $products = CartResource::collection(Product::where('id', $product_id)->get());
 
-                foreach ($products as $i => $product){
-                    $product_id[$i] = $product->id;
-                }
-//                $images = ImageHelper::whereIn('product_id', $product_id)->get();
+//                dd($products);
 
-                return response()->json([
-                    'products' => $products,
-//                    'images' => $images
-                ]);
+                return $products;
 
             }else{
                 return ['data' => 'error'];
