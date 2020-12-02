@@ -11,9 +11,9 @@
             <!-- <h6 class="old-price">855 790 <span>сум</span></h6> -->
         </div>
         <div class="count-div"> {{--TODO: make counter for payment--}}
-            <i class="mbdeleteone"></i>
-            <div class="number">1</div>
-            <i class="mbaddone"></i>
+            <i class="mbdeleteone" onclick="quantityCounter({{ $product->id }}, 'delete')"></i>
+            <div class="number" id="{{ $product->id }}-cartCounter">1</div>
+            <i class="mbaddone" onclick="quantityCounter({{ $product->id }}, 'add')"></i>
         </div>
         <div class="item-action-icons">
             <div class="libra" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"

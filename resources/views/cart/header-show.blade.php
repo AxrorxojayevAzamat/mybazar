@@ -1,5 +1,7 @@
 {{--@if(session('cart'))--}}
-<a href="#" id="dropdownCart" class="dropdownToggle"><i class="mbcart"><span>{{ count((array) session('cart')) }}</span></i> @lang('menu.carts')</a>
+
+
+<a href="#" id="dropdownCart" class="dropdownToggle"><i class="mbcart"><span class="{{isset($gCartCount) ? count($gCartCount) > 0 ? 'counter' : '' : ''}}">{{ isset($gCartCount) ? count($gCartCount) : '' }}</span></i> @lang('menu.carts')</a>
 <div class="cart-items" id="cartItems">
     <ul class="selected-items" id="card_body">
 
@@ -18,6 +20,8 @@
 
 <script>
 
+    let counterCartNumber = {!! isset($gCartCount) ? count($gCartCount) : '' !!}
+
     function removing(id){
         let product_id = {};
         product_id.data = [];
@@ -29,8 +33,26 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
+                let counterCart = $('.counter');
                 if (data.data == 'success'){
                     $('#header' + id).hide();
+                    if (counterCartNumber > 0){
+                        counterCartNumber = counterCartNumber - 1;
+                        counterCart.text(counterCartNumber);
+                        if(counterCartNumber === 0){
+                            $('#goToCart').hide();
+                            $('#cart_none').show();
+                            $('#card_body').hide();
+                            $('.mbcart span').removeClass('counter')
+                        }else{
+                            return true;
+                        }
+                    }else{
+                        $('#goToCart').hide();
+                        $('#cart_none').show();
+                        $('#card_body').hide();
+                        $('.mbcart span').removeClass('counter')
+                    }
                 }else{
                     let product_id_local = localStorage.getItem('product_id');
                     product_id_local = product_id_local.replace(id + ',', '');
@@ -45,9 +67,9 @@
                     counter = counter.length;
                     localStorage.removeItem('product_id');
                     localStorage.setItem('product_id',product_id_local);
-                    let caunterCart = $('.counter');
-                    caunterCart.html('')
-                    caunterCart.html(counter);
+
+                    counterCart.html('')
+                    counterCart.html(counter);
                     if (localStorage.getItem('product_id') == ''){
                         localStorage.clear();
                         $('#goToCart').hide();
@@ -56,7 +78,6 @@
                         $('.mbcart span').removeClass('counter')
                     }
                     $('#header' + id).hide();
-
                 }
 
             }, error: function (data) {

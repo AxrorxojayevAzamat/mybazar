@@ -16,7 +16,6 @@ $(document).ready(function () {
             this.setRequestHeader('X-CSRF-Token', token);
             return send.apply(this, arguments);
         };
-        // console.
         if (cart_product !== null) {
             console.log(cart_product);
             let cart_product_check = cart_product.split(',');
@@ -71,6 +70,8 @@ $(document).ready(function () {
 
     }
     writeProductsId();
+
+
 
     $("#dropdownComparison").on("click", function () {
         $(".cart-items").fadeOut();
