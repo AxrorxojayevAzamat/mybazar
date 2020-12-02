@@ -258,4 +258,5 @@ return [
     'new_password' => 'Новый пароль',
 
     'products' => 'Товары',
+    'ltd' => 'СП',
 ];

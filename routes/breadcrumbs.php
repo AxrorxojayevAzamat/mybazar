@@ -229,6 +229,11 @@ Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.newest'));
 });
 
+Breadcrumbs::register('products.new-products', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.new-products'));
+});
+
 Breadcrumbs::register('discounts.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.discounts'), route('discounts.index'));

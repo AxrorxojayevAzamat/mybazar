@@ -190,5 +190,15 @@ class ProductController extends Controller
 
         return view('compare.compare', compact('product', 'comparingProduct', 'groupValues', 'comparingGroupValues'));
     }
-
+    public function newProducts() {
+        $newProducts = Product::where('new', true)->paginate(20);
+        $ratings = [];
+        foreach($newProducts as $i => $product) {
+            $ratings[$i] = [
+                'id' => $product->id,
+                'rating' => $product->rating,
+            ];
+        }
+        return view('products.new-products', compact('newProducts', 'ratings'));
+    }
 }
