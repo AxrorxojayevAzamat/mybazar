@@ -75,7 +75,7 @@
         $(".wrapper-loader").fadeOut("slow");
     })
     let a = document.querySelectorAll("img");
-    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
+    a.forEach((img)=>{img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz"))});
 </script>
 <script src="{{ asset('js/mmenu.js') }}"></script>
 <script src="{{asset('js/mmenu-index.js')}}"></script>
@@ -92,11 +92,6 @@
 
 @yield ('script')
 @stack('script')
-
-<script>
-    let a = document.querySelectorAll("img");
-    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
-</script>
 
 </body>
 </html>
