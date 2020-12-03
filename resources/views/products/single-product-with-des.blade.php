@@ -50,7 +50,7 @@
 {{--                    <p>ID товара: <span> 1666559495</span></p>--}}
                     <p class="title">@lang('frontend.product.characteristics')</p>
                     @foreach($product->mainValues as $value)
-                        <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
+                        <p>{{ $value->name }}: <span>{{ $value->value }}</span></p>
                     @endforeach
                     <a href="#pills-characteristics">@lang('frontend.product.all_characteristics')</a>
                 </div>
@@ -81,7 +81,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                        @endif
+                        @endif[
                     </form>
                     <div class="current-old-price horizontal">
                         <h5 class="price" id="final-product-price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>

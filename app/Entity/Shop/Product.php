@@ -319,12 +319,12 @@ class Product extends BaseModel
 
     public function mainValues()
     {
-        return $this->values()->where('main', true);
+        return $this->values();
     }
 
     public function values()
     {
-        return $this->hasMany(Value::class, 'product_id', 'id')->orderBy('sort');
+        return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function modifications()
@@ -334,20 +334,18 @@ class Product extends BaseModel
 
     public function valueModifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_VALUE)->orderBy('sort');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function colorModifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_COLOR)->orderBy('sort');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id')
+            ->where('type', Characteristic::TYPE_COLOR)->orderBy('sort');
     }
 
     public function photoModifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_PHOTO)->orderBy('sort');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function productCategories()
