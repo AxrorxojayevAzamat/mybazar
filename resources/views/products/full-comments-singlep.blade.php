@@ -69,7 +69,8 @@
                         <label for="review-comment">@lang('frontend.review.comment')</label>
                         <textarea class="form-control" id="review-comment" name="comment" required></textarea>
                     </div>
-                    <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}">
+                    <h4 id="validation" style="color: red">@lang('validation.fill_three_textarea_for_comments')</h4>
+                    <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}" onclick="validationForm()">
                 </form>
             @else
                 <p class="text-center">@lang('frontend.log_in_to_review')</p>
@@ -77,6 +78,41 @@
 
         </div>
     </div>
+
 </section>
+@push('script')
+    <script>
+        $('#validation').css('display', 'none')
+        let advantages = $('#review-advantages').val()
+        let disadvantages = $('#review-disadvantages').val()
+        let comment = $('#review-comment').val()
+        let textareas = [$('#review-advantages'), $('#review-disadvantages'), $('#review-comment')]
+        $('#review-advantages').change(function() {
+            advantages = this.value
+        })
+        $('#review-disadvantages').change(function() {
+            disadvantages = this.value
+        })
+        $('#review-comment').change(function() {
+            comment = this.value
+        })
+        function validationForm() {
+            if (!(advantages && disadvantages && comment)) {
+                $('#validation').css('display', 'block')
+                textareas.forEach(el => {
+                    if(!el[0].value) {
+                        el[0].style.border = '1px solid #f00'
+                    }
+                })
+            } else {
+                $('#validation').css('display', 'none')
+                textareas.forEach(el => {
+                    el[0].style.border = '1px solid #d1d8e0'
+                })
+            }
+        }
+    </script>
+@endpush
+
 @include('pages.rating-js', ['products' => $product->reviews()->limit(5)->orderByDesc('created_at')->get(), 'type' => '"U"'])
 

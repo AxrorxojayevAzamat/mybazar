@@ -148,5 +148,6 @@ return [
 
     'attributes' => [],
     'add_rating_twice_in_product_comment' => 'Вы не можете добавлять комментарии и оценки!',
+    'fill_three_textarea_for_comments' => 'Все поля для комментариев должны быть заполнены!',
 
 ];

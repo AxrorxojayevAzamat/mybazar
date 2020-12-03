@@ -148,4 +148,5 @@ return [
 
     'attributes' => [],
     'add_rating_twice_in_product_comment' => 'You can\'t add comment and rating!',
+    'fill_three_textarea_for_comments' => 'All comments fields must be filled out!',
 ];

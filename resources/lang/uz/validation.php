@@ -148,5 +148,6 @@ return [
 
     'attributes' => [],
     'add_rating_twice_in_product_comment' => 'Siz sharh va reyting qo\'sha olmaysiz!',
+    'fill_three_textarea_for_comments' => 'Barcha sharhlar maydonlarini to\'ldirish kerak!',
 
 ];
