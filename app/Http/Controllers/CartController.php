@@ -16,7 +16,7 @@ class CartController extends Controller
     {
 
         $user = Auth::user();
-        if ($user == null){
+        if ($user == null) {
 //            dd($request->product_id);
             $products_id = preg_split("/\,/", $request->product_id);
             $products = Product::whereIn('id', $products_id)->get();
@@ -38,7 +38,7 @@ class CartController extends Controller
                 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
                 'cart_product_id'));
             return view('cart.cart');
-        }else {
+        } else {
 
             $cart_product = Cart::where('user_id', $user->id)->get();
 
@@ -79,9 +79,9 @@ class CartController extends Controller
 
             if (gettype($request->product_id) !== 'array') {
                 $is_exsit = Cart::where('product_id', $request->product_id)->where('user_id', $user->id)->first();
-                if ($is_exsit){
+                if ($is_exsit) {
                     return ['message' => 'exists'];
-                }else{
+                } else {
                     $cart = $user->carts()->create([
                         'product_id' => $request->product_id,
                         'quantity' => $request->quantity ?? 1,
@@ -89,9 +89,9 @@ class CartController extends Controller
                 }
             } else {
                 $is_exsit = Cart::whereIn('product_id', $request->product_id)->where('user_id', $user->id)->first();
-                if ($is_exsit){
+                if ($is_exsit) {
                     return ['message' => 'exists'];
-                }else{
+                } else {
                     foreach ($request->product_id as $i => $product_id) {
                         $cart = $user->carts()->create([
                             'product_id' => $request->product_id[$i],
@@ -103,7 +103,7 @@ class CartController extends Controller
 
 
             return ['message' => 'success'];;
-        }else{
+        } else {
             return ['message' => 'error'];
         }
 
@@ -128,31 +128,26 @@ class CartController extends Controller
 
     public function showHeader(Request $request)
     {
-        $user = Auth::user();
+        if ($user = Auth::user()) {
+            $cartProducts = Cart::where('user_id', $user->id)->get();
+            $productIds = [];
 
-        if ($user !== null){
-
-            $cartProduct = Cart::where('user_id', $user->id)->get();
-            $products_id = [];
-            foreach($cartProduct as $i => $product_id){
-                $products_id[$i] = $product_id->product_id;
+            foreach ($cartProducts as $i => $product_id) {
+                $productIds[$i] = $product_id->product_id;
             };
-            $products = CartResource::collection(Product::whereIn('id', $products_id)->get());
 
-            return $products;
-
-        }else{
-            if ($request->has('product_id')){
-
-                $products = CartResource::collection(Product::whereIn('id', $request->product_id)->get());
-
-                return $products;
-            }else{
+            if (empty($productIds)) {
                 return ['data' => 'error'];
             }
 
+            return CartResource::collection(Product::whereIn('id', $productIds)->get());
         }
 
+        if ($request->has('product_id')) {
+            return CartResource::collection(Product::whereIn('id', $request->product_id)->get());
+        }
+
+        return ['data' => 'error'];
     }
 
 
