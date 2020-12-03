@@ -137,23 +137,16 @@ class CartController extends Controller
             foreach($cartProduct as $i => $product_id){
                 $products_id[$i] = $product_id->product_id;
             };
+            $products = CartResource::collection(Product::whereIn('id', $products_id)->get());
 
-
-            $products = Product::whereIn('id', $products_id)->get();
-            return response()->json([
-                'products' => $products,
-            ]);
+            return $products;
 
         }else{
             if ($request->has('product_id')){
-//                dd($request->product_id[0]);
-                $product_id = $request->product_id[0];
-                $products = CartResource::collection(Product::where('id', $product_id)->get());
 
-//                dd($products);
+                $products = CartResource::collection(Product::whereIn('id', $request->product_id)->get());
 
                 return $products;
-
             }else{
                 return ['data' => 'error'];
             }

@@ -148,8 +148,13 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
+
                 if (data.message == 'success'){
                     localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber+=1;
+                    containerCounter.text(counterCartNumber);
                     console.log('exists');
                 }else{
                     nonRegisteredUsersCart(id);
@@ -181,6 +186,8 @@
                 cart_products += product_id;
                 cart_products += id + ',';
                 localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
             } else {
                 console.log('exist');
             }
