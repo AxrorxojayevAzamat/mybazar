@@ -46,23 +46,23 @@
                 <form method="POST" action="{{ route('products.add-review', $product) }}" id="review-form">
                     @csrf
                     <div class="new-rate">
-                        <div class="rating stars">
+                        <div class="rating">
                             <input type="radio" id="product-review-star5" name="rating" value="5" required /><label for="product-review-star5" title="Meh">5 stars</label>
-                            <input type="radio" id="product-review-star4" name="rating" value="4" /><label for="product-review-star4" title="Kinda bad">4 stars</label>
-                            <input type="radio" id="product-review-star3" name="rating" value="3" /><label for="product-review-star3" title="Kinda bad">3 stars</label>
-                            <input type="radio" id="product-review-star2" name="rating" value="2" /><label for="product-review-star2" title="Sucks big tim">2 stars</label>
-                            <input type="radio" id="product-review-star1" name="rating" value="1" /><label for="product-review-star1" title="Sucks big time">1 star</label>
+                            <input type="radio" id="product-review-star4" name="rating" value="4" required /><label for="product-review-star4" title="Kinda bad">4 stars</label>
+                            <input type="radio" id="product-review-star3" name="rating" value="3" required /><label for="product-review-star3" title="Kinda bad">3 stars</label>
+                            <input type="radio" id="product-review-star2" name="rating" value="2" required /><label for="product-review-star2" title="Sucks big tim">2 stars</label>
+                            <input type="radio" id="product-review-star1" name="rating" value="1" required /><label for="product-review-star1" title="Sucks big time">1 star</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for=review-advantages>@lang('frontend.review.advantages')</label>
-                        <textarea class="form-control" id="review-advantages" name="advantages"></textarea>
+                        <textarea class="form-control" id="review-advantages" name="advantages" required></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="review-disadvantages">@lang('frontend.review.disadvantages')</label>
-                        <textarea class="form-control" id="review-disadvantages" name="disadvantages"></textarea>
+                        <textarea class="form-control" id="review-disadvantages" name="disadvantages" required></textarea>
                     </div>
 
                     <div class="form-group">

@@ -147,5 +147,6 @@ return [
     */
 
     'attributes' => [],
+    'add_rating_twice_in_product_comment' => 'Siz sharh va reyting qo\'sha olmaysiz!',
 
 ];
