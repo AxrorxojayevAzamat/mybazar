@@ -77,12 +77,12 @@ class CategoryController extends Controller
     {
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
 
-
         $brandIds = CategoryBrand::whereIn('category_id', $categoryId)->pluck('brand_id')->toArray();
         $brands = Brand::whereIn('id', $brandIds)->get();
 
         $storeIds = StoreCategory::whereIn('category_id', $categoryId)->pluck('store_id')->toArray();
-        $stores = Store::whereIn('categories', $storeIds)->get();
+        $stores = Store::whereIn('id', $storeIds)->get();
+
 
 
 //        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryIds);
@@ -107,6 +107,7 @@ class CategoryController extends Controller
                 'rating' => $product->rating,
             ];
         }
+//        dd($products);
 
         return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price', 'ratings'));
     }
