@@ -21,6 +21,10 @@ $factory->define(Characteristic::class, function (Faker $faker) {
             for ($i = 0; $i < $count; $i++) {
                 $variants[$i] = $faker->randomFloat(2, 1, 9999);
             }
+        }if ($type === Characteristic::TYPE_COLOR) {
+            for ($i = 0; $i < $count; $i++) {
+                $variants[$i] ='#' . $faker->numberBetween($min=100000,$max = 999999);
+            }
         } else {
             for ($i = 0; $i < $count; $i++) {
                 $variants[$i] = $faker->firstName;

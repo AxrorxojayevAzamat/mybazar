@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddToCharacteristics extends Migration
+class DropTableShopValue extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddToCharacteristics extends Migration
      */
     public function up()
     {
-        Schema::table('shop_characteristics', function (Blueprint $table) {
-            $table->string('color')->nullable();
-        });
+        Schema::dropIfExists('shop_values');
     }
 
     /**
@@ -25,8 +23,6 @@ class AddToCharacteristics extends Migration
      */
     public function down()
     {
-        Schema::table('shop_characteristics', function (Blueprint $table) {
-            $table->dropColumn('type');
-        });
+        //
     }
 }

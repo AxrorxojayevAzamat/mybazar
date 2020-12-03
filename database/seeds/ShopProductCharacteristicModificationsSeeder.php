@@ -28,8 +28,6 @@ class ShopProductCharacteristicModificationsSeeder extends Seeder
                             'characteristic_id' => $characteristic->id,
                             'price_uzs' => $price,
                             'price_usd' => round($price / 10000, 2),
-                            'type' => Modification::TYPE_CHARACTERISTIC_VALUE,
-                            'color' => null,
                             'photo' => null,
                             'sort' => $sort++,
                             'created_by' => 1,

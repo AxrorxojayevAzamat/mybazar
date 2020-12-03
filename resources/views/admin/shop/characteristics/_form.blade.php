@@ -8,7 +8,9 @@
 
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
+    <link rel="stylesheet" href="{{ mix('css/colorpicker.css', 'build') }}">
 @endsection
+@include('admin.shop.characteristics._scripts')
 @include ('admin.layout.flash')
 <div class="row">
     <div class="col-md-12">
@@ -80,12 +82,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
-                            {!! Form::label('default', trans('adminlte.default'), ['class' => 'col-form-label']); !!}
-                            {!! Form::text('default', old('default', $characteristic ? $characteristic->default : null), ['class'=>'form-control' . ($errors->has('default') ? ' is-invalid' : '')]) !!}
-                            @if ($errors->has('default'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('default') }}</strong></span>
-                            @endif
+                        <div class="form-group" id="characteristic-form">
+
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -150,9 +148,3 @@
     <button type="submit" class="btn btn-primary">{{ trans('adminlte.' . ($characteristic ? 'edit' : 'save')) }}</button>
 </div>
 
-@section($javaScriptSectionName)
-    <script>
-        $('#categories').select2();
-        $('#group_id').select2();
-    </script>
-@endsection
