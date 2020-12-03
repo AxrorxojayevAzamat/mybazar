@@ -147,5 +147,6 @@ return [
     */
 
     'attributes' => [],
+    'add_rating_twice_in_product_comment' => 'Вы не можете добавлять комментарии и оценки!',
 
 ];

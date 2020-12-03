@@ -50,5 +50,8 @@
       ['products' => $shopProducts, "title" => trans('frontend.product.shop_product'), 'rate_for' => ['js' => '"P"', 'html' => 'P']])
     {{--    @include('layouts.recently-viewed')--}}
 @endsection
-
+@section('script')
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{asset('js/jquery.rateyo.js')}}"></script>
+@endsection
 @include('products._scripts')
