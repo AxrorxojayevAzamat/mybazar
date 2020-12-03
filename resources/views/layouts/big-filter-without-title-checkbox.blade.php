@@ -5,7 +5,7 @@
         <div id="filter2" class="panel">
             @foreach($brands as $i => $brand)
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input brands-checkbox" id="brands-checkbox-{{ $i }}"
+                    <input type="checkbox" name="brands" class="custom-control-input brands-checkbox" id="brands-checkbox-{{ $i }}"
                            value="{{ $brand->slug }}" @if (in_array($brand->slug, $brandSlugs)) checked @endif>
                     <label class="custom-control-label" for="brands-checkbox-{{ $i }}">{{ $brand->name }}</label>
                 </div>
@@ -21,7 +21,7 @@
         <div id="filter2" class="panel">
             @foreach ($stores as $i => $store)
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input stores-checkbox" id="stores-checkbox-{{ $i }}"
+                    <input type="checkbox" name="stores" class="custom-control-input stores-checkbox" id="stores-checkbox-{{ $i }}"
                            value="{{ $store->slug }}" @if (in_array($store->slug, $storeSlugs)) checked @endif>
                     <label class="custom-control-label" for="stores-checkbox-{{ $i }}">{{ $store->name }}</label>
                 </div>
