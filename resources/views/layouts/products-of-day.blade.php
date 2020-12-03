@@ -124,11 +124,24 @@
                 localStorage.setItem('product_id', cart_products + '');
                 let containerCounter = $('.counter');
                 containerCounter.text(cart_product_check.length);
+                goToCartInAdd();
             } else {
                 console.log('exist');
             }
         } else {
             localStorage.setItem('product_id', id + ',');
+            goToCartInAdd();
+        }
+    }
+
+    function goToCartInAdd(){
+        let cart_products_id = $('#cart_products_id');
+        let saved_carts = localStorage.getItem('product_id');
+        if (saved_carts !== null){
+            saved_carts = saved_carts.slice(0, -1);
+            cart_products_id.val(saved_carts);
+        }else {
+            console.log('error');
         }
     }
 </script>

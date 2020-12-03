@@ -120,7 +120,6 @@
 
 
         function quantityCounter(id, type){
-            // let counter = 1
             if (type == 'add'){
                 let countNumber = $('#'+id + '-cartCounter').text()
                 let counterNumber = parseInt(countNumber);
