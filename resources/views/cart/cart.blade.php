@@ -81,6 +81,14 @@
                         product_id_local = product_id_local.replace(id + ',', '');
                         localStorage.removeItem('product_id');
                         localStorage.setItem('product_id',product_id_local);
+                        let productID_carts = product_id_local;
+
+                        if (productID_carts !== null){
+                            productID_carts = productID_carts.slice(0, -1);
+                        }else {
+                            console.log('error');
+                        }
+                        window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
                         $('#' + id).hide();
 
 
@@ -108,6 +116,26 @@
                     console.log(data.message);
                 }
             })
+        }
+
+
+        function quantityCounter(id, type){
+            if (type == 'add'){
+                let countNumber = $('#'+id + '-cartCounter').text()
+                let counterNumber = parseInt(countNumber);
+                counterNumber+=1;
+                $('#'+id + '-cartCounter').text(counterNumber)
+            }else{
+                let countNumber = $('#'+id + '-cartCounter').text()
+                let counterNumber = parseInt(countNumber);
+                if (counterNumber > 1){
+                    counterNumber-=1;
+                    $('#'+id + '-cartCounter').text(counterNumber)
+                }else{
+                    return false;
+                }
+                console.log(countNumber);
+            }
         }
     </script>
 @endsection

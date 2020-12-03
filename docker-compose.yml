@@ -63,6 +63,7 @@ services:
     volumes:
       - ./:/var/www/html/
     tty: true
+    working_dir: /var/www/html/
     networks:
       - magazin
 

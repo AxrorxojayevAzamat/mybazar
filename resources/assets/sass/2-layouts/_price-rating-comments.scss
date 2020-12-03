@@ -74,7 +74,7 @@
         //         // transition: .3s ease-in;
         //     }
         // }
-    }                       
+    }
 }
 .selected_libra{
     color:white;
@@ -118,7 +118,7 @@
             font-size:20px;
             color:$comment_color;
         }
-    } 
+    }
 }
 .rating {
     float:left;
@@ -127,12 +127,13 @@
     border:none !important;
   }
 
-  /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+  /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
     follow these rules. Every browser that supports :checked also supports :not(), so
     it doesn’t make the test unnecessarily selective */
   .rating:not(:checked) > input {
-      position:absolute;
-      top:-9999px;
+      //position:absolute;
+      //top:-9999px;
+      display: none;
       clip:rect(0,0,0,0);
   }
 
@@ -154,13 +155,11 @@
 
   .rating > input:checked ~ label {
       color: $stars_color;
-      
   }
 
   .rating:not(:checked) > label:hover,
   .rating:not(:checked) > label:hover ~ label {
       color: $stars_color;
-      
   }
 
   .rating > input:checked + label:hover,
@@ -169,7 +168,6 @@
   .rating > input:checked ~ label:hover ~ label,
   .rating > label:hover ~ input:checked ~ label {
       color:$stars_color;
-      
   }
 
   .rating > label:active {
@@ -201,14 +199,13 @@
     }
     .item-action-icons{
         div{
-           
             width:30px;
             height:30px;
             i{
                 font-size:14px;
                 line-height:30px;
             }
-        }                       
+        }
     }
   }
 @media all and (max-width:1250px){
@@ -217,7 +214,7 @@
     }
     .rating:not(:checked) > label {
         font-size: 200%;
-    } 
+    }
     .comment{
         font-size:20px;
     }
@@ -249,5 +246,5 @@
     }
 }
 @media all and (max-width:600px){
-   
+
 }

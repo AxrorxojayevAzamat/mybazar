@@ -31,13 +31,14 @@ class BannerService
                 'slug' => $request->slug,
                 'category_id' => $category->id,
                 'status' => $request->status,
+                'type' => $request->type,
             ]);
         }
 
         $imageName = ImageHelper::getRandomName($request->file);
         $banner = Banner::add($this->getNextId(), $request, $category->id, $imageName);
 
-        $this->uploadFile($this->getNextId(), $request->file, $imageName);
+        $this->uploadFile($this->getNextId(), $request->file, $imageName, $request->type);
 
         return $banner;
     }
@@ -55,7 +56,7 @@ class BannerService
             $imageName = ImageHelper::getRandomName($request->file);
             $banner->edit($request, $category->id, $imageName);
 
-            $this->uploadFile($banner->id, $request->file, $imageName);
+            $this->uploadFile($banner->id, $request->file, $imageName, $request->type);
         }
 
         return $banner;
@@ -88,9 +89,14 @@ class BannerService
         return Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_BANNERS . '/' . $banner->id) && $banner->update(['file' => null]);
     }
 
-    private function uploadFile(int $bannerId, UploadedFile $file, string $imageName): void
+    private function uploadFile(int $bannerId, UploadedFile $file, string $imageName, int $type): void
     {
         ImageHelper::saveThumbnail($bannerId, ImageHelper::FOLDER_BANNERS, $file, $imageName);
+        if ($type === Banner::TYPE_SHORT) {
+            ImageHelper::saveCustom($bannerId, ImageHelper::FOLDER_BANNERS, $file, $imageName, 487, 300);
+        } else {
+            ImageHelper::saveCustom($bannerId, ImageHelper::FOLDER_BANNERS, $file, $imageName, 1530, 200);
+        }
         ImageHelper::saveOriginal($bannerId, ImageHelper::FOLDER_BANNERS, $file, $imageName);
     }
 

@@ -22,6 +22,7 @@
             <!-- big filter without title checkbox -->
             @include('layouts.big-filter-without-title-checkbox')
 
+
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
                     @include('layouts.sort-by-options')

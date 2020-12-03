@@ -27,9 +27,9 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}"
                            href="{{ route('categories.show', products_path($category)) }}"
-                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{count($category->children)}})"
-{{--                           onmouseover="showBrands({{$category->brands}})"--}}
-                           onmouseout="removeBanner('{{$category->slug}}')">
+                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{$category->brands}})"
+                           onmouseout="removeBanner('{{$category->slug}}')"
+                        >
                             <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
                         </a>
 
@@ -39,9 +39,9 @@
                         @endif
                     </li>
                     @endforeach
-                    <li class="full-image-banner" >
-                        <img id="category_banner" alt="">
-                    </li>
+{{--                    <li class="full-image-banner" >--}}
+{{--                        <img id="category_banner" alt="">--}}
+{{--                    </li>--}}
                 </ul>
             </li>
         </ul>
@@ -49,7 +49,7 @@
     <div class="pn-ProductNav_Wrapper">
         <nav id="pnProductNav" class="pn-ProductNav">
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
+                <a href="{{ route('products.new-products') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
                 <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
                 <a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
                 <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
@@ -69,19 +69,21 @@
     </div>
 </nav>
 <script>
-    function setBanner(photo, slug, numberOfChildren, brands) {
-        console.log(typeof numberOfChildren)
-        $(`#categoryBanner_${slug}`).css('display', 'inline')
-
-        $(`#categoryBanner_${slug}`).attr('src', `https://shop.sec.uz${photo}`)
-        if(numberOfChildren !== 0) {
-            console.log(slug)
-            $(`#banner2_${slug}}`).css('display', 'list-item')
-            debugger
+    function setBanner(photo, slug, brands) {
+        console.log(brands)
+        $(`#full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
+        $(`#full-image-banner_${slug} img`).css('display', 'inline')
+        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
+        $(`#banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff'})
+        for(let i=0; i < 4; i++) {
+            if(brands[i]) {
+                $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${brands[i].id}/original/${brands[i].logo}" alt="">`)
+            }
         }
     }
     function removeBanner(slug) {
-        $(`#categoryBanner_${slug}`).css('display', 'none')
-        $(`#banner2_${slug}}`).css('display', 'none')
+        $(`#full-image-banner_${slug} img`).css('display', 'none')
+        $(`#banner2_${slug}`).css('display', 'none')
+        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
     }
 </script>

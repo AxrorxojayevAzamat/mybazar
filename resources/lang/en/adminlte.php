@@ -146,6 +146,8 @@ return [
         'add' => 'Add Brand',
         'name' => 'Brand',
         'choose' => 'Choose brand',
+        'short' => 'Short',
+        'long' => 'Long',
     ],
 
     'store' => [
