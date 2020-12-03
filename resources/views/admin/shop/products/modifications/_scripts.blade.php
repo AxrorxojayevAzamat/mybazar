@@ -19,7 +19,7 @@
 
         if (logoUrl) {
             let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-            XMLHttpRequest.prototype.send = function(data) {
+            XMLHttpRequest.prototype.send = function (data) {
                 this.setRequestHeader('X-CSRF-Token', token);
                 return send.apply(this, arguments);
             };
@@ -50,9 +50,6 @@
         $('#characteristic_id').select2();
         let characteristicForm = $('#characteristic-form');
         let valueForm = $('#value-form');
-        let colorForm = $('#color-form');
-        let photoForm = $('#photo_form');
-        let mainValues = $('#main-values');
 
         $(document).ready(function () {
             $('#characteristic_id').change(function () {
@@ -62,7 +59,8 @@
                         url: "/api/characteristics/" + characteristicValue,
                         type: "get",
                         dataType: 'json',
-                        success: function(data) {
+                        success: function (data) {
+                            console.log(data)
                             data = data.data;
                             characteristicForm.empty();
 
@@ -71,26 +69,7 @@
                             let defaultValue = "{{ $modification ? $modification->value : old('value') }}";
                             defaultValue = defaultValue === "" ? defaultValue : data.default;
 
-                            if (data.variants !== null) {
-                                form +=
-                                    "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
-                                    "<select id=\"characteristic_value\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\" name=\"characteristic_value\"" +
-                                    data.required ? "required" : "" +
-                                    ">\n" +
-                                    "   <option value=\"\"></option>\n";
-
-                                $.each(data.variants, function (key, value) {
-                                    form += "<option value=" + value;
-
-                                    if (value === defaultValue) {
-                                        form += ' selected';
-                                    }
-
-                                    form += '>' + value + '</option>\n';
-                                })
-
-                                form += '</select>';
-                            } else if (data.type === '{{ \App\Entity\Shop\Characteristic::TYPE_FLOAT }}') {
+                            if (data.type === '{{ \App\Entity\Shop\Characteristic::TYPE_FLOAT }}') {
                                 form +=
                                     "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
                                     "<input id=\"characteristic_value\" type=\"number\" step=\"0.01\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\"\n" +
@@ -112,8 +91,17 @@
                                 } else {
                                     form += ">";
                                 }
+                            } else if (data.type === '{{ \App\Entity\Shop\Characteristic::TYPE_COLOR }}') {
+                                form +=
+                                    "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
+                                    "<input id=\"modification-color\" type=\"text\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\"\n" +
+                                    "name=\"characteristic_value\"  value=\"{{ old('characteristic_value', $modification ? $modification->value : null)}}\"";
+                                if (data.required) {
+                                    form += " required>";
+                                } else {
+                                    form += ">";
+                                }
                             } else {
-                                console.log('dasdhsadghashgdhjasgdhjasghjdgashjdgsahjkgdkja');
                                 form +=
                                     "<label for=characteristic_value\" class=\"col-form-label\">{{ trans('adminlte.value.name') }}</label>\n" +
                                     "<input id=\"characteristic_value\" class=\"form-control{{ $errors->has('characteristic_value') ? ' is-invalid' : '' }}\"\n" +
@@ -124,7 +112,6 @@
                                 } else {
                                     form += ">";
                                 }
-                                console.log(form);
                             }
 
                             form +=
@@ -132,26 +119,14 @@
                                 "   <span class=\"invalid-feedback\"><strong>{{ $errors->first('characteristic_value') }}</strong></span>\n" +
                                 "@endif";
 
-                                console.log(form);
 
                             characteristicForm.append(form);
-                            mainValues.hide();
-                            // valueForm.hide();
-                            // colorForm.hide();
-                            photoForm.hide();
-
-                            // $('#modification-value').val(null);
-                            // $('#modification-color').val(null);
-                            // $('#file-input').val(null);
+                            $('#modification-color').colorpicker({})
                         },
                         error: function (error) {
                         }
                     });
                 } else {
-                    mainValues.show();
-                    // valueForm.show();
-                    // colorForm.show();
-                    photoForm.show();
                     characteristicForm.empty();
                 }
 

@@ -8,6 +8,7 @@
 
 @section($cssSectionName)
     <link rel="stylesheet" href="{{ mix('css/fileinput.css', 'build') }}">
+    <link rel="stylesheet" href="{{ mix('css/colorpicker.css', 'build') }}">
 @endsection
 @include ('admin.layout.flash')
 <div class="row">
@@ -103,18 +104,6 @@
                             {!! Form::text('name_en', old('name_en', $modification ? $modification->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('name_en'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('value', trans('adminlte.value.name'), ['class' => 'col-form-label']); !!}
-                            {!! Form::text('value', old('value', $modification ? $modification->value : null),
-                                ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'id' => 'modification-value']) !!}
-                            @if ($errors->has('value'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('value') }}</strong></span>
                             @endif
                         </div>
                     </div>

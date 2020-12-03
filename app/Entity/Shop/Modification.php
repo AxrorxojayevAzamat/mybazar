@@ -57,6 +57,8 @@ class Modification extends BaseModel
         return static::create([
             'id' => $id,
             'product_id' => $productId,
+            'characteristic_id' => $request->characteristic_id,
+            'value' => $request->value ? $request->value : ($request->characteristic_value ?? null),
             'name_uz' => $request->name_uz,
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,

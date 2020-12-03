@@ -54,13 +54,6 @@
                     <table class="table table-bordered table-striped projects">
                         <tbody>
                         <tr><th>{{ trans('adminlte.type') }}</th><td>{{ $characteristic->typeName() }}</td></tr>
-                        <tr><th>{{ trans('adminlte.default') }}</th><td>{{ $characteristic->default }}</td></tr>
-                        <tr>
-                            <th>{{ trans('adminlte.characteristic.variants') }}</th>
-                            <td>
-                                {{ $characteristic->variants ? implode(', ', $characteristic->variants) : null }}
-                            </td>
-                        </tr>
                         <tr><th>{{ trans('adminlte.required') }}</th><td>{{ $characteristic->required ? trans('adminlte.yes') : trans('adminlte.no') }}</td></tr>
                         <tr>
                             <th>{{ trans('menu.categories') }}</th>
