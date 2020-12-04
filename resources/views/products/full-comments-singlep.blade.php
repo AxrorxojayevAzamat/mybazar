@@ -69,7 +69,9 @@
                         <label for="review-comment">@lang('frontend.review.comment')</label>
                         <textarea class="form-control" id="review-comment" name="comment" required></textarea>
                     </div>
-                    <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}">
+                    <h4 id="validation" style="color: red">@lang('validation.fill_three_textarea_for_comments')</h4>
+                    <h4 id="validationRating" style="color: red">@lang('validation.dont_forget_to_rate')</h4>
+                    <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}" onclick="validationForm()">
                 </form>
             @else
                 <p class="text-center">@lang('frontend.log_in_to_review')</p>
@@ -77,6 +79,35 @@
 
         </div>
     </div>
+
 </section>
+@push('script')
+    <script>
+        $('#validation').css('display', 'none')
+        $('#validationRating').css('display', 'none')
+        let advantages = $('#review-advantages'), disadvantages = $('#review-disadvantages'), comment = $('#review-comment')
+        let textareas = [advantages, disadvantages, comment]
+        let inputs = $("input[name='rating']")
+        let radio_inputs = []
+        for(let x in inputs) if(parseInt(x) >= 0) radio_inputs = [...radio_inputs, inputs[x]]
+
+        function validationForm() {
+            if (!(advantages[0].value && disadvantages[0].value && comment[0].value)) {
+                $('#validation').fadeIn(700)
+                textareas.forEach(el => {
+                    if(!el[0].value) el[0].style.border = '1px solid #f00'
+                })
+            } else {
+                $('#validation').fadeOut(100)
+                textareas.forEach(el => {
+                    if(el[0].value) el[0].style.border = '1px solid #d1d8e0'
+                })
+                if(radio_inputs.every(r => !r.checked)) $('#validationRating').fadeIn(700)
+                else $('#validationRating').fadeOut(700)
+            }
+        }
+    </script>
+@endpush
+
 @include('pages.rating-js', ['products' => $product->reviews()->limit(5)->orderByDesc('created_at')->get(), 'type' => '"U"'])
 

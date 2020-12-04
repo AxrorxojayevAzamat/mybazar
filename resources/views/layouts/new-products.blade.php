@@ -1,7 +1,7 @@
 <section>
     <div class="newone">
         <div class="h4-title">
-            <h4 class="title">@lang('frontend.novelty_upper')</h4>
+            <h4 class="title">@lang('frontend.novelty')</h4>
         </div>
 
         <div class="outter-products">
