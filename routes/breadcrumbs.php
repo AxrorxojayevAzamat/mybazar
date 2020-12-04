@@ -203,15 +203,19 @@ Breadcrumbs::register('categories.show', function (Crumbs $crumbs, ProductsPath 
 
 
 // Pages
-Breadcrumbs::register('page', function (Crumbs $crumbs, PagePath $path) {
+Breadcrumbs::register('pages.show', function (Crumbs $crumbs, PagePath $path) {
     if ($parent = $path->page->parent) {
-        $crumbs->parent('page', $path->withPage($path->page->parent));
+        $crumbs->parent('pages.show', $path->withPage($path->page->parent));
     } else {
         $crumbs->parent('home');
     }
-    $crumbs->push($path->page->title, route('page', $path));
+    $crumbs->push($path->page->title, route('pages.show', $path));
 });
-
+//
+//Breadcrumbs::register('pages.show', function (Crumbs $crumbs, Page $page) {
+//    $crumbs->parent('home');
+//    $crumbs->push($page->title, route('pages.show', $page));
+//});
 
 // Products
 Breadcrumbs::register('products.show', function (Crumbs $crumbs, Product $product) {
@@ -227,6 +231,11 @@ Breadcrumbs::register('products.compare', function (Crumbs $crumbs, Product $pro
 Breadcrumbs::register('products.newest', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
     $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.newest'));
+});
+
+Breadcrumbs::register('products.new-products', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.breadcrumb.newest'), route('products.new-products'));
 });
 
 Breadcrumbs::register('discounts.index', function (Crumbs $crumbs) {

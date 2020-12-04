@@ -78,4 +78,8 @@ return [
     'phone_already_verified' => 'Sizning telefon raqamingiz allaqachon tasdiqlangan.',
     'email_already_added' => 'Elektron pochta manzili allaqachon qo‘shilgan.',
     'phone_already_added' => 'Telefon raqami allaqachon qo‘shilgan.',
+
+    'profile' => 'Profil',
+    'favorites' => 'Sevimlilar',
+    'logout' => 'Chiqish',
 ];

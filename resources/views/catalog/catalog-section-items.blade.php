@@ -29,12 +29,9 @@
     </div>
 
     <div>
-        @if ($banner)
+        @if (isset($banner))
             <img src="{{ $banner->fileCustom }}" alt="">
         @endif
-{{--        @if ($banner)--}}
-{{--            <img src="{{ $banner->fileOriginal }}" alt="">--}}
-{{--        @endif--}}
     </div>
 </div>
 

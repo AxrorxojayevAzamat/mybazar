@@ -16,7 +16,6 @@ $(document).ready(function () {
             this.setRequestHeader('X-CSRF-Token', token);
             return send.apply(this, arguments);
         };
-        // console.
         if (cart_product !== null) {
             console.log(cart_product);
             let cart_product_check = cart_product.split(',');
@@ -27,6 +26,7 @@ $(document).ready(function () {
                     continue;
                 }
             }
+            let counter = cart_product_check.length;
             let data = {};
             data.product_id = [];
             data.product_id = cart_product_check;
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
 
             $.ajax({
-                url: 'add-cart',
+                url: '/add-cart',
                 method: 'POST',
                 data: data,
                 dataType: 'json',
@@ -44,6 +44,8 @@ $(document).ready(function () {
                         console.log(data.message);
 
                     } else {
+                        $('.mbcart span').addClass('counter');
+                        $('.counter').html(counter);
                         console.log(data.message);
                     }
                 }
@@ -68,6 +70,8 @@ $(document).ready(function () {
 
     }
     writeProductsId();
+
+
 
     $("#dropdownComparison").on("click", function () {
         $(".cart-items").fadeOut();
@@ -98,7 +102,7 @@ $(document).ready(function () {
         }
     });
 
-    // main search select 
+    // main search select
     $('.select-main-search').niceSelect();
 
     // display filter items with <a> tag and show-more btn
@@ -106,7 +110,7 @@ $(document).ready(function () {
     var text= ['Скрыть', 'Показать еще'];
     $('.panel .custom-control').each(function(){
         var item = $(this).find('a');
-        
+
         if(item.length > showDefault){
             //show only 5 items
             for(var i=0; i<showDefault; i++){
@@ -124,13 +128,13 @@ $(document).ready(function () {
             }).appendTo(this)
         }else{
             $(item).show();
-        }  
+        }
     });
 
     // display filter items with checkbox tag and show-more btn
     $('.panel').each(function(){
         var item = $(this).find('.custom-control');
-        
+
         if(item.length > showDefault){
             //show only 5 items
             for(var i=0; i<showDefault; i++){
@@ -148,14 +152,14 @@ $(document).ready(function () {
             }).appendTo(this)
         }else{
             $(item).show();
-        }  
+        }
     });
-    
+
     // выбрать все в фильтре чекбокс
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
-        }else{        
+        }else{
             $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
         }
     });

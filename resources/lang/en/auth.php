@@ -78,4 +78,8 @@ return [
     'phone_already_verified' => 'Your phone number is already verified.',
     'email_already_added' => 'Email address is already added.',
     'phone_already_added' => 'Phone number is already added.',
+
+    'profile' => 'Profile',
+    'favorites' => 'Favorites',
+    'logout' => 'Logout',
 ];

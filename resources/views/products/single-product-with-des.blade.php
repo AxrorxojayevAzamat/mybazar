@@ -3,12 +3,12 @@
         <h4 class="title">{{ $product->name }}</h4>
         <div class="inner-single-product-with-des">
             <div class="images">
+{{--                {{dd($product)}}--}}
                 @if ($product->mainPhoto)
                     <div class="big-image">
                         <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
                     </div>
                 @endif
-
                 @foreach($product->photos as $photo)
                     <div class="big-image">
                         <img src="{{ $photo->fileOriginal }}" style="width:100%">
@@ -24,7 +24,7 @@
                     @endif
 {{--                    {{dd($product)}}--}}
                     @foreach($product->photos as $photo)
-                        <img class="demo cursor" src="{{ $photo->photoOriginal }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $photo->fileOriginal }}" style="width:100%"
                              onclick="currentSlide({{ $currentSlide }})">
                         @php($currentSlide++)
                     @endforeach
@@ -148,8 +148,13 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
+
                 if (data.message == 'success'){
                     localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber+=1;
+                    containerCounter.text(counterCartNumber);
                     console.log('exists');
                 }else{
                     nonRegisteredUsersCart(id);
@@ -181,6 +186,8 @@
                 cart_products += product_id;
                 cart_products += id + ',';
                 localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
             } else {
                 console.log('exist');
             }

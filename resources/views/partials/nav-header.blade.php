@@ -49,7 +49,7 @@
     <div class="pn-ProductNav_Wrapper">
         <nav id="pnProductNav" class="pn-ProductNav">
             <div id="pnProductNavContents" class="pn-ProductNav_Contents">
-                <a href="#" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
+                <a href="{{ route('products.new-products') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
                 <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
                 <a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a>
                 <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
@@ -69,18 +69,21 @@
     </div>
 </nav>
 <script>
-    function setBanner(photo, slug, brands, all_brands) {
+    function setBanner(photo, slug, brands) {
         console.log(brands)
-        $(`#categoryBanner_${slug}`).css('display', 'inline')
-        $(`#banner2_${slug}`).css('display', 'list-item')
-        $(`#categoryBanner_${slug}`).attr('src', `https://shop.sec.uz${photo}`)
-        for(let x of brands) {
-            $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${x.id}/original/${x.logo}" alt="">`)
+        $(`#full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
+        $(`#full-image-banner_${slug} img`).css('display', 'inline')
+        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
+        $(`#banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff'})
+        for(let i=0; i < 4; i++) {
+            if(brands[i]) {
+                $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${brands[i].id}/original/${brands[i].logo}" alt="">`)
+            }
         }
     }
     function removeBanner(slug) {
-        $(`#categoryBanner_${slug}`).css('display', 'none')
+        $(`#full-image-banner_${slug} img`).css('display', 'none')
         $(`#banner2_${slug}`).css('display', 'none')
-        $(`#banner2_${slug}`).html('<div class="all-brands">{{trans("menu.all_brands")}}</div>')
+        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
     }
 </script>

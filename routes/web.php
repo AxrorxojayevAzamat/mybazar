@@ -109,6 +109,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
         });
         Route::get('{product}/compare-with/{comparingProduct}', 'ProductController@compare')->name('compare');
+        Route::get('new-products', 'ProductController@newProducts')->name('new-products');
     });
 
     Route::get('add-to-cart/{id}', 'ProductController@addToCart')->name('addCard');

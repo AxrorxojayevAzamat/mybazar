@@ -28,9 +28,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\'`‘]+$/u'],
-            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/u'],
-            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/'],
+            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s\'`‘]+$/u'],
+            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/u'],
+            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/'],
             'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9-]+$/', 'unique:stores'],
             'logo' => 'required|image|mimes:jpg,jpeg,png',
             'payments.*' => 'nullable|numeric|min:1|exists:payments,id',
