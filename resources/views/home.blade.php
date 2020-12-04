@@ -23,7 +23,7 @@
 
     <!-- NEW PRODUCTS -->
     @include ('layouts.carousel-products',
-        ['products' => $newProducts, "title" => trans('frontend.novelty_upper'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
+        ['products' => $newProducts, "title" => trans('frontend.novelty'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
     {{-- @include ('layouts.new-products')   CHANGEABLE --}}
 
     <!-- 3 small banners -->
