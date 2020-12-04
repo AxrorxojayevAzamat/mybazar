@@ -54,6 +54,7 @@
                     <table class="table table-bordered table-striped projects">
                         <tbody>
                         <tr><th>{{ trans('adminlte.type') }}</th><td>{{ $characteristic->typeName() }}</td></tr>
+                        <tr><th>{{ trans('adminlte.characteristic.main_param') }}</th><td>{{ $characteristic->main ? trans('adminlte.yes') : trans('adminlte.no') }}</td></tr>
                         <tr><th>{{ trans('adminlte.required') }}</th><td>{{ $characteristic->required ? trans('adminlte.yes') : trans('adminlte.no') }}</td></tr>
                         <tr>
                             <th>{{ trans('menu.categories') }}</th>

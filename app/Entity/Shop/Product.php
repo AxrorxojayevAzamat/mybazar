@@ -270,7 +270,10 @@ class Product extends BaseModel
     {
         return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
-
+    public function modificationsForProduct($id):array
+    {
+        return Modification::where(['characteristic_id' => $id ])->where(['product_id' => $this->id])->pluck('value')->toArray();
+    }
     ###########################################
 
 
@@ -317,19 +320,19 @@ class Product extends BaseModel
         return $this->hasMany(Photo::class, 'product_id', 'id')->orderBy('sort');
     }
 
-    public function mainValues()
+    public function mainCharacteristics()
     {
-        return $this->values();
+        return $this->characteristics();
     }
 
-    public function values()
+    public function characteristics()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
+        return $this->hasMany(CharacteristicCategory::class, 'category_id', 'main_category_id');
     }
 
     public function modifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
+        return $this->hasMany(Modification::class,'product_id','id')->orderBy('sort');
     }
 
     public function valueModifications()

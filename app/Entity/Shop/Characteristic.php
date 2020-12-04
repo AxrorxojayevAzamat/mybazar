@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property boolean $required
  * @property array $variants
  * @property boolean $hide_in_filters
+ * @property boolean $main
  * @property int $created_by
  * @property int $updated_by
  * @property Carbon $created_at
@@ -59,7 +60,7 @@ class Characteristic extends BaseModel
     }
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
+        'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'required', 'hide_in_filters','main'
     ];
 
     protected $casts = [

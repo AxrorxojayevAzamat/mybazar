@@ -110,6 +110,16 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            {!! Form::label('main', trans('adminlte.characteristic.main_param'), ['class' => 'col-form-label']); !!}
+                            {!! Form::checkbox('main', 1, old('main', $characteristic ? $characteristic->main : null),
+                                    ['class'=>'form-control' . ($errors->has('hide_in_filters') ? ' is-invalid' : '')]) !!}
+                            @if ($errors->has('main'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('main') }}</strong></span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

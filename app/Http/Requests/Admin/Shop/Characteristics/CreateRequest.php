@@ -16,6 +16,7 @@ use Illuminate\Validation\Rule;
  * @property boolean $required
  * @property string $variants
  * @property boolean $hide_in_filters
+ * @property boolean $main
  * @property int[] $categories
  */
 class CreateRequest extends FormRequest
@@ -36,6 +37,7 @@ class CreateRequest extends FormRequest
             'required' => 'boolean',
             'categories.*' => 'required|numeric|min:1|exists:categories,id',
             'hide_in_filters' => 'boolean',
+            'main' => 'boolean',
         ];
     }
 }
