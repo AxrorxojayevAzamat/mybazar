@@ -8,11 +8,6 @@
                         <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
                     </div>
                 @endif
-                @foreach($product->photos as $photo)
-                    <div class="big-image">
-                        <img src="{{ $photo->fileOriginal }}" style="width:100%">
-                    </div>
-                @endforeach
 
                 <div class="several-images owl-theme owl-carousel">
                     @php($currentSlide = 1)
@@ -110,12 +105,11 @@
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
                         <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
                     </div>
-                    <div class="first-item">
+                    <div class="sub-title bottom">
                         <div class="shop-name-logo">
-                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
+                            <a href="{{ route('stores.view',['store' => $product->store]) }}"><img src="{{ $product->store->logoThumbnail ?? null }}" alt="" class="img-rounded"></a>
                             <div>
-                                <p class="sub-title">{!! $product->name !!}</p>
-                                <b class="title"><a href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
+                                <b class="title"><a href="{{ route('stores.view',['store' => $product->store]) }}">{!! $product->store->name !!}</a></b>
                             </div>
                         </div>
                     </div>
