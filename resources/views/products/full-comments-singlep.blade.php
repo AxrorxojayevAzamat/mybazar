@@ -70,6 +70,7 @@
                         <textarea class="form-control" id="review-comment" name="comment" required></textarea>
                     </div>
                     <h4 id="validation" style="color: red">@lang('validation.fill_three_textarea_for_comments')</h4>
+                    <h4 id="validationRating" style="color: red">@lang('validation.dont_forget_to_rate')</h4>
                     <input type="submit" id="submit-review" value="{{ trans('frontend.send') }}" onclick="validationForm()">
                 </form>
             @else
@@ -83,32 +84,28 @@
 @push('script')
     <script>
         $('#validation').css('display', 'none')
-        let advantages = $('#review-advantages').val()
-        let disadvantages = $('#review-disadvantages').val()
-        let comment = $('#review-comment').val()
-        let textareas = [$('#review-advantages'), $('#review-disadvantages'), $('#review-comment')]
-        $('#review-advantages').change(function() {
-            advantages = this.value
-        })
-        $('#review-disadvantages').change(function() {
-            disadvantages = this.value
-        })
-        $('#review-comment').change(function() {
-            comment = this.value
-        })
+        $('#validationRating').css('display', 'none')
+        let advantages = $('#review-advantages'), disadvantages = $('#review-disadvantages'), comment = $('#review-comment')
+        let textareas = [advantages, disadvantages, comment]
+        let inputs = $("input[name='rating']")
+        let radio_inputs = []
+        for(let x in inputs) {
+            if(parseInt(x) >= 0 ) radio_inputs = [...radio_inputs, inputs[x]]
+        }
+        console.log(radio_inputs)
         function validationForm() {
-            if (!(advantages && disadvantages && comment)) {
-                $('#validation').css('display', 'block')
+            if (!(advantages[0].value && disadvantages[0].value && comment[0].value)) {
+                $('#validation').fadeIn(700)
                 textareas.forEach(el => {
-                    if(!el[0].value) {
-                        el[0].style.border = '1px solid #f00'
-                    }
+                    if(!el[0].value) el[0].style.border = '1px solid #f00'
                 })
             } else {
-                $('#validation').css('display', 'none')
+                $('#validation').fadeOut(700)
                 textareas.forEach(el => {
-                    el[0].style.border = '1px solid #d1d8e0'
+                    if(el[0].value) el[0].style.border = '1px solid #d1d8e0'
                 })
+                if(radio_inputs.every(r => !r.checked)) $('#validationRating').fadeIn(700)
+                else $('#validationRating').fadeOut(700)
             }
         }
     </script>
