@@ -38,7 +38,8 @@ CREATE TABLE public.banners (
     created_by bigint NOT NULL,
     updated_by bigint NOT NULL,
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    type smallint NOT NULL
 );
 
 
@@ -1635,7 +1636,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: banners; Type: TABLE DATA; Schema: public; Owner: dev_shop
 --
 
-COPY public.banners (id, title_uz, title_ru, title_en, description_uz, description_ru, description_en, url, slug, category_id, status, file, created_by, updated_by, created_at, updated_at) FROM stdin;
+COPY public.banners (id, title_uz, title_ru, title_en, description_uz, description_ru, description_en, url, slug, category_id, status, file, created_by, updated_by, created_at, updated_at, type) FROM stdin;
+1	Redmi 8	Redmi 8	Redmi 8	<p>Redmi 8</p>	<p>Redmi 8</p>	<p>Redmi 8</p>	http://shop.sec.uz/	redmi_8_discount	11	3	HVmyNpMMiFzR107s6bEjaUL6SJeXEYKw554u2FsY.png	1	1	2020-12-01 17:56:51	2020-12-01 17:56:51	1
+2	sletat.ru	sletat.ru	sletat.ru	<p>sletat.ru</p>	<p>sletat.ru</p>	<p>sletat.ru</p>	http://shop.sec.uz/	sletat_ru	8	3	okPu68soRCtJmpKROO0l2ypL2A7Z7LmZvwtjKMqB.png	1	1	2020-12-01 18:12:42	2020-12-01 18:12:46	1
+3	Adamas	Adamas	Adamas	<p>Adamas</p>	<p>Adamas</p>	<p>Adamas</p>	http://shop.sec.uz/	adamas	14	3	HCdiLgr6fzJCG9qU6Jm58ATBDCM8vtBrnLhFR8xy.png	1	1	2020-12-01 18:13:40	2020-12-01 18:13:40	1
+4	Xiomi	Xiomi	Xiomi	<p>Xiomi</p>	<p>Xiomi</p>	<p>Xiomi</p>	http://shop.sec.uz/	xiomi	11	3	4Fy5gsnnJ7EGM6IGln7fDqe1KGye6IE5cH5g206e.png	1	1	2020-12-01 18:27:51	2020-12-01 18:27:56	3
+5	MI	MI	MI	<p>MI</p>	<p>MI</p>	<p>MI</p>	http://shop.sec.uz/	mi_bannner	12	3	El3MOKAZhR9n8d3He5iEwIPesrmtvyNElFrzoqpH.png	1	1	2020-12-01 18:30:01	2020-12-01 18:30:33	3
+6	Snickers	Snickers	Snickers	<p>Snickers</p>	<p>Snickers</p>	<p>Snickers</p>	http://shop.sec.uz/	snickers	19	3	tCJAUjKSNyHOWdBDd3FuaEQYLEYn0lbGs7Pc0f76.png	1	1	2020-12-01 18:33:13	2020-12-01 18:33:18	3
 \.
 
 
@@ -1689,17 +1696,17 @@ COPY public.blog_videos (id, title_uz, title_ru, title_en, description_uz, descr
 
 COPY public.brands (id, name_uz, name_ru, name_en, slug, logo, meta_json, created_by, updated_by, created_at, updated_at) FROM stdin;
 12	Acer	Acer	Acer	acer	rC0QzRJIq7oI1t7AqBRasYbcvGj7ZEcyl2TtF0IL.png	\N	1	1	2020-11-26 16:09:19	2020-11-26 16:11:52
-8	Zara	Zara	Zara	zara	LJU1Km5AowRcEcoWohIllZLr6ZL9fig26aAERwBX.png	\N	1	1	2020-11-26 09:32:28	2020-11-26 16:12:20
-11	Versage	Versage	Versage	versage	QB7K8AAnHfTzCYlBEUGUvWlXFUzawvZxtt1N18g3.png	\N	1	1	2020-11-26 09:33:42	2020-11-26 16:12:36
-10	Artel	Artel	Artel	artel	BYBkzSuPLEjaZSWxxYhtGHaqudHak8D1EKgTGkDl.png	\N	1	1	2020-11-26 09:33:13	2020-11-26 16:12:59
-9	Chanel	Chanel	Chanel	chanel	XE6agzi7yuZ7VdrZCbjWsFKzynyfvp0gbP7PlD9Q.png	\N	1	1	2020-11-26 09:32:54	2020-11-26 16:13:21
-7	Sony	Sony	Sony	sony	7ZUUvd7ADTr2VaDo1qwRUiB6QJkEOYQrSBrCNchh.png	\N	1	1	2020-11-26 09:31:19	2020-11-26 16:13:40
-6	Vitra	Vitra	Vitra	vitra	z9aWWIMuporG1wfKofFZouebBxiV7ZFoHwdYmzIo.png	\N	1	1	2020-11-26 09:31:00	2020-11-26 16:14:01
-5	Dolce gabbana	Dolce gabbana	Dolce gabbana	dolce_gabbana	LAghhpM9Gc9U1394kTqYIaKpZRn5bnZxzIAZAoMM.png	\N	1	1	2020-11-26 09:30:30	2020-11-26 16:14:24
-4	LG	LG	LG	lg	eI7TyYfJPfBcG06ms1V1OO3KRtP6n0CZnnM0RVhr.png	\N	1	1	2020-11-26 09:29:46	2020-11-26 16:14:51
-3	MI	MI	MI	mi	cHnAfAHHDGI0uUxIjIrQnBvK3ekJBDb5YAjXp90K.png	\N	1	1	2020-11-26 09:29:18	2020-11-26 16:15:15
-2	Apple	Apple	Apple	apple	SdSaoeAo95XcToZcx1rEySTgKSMOMeqNkNuOvxl4.png	\N	1	1	2020-11-26 09:28:51	2020-11-26 16:15:36
-1	Samsung	Samsung	Samsung	samsung	FWsnWGlCvDWJlszPGIaJU4l8btZSSxgTjkN8r7Mo.png	\N	1	1	2020-11-26 09:28:03	2020-11-26 16:15:56
+1	Samsung	Samsung	Samsung	samsung	GSWGmroNmt5GNWwBova8pfnK1nTiYkD5wvXYjBC5.png	\N	1	1	2020-11-26 09:28:03	2020-12-01 16:52:45
+2	Apple	Apple	Apple	apple	USMcgD2i0dRtiu8I5J3osw7RFbLQ5KYhM8tWp9KX.png	\N	1	1	2020-11-26 09:28:51	2020-12-01 16:53:49
+3	MI	MI	MI	mi	TuvQtJaicnpwsyJJS2gWv2KZTjkH5zFxTG5ZyzYJ.png	\N	1	1	2020-11-26 09:29:18	2020-12-01 16:55:15
+4	LG	LG	LG	lg	vCtJ2RSTU44reTzUysYzZCYV3mZYDo1qup9tTHtg.png	\N	1	1	2020-11-26 09:29:46	2020-12-01 16:58:06
+5	Dolce gabbana	Dolce gabbana	Dolce gabbana	dolce_gabbana	cBur7wCHZgduMDLqXV9np7Iq7cgq6F5Y1bOiy6rz.png	\N	1	1	2020-11-26 09:30:30	2020-12-01 17:00:22
+7	Sony	Sony	Sony	sony	jocHQlcyN3drIzYlCsdMRYJ8mQxT7bmSLJRKqY6r.png	\N	1	1	2020-11-26 09:31:19	2020-12-01 17:03:15
+9	Chanel	Chanel	Chanel	chanel	1mPFXZcS6b2oAPbzM8oPmqoVeuQc0tC6qNYj4gqs.png	\N	1	1	2020-11-26 09:32:54	2020-12-01 17:04:48
+6	Vitra	Vitra	Vitra	vitra	2HmOTbY1spp5wJpwh6Oph1UcJAxZqJAHWJYRwqyK.png	\N	1	1	2020-11-26 09:31:00	2020-12-01 17:06:13
+10	Artel	Artel	Artel	artel	bO2mf4rlg4UDEre48xHoKExmfDSSTmDF8Cg6P4Pd.png	\N	1	1	2020-11-26 09:33:13	2020-12-01 17:08:02
+11	Versage	Versage	Versage	versage	m4msT8fKxBewbh0giEyXc2yAfmZo8HvOu6HsQ6OK.png	\N	1	1	2020-11-26 09:33:42	2020-12-01 17:09:17
+8	Zara	Zara	Zara	zara	TF7PC1bayQbnQObY1Kw2ksHz1tBZ3p5M79G5LLv1.png	\N	1	1	2020-11-26 09:32:28	2020-12-01 17:10:03
 \.
 
 
@@ -1752,7 +1759,6 @@ COPY public.delivery_methods (id, name_uz, name_ru, name_en, description_uz, des
 --
 
 COPY public.discounts (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, start_date, end_date, category_id, common, status, photo, created_by, updated_by, created_at, updated_at) FROM stdin;
-1	10 %	10 %	10 %	<p>10&nbsp;% - yaxshi</p>	<p>10 % -&nbsp;хорошo</p>	<p>10 % - good</p>	2020-12-01 00:00:00	2022-01-01 00:00:00	8	t	0	BwDjM4GJG9eUNHCRUzHigP7EEECDVOtMD7mctba6.jpg	1	1	2020-11-26 10:28:26	2020-11-26 10:28:26
 2	Bir kunlik chegirma	Скидка на один день	One day discount	<p>Ajoyib ishlaydi, hatto ko&#39;pincha uni o&#39;zim sotib olaman. Biron bir mahsulotni tanlang va unga chegirma o&#39;rnating. Aytgancha, agar siz uni &quot;Faqat bugun&quot; narx yorlig&#39;i bilan ta&#39;kidlasangiz, unda mahsulot, ayniqsa, lokomotiv mahsuloti bo&#39;lsa, mukammal tarzda uchib ketadi.</p>	<p>Отлично работает, даже зачастую сам на нее покупаюсь. Выделяете какой-то товар и устанавливаете на него скидку. Кстати, если выделить ее ценником &ldquo;Только сегодня&rdquo;, то товар, особенно если это&nbsp;<a href="https://in-scale.ru/blog/a-chto-u-vas-v-kompanii-moloko-i-krevetki">товар-локомотив</a>, будет отлично разлетаться.</p>	<p>Works great, even often I buy it myself. Select some product and set a discount on it. By the way, if you highlight it with the price tag &quot;Only today&quot;, then the product, especially if it is a locomotive product, will fly off perfectly.</p>	2020-12-12 00:00:00	2020-12-12 00:00:00	4	t	1	XIcBvnuRUWKenZh94iuJYBjAgenn5MWiivWFn86Z.jpg	1	1	2020-11-26 13:10:02	2020-11-26 13:10:02
 3	Haftaning kunlari bo'yicha chegirma	Скидка по дням недели	Discount by days of the week	<p>Bir kunlik chegirma bilan deyarli bir xil, ammo haftaning ma&#39;lum bir kuniga bog&#39;liq.</p>	<p>Практически то же самое, что и скидка на один день, но привязывается к конкретному дню недели.</p>	<p>Almost the same as a one day discount, but tied to a specific day of the week.</p>	2020-12-01 00:00:00	2021-02-01 00:00:00	14	t	1	bdDjmQECwvLeDDRwyDq9myCQrRIgibV2A4UW6QTi.jpg	1	1	2020-11-26 13:15:30	2020-11-26 13:15:30
 4	Istalgan davr uchun chegirma	Скидка на любой срок	Discount for any period	<p>Haftaning bir kuni yoki kuniga chegirmalarning analogi, faqat muddat har qanday bo&#39;lishi mumkin. Katta intervallarni o&#39;rnatmaslikni tavsiya qilaman. Foyda, har doimgidek, eng sodda - ochko&#39;zlikda.</p>	<p>Аналог скидок на один день или день недели, только срок может быть любой. Рекомендую не ставить большие интервалы. Выгода как всегда в самом простом &ndash; в жадности.</p>	<p>An analogue of discounts for one day or a day of the week, only the period can be any. I recommend not to set large intervals. The benefit, as always, is in the simplest - in greed.</p>	2021-01-01 00:00:00	2022-01-01 00:00:00	11	t	1	5UwcIQNgLIQr3D1CeI5IDhEyngAEMEfG5kSXbM73.jpg	1	1	2020-11-26 13:19:11	2020-11-26 13:19:11
@@ -1824,6 +1830,8 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 43	2020_11_24_160939_create_shop_product_discounts_table	3
 44	2020_11_24_173147_add_manager_request_status_to_users_table	4
 45	2020_11_26_163433_add_email_verified_to_users_table	5
+46	2020_12_01_135006_add_type_column_to_banners_table	6
+47	2020_12_02_144403_remove_unique_key_from_store_users_table	7
 \.
 
 
@@ -1832,6 +1840,12 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 --
 
 COPY public.pages (id, title_uz, title_ru, title_en, menu_title_uz, menu_title_ru, menu_title_en, slug, description_uz, description_ru, description_en, body_uz, body_ru, body_en, parent_id, "left", "right", created_by, updated_by, created_at, updated_at) FROM stdin;
+1	Matbuot markazi	Пресс-центр	Press-center	Matbuot markazi	Пресс-центр	Press-center	presscenter	Matbuot xizmati - bu tashkilot, davlat muassasasi yoki davlat organining matbuot va boshqa ommaviy axborot vositalari bilan o'zaro aloqador bo'linmasi. O'zaro aloqalar press-relizlarni chiqarish, matbuot anjumanlarini tashkil etish, telefon yoki Internet orqali maslahatlashuvlar orqali amalga oshiriladi. Matbuot bilan o'zaro aloqani bir kishi - tashkilotning matbuot kotibi va xizmatning barcha xodimlari amalga oshirishi mumkin.	Пресс-служба — подразделение организации, госучреждения или органа власти, осуществляющее взаимодействие данной структуры с прессой и прочими СМИ. Взаимодействие происходит посредством выпуска пресс-релизов, организации пресс-конференций, консультаций по телефону или интернету. Взаимодействие с прессой может осуществляться как одним лицом - пресс-секретарем организации, так и всеми сотрудниками службы.	Press service is a subdivision of an organization, state institution or government body that interacts with the press and other media outlets. Interaction takes place through the issuance of press releases, the organization of press conferences, consultations by phone or the Internet. Interaction with the press can be carried out both by one person - the press secretary of the organization, and by all employees of the service.	<p>Matbuot xizmatining tarkibiy bo&#39;linma sifatida maqsadi turli darajalarda &quot;kerakli vaqtda&quot; &quot;to&#39;g&#39;ri&quot; ma&#39;lumotlarni etkazishdir. Amaldagi tadbirlar o&#39;tkaziladigan joylarda matbuot xizmati sub-press markazlarini tuzishi, press attashega ega bo&#39;lishi mumkin. Bunday manzarani mezbon mamlakatning turli shaharlarida bo&#39;lib o&#39;tadigan Olimpiya o&#39;yinlarida ko&#39;rish mumkin. Shuningdek, xalqaro aloqalar, xorijiy vakolatxonalarga kirish huquqiga ega bo&#39;lgan tashkilotlarda press-attaşe mavjud (ko&#39;pincha bular maslahatchilar, xorijiy ommaviy axborot vositalari bilan aloqalar bo&#39;yicha mutaxassislar). [2]</p>\r\n\r\n<p>Matbuot xizmatining vazifalari<br />\r\nMatbuot xizmatining vazifalari:</p>\r\n\r\n<p>Siyosiy va iqtisodiy faoliyatni amalga oshirish bilan bog&#39;liq ijtimoiy-siyosiy xarakterdagi ma&#39;lumotlarni yig&#39;ish va tahlil qilish<br />\r\nIqtisodiy, siyosiy va ijtimoiy dasturlar va harakatlarni amalga oshirish jarayonida jamoatchilik fikri holati va dinamikasini monitoring qilish, tahlil qilish.<br />\r\nFederal va mintaqaviy davlat organlari faoliyatini yoritish va talqin qilish bo&#39;yicha mintaqaviy ommaviy axborot vositalarining faoliyatini tahlil qilish.<br />\r\nHam federal, ham mintaqaviy hokimiyat idoralarining iqtisodiy va ijtimoiy siyosatida tashabbuslar, siyosiy harakatlar, xarajatlarni amalga oshirish bilan bog&#39;liq holda mamlakatda, mintaqada sodir bo&#39;ladigan voqealarning ijtimoiy-siyosiy vaziyatini va mumkin bo&#39;lgan stsenariylarini prognoz qilish. [3]</p>	<p>Цель пресс-службы как структурного подразделения заключается в передаче &laquo;нужной&raquo; информации в &laquo;нужное время&raquo; на самых разных уровнях. На местах актуальных событий пресс-служба может создавать субпресс-центры, иметь пресс-атташе. Такую картину можно видеть на Олимпийских играх, которые проходят в различных городах страны-устроителя. Пресс-атташе есть и в организациях, имеющих выход на международные контакты, зарубежные представительства (часто это советники, эксперты по связям с иностранными СМИ).<sup><a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D1%81%D1%81-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B0#cite_note-2">[2]</a></sup></p>\r\n\r\n<h2>Задачи пресс-службы[<a href="https://ru.wikipedia.org/w/index.php?title=%D0%9F%D1%80%D0%B5%D1%81%D1%81-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B0&amp;veaction=edit&amp;section=3" title="Редактировать раздел «Задачи пресс-службы»">править</a>&nbsp;|&nbsp;<a href="https://ru.wikipedia.org/w/index.php?title=%D0%9F%D1%80%D0%B5%D1%81%D1%81-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B0&amp;action=edit&amp;section=3" title="Редактировать раздел «Задачи пресс-службы»">править код</a>]</h2>\r\n\r\n<p>Задачами пресс-службы являются:</p>\r\n\r\n<ul>\r\n\t<li>Сбор и анализ информации социально-политического характера, связанной с осуществлением политической и экономической деятельности</li>\r\n\t<li>Мониторинг, анализ состояния и динамики общественного мнения в процессе осуществления экономических, политических и социальных программ и акций.</li>\r\n\t<li>Анализ деятельности региональных средств массовой информации по освещению и интерпретации деятельности федеральных и региональных органов государственного управления.</li>\r\n\t<li>Прогнозирование социально-политической ситуации и возможных сценариев развития событий в стране, регионе, в связи с реализацией инициатив, политических акций, расходов в экономической и социальной политике как федеральных, так и региональных органов власти.<sup><a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D1%81%D1%81-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B0#cite_note-3">[3]</a></sup></li>\r\n</ul>	<p>The purpose of the press service as a structural unit is to convey the &quot;right&quot; information at the &quot;right time&quot; at various levels. At the places of current events, the press service can create sub-press centers, have a press attach&eacute;. Such a picture can be seen at the Olympic Games, which are held in various cities of the host country. There is also a press attach&eacute; in organizations that have access to international contacts, foreign missions (often these are advisers, experts in relations with foreign media). [2]</p>\r\n\r\n<p>Tasks of the press service<br />\r\nThe tasks of the press service are:</p>\r\n\r\n<p>Collection and analysis of information of a socio-political nature related to the implementation of political and economic activities<br />\r\nMonitoring, analysis of the state and dynamics of public opinion in the process of implementing economic, political and social programs and actions.<br />\r\nAnalysis of the activities of regional mass media on coverage and interpretation of the activities of federal and regional government bodies.<br />\r\nForecasting the socio-political situation and possible scenarios for the development of events in the country, region, in connection with the implementation of initiatives, political actions, expenditures in the economic and social policies of both federal and regional authorities. [3]</p>	\N	1	4	1	1	2020-12-04 11:36:29	2020-12-04 11:36:29
+2	Xizmat	Oбслуживание	Service	Xizmat	Oбслуживание	Service	service	Iqtisodiyotda xizmat - bu hech qanday jismoniy tovarlar sotuvchidan xaridorga o'tkazilmaydigan bitim. Bunday xizmatning afzalliklari xaridorning birjani amalga oshirishga tayyorligi bilan namoyon bo'ladi. Davlat xizmatlari - bu jamiyat (milliy davlat, moliya ittifoqi yoki mintaqa) umuman to'laydigan xizmatlar. Resurslar, mahorat, zukkolik va tajribadan foydalangan holda, xizmat ko'rsatuvchi provayderlar xizmat iste'molchilariga foyda keltiradi. Xizmat nomoddiy xususiyatga ega.	В экономике услуга - это транзакция, при которой физические товары не передаются от продавца к покупателю. Считается, что преимущества такой услуги демонстрируются готовностью покупателя произвести обмен. Общественные услуги - это те услуги, за которые платит общество (национальное государство, финансовый союз или регион) в целом. Используя ресурсы, навыки, изобретательность и опыт, поставщики услуг приносят пользу потребителям услуг. Услуга нематериальна по своей природе.	In economics, a service is a transaction in which no physical goods are transferred from the seller to the buyer. The benefits of such a service are held to be demonstrated by the buyer's willingness to make the exchange. Public services are those that society (nation state, fiscal union or region) as a whole pays for. Using resources, skill, ingenuity, and experience, service providers benefit service consumers. Service is intangible in nature.	<p>Nomoddiylik<br />\r\nXizmatlar ta&#39;rifi bo&#39;yicha nomoddiydir. Ular ishlab chiqarilmaydi, tashilmaydi yoki stoklanmaydilar.</p>\r\n\r\n<p>Kelajakda foydalanish uchun xizmatlarni saqlash mumkin emas. Ular bir vaqtning o&#39;zida ishlab chiqariladi va iste&#39;mol qilinadi.</p>\r\n\r\n<p>Tez buzilish<br />\r\nXizmatlar ikki jihatdan buziladi:</p>\r\n\r\n<p>Xizmatga tegishli manbalar, jarayonlar va tizimlar ma&#39;lum bir vaqt ichida xizmat ko&#39;rsatish uchun tayinlangan. Agar xizmatni iste&#39;molchi ushbu davrda xizmatni so&#39;ramasa va iste&#39;mol qilmasa, tegishli manbalar ishlatilmasligi mumkin. Xizmat ko&#39;rsatuvchi provayder nuqtai nazaridan, agar ushbu resurslardan boshqa foydalanish imkoniyati bo&#39;lmasa, bu yo&#39;qolgan biznes imkoniyati. Misollar: Sartarosh boshqa mijozga xizmat qiladi. Samolyotdagi bo&#39;sh o&#39;rindiq uchib ketgandan keyin to&#39;ldirilmaydi.<br />\r\nXizmat iste&#39;molchiga to&#39;liq taqdim etilgandan so&#39;ng, ushbu maxsus xizmat bekor qilinadi. Misol: yo&#39;lovchi belgilangan manzilga etkazilgan.<br />\r\nXizmat ko&#39;rsatuvchi provayder xizmatni iste&#39;mol qilinadigan aniq vaqtda ko&#39;rsatishi kerak. Xizmat ko&#39;rsatuvchi provayderdan mustaqil bo&#39;lgan jismoniy ob&#39;ektda namoyon bo&#39;lmaydi. Xizmatni iste&#39;molchi, shuningdek, xizmat ko&#39;rsatishdan ajralmaydi. Misollar: xizmat ko&#39;rsatuvchi iste&#39;molchi sartaroshxonada yoki samolyot o&#39;rindig&#39;ida o&#39;tirishi kerak. Shunga mos ravishda, sartarosh yoki uchuvchi xizmatni ko&#39;rsatish uchun navbati bilan do&#39;konda yoki samolyotda bo&#39;lishi kerak.</p>	<p>Неосязаемость<br />\r\nУслуги по определению нематериальны. Они не производятся, не перевозятся и не хранятся.</p>\r\n\r\n<p>Нельзя хранить услуги для будущего использования. Они производятся и потребляются одновременно.</p>\r\n\r\n<p>Бренность<br />\r\nУслуги скоропортящиеся в двух отношениях:</p>\r\n\r\n<p>Ресурсы, процессы и системы, относящиеся к сервису, назначаются для оказания услуг в течение определенного периода времени. Если потребитель услуги не запрашивает и не использует услугу в течение этого периода, соответствующие ресурсы могут остаться неиспользованными. С точки зрения поставщика услуг, это упущенная возможность для бизнеса, если нет другого использования этих ресурсов. Примеры: парикмахер обслуживает другого клиента. Свободное место в самолете нельзя заполнить после вылета.<br />\r\nКогда услуга полностью предоставлена ​​потребителю, эта услуга безвозвратно исчезает. Пример: пассажир был доставлен в пункт назначения.<br />\r\nПоставщик услуг должен предоставить услугу в то время, когда услуга была потреблена. Услуга не проявляется в физическом объекте, независимом от поставщика. Потребитель услуги также неотделим от оказания услуги. Примеры: Потребитель услуги должен сидеть в кресле парикмахера или в кресле самолета. Соответственно, парикмахер или пилот должны находиться в магазине или в самолете соответственно, чтобы оказывать услугу.</p>	<h3>Intangibility[<a href="https://en.wikipedia.org/w/index.php?title=Service_(economics)&amp;action=edit&amp;section=2" title="Edit section: Intangibility">edit</a>]</h3>\r\n\r\n<p>Services are by definition intangible. They are not manufactured, transported or stocked.</p>\r\n\r\n<p>One cannot store services for future use. They are produced and consumed simultaneously.</p>\r\n\r\n<h3>Perishability[<a href="https://en.wikipedia.org/w/index.php?title=Service_(economics)&amp;action=edit&amp;section=3" title="Edit section: Perishability">edit</a>]</h3>\r\n\r\n<p>Services are perishable in two regards:</p>\r\n\r\n<ul>\r\n\t<li>Service-relevant resources, processes, and systems are assigned for service delivery during a specific period in time. If the service consumer does not request and consume the service during this period, the related resources may go unused. From the perspective of the service provider, this is a lost business opportunity if no other use for those resources is available. Examples: A hairdresser serves another client. An empty seat on an airplane cannot be filled after departure.</li>\r\n\t<li>When the service has been completely rendered to the consumer, this particular service irreversibly vanishes. Example: a passenger has been transported to the destination.</li>\r\n</ul>\r\n\r\n<p>The service provider must deliver the service at the exact time of service consumption. The service is not manifested in a physical object that is independent of the provider. The service consumer is also inseparable from service delivery. Examples: The service consumer must sit in the hairdresser&#39;s chair, or in the airplane seat. Correspondingly, the hairdresser or the pilot must be in the shop or plane, respectively, to deliver the service.</p>	\N	5	8	1	1	2020-12-04 11:40:43	2020-12-04 11:40:43
+3	Xizmatlar	Сервисы	Services	Xizmatlar	Сервисы	Services	services	Iqtisodiyotning barqaror rivojlanishini ta`minlash, aholining turmush darajasini oshirish va samarali\r\nbandligini ta`minlashda xizmatlar sohasining har tomonlama rivojlanishi muhim masalalardan biri\r\nbo`lib hisoblanadi.\r\nTajriba shuni ko`rsatmoqdaki, hozirgi kunda rivojlangan va rivojlanayotgan mamlakatlar iqtisodiy\r\no`sishni ta`minlash uchun xizmatlar sohasini jadal rivojlantirishni eng muhim vazifalardan biri sifatida\r\nqo`yishmoqda.	Обеспечение устойчивого экономического развития, повышение уровня жизни и эффективности\r\nОдин из важнейших вопросов в сфере занятости - комплексное развитие сферы услуг.\r\nявляется\r\nОпыт показывает, что сегодня развитые и развивающиеся страны экономически\r\nОдна из важнейших задач - ускорить развитие сферы услуг для обеспечения роста\r\nставим.	Ensuring sustainable economic development, improving living standards and efficiency\r\nOne of the most important issues in employment is the comprehensive development of the services sector\r\nis\r\nExperience shows that today developed and developing countries are economically\r\nOne of the most important tasks is to accelerate the development of the services sector to ensure growth\r\nare putting.	<p>Xizmatlar sohasi aholining barcha qatlamlarini qamrab oladi va jamiyatda sodir bo`layotgan deyarli barcha ijtimoiy-iqtisodiy jarayonlarga ta`sir ko`rsatadi, bu esa mazkur masalaning qanchalik muhim va ahamiyatli ekanligini ko`rsatib beradi. O`zbekistonda mustaqillik yillarida, iqtisodiyotni diversifikatsiyalash va tarkibiy o`zgartirishlarni chuqurlashtirish, mamlakat aholisining bandligini, daromadlarini va turmush sifatini oshirishning muhim yo`nalishlari va omillaridan biri sifatida xizmatlar sohasi va servisni jadal rivojlantirish bo`yicha tizimli ishlar amalga oshirildi. Bundan tashqari, iqtisodiyotning barqaror o`sishini ta`minlashda mazkur soha muhim o`rinni egallamoqda. I. Xizmatlar Xizmatlar sohasini rivojlantirish dasturining asosiy vazifalari va yo`nalishlarini amalga oshirish jarayonida, 2010-2016 yillarda bozor xizmatlari hajmi 2,6 martaga oshib, 6060,0 mlrd. so`mgacha ko`paydi. Aholi jon boshiga ko`rsatilgan xizmatlar hajmi mazkur davrda 2,4 martaga o`sdi va 1675,0 ming so`mni tashkil etdi (1-jadval).</p>	<p>Сфера услуг охватывает все слои населения и происходит в обществе.<br />\r\nзатрагивает практически все социально-экономические процессы, в чем и заключается эта проблема<br />\r\nпоказывает, что это важно и значимо.<br />\r\nЗа годы независимости в Узбекистане произошла экономическая диверсификация и структурные изменения.<br />\r\nуглубление, повышение занятости, доходов и качества жизни населения страны<br />\r\nоб ускоренном развитии сферы услуг и услуг как об одном из важных направлений и факторов<br />\r\nпроведена планомерная работа. Кроме того, это важно для устойчивого экономического роста.<br />\r\nПромышленность играет важную роль.<br />\r\nI. Услуги<br />\r\nРеализация основных задач и направлений программы развития сферы услуг.<br />\r\nЗа период 2010-2016 гг. Объем рыночных услуг увеличился в 2,6 раза и составил 6060,0 млрд. Сумов. подвести<br />\r\nвыросла. Объем оказанных услуг на душу населения за этот период увеличился в 2,4 раза и составил 1675,0.<br />\r\nтыс. сумов (таблица 1).</p>	<p>The service sector covers all segments of the population and is happening in society<br />\r\naffects almost all socio-economic processes, which is the extent of this issue<br />\r\nshows that it is important and significant.<br />\r\nDuring the years of independence in Uzbekistan, economic diversification and structural changes<br />\r\ndeepening, increasing employment, income and quality of life of the country&#39;s population<br />\r\nOne of the important directions and factors is the rapid development of the service sector and services<br />\r\nsystematic work has been done. In addition, it is important for sustainable economic growth<br />\r\nThe industry plays an important role.<br />\r\nI. Services<br />\r\nImplementation of the main tasks and directions of the service sector development program<br />\r\nDuring the period 2010-2016, the volume of market services increased by 2.6 times and amounted to 6060.0 billion soums. to sum<br />\r\nincreased. The volume of services provided per capita during this period increased by 2.4 times and amounted to 1675.0<br />\r\nthousand soums (Table 1).</p>	2	6	7	1	1	2020-12-04 11:45:58	2020-12-04 11:45:58
+4	Tarix	История	History	Tarix	История	History	history	Tarixnoma atamasi bir nechta ma'nolarni anglatadi. Birinchidan, bu tarix qanday yozilganligi, tarixiy usul qanchalik to'g'ri qo'llanilganligi va tarixiy bilim qanday rivojlanayotganligi haqidagi fan. Ikkinchidan, xuddi shu atama ko'pincha tematik yoki boshqa yo'l bilan umumiy to'plamdan tanlangan tarixiy asarlar to'plamini bildiradi (masalan, 1960-yillarning O'rta asrlar haqidagi tarixshunosligi). Uchinchidan, tarixshunoslik atamasi aniq tarixchilarning qarashlari va asarlarini o'rganishni anglatadi (tarixiy asarlarni yaratish sabablari, ularning mavzusini tanlash, voqealarni talqin qilish usuli, muallif va uning tinglovchilarining shaxsiy e'tiqodlari, dalillardan foydalanish amaliyoti va boshqa tarixchilarga havolalar tahlil qilingan). Professional tarixchilar, shuningdek, tomoshabinlar uchun raqobatlashadigan insoniyat tarixining yagona hikoyasini yoki bunday hikoyalar turkumini yaratish imkoniyatini muhokama qilmoqdalar.	Термин историография имеет несколько значений. Во-первых, это наука о том, как пишется история, насколько правильно применяется исторический метод и как развивается историческое познание. Во-вторых, тем же термином обозначают совокупность исторических трудов, часто тематически или иным способом отобранных из общей совокупности (например, историография 1960-х годов о Средних веках). В-третьих, термином историография обозначают изучение взглядов и работ конкретных историков (анализируются причины создания исторических сочинений, выбор их тематики, способ интерпретации событий, личные убеждения автора и его аудитории, практика использования доказательств и ссылок на других историков). Профессиональные историки обсуждают также возможность создания единого рассказа об истории человечества или серии таких рассказов, конкурирующих за аудиторию.	The term historiography has several meanings. First, it is the science of how history is written, how correctly the historical method is applied, and how historical knowledge develops. Secondly, the same term denotes a set of historical works, often thematically or in some other way selected from the general set (for example, the historiography of the 1960s about the Middle Ages). Thirdly, the term historiography denotes the study of the views and works of specific historians (the reasons for the creation of historical works, the choice of their subject matter, the way of interpreting events, the personal beliefs of the author and his audience, the practice of using evidence and references to other historians are analyzed). Professional historians are also discussing the possibility of creating a single narrative of human history, or a series of such stories, competing for an audience.	<p>Muayyan madaniyatda mashhur bo&#39;lgan, ammo uchinchi tomon manbalari tomonidan qo&#39;llab-quvvatlanmaydigan hikoyalar, masalan, Qirol Artur afsonasi, odatda madaniy merosning bir qismi hisoblanadi, &quot;xolis izlanishlar&quot; emas, bu ilmiy intizom sifatida tarixning har qanday qismi bo&#39;lishi kerak [6] [7]. ...</p>\r\n\r\n<p>Tarix so&#39;zi yunon tilidan (Horoza, historia) kelib chiqqan va proto-hind-evropaning wid-tor- so&#39;zidan kelib chiqqan bo&#39;lib, bu erda ildizi weid-, &quot;bilish, ko&#39;rish&quot; [8] [9]. Rus tilida &quot;ko&#39;rish&quot; va &quot;mas&#39;ul bo&#39;lish&quot; so&#39;zlari bilan ifodalanadi [10].</p>\r\n\r\n<p>Qadimgi Yunonistonda &quot;tarix&quot; so&#39;zi nafaqat zamonaviy ma&#39;noda tarixiy bilimning o&#39;zi, balki tadqiqot natijasida olingan har qanday bilimni anglatardi. Masalan, Aristotel ushbu so&#39;zni &quot;Hayvonlar tarixi&quot; da ishlatgan [11]. Shuningdek, u Gomer madhiyalarida, Geraklit asarlarida va Afina davlatiga qasamyod matnida uchraydi. Qadimgi yunonlarda ham &quot;kashf qilish uchun&quot; historein so&#39;zi mavjud bo&#39;lib, u dastlab faqat Ioniyada ishlatilgan, keyinchalik u butun Yunonistonga va oxir-oqibat butun ellinizm tsivilizatsiyasiga tarqalgan.</p>\r\n\r\n<p>Xuddi shu qadimgi yunoncha ma&#39;noda &quot;tarix&quot; so&#39;zi XVII asrda Frensis Bekon tomonidan keng tarqalgan &quot;tabiiy tarix&quot; atamasida ishlatilgan. Bekon uchun tarix &quot;makon va zamonda o&#39;rni aniqlangan narsalar to&#39;g&#39;risida bilimdir&quot; va uning manbasi xotira (xuddi fan aks ettirish mevasi, she&#39;riyat esa xayol mevasi bo&#39;lgani kabi). O&#39;rta asrlarda Angliyada &quot;tarix&quot; so&#39;zi odatda umuman hikoya ma&#39;nosida ishlatilgan. O&#39;tgan voqealar ketma-ketligi sifatida tarix (tarix) maxsus atamasi XV asr oxirida ingliz tilida, &quot;tarixiy&quot; (tarixiy, tarixiy) so&#39;zi esa 17 asrda paydo bo&#39;lgan [12]. Germaniya, Frantsiya va Rossiyada ikkala ma&#39;noda ham xuddi shu &quot;tarix&quot; so&#39;zi ishlatilmoqda [11].</p>	<p>Истории, популярные в той или иной&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B0" title="Культура">культуре</a>, но не подтверждаемые сторонними источниками, например, легенды о&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8C_%D0%90%D1%80%D1%82%D1%83%D1%80" title="Король Артур">короле Артуре</a>, считаются обычно частью&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5_%D1%86%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" title="Культурные ценности">культурного наследия</a>, а не &laquo;беспристрастным исследованием&raquo;, которым должна быть любая часть истории как научной дисциплины<sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-6">[6]</a></sup><sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-Low1-7">[7]</a></sup>.</p>\r\n\r\n<p>Слово&nbsp;<em>история</em>&nbsp;пришло из&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Греческий язык">греческого языка</a>&nbsp;(<em>ἱ&sigma;&tau;&omicron;&rho;ί&alpha;</em>,&nbsp;<em>historia</em>), и происходит от&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B0%D0%B8%D0%BD%D0%B4%D0%BE%D0%B5%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Праиндоевропейский язык">праиндоевропейского слова</a>&nbsp;<em>wid-tor-</em>, где корень&nbsp;<em>weid-</em>, &laquo;знать, видеть&raquo;<sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-JosephJanda-8">[8]</a></sup><sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-9">[9]</a></sup>. В русском языке представлен словами &laquo;видеть&raquo; и &laquo;ведать&raquo;<sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-10">[10]</a></sup>.</p>\r\n\r\n<p>В&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%94%D1%80%D0%B5%D0%B2%D0%BD%D1%8F%D1%8F_%D0%93%D1%80%D0%B5%D1%86%D0%B8%D1%8F" title="Древняя Греция">Древней Греции</a>&nbsp;слово &laquo;история&raquo; означало любое знание, получаемое путём исследования, а не только собственно историческое знание в современном смысле. Например,&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B8%D1%81%D1%82%D0%BE%D1%82%D0%B5%D0%BB%D1%8C" title="Аристотель">Аристотель</a>&nbsp;использовал это слово в &laquo;Истории животных&raquo;<sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-Ferrater-Mora-11">[11]</a></sup>. Оно встречается также в гимнах&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BC%D0%B5%D1%80" title="Гомер">Гомера</a>, сочинениях&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%93%D0%B5%D1%80%D0%B0%D0%BA%D0%BB%D0%B8%D1%82" title="Гераклит">Гераклита</a>&nbsp;и тексте присяги Афинскому государству. В древнегреческом было также слово&nbsp;<em>histore&icirc;n</em>, &laquo;исследовать&raquo;, которое сначала использовалось только в&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%98%D0%BE%D0%BD%D0%B8%D1%8F" title="Иония">Ионии</a>, откуда затем распространилось на всю Грецию и, в конце концов, всю&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%AD%D0%BB%D0%BB%D0%B8%D0%BD%D0%B8%D0%B7%D0%BC" title="Эллинизм">эллинистическую цивилизацию</a>.</p>\r\n\r\n<p>В том же древнегреческом смысле слово &laquo;история&raquo; употреблялось в XVII веке&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%91%D1%8D%D0%BA%D0%BE%D0%BD,_%D0%A4%D1%80%D1%8D%D0%BD%D1%81%D0%B8%D1%81" title="Бэкон, Фрэнсис">Фрэнсисом Бэконом</a>&nbsp;в широкоупотребительном термине &laquo;<a href="https://ru.wikipedia.org/wiki/%D0%95%D1%81%D1%82%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F" title="Естественная история">естественная история</a>&raquo;. Для Бэкона история&nbsp;&mdash; &laquo;знание о предметах, место которых определено в пространстве и времени&raquo;, и источником которого является&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BC%D1%8F%D1%82%D1%8C" title="Память">память</a>&nbsp;(так же как&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D1%83%D0%BA%D0%B0" title="Наука">наука</a>&nbsp;&mdash; плод размышлений, а&nbsp;<a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%8D%D0%B7%D0%B8%D1%8F" title="Поэзия">поэзия</a>&nbsp;&mdash; плод фантазии). В средневековой Англии слово &laquo;история&raquo; чаще использовалось в смысле рассказа вообще (<em>story</em>). Особый термин история (<em>history</em>) как последовательность прошедших событий появился в английском языке в конце&nbsp;<a href="https://ru.wikipedia.org/wiki/XV_%D0%B2%D0%B5%D0%BA" title="XV век">XV&nbsp;века</a>, а слово &laquo;исторический&raquo; (<em>historical</em>,&nbsp;<em>historic</em>)&nbsp;&mdash; в&nbsp;<a href="https://ru.wikipedia.org/wiki/XVII_%D0%B2%D0%B5%D0%BA" title="XVII век">XVII&nbsp;веке</a><sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-Whitney-12">[12]</a></sup>. В Германии, Франции и России в обоих смыслах по-прежнему употребляется одно и то же слово &laquo;история&raquo;<sup><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F#cite_note-Ferrater-Mora-11">[11]</a></sup>.</p>	<p>Stories that are popular in a particular culture but are not supported by third-party sources, such as the legend of King Arthur, are usually considered part of the cultural heritage, and not &quot;impartial research&quot;, which should be any part of history as a scientific discipline [6] [7] ...</p>\r\n\r\n<p>The word history comes from the Greek language (ἱ&sigma;&tau;&omicron;&rho;ί&alpha;, historia), and comes from the Proto-Indo-European word wid-tor-, where the root is weid-, &ldquo;to know, to see&rdquo; [8] [9]. In Russian it is represented by the words &ldquo;to see&rdquo; and &ldquo;to be in charge&rdquo; [10].</p>\r\n\r\n<p>In ancient Greece, the word &quot;history&quot; meant any knowledge obtained through research, and not just historical knowledge itself in the modern sense. For example, Aristotle used this word in the &quot;History of Animals&quot; [11]. It is also found in the hymns of Homer, the writings of Heraclitus and the text of the oath to the Athenian state. Ancient Greek also had the word histore&icirc;n, &ldquo;to explore,&rdquo; which at first was used only in Ionia, from where it then spread to all of Greece and, ultimately, the entire Hellenistic civilization.</p>\r\n\r\n<p>In the same ancient Greek sense, the word &quot;history&quot; was used in the 17th century by Francis Bacon in the widely used term &quot;natural history.&quot; For Bacon, history is &quot;knowledge about objects whose place is determined in space and time&quot;, and the source of which is memory (just as science is the fruit of reflection, and poetry is the fruit of fantasy). In medieval England, the word &quot;history&quot; was more often used in the sense of a story in general. The special term history (history) as a sequence of past events appeared in English at the end of the 15th century, and the word &quot;historical&quot; (historical, historic) - in the 17th century [12]. In Germany, France and Russia, in both senses, the same word &ldquo;history&rdquo; is still used [11].</p>	1	2	3	1	1	2020-12-04 11:50:39	2020-12-04 11:50:39
+5	Kompaniya haqida	О компании	About company	Kompaniya haqida	О компании	About company	about_company	Sizning biznes-rejangizning kompaniyani tavsiflash bo'limi odatda ijro etuvchi xulosadan keyingi ikkinchi qismdir.1 Kompaniya tavsifida sizning kompaniyangiz haqida juda muhim tafsilotlar, masalan, siz qaerda joylashganingiz, kompaniyaning kattaligi, nima qilayotganingiz va nima qilishga umid qilasiz.	Раздел с описанием компании вашего бизнес-плана, как правило, является вторым разделом, идущим после исполнительного резюме.1 Описание компании содержит важные детали о вашей компании, например, где вы находитесь, насколько велика компания, чем вы занимаетесь и чего вы надеетесь достичь.	The company description section of your business plan is typically the second section, coming after the executive summary.1﻿ The company description outlines vital details about your company, such as where you are located, how large the company is, what you do, and what you hope to accomplish.	<p>Siz kiritmoqchi bo&#39;lgan asosiy ma&#39;lumotlarni tartibga solgandan so&#39;ng, bo&#39;limni o&#39;quvchilarga yoqadigan tarzda yozishingiz kerak. Muvaffaqiyatli kompaniya tavsifini yaratishda yordam berish uchun besh bosqichni bajaring.</p>\r\n\r\n<p>Lift balandligidan boshlang: kompaniyani tavsiflash bo&#39;limini kompaniyangiz haqidagi barcha muhim ma&#39;lumotlarni o&#39;z ichiga olgan xat bilan boshlang. Tasavvur qiling, siz o&#39;zingizning kompaniyangiz haqida lift pitchini beryapsiz va asosiy xususiyatlarni bir necha jumla bilan ifodalashni xohlaysiz. Kirish xatboshisi uchun xuddi shu fikrlash jarayonidan foydalaning.<br />\r\nYuqori darajadagi ma&#39;lumotlarga tayanib turing: kompaniyangiz tavsifidagi ba&#39;zi ma&#39;lumotlar biznes rejangizning boshqa bo&#39;limlariga kiritiladi. Ushbu qismlar uchun faqat yuqori darajadagi obzorni taqdim eting va tegishli bo&#39;lim uchun barcha aniq ma&#39;lumotlarni qoldiring.<br />\r\nO&#39;zingizning ishtiyoqingizni ko&#39;rsating: kompaniyani tavsiflash qismida nima uchun kompaniyani boshlaganingizni va nimaga erishmoqchi ekaningizni tushuntirib berayotganda ehtiros va hayajoningiz namoyon bo&#39;lsin. Sizning hayajoningiz yozish ohangida namoyon bo&#39;lishi kerak va sizning maqsadingiz o&#39;quvchini biznes-rejaning qolgan qismini o&#39;qishga qiziqtirishdir.<br />\r\nUzunlikni tekshirib ko&#39;ring: kompaniyangizni boshlashga undagan ishtiyoq va hayajon haqida yozayotganingizda, o&#39;z fikringizni tushuntirish uchun kerak bo&#39;lgandan ko&#39;proq so&#39;zlarni ishlatish osonroq bo&#39;ladi. Kompaniyangizning tavsifini tuzganingizdan so&#39;ng, orqaga qayting va keraksiz qismlarni yoki ortiqcha ma&#39;lumotni aniq va ravshan qilish uchun kesib tashlang.<br />\r\nBuni tekshirib ko&#39;ring: Kompaniya tavsifining turli xil qoralamalarini ko&#39;rmagan odamdan uni o&#39;quvchiga ta&#39;siriga ta&#39;sir qilishi mumkin bo&#39;lgan xatolar, grammatik xatolar yoki oqim muammolari uchun ko&#39;rib chiqishni so&#39;rang.</p>	<p>После того, как вы организовали ключевую информацию, которую хотите включить, вам нужно написать раздел так, чтобы он был привлекательным для читателей. Выполните пять шагов, чтобы создать успешное описание компании.</p>\r\n\r\n<p>Начните с презентации: начните раздел с описанием компании абзацем, в котором содержится вся важная информация о вашей компании. Представьте, что вы рассказываете о своей компании и хотите выразить ее ключевые характеристики всего в нескольких предложениях. Используйте тот же процесс мышления для вступительного абзаца.<br />\r\nПридерживайтесь высокоуровневой информации: некоторая информация из описания вашей компании будет включена в другие разделы вашего бизнес-плана. Для этих частей предоставьте только общий обзор и оставьте все конкретные детали для соответствующего раздела.<br />\r\nПродемонстрируйте свою страсть: позвольте вашей страсти и воодушевлению проявиться в разделе описания компании, когда вы объясните, почему вы основали компанию и чего надеетесь достичь. Ваше волнение должно отражаться в тоне вашего письма, и ваша цель должна заключаться в том, чтобы заинтересовать читателя прочтением остальной части бизнес-плана.<br />\r\nПроведите проверку длины: когда вы пишете о страсти и азарте, которые привели вас к созданию компании, может быть легко увлечься и использовать больше слов, чем необходимо, чтобы донести свою точку зрения. После того, как вы составили описание своей компании, вернитесь и удалите все ненужные части или избыточную информацию, чтобы сделать ее ясной и краткой.<br />\r\nСделайте корректуру: попросите кого-нибудь, кто не видел различных черновиков описания компании, проверить его на предмет опечаток, грамматических ошибок или проблем с потоком, которые могут повлиять на влияние, которое оно оказывает на читателя.</p>	<p>Once you&#39;ve organized the key information that you want to include, you need to write the section in a way that will be appealing to readers. Follow five steps to help create a successful company description.</p>\r\n\r\n<ol>\r\n\t<li><strong>Start with an&nbsp;<a href="https://www.thebalancesmb.com/pitching-business-ideas-to-investors-4018990">elevator pitch</a></strong>: Begin the company description section with a paragraph that captures all of the vital information about your company. Imagine you are giving an elevator pitch about your company and want to express the key characteristics in just a few sentences. Use the same thought process for your introductory paragraph.</li>\r\n\t<li><strong>Stick with high-level information:&nbsp;</strong>Some of the information in your company description will be included in other sections of your business plan. For these parts, provide only a high-level overview and leave all of the specific details for the related section.</li>\r\n\t<li><strong>Show your passion</strong>: Let your passion and excitement show in the company description section as you explain why you started the company and what you hope to accomplish. Your excitement should show in the tone of your writing, and your aim should be to get the reader interested in reading the rest of the business plan.</li>\r\n\t<li><strong>Do a length check:&nbsp;</strong>When you&#39;re writing about the passion and excitement that led you to start your company, it can be easy to get carried away and use more words than necessary to get your point across. Once you&#39;ve drafted your company description, go back and cut out any unnecessary parts or redundant information to make it clear and concise.</li>\r\n\t<li><strong>Have it proofread:&nbsp;</strong>Ask someone who hasn&#39;t seen various drafts of the company description to review it for typos, grammatical errors, or flow problems that could hurt the impact it has on the reader.</li>\r\n</ol>	\N	9	12	1	1	2020-12-04 14:21:38	2020-12-04 14:21:38
+6	Tenderlar	Тендеры	Tenders	Tenderlar	Тендеры	Tenders	tenders	Kengashning ehtiyojlari va umidlarini qondirish qobiliyatingiz bilan siz shartnomani yutib olishingiz mumkin. Baholash mezonlari sizning muvaffaqiyatingizning kalitidir. Ular spetsifikatsiya bilan nashr etiladi va har bir mukofot mezonining nisbiy og'irliklari bilan bir qatorda takliflar qanday baholanishini ko'rsatib beradi.	Вы можете выиграть контракт, если сможете удовлетворить потребности и ожидания совета. Критерии оценки - ключ к вашему успеху. Они будут опубликованы вместе со спецификацией и покажут вам, как будут оцениваться предложения, а также относительный вес каждого критерия присуждения.	You can win a contract by your ability to deliver the needs and expectations of the council. The evaluation criteria are the keys to your success. These will be published with the specification and will show you how proposals are going to be evaluated, along with the relative weightings of each award criteria.	<p>Jamoa qiladigan birinchi narsa - har bir da&#39;vogar talab qilingan barcha ma&#39;lumotlarni taqdim etganligi va tanlov tartibsiz emasligiga ishonch hosil qilish. Keyin baholash guruhi tender o&#39;tkazuvchisi barcha mezonlarga javob berganligini tekshiradi.</p>\r\n\r\n<p>Ballar har bir talabgorning har bir mezon bo&#39;yicha qanday ishlashini, narx va sifatni muvozanatlashtirganda, kerak bo&#39;lganda ko&#39;rsatiladi. Bu har bir baholash guruhi a&#39;zosi tomonidan raqamni yozuvchi tomonidan amalga oshiriladi va yozuvlar yozuvchisi o&#39;rtacha ballarni yozadi yoki konsensus asosida amalga oshiriladi. Qanday bo&#39;lmasin, taklif batafsil muhokama qilinadi va har bir mezonni bajarish darajasi to&#39;g&#39;risida fikr almashiladi.</p>	<p>Первое, что делает команда, - это проверяет, предоставил ли каждый участник торгов всю необходимую информацию и что тендер не является нестандартным. Затем оценочная комиссия проверяет, выполнил ли участник торгов все критерии.</p>\r\n\r\n<p>Баллы присваиваются, чтобы указать, как каждый участник торгов работает по каждому из критериев, при необходимости уравновешивая цену и качество. Это будет сделано каждым членом группы оценки, дающим номер, и записывающим устройством записывается среднее значение оценок, или это может быть сделано на основе консенсуса. В любом случае предложение подробно обсуждается, и происходит обмен мнениями относительно того, в какой степени соблюдается каждый критерий.</p>	<p>The first thing the team does is make sure each tenderer has submitted all the information required and that the tender is not irregular. Then the evaluation panel will look to see if the tenderer has addressed all of the criteria.</p>\r\n\r\n<p>Points are given to indicate how each tenderer performs against each of the criteria, balancing price and quality where appropriate. This will be done by each evaluation team member giving a number and the recorder writing down the average of the marks, or it can be done by consensus. Either way, the proposal is discussed in detail and opinions are exchanged as to the extent to which each criterion is met.</p>	5	10	11	1	1	2020-12-04 15:10:23	2020-12-04 15:10:23
 \.
 
 
@@ -1852,6 +1866,7 @@ COPY public.profiles (user_id, first_name, last_name, birth_date, gender, addres
 1	Admin	Adminov	1988-04-21	2	Address uz adress uz address address uz	\N
 2	User	User	1987-05-22	2	User Address uz adress uz address address uz	\N
 7	\N	\N	\N	\N	\N	\N
+9	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -1860,8 +1875,8 @@ COPY public.profiles (user_id, first_name, last_name, birth_date, gender, addres
 --
 
 COPY public.shop_carts (id, user_id, product_id, modification_id, quantity, created_at, updated_at) FROM stdin;
-1	1	21	\N	1	2020-12-01 10:28:53	2020-12-01 10:28:53
-2	1	23	\N	1	2020-12-01 10:28:53	2020-12-01 10:28:53
+5	9	11	\N	1	2020-12-01 18:23:51	2020-12-01 18:23:51
+6	9	21	\N	1	2020-12-01 18:23:51	2020-12-01 18:23:51
 \.
 
 
@@ -2046,6 +2061,8 @@ COPY public.shop_delivery_methods (id, name_uz, name_ru, name_en, cost, min_weig
 
 COPY public.shop_discounts (id, store_id, discount_id, created_at, updated_at) FROM stdin;
 1	12	10	\N	\N
+2	18	8	\N	\N
+3	19	5	\N	\N
 \.
 
 
@@ -2154,6 +2171,8 @@ COPY public.shop_product_categories (product_id, category_id) FROM stdin;
 12	4
 10	4
 23	1
+25	4
+26	4
 \.
 
 
@@ -2186,6 +2205,8 @@ COPY public.shop_product_discounts (id, product_id, discount_id, created_at, upd
 52	12	10	2020-12-01 10:42:36	2020-12-01 10:42:36
 53	10	10	2020-12-01 10:42:55	2020-12-01 10:42:55
 54	23	10	2020-12-01 10:43:14	2020-12-01 10:43:14
+55	25	8	2020-12-02 15:11:30	2020-12-02 15:11:30
+56	26	5	2020-12-04 11:30:00	2020-12-04 11:30:00
 \.
 
 
@@ -2218,6 +2239,8 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 12	1
 10	1
 23	1
+25	1
+26	1
 \.
 
 
@@ -2227,6 +2250,7 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 
 COPY public.shop_product_reviews (id, product_id, rating, advantages, disadvantages, comment, user_id, created_at, updated_at) FROM stdin;
 1	2	4	dsaf	asdf	sdaf	1	2020-11-26 16:30:33	2020-11-26 16:30:33
+2	23	2	fsd	fsd	ffg	1	2020-12-04 11:15:44	2020-12-04 11:15:44
 \.
 
 
@@ -2248,13 +2272,15 @@ COPY public.shop_products (id, name_uz, name_ru, name_en, description_uz, descri
 10	Excel shoes	Excel shoes	Excel shoes	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	excel_shoes	480000	45	0.0100000000000000002	2020-12-21 00:00:00	5	12	5	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:20:24	2020-12-01 10:43:01	10
 14	Samsung SC5610	Samsung SC5610	Samsung SC5610	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	samsung_fsdgdfsg	721000	70	0.0400000000000000008	2021-05-05 00:30:00	10	12	1	2	8	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:35:29	2020-12-01 10:42:03	14
 1	Asus X509MA	Asus X509MA	Asus X509MA	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	asus_x509	4180000	400	0.0100000000000000002	2020-12-01 00:00:00	15	12	2	2	2	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:00:15	2020-11-30 12:05:18	1
-23	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	<p>Kafolat muddati (oy): 12<br />\r\nSmart TV: Ha</p>	<ul>\r\n\t<li>Гарантийный срок (месяц): 12</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Smart TV: Есть</li>\r\n</ul>	<p>Warranty period (month): 12<br />\r\nSmart TV: Yes</p>	smartv	14317000	1350	0.0100000000000000002	2020-12-12 00:00:00	2	12	4	2	10	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:32:25	2020-12-01 10:43:19	23
 17	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	xiomi312312	2050000	190	0.0100000000000000002	2020-12-21 00:00:00	12	12	3	2	0.149999999999999994	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:59:48	2020-12-01 10:39:13	17
+25	ExcelshoesAS01Black	ExcelshoesAS01Black	ExcelshoesAS01Black	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	as01black	480000	47	0.0100000000000000002	2020-11-02 03:11:00	5	18	11	0	0.5	5	t	t	t	\N	0	\N	1	1	2020-12-02 15:11:30	2020-12-02 15:11:30	\N
 2	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	apple_macbook	25707000	2400	0.0100000000000000002	2020-12-11 00:00:00	15	12	2	2	2	5	f	t	t	\N	0	\N	1	1	2020-11-26 16:04:28	2020-12-01 10:36:28	2
 22	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	fasdfasdf	5982000	560	0.0100000000000000002	2020-12-12 00:00:00	19	12	6	2	50	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:20:11	2020-12-01 10:36:09	22
+23	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	<p>Kafolat muddati (oy): 12<br />\r\nSmart TV: Ha</p>	<ul>\r\n\t<li>Гарантийный срок (месяц): 12</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Smart TV: Есть</li>\r\n</ul>	<p>Warranty period (month): 12<br />\r\nSmart TV: Yes</p>	smartv	14317000	1350	0.0100000000000000002	2020-12-12 00:00:00	2	12	4	2	10	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:32:25	2020-12-04 11:15:44	23
 19	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	ipad3242341234	6500000	640	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.5	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:06:12	2020-12-01 10:40:42	19
 6	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	tft_acer_monoblock	10500000	1000	0.0100000000000000002	2020-12-12 00:00:00	16	12	12	2	10	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:47:37	2020-12-01 10:38:53	6
 18	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	samsung4234234	12540000	1180	0	\N	12	12	1	2	0.130000000000000004	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:03:58	2020-12-01 10:40:22	18
+26	Striped Joggers	Striped Joggers	Striped Joggers	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	striped	52000	4	0.0100000000000000002	2020-11-06 00:00:00	7	19	11	0	1	1	t	t	t	\N	0	\N	1	1	2020-12-04 11:30:00	2020-12-04 11:30:00	\N
 7	MSI Nvidia GeForce	MSI Nvidia GeForce	MSI Nvidia GeForce	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	msi_nvidia_geforce	885000	850	0.0100000000000000002	2020-12-21 00:00:00	17	12	12	2	0.400000000000000022	5	t	t	t	\N	0	\N	1	1	2020-11-26 16:52:25	2020-12-01 10:38:06	7
 21	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	apple3123fsdf	7450000	720	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.200000000000000011	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:13:29	2020-12-01 10:39:37	21
 20	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	samsung42343214	26850000	250	0.0100000000000000002	2020-12-21 00:00:00	13	12	1	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 18:10:14	2020-12-01 10:41:10	20
@@ -2304,6 +2330,13 @@ COPY public.sliders (id, url, sort, file, created_by, updated_by, created_at, up
 
 COPY public.store_categories (store_id, category_id) FROM stdin;
 12	1
+18	4
+18	8
+18	11
+19	4
+19	5
+19	6
+19	7
 \.
 
 
@@ -2313,6 +2346,8 @@ COPY public.store_categories (store_id, category_id) FROM stdin;
 
 COPY public.store_delivery_methods (store_id, delivery_method_id, cost, sort) FROM stdin;
 12	1	10000	5
+18	1	10000	5
+19	1	10000	5
 \.
 
 
@@ -2322,6 +2357,8 @@ COPY public.store_delivery_methods (store_id, delivery_method_id, cost, sort) FR
 
 COPY public.store_marks (store_id, mark_id) FROM stdin;
 12	2
+18	1
+19	1
 \.
 
 
@@ -2331,6 +2368,8 @@ COPY public.store_marks (store_id, mark_id) FROM stdin;
 
 COPY public.store_payments (store_id, payment_id) FROM stdin;
 12	1
+18	1
+19	1
 \.
 
 
@@ -2340,6 +2379,8 @@ COPY public.store_payments (store_id, payment_id) FROM stdin;
 
 COPY public.store_users (store_id, user_id, role) FROM stdin;
 12	1	administrator
+18	1	administrator
+19	1	administrator
 \.
 
 
@@ -2348,7 +2389,9 @@ COPY public.store_users (store_id, user_id, role) FROM stdin;
 --
 
 COPY public.stores (id, name_uz, name_ru, name_en, slug, logo, status, created_by, updated_by, created_at, updated_at) FROM stdin;
-12	Samarqand Darvoza	Самарканд дарвоза	Samarkand darvoza	samarkand_darvoza	YDnvFq2Nuw3InNqtY2FtutpTu9zFVBq6oIljsxlG.png	1	1	1	2020-11-26 15:54:03	2020-11-26 15:54:03
+18	Eski shahar makro	Макрос старого города	Old city macro	oldcity	HQIT2kyUR8dASPe7Uu7TJwH4FUVBrwOPGuvzBe4X.png	2	1	1	2020-12-02 15:05:00	2020-12-02 15:05:05
+12	Samarqand Darvoza	Самарканд дарвоза	Samarkand darvoza	samarkand_darvoza	YDnvFq2Nuw3InNqtY2FtutpTu9zFVBq6oIljsxlG.png	2	1	1	2020-11-26 15:54:03	2020-12-02 15:41:03
+19	VIP BRANDS	VIP BRANDS	VIP BRANDS	vipbrands	N9elfdxrYed2vcEYDpEkK9VKj5IdYJ3vzebcHXTa.png	2	1	1	2020-12-04 11:18:56	2020-12-04 11:19:03
 \.
 
 
@@ -2368,6 +2411,7 @@ COPY public.user_networks (user_id, network, identity, emails_json, phones_json)
 3	google	104537922165315928317	["1710136.nasriddinbek.bektemirov@gmail.com"]	\N
 5	google	116852667327811565568	["a.abdualiym@gmail.com"]	\N
 6	telegram	129683416	\N	\N
+9	telegram	111065816	\N	\N
 \.
 
 
@@ -2381,7 +2425,8 @@ COPY public.users (id, name, email, phone, phone_verified, password, balance, ve
 5	google_116852667327811565568	a.abdualiym@gmail.com	998977772129	f	\N	0	\N	27508	2020-11-27 18:23:20	f	user	9	\N	\N	2020-11-27 18:17:03	2020-11-27 18:18:20	0	t
 6	telegram_129683416	\N	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-11-30 10:59:30	2020-11-30 10:59:30	0	f
 7	az11	axrorxojayev@mail.uz	\N	f	$2y$10$QYAWZmeRHSlzEZ/3C8Sm/OSSFDn/psQLSh/jK5wBDRDhUVj4CF9Om	0	3378208c-7fa2-45f6-85ca-267fb67e1599	\N	\N	f	user	0	\N	\N	2020-12-01 10:45:42	2020-12-01 10:45:42	0	f
-1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	GvK2JIsYF6mMeUynKdQ3xWWMIesWl1PeghVMpveD5gSelvoPlcgiCXVPaM8k	\N	\N	0	f
+9	telegram_111065816	\N	\N	f	\N	0	\N	\N	\N	f	user	9	\N	\N	2020-12-01 11:56:57	2020-12-01 11:56:57	0	f
+1	admin	admin@gmail.com	\N	f	$2y$10$ryve6eiOgB05r2qA0FGQHOCwHRVCzb.aoHwdjwoRhZ1FIV89qpoMK	0	\N	\N	\N	f	administrator	9	2020-11-18 14:20:41	S1SvLT7MPk6PIuRA8pJXcJD31wZMCsMQX38HKxcLj6VVY4te4gnDILtLzjfx	\N	\N	0	f
 \.
 
 
@@ -2389,7 +2434,7 @@ COPY public.users (id, name, email, phone, phone_verified, password, balance, ve
 -- Name: banners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.banners_id_seq', 1, false);
+SELECT pg_catalog.setval('public.banners_id_seq', 6, true);
 
 
 --
@@ -2452,14 +2497,14 @@ SELECT pg_catalog.setval('public.failed_jobs_id_seq', 1, false);
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.migrations_id_seq', 45, true);
+SELECT pg_catalog.setval('public.migrations_id_seq', 47, true);
 
 
 --
 -- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.pages_id_seq', 1, false);
+SELECT pg_catalog.setval('public.pages_id_seq', 6, true);
 
 
 --
@@ -2473,7 +2518,7 @@ SELECT pg_catalog.setval('public.payments_id_seq', 1, true);
 -- Name: shop_carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_carts_id_seq', 2, true);
+SELECT pg_catalog.setval('public.shop_carts_id_seq', 8, true);
 
 
 --
@@ -2501,7 +2546,7 @@ SELECT pg_catalog.setval('public.shop_delivery_methods_id_seq', 1, false);
 -- Name: shop_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_discounts_id_seq', 1, true);
+SELECT pg_catalog.setval('public.shop_discounts_id_seq', 3, true);
 
 
 --
@@ -2543,21 +2588,21 @@ SELECT pg_catalog.setval('public.shop_photos_id_seq', 34, true);
 -- Name: shop_product_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 54, true);
+SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 56, true);
 
 
 --
 -- Name: shop_product_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_product_reviews_id_seq', 1, true);
+SELECT pg_catalog.setval('public.shop_product_reviews_id_seq', 2, true);
 
 
 --
 -- Name: shop_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_products_id_seq', 24, true);
+SELECT pg_catalog.setval('public.shop_products_id_seq', 26, true);
 
 
 --
@@ -2571,14 +2616,14 @@ SELECT pg_catalog.setval('public.sliders_id_seq', 6, true);
 -- Name: stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.stores_id_seq', 16, true);
+SELECT pg_catalog.setval('public.stores_id_seq', 19, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 8, true);
+SELECT pg_catalog.setval('public.users_id_seq', 9, true);
 
 
 --
@@ -2923,14 +2968,6 @@ ALTER TABLE ONLY public.store_payments
 
 ALTER TABLE ONLY public.store_users
     ADD CONSTRAINT store_users_pkey PRIMARY KEY (store_id, user_id);
-
-
---
--- Name: store_users store_users_user_id_unique; Type: CONSTRAINT; Schema: public; Owner: dev_shop
---
-
-ALTER TABLE ONLY public.store_users
-    ADD CONSTRAINT store_users_user_id_unique UNIQUE (user_id);
 
 
 --
