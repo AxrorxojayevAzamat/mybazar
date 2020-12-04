@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property boolean $required
  * @property array $variants
  * @property boolean $hide_in_filters
+ * @property boolean $main
  * @property int $created_by
  * @property int $updated_by
  * @property Carbon $created_at
@@ -43,6 +44,7 @@ class Characteristic extends BaseModel
     public const TYPE_STRING = 'string';
     public const TYPE_INTEGER = 'integer';
     public const TYPE_FLOAT = 'float';
+    public const TYPE_COLOR = 'color';
 
     const STATUS_DRAFT = 0;
     const STATUS_MODERATION = 1;
@@ -58,7 +60,7 @@ class Characteristic extends BaseModel
     }
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'default', 'required', 'variants', 'hide_in_filters',
+        'name_uz', 'name_ru', 'name_en', 'group_id', 'status', 'type', 'required', 'hide_in_filters','main'
     ];
 
     protected $casts = [
@@ -98,6 +100,7 @@ class Characteristic extends BaseModel
             self::TYPE_STRING => 'String',
             self::TYPE_INTEGER => 'Integer',
             self::TYPE_FLOAT => 'Float',
+            self::TYPE_COLOR => 'Color',
         ];
     }
 
@@ -124,6 +127,11 @@ class Characteristic extends BaseModel
     public function isString(): bool
     {
         return $this->type === self::TYPE_STRING;
+    }
+
+    public function isColor(): bool
+    {
+        return $this->type === self::TYPE_COLOR;
     }
 
     public function isInteger(): bool

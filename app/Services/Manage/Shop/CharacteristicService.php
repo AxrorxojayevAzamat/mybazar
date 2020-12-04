@@ -21,9 +21,8 @@ class CharacteristicService
                 'name_en' => $request->name_en,
                 'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
+                'main' => $request->main,
                 'required' => $request->required,
-                'default' => $request->variants ? $request->default : null,
-                'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
                 'hide_in_filters' => $request->hide_in_filters ? true : false,
                 'group_id' => $request->group_id,
             ]);
@@ -51,9 +50,8 @@ class CharacteristicService
                 'name_en' => $request->name_en,
                 'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
+                'main' => $request->main,
                 'required' => $request->required,
-                'default' => $request->variants ? $request->default : null,
-                'variants' => array_map('trim', preg_split('#[\r\n]+#', $request['variants'])),
                 'hide_in_filters' => $request->hide_in_filters,
             ]);
 

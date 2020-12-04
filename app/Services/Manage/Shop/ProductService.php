@@ -341,12 +341,10 @@ class ProductService
     public function addModification(int $id, ModificationCreateForm $request): Modification
     {
         $product = Product::findOrFail($id);
-
+//        dd($request);
         DB::beginTransaction();
         try {
             if (!$request->photo) {
-                $type = $request->color ? Modification::TYPE_COLOR :
-                    ($request->characteristic_id ? Modification::TYPE_CHARACTERISTIC_VALUE : Modification::TYPE_VALUE);
                 $modification = $product->modifications()->create([
                     'product_id' => $product->id,
                     'name_uz' => $request->name_uz,
@@ -357,19 +355,16 @@ class ProductService
                     'price_uzs' => $request->price_uzs,
                     'price_usd' => $request->price_usd,
                     'value' => $request->value ? $request->value : ($request->characteristic_value ?? null),
-                    'color' => $request->color ? ColorHelper::getValidColor($request->color) : null,
-                    'type' => $type,
                     'sort' => 1000,
+                    'photo' => '',
                 ]);
-
                 $this->sortModifications($product);
 
                 return $modification;
             }
 
             $imageName = ImageHelper::getRandomName($request->photo);
-            $modification = Modification::add($this->getNextModificationId(), $product->id, $request, Modification::TYPE_COLOR, $imageName);
-            $modification->saveOrFail();
+            $modification = Modification::add($this->getNextModificationId(), $product->id, $request,  $imageName);
 
             $this->sortModifications($product);
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTypeColumnToBannersTable extends Migration
+class AddMainColumToCharacteristics extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddTypeColumnToBannersTable extends Migration
      */
     public function up()
     {
-        Schema::table('banners', function (Blueprint $table) {
-            $table->tinyInteger('type')->nullable();
+        Schema::table('shop_characteristics', function (Blueprint $table) {
+            $table->boolean('main')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddTypeColumnToBannersTable extends Migration
      */
     public function down()
     {
-        Schema::table('banners', function (Blueprint $table) {
-            $table->dropColumn('type');
+        Schema::table('shop_characteristics', function (Blueprint $table) {
+            $table->dropColumn('main');
         });
     }
 }

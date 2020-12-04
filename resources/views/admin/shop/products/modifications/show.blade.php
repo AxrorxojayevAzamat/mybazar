@@ -24,7 +24,6 @@
                         <tr><th>Code</th><td>{{ $modification->code }}</td></tr>
                         <tr><th>{{ trans('adminlte.price_uzs') }}</th><td>{{ $modification->price_uzs }}</td></tr>
                         <tr><th>{{ trans('adminlte.price_usd') }}</th><td>{{ $modification->price_usd }}</td></tr>
-                        <tr><th>{{ trans('adminlte.type') }}</th><td>{{ $modification->typeName() }}</td></tr>
                         @if ($modification->value)
                             <tr>
                                 <th>{{ trans('adminlte.value.name') }}</th>
@@ -45,19 +44,6 @@
                     <div class="card-header"><h3 class="card-title">{{ trans('adminlte.product.main_photo') }}</h3></div>
                     <div class="card-body">
                         <a href="{{ $modification->photoOriginal }}" target="_blank"><img src="{{ $modification->photoThumbnail }}"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
-    @if ($modification->color)
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-gray card-outline">
-                    <div class="card-header"><h3 class="card-title">{{ trans('adminlte.color') }}</h3></div>
-                    <div class="card-body">
-                        <div style="padding: 25px; background-color: {{ $modification->color }};"></div>
                     </div>
                 </div>
             </div>

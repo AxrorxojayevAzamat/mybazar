@@ -6,7 +6,6 @@ use App\Entity\Shop\Modification;
 use Faker\Generator as Faker;
 
 $factory->define(Modification::class, function (Faker $faker) {
-    $type = $faker->randomElement([Modification::TYPE_VALUE, Modification::TYPE_COLOR]);
     $price = round($faker->randomNumber(5), -2);
 
     return [
@@ -16,9 +15,7 @@ $factory->define(Modification::class, function (Faker $faker) {
         'code' => $faker->unique()->isbn10,
         'price_uzs' => $price,
         'price_usd' => round($price / 10000, 2),
-        'type' => $type,
-        'value' => $type === Modification::TYPE_VALUE ? $faker->numberBetween(1, 9999) : null,
-        'color' => $type === Modification::TYPE_COLOR ? $faker->hexColor : null,
+        'value' => $faker->numberBetween(1, 9999),
         'photo' => null,
         'sort' => $faker->numberBetween(1, 100),
         'created_by' => 1,
