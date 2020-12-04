@@ -4,7 +4,7 @@
             <a href="{{ route('categories.show', products_path($category)) }}">
                 <div class="item">
                     <div class="image">
-                        <img src="{{ $category->iconOriginal }}" alt="">
+                        <img src="{{ $category->photoThumbnail }}" alt="">
                     </div>
                     <h6 class="title">{{ $category->name }}</h6>
                 </div>
