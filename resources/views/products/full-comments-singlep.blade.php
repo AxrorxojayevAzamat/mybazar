@@ -89,10 +89,8 @@
         let textareas = [advantages, disadvantages, comment]
         let inputs = $("input[name='rating']")
         let radio_inputs = []
-        for(let x in inputs) {
-            if(parseInt(x) >= 0 ) radio_inputs = [...radio_inputs, inputs[x]]
-        }
-        console.log(radio_inputs)
+        for(let x in inputs) if(parseInt(x) >= 0) radio_inputs = [...radio_inputs, inputs[x]]
+
         function validationForm() {
             if (!(advantages[0].value && disadvantages[0].value && comment[0].value)) {
                 $('#validation').fadeIn(700)
@@ -100,7 +98,7 @@
                     if(!el[0].value) el[0].style.border = '1px solid #f00'
                 })
             } else {
-                $('#validation').fadeOut(700)
+                $('#validation').fadeOut(100)
                 textareas.forEach(el => {
                     if(el[0].value) el[0].style.border = '1px solid #d1d8e0'
                 })
