@@ -20,7 +20,95 @@
 
 <script>
 
-    let counterCartNumber = {!! isset($gCartCount) ? count($gCartCount) : '' !!}
+    let counterCartNumber = {!! isset($gCartCount) ? count($gCartCount) : '0' !!}
+    let droping = $('#droping');
+    let cart = $('#dropdownCart');
+    droping.hide();
+    let searchInput = $('#search-input');
+
+    cart.click(function (e) {
+        console.log('loging')
+        e.preventDefault();
+        let cart_product = localStorage.getItem('product_id');
+        if (cart_product !== null || cart_product == '') {
+            console.log(cart_product);
+            let cart_product_check = cart_product.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == '') {
+                    cart_product_check.splice(i, 1);
+                } else {
+                    continue;
+                }
+            }
+            let data = {};
+            data.product_id = [];
+            data.product_id = cart_product_check;
+
+            $.ajax({
+                url: '/cart-header',
+                method: 'GET',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    $('#goToCart').show();
+                    $('#cart_none').hide();
+                    $('#card_body').show();
+                    let body_cart = '';
+                    console.log(data.data.length);
+                    let origin = window.location.origin;
+                    for (let i = 0; i < data.data.length; i++) {
+                        body_cart += '<li class="item" id="header'+ data.data[i].id + '" ><div class="product-img"><a href="#">' +
+                            '<img src="'+ origin + data.data[i].main_photo +'"></a></div><div class="description">' +
+                            '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
+                            '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
+                            '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
+                            '<i class="mbexit_mobile"></i></button> </li>';
+                    }
+
+
+                    $('#card_body').html(body_cart);
+                    console.log(data);
+                }, error: function (data) {
+                    console.log(data);
+                }
+            });
+        }else{
+            $.ajax({
+                url: '/cart-header',
+                method: 'GET',
+                success: function (data) {
+                    let body_cart = '';
+                    console.log(data.data)
+                    if (data.data == 'error'){
+                        console.log('wpringngjsd');
+
+                        $('#goToCart').hide();
+                        $('#cart_none').show();
+                        $('#card_body').hide();
+                    }
+                    else{
+                        $('#goToCart').show();
+                        $('#cart_none').hide();
+                        $('#card_body').show();
+                        console.log(data.data.length);
+                        let origin = window.location.origin;
+                        for (let i = 0; i < data.data.length; i++) {
+                            body_cart += '<li class="item" id="header'+ data.data[i].id + '" ><div class="product-img"><a href="#">' +
+                                '<img src="' + origin + data.data[i].main_photo + '"></a></div><div class="description">' +
+                                '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
+                                '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
+                                '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
+                                '<i class="mbexit_mobile"></i></button> </li>';
+                        }
+                    }
+                    $('#card_body').html(body_cart);
+                    console.log(data);
+                }, error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    });
 
     function removing(id){
         let product_id = {};

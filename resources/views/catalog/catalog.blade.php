@@ -25,7 +25,7 @@
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
-                    @include('layouts.sort-by-options')
+                    @include('catalog.sort')
 
                     @include('layouts.small-filter-without-title-checkbox')
                 </nav>
