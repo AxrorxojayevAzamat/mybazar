@@ -164,7 +164,7 @@ class CategoryService
 
     private function uploadPhoto(int $id, UploadedFile $photo, string $imageName): void
     {
-        ImageHelper::saveThumbnail($id, ImageHelper::FOLDER_CATEGORIES, $photo, $imageName);
+        ImageHelper::saveThumbnail($id, ImageHelper::FOLDER_CATEGORIES, $photo, $imageName, 60, 60);
         ImageHelper::saveOriginal($id, ImageHelper::FOLDER_CATEGORIES, $photo, $imageName);
     }
 }
