@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $gCategories = Category::get()->toTree();
             $gBrands = Brand::get();
             $discountProducts = Product::where('discount', '>', 0.5 )->limit(3)->get();
-            $pages = Page::limit(3)->get();
+            $pages = Page::get();
 //            dd($pages[0]->children);
             if ($gUserExists !== null){
                 $gCartCount = Cart::where('user_id', $gUserExists->id)->get();
