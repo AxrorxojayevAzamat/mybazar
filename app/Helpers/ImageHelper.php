@@ -48,7 +48,7 @@ class ImageHelper
         self::makeDirectory($destinationPath);
 
         $resizeImage = Image::make($image->getRealPath());
-        $resizeImage->resize(256, 192, function(Constraint $constraint) {
+        $resizeImage->resize($width, $height, function(Constraint $constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $imageName);
     }
