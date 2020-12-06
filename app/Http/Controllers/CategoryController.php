@@ -77,6 +77,10 @@ class CategoryController extends Controller
     {
 
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
+//
+//        if($request->has('brands')){
+//            $products = Product::whereIn(brands)
+//        }
         if (isset($request->order)){
             if (session()->has('order_catalog') and session('order_catalog') == 'desc'){
                 $products = Product::whereIn('main_category_id', $categoryId)->orderBy($request->order, 'asc')->get();
@@ -118,8 +122,10 @@ class CategoryController extends Controller
         $storeIds = $products->pluck('store_id')->toArray();
         $stores = Store::whereIn('id', $storeIds)->get();
 
+//        dd($categoryId);
 
-//        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryIds);
+        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
+        dd($groupModifications);
 
 
 
