@@ -8,11 +8,7 @@
                         <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
                     </div>
                 @endif
-                @foreach($product->photos as $photo)
-                    <div class="big-image">
-                        <img src="{{ $photo->fileOriginal }}" style="width:100%">
-                    </div>
-                @endforeach
+
 
                 <div class="several-images owl-theme owl-carousel">
                     @php($currentSlide = 1)
@@ -32,63 +28,66 @@
                 <div class="text-description">
                     <div class="rate">
                         <div id="rateYo_one0"></div>
-{{--                        <div class="rating stars">--}}
-{{--                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>--}}
-{{--                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>--}}
-{{--                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>--}}
-{{--                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>--}}
-{{--                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="rating stars">--}}
+                        {{--                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>--}}
+                        {{--                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>--}}
+                        {{--                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>--}}
+                        {{--                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>--}}
+                        {{--                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>--}}
+                        {{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
                             <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
-{{--                    <p>ID товара: <span> 1666559495</span></p>--}}
+                    {{--                    <p>ID товара: <span> 1666559495</span></p>--}}
                     <p class="title">@lang('frontend.product.characteristics')</p>
-                    @foreach($product->mainCharacteristics as $characteristics)
-                        <p>{!! $characteristics->characteristic->name !!}:
-                            <span>
-                            @foreach($product->modifications($characteristics->characteristic_id) as $modifications)
-                                {{ $modifications }}
-                            @endforeach
-                            </span></p>
+                    @foreach($product->allCharacteristics as $characteristics)
+                        @if($characteristics->characteristic->main)
+                            <p>{!! $characteristics->characteristic->name !!}:
+                                <span>
+                                    @foreach($product->modificationsForProduct($characteristics->characteristic_id) as $modifications) {{ $modifications }} @endforeach
+                                </span>
+                            </p>
+                        @endif
                     @endforeach
                     <a href="#pills-characteristics">@lang('frontend.product.all_characteristics')</a>
                 </div>
                 <div class="color-delivery-des">
-{{--                    <form action="#">--}}
-{{--                        @php($valueModifications = $product->valueModifications)--}}
-{{--                        @foreach($valueModifications as $modification)--}}
-{{--                            <p>{{ $modification->name }}: <span>{{ $modification->value }}</span></p>--}}
-{{--                            <div class="pr-des-radio-buttons">--}}
-{{--                                <div class="value-modification" id="value-modification"--}}
-{{--                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
-{{--                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}">--}}
-{{--                                    {{ $modification->value }}--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                        @if ($product->colorModifications()->exists())--}}
-{{--                            @php($colorModifications = $product->colorModifications)--}}
-{{--                            <p>@lang('frontend.color'): <span id="color-modification-name">{{ $colorModifications[0]->name }}</span></p>--}}
-{{--                            <div class="colors pr-des-radio-buttons3">--}}
-{{--                                @foreach($colorModifications as $modification)--}}
-{{--                                    <div class="color color-modification" id="color-modification">--}}
-{{--                                        <div style="background-color: {{ $modification->color }}"--}}
-{{--                                             data-name="{{ $modification->name }}"--}}
-{{--                                             data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
-{{--                                             data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"--}}
-{{--                                        ></div>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        @endif[--}}
-{{--                    </form>--}}
+                    {{--                    <form action="#">--}}
+                    {{--                        @php($valueModifications = $product->valueModifications)--}}
+                    {{--                        @foreach($valueModifications as $modification)--}}
+                    {{--                            <p>{{ $modification->name }}: <span>{{ $modification->value }}</span></p>--}}
+                    {{--                            <div class="pr-des-radio-buttons">--}}
+                    {{--                                <div class="value-modification" id="value-modification"--}}
+                    {{--                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
+                    {{--                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}">--}}
+                    {{--                                    {{ $modification->value }}--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                        @endforeach--}}
+                    {{--                        @if ($product->colorModifications()->exists())--}}
+                    {{--                            @php($colorModifications = $product->colorModifications)--}}
+                    {{--                            <p>@lang('frontend.color'): <span id="color-modification-name">{{ $colorModifications[0]->name }}</span></p>--}}
+                    {{--                            <div class="colors pr-des-radio-buttons3">--}}
+                    {{--                                @foreach($colorModifications as $modification)--}}
+                    {{--                                    <div class="color color-modification" id="color-modification">--}}
+                    {{--                                        <div style="background-color: {{ $modification->color }}"--}}
+                    {{--                                             data-name="{{ $modification->name }}"--}}
+                    {{--                                             data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
+                    {{--                                             data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"--}}
+                    {{--                                        ></div>--}}
+                    {{--                                    </div>--}}
+                    {{--                                @endforeach--}}
+                    {{--                            </div>--}}
+                    {{--                        @endif[--}}
+                    {{--                    </form>--}}
                     <div class="current-old-price horizontal">
-                        <h5 class="price" id="final-product-price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
-                        <h6 class="old-price" id="actual-product-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
+                        <h5 class="price"
+                            id="final-product-price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
+                        <h6 class="old-price"
+                            id="actual-product-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
                     </div>
                     <div class="item-action-icons">
                         <div class="cart" id="cart-button"
@@ -112,10 +111,12 @@
                     </div>
                     <div class="first-item">
                         <div class="shop-name-logo">
-                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
+                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img
+                                    src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
                             <div>
                                 <p class="sub-title">{!! $product->name !!}</p>
-                                <b class="title"><a href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
+                                <b class="title"><a
+                                        href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
                             </div>
                         </div>
                     </div>
@@ -127,19 +128,20 @@
 @include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
 <script>
-    function addToFavorite(id){
+    function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
         $.ajax({
             url: '{{ route('user.favorites.add',$product) }}',
             method: 'GET',
-            success: function (data){
+            success: function (data) {
                 console.log(data);
-            },error: function (data){
+            }, error: function (data) {
                 console.log(data);
             }
         })
     }
+
     function addCart(id) {
         let product_id = {};
         product_id.data = [];
@@ -152,14 +154,14 @@
             dataType: 'json',
             success: function (data) {
 
-                if (data.message == 'success'){
+                if (data.message == 'success') {
                     localStorage.removeItem('product_id');
                     let containerCounter = $('.counter');
                     console.log(counterCartNumber)
-                    counterCartNumber+=1;
+                    counterCartNumber += 1;
                     containerCounter.text(counterCartNumber);
                     console.log('exists');
-                }else{
+                } else {
                     nonRegisteredUsersCart(id);
                     console.log($.ajaxSettings.headers);
                     console.log('isnotexists');
@@ -170,7 +172,8 @@
         })
 
     }
-    function nonRegisteredUsersCart(id){
+
+    function nonRegisteredUsersCart(id) {
         if (localStorage.getItem('product_id')) {
             let cart_products = '';
             let exist = false;

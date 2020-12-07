@@ -272,7 +272,7 @@ class Product extends BaseModel
     }
     public function modificationsForProduct($id):array
     {
-        return Modification::where(['characteristic_id' => $id ])->where(['product_id' => $this->id])->pluck('value')->toArray();
+        return $this->modifications()->where(['characteristic_id' => $id ])->pluck('value')->toArray();
     }
     ###########################################
 
@@ -320,7 +320,7 @@ class Product extends BaseModel
         return $this->hasMany(Photo::class, 'product_id', 'id')->orderBy('sort');
     }
 
-    public function mainCharacteristics()
+    public function allCharacteristics()
     {
         return $this->characteristics();
     }
