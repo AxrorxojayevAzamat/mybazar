@@ -342,11 +342,7 @@ class ProductService
     public function addModification(int $id, ModificationCreateForm $request): Modification
     {
         $product = Product::findOrFail($id);
-        $characteristic = Characteristic::findOrFail($request->characteristic_id);
-        if ($characteristic->main = true && Modification::isIssetBoth($product->id,$characteristic->id))
-        {
-            return redirect()->back();
-        }
+
         DB::beginTransaction();
         try {
             if (!$request->photo) {
