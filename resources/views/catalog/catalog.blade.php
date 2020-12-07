@@ -9,7 +9,7 @@
 @section('body')
     @section('banner')
         <!-- Slide banner -->
-        @include ('layouts.slide-banner-catalog')
+        @include ('layouts.full-banner1')
     @endsection
 
         <!-- CATALOG VIEW -->

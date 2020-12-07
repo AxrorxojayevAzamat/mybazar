@@ -59,17 +59,15 @@ class CategoryController extends Controller
     {
         $categories = $category->children()->get()->toTree();
         $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
-
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
-        $banners = Banner::where('category_id', $category->id)->where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
-        $banner = $banners->isNotEmpty() ? $banners->random() : null;
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
         $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
 
 
-        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
+        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
 
     }
 
@@ -78,6 +76,8 @@ class CategoryController extends Controller
 
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $products = Product::whereIn('main_category_id', $categoryId)->get();
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
+//        dd($longBanner1);
 
         if($request->has('brands') and $request->brands !== null){
             $products = $products->whereIn('brand_id', $request->brands);
@@ -139,7 +139,7 @@ class CategoryController extends Controller
 
 
 
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings'));
+        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1'));
     }
 
 }

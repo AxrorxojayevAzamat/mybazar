@@ -8,7 +8,7 @@
 
 @section('body')
 @section('banner')
-    @include ('layouts.slide-banner-catalog')
+    @include ('layouts.full-banner1')
 @endsection
 
 <section>
