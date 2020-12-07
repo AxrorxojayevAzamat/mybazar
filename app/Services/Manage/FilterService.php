@@ -43,10 +43,11 @@ class FilterService
             }
             $groupModifications = $tempModifications;
             unset($tempModifications);
+            unset($modifications);
+            return $groupModifications;
         }
-        unset($modifications);
+        return ['data' => false];
 
-        return $groupModifications;
     }
 
     public  function categorysList(array $categoryIds){

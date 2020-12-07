@@ -27,9 +27,11 @@ if ($product->classFavorite($product->id)) {
             </div>
         </div>
         <div class="list-full-des">
-            @foreach($product->mainValues as $value)
-                <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
-            @endforeach
+            @if(isset($product->mainValues))
+                @foreach($product->mainValues as $value)
+                    <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
+                @endforeach
+            @endif
         </div>
         <div class="current-old-price horizontal">
             <h5 class="price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
