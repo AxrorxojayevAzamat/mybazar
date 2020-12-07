@@ -83,7 +83,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('name_uz', 'Nomi', ['class' => 'col-form-label']); !!}
-                            {!! Form::text('name_uz', old('name_uz', $modification ? $modification->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : ''), 'required' => true]) !!}
+                            {!! Form::text('name_uz', old('name_uz', $modification ? $modification->name_uz : null), ['class'=>'form-control' . ($errors->has('name_uz') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('name_uz'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name_uz') }}</strong></span>
                             @endif
@@ -92,7 +92,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('name_ru', 'Название', ['class' => 'col-form-label']); !!}
-                            {!! Form::text('name_ru', old('name_ru', $modification ? $modification->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : ''), 'required' => true]) !!}
+                            {!! Form::text('name_ru', old('name_ru', $modification ? $modification->name_ru : null), ['class'=>'form-control' . ($errors->has('name_ru') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('name_ru'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name_ru') }}</strong></span>
                             @endif
@@ -101,31 +101,9 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('name_en', 'Name', ['class' => 'col-form-label']); !!}
-                            {!! Form::text('name_en', old('name_en', $modification ? $modification->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : ''), 'required' => true]) !!}
+                            {!! Form::text('name_en', old('name_en', $modification ? $modification->name_en : null), ['class'=>'form-control' . ($errors->has('name_en') ? ' is-invalid' : '')]) !!}
                             @if ($errors->has('name_en'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('name_en') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('value', trans('adminlte.value.name'), ['class' => 'col-form-label']); !!}
-                            {!! Form::text('value', old('value', $modification ? $modification->value : null),
-                                ['class'=>'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'id' => 'modification-value']) !!}
-                            @if ($errors->has('value'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('value') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('color', trans('adminlte.color'), ['class' => 'col-form-label']); !!}
-                            {!! Form::text('color', old('color', $modification ? $modification->color : null),
-                                ['class' => 'form-control' . ($errors->has('color') ? ' is-invalid' : ''), 'id' => 'modification-color']) !!}
-                            @if ($errors->has('color'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('color') }}</strong></span>
                             @endif
                         </div>
                     </div>

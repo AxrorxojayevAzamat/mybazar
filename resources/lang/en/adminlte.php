@@ -219,6 +219,7 @@ return [
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
         'hide_in_filters' => 'Hide in filters',
+        'main_param' => 'Main param',
         'group_name' => 'Characteristic group',
         'add_group' => 'Add characteristic group',
     ],

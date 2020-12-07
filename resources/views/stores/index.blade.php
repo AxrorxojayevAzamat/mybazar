@@ -11,7 +11,7 @@
 
 <section>
     <div class="h4-title shops-body">
-        <h4 class="title">{{ trans('frontend.stores.index') }}</h4>
+        <h4 class="title">{{ trans('frontend.breadcrumb.shops') }}</h4>
     </div>
     <div class="row justify-content-center">
         <div class="col-sm-5">

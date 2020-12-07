@@ -16,6 +16,7 @@ use Illuminate\Validation\Rule;
  * @property boolean $required
  * @property string $variants
  * @property boolean $hide_in_filters
+ * @property boolean $main
  * @property int[] $categories
  */
 class CreateRequest extends FormRequest
@@ -34,11 +35,9 @@ class CreateRequest extends FormRequest
             'group_id' => 'required|numeric|min:1|exists:shop_characteristic_groups,id',
             'type' => ['required', 'string', 'max:255', Rule::in(array_keys(Characteristic::typesList()))],
             'required' => 'boolean',
-            'variants' => 'nullable|string',
-            'default' => ['required_with:variants', 'nullable', 'string', 'max:255',
-                Rule::in(array_values(array_map('trim', preg_split('#[\r\n]+#', $this->variants))))],
             'categories.*' => 'required|numeric|min:1|exists:categories,id',
             'hide_in_filters' => 'boolean',
+            'main' => 'boolean',
         ];
     }
 }

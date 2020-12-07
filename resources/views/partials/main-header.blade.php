@@ -78,16 +78,15 @@
             <li>
                 @include('cart.header-show')
             </li>
-
+            <li>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ Auth::user()->favorites()->count() }}@endif</span></i> @lang('menu.favorites')</a>
+            </li>
 
             @guest
             <li>
                 <a href="{{ route('login') }}" class="account bold dropdownToggle"><i class="mbaccount"></i>@lang('menu.account')</a>
             </li>
             @else
-                <li>
-                    <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
-                </li>
 
                 <li>
                 <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
