@@ -86,8 +86,8 @@ class StoresController extends Controller
         $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
             ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
             ->orderByDesc('discount')->limit(9)->get();
-
-        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store'));
+        $categories = Category::where('parent_id', null)->get();
+        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store','categories'));
 
     }
 }

@@ -1306,16 +1306,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.20.5",
+            "version": "v6.20.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1ba4354b0263a7f97d1de1323aab21f73b38dc4d"
+                "reference": "e0b93cf3ef527fca52e3f83fee50c629feab4da3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1ba4354b0263a7f97d1de1323aab21f73b38dc4d",
-                "reference": "1ba4354b0263a7f97d1de1323aab21f73b38dc4d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e0b93cf3ef527fca52e3f83fee50c629feab4da3",
+                "reference": "e0b93cf3ef527fca52e3f83fee50c629feab4da3",
                 "shasum": ""
             },
             "require": {
@@ -1455,7 +1455,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-24T16:12:27+00:00"
+            "time": "2020-12-01T15:01:00+00:00"
         },
         {
             "name": "laravel/scout",
@@ -3279,26 +3279,26 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "v4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "ecd506bc798ca0e8823668ca17a30c7ef08f65fa"
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/ecd506bc798ca0e8823668ca17a30c7ef08f65fa",
-                "reference": "ecd506bc798ca0e8823668ca17a30c7ef08f65fa",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/0f5e82af0404df0080bdc5c105cef936c1711524",
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^6.0|^7.0|^8.0",
                 "laravel/socialite": "~4.0|~5.0",
-                "php": "^7.2"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -3340,26 +3340,26 @@
             "homepage": "https://socialiteproviders.com/",
             "support": {
                 "issues": "https://github.com/SocialiteProviders/Manager/issues",
-                "source": "https://github.com/SocialiteProviders/Manager/tree/v4.0.0"
+                "source": "https://github.com/SocialiteProviders/Manager/tree/4.0.1"
             },
-            "time": "2020-10-20T22:15:02+00:00"
+            "time": "2020-12-01T23:09:06+00:00"
         },
         {
             "name": "socialiteproviders/telegram",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Telegram.git",
-                "reference": "523e81e50995a364db23598fc935671c824ce19d"
+                "reference": "4f45d212258b3aea7776be223f53207a27cafa99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Telegram/zipball/523e81e50995a364db23598fc935671c824ce19d",
-                "reference": "523e81e50995a364db23598fc935671c824ce19d",
+                "url": "https://api.github.com/repos/SocialiteProviders/Telegram/zipball/4f45d212258b3aea7776be223f53207a27cafa99",
+                "reference": "4f45d212258b3aea7776be223f53207a27cafa99",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": "^7.2 || ^8.0",
                 "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
@@ -3387,9 +3387,9 @@
             ],
             "description": "Telegram Authentication Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/Telegram/tree/4.0.0"
+                "source": "https://github.com/SocialiteProviders/Telegram/tree/4.1.0"
             },
-            "time": "2020-10-25T22:31:20+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

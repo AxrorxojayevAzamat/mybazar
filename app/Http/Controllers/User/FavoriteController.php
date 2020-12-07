@@ -28,9 +28,6 @@ class FavoriteController extends Controller
 
     public function favorites(Request $request)
     {
-        if (Auth::guest()) {
-            return redirect()->guest('login');
-        }
         $productIds = UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
         $categoryIds = ProductCategory::whereIn('product_id', $productIds)->pluck('category_id')->toArray();
         $categorys = $this->filterService->categorysList($categoryIds);

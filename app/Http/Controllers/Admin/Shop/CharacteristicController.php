@@ -59,6 +59,7 @@ class CharacteristicController extends Controller
 
     public function store(CreateRequest $request)
     {
+
         $characteristic = $this->service->create($request);
 
         return redirect()->route('admin.shop.characteristics.show', $characteristic);

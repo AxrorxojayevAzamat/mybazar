@@ -21,6 +21,10 @@ $factory->define(Characteristic::class, function (Faker $faker) {
             for ($i = 0; $i < $count; $i++) {
                 $variants[$i] = $faker->randomFloat(2, 1, 9999);
             }
+        }if ($type === Characteristic::TYPE_COLOR) {
+            for ($i = 0; $i < $count; $i++) {
+                $variants[$i] ='#' . $faker->numberBetween($min=100000,$max = 999999);
+            }
         } else {
             for ($i = 0; $i < $count; $i++) {
                 $variants[$i] = $faker->firstName;
@@ -35,9 +39,7 @@ $factory->define(Characteristic::class, function (Faker $faker) {
         'group_id' => $faker->numberBetween(1, $groupCount),
         'status' => Characteristic::STATUS_ACTIVE,
         'type' => $type,
-        'default' => $variants ? $faker->randomElement($variants) : null,
         'required' => $faker->boolean,
-        'variants' => $variants ?: null,
         'hide_in_filters' => $faker->boolean,
         'created_by' => 1,
         'updated_by' => 1,
