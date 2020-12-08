@@ -27,8 +27,16 @@ if ($product->classFavorite($product->id)) {
             </div>
         </div>
         <div class="list-full-des">
-            @foreach($product->mainValues as $value)
-                <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
+            @foreach($product->allCharacteristics as $characteristics)
+                @if($characteristics->characteristic->main)
+                    <p>{!! $characteristics->characteristic->name !!}:
+                        <span>
+                              @foreach($product->modificationsForProduct($characteristics->characteristic_id) as $modifications)
+                                {{ $modifications->value }}
+                              @endforeach
+                        </span>
+                    </p>
+                @endif
             @endforeach
         </div>
         <div class="current-old-price horizontal">

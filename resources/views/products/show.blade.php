@@ -24,7 +24,7 @@
         </div>
         <div class="tab-pane fade" id="pills-characteristics" role="tabpanel" aria-labelledby="pills-characteristics-tab">
             <!-- full characteristics of single products -->
-{{--            @include('products.full-characteristics-singlep')--}}
+            @include('products.full-characteristics-singlep')
         </div>
         <div class="tab-pane fade" id="pills-comments" role="tabpanel" aria-labelledby="pills-comments-tab">
             <!-- full comments -->

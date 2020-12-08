@@ -20,12 +20,14 @@
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
-                @foreach($categories as $category)
+                @include('filters.category-filter')
+
+                {{-- @foreach($categories as $category)
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
                     <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
                 </div>
-                @endforeach
+                @endforeach --}}
             </div>
         </form>
 

@@ -20,6 +20,7 @@ use App\Http\Requests\Admin\Shop\Products\ValueRequest;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Expr\AssignOp\Mod;
 
 class ProductService
 {
@@ -341,7 +342,7 @@ class ProductService
     public function addModification(int $id, ModificationCreateForm $request): Modification
     {
         $product = Product::findOrFail($id);
-//        dd($request);
+
         DB::beginTransaction();
         try {
             if (!$request->photo) {

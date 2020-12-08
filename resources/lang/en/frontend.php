@@ -247,6 +247,7 @@ return [
 
     'blogs' => 'Blog',
     'videos' => 'Videos',
+    'stores' => 'Stores',
     'search_blogs' => 'Search blog',
     'search_videos' => 'Search videos',
     'show_more' => 'Show more',

@@ -78,6 +78,19 @@ class Modification extends BaseModel
         $this->edit($request);
     }
 
+    public function edit(UpdateRequest $request)
+    {
+        $this->update([
+            'name_uz' => $request->name_uz,
+            'name_ru' => $request->name_ru,
+            'name_en' => $request->name_en,
+            'code' => $request->code,
+            'characteristic_id' => $request->characteristic_id,
+            'price_uzs' => $request->price_uzs,
+            'price_usd' => $request->price_usd,
+        ]);
+    }
+
     public function editCharacteristicValue(UpdateRequest $request)
     {
         $this->value = $request->characteristic_value;
@@ -102,19 +115,6 @@ class Modification extends BaseModel
         $this->edit($request);
     }
 
-    public function edit(UpdateRequest $request)
-    {
-        $this->update([
-            'name_uz' => $request->name_uz,
-            'name_ru' => $request->name_ru,
-            'name_en' => $request->name_en,
-            'code' => $request->code,
-            'characteristic_id' => $request->characteristic_id,
-            'price_uzs' => $request->price_uzs,
-            'price_usd' => $request->price_usd,
-        ]);
-    }
-
     public function setSort($sort): void
     {
         $this->sort = $sort;
@@ -124,8 +124,10 @@ class Modification extends BaseModel
     {
         return $this->id == $id;
     }
-
-
+    public function isIssetBoth($product_id, $characteristic_id): bool
+    {
+        return self::where('product_id', $product_id)->where(['characteristic_id' => $characteristic_id])->exists();
+    }
     ########################################### Mutators
 
     public function getNameAttribute(): string
