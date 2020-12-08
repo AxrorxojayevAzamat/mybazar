@@ -17,7 +17,7 @@
             <nav class=" navbar navbar-expand-custom sort-types">
 
                 <!--sort-by options  -->
-            @include('layouts.sort-by-options')
+            @include('catalog.sort')
 
             <!-- small filter without title checkbox -->
                 @include('layouts.small-filter-without-title-checkbox')
