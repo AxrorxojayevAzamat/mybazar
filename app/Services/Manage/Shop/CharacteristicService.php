@@ -21,8 +21,8 @@ class CharacteristicService
                 'name_en' => $request->name_en,
                 'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
-                'main' => $request->main,
-                'required' => $request->required,
+                'main' => $request->main ? true : false,
+                'required' => $request->required ? true : false,
                 'hide_in_filters' => $request->hide_in_filters ? true : false,
                 'group_id' => $request->group_id,
             ]);
@@ -50,9 +50,9 @@ class CharacteristicService
                 'name_en' => $request->name_en,
                 'status' => Characteristic::STATUS_MODERATION,
                 'type' => $request->type,
-                'main' => $request->main,
-                'required' => $request->required,
-                'hide_in_filters' => $request->hide_in_filters,
+                'main' => $request->main ? true : false,
+                'required' => $request->required ? true  : false,
+                'hide_in_filters' => $request->hide_in_filters ? true : false,
             ]);
 
             $characteristic->characteristicCategories()->delete();
