@@ -49,7 +49,7 @@
 
     <!-- recently viewed -->
     @include ('layouts.carousel-products',
-        ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
+        ['products' => $watchedProduct, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 
 @endsection
 @section('script')
