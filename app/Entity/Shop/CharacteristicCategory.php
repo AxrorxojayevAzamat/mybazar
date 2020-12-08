@@ -40,6 +40,10 @@ class CharacteristicCategory extends BasePivot
     {
         return $this->belongsTo(Characteristic::class, 'characteristic_id', 'id');
     }
+    public function modifications()
+    {
+        return $this->belongsTo(Modification::class, 'characteristic_id', 'characteristic_id');
+    }
 
     public function category()
     {

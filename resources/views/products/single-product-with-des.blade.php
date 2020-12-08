@@ -56,56 +56,37 @@
                 </div>
                 <div class="color-delivery-des">
                     <form action="#">
-                        {{--                        @foreach($valueModifications as $modification)--}}
-                        {{--                            <p>{{ $modification->name }}: <span>{{ $modification->value }}</span></p>--}}
-                        {{--                            <div class="pr-des-radio-buttons">--}}
-                        {{--                                <div class="value-modification" id="value-modification"--}}
-                        {{--                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
-                        {{--                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}">--}}
-                        {{--                                    {{ $modification->value }}--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        @endforeach--}}
-                        {{--                        @if ($product->colorModifications()->exists())--}}
-                        {{--                            @php($colorModifications = $product->colorModifications)--}}
-                        {{--                            <p>@lang('frontend.color'): <span id="color-modification-name">{{ $colorModifications[0]->name }}</span></p>--}}
-                        {{--                            <div class="colors pr-des-radio-buttons3">--}}
-                        {{--                                @foreach($colorModifications as $modification)--}}
-                        {{--                                    <div class="color color-modification" id="color-modification">--}}
-                        {{--                                        <div style="background-color: {{ $modification->color }}"--}}
-                        {{--                                             data-name="{{ $modification->name }}"--}}
-                        {{--                                             data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"--}}
-                        {{--                                             data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"--}}
-                        {{--                                        ></div>--}}
-                        {{--                                    </div>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </div>--}}
-                        {{--                        @endif[--}}
                         @foreach($product->allCharacteristics as $modification)
-                            @if($modification->characteristic->main == false && $modification->characteristic->type != \App\Entity\Shop\Characteristic::TYPE_COLOR)
-                                @foreach($product->modificationsForProduct($modification->characteristic_id) as $modifications)
-                                    {{ $modification->characteristic->name }}:<span>{{ $modification->value }}</span>
-                                    <div class="pr-des-radio-buttons">
-                                        <div class="value-modification" id="value-modification"
-                                             data-actual-price="{{ trans('frontend.product.price', ['price' => $modifications->price_uzs]) }}"
-                                             data-final-price="{{ trans('frontend.product.price', ['price' => $modifications->currentPriceUzs]) }}">
-                                            {{ $modifications->value }}
-                                        </div>
+                           @if($modification->characteristic->main == false && $modification->characteristic->type != \App\Entity\Shop\Characteristic::TYPE_COLOR)
+                                   @if(!empty($modification->modifications->value))
+                                        <p>{{ $modification->characteristic->name }}:</p>
+                                   @endif
+                                    @foreach($product->modificationsForProduct($modification->characteristic_id) as $modifications)
+                                            <span class="pr-des-radio-buttons">
+                                                <div class="value-modification" id="value-modification"
+                                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modifications->price_uzs]) }}"
+                                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modifications->currentPriceUzs]) }}">
+                                                    {{ $modifications->value }}
+                                                </div>
+                                            </span>
+                                    @endforeach
+                           @endif
+                        @if($modification->characteristic->main == false && $modification->characteristic->type == \App\Entity\Shop\Characteristic::TYPE_COLOR)
+                            <p>@lang('frontend.color'): <span
+                                    id="color-modification-name">{{ $modification->characteristic->name }}</span></p>
+                            <div class="colors pr-des-radio-buttons3">
+                                @foreach($product->colorModifications($modification->characteristic_id) as $modification)
+                                    <div class="color color-modification" id="color-modification">
+                                        <div style="background-color: {{ $modification->value }}"
+                                             data-name="{{ $modification->name }}"
+                                             data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
+                                             data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"
+                                        ></div>
                                     </div>
                                 @endforeach
-                            @endif
+                            </div>
+                        @endif
                         @endforeach
-                        <p>@lang('frontend.color'): <span id="color-modification-name">jvhj</span></p>
-                        <div class="colors pr-des-radio-buttons3">
-                            @foreach($product->colorModifications($modification->characteristic_id) as $modification)
-                                <div class="color color-modification" id="color-modification">
-                                    <div style="background-color: {{ $modification->value }}"
-                                         data-name="{{ $modification->name }}"
-                                         data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
-                                         data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"></div>
-                                </div>
-                            @endforeach
-                        </div>
                     </form>
                     <div class="current-old-price horizontal">
                         <h5 class="price"

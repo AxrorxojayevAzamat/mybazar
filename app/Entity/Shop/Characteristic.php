@@ -207,5 +207,9 @@ class Characteristic extends BaseModel
         return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
+    public function modifications()
+    {
+        return $this->hasMany(Modification::class,'characteristic_id','id');
+    }
     ###########################################
 }
