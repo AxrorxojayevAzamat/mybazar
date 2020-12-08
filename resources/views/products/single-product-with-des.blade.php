@@ -129,7 +129,7 @@
         let product_id = {};
         product_id.id = id;
         $.ajax({
-            url: '{{ route('user.favorites.add',$product) }}',
+            url: '{{ route('user.add-to-favorite',$product) }}',
             method: 'GET',
             success: function (data) {
                 console.log(data);

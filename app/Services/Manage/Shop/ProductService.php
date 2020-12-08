@@ -811,4 +811,29 @@ class ProductService
         }
         return $this->nextId;
     }
+
+    public static function addProductToSession(int $id)
+    {
+        $sessionProduct = session()->get('product');
+        if (!isset($sessionProduct[$id])) {
+            if (empty($sessionProduct)){
+                $sessionProduct = [
+                    $id => [
+                        "product_id" => $id,
+                    ]
+                ];
+            }else{
+                $sessionProduct += [
+                    $id => [
+                        "product_id" => $id,
+                    ]
+                ];
+            }
+            session()->put('product', $sessionProduct);
+            return session()->get('product');
+        } else {
+            $sessionProduct = [];
+            return  session()->get('product');
+        }
+    }
 }
