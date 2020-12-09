@@ -22,6 +22,11 @@ class SearchResultsController extends Controller
 {
     public function searchResults(Request $request)
     {
+        $ratings = [];
+        $categories = [];
+        $min_price = 0;
+        $max_price = 1;
+        $brandFilter = [];
         if (!empty($value = $request->get('search'))) {
 
             $request->session()->flash('search', $request->get('search'));
@@ -32,11 +37,12 @@ class SearchResultsController extends Controller
             if ($categoryId) {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->where('category_id', $categoryId)->paginate(10);
+
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
 
-            }
 
+            }
 //            if ($categoryId) {
 //                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
 //            } else {
@@ -49,44 +55,39 @@ class SearchResultsController extends Controller
 //            } else {
 //                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
 //            }
-
-        }
-
-        $ratings = [];
-        $categories = [];
-        $min_price = 0;
-        $max_price = 1;
-        $brandFilter = [];
-
-        foreach ($products as $i => $product) {
-            $ratings[$i] = [
-                'id' => $product->id,
-                'rating' => $product->rating,
-            ];
-            $categories[$i] = [
-                'id' => $product->mainCategory->id,
-                'name' => $product->mainCategory->name,
-            ];
-            $brandFilter[$i] = [
-                'id' => $product->id,
-                'name' => $product->name
-            ];
+            foreach ($products as $i => $product) {
+                $ratings[$i] = [
+                    'id' => $product->id,
+                    'rating' => $product->rating,
+                ];
+                $categories[$i] = [
+                    'id' => $product->mainCategory->id,
+                    'name' => $product->mainCategory->name,
+                ];
+                $brandFilter[$i] = [
+                    'id' => $product->id,
+                    'name' => $product->name
+                ];
 
 
-            if ($min_price === 0) {
-                $min_price = $product->price_uzs;
-            } elseif ($min_price > $product->price_uzs) {
-                $min_price = $product->price_uzs;
-            } elseif ($max_price < $product->price_uzs) {
-                $max_price = $product->price_uzs;
+                if ($min_price === 0) {
+                    $min_price = $product->price_uzs;
+                } elseif ($min_price > $product->price_uzs) {
+                    $min_price = $product->price_uzs;
+                } elseif ($max_price < $product->price_uzs) {
+                    $max_price = $product->price_uzs;
+                }
             }
+//            dd($products);
+            return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
+                'categories', 'max_price', 'min_price', 'brandFilter'));
+        }else{
+            $products = collect(new Product);
+//            dd($products);
+            return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
+                'categories', 'max_price', 'min_price', 'brandFilter'));
         }
-//        dd($products);
-//        foreach ($products as $i => $category){
-//            dd($category);
-//        }
-        return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
-            'categories', 'max_price', 'min_price', 'brandFilter'));
+
     }
 
     public function SearchFilter(Request $request)
