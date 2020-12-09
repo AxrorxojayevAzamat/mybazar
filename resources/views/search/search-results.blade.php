@@ -19,12 +19,12 @@
             <div class="outter-catalog-view">
                 <!-- big filter without title checkbox -->
 
-                @include('search.sidebar', ['sidebar_is' => 'products'])
+                @include('search.sidebar')
 
                 <div class="wrapper-filtered-items">
 
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => count($products->items()), 'category' => count($categories)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => $products == [] ? count($products->items()) : 0, 'category' => count($categories)])  !!}
                     </h6>
 
                     <nav class=" navbar navbar-expand-custom sort-types">
