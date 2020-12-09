@@ -11,10 +11,10 @@
 
 <section>
     <div class="h4-title shops-body">
-        <h4 class="title">{{ trans('frontend.stores.index') }}</h4>
+        <h4 class="title">{{ trans('frontend.breadcrumb.shops') }}</h4>
     </div>
     <div class="row justify-content-center">
-        <div class="col-sm-5">
+        <div class="col-sm-7">
             <form id="search-bar" class="search-bar form-control" method="get">
                 <div class="input-with-tags">
                     <input id="search-input" class="main-search-bordered-input" type="text" placeholder="{{ trans('frontend.breadcrumb.search') }}" name="shopName">
@@ -24,20 +24,17 @@
         </div>
     </div>
     <div class="outter-list-of-shops">
-        @include('stores.categories')
+        <ul class="list-group">
+            @foreach($categories as $category)
+                <li class="list-group-item"><a href="?category_id={{ $category->id }}">{!! $category->name !!}</a></li>
+            @endforeach
+        </ul>
         <div class="wrapper-filtered-items">
             <nav class=" navbar navbar-expand-custom sort-types">
-                <!--sort-by options  -->
-            @include('layouts.sort-by-options')
-
-            <!-- small filter without title checkbox -->
                 @include('layouts.small-filter-without-title-checkbox')
             </nav>
 
-            <!-- list mosaic catalog items -->
         @include('stores.storesList')
-
-        <!-- pagination -->
 
         </div>
     </div>

@@ -54,7 +54,10 @@ return [
         'no_charasteric' => 'Нет характеристики',
         'all_charasteric' => 'Общие характеристики',
     ],
-
+    'store' => [
+        'index' =>'Cтраница магазинов',
+        'show' =>'Mагазин'
+    ],
     'review' => [
         'advantages' => 'Достоинтсва',
         'disadvantages' => 'Недостатки',

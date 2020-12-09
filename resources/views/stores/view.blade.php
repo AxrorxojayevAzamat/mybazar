@@ -36,7 +36,10 @@
         @include('layouts.products-list-grid', ['products' => $products])
 
         <!-- pagination -->
-            @include('layouts.pagination')
+            <nav class="products-pagination" aria-label="Page navigation example">
+                {{ $products->links() }}
+            </nav>
+
 
         </div>
     </div>

@@ -62,6 +62,11 @@ return [
         'write' => 'Sharh yozmoq',
     ],
 
+    'store' => [
+        'index' =>'Do\'konlar sahifasi',
+        'show' =>'Do\'kon'
+    ],
+
     'breadcrumb' => [
         'home' => 'Bosh sahifa',
         'auth' => 'Kirish yoki ro‘yxatdan o‘tish',

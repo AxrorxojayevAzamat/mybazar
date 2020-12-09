@@ -220,6 +220,7 @@ return [
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
         'hide_in_filters' => 'Filtrlarda berkitish',
+        'main_param' => 'Asosiy parametr',
         'group_name' => 'Xarakteristika guruhi',
         'add_group' => 'Xarakteristika guruhi qo`shmoq',
     ],

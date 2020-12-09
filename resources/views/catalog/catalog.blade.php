@@ -9,7 +9,7 @@
 @section('body')
     @section('banner')
         <!-- Slide banner -->
-        @include ('layouts.slide-banner-catalog')
+        @include ('layouts.full-banner1')
     @endsection
 
         <!-- CATALOG VIEW -->
@@ -38,5 +38,9 @@
         </div>
     </section>
 @endsection
-
-@include('catalog._scripts')
+@section('script')
+    @include('catalog._scripts')
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
+    <script src="{{asset('js/jquery.rateyo.js')}}"></script>
+@endsection

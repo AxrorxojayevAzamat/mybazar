@@ -270,17 +270,17 @@ Breadcrumbs::register('videos.show', function (Crumbs $crumbs, Video $video) {
 
 Breadcrumbs::register('stores.index', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+    $crumbs->push(trans('frontend.store.index'), route('stores.index'));
 });
 
 Breadcrumbs::register('stores.show', function (Crumbs $crumbs) {
     $crumbs->parent('front-home');
-    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+    $crumbs->push(trans('frontend.store.show'), route('stores.index'));
 });
 
 Breadcrumbs::register('stores.view', function (Crumbs $crumbs) {
     $crumbs->parent('stores.index');
-    $crumbs->push(trans('frontend.stores.index'), route('stores.index'));
+    $crumbs->push(trans('frontend.store.show'), route('stores.index'));
 });
 
 

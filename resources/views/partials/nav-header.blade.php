@@ -55,7 +55,7 @@
                 <a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a>
                 <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a>
                 <a href="{{ route('delivery') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a>
-                <a href="{{ route('shops.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a>
+                <a href="{{ route('stores.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a>
                 <a href="{{ route('pay') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a>
                 <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
             </div>

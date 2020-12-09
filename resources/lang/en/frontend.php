@@ -27,9 +27,9 @@ return [
     'number_found_product' => 'For << :query >> query found :result results in :category categories',
 
     'brand' => 'Brand',
-    'stores' => [
-        'index' =>'stores page',
-        'show' =>'store'
+    'store' => [
+        'index' =>'Stores page',
+        'show' =>'Store'
     ],
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
@@ -247,6 +247,7 @@ return [
 
     'blogs' => 'Blog',
     'videos' => 'Videos',
+    'stores' => 'Stores',
     'search_blogs' => 'Search blog',
     'search_videos' => 'Search videos',
     'show_more' => 'Show more',

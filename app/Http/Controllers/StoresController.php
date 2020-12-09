@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 class StoresController extends Controller
 {
-    public function index(Request $request, $order = null)
+    public function index(Request $request)
     {
         $query = Store::where(['status' => Store::STATUS_ACTIVE]);
         if (!empty($request->get('shopName'))) {
@@ -22,6 +22,11 @@ class StoresController extends Controller
         }
         if (!empty($request->get('name'))) {
             $selector = $query->orderBy('name_' . LanguageHelper::getCurrentLanguagePrefix());
+            $stores = $selector->paginate(12);
+        }
+        if (!empty($request->get('category_id'))) {
+            $storesList = StoreCategory::where(['category_id' => $request->get('category_id')])->pluck('store_id');
+            $selector = $query->whereIn('id',$storesList);
             $stores = $selector->paginate(12);
         }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
@@ -75,7 +80,7 @@ class StoresController extends Controller
 
         $brands = Brand::all();
 
-        $products = $query->paginate(20);
+        $products = $query->paginate(10);
         $ratings = [];
         foreach ($products as $i => $product) {
             $ratings[$i] = [
@@ -86,8 +91,8 @@ class StoresController extends Controller
         $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
             ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
             ->orderByDesc('discount')->limit(9)->get();
-
-        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store'));
+        $categories = Category::where('parent_id', null)->get();
+        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store','categories'));
 
     }
 }
