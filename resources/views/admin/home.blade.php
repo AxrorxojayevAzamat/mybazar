@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="card-body">
-                Количество товаров: {{$productsCount}}
+                Количество товаров: <b>{{$productsCount}}</b>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="card-body">
-                Количество менеджеров: <b> {{$managerCount}}</b> 
+                Количество менеджеров: <b> {{$managerCount}}</b>
             </div>
         </div>
     </div>
