@@ -1126,6 +1126,19 @@ form.small-filter{
         height:100%;
     }
 }
+.category-btn {
+    color: #0042ff;
+    font-size: 22px;
+}
+.custom-checkbox {
+    ul {
+        padding-left: 0;
+        li.category-list {
+            list-style-type: none;
+            margin: 5px;
+        }
+    }
+}
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{

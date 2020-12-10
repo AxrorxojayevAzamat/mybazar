@@ -20,6 +20,7 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');// TOD
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');// TODO duplicate
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');// TODO duplicate
 
+Route::get('get-compare', 'CompareController@show')->name('getCompare');
 Route::post('add-cart', 'CartController@add');
 Route::post('remove-cart', 'CartController@remove');
 Route::get('admin',function (){

@@ -319,41 +319,41 @@ $(document).ready(function () {
             }
         }
     });
-    $('.one-row-brands').owlCarousel({
-        nav: true,
-        margin: 10,
-        items: 12,
-        dots: false,
-        responsive: {
-            0: {
-                items: 2
-            },
-            300: {
-                items: 2
-            },
-            400: {
-                items: 2
-            },
-            500: {
-                items: 3,
-            },
-            600: {
-                items: 4,
-            },
-            700: {
-                items: 5,
-            },
-            800: {
-                items: 6,
-            },
-            1001: {
-                items: 10,
-            },
-            1251: {
-                items: 12
-            }
-        }
-    });
+    // $('.one-row-brands').owlCarousel({
+    //     nav: true,
+    //     margin: 10,
+    //     items: 12,
+    //     dots: false,
+    //     responsive: {
+    //         0: {
+    //             items: 2
+    //         },
+    //         300: {
+    //             items: 2
+    //         },
+    //         400: {
+    //             items: 2
+    //         },
+    //         500: {
+    //             items: 3,
+    //         },
+    //         600: {
+    //             items: 4,
+    //         },
+    //         700: {
+    //             items: 5,
+    //         },
+    //         800: {
+    //             items: 6,
+    //         },
+    //         1001: {
+    //             items: 10,
+    //         },
+    //         1251: {
+    //             items: 12
+    //         }
+    //     }
+    // });
     $('.shops-fr').owlCarousel({
         nav: false,
         dots: false,

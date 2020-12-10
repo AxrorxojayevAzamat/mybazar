@@ -6,6 +6,7 @@ namespace App\Http\Requests\Admin\Discounts;
 
 use App\Entity\Discount;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * @property string $name_uz

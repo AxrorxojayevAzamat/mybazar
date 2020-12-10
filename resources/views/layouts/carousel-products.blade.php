@@ -7,7 +7,6 @@
             <div class="products owl-carousel owl-theme">
                 @foreach ($products as $product)
                     @include('layouts.product-item')
-
                 @endforeach
             </div>
         </div>
@@ -26,6 +25,29 @@
                 console.log(data);
             }
         })
+    }
+    function addToCompare(id){
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                compare_products += product_id;
+                compare_products += id + ',';
+                localStorage.setItem('compare_product', compare_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
     }
     function addCart(id) {
         let product_id = {};

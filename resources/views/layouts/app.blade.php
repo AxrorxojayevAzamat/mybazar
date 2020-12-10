@@ -71,6 +71,38 @@
 
 <script>
     $(document).ready(function () {
+        function deleteFromCompare(id){
+            let elem = localStorage.getItem('compare_product');
+            console.log(elem)
+        }
+        $('#compareCard').on('click',function (){
+            $.ajax({
+                url: '{{ route('getCompare')}}' + '?data='+localStorage.getItem('compare_product'),
+                method: 'GET',
+                dataType:'json',
+                success: function (data){
+                    element = '';
+                    let origin = window.location.origin;
+                    for (let i = 0; i < data.data.length; i++) {
+                        element +='<li class="item" >'+
+                            '<div class="product-img">'+
+                            ' <a href="products/show/'+ data.data[i].id + '">'+'<img src="'+origin + data.data[i].main_photo + '"></a>'+
+                            '</div>'+
+                            ' <div class="description">'+
+                            '<a href="products/show/' + data.data[i].id + '">'+'<h5 class="title">'+ data.data[i].name + '</h5></a>'+
+                            '<p class="price">'+ data.data[i].price_uzs +'</p>'+
+                            '</div>'+
+                            '<button class="btn delete-btn" onclick="deleteFromCompare(' + data.data[i].id + ')" >'+'<i class="mbexit_mobile">'+'</i></button>'
+                            +'</li>';
+                    }
+                   $('#compareSuccessItems').html(element);
+                },error: function (data){
+                    console.log(data);
+                }
+            })
+        });
+
+
         $(".wrapper-loader").fadeOut("slow");
     })
     let a = document.querySelectorAll("img");
@@ -92,10 +124,6 @@
 @yield ('script')
 @stack('script')
 
-<script>
-    let a = document.querySelectorAll("img");
-    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
-</script>
 
 </body>
 </html>

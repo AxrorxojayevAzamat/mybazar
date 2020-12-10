@@ -13,7 +13,7 @@ class DiscountController extends Controller
     public function index()
     {
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
-        $discounts = Discount::commoned()->paginate(18);
+        $discounts = Discount::commoned()->paginate(16);
 
         return view('discounts.index', compact('discounts', 'recentProducts'));
     }

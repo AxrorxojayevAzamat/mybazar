@@ -140,7 +140,7 @@
                         <div class="form-group">
                             {!! Form::label('photo', trans('adminlte.image'), ['class' => 'control-label']) !!}
                             <div class="file-loading">
-                                <input id="photo-input" class="file" type="file" name="photo" accept=".jpg,.jpeg.png">
+                                <input id="photo-input" class="file" type="file" name="photo" accept=".jpg,.jpeg,.png">
                             </div>
                             @if ($errors->has('photo'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('photo') }}</strong></span>
@@ -184,7 +184,6 @@
         this.setRequestHeader('X-CSRF-Token', token);
         return send.apply(this, arguments);
     };
-
     if (photoUrl) {
         photoInput.fileinput({
             initialPreview: [photoUrl],
