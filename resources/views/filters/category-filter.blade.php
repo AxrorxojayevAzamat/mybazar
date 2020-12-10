@@ -1,11 +1,16 @@
 @if (isset($categories))
-    <button type="button" class="btn accordion active">@lang('frontend.breadcrumb.categories')</button>
+    <button type="button" class="btn accordion active category-btn">@lang('frontend.breadcrumb.categories')</button>
     <div id="filter2" class="panel">
 
         <div class="custom-control custom-checkbox">
-            @foreach($categories as $i => $category)
-                <a href="#">{{ $category['name'] }}</a>
-            @endforeach
+            <ul>
+                @foreach($categories as $i => $category)
+                    <li class="category-list">
+                        <a href="#">{{ $category['name'] }}</a>
+                    </li>
+                @endforeach
+            </ul>
+
         </div>
     </div>
     <input type="hidden" name="brands" id="brands-hidden-input">

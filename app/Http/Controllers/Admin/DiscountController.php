@@ -63,7 +63,7 @@ class DiscountController extends Controller
     {
         $discount = $this->service->update($discount->id, $request);
         session()->flash('message', 'запись обновлён ');
-        return redirect()->route('admin.blog.discounts.show', $discount);
+        return redirect()->route('admin.discounts.show', $discount);
     }
 
     public function destroy(Discount $discount)
