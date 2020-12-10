@@ -7,18 +7,15 @@
 @endsection
 
 @section('body')
-@section('banner')
-    <!-- Slide Banner shop-view -->
-    @include('layouts.slide-banner-shop-view')
-@endsection
-<!-- PRODUCT OF DAY -->
-@include ('layouts.products-of-day')
-
-<!--SHOPS VIEW -->
-<section>
-    <div class="h4-title catalog-view">
+    <div class="h4-title">
         <h4 class="title">{!! $store->name !!}</h4>
     </div>
+    <div class="slide-banner">
+        <img src="{{ $store->fileOrginal }}" alt="">
+    </div>
+
+    @include ('layouts.products-of-day')
+
     <div class="outter-catalog-view">
         <!-- big filter without title checkbox -->
         @include('shop.big-filter-without-title-checkbox')
@@ -43,7 +40,6 @@
 
         </div>
     </div>
-</section>
 @endsection
 
 
