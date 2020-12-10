@@ -21,50 +21,10 @@
     </form>
     <div class="from-statistics-to-account">
         <ul class="navbar-right">
-            <li>
-                <a href="#" id="dropdownComparison" class="dropdownToggle"> <i class="mbcompare"><span></span></i> @lang('menu.compare')</a>
-                <div class="compare-items" id="compareItems">
-                    <ul class="selected-items">
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
+            <li id="compareCard">
+                <a href="#" id="dropdownComparison" class="dropdownToggle" > <i class="mbcompare"><span></span></i> @lang('menu.compare')</a>
+                <div class="compare-items" id="compareItems" >
+                    <ul class="selected-items overflow-auto" id="compareSuccessItems">
 
                     </ul>
                     <div class="bottom-btn">

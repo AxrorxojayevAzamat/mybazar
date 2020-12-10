@@ -35,7 +35,7 @@ if ($product->classFavorite($product->id)) {
             <div class="cart" onclick="addCart({{ $product->id }})" data-name="{{ $product->name }}"
                  data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
                     class="mbcart"></i></div>
-            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
+            <div class="libra" onclick="addToCompare({{ $product->id }})" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}"
                  data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
         </div>
