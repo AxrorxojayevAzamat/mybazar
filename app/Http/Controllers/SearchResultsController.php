@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Brand;
+use App\Entity\Category;
+use App\Entity\Shop\CategoryBrand;
 use App\Entity\Store;
+use App\Entity\StoreCategory;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Http\Resources\StoreResource;
 use Illuminate\Http\Request;
 use App\Entity\Shop\Product;
-use App\Models\Post;
+use App\Entity\Blog\Post;
+//use App\Models\Post;
 use App\Models\Videos;
+use App\Entity\Blog\Video;
 use App\Models\VideosCategory;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\RangeAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
@@ -23,12 +28,12 @@ class SearchResultsController extends Controller
     public function searchResults(Request $request)
     {
         $ratings = [];
-        $categories = [];
         $min_price = 0;
         $max_price = 1;
         $brandFilter = [];
+//        dd($request->get('search'));
         if (!empty($value = $request->get('search'))) {
-
+//            dd('working');
             $request->session()->flash('search', $request->get('search'));
 
             $categoryId = $request->get('category_id');
@@ -43,32 +48,12 @@ class SearchResultsController extends Controller
 
 
             }
-//            if ($categoryId) {
-//                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
-//            } else {
-//                $brands = Brand::search($value)->paginate($length);
-//            }
-//
-//            if ($categoryId) {
-//                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)
-//                    ->where('categories', $categoryId)->paginate($length);
-//            } else {
-//                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
-//            }
+
             foreach ($products as $i => $product) {
                 $ratings[$i] = [
                     'id' => $product->id,
                     'rating' => $product->rating,
                 ];
-                $categories[$i] = [
-                    'id' => $product->mainCategory->id,
-                    'name' => $product->mainCategory->name,
-                ];
-                $brandFilter[$i] = [
-                    'id' => $product->id,
-                    'name' => $product->name
-                ];
-
 
                 if ($min_price === 0) {
                     $min_price = $product->price_uzs;
@@ -78,14 +63,36 @@ class SearchResultsController extends Controller
                     $max_price = $product->price_uzs;
                 }
             }
-//            dd($products);
+            $blogs = Post::search($value)->where('status', Post::PUBLISHED)->paginate(10);
+            $videos = Video::search($value)->where('status', Video::PUBLISHED)->paginate(10);
+
+            $videoIds = $videos->pluck('category_id')->toArray();
+            $videosCategory = Category::whereIn('id', $videoIds)->get();
+
+            $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate(10);
+            $storeIds = $stores->pluck('id')->toArray();
+            $storesCategoryIds = StoreCategory::whereIn('store_id', $storeIds)->pluck('category_id')->toArray();
+
+            $storesCategory = Category::whereIn('id', $storesCategoryIds)->get();
+
+            $blogIds = $blogs->pluck('category_id')->toArray();
+            $blogsCategory = Category::whereIn('id', $blogIds)->get();
+
+            $categoryIds = $products->pluck('main_category_id')->toArray();
+            $categories = Category::whereIn('id', $categoryIds)->get();
+            $brandIds = $products->pluck('brand_id')->toArray();
+            $brandFilter = Brand::whereIn('id', $brandIds)->get();
+//            dd($brandFilter);
+            $brandCategoryIds = $brandFilter->pluck('id')->toArray();
+//            dd($brandCategoryIds);
+            $brandsCategoriesId = CategoryBrand::whereIn('brand_id', $brandCategoryIds)->pluck('category_id')->toArray();
+//            dd($brandsCategoriesId);
+            $brandsCategory = Category::whereIn('id', $brandsCategoriesId)->get();
+//            dd($brandsCategory);
+            $newProducts = Product::limit(12)->where(['new' => true])->get();
             return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
-                'categories', 'max_price', 'min_price', 'brandFilter'));
-        }else{
-            $products = collect(new Product);
-//            dd($products);
-            return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
-                'categories', 'max_price', 'min_price', 'brandFilter'));
+                'categories', 'max_price', 'min_price', 'brandFilter', 'blogs', 'blogsCategory', 'videosCategory',
+                'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory'));
         }
 
     }

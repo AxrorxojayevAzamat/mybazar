@@ -77,7 +77,6 @@ class CategoryController extends Controller
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $products = Product::whereIn('main_category_id', $categoryId)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
-//        dd($longBanner1);
 
         if($request->has('brands') and $request->brands !== null){
             $products = $products->whereIn('brand_id', $request->brands);

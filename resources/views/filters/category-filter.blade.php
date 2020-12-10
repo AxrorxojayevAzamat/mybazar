@@ -4,7 +4,7 @@
 
         <div class="custom-control custom-checkbox">
             @foreach($categories as $i => $category)
-                <a href="#">{{ $category['name'] }}</a>
+                <a href="?category={{$category->id}}">{{ $category->name }}</a>
             @endforeach
         </div>
     </div>
