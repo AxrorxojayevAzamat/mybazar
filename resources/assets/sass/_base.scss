@@ -387,7 +387,7 @@ nav ol.breadcrumb{
 }
 .outter-catalog-view, .outter-brand-view-body,
 .outter-list-of-shops, .outter-list-of-blogs{
-    min-height:500px;
+    min-height:200px;
     width:80%;
     padding:1% 0;
     margin:0 auto;
@@ -396,7 +396,7 @@ nav ol.breadcrumb{
     .wrapper-filtered-blogs,
     .wrapper-filtered-shops{
         width:80%;
-        min-height:500px;
+        min-height:200px;
         @include displayFlex(flex-start, column, flex-start);
         nav.sort-types{
             justify-content: flex-end;
@@ -523,7 +523,7 @@ nav ol.breadcrumb{
 }
 .all-filtered-items{
     width:100%;
-    min-height:500px;
+    min-height:200px;
     background:white;
     // @include displayFlex(flex-start,row, flex-start);
     flex-wrap:wrap;

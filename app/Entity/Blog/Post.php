@@ -12,6 +12,7 @@ use App\Http\Requests\Admin\Blog\Posts\UpdateRequest;
 use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Searchable;
 
 /**
  * @property int $id
@@ -48,6 +49,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Post extends BaseModel
 {
+    use Searchable;
     const DRAFT = 1;
     const PUBLISHED = 3;
 
@@ -57,6 +59,28 @@ class Post extends BaseModel
         'id', 'title_uz', 'title_ru', 'title_en', 'description_uz', 'description_ru', 'description_en', 'body_uz', 'body_ru',
         'body_en', 'category_id', 'status', 'file',
     ];
+
+    public function searchableAs(): string
+    {
+        return 'blog_posts_index';
+    }
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title_uz' => $this->title_uz,
+            'title_ru' => $this->title_ru,
+            'title_en' => $this->title_en,
+            'description_uz' => $this->description_uz,
+            'description_ru' => $this->description_ru,
+            'description_en' => $this->description_en,
+            'body_en' => $this->body_en,
+            'body_uz' => $this->body_uz,
+            'body_ru' => $this->body_ru,
+            'status' => $this->status,
+            'category_id' => $this->category_id,
+        ];
+    }
 
     public static function add(int $id, CreateRequest $request, int $categoryId, string $fileName): self
     {

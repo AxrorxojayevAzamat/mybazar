@@ -92,6 +92,18 @@ $(document).ready(function () {
 
     }
 
+    function colmRow(){
+        if (localStorage.getItem('col-row-view') === 'column') {
+            $('.all-filtered-items').addClass('column');
+            $('.item-action-icons').addClass('list');
+            $('.column-view').addClass('view-blue-bg');
+            $('.list-view').removeClass('view-blue-bg');
+        }else{
+            return  0;
+        }
+    }
+    colmRow();
+
 
 
 

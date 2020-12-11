@@ -1,13 +1,19 @@
 $(document).ready(function(){
-    
+
     $(".toggle-view a").on('click', function(event){
         event.preventDefault();
         if (!$(this).hasClass('view-blue-bg')) {
             if($('.toggle-view a').hasClass('view-blue-bg')){
                 $('.toggle-view a').removeClass('view-blue-bg');
-            } 
+            }
             $(this).addClass('view-blue-bg');
             $('.all-filtered-items').toggleClass('column');
+            if (!$('.all-filtered-items').hasClass('column')){
+                localStorage.setItem('col-row-view', 'list');
+            }else{
+                localStorage.setItem('col-row-view', 'column');
+            }
+            console.log();
             $('.item-action-icons').toggleClass('list');
             $('.all-filted-items').toggleClass('list-styles');
         }
@@ -44,7 +50,7 @@ $(document).ready(function(){
         $('.pr-des-radio-buttons3 .color').removeClass('active');
         $(this).parent().addClass('active');
     });
-    
+
 });
     var slideIndex = 1;
     showSlides(slideIndex);

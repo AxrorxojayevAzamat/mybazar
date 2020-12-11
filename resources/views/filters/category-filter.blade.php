@@ -4,13 +4,12 @@
 
         <div class="custom-control custom-checkbox">
             <ul>
-                @foreach($categories as $i => $category)
-                    <li class="category-list">
-                        <a href="#">{{ $category['name'] }}</a>
-                    </li>
-                @endforeach
+            @foreach($categories as $i => $category)
+               <li class="category-list">
+                <a href="?category={{$category->id}}">{{ $category->name }}</a>
+               </li>
+            @endforeach
             </ul>
-
         </div>
     </div>
     <input type="hidden" name="brands" id="brands-hidden-input">
