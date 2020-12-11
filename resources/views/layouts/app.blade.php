@@ -19,7 +19,6 @@
     @yield('styles')
 
 </head>
-<script> console.log(localStorage.getItem('compare_product')).length </script>
 <body>
 <!-- page loader -->
 <div class="wrapper-loader">
@@ -72,7 +71,6 @@
 <script>
     function deleteFromCompare(id) {
         let product_id_local = localStorage.getItem('compare_product');
-
         product_id_local = product_id_local.replace(id + ',', '');
         let counter = product_id_local.split(',');
         for (let i = 0; i <= counter.length; i++) {
@@ -86,7 +84,6 @@
         localStorage.removeItem('compare_product');
         localStorage.setItem('compare_product',product_id_local);
 
-        console.log(localStorage.getItem('compare_product'))
     }
     $(document).ready(function () {
         $('#compareCard').on('click', function () {
@@ -126,6 +123,10 @@
             })
         });
 
+        $('#compareBtn button').on('click',function (){
+            let elem = localStorage.getItem('compare_product');
+            window.location = '{{ route('compare') }}?data=' + elem;
+        });
 
         $(".wrapper-loader").fadeOut("slow");
     })

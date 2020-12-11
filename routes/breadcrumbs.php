@@ -109,6 +109,11 @@ Breadcrumbs::register('cart', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.cart'), route('cart'));
 });
 
+Breadcrumbs::register('compare', function (Crumbs $crumbs) {
+    $crumbs->parent('front-home');
+    $crumbs->push(trans('frontend.breadcrumb.compare'), route('compare'));
+});
+
 Breadcrumbs::register('checkout', function (Crumbs $crumbs) {
     $crumbs->parent('cart');
     $crumbs->push(trans('frontend.breadcrumb.checkout'), route('checkout'));

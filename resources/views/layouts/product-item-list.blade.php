@@ -46,8 +46,7 @@ if ($product->classFavorite($product->id)) {
         <div class="item-action-icons">
             <div class="cart" onclick="addCart({{ $product->id }})" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
-            <div class="libra" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
-                 data-price="741640"><i class="mbtocompare"></i></div>
+            <div class="libra" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
@@ -60,21 +59,54 @@ if ($product->classFavorite($product->id)) {
 </div>
 
 <script>
-    // function addCart(id){
-    //     let product_id = {};
-    //     product_id.id = id;
-    //     $.ajax({
-    //         url: '/add-cart',
-    //         method: 'POST',
-    //         data: product_id,
-    //         dataType: 'json',
-    //         success: function (data){
-    //             console.log(data);
-    //         },error: function (data){
-    //             console.log(data);
-    //         }
-    //     })
-    // }
+
+    function addToCompare(id) {
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                if (cart_product_check.length < 1){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
+
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
+    }
     function addToFavorite(id){
         let product_id = {};
         product_id.id = id;

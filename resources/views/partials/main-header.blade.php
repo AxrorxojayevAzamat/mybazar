@@ -29,7 +29,7 @@
                     </ul>
                     <div class="bottom-btn" id="compareBtn">
                         <button class="btn bold switch-to-compare">
-                            @lang('frontend.compare_products')
+                                @lang('frontend.compare_products')
                         </button>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ return [
     'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
     'compare_none' => 'Siz hali solishtiruv savatchasiga hech narsa saqlamagansiz',
     'compare_full' => 'Sizda faqat 3 ta mahsulotni solishtirish imkoniyati bor',
+    'compare_not_fit' => 'Solishtirish uchun maxsulotlarning kategoriyasi bir xil bo`lishi kerak',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
