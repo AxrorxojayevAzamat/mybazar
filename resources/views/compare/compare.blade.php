@@ -33,6 +33,23 @@
 @section('script')
     <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script>
+        function deleteFromCompare(id) {
+            let product_id_local = localStorage.getItem('compare_product');
+            product_id_local = product_id_local.replace(id + ',', '');
+            let counter = product_id_local.split(',');
+            for (let i = 0; i <= counter.length; i++) {
+                if (counter[i] == '') {
+                    counter.splice(i, 1);
+                } else {
+                    continue;
+                }
+            }
+            counter = counter.length;
+            localStorage.removeItem('compare_product');
+            localStorage.setItem('compare_product',product_id_local);
+            let elem = localStorage.getItem('compare_product');
+            window.location.href ="?data=" + elem;
+        }
         function addToFavorite(id) {
             let product_id = {};
             product_id.id = id;
@@ -45,10 +62,6 @@
                     console.log(data);
                 }
             })
-        }
-        function changeData(){
-            let elem = localStorage.getItem('compare_product');
-            window.location.href ="?data=" + elem;
         }
     </script>
 @endsection

@@ -9,7 +9,7 @@ if ($product->classFavorite($product->id)) {
 <div class="item">
     <div class="image">
         <img src="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : null }}" alt="">
-        <button class="delete" onclick="deleteFromCompare({{ $product->id }})"><a onclick="changeData()"><i class="mbexit_mobile"></i></a></button>
+        <button class="delete" onclick="deleteFromCompare({{ $product->id }})"><i class="mbexit_mobile"></i></button>
     </div>
     <b class="title"><a href="{{ route('products.show',['product' => $product]) }}"><?= substr($name,0,20)?></a></b>
     <div class="current-old-price horizontal">

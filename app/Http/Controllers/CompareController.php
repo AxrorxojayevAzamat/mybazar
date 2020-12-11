@@ -35,14 +35,19 @@ class CompareController extends Controller
         if ($request->has('data') && !empty($request->get('data'))) {
             $data = explode(',', $request->get('data'));
             array_pop($data);
-            $products = Product::whereIn('id', $data)->get();
-            foreach ($products as $i => $product) {
-                $ratings[$i] = [
-                    'id' => $product->id,
-                    'rating' => $product->rating,
-                ];
+            if (count($data) > 1 && count($data) <=3 ){
+                $products = Product::whereIn('id', $data)->get();
+                foreach ($products as $i => $product) {
+                    $ratings[$i] = [
+                        'id' => $product->id,
+                        'rating' => $product->rating,
+                    ];
+                }
+                return view('compare.compare', compact('products', 'ratings'));
+            }else{
+                return redirect('/');
             }
-            return view('compare.compare', compact('products', 'ratings'));
+
         }
         return redirect('/');
     }
