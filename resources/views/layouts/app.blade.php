@@ -19,7 +19,7 @@
     @yield('styles')
 
 </head>
-
+<script> console.log(localStorage.getItem('compare_product')).length </script>
 <body>
 <!-- page loader -->
 <div class="wrapper-loader">
@@ -70,33 +70,57 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        function deleteFromCompare(id){
-            let elem = localStorage.getItem('compare_product');
-            console.log(elem)
+    function deleteFromCompare(id) {
+        let product_id_local = localStorage.getItem('compare_product');
+
+        product_id_local = product_id_local.replace(id + ',', '');
+        let counter = product_id_local.split(',');
+        for (let i = 0; i <= counter.length; i++) {
+            if (counter[i] == '') {
+                counter.splice(i, 1);
+            } else {
+                continue;
+            }
         }
-        $('#compareCard').on('click',function (){
+        counter = counter.length;
+        localStorage.removeItem('compare_product');
+        localStorage.setItem('compare_product',product_id_local);
+
+        console.log(localStorage.getItem('compare_product'))
+    }
+    $(document).ready(function () {
+        $('#compareCard').on('click', function () {
+            let elem = localStorage.getItem('compare_product');
             $.ajax({
-                url: '{{ route('getCompare')}}' + '?data='+localStorage.getItem('compare_product'),
+                url: '{{ route('getCompare')}}' + '?data=' + localStorage.getItem('compare_product'),
                 method: 'GET',
-                dataType:'json',
-                success: function (data){
+                dataType: 'json',
+                success: function (data) {
                     element = '';
                     let origin = window.location.origin;
-                    for (let i = 0; i < data.data.length; i++) {
-                        element +='<li class="item" >'+
-                            '<div class="product-img">'+
-                            ' <a href="products/show/'+ data.data[i].id + '">'+'<img src="'+origin + data.data[i].main_photo + '"></a>'+
-                            '</div>'+
-                            ' <div class="description">'+
-                            '<a href="products/show/' + data.data[i].id + '">'+'<h5 class="title">'+ data.data[i].name + '</h5></a>'+
-                            '<p class="price">'+ data.data[i].price_uzs +'</p>'+
-                            '</div>'+
-                            '<button class="btn delete-btn" onclick="deleteFromCompare(' + data.data[i].id + ')" >'+'<i class="mbexit_mobile">'+'</i></button>'
-                            +'</li>';
+                    if (data.data.length >= 1) {
+                        $('#dropdownComparison i span').addClass('counter');
+                        $('#dropdownComparison i span').html(data.data.length);
+                        for (let i = 0; i < data.data.length; i++) {
+                            element += '<li class="item" >' +
+                                '<div class="product-img">' +
+                                ' <a href="products/show/' + data.data[i].id + '">' + '<img src="' + origin + data.data[i].main_photo + '"></a>' +
+                                '</div>' +
+                                '<div class="description">' +
+                                '<a href="products/show/' + data.data[i].id + '">' + '<h5 class="title">' + data.data[i].name + '</h5></a>' +
+                                '<p class="price">' + data.data[i].price_uzs + '</p>' +
+                                '</div>' +
+                                '<button class="btn delete-btn" onclick="deleteFromCompare(' + data.data[i].id + ')" >' + '<i class="mbexit_mobile">' + '</i></button>'
+                                + '</li>';
+                        }
+                        $('#compareBtn').show();
+                    } else {
+                        $('#compareBtn').hide();
+                        element = " <div id='cart_none' class='cart-none-text'>{{ trans('frontend.compare_none') }}</div>";
                     }
-                   $('#compareSuccessItems').html(element);
-                },error: function (data){
+
+                    $('#compareSuccessItems').html(element);
+                }, error: function (data) {
                     console.log(data);
                 }
             })
@@ -106,7 +130,9 @@
         $(".wrapper-loader").fadeOut("slow");
     })
     let a = document.querySelectorAll("img");
-    a.forEach((img)=>{img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz"))});
+    a.forEach((img) => {
+        img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz"))
+    });
 </script>
 <script src="{{ asset('js/mmenu.js') }}"></script>
 <script src="{{asset('js/mmenu-index.js')}}"></script>

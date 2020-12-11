@@ -22,12 +22,12 @@
     <div class="from-statistics-to-account">
         <ul class="navbar-right">
             <li id="compareCard">
-                <a href="#" id="dropdownComparison" class="dropdownToggle" > <i class="mbcompare"><span></span></i> @lang('menu.compare')</a>
+                <a href="#" id="dropdownComparison" class="dropdownToggle" > <i class="mbcompare"><span class=""></span></i> @lang('menu.compare')</a>
                 <div class="compare-items" id="compareItems" >
                     <ul class="selected-items overflow-auto" id="compareSuccessItems">
 
                     </ul>
-                    <div class="bottom-btn">
+                    <div class="bottom-btn" id="compareBtn">
                         <button class="btn bold switch-to-compare">
                             @lang('frontend.compare_products')
                         </button>

@@ -39,11 +39,15 @@
                 }
             }
             if (!exist) {
-                compare_products += product_id;
-                compare_products += id + ',';
-                localStorage.setItem('compare_product', compare_products + '');
-                let containerCounter = $('.counter');
-                containerCounter.text(cart_product_check.length);
+                if (cart_product_check.length <= 3){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }else{
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
             }
         } else {
             localStorage.setItem('compare_product', id + ',');

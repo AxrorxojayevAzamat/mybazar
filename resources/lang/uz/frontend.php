@@ -10,6 +10,8 @@ return [
     'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
     'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
+    'compare_none' => 'Siz hali solishtiruv savatchasiga hech narsa saqlamagansiz',
+    'compare_full' => 'Sizda faqat 3 ta mahsulotni solishtirish imkoniyati bor',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
