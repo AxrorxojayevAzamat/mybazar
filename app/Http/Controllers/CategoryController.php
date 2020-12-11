@@ -34,6 +34,7 @@ class CategoryController extends Controller
 
         $posts = Post::published()->orderByDesc('updated_by')->get();
         $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
         $brands = Brand::orderByDesc('created_at')->limit(24)->get();
         $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
@@ -41,7 +42,7 @@ class CategoryController extends Controller
         $newProducts = $query->limit(12)->where(['new' => true])->get();
 
 
-        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
+        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
 
     }
 
