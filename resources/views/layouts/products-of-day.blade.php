@@ -21,7 +21,7 @@
                 <div class="product-info">
                     <div class="product-image">
                         @if ($product->mainPhoto)
-                            <a href="{{ route('products.show', $product) }}"><img src="{{ $product->mainPhoto->fileOriginal }}" alt=""></a>
+                            <a href="{{ route('products.show', $product) }}"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
                         @endif
                         <span class="sale big">
                             <span class="number">-{{ $product->discount * 100 }}% @lang('frontend.discount_upper')</span>

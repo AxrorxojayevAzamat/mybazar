@@ -2,7 +2,7 @@
     @if (isset($brands))
 
         <button type="button" class="btn accordion active">@lang('frontend.brand')</button>
-        <div id="filter2" class="panel">
+        <div id="filter1" class="panel">
             @foreach($brands as $i => $brand)
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" name="brands[]" class="custom-control-input brands-checkbox" id="brands-checkbox-{{ $i }}"
