@@ -10,6 +10,8 @@ return [
     'clear_list' => 'Clear list',
     'go_to_cart' => 'Go to cart',
     'cart_none' => 'You have not saved anything to your cart yet',
+    'compare_none' => 'You have not saved anything in your compare cart yet',
+    'compare_full' => 'You can compare only 3 products',
 
     'color' => 'Color',
     'price' => 'Price',
