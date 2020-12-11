@@ -9,7 +9,7 @@ if ($product->classFavorite($product->id)) {
     <div class="product-img">
         @if ($product->mainPhoto)
             <a href="{{ route('products.show', $product) }}">
-                <img src="{{ $product->mainPhoto->fileOriginal }}" alt="">
+                <img src="{{ $product->mainPhoto->fileThumbnail }}" alt="">
             </a>
         @endif
         @if ($product->new)

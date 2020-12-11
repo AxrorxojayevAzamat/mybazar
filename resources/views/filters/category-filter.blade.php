@@ -6,7 +6,7 @@
             <ul>
             @foreach($categories as $i => $category)
                <li class="category-list">
-                <a href="?category={{$category->id}}">{{ $category->name }}</a>
+                <a href="{{ route('categories.show', products_path($category)) }}">{{ $category->name }}</a>
                </li>
             @endforeach
             </ul>

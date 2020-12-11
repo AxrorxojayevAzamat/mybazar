@@ -9,7 +9,7 @@
                 <div class="item">
                     <div class="product-img">
                         @if ($product->mainPhoto)
-                            <img src="{{ $product->mainPhoto->fileOriginal }}" alt="">
+                            <img src="{{ $product->mainPhoto->fileThumbnail }}" alt="">
                         @endif
                     </div>
                     <div class="description">

@@ -27,7 +27,7 @@
                             <a href="{{ route('products.show',$product) }}">
                                 @if ($product->mainPhoto)
                                     <div class="big-image">
-                                        <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
+                                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%">
                                     </div>
                                 @endif</a>
                         @endforeach

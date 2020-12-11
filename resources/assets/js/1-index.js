@@ -152,6 +152,8 @@ $(document).ready(function () {
             }).appendTo(this)
         }else{
             $(item).show();
+            $('.show-more').hide();
+
         }
     });
 

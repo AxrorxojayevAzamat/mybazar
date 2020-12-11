@@ -5,7 +5,7 @@
             <div class="images">
                 @if ($product->mainPhoto)
                     <div class="big-image">
-                        <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
+                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%">
                     </div>
                 @endif
 
@@ -13,7 +13,7 @@
                 <div class="several-images owl-theme owl-carousel">
                     @php($currentSlide = 1)
                     @if ($product->mainPhoto)
-                        <img class="demo cursor" src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
                              onclick="currentSlide({{ $currentSlide }})">
                         @php($currentSlide++)
                     @endif

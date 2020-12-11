@@ -77,7 +77,7 @@
                 <div class="card-header"><h3 class="card-title">{{ trans('adminlte.product.main_photo') }}</h3></div>
                 <div class="card-body">
                     @if ($product->mainPhoto)
-                        <a href="{{ $product->mainPhoto->fileOriginal }}" target="_blank"><img src="{{ $product->mainPhoto->fileThumbnail }}"></a>
+                        <a href="{{ $product->mainPhoto->fileThumbnail }}" target="_blank"><img src="{{ $product->mainPhoto->fileThumbnail }}"></a>
                     @endif
                 </div>
             </div>

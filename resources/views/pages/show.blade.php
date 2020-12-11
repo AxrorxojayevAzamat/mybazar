@@ -12,11 +12,11 @@
 @section('body')
     <!-- Page -->
 {{--    {{dd($page)}}--}}
-    <div class="container">
-        <div class="page">
-            <div class="title">
-                <h2>{{$page->title}}</h2>
-            </div>
+    <div class="h4-title padding-1-10">
+        <h4 class="title">{{$page->title}}</h4>
+    </div>
+    <div class="container-fluid">
+        <div class="padding-1-10">
             <div class="description">
                 <h5>{{$page->description}}</h5>
             </div>
