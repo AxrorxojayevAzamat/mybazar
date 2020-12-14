@@ -59,7 +59,7 @@
                             <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
                         </div>
                         <div class="item-action-icons">
-                            <div class="libra"><i class="mbtocompare"></i></div>
+                            <div class="libra" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
                             <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
                             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                         </div>

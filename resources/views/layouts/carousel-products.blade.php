@@ -13,20 +13,21 @@
     </div>
 </section>
 <script>
-    function addToFavorite(id){
+    function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
         $.ajax({
-            url: 'add-to-favorite/'+ id,
+            url: 'add-to-favorite/' + id,
             method: 'GET',
-            success: function (data){
+            success: function (data) {
                 console.log(data);
-            },error: function (data){
+            }, error: function (data) {
                 console.log(data);
             }
         })
     }
-    function addToCompare(id){
+
+    function addToCompare(id) {
         if (localStorage.getItem('compare_product')) {
             let compare_products = '';
             let exist = false;
@@ -39,20 +40,41 @@
                 }
             }
             if (!exist) {
-                if (cart_product_check.length <= 3){
+                if (cart_product_check.length < 1){
                     compare_products += product_id;
                     compare_products += id + ',';
                     localStorage.setItem('compare_product', compare_products + '');
                     let containerCounter = $('.counter');
                     containerCounter.text(cart_product_check.length);
-                }else{
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
                     alert('{{ trans('frontend.compare_full') }}')
                 }
+
             }
         } else {
             localStorage.setItem('compare_product', id + ',');
         }
     }
+
     function addCart(id) {
         let product_id = {};
         product_id.data = [];
@@ -65,14 +87,14 @@
             dataType: 'json',
             success: function (data) {
 
-                if (data.message == 'success'){
+                if (data.message == 'success') {
                     localStorage.removeItem('product_id');
                     let containerCounter = $('.counter');
                     console.log(counterCartNumber)
-                    counterCartNumber+=1;
+                    counterCartNumber += 1;
                     containerCounter.text(counterCartNumber);
                     console.log('exists');
-                }else{
+                } else {
                     nonRegisteredUsersCart(id);
                     console.log($.ajaxSettings.headers);
                     console.log('isnotexists');
@@ -83,7 +105,8 @@
         })
 
     }
-    function nonRegisteredUsersCart(id){
+
+    function nonRegisteredUsersCart(id) {
         if (localStorage.getItem('product_id')) {
             let cart_products = '';
             let exist = false;
@@ -111,7 +134,6 @@
             localStorage.setItem('product_id', id + ',');
         }
     }
-
 
 
 </script>

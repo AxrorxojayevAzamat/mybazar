@@ -95,10 +95,7 @@
                              onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" data-name="{{ $product->name }}"
-                             data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
-                             data-price="{{ $product->currentPriceUzs }}"
-                        >
+                        <div class="libra" onclick="addToComparing({{ $product->id }})">
                             <i class="mbtocompare"></i>
                         </div>
                         <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
@@ -125,6 +122,54 @@
 @include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
 <script>
+
+    function addToComparing(id) {
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                if (cart_product_check.length < 1){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
+
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
+    }
     function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
