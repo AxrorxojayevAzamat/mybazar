@@ -16,9 +16,13 @@ $(document).ready(function () {
 
     searchInput.keyup(function (e) {
         e.preventDefault();
+        let inputValue = $('#search-input').val();
+            console.log(inputValue);
 
-        let inputValue = searchInput.val();
-
+        if(inputValue === '' && e.which === 13){
+            console.log(inputValue);
+            location.reload();
+        }
         let data = {};
         data.search = inputValue;
 

@@ -57,6 +57,7 @@ class CategoryController extends Controller
     private function parentCategoryShow(Request $request, Category $category)
     {
         $categories = $category->children()->get()->toTree();
+        $parentCategory = $category->parent()->get();
         $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
@@ -68,7 +69,7 @@ class CategoryController extends Controller
         $newProducts = $query->limit(12)->where(['new' => true])->get();
 
 
-        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
+        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'category', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
 
     }
 
@@ -76,6 +77,8 @@ class CategoryController extends Controller
     {
 
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
+        $parentCategory = $category->parent()->get()->toTree();
+//        dd($parentCategory);
         $products = Product::whereIn('main_category_id', $categoryId)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
 
@@ -139,7 +142,7 @@ class CategoryController extends Controller
 
 
 
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1'));
+        return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1'));
     }
 
 }

@@ -6,7 +6,7 @@
     </div>
     <form action="/search" id="search-bar" class="search-bar form-control" method="GET">
             <div class="input-with-tags">
-                <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+                <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}">
             </div>
             <div class="autocomplete-tags" id="droping">
 

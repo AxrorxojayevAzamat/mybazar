@@ -18,7 +18,13 @@
 
 <section>
     <div class="h4-title catalog-section">
-        <h4 class="title">@lang('menu.whole_catalog')</h4>
+        <h4 class="title">
+            @if(isset($category))
+                {{ $category->name }}
+            @else
+                @lang('menu.whole_catalog')
+            @endif
+        </h4>
 
     </div>
     <div class="outter-catalog-view">

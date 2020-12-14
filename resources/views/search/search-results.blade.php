@@ -90,15 +90,6 @@
                         {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$stores->isEmpty() ? count($stores->items()) : 0, 'category' => count($storesCategory)])  !!}
                     </h6>
 
-                    <nav class=" navbar navbar-expand-custom sort-types">
-
-                        <!--sort-by options  -->
-                        @include('layouts.sort-by-options')
-
-                    <!-- small filter without title checkbox -->
-                        @include('layouts.small-filter-without-title-checkbox')
-                    </nav>
-
                     <!-- shop items -->
                     @include('stores.storesList')
 
