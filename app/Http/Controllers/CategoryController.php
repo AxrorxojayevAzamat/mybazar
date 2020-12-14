@@ -27,10 +27,10 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $category = Category::where(['parent_id' => null])->get();
-        $categories = $category;
+        $categories = Category::where(['parent_id' => null])->get();
         $query = Product::orderByDesc('created_at');
-
+        $parentCategory = null;
+        $rootCategoryShow = false;
         $posts = Post::published()->orderByDesc('updated_by')->get();
         $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $newProducts = $query->limit(12)->where(['new' => true])->get();
 
 
-        return view('catalog.catalog-section', compact('categories', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
+        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'rootCategoryShow', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
 
     }
 
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     private function parentCategoryShow(Request $request, Category $category)
     {
         $categories = $category->children()->get()->toTree();
-        $parentCategory = $category->parent()->get();
+        $parentCategory = $category->parent;
         $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
@@ -67,9 +67,10 @@ class CategoryController extends Controller
         $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
         $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
+        $rootCategoryShow = true;
 
 
-        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'category', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
+        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'rootCategoryShow', 'category', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
 
     }
 
@@ -138,6 +139,7 @@ class CategoryController extends Controller
 
         $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
 
+//        dd($groupModifications);
 
 
 
