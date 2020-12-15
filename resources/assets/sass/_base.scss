@@ -946,6 +946,18 @@ form.big-filter-without-title-checkbox{
         }
 
     }
+    input#submit{
+        background:$item_price_color;
+        color:white;
+        font-size:16px;
+        padding:15px 0;
+        width:100%;
+        white-space:nowrap;
+        text-align:center;
+        border-radius:23px;
+        margin:15% auto 0;
+        font-weight:bold;
+    }
 }
 // form.big-filter-with-title-checkbox{
 //     width:18%;

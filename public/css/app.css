@@ -2059,6 +2059,19 @@ form.big-filter-without-title-checkbox .panel .show-more:hover {
   color: grey;
 }
 
+form.big-filter-without-title-checkbox input#submit {
+  background: #0042ff;
+  color: white;
+  font-size: 16px;
+  padding: 15px 0;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 23px;
+  margin: 15% auto 0;
+  font-weight: bold;
+}
+
 form.big-filter-with-listof-checkbox {
   width: 18%;
   margin-top: 5%;

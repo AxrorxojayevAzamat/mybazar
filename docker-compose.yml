@@ -47,8 +47,8 @@ services:
       - 11:5432
     container_name: magazin-db
     restart: unless-stopped
-    # volumes:
-    #   - ./storage/docker/psql:/var/lib/postgresql
+    volumes:
+      - ./docker/psql/db-cache:/var/lib/postgresql
     environment:
       - POSTGRES_DB=magazin
       - POSTGRES_USER=dev_shop
