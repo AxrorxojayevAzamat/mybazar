@@ -4,12 +4,14 @@
         flex-flow:column;
         justify-content:flex-start;
         align-items:flex-start;
+        padding: 5px 0;
     }
     &.horizontal{
         flex-flow:row;
         justify-content:space-between;
         width:100%;
         align-items:center;
+        padding-top: 8px;
     }
     h5.price{
         font-size:24px;
@@ -32,6 +34,7 @@
 .item-action-icons{
     @include displayFlex(flex-start, row, center);
     width: 100%;
+    //padding: 10px 0;
     // position:absolute;
     bottom:0;
     div{

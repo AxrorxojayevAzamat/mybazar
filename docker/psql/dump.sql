@@ -1666,9 +1666,9 @@ COPY public.blog_videos (id, title_uz, title_ru, title_en, description_uz, descr
 6	2020 yil uchun eng yaxshi portativ zaryadlovchi va quvvat banklari	Лучшие портативные зарядные устройства и аккумуляторы на 2020 год	The Best Portable Chargers and Power Banks for 2020	Tanlash uchun juda ko'p imkoniyatlar mavjud, qaysi elektr banki sizga mos kelishini qaerdan bilasiz? Ko'rib chiqish uchun eng muhim fikrlarni o'qing.	С таким количеством вариантов на выбор, как узнать, какой блок питания подходит вам? Продолжайте читать, чтобы учесть самые важные моменты.	With so many options to choose from, how do you know which power bank is right for you? Read on for the most important points to consider.	<p>Elektr tok manbaiga yaqin joyda bo&#39;lmaganingizda, telefoningiz yoki planshetingizda sharbatning doimiy ravishda tugashini kuzatish juda qiyin. Yaxshiyamki, uchinchi tomon zaxira batareyalari etishmayapti va ular batareyangiz belgisi qizil rangga kira boshlaganda qurilmangizni ushlab turish uchun har qanday o&#39;lcham, quvvat va narx oralig&#39;ida bo&#39;ladi. Va bu bilan tugamaydi. Ba&#39;zi quvvat banklari tez zaryadlash, simsiz zaryadlash, o&#39;rnatilgan kabellar, o&#39;zgaruvchan tok adapterlari, LED yoritgichlar, hattoki mashinangizni sakrab ishga tushirish kabi xususiyatlar bilan jihozlangan.</p>	<p>Наблюдать за тем, как в вашем телефоне или планшете постоянно кончается заряд, когда вы не находитесь рядом с розеткой, вызывает стресс. К счастью, нет недостатка в резервных батареях сторонних производителей, и они бывают любого размера, емкости и ценового диапазона, чтобы ваше устройство продолжало работать, когда значок батареи начинает опускаться в красный цвет. И это еще не все. Некоторые блоки питания оснащены такими функциями, как быстрая зарядка, беспроводная зарядка, встроенные кабели, адаптеры переменного тока, светодиодные фонарики - даже возможность запуска двигателя от внешнего источника.</p>	<p>Watching your&nbsp;<a href="https://www.pcmag.com/picks/the-best-phones">phone</a>&nbsp;or&nbsp;<a href="https://www.pcmag.com/picks/the-best-tablets">tablet</a>&nbsp;steadily run out of juice when you&#39;re nowhere near a power outlet is stressful. Fortunately, there&#39;s no shortage of third-party backup batteries, and they come in every size, capacity, and price range to keep your device going when your battery icon starts to dip in the red. And it doesn&#39;t end there. Some power banks are equipped with features like fast charging, wireless charging, built-in cables, AC adapters, LED flashlights&mdash;even the ability to jump-start your car.</p>	11	3	ekwCT4EcmOXqBRcv62ANgAil8bXUbzhbgFCdJl0q.jpg	RCmvOnRopPB3mXyWeV1kqDKQzcYnewVhBK45uSxm.mp4	1	1	2020-11-24 11:29:24	2020-11-25 15:19:51
 2	Har doim zamonaviy ko'rinishingizni ta'minlash uchun 8 ta moda maslahati	8 модных советов, которые помогут вам всегда выглядеть стильно	8 Fashion Tips to Ensure You Always Look Stylish	Bir nechta ishonchli maslahatlar bilan o'zingizning usta stilistingiz bo'ling.	Станьте собственным мастером-стилистом, воспользовавшись несколькими надежными советами.	Become your own master stylist with a few reliable tips.	<p>Kaps&uuml;lli shkaf bilan ishlang. Sizda shkafning ishonchli shtapellari borligiga ishonch hosil qiling: ikonik kichkina qora ko&#39;ylak, jinsi shimlar mukammal tarzda mos keladi, klassik blazer, neytral rangdagi oddiy futbolkalar va tugmachalar va oson teridan tikilgan ko&#39;ylagi (yoki denim ko&#39;ylagi). Aralashma va o&#39;xshashlik asoslarini kapsuladan tashkil topgan to&#39;plamga sarmoya kiritish (va ularni qanday uslubda tayyorlashni o&#39;rganish) bu birlashtirishning kalitidir.<br />\r\nSizning kiyimlaringiz mukammal tarzda joylashtirilganligiga ishonch hosil qiling. Har qanday kiyimni hayratlanarli qilish uchun bitta hiyla - yaxshi tikuvchini yollash. Tikilgan kiyim nafaqat sayqallangan ko&#39;rinishga ega, balki o&#39;zlarini yanada qulay his qiladi. Erga sudrab boradigan shim va noqulay to&#39;plangan liboslar sizga o&#39;zingizni zamonaviy his etmaydi. Agar sizning kapsulali shkafingiz sizga yaxshi mos keladigan bo&#39;lsa, siz ortiqcha va kichik o&#39;lchamdagi narsalar bilan beparvo emas, modani his qiladigan tarzda o&#39;ynashni boshlashingiz mumkin.</p>	<p>Работайте со своим капсульным гардеробом. Убедитесь, что у вас есть надежные предметы гардероба: культовое маленькое черное платье, пара идеально сидящих по размеру джинсов, классический блейзер, простые футболки и пуговицы нейтральных цветов, а также непринужденная кожаная куртка (или джинсовая куртка). Вложение в капсульную коллекцию основ смешивания и подбора (и изучение того, как их стилизовать) - ключ к тому, чтобы выглядеть вместе.<br />\r\nУбедитесь, что ваша одежда идеально сидит. Один из способов сделать любой предмет одежды потрясающим - это нанять хорошего портного. Одежда, подобранная по индивидуальному заказу, не только выглядит безупречно, но и более удобна. Брюки, которые тянутся по земле, и платья, которые неуклюже сбиваются в кучу, не заставят вас чувствовать себя стильно. Если ваш капсульный гардероб вам подходит, вы можете начать играть с вещами слишком большого или меньшего размера, чтобы это выглядело модно, а не небрежно.</p>	<p>Work your capsule wardrobe. Make sure you have reliable wardrobe staples: an iconic little black dress, a pair of jeans that fit perfectly, a classic blazer, simple T-shirts and button-downs in neutral colors, and an effortless leather jacket (or denim jacket). Investing in a capsule collection of mix-and-match basics (and learning how to style them) is the key to looking put together.<br />\r\nMake sure your clothes fit perfectly. One trick to making any item of clothing look amazing is to hire a good tailor. Tailored clothing not only looks polished, but it also feels more comfortable. Pants that drag on the ground and dresses that bunch up awkwardly won&#39;t make you feel stylish. If your capsule wardrobe fits you well, you can start to play with over- and under-sized items in a way that feels fashionable, not sloppy.</p>	4	3	Aao9PQFKg1Qe8gXfKdKUXzb97VhPG7b5QarRFaWe.jpg	phix0vBLAG7lukCg2dtFII03jIGZXNEYQzaMErHO.mp4	1	1	2020-11-24 11:05:21	2020-11-25 15:20:26
 8	Oshxona aralashtirgichlari uchun qo'llanma sotib olish	Руководство по покупке кухонных блендеров	Purchase a manual for kitchen mixers	Ba'zilar oshxona aralashtirgichi muhim ahamiyatga ega emas deb aytsalar, boshqalari katta miqdordagi aralashtirgichga tayanadi va ularsiz yo'qolib ketadi.	В то время как некоторые скажут, что кухонный блендер не является необходимым, другие в значительной степени полагаются на свой блендер и были бы потеряны без него.	While some would say that a kitchen blender is not an essential, others rely heavily on their blender and would be lost without one.	<p>Sotib olish uchun turli xil aralashtirgichlar mavjud, ularning ba&#39;zilari asosiy funktsiyalarga ega, boshqalari qattiq ovqatlarni qayta ishlay oladi yoki sho&#39;rva pishiradi. Banka aralashtirgichlari quvvati, ishi va pichog&#39;i dizayniga qarab o&#39;zgarib turadigan xususiyatlari, hajmi va narxlari bilan eng mashhurdir. Ko&#39;p funktsiyali aralashtirgichlar ko&#39;p qirrali, ammo qimmatga tushadi. Qo&#39;l yoki immersion aralashtirgichlar, odatda, maydalagich qo&#39;shimchasi yoki maxsus pichoq dizayni bilan jihozlanmagan bo&#39;lsa, asosiy pyuresi, aralashtirish va aralashtirish xususiyatlariga ega. Aksariyat qo&#39;l aralashtirgichlari elektr bo&#39;lsa-da, simsiz modellar ushbu oshxona vositasiga yana bir qulaylik darajasini qo&#39;shadi. Shaxsiy aralashtirgichlar turli xil funktsiyalarga ega.</p>	<p>Можно купить множество блендеров, некоторые из которых имеют базовые функции, а другие могут обрабатывать твердую пищу или готовить суп. Баночные блендеры являются наиболее популярными, их характеристики, емкость и цена варьируются в зависимости от мощности, функции и конструкции лезвия. Многофункциональные блендеры более универсальны, но дороги. Ручные или погружные блендеры обычно имеют базовые функции пюреобразования, смешивания и смешивания, если только они не оснащены приспособлением для измельчения или специальной конструкцией лезвий. Хотя большинство ручных блендеров электрические, беспроводные модели добавляют этому кухонному инструменту еще один уровень удобства. Персональные блендеры имеют различные функции.</p>	<p>There&#39;s quite a variety of&nbsp;<a href="https://www.thespruceeats.com/best-blenders-to-buy-4062976">blenders available to buy</a>, some with basic functions while others can process hard foods or cook soup. Jar blenders are the most popular with features, capacity, and prices that vary depending on power, function, and blade design. Multifunction blenders are more versatile but costly.&nbsp;<a href="https://www.thespruceeats.com/immersion-blender-definition-1907910">Hand or immersion blenders</a>&nbsp;usually have basic pureeing, mixing, and blending features, unless accessorized with a chopper attachment or special blade design. While most hand blenders are electric, cordless models add another level of convenience to this kitchen tool.&nbsp;<a href="https://www.thespruceeats.com/best-personal-blenders-4072910">Personal blenders</a>&nbsp;have various functions.</p>	18	3	ZSTk8HEeWPOMiYVjYfr2ZXRUtnCxCuh01I06UiT2.jpg	lzGvND4cH3z8DHlx8MeDtirhjEPDKIzdafok6Q0Q.mp4	1	1	2020-11-24 11:41:02	2020-11-25 15:23:31
+9	Yangi konditsioner sotib olishdan oldin bilishingiz kerak bo'lgan hamma narsalar	Все, что вам нужно знать, прежде чем покупать новый кондиционер	Everything You Need to Know Before You Buy a New Air Conditioner	Issiq kunda konditsionerdan yaxshiroq narsa yo'q - va texnologiya tobora sovuqlashib bormoqda.	Нет ничего лучше, чем кондиционер в жаркий день - а технологии становятся все круче.	There's nothing better than air conditioning on a hot day — and the technology keeps getting cooler.	<p>Konditsionerlarning to&#39;rtta asosiy turi mavjud. Ular:</p>\r\n\r\n<p>1. Derazaga o&#39;rnatilgan konditsionerlar<br />\r\nKonditsionerning eng keng tarqalgan turi bu derazaga o&#39;rnatiladigan blok bo&#39;lib, u vaqtincha deraza ochilishida joylashgan. Agar sizning uyingiz o&#39;rtacha haroratli hududda joylashgan bo&#39;lsa, qo&#39;shimcha sovutish uchun faqat sovutish moslamasini yoki qo&#39;shimcha issiqlik uchun sovutish / isitish moslamasini sotib olishingiz mumkin. Agar siz shimolda yashasangiz, iliq ob-havo mavsumi oxirida birliklarni olib tashlash yaxshidir.</p>	<p>Существует четыре основных типа кондиционеров. Они есть:</p>\r\n\r\n<p>1. Оконные кондиционеры.<br />\r\nСамый распространенный тип кондиционера - это оконный блок, который временно располагается в оконном проеме. Вы можете купить блок только для охлаждения или блок для охлаждения / нагрева для дополнительного тепла, если ваш дом расположен в районе с умеренными температурами. Если вы живете на севере, хорошо убирать юнитов в конце теплого сезона.</p>	<p>There are four main types of air-conditioning units. They are:</p>\r\n\r\n<p>1. Window-mounted air conditioners<br />\r\nThe most common type of air conditioner is a window-mounted unit, which temporarily resides in a window opening. You can buy a cooling-only unit or a cooling/heating unit for supplemental heat if your home is located in an area with moderate temperatures. If you live in the north, it&#39;s good to remove units at the end of the warm weather season.</p>	1	3	Pgk0zFIL9Ti1OekjoOve39kIMz6swqYyT2llXEk4.jpg	qyQRfRZzM5KgYrNd5baxGGGlT6vUcd6PcmLXrLRM.mp4	1	1	2020-11-24 11:48:23	2020-12-10 18:10:29
 4	Google Xaridlar reytingini qanday yaxshilash mumkin	Как улучшить свой рейтинг в Google Покупках	How To Improve Your Google Shopping Ranking	Google o'zining savdo-sotiq kampaniyasining xususiyatini ko'plab nomlar bilan - "do'kon oynasi", "hayot chizig'i" va "old eshikni kutib oluvchi" deb ataydi.	Google называет свою торговую кампанию множеством названий - «витрина», «спасательный круг» и «встреча с входной дверью».	Google calls its Shopping campaign feature by many names- ‘shop window’, ‘lifeline’, and ‘front-door greeter’.	<p>Shunday qilib, Google Shopping reytingini yaxshilash uchun bu butun qidiruv reklama va raqamli marketing strategiyasini yaratish yoki buzish degani. Ammo reyting va optimallashtirishga kirishishdan oldin, Google Shopping nima ekanligini tushunish muhimdir.</p>\r\n\r\n<p>Google Merchant Center-ga bog&#39;langan ushbu vosita elektron tijorat biznesiga sizning reklamangizni mahsulot tasviri va mahsulot nomi bilan Google qidiruv tizimining natijalari sahifasining yuqori qismida va ba&#39;zi Google platformalarida ko&#39;rsatishga imkon beradi. Keyin foydalanuvchilar o&#39;zlari joylashgan sahifani yoki dasturni tark etmasdan mahsulotlarni qidirishlari, ko&#39;rishlari va taqqoslashlari mumkin. Agar ular ba&#39;zi bir mahsulot reklamalariga qiziqish bildirsalar, bosish orqali ularni reklama qilingan narsalarga qarab, ochilish sahifasi, toifalar sahifasi yoki singular mahsulot sahifasi - biznes veb-sayt sahifasiga olib boradi.</p>	<p>Само собой разумеется, что для повышения рейтинга Google Покупок нужно создать или разрушить всю их стратегию поисковой рекламы и цифрового маркетинга. Но прежде чем переходить к ранжированию и оптимизации, важно понять, что такое Google Покупки.</p>\r\n\r\n<p>Этот инструмент, связанный с Google Merchant Center, позволяет предприятиям электронной коммерции показывать вашу рекламу с изображением продукта и названием продукта в верхней части страницы результатов поиска Google и на определенных платформах Google. После этого пользователи могут искать, просматривать и сравнивать продукты, не покидая страницу или приложение, в котором они работают. Если они заинтересованы в рекламе товаров, переход по клику приведет их на страницу бизнес-сайта - либо целевую страницу, страницу категории или страницу отдельного продукта, в зависимости от того, что рекламировалось.</p>	<p>It goes without saying, then, that to<a href="https://www.adnabu.com/improve-google-shopping-ranking?hsLang=en" rel="noopener" target="_blank">&nbsp;improve Google Shopping ranking</a>&nbsp;is to make or break their entire search ad and digital marketing strategy. But before getting into rankings and optimization, it is important to understand what Google Shopping is.<br />\r\n<br />\r\nThe tool, which links to&nbsp;<a href="https://www.google.com/retail/solutions/merchant-center/" rel="noopener" target="_blank">Google Merchant Center</a>, allows eCommerce businesses to show your ad, with the product image and product title, on the top of Google&rsquo;s search engine results page and across certain Google platforms. Users can then search, view, and compare products without having to leave the page or application they&rsquo;re on. If they&rsquo;re interested in some product ads, a click-through will lead them to the business website page- either a landing page, category page or singular product page, depending on what had been advertised.</p>	1	3	4JCVQNE81l5AfuHyTHMEAvL9iBTJzdDHpRFGrkV4.jpg	ooxnHzGm7vepjudPRyUbhRbelpLT0Wv83GFKE0yd.mp4	1	1	2020-11-24 11:18:46	2020-11-25 15:18:29
 7	Eng yaxshi changyutgichni qanday tanlash mumkin	Как выбрать лучший пылесос	How to Choose the Best Vacuum Cleaner	Bozorda juda ko'p har xil turdagi changyutgichlar mavjudki, sizning ehtiyojlaringizga eng mos keladigan changyutgichni qanday tanlashni hal qilish chalkash bo'lishi mumkin.	На рынке так много разных типов пылесосов, что может возникнуть путаница при выборе пылесоса, который лучше всего соответствует вашим потребностям.	There are so many different types of vacuum cleaners on the market that it can be confusing to decide how to choose a vacuum cleaner that best fits your needs.	<p>Ushbu maqola sizning uyingiz uchun asosiy changyutgichni qanday tanlashga qaratilgan. Shunday qilib, qo&#39;l changyutgichlari, avtomobil changyutgichlari, nam / quruq changyutgichlar kabi maxsus yoki ikkilamchi changyutgichlarni chetga surib, ikkita asosiy turdagi changyutgichni tanlash mumkin: tik va qutilar.</p>\r\n\r\n<p>Diklar an&#39;anaviy ravishda AQSh va Buyuk Britaniyada changyutgichning eng sevimli turi bo&#39;lib kelgan. Evropada va dunyoning qolgan qismida qutilar tanlangan changyutgichdir.</p>\r\n\r\n<p>Odatda tik tirgaklar qo&#39;zg&#39;alishni ta&#39;minlash uchun aylanadigan cho&#39;tka rulosiga ega va assimilyatsiyani ta&#39;minlaydigan bitta motorga ega bo&#39;lishi mumkin, shuningdek aralashtirgich cho&#39;tkasini aylantiradi yoki ikkita dvigatelga ega bo&#39;lishi mumkin, biri assimilyatsiya qilish uchun, ikkinchisi esa cho&#39;tkani haydash uchun.</p>	<p>Эта статья посвящена тому, как выбрать первичный пылесос для дома. Таким образом, помимо специальных или вторичных пылесосов, таких как ручные пылесосы, автомобильные пылесосы, пылесосы для влажной / сухой уборки, есть два основных типа пылесосов на выбор: стойки и канистры.</p>\r\n\r\n<p>Вертикальные стойки традиционно были любимым типом пылесосов в США и Великобритании. В Европе и во всем мире канистры - предпочтительный пылесос.</p>\r\n\r\n<p>Стойки обычно имеют вращающийся щеточный валик для перемешивания и могут иметь один двигатель, который обеспечивает всасывание, а также вращает щетку мешалки, или могут иметь два двигателя: один для всасывания, а другой для привода щетки.</p>	<p>This article is focused on how to choose a primary vacuum cleaner for your home. So, setting aside specialty or secondary vacuum cleaners, such as hand vacuums, car vacuums, wet/dry vacuums, there are two major types of vacuum cleaners to choose from: &nbsp;uprights and canisters.</p>\r\n\r\n<p>Uprights have traditionally been the favorite type of vacuum cleaner in the U.S. and Great Britain. In Europe and the rest of the world, canisters are the vacuum cleaner of choice.</p>\r\n\r\n<p>Uprights generally have a revolving brush roll to provide agitation and may have one motor that provides the suction and also turns the agitator brush, or it may have two motors, one to provide suction and one to drive the brush.</p>	10	3	c1jtb3u5XIh0ToJOuDNmUDHlzgvlny1v0y0AnoK3.jpg	SezsL89uDzjsAM4qzVFJOmC4I8z1XpS27CNZpEpw.mp4	1	1	2020-11-24 11:37:11	2020-11-25 15:21:05
-9	Yangi konditsioner sotib olishdan oldin bilishingiz kerak bo'lgan hamma narsalar	Все, что вам нужно знать, прежде чем покупать новый кондиционер	Everything You Need to Know Before You Buy a New Air Conditioner	Issiq kunda konditsionerdan yaxshiroq narsa yo'q - va texnologiya tobora sovuqlashib bormoqda.	Нет ничего лучше, чем кондиционер в жаркий день - а технологии становятся все круче.	There's nothing better than air conditioning on a hot day — and the technology keeps getting cooler.	<p>Konditsionerlarning to&#39;rtta asosiy turi mavjud. Ular:</p>\r\n\r\n<p>1. Derazaga o&#39;rnatilgan konditsionerlar<br />\r\nKonditsionerning eng keng tarqalgan turi bu derazaga o&#39;rnatiladigan blok bo&#39;lib, u vaqtincha deraza ochilishida joylashgan. Agar sizning uyingiz o&#39;rtacha haroratli hududda joylashgan bo&#39;lsa, qo&#39;shimcha sovutish uchun faqat sovutish moslamasini yoki qo&#39;shimcha issiqlik uchun sovutish / isitish moslamasini sotib olishingiz mumkin. Agar siz shimolda yashasangiz, iliq ob-havo mavsumi oxirida birliklarni olib tashlash yaxshidir.</p>	<p>Существует четыре основных типа кондиционеров. Они есть:</p>\r\n\r\n<p>1. Оконные кондиционеры.<br />\r\nСамый распространенный тип кондиционера - это оконный блок, который временно располагается в оконном проеме. Вы можете купить блок только для охлаждения или блок для охлаждения / нагрева для дополнительного тепла, если ваш дом расположен в районе с умеренными температурами. Если вы живете на севере, хорошо убирать юнитов в конце теплого сезона.</p>	<p>There are four main types of air-conditioning units. They are:</p>\r\n\r\n<p>1. Window-mounted air conditioners<br />\r\nThe most common type of air conditioner is a window-mounted unit, which temporarily resides in a window opening. You can buy a cooling-only unit or a cooling/heating unit for supplemental heat if your home is located in an area with moderate temperatures. If you live in the north, it&#39;s good to remove units at the end of the warm weather season.</p>	1	3	Pgk0zFIL9Ti1OekjoOve39kIMz6swqYyT2llXEk4.jpg	qyQRfRZzM5KgYrNd5baxGGGlT6vUcd6PcmLXrLRM.mp4	1	1	2020-11-24 11:48:23	2020-11-25 15:22:14
 10	Eng yaxshi konditsionerni qanday sotib olish mumkin	Как купить лучший кондиционер	How to buy the best air conditioner	Eng yaxshi konditsionerni tanlash qiyin bo'lishi mumkin. Sizga qanday o'lchamda kerak? Yugurish qancha turadi va u qanchalik shovqinli bo'ladi? Biz sizga uyingiz uchun mos modelni topishda yordam beramiz.	Выбор лучшего кондиционера может оказаться сложной задачей. Какой размер вам нужен? Сколько будет стоить работа и насколько шумно? Мы поможем вам подобрать подходящую модель для вашего дома.	Choosing the best air conditioner can be a challenge. What size do you need? How much will it cost to run and how noisy will it be? We'll help you find the right model for your home.	<p>Ular ikkita qismdan iborat: ichki blok va tashqi blok, sovutgich gazini o&#39;z ichiga olgan quvurlar bilan bog&#39;langan. Ular Avstraliyada eng keng tarqalgan konditsioner turidir va xona yoki ochiq maydon uchun taxminan 60m2 gacha yaxshi. Narxlari oralig&#39;i: $ 600 - $ 5500.</p>\r\n\r\n<p>Ko&#39;p bo&#39;linish<br />\r\nSplit-tizimga o&#39;xshaydi, lekin ikkita tashqi qurilmaga ulangan bitta tashqi blok bilan. Bir-biriga oqilona yaqin bo&#39;lgan ikkita yoki uchta xona uchun yaxshi, ayniqsa alohida split-tizimlar yoki kanalli tizim mos kelmasa. Ekvivalent alohida split-tizimlar bilan bir xil narx oralig&#39;ida.</p>	<p>Они состоят из двух частей: внутреннего блока и наружного блока, соединенных трубами с газообразным хладагентом. Они являются наиболее распространенным типом кондиционеров в Австралии и подходят для комнаты или открытой планировки площадью до 60 м2. Ценовой диапазон: 600-5500 долларов.</p>\r\n\r\n<p>Мульти-сплит<br />\r\nАналогично сплит-системе, но с одним наружным блоком, подключенным к двум или более внутренним блокам. Подходит для двух или трех комнат, которые расположены достаточно близко друг к другу, особенно когда отдельные сплит-системы или канальная система не подходят. Примерно в том же ценовом диапазоне, что и на аналогичные раздельные сплит-системы.</p>	<p>These have two parts: an indoor unit and an outdoor unit, connected by pipes containing refrigerant gas. They are the most common air conditioner type in Australia, and are good for a room or open plan area up to about 60m<sup>2</sup>. Price range: $600-$5500.</p>\r\n\r\n<h5>Multi-split</h5>\r\n\r\n<p><strong>Similar to a split-system, but with one outdoor unit connected to two or more indoor units. Good for two or three rooms that are reasonably close together, especially when separate split-systems or a ducted system aren&#39;t suitable. About the same price range as the equivalent separate split-systems.</strong></p>	1	3	BShJw2jVXxFYvBp75pZlDAbwzI9qYWrxWn5TqLuQ.jpg	JbRQ6O6ujmFggJqODlGqTKEGMi85XWwnaqqRljrs.mp4	1	1	2020-11-24 11:51:02	2020-11-25 15:22:52
 \.
 
@@ -1678,6 +1678,7 @@ COPY public.blog_videos (id, title_uz, title_ru, title_en, description_uz, descr
 --
 
 COPY public.brands (id, name_uz, name_ru, name_en, slug, logo, meta_json, created_by, updated_by, created_at, updated_at) FROM stdin;
+15	Canon	Canon	Canon	canon	tvRVhkGXORbDDGplFH60wVSQXN0EAfN72jqRYevQ.jpg	\N	1	1	2020-12-10 12:05:52	2020-12-10 12:12:54
 12	Acer	Acer	Acer	acer	rC0QzRJIq7oI1t7AqBRasYbcvGj7ZEcyl2TtF0IL.png	\N	1	1	2020-11-26 16:09:19	2020-11-26 16:11:52
 1	Samsung	Samsung	Samsung	samsung	GSWGmroNmt5GNWwBova8pfnK1nTiYkD5wvXYjBC5.png	\N	1	1	2020-11-26 09:28:03	2020-12-01 16:52:45
 2	Apple	Apple	Apple	apple	USMcgD2i0dRtiu8I5J3osw7RFbLQ5KYhM8tWp9KX.png	\N	1	1	2020-11-26 09:28:51	2020-12-01 16:53:49
@@ -1690,6 +1691,10 @@ COPY public.brands (id, name_uz, name_ru, name_en, slug, logo, meta_json, create
 10	Artel	Artel	Artel	artel	bO2mf4rlg4UDEre48xHoKExmfDSSTmDF8Cg6P4Pd.png	\N	1	1	2020-11-26 09:33:13	2020-12-01 17:08:02
 11	Versage	Versage	Versage	versage	m4msT8fKxBewbh0giEyXc2yAfmZo8HvOu6HsQ6OK.png	\N	1	1	2020-11-26 09:33:42	2020-12-01 17:09:17
 8	Zara	Zara	Zara	zara	TF7PC1bayQbnQObY1Kw2ksHz1tBZ3p5M79G5LLv1.png	\N	1	1	2020-11-26 09:32:28	2020-12-01 17:10:03
+13	Adidas	Adidas	Adidas	Adidas	45vvFtYFgPD2pyoUAckNhfCop7k2Iop4vpDpjYDV.png	\N	1	1	2020-12-09 13:57:25	2020-12-09 14:04:10
+14	Nike	Nike	Nike	nike	H0i62s9DsFChMeKURxN8It9u0A9rcQLmKvGLsbCZ.png	\N	1	1	2020-12-09 14:06:12	2020-12-09 14:08:05
+16	Hp	Hp	Hp	hp	sXFyAYo3WjeFiHWYmi4K04nmJB5U9O69qjy5K8Mz.png	\N	1	1	2020-12-10 12:09:15	2020-12-10 12:09:15
+17	Shivaki	Shivaki	Shivaki	shivaki	9BYqg6mozdtWoysYUDq1OyvTYavFqxvLTufFnW8c.png	\N	1	1	2020-12-10 12:09:48	2020-12-10 12:09:48
 \.
 
 
@@ -1742,16 +1747,16 @@ COPY public.delivery_methods (id, name_uz, name_ru, name_en, description_uz, des
 --
 
 COPY public.discounts (id, name_uz, name_ru, name_en, description_uz, description_ru, description_en, start_date, end_date, category_id, common, status, photo, created_by, updated_by, created_at, updated_at) FROM stdin;
-2	Bir kunlik chegirma	Скидка на один день	One day discount	<p>Ajoyib ishlaydi, hatto ko&#39;pincha uni o&#39;zim sotib olaman. Biron bir mahsulotni tanlang va unga chegirma o&#39;rnating. Aytgancha, agar siz uni &quot;Faqat bugun&quot; narx yorlig&#39;i bilan ta&#39;kidlasangiz, unda mahsulot, ayniqsa, lokomotiv mahsuloti bo&#39;lsa, mukammal tarzda uchib ketadi.</p>	<p>Отлично работает, даже зачастую сам на нее покупаюсь. Выделяете какой-то товар и устанавливаете на него скидку. Кстати, если выделить ее ценником &ldquo;Только сегодня&rdquo;, то товар, особенно если это&nbsp;<a href="https://in-scale.ru/blog/a-chto-u-vas-v-kompanii-moloko-i-krevetki">товар-локомотив</a>, будет отлично разлетаться.</p>	<p>Works great, even often I buy it myself. Select some product and set a discount on it. By the way, if you highlight it with the price tag &quot;Only today&quot;, then the product, especially if it is a locomotive product, will fly off perfectly.</p>	2020-12-12 00:00:00	2020-12-12 00:00:00	4	t	1	XIcBvnuRUWKenZh94iuJYBjAgenn5MWiivWFn86Z.jpg	1	1	2020-11-26 13:10:02	2020-11-26 13:10:02
-3	Haftaning kunlari bo'yicha chegirma	Скидка по дням недели	Discount by days of the week	<p>Bir kunlik chegirma bilan deyarli bir xil, ammo haftaning ma&#39;lum bir kuniga bog&#39;liq.</p>	<p>Практически то же самое, что и скидка на один день, но привязывается к конкретному дню недели.</p>	<p>Almost the same as a one day discount, but tied to a specific day of the week.</p>	2020-12-01 00:00:00	2021-02-01 00:00:00	14	t	1	bdDjmQECwvLeDDRwyDq9myCQrRIgibV2A4UW6QTi.jpg	1	1	2020-11-26 13:15:30	2020-11-26 13:15:30
-4	Istalgan davr uchun chegirma	Скидка на любой срок	Discount for any period	<p>Haftaning bir kuni yoki kuniga chegirmalarning analogi, faqat muddat har qanday bo&#39;lishi mumkin. Katta intervallarni o&#39;rnatmaslikni tavsiya qilaman. Foyda, har doimgidek, eng sodda - ochko&#39;zlikda.</p>	<p>Аналог скидок на один день или день недели, только срок может быть любой. Рекомендую не ставить большие интервалы. Выгода как всегда в самом простом &ndash; в жадности.</p>	<p>An analogue of discounts for one day or a day of the week, only the period can be any. I recommend not to set large intervals. The benefit, as always, is in the simplest - in greed.</p>	2021-01-01 00:00:00	2022-01-01 00:00:00	11	t	1	5UwcIQNgLIQr3D1CeI5IDhEyngAEMEfG5kSXbM73.jpg	1	1	2020-11-26 13:19:11	2020-11-26 13:19:11
-5	Muayyan mahsulot uchun chegirma	Скидка на конкретный товар	Discount for a specific product	<p>Mahsulot chegirmalari vaqt bilan cheklangan bo&#39;lishi mumkin (afzalroq), bo&#39;lmasligi mumkin. Ajoyib echim - &quot;Kunning mahsuloti&quot; ni narx yorlig&#39;i bilan ta&#39;kidlash (eski va yangi narxlar bilan).</p>	<p>Скидки на товар могут быть ограниченными по сроку (предпочтительней), могут нет. Отличное решение &ndash; выделить ценником &ldquo;Товар дня&rdquo; (со старой и новой ценой).</p>	<p>Product discounts may be limited in time (preferable), may not. An excellent solution is to highlight the &ldquo;Product of the Day&rdquo; with a price tag (with the old and new prices).</p>	2020-12-10 00:00:00	2020-12-31 00:00:00	15	t	1	qKNRRSuXrChoN9kc3xMH9hMhfBWvhWw4OKmu7ASD.jpg	1	1	2020-11-26 13:21:51	2020-11-26 13:21:51
-6	Oldindan buyurtma qilingan chegirma	Скидка на предварительный заказ	Pre-order discount	<p>Kimki oldinroq buyurtma bersa va shuning uchun pulni erta bersa, u katta chegirmaga ega. Sizning foydangiz juda oddiy - siz ushbu mahsulot uchun pul to&#39;laydigan pul olasiz.</p>	<p>Кто раньше заказывает, а следовательно и отдаёт деньги раньше, тот получает существенную скидку. Ваша прибыль крайне простая &ndash; Вы получаете деньги, которыми оплачиваете этот самый товар.</p>	<p>Whoever orders earlier, and therefore gives the money earlier, receives a substantial discount. Your profit is extremely simple - you get money with which you pay for this very product.</p>	2021-01-01 00:00:00	2021-02-01 00:00:00	19	t	1	VAPAuOD9bHRqhyU4sAkWF4LwAcI1o6ujGQbxvZkF.jpg	1	1	2020-11-26 13:23:42	2020-11-26 13:23:42
-7	Magnit chegirma	Магнитная скидка	Magnetic discount	<p>Xaridlarning ma&#39;lum hajmiga yetganda, chegirma taqdim etiladi. Nima uchun magnit? Chunki u &quot;Top Magnet&quot; texnologiyasi bilan juda yaxshi ishlaydi.</p>	<p>При достижении определённого объема покупок предоставляется скидка. Почему магнитная? Потому что отлично работает с технологией &ldquo;<a href="https://in-scale.ru/blog/texnologiya-magnit-sverxu">Магнит сверху</a>&rdquo;.</p>	<p>Upon reaching a certain volume of purchases, a discount is provided. Why magnetic? Because it works great with the &ldquo;Top Magnet&rdquo; technology.</p>	2021-02-02 00:00:00	2021-03-02 00:00:00	14	t	1	ASLi8IZFr5jFhsuHzupSmUrDCUXDbEnrgyMvVo7P.jpg	1	1	2020-11-26 13:25:37	2020-11-26 13:25:37
-8	Ulgurji chegirma / katta miqdor	Скидка на опт/большую сумму	Wholesale discount / large amount	<p>Mijozdan sotib olish miqdori qancha ko&#39;p bo&#39;lsa, u shunchaki chegirma olishni xohlaydi. Siz marketing strategiyangizni ishlab chiqishda bu bilan o&#39;ynashingiz mumkin.</p>	<p>Чем больше сумма покупки у клиента, тем больше он будет хотеть получить скидку. Можете играть на этом при разработке своей стратеги в маркетинге.</p>	<p>The higher the purchase amount from the customer, the more he will want to get a discount. You can play with this when developing your marketing strategy.</p>	2021-01-01 00:00:00	2021-05-01 00:00:00	11	t	1	N3U5Y3Z2fTxi5kNMaqdm1sfvDQh3FSvHtXMLr8U3.jpg	1	1	2020-11-26 13:28:08	2020-11-26 13:28:08
-9	Yig'ma chegirma	Скидка накопительная	Cumulative discount	<p>Hozirda chegirma turi juda mashhur. Har bir xarid paytida, ma&#39;lum bir foiz mijozning balansiga tushadi va keyinchalik u to&#39;lashi mumkin.</p>	<p>&nbsp;Довольно популярный сейчас вид скидки. С каждой покупки падает определённый процент на баланс клиента, которым в последствии он может расплатиться.</p>	<p>Discount type is quite popular now. With each purchase, a certain percentage falls on the client&#39;s balance, with which he can later pay.</p>	2021-01-01 00:00:00	2021-03-01 00:00:00	8	t	1	a1ae0w2Q36tbjj9UbcBcvCt9FA6BuTN3iP5m73Ik.jpg	1	1	2020-11-26 13:30:42	2020-11-26 13:30:42
-10	Naqd / naqd pulsiz to'lash uchun chegirma	Скидка за оплату наличными/безналичными	Discount for payment in cash / non-cash	<p>Biz hammamiz banklarni yoqtirmaymiz. Aksincha, unday emas. Aksariyat tadbirkorlarga bank kartalari orqali to&#39;lash yoqmaydi.</p>	<p>Мы все не любим банки. Вернее, не так. Большинство предпринимателей не любят оплату банковскими картами.</p>	<p>We all don&#39;t like banks. Or rather, not so. Most entrepreneurs don&#39;t like paying with bank cards.</p>	2021-01-01 00:00:00	2022-03-05 00:00:00	11	t	1	Y22O2vZxcLDH4U815vdtI0019F1AdcDOCEIuWyHO.jpg	1	1	2020-11-26 13:32:34	2020-11-26 13:32:34
-11	Bayram / tadbir uchun chegirma	Скидка на праздник/событие	Holiday / event discount	<p>Shahar kuni, Yangi yil, Rossiya kuni va har qanday professional bayramlar uchun.</p>	<p>День города, Новый год, День России, да на любые профессиональные праздники.</p>	<p>City Day, New Year, Russia Day, and for any professional holidays.</p>	2021-01-01 00:00:00	2021-06-01 00:00:00	11	t	1	cJzKgNym0z1BqTUEieWFlWjn6w5amyrrzeeF8kHM.jpg	1	1	2020-11-26 13:34:53	2020-11-26 13:34:53
+9	Yig'ma chegirma	Скидка накопительная	Cumulative discount	<p>Hozirda chegirma turi juda mashhur. Har bir xarid paytida, ma&#39;lum bir foiz mijozning balansiga tushadi va keyinchalik u to&#39;lashi mumkin.</p>	<p>&nbsp;Довольно популярный сейчас вид скидки. С каждой покупки падает определённый процент на баланс клиента, которым в последствии он может расплатиться.</p>	<p>Discount type is quite popular now. With each purchase, a certain percentage falls on the client&#39;s balance, with which he can later pay.</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	8	t	1	JMZfDjB67LHbX1SyNe0CiLFBdyH0FFA4SC3ukmPO.jpg	1	1	2020-11-26 13:30:42	2020-12-09 15:24:53
+8	Ulgurji chegirma / katta miqdor	Скидка на опт/большую сумму	Wholesale discount / large amount	<p>Mijozdan sotib olish miqdori qancha ko&#39;p bo&#39;lsa, u shunchaki chegirma olishni xohlaydi. Siz marketing strategiyangizni ishlab chiqishda bu bilan o&#39;ynashingiz mumkin.</p>	<p>Чем больше сумма покупки у клиента, тем больше он будет хотеть получить скидку. Можете играть на этом при разработке своей стратеги в маркетинге.</p>	<p>The higher the purchase amount from the customer, the more he will want to get a discount. You can play with this when developing your marketing strategy.</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	11	t	1	ZmEyr0hFh4XwiAo9FyuRMAb0qHmwuNtZDSThKHki.jpg	1	1	2020-11-26 13:28:08	2020-12-09 15:26:09
+6	Oldindan buyurtma qilingan chegirma	Скидка на предварительный заказ	Pre-order discount	<p>Kimki oldinroq buyurtma bersa va shuning uchun pulni erta bersa, u katta chegirmaga ega. Sizning foydangiz juda oddiy - siz ushbu mahsulot uchun pul to&#39;laydigan pul olasiz.</p>	<p>Кто раньше заказывает, а следовательно и отдаёт деньги раньше, тот получает существенную скидку. Ваша прибыль крайне простая &ndash; Вы получаете деньги, которыми оплачиваете этот самый товар.</p>	<p>Whoever orders earlier, and therefore gives the money earlier, receives a substantial discount. Your profit is extremely simple - you get money with which you pay for this very product.</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	19	t	1	ikI3zuK2XYJN8x7PL1nrdmBUTV4PMCpyNhXpwtn6.jpg	1	1	2020-11-26 13:23:42	2020-12-09 15:27:08
+4	Istalgan davr uchun chegirma	Скидка на любой срок	Discount for any period	<p>Haftaning bir kuni yoki kuniga chegirmalarning analogi, faqat muddat har qanday bo&#39;lishi mumkin. Katta intervallarni o&#39;rnatmaslikni tavsiya qilaman. Foyda, har doimgidek, eng sodda - ochko&#39;zlikda.</p>	<p>Аналог скидок на один день или день недели, только срок может быть любой. Рекомендую не ставить большие интервалы. Выгода как всегда в самом простом &ndash; в жадности.</p>	<p>An analogue of discounts for one day or a day of the week, only the period can be any. I recommend not to set large intervals. The benefit, as always, is in the simplest - in greed.</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	11	t	1	xA4AovNMOWDwd396LqmnNfCQxDiHzriQZN7E8Wem.jpg	1	1	2020-11-26 13:19:11	2020-12-09 15:29:45
+3	Haftaning kunlari bo'yicha chegirma	Скидка по дням недели	Discount by days of the week	<p>Bir kunlik chegirma bilan deyarli bir xil, ammo haftaning ma&#39;lum bir kuniga bog&#39;liq.</p>	<p>Практически то же самое, что и скидка на один день, но привязывается к конкретному дню недели.</p>	<p>Almost the same as a one day discount, but tied to a specific day of the week.</p>	2020-12-12 00:00:00	2020-12-26 00:00:00	14	t	1	nmfMD0wNWYgGOrHrkSm56yKSQQiHVX12JGfChsVS.jpg	1	1	2020-11-26 13:15:30	2020-12-09 15:31:10
+7	Magnit chegirma	Магнитная скидка	Magnetic discount	<p>Xaridlarning ma&#39;lum hajmiga yetganda, chegirma taqdim etiladi. Nima uchun magnit? Chunki u &quot;Top Magnet&quot; texnologiyasi bilan juda yaxshi ishlaydi.</p>	<p>При достижении определённого объема покупок предоставляется скидка. Почему магнитная? Потому что отлично работает с технологией &ldquo;<a href="https://in-scale.ru/blog/texnologiya-magnit-sverxu">Магнит сверху</a>&rdquo;.</p>	<p>Upon reaching a certain volume of purchases, a discount is provided. Why magnetic? Because it works great with the &ldquo;Top Magnet&rdquo; technology.</p>	2020-12-12 00:00:00	2020-12-31 00:00:00	14	t	1	cRgCOUvSmcayR1OtRsOTTwXDVtgE8BEl8IlOGMuj.jpg	1	1	2020-11-26 13:25:37	2020-12-09 15:32:44
+2	Bir kunlik chegirma	Скидка на один день	One day discount	<p>Ajoyib ishlaydi, hatto ko&#39;pincha uni o&#39;zim sotib olaman. Biron bir mahsulotni tanlang va unga chegirma o&#39;rnating. Aytgancha, agar siz uni &quot;Faqat bugun&quot; narx yorlig&#39;i bilan ta&#39;kidlasangiz, unda mahsulot, ayniqsa, lokomotiv mahsuloti bo&#39;lsa, mukammal tarzda uchib ketadi.</p>	<p>Отлично работает, даже зачастую сам на нее покупаюсь. Выделяете какой-то товар и устанавливаете на него скидку. Кстати, если выделить ее ценником &ldquo;Только сегодня&rdquo;, то товар, особенно если это&nbsp;<a href="https://in-scale.ru/blog/a-chto-u-vas-v-kompanii-moloko-i-krevetki">товар-локомотив</a>, будет отлично разлетаться.</p>	<p>Works great, even often I buy it myself. Select some product and set a discount on it. By the way, if you highlight it with the price tag &quot;Only today&quot;, then the product, especially if it is a locomotive product, will fly off perfectly.</p>	2021-12-01 00:00:00	2021-12-01 00:00:00	4	t	1	SmyG9kz5RKK0jqKHla8Qw546Uk4JBW7l6PyixPdE.jpg	1	1	2020-11-26 13:10:02	2020-12-09 15:18:27
+11	Bayram / tadbir uchun chegirma	Скидка на праздник/событие	Holiday / event discount	<p>Shahar kuni, Yangi yil, Rossiya kuni va har qanday professional bayramlar uchun.</p>	<p>День города, Новый год, День России, да на любые профессиональные праздники.</p>	<p>City Day, New Year, Russia Day, and for any professional holidays.</p>	2020-12-28 00:00:00	2021-01-03 00:00:00	11	t	1	CxkVOtG2N3bd5sMUwRcwp0dl217CNoQfGz4X9mCP.jpg	1	1	2020-11-26 13:34:53	2020-12-09 15:21:02
+10	Naqd / naqd pulsiz to'lash uchun chegirma	Скидка за оплату наличными/безналичными	Discount for payment in cash / non-cash	<p>Biz hammamiz banklarni yoqtirmaymiz. Aksincha, unday emas. Aksariyat tadbirkorlarga bank kartalari orqali to&#39;lash yoqmaydi.</p>	<p>Мы все не любим банки. Вернее, не так. Большинство предпринимателей не любят оплату банковскими картами.</p>	<p>We all don&#39;t like banks. Or rather, not so. Most entrepreneurs don&#39;t like paying with bank cards.</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	11	t	1	ZE4luLAor8TmI45oT6XIxnQzXMG3dMtvjnupJLxe.jpg	1	1	2020-11-26 13:32:34	2020-12-09 15:23:52
+5	Muayyan mahsulot uchun chegirma	Скидка на конкретный товар	Discount for a specific product	<p>Mahsulot chegirmalari vaqt bilan cheklangan bo&#39;lishi mumkin (afzalroq), bo&#39;lmasligi mumkin. Ajoyib echim - &quot;Kunning mahsuloti&quot; ni narx yorlig&#39;i bilan ta&#39;kidlash (eski va yangi narxlar bilan).</p>	<p>Скидки на товар могут быть ограниченными по сроку (предпочтительней), могут нет. Отличное решение &ndash; выделить ценником &ldquo;Товар дня&rdquo; (со старой и новой ценой).</p>	<p>Product discounts may be limited in time (preferable), may not. An excellent solution is to highlight the &ldquo;Product of the Day&rdquo; with a price tag (with the old and new prices).</p>	2020-12-12 00:00:00	2021-12-12 00:00:00	15	t	1	6cvUgPcSurU3dfI8ND0qTb0TxvKXMFoK4zUXuTnf.jpg	1	1	2020-11-26 13:21:51	2020-12-09 15:28:20
 \.
 
 
@@ -1970,15 +1975,11 @@ COPY public.shop_characteristic_categories (characteristic_id, category_id) FROM
 6	11
 7	11
 8	11
-9	11
 10	11
-11	11
 12	11
-13	11
 15	2
 16	2
 17	2
-18	2
 19	2
 20	2
 21	2
@@ -1993,12 +1994,19 @@ COPY public.shop_characteristic_categories (characteristic_id, category_id) FROM
 30	15
 31	15
 32	15
-33	15
-34	11
-34	12
 14	11
 14	12
 35	2
+33	15
+34	11
+34	12
+18	2
+13	11
+13	12
+11	11
+11	12
+9	11
+9	12
 \.
 
 
@@ -2026,15 +2034,13 @@ COPY public.shop_characteristics (id, name_uz, name_ru, name_en, group_id, statu
 6	SIM-kartaning raqami va turi	Количество и тип SIM-карты	Number and type of SIM card	2	2	integer	t	f	1	1	2020-11-27 10:32:26	2020-11-27 10:32:30	\N
 7	OS versiyasi	Версия ОС	OS version	2	2	string	t	f	1	1	2020-11-27 10:33:58	2020-11-27 10:34:02	\N
 8	Face ID sensori	rДатчик Face ID	Face ID senso	2	2	string	t	f	1	1	2020-11-27 10:34:54	2020-11-27 10:35:14	\N
-9	Ichki xotira	Объем встроенной памяти	Built-in memory	3	2	string	t	f	1	1	2020-11-27 10:44:44	2020-11-27 10:44:49	\N
 10	RAM hajmi	Объем оперативной памяти	RAM size	1	2	string	t	f	1	1	2020-11-27 10:46:17	2020-11-27 10:46:24	\N
-11	RAM hajmi	Объем оперативной памяти	RAM size	3	2	string	t	f	1	1	2020-11-27 10:47:27	2020-11-27 10:47:32	\N
 12	Xotira kartasi uyasi	Слот для карт памяти	Memory card slot	3	2	string	t	f	1	1	2020-11-27 10:48:15	2020-11-27 10:48:19	\N
-13	Old kamera	Фронтальная камера	Front-camera	4	2	string	t	f	1	1	2020-11-27 10:49:45	2020-11-27 10:49:49	\N
+9	Ichki xotira	Объем встроенной памяти	Built-in memory	3	2	string	t	f	1	1	2020-11-27 10:44:44	2020-12-15 10:30:51	f
+33	O'lchamlari	Размеры	Dimensions	6	2	string	f	t	1	1	2020-11-27 15:28:50	2020-12-15 09:37:52	f
 15	Devorga o'rnatish	Крепление на стену	Wall Mount	5	2	string	t	f	1	1	2020-11-27 14:47:26	2020-11-27 14:47:31	\N
 16	Smart TV	Smart TV	Smart TV	5	2	string	t	f	1	1	2020-11-27 14:48:05	2020-11-27 14:48:10	\N
 17	Yorug'lik sensori	Датчик освещенности	Light sensor	5	2	string	t	f	1	1	2020-11-27 14:48:59	2020-11-27 14:49:03	\N
-18	Kafolat	Гарантия	Warranty	5	2	string	t	f	1	1	2020-11-27 14:49:50	2020-11-27 14:49:54	\N
 19	Diagonal	Диагональ	Diagonal	5	2	string	t	f	1	1	2020-11-27 14:50:29	2020-11-27 14:50:33	\N
 20	Matritsa	Матрица	The matrix	5	2	string	t	f	1	1	2020-11-27 14:51:09	2020-11-27 14:51:14	\N
 21	Operatsion tizim	Операционная система	Operating system	5	2	string	t	f	1	1	2020-11-27 14:51:51	2020-11-27 14:51:55	\N
@@ -2049,10 +2055,12 @@ COPY public.shop_characteristics (id, name_uz, name_ru, name_en, group_id, statu
 30	Video karta	Видеокарта	Video card	6	2	string	t	f	1	1	2020-11-27 15:26:06	2020-11-27 15:26:10	\N
 31	Markaziy protsessor	Процессор	CPU	6	2	string	t	f	1	1	2020-11-27 15:27:12	2020-11-27 15:27:15	\N
 32	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	6	2	string	t	f	1	1	2020-11-27 15:28:02	2020-11-27 15:28:06	\N
-33	O'lchamlari	Размеры	Dimensions	6	2	string	t	f	1	1	2020-11-27 15:28:50	2020-11-27 15:28:56	\N
-34	Rang	цвет	Color	2	1	color	t	t	1	1	2020-12-08 12:09:54	2020-12-08 12:09:54	\N
-14	Asosiy kamera	Основная камера	Main camera	4	1	string	t	t	1	1	2020-11-27 10:50:54	2020-12-08 12:20:46	t
 35	Test	Test	Test	5	1	color	t	f	1	1	2020-12-08 13:46:16	2020-12-08 13:46:16	t
+34	rang	цвет	color	2	2	color	t	t	1	1	2020-12-08 12:09:54	2020-12-15 09:58:16	f
+14	Asosiy kamera	Основная камера	Main camera	4	2	string	t	t	1	1	2020-11-27 10:50:54	2020-12-15 10:02:05	t
+18	Kafolat	Гарантия	Warranty	5	2	string	t	t	1	1	2020-11-27 14:49:50	2020-12-15 10:04:48	f
+13	Old kamera	Фронтальная камера	Front-camera	4	2	string	t	t	1	1	2020-11-27 10:49:45	2020-12-15 10:16:38	f
+11	RAM hajmi	Объем оперативной памяти	RAM size	3	2	string	t	f	1	1	2020-11-27 10:47:27	2020-12-15 10:18:01	f
 \.
 
 
@@ -2072,6 +2080,19 @@ COPY public.shop_discounts (id, store_id, discount_id, created_at, updated_at) F
 1	12	10	\N	\N
 2	18	8	\N	\N
 3	19	5	\N	\N
+5	21	9	\N	\N
+6	21	3	\N	\N
+7	22	4	\N	\N
+8	23	9	\N	\N
+9	24	4	\N	\N
+10	25	8	\N	\N
+11	26	9	\N	\N
+12	27	6	\N	\N
+13	28	8	\N	\N
+14	20	8	\N	\N
+15	29	8	\N	\N
+16	30	8	\N	\N
+17	31	8	\N	\N
 \.
 
 
@@ -2108,10 +2129,26 @@ COPY public.shop_marks (id, name_uz, name_ru, name_en, slug, photo, meta_json, c
 --
 
 COPY public.shop_modifications (id, product_id, name_uz, name_ru, name_en, code, characteristic_id, price_uzs, price_usd, value, photo, sort, created_by, updated_by, created_at, updated_at) FROM stdin;
-2	24	Telefon	Telefon	Telefon	1444572332	13	0	0	20Mp	\N	2	1	1	2020-12-08 12:07:45	2020-12-08 12:14:02
-3	24	O'zbekcha	Ruskiy	english	23	34	0	0	#190c0c	\N	3	1	1	2020-12-08 12:10:34	2020-12-08 12:14:02
-5	24	Telefon	Telefon	Telefon	2122226	11	0	0	64	\N	4	1	1	2020-12-08 12:14:02	2020-12-08 12:14:02
-1	24	samsung	samsung	samsung	144457	14	230000	33	16	\N	1	1	1	2020-12-08 12:04:52	2020-12-08 12:17:53
+19	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	1564564	32	25449930	2410	512 SSD	\N	3	1	1	2020-12-14 16:49:43	2020-12-14 16:55:00
+20	2	Displey o'lchamlari	Разрешение дисплея	Display resolution	3123	29	25442000	2450	2560x1600	\N	4	1	1	2020-12-14 16:51:08	2020-12-14 16:55:00
+21	2	Diagonalni ko'rsatish	Диагональ дисплея	Display diagonal	365462	26	25442000	2450	13.3"	\N	5	1	1	2020-12-14 16:53:01	2020-12-14 16:55:00
+22	2	Protsessor	Процессор	Processor	74235	31	25442000	2450	Intel Core i7	\N	6	1	1	2020-12-14 16:55:00	2020-12-14 16:55:00
+9	23	Garantiya	Гарантия	Warranty	0123	18	14500600	1350	1	\N	1	1	1	2020-12-14 10:23:20	2020-12-14 16:11:29
+14	23	Diagonal	Диагональ	Diagonal	132	19	14358000	1400	55"	\N	2	1	1	2020-12-14 16:05:14	2020-12-14 16:11:29
+15	23	Matritsa	Матрица	Matrix	186	20	14358000	1400	IPS	\N	3	1	1	2020-12-14 16:07:59	2020-12-14 16:11:29
+16	23	Diagonal	Диагональ	Diagonal	1863	19	16000000	1550	60"	\N	4	1	1	2020-12-14 16:11:29	2020-12-14 16:12:54
+24	24	Rangi	Цвет	Color	42342	34	12576000	1200	#f5f2f2	\N	2	1	1	2020-12-15 09:49:54	2020-12-15 10:23:48
+25	24	Rangi	Цвет	Color	634	34	12414600	1200	#1f1d1d	\N	3	1	1	2020-12-15 09:56:30	2020-12-15 10:23:48
+26	24	Old kamera	Фронтальная камера	Front-camera	624344	13	12576000	1200	10MP	\N	4	1	1	2020-12-15 10:07:54	2020-12-15 10:23:48
+28	24	RAM hajmi	Объем оперативной памяти	RAM size	3425	11	11000000	1050	4GB	\N	5	1	1	2020-12-15 10:19:50	2020-12-15 10:23:48
+27	24	RAM hajmi	Объем оперативной памяти	RAM size	6435634	11	12414600	1200	8GB	\N	6	1	1	2020-12-15 10:12:40	2020-12-15 10:23:48
+29	24	Ichki xotira	Объем встроенной памяти	Built-in memory	198453	9	11500000	1075	128GB	\N	7	1	1	2020-12-15 10:22:38	2020-12-15 10:23:48
+12	34	Lenovo Laptop	Lenovo Laptop	Lenovo Laptop	0145	31	15000000	1450	core i5-7700HQ	\N	1	1	1	2020-12-14 14:29:01	2020-12-14 14:29:01
+13	32	Realme 6i smartphone red	Realme 6i smartphone red	Realme 6i smartphone red	1	34	7500000	750	#fc0000	\N	1	1	1	2020-12-14 14:38:56	2020-12-14 14:38:56
+30	24	Ichki xotira	Объем встроенной памяти	Built-in memory	3254	9	12576000	1200	256GB	\N	8	1	1	2020-12-15 10:23:48	2020-12-15 10:23:48
+17	2	O'lchamlari	Размеры	Dimensions	49489	33	25449930	2400	304.1x212.4x16.1 mm	\N	1	1	1	2020-12-14 16:42:32	2020-12-14 16:55:00
+18	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	41654	32	24428000	2400	256 SSD	\N	2	1	1	2020-12-14 16:48:12	2020-12-14 16:55:00
+23	24	Asosiy kamera	Основная камера	Main camera	98465	14	12576000	1200	108MP+12MP+12MP	\N	1	1	1	2020-12-15 09:46:59	2020-12-15 10:23:48
 \.
 
 
@@ -2160,16 +2197,29 @@ COPY public.shop_photos (id, product_id, file, sort, created_by, updated_by, cre
 22	22	21vgarwX0CSF0av8lKY3RzQsAWqZdM2aDmWgsy1H.jpg	1	1	1	2020-11-26 18:20:34	2020-11-26 18:20:34
 23	23	ImrO7W061fiot1Y5nThHE1GQBBJfWx7QA8KVNRMA.jpg	1	1	1	2020-11-26 18:32:41	2020-11-26 18:32:41
 34	24	P1KwVgtQjC3sRfeYT3cP5yqOwmGfHjgCv8STPw5U.jpg	3	1	1	2020-11-26 18:56:39	2020-11-26 18:56:39
-24	23	LlUKOTbxGBok14fiKMGBD8Czf7g6iGzsJUM3Iz2e.jpg	2	1	1	2020-11-26 18:33:39	2020-11-26 18:34:08
-25	23	Kn9ovbqBRRW2Ozshrq5Ymw3N2lp9gNwc90U4bLPt.jpg	3	1	1	2020-11-26 18:33:50	2020-11-26 18:34:08
-26	23	urdTdSc2AorkINZbJMurGcXxotB3lRk44iLrM6QL.jpg	4	1	1	2020-11-26 18:34:00	2020-11-26 18:34:08
-27	23	Iu13rrVHfzzOkC8Vgxb9KYegyjmrG4lT78AelhOR.jpg	5	1	1	2020-11-26 18:34:08	2020-11-26 18:34:08
+35	25	mUWTWoeWIyoIgWWJPRh16YCe8ysEKZDdnevN4jbu.jpg	1	1	1	2020-12-09 16:55:10	2020-12-09 16:55:10
+36	25	pWe1C1hZW7JuDIlX1nxzcMVmsafIv9QEYjBvwu5F.jpeg	1	1	1	2020-12-09 16:56:04	2020-12-09 16:56:04
+37	26	5PXF2GLtpMQGshQd2MJUTv1DTAFmIdGYud0VDCXC.jpeg	1	1	1	2020-12-09 16:58:34	2020-12-09 16:58:34
+38	28	XLf6yv0H6OMtf4jvDPG36IoYoX4jKK7YMVT67ils.jpeg	1	1	1	2020-12-10 11:15:19	2020-12-10 11:15:19
+39	29	5O6I45NbI3zE4K8dPLYhpFRbut7opkNdaRjcKYnj.jpg	1	1	1	2020-12-10 11:19:27	2020-12-10 11:19:27
+40	30	mvQvAufH3xoFntQPTyVgsMhB7HFZ9hpEMlWpQZzx.jpg	1	1	1	2020-12-10 11:34:53	2020-12-10 11:34:53
+41	31	T4bko1bmEFvQ6bnkisoB3hXdolW4rOmvYa2EOYUK.jpg	1	1	1	2020-12-10 11:41:00	2020-12-10 11:41:00
+42	32	Y2sn09PkWschDHanOfMpOIv0zfpJ4XgUFVjLBcJL.jpg	1	1	1	2020-12-10 11:52:31	2020-12-10 11:52:31
+43	33	h08EF3Vj5Sn89HumDbaM3UsdYe0X56IOkV8Vsfxs.jpg	1	1	1	2020-12-10 11:55:58	2020-12-10 11:55:58
+44	34	ipD0cItAAEWYLEX5xin6eRw6IuLhtjYc2z56GLiL.jpg	1	1	1	2020-12-10 11:59:10	2020-12-10 11:59:10
+45	35	OR9Fl7YKdcSeFEhybUi9VQc9NpOpVJtpwYBhIAvI.jpg	1	1	1	2020-12-10 12:03:42	2020-12-10 12:03:42
 28	2	NmyFqq1UhWWiiIqdxSBPm6z1WDZLfuifMdihcdsW.jpg	2	1	1	2020-11-26 18:51:42	2020-11-26 18:53:06
 29	2	VpIs2ss7FeIQvJRO6waSkPlYsgFjs1va9wOI6by6.jpg	3	1	1	2020-11-26 18:51:58	2020-11-26 18:53:06
 30	2	uG9VB5Xb7MIz47CKEbcK7LCweh4omJ7mrSsH2eGD.jpg	4	1	1	2020-11-26 18:52:41	2020-11-26 18:53:06
 31	2	qalMSntyTl1hUQ3LT0qIghApb0clfEhN5L16h1xF.jpg	5	1	1	2020-11-26 18:53:06	2020-11-26 18:53:06
 32	24	JUuuFMfsMlksDSwYpzkqfep784dMxlnm3tDgB1SC.jpg	1	1	1	2020-11-26 18:56:19	2020-11-26 18:56:19
 33	24	QfCcNYOwGunNPHxyemteOuI9GoO1HgCc3PJgrhZq.jpg	2	1	1	2020-11-26 18:56:30	2020-11-26 18:56:39
+46	36	uSd0qSHsLZQbiWVjYJyF2GlAnQXPgWQkcLwsbyoN.jpg	1	1	1	2020-12-10 14:25:10	2020-12-10 14:25:10
+47	37	WaYZzJRozp7UitArYLwf1uSEazpyyysssqeTFy0M.jpg	1	1	1	2020-12-10 14:27:59	2020-12-10 14:27:59
+24	23	LlUKOTbxGBok14fiKMGBD8Czf7g6iGzsJUM3Iz2e.jpg	2	1	1	2020-11-26 18:33:39	2020-12-14 16:03:15
+25	23	Kn9ovbqBRRW2Ozshrq5Ymw3N2lp9gNwc90U4bLPt.jpg	3	1	1	2020-11-26 18:33:50	2020-12-14 16:03:15
+27	23	Iu13rrVHfzzOkC8Vgxb9KYegyjmrG4lT78AelhOR.jpg	4	1	1	2020-11-26 18:34:08	2020-12-14 16:03:15
+26	23	urdTdSc2AorkINZbJMurGcXxotB3lRk44iLrM6QL.jpg	5	1	1	2020-11-26 18:34:00	2020-12-14 16:03:15
 \.
 
 
@@ -2181,7 +2231,6 @@ COPY public.shop_product_categories (product_id, category_id) FROM stdin;
 1	15
 11	4
 22	18
-2	14
 8	14
 4	14
 3	14
@@ -2191,7 +2240,6 @@ COPY public.shop_product_categories (product_id, category_id) FROM stdin;
 6	14
 17	11
 21	11
-24	11
 18	11
 19	11
 20	11
@@ -2201,10 +2249,22 @@ COPY public.shop_product_categories (product_id, category_id) FROM stdin;
 15	8
 12	4
 10	4
-23	1
 25	4
 26	4
 27	2
+28	4
+29	4
+30	18
+31	8
+32	11
+33	11
+34	14
+35	1
+36	25
+37	25
+23	1
+2	14
+24	11
 \.
 
 
@@ -2216,7 +2276,6 @@ COPY public.shop_product_discounts (id, product_id, discount_id, created_at, upd
 25	1	10	2020-11-30 12:05:13	2020-11-30 12:05:13
 32	11	10	2020-12-01 10:35:42	2020-12-01 10:35:42
 33	22	10	2020-12-01 10:36:05	2020-12-01 10:36:05
-34	2	10	2020-12-01 10:36:24	2020-12-01 10:36:24
 35	8	10	2020-12-01 10:36:45	2020-12-01 10:36:45
 36	4	10	2020-12-01 10:37:08	2020-12-01 10:37:08
 37	3	10	2020-12-01 10:37:27	2020-12-01 10:37:27
@@ -2226,7 +2285,6 @@ COPY public.shop_product_discounts (id, product_id, discount_id, created_at, upd
 41	6	10	2020-12-01 10:38:49	2020-12-01 10:38:49
 42	17	10	2020-12-01 10:39:08	2020-12-01 10:39:08
 43	21	10	2020-12-01 10:39:32	2020-12-01 10:39:32
-44	24	10	2020-12-01 10:39:51	2020-12-01 10:39:51
 45	18	10	2020-12-01 10:40:17	2020-12-01 10:40:17
 46	19	10	2020-12-01 10:40:38	2020-12-01 10:40:38
 47	20	10	2020-12-01 10:41:07	2020-12-01 10:41:07
@@ -2236,10 +2294,22 @@ COPY public.shop_product_discounts (id, product_id, discount_id, created_at, upd
 51	15	10	2020-12-01 10:42:18	2020-12-01 10:42:18
 52	12	10	2020-12-01 10:42:36	2020-12-01 10:42:36
 53	10	10	2020-12-01 10:42:55	2020-12-01 10:42:55
-54	23	10	2020-12-01 10:43:14	2020-12-01 10:43:14
 55	25	8	2020-12-02 15:11:30	2020-12-02 15:11:30
 56	26	5	2020-12-04 11:30:00	2020-12-04 11:30:00
 57	27	5	2020-12-08 13:47:50	2020-12-08 13:47:50
+59	28	5	2020-12-10 11:14:07	2020-12-10 11:14:07
+60	29	5	2020-12-10 11:19:12	2020-12-10 11:19:12
+61	30	8	2020-12-10 11:34:37	2020-12-10 11:34:37
+62	31	8	2020-12-10 11:40:45	2020-12-10 11:40:45
+63	32	8	2020-12-10 11:52:17	2020-12-10 11:52:17
+64	33	8	2020-12-10 11:55:40	2020-12-10 11:55:40
+65	34	8	2020-12-10 11:58:53	2020-12-10 11:58:53
+66	35	8	2020-12-10 12:03:23	2020-12-10 12:03:23
+67	36	8	2020-12-10 14:24:47	2020-12-10 14:24:47
+68	37	8	2020-12-10 14:27:44	2020-12-10 14:27:44
+69	23	10	2020-12-14 16:06:08	2020-12-14 16:06:08
+71	2	10	2020-12-14 16:46:07	2020-12-14 16:46:07
+72	24	10	2020-12-15 09:53:56	2020-12-15 09:53:56
 \.
 
 
@@ -2251,7 +2321,6 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 1	1
 11	1
 22	1
-2	1
 8	1
 4	1
 3	1
@@ -2261,7 +2330,6 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 6	1
 17	1
 21	1
-24	1
 18	1
 19	1
 20	1
@@ -2271,10 +2339,22 @@ COPY public.shop_product_marks (product_id, mark_id) FROM stdin;
 15	1
 12	1
 10	1
-23	1
 25	1
 26	1
 27	19
+28	7
+29	16
+30	16
+31	16
+32	18
+33	17
+34	19
+35	7
+36	17
+37	15
+23	1
+2	1
+24	1
 \.
 
 
@@ -2306,20 +2386,30 @@ COPY public.shop_products (id, name_uz, name_ru, name_en, description_uz, descri
 10	Excel shoes	Excel shoes	Excel shoes	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	<h2>MP01, Black</h2>	excel_shoes	480000	45	0.0100000000000000002	2020-12-21 00:00:00	5	12	5	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:20:24	2020-12-01 10:43:01	10
 14	Samsung SC5610	Samsung SC5610	Samsung SC5610	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	<h2>SC5610 White</h2>	samsung_fsdgdfsg	721000	70	0.0400000000000000008	2021-05-05 00:30:00	10	12	1	2	8	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:35:29	2020-12-01 10:42:03	14
 1	Asus X509MA	Asus X509MA	Asus X509MA	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	<h2>&nbsp;N4020 DDR4 4GB/1TB HDD 15,6&quot;</h2>	asus_x509	4180000	400	0.0100000000000000002	2020-12-01 00:00:00	15	12	2	2	2	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:00:15	2020-11-30 12:05:18	1
-23	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	<p>Kafolat muddati (oy): 12<br />\r\nSmart TV: Ha</p>	<ul>\r\n\t<li>Гарантийный срок (месяц): 12</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Smart TV: Есть</li>\r\n</ul>	<p>Warranty period (month): 12<br />\r\nSmart TV: Yes</p>	smartv	14317000	1350	0.0100000000000000002	2020-12-12 00:00:00	2	12	4	7	10	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:32:25	2020-12-04 18:06:43	23
+23	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	LG 55UN81006 UHD SmartTV	&lt;p&gt;Kafolat muddati (oy): 12&lt;br /&gt;\r\nSmart TV: Ha&lt;/p&gt;	&lt;p&gt;Гарантийный срок (месяц): 12&lt;/p&gt;\r\n\r\n&lt;p&gt;Smart TV: Есть&lt;/p&gt;	&lt;p&gt;Warranty period (month): 12&lt;br /&gt;\r\nSmart TV: Yes&lt;/p&gt;	smartv	14317000	1350	0.0100000000000000002	2020-12-12 00:00:00	2	12	4	2	10	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:32:25	2020-12-14 16:06:23	23
 17	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	Xiaomi Redmi Note 8 4/64GB (China version) Neptune Blue	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 9.0</li>\r\n\t<li>Объем встроенной памяти: 64GB</li>\r\n</ul>	xiomi312312	2050000	190	0.0100000000000000002	2020-12-21 00:00:00	12	12	3	2	0.149999999999999994	10	t	f	t	\N	0	\N	1	1	2020-11-26 17:59:48	2020-12-01 10:39:13	17
-25	ExcelshoesAS01Black	ExcelshoesAS01Black	ExcelshoesAS01Black	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	as01black	480000	47	0.0100000000000000002	2020-11-02 03:11:00	5	18	11	0	0.5	5	t	t	t	\N	0	\N	1	1	2020-12-02 15:11:30	2020-12-02 15:11:30	\N
-2	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	<h2>Intel Core i7 13&quot;/16GB/1TB SSD</h2>	apple_macbook	25707000	2400	0.0100000000000000002	2020-12-11 00:00:00	15	12	2	2	2	5	f	t	t	\N	0	\N	1	1	2020-11-26 16:04:28	2020-12-01 10:36:28	2
 22	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	Комплект садовой мебели Mebel House на 8 персоны	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	<p>Производство- Узбекистан<br />\r\nМатериал- Металл, искусственный ротанг, коленное стекло<br />\r\n&nbsp;</p>	fasdfasdf	5982000	560	0.0100000000000000002	2020-12-12 00:00:00	19	12	6	2	50	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:20:11	2020-12-01 10:36:09	22
 27	dsad	asda	asda	\N	\N	\N	adad	1200000	123213	0	\N	2	19	8	0	\N	\N	f	f	f	\N	0	\N	1	1	2020-12-08 13:47:50	2020-12-08 13:47:50	\N
 19	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	Apple Ipad Air 3 (2019)	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	<h2>10.5&quot; 64GB Wi-Fi, Silver</h2>	ipad3242341234	6500000	640	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.5	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:06:12	2020-12-01 10:40:42	19
 6	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	Моноблок Acer Aspire S24-880D	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	<h2>TFT 23,8&quot; 8/1000GB</h2>	tft_acer_monoblock	10500000	1000	0.0100000000000000002	2020-12-12 00:00:00	16	12	12	2	10	5	t	f	t	\N	0	\N	1	1	2020-11-26 16:47:37	2020-12-01 10:38:53	6
 18	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	Samsung Galaxy Note20 Ultra 256GB Mystic Black	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	<ul>\r\n\t<li>Версия ОС: Android 10.0</li>\r\n\t<li>Объем встроенной памяти: 256GB</li>\r\n\t<li>Датчик Face ID: Есть</li>\r\n</ul>	samsung4234234	12540000	1180	0	\N	12	12	1	2	0.130000000000000004	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:03:58	2020-12-01 10:40:22	18
-26	Striped Joggers	Striped Joggers	Striped Joggers	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	striped	52000	4	0.0100000000000000002	2020-11-06 00:00:00	7	19	11	0	1	1	t	t	t	\N	0	\N	1	1	2020-12-04 11:30:00	2020-12-04 11:30:00	\N
 7	MSI Nvidia GeForce	MSI Nvidia GeForce	MSI Nvidia GeForce	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	<h2>RTX2080 Super Ventus XS</h2>	msi_nvidia_geforce	885000	850	0.0100000000000000002	2020-12-21 00:00:00	17	12	12	2	0.400000000000000022	5	t	t	t	\N	0	\N	1	1	2020-11-26 16:52:25	2020-12-01 10:38:06	7
 21	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	Apple iPad mini 5 Wi-Fi	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	<h2>2019 256GB, Grey</h2>	apple3123fsdf	7450000	720	0.0100000000000000002	2020-12-12 00:00:00	13	12	2	2	0.200000000000000011	10	f	t	t	\N	0	\N	1	1	2020-11-26 18:13:29	2020-12-01 10:39:37	21
+24	Samsung Galaxy Note20 Ultra 256GB Mystic White Black	Samsung Galaxy Note20 Ultra 256GB Mystic White Black	Samsung Galaxy Note20 Ultra 256GB Mystic White Black	&lt;p&gt;OS versiyasi: Android 10.0&lt;br /&gt;\r\nIchki xotira: 256GB&lt;br /&gt;\r\nFace ID sensori: Ha&lt;/p&gt;	&lt;p&gt;Версия ОС: Android 10.0&lt;br /&gt;\r\nОбъем встроенной памяти: 256GB&lt;br /&gt;\r\nДатчик Face ID: Есть&lt;/p&gt;	&lt;p&gt;OS version: Android 10.0&lt;br /&gt;\r\nBuilt-in Memory: 256GB&lt;br /&gt;\r\nFace ID sensor: Yes&lt;/p&gt;	samsung3fsdjfh324	12540000	1180	0.0100000000000000002	2020-12-12 00:00:00	12	12	1	2	0.299999999999999989	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:55:35	2020-12-15 09:54:02	32
 20	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	Samsung Galaxy Tab A 10.1	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	<h2>32GB, Black T515</h2>	samsung42343214	26850000	250	0.0100000000000000002	2020-12-21 00:00:00	13	12	1	2	1	10	t	f	t	\N	0	\N	1	1	2020-11-26 18:10:14	2020-12-01 10:41:10	20
-24	Samsung Galaxy Note20 Ultra 256GB, Mystic White	Samsung Galaxy Note20 Ultra 256GB, Mystic White	Samsung Galaxy Note20 Ultra 256GB, Mystic White	<p>OS versiyasi: Android 10.0<br />\r\nIchki xotira: 256GB<br />\r\nFace ID sensori: Ha</p>	<p>Версия ОС: Android 10.0<br />\r\nОбъем встроенной памяти: 256GB<br />\r\nДатчик Face ID: Есть</p>	<p>OS version: Android 10.0<br />\r\nBuilt-in Memory: 256GB<br />\r\nFace ID sensor: Yes</p>	samsung_23fsdjfh324	12540000	1180	0.0100000000000000002	2020-12-12 00:00:00	12	12	1	2	0.299999999999999989	10	t	t	t	\N	0	\N	1	1	2020-11-26 18:55:35	2020-12-01 10:39:59	32
+26	Striped Joggers	Striped Joggers	Striped Joggers	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	&lt;p&gt;Today men&amp;#39;s pants are presented in a variety of options, and therefore everyone can choose a model to their liking and discretion. Designers use ..&lt;/p&gt;	striped	52000	4	0.0100000000000000002	2020-11-06 00:00:00	7	19	11	2	1	1	t	t	t	\N	0	\N	1	1	2020-12-04 11:30:00	2020-12-09 16:58:43	37
+33	Xiaomi Redmi Note 8 Pro smartfon	Xiaomi Redmi Note 8 Pro smartfon	Xiaomi Redmi Note 8 Pro smartfon	&lt;h1&gt;Xiaomi Redmi Note 8 Pro smartfon&lt;/h1&gt;	&lt;h1&gt;Xiaomi Redmi Note 8 Pro smartfon&lt;/h1&gt;	&lt;h1&gt;Xiaomi Redmi Note 8 Pro smartfon&lt;/h1&gt;	redminote8	1450800	135	0.0100000000000000002	2021-12-12 00:00:00	12	30	3	2	0.299999999999999989	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:55:40	2020-12-10 11:56:07	43
+25	ExcelshoesAS01Black	ExcelshoesAS01Black	ExcelshoesAS01Black	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	&lt;p&gt;Размер: 39-44&lt;br /&gt;\r\nЦвет: темно-синий&lt;br /&gt;\r\nПодошва: EVA&lt;br /&gt;\r\nПроизводитель: Excel&lt;/p&gt;	as01black	480000	47	0.0100000000000000002	2020-11-02 03:11:00	5	18	11	2	0.5	5	t	t	t	\N	0	\N	1	1	2020-12-02 15:11:30	2020-12-09 16:56:12	36
+30	Hand blender Polaris PTB 0204G	Hand blender Polaris PTB 0204G	Hand blender Polaris PTB 0204G	&lt;p&gt;The price is valid only for the online store and may differ from the prices in retail stores&lt;/p&gt;	&lt;p&gt;The price is valid only for the online store and may differ from the prices in retail stores&lt;/p&gt;	&lt;p&gt;The price is valid only for the online store and may differ from the prices in retail stores&lt;/p&gt;	handblender	435000	41	0.0599999999999999978	2021-12-12 00:00:00	22	18	4	2	5	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:34:37	2020-12-10 11:35:00	40
+28	Longsleeve	Longsleeve	Longsleeve	&lt;p&gt;Despite the fact that with the word &amp;ldquo;T-shirt&amp;rdquo; a short-sleeved product immediately appears in thoughts, this is not the only option. Models called toda..&lt;/p&gt;	&lt;p&gt;Despite the fact that with the word &amp;ldquo;T-shirt&amp;rdquo; a short-sleeved product immediately appears in thoughts, this is not the only option. Models called toda..&lt;/p&gt;	&lt;p&gt;Despite the fact that with the word &amp;ldquo;T-shirt&amp;rdquo; a short-sleeved product immediately appears in thoughts, this is not the only option. Models called toda..&lt;/p&gt;	longsleeve	35000	3	0.0100000000000000002	2021-12-12 00:00:00	6	19	11	2	1	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:14:07	2020-12-10 11:15:41	38
+29	LongSleeved Shirt Regularfit	LongSleeved Shirt Regularfit	LongSleeved Shirt Regularfit	&lt;p&gt;A man in a properly selected shirt always looks dignified and mature. In the wardrobe there should be a place for models for formal meetings and dinne..&lt;/p&gt;	&lt;p&gt;A man in a properly selected shirt always looks dignified and mature. In the wardrobe there should be a place for models for formal meetings and dinne..&lt;/p&gt;	&lt;p&gt;A man in a properly selected shirt always looks dignified and mature. In the wardrobe there should be a place for models for formal meetings and dinne..&lt;/p&gt;	regularfit	79900	7	0.100000000000000006	2021-12-12 00:00:00	6	19	9	2	1	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:19:12	2020-12-10 11:19:35	39
+31	Vacuum cleaner Samsung VC18M31B0HN	Vacuum cleaner Samsung VC18M31B0HN	Vacuum cleaner Samsung VC18M31B0HN	&lt;p&gt;Samsung VC18M31B0HN&lt;/p&gt;	&lt;p&gt;Samsung VC18M31B0HN&lt;/p&gt;	&lt;p&gt;Samsung VC18M31B0HN&lt;/p&gt;	vacumsdfasdf	1450000	135	0.0299999999999999989	2021-12-12 00:00:00	10	18	1	2	8	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:40:45	2020-12-10 11:41:07	41
+36	Compact camera Canon IXUS 155	Compact camera Canon IXUS 155	Compact camera Canon IXUS 155	&lt;p&gt;Canon IXUS 155&lt;/p&gt;	&lt;p&gt;Canon IXUS 155&lt;/p&gt;	&lt;p&gt;Canon IXUS 155&lt;/p&gt;	fotokameracanon	2145000	210	0.0400000000000000008	2021-12-12 00:00:00	26	20	15	2	0.599999999999999978	5	t	t	t	\N	0	\N	1	1	2020-12-10 14:24:47	2020-12-10 14:25:16	46
+32	Realme 6i smartphone	Realme 6i smartphone	Realme 6i smartphone	&lt;p&gt;Realme 6i smartphone&lt;/p&gt;	&lt;p&gt;Realme 6i smartphone&lt;/p&gt;	&lt;p&gt;Realme 6i smartphone&lt;/p&gt;	6iredmi	2033000	195	0.0200000000000000004	2020-11-11 00:00:00	12	30	1	2	0.200000000000000011	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:52:17	2020-12-10 11:52:37	42
+34	Lenovo Laptop	Lenovo Laptop	Lenovo Laptop	&lt;p&gt;&amp;nbsp;V155-15API AMD R5-3500U / 4 / 1000GB&lt;/p&gt;	&lt;p&gt;&amp;nbsp;V155-15API AMD R5-3500U / 4 / 1000GB&lt;/p&gt;	&lt;p&gt;&amp;nbsp;V155-15API AMD R5-3500U / 4 / 1000GB&lt;/p&gt;	lenovanotebook	4867000	450	0.0100000000000000002	2021-12-12 00:00:00	15	30	12	2	1	5	t	t	t	\N	0	\N	1	1	2020-12-10 11:58:53	2020-12-10 11:59:16	44
+35	Artel UA32H3200	Artel UA32H3200	Artel UA32H3200	&lt;h1&gt;Artel UA32H3200&lt;/h1&gt;	&lt;h1&gt;Artel UA32H3200&lt;/h1&gt;	&lt;h1&gt;Artel UA32H3200&lt;/h1&gt;	arteltv	1450000	138	0.0599999999999999978	2021-12-12 00:00:00	2	20	10	2	10	5	t	t	t	\N	0	\N	1	1	2020-12-10 12:03:23	2020-12-10 12:03:48	45
+37	Digital Video Camera Sony PJ270	Digital Video Camera Sony PJ270	Digital Video Camera Sony PJ270	&lt;p&gt;&amp;nbsp;Camera Sony PJ270&lt;/p&gt;	&lt;p&gt;&amp;nbsp;Camera Sony PJ270&lt;/p&gt;	&lt;p&gt;&amp;nbsp;Camera Sony PJ270&lt;/p&gt;	camerasony	4156000	400	0.0100000000000000002	2021-12-12 00:00:00	27	20	7	2	0.900000000000000022	5	t	t	t	\N	0	\N	1	1	2020-12-10 14:27:44	2020-12-10 14:28:05	47
+2	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	Apple MacBook Pro 13 Retina Touch Bar	&lt;h2&gt;&lt;span style=&quot;font-size:12px&quot;&gt;Mac uchun AppleCare + sizning qamrovingizni AppleCare + sotib olingan kundan boshlab uch yilgacha uzaytiradi va har 12 oyda ikki marta tasodifiy zararni himoya qilish hodisalarini qo&amp;#39;shadi, ularning har biri ekran buzilishi yoki tashqi muhofaza uchun $ 99 xizmat haqi yoki boshqa zarar uchun $ 299, plyus amaldagi soliq&lt;/span&gt;&lt;/h2&gt;	&lt;h2&gt;&lt;span style=&quot;font-size:12px&quot;&gt;AppleCare + для Mac расширяет ваше покрытие до трех лет с даты покупки AppleCare + и добавляет до двух случаев защиты от случайного повреждения каждые 12 месяцев, каждый из которых подлежит оплате за обслуживание в размере 99 долларов США за повреждение экрана или внешнего корпуса или 299 долларов США за другие повреждения. плюс применимый налог&lt;/span&gt;&lt;/h2&gt;	&lt;h2&gt;&lt;span style=&quot;font-size:12px&quot;&gt;AppleCare+ for Mac extends your coverage to three years from your AppleCare+ purchase date and adds up to two incidents of accidental damage protection every 12 months, each subject to a service fee of $99 for screen damage or external enclosure damage, or $299 for other damage, plus applicable tax&lt;/span&gt;&lt;/h2&gt;	applemacboo	25707000	2400	0.0100000000000000002	2020-12-11 00:00:00	15	12	2	2	2	5	t	t	t	\N	0	\N	1	1	2020-11-26 16:04:28	2020-12-14 16:46:15	2
 \.
 
 
@@ -2350,6 +2440,39 @@ COPY public.store_categories (store_id, category_id) FROM stdin;
 19	5
 19	6
 19	7
+21	4
+21	8
+21	22
+22	18
+23	4
+23	8
+24	4
+24	11
+24	14
+24	18
+25	18
+26	4
+26	18
+27	1
+27	8
+27	11
+27	14
+28	4
+28	8
+20	1
+20	11
+20	14
+20	23
+29	19
+30	1
+30	8
+30	11
+30	14
+30	23
+31	4
+31	8
+31	11
+31	18
 \.
 
 
@@ -2361,6 +2484,18 @@ COPY public.store_delivery_methods (store_id, delivery_method_id, cost, sort) FR
 12	1	10000	5
 18	1	10000	5
 19	1	10000	5
+21	1	10000	5
+22	1	10000	5
+23	1	10000	5
+24	1	10000	5
+25	1	10000	5
+26	1	10000	5
+27	1	10000	5
+28	1	10000	5
+20	1	10000	5
+29	1	10000	5
+30	1	10000	5
+31	1	10000	5
 \.
 
 
@@ -2372,6 +2507,26 @@ COPY public.store_marks (store_id, mark_id) FROM stdin;
 12	2
 18	1
 19	1
+21	18
+22	17
+23	19
+23	3
+24	5
+25	17
+25	7
+26	18
+26	9
+26	4
+27	19
+28	19
+28	4
+28	2
+20	18
+20	16
+20	9
+29	16
+30	18
+31	18
 \.
 
 
@@ -2383,6 +2538,18 @@ COPY public.store_payments (store_id, payment_id) FROM stdin;
 12	1
 18	1
 19	1
+21	1
+22	1
+23	1
+24	1
+25	1
+26	1
+27	1
+28	1
+20	1
+29	1
+30	1
+31	1
 \.
 
 
@@ -2394,6 +2561,18 @@ COPY public.store_users (store_id, user_id, role) FROM stdin;
 12	1	administrator
 18	1	administrator
 19	1	administrator
+20	1	administrator
+21	1	administrator
+22	1	administrator
+23	1	administrator
+24	1	administrator
+25	1	administrator
+26	1	administrator
+27	1	administrator
+28	1	administrator
+29	1	administrator
+30	1	administrator
+31	1	administrator
 \.
 
 
@@ -2405,6 +2584,18 @@ COPY public.stores (id, name_uz, name_ru, name_en, slug, logo, status, created_b
 18	Eski shahar makro	Макрос старого города	Old city macro	oldcity	HQIT2kyUR8dASPe7Uu7TJwH4FUVBrwOPGuvzBe4X.png	2	1	1	2020-12-02 15:05:00	2020-12-02 15:05:05
 12	Samarqand Darvoza	Самарканд дарвоза	Samarkand darvoza	samarkand_darvoza	YDnvFq2Nuw3InNqtY2FtutpTu9zFVBq6oIljsxlG.png	2	1	1	2020-11-26 15:54:03	2020-12-02 15:41:03
 19	VIP BRANDS	VIP BRANDS	VIP BRANDS	vipbrands	N9elfdxrYed2vcEYDpEkK9VKj5IdYJ3vzebcHXTa.png	2	1	1	2020-12-04 11:18:56	2020-12-04 11:19:03
+21	KorzinkaUz	KorzinkaUz	KorzinkaUz	korzinkauz	kgNKh5Odgowv7vE4xxHnMkiGb4GhymY1Aji27kbl.png	2	1	1	2020-12-09 17:33:38	2020-12-09 17:33:55
+22	KokchaMarket	KokchaMarket	KokchaMarket	kokchamarket	DywXv2oQx9VYFQCsvMcH1tO1U3G3bJSISvYSH9Y5.png	2	1	1	2020-12-10 09:31:53	2020-12-10 09:32:00
+23	MegaPlanet	MegaPlanet	MegaPlanet	megaplanet	fO2zjKyjdmUNiyBw7evmbB4jYIVP0VmTstrG76Vv.jpeg	2	1	1	2020-12-10 09:37:03	2020-12-10 09:37:10
+24	NextMarket	NextMarket	NextMarket	nextmarket	I1bJjfhYCDaxPAVh8ez7yaaD0Ay9kYfxENZLGhXr.jpg	2	1	1	2020-12-10 09:39:51	2020-12-10 09:39:58
+25	SaludMarket	SaludMarket	SaludMarket	saludmarket	uhixJQLTEfWw62sI8omfVRG7I63lxkMm3hMK5sLZ.png	2	1	1	2020-12-10 09:45:21	2020-12-10 09:45:38
+26	Kasbino	Kasbino	Kasbino	kasbino	GCYR7NrVVIZsoZKl34NxffNMvOxCEw5sKJLHLhI3.jpeg	2	1	1	2020-12-10 09:48:43	2020-12-10 09:48:51
+27	TechnoShop	TechnoShop	TechnoShop	technoshop	XzxX4LJKF4ZVsdQbTheMCTxQ8IbMVBh32OvxhNB1.png	2	1	1	2020-12-10 09:50:56	2020-12-10 09:51:01
+28	TokenMarket	TokenMarket	TokenMarket	tokenmarket	xvNPTGnm41kKsEpYvILpnGjqumq7Un8GDwvRBbVh.jpg	2	1	1	2020-12-10 09:52:38	2020-12-10 09:52:44
+20	Malika	Malika	Malika	malika	X4RvHgz1eSC40l03YBmYPYlTSIEFUMYA1lh9B536.jpg	2	1	1	2020-12-09 17:30:39	2020-12-10 09:54:26
+29	Atlas	Atlas	Atlas	atlas	fZbA8CFcsxnxtOF0pePuVaBHgRPnOVVGy7BWfGhP.jpeg	2	1	1	2020-12-10 09:55:48	2020-12-10 09:55:53
+30	MediaPark	MediaPark	MediaPark	mediapark	LEFNUOjiwMCAN3Rjz4Cl6KCszWQ6jEXFiHvH3Tfl.jpeg	2	1	1	2020-12-10 10:14:43	2020-12-10 10:14:50
+31	CompassMacro	CompassMacro	CompassMacro	compassmacro	6djlkZ2tWAUO70Dtd7mwA5DtSaUZcku86KfSuoBs.png	2	1	1	2020-12-10 10:18:45	2020-12-10 10:18:52
 \.
 
 
@@ -2413,6 +2604,7 @@ COPY public.stores (id, name_uz, name_ru, name_en, slug, logo, status, created_b
 --
 
 COPY public.user_favorites (user_id, product_id) FROM stdin;
+1	1
 \.
 
 
@@ -2475,7 +2667,7 @@ SELECT pg_catalog.setval('public.blog_videos_id_seq', 10, true);
 -- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.brands_id_seq', 12, true);
+SELECT pg_catalog.setval('public.brands_id_seq', 17, true);
 
 
 --
@@ -2531,7 +2723,7 @@ SELECT pg_catalog.setval('public.payments_id_seq', 1, true);
 -- Name: shop_carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_carts_id_seq', 13, true);
+SELECT pg_catalog.setval('public.shop_carts_id_seq', 21, true);
 
 
 --
@@ -2559,7 +2751,7 @@ SELECT pg_catalog.setval('public.shop_delivery_methods_id_seq', 1, false);
 -- Name: shop_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_discounts_id_seq', 3, true);
+SELECT pg_catalog.setval('public.shop_discounts_id_seq', 17, true);
 
 
 --
@@ -2573,7 +2765,7 @@ SELECT pg_catalog.setval('public.shop_marks_id_seq', 20, true);
 -- Name: shop_modifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_modifications_id_seq', 5, true);
+SELECT pg_catalog.setval('public.shop_modifications_id_seq', 30, true);
 
 
 --
@@ -2594,14 +2786,14 @@ SELECT pg_catalog.setval('public.shop_orders_id_seq', 1, false);
 -- Name: shop_photos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_photos_id_seq', 34, true);
+SELECT pg_catalog.setval('public.shop_photos_id_seq', 47, true);
 
 
 --
 -- Name: shop_product_discounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 57, true);
+SELECT pg_catalog.setval('public.shop_product_discounts_id_seq', 72, true);
 
 
 --
@@ -2615,7 +2807,7 @@ SELECT pg_catalog.setval('public.shop_product_reviews_id_seq', 3, true);
 -- Name: shop_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_products_id_seq', 27, true);
+SELECT pg_catalog.setval('public.shop_products_id_seq', 37, true);
 
 
 --
@@ -2629,7 +2821,7 @@ SELECT pg_catalog.setval('public.sliders_id_seq', 6, true);
 -- Name: stores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.stores_id_seq', 19, true);
+SELECT pg_catalog.setval('public.stores_id_seq', 31, true);
 
 
 --
