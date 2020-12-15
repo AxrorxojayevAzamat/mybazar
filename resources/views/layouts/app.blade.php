@@ -82,6 +82,7 @@
 <script src="{{asset('js/popper1.16.min.js')}}"></script>
 <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
 <script src="{{mix('js/header-414.js', 'build')}}"></script>
+<script src="{{mix('js/1-index.js', 'build')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootnavbar.js')}}"></script>
 <script src="{{mix('js/search-bar.js', 'build')}}"></script>
@@ -89,6 +90,10 @@
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
 <script src="{{asset('js/jquery.rateyo.js')}}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 
 @yield ('script')
 @stack('script')

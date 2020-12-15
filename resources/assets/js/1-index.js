@@ -9,6 +9,19 @@ $(window).on("load, resize", function () {
 
 $(document).ready(function () {
 
+    // date picker
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    var options={
+    format: 'dd/mm/yyyy',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+    };
+    date_input.datepicker(options);
+
+    
+    // CART FUNCTIONS
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
         let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
@@ -100,6 +113,9 @@ $(document).ready(function () {
 
     // main search select 
     $('.select-main-search').niceSelect();
+
+    // edit profile info's select
+    $('#gender').niceSelect();
 
     // display filter items with <a> tag and show-more btn
     var showDefault = 5;

@@ -483,7 +483,7 @@ h4.title {
   background: #f1f2f6;
 }
 
-.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare {
+.h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.profile, .h4-title.profile {
   padding: 1% 10%;
 }
 
@@ -533,6 +533,23 @@ p.sub-title a {
 
 p.sub-title a:hover, p.sub-title a.active {
   color: #d1d8e0;
+}
+
+input#submit {
+  background: #0042ff;
+  color: white;
+  font-size: 16px;
+  padding: 15px 0;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 23px;
+  margin: 15% auto 0;
+  font-weight: bold;
+}
+
+.nice-select ul.list {
+  width: 100%;
 }
 
 .btn-yellow {
@@ -684,6 +701,7 @@ button.owl-next:hover, .owl-carousel .owl-nav button.owl-next:hover {
 
 .owl-carousel .owl-stage-outer {
   height: 100%;
+  padding: 2% 0;
 }
 
 .owl-carousel .owl-stage {
@@ -715,16 +733,24 @@ button.owl-next span {
   margin: 0 auto;
   position: absolute;
   left: 10%;
-  top: -3%;
+  top: -6%;
 }
 
 .outter-products .similar-p .item, .outter-products .products .item {
   margin: 0;
-  height: 600px;
+  height: 100%;
   padding: 10px 20px 5px;
   border: 1px solid #dfe4ea;
   border-radius: 0;
   background: white;
+  z-index: 2;
+}
+
+.outter-products .similar-p .item:hover, .outter-products .products .item:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
 }
 
 .outter-products .similar-p .item .product-img, .outter-products .products .item .product-img {
@@ -2033,19 +2059,6 @@ form.big-filter-without-title-checkbox .panel .show-more:hover {
   color: grey;
 }
 
-form.big-filter-without-title-checkbox input#submit {
-  background: #0042ff;
-  color: white;
-  font-size: 16px;
-  padding: 15px 0;
-  width: 100%;
-  white-space: nowrap;
-  text-align: center;
-  border-radius: 23px;
-  margin: 15% auto 0;
-  font-weight: bold;
-}
-
 form.big-filter-with-listof-checkbox {
   width: 18%;
   margin-top: 5%;
@@ -2063,19 +2076,6 @@ form.big-filter-with-listof-checkbox {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-form.big-filter-with-listof-checkbox input#submit {
-  background: #0042ff;
-  color: white;
-  font-size: 16px;
-  padding: 15px 0;
-  width: 100%;
-  white-space: nowrap;
-  text-align: center;
-  border-radius: 23px;
-  margin: 15% auto 0;
-  font-weight: bold;
 }
 
 form.big-filter-with-listof-checkbox .custom-control {
@@ -2251,7 +2251,7 @@ form.small-filter .card .card-body a.show-more {
   .h4-title {
     padding: 3% 8%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.brand-view, .h4-title.compare {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.brand-view, .h4-title.compare, .h4-title.profile {
     padding: 1% 8%;
   }
   .slide-banner {
@@ -2263,7 +2263,7 @@ form.small-filter .card .card-body a.show-more {
   .h4-title {
     padding: 2% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view, .h4-title.profile {
     padding: 1% 5%;
   }
   nav ol.breadcrumb {
@@ -2362,7 +2362,7 @@ form.small-filter .card .card-body a.show-more {
   .h4-title {
     padding: 2.5% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view, .h4-title.profile {
     padding: 1.5% 5%;
   }
 }
@@ -2389,7 +2389,7 @@ form.small-filter .card .card-body a.show-more {
   .h4-title {
     padding: 3% 5%;
   }
-  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view {
+  .h4-title.video-blog, .h4-title.catalog-view, .h4-title.pay-body, .h4-title.sales-body, .h4-title.recently-viewed, .h4-title.brands-alphabet, .h4-title.shops-body, .h4-title.u-will-also-like, .h4-title.other-products-of-this-seller, .h4-title.similar-products, .h4-title.compare, .h4-title.brand-view, .h4-title.profile {
     padding: 2% 5%;
   }
   h4.title {
@@ -5803,10 +5803,16 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 .catalog-banner {
   width: 80%;
   margin: 1% auto;
-  height: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  min-height: 100px;
+}
+
+.full-banner1 img,
+.full-banner2 img,
+.catalog-banner img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .catalog-banner {
@@ -5825,7 +5831,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 }
 
 @media all and (max-width: 700px) {
-  .full-banner1 .right {
+  .full-banner1, .full-banner2 {
     display: none;
   }
 }
@@ -5912,7 +5918,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 
 .top-brands {
   width: 100%;
-  height: 200px;
+  min-height: 120px;
   padding: 1% 10%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -11018,5 +11024,213 @@ nav.products-pagination ul li a i:before {
   }
   .outter-cart .inner-pay-checkout-cart .all-items .item h6.title {
     font-size: 17px;
+  }
+}
+
+.outter-profile {
+  background: white;
+  padding: 2% 10%;
+}
+
+.outter-profile .inner-profile .side-menu ul li {
+  list-style: none;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .profile-info {
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .profile-info p {
+  margin: 10px 0;
+}
+
+.outter-profile .inner-profile .content .profile-info span {
+  margin: 10px 0;
+}
+
+.outter-profile .inner-profile .content .profile-info input#submit {
+  padding: 10px 40px;
+  width: inherit;
+  margin: 0 0 2% 0;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content button.add-card, .outter-profile .inner-profile .content button.remove-card, .outter-profile .inner-profile .content button.edit-personal-information {
+  background: #0042ff;
+  color: white;
+  font-size: 16px;
+  padding: 10px 60px;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 23px;
+  margin: 0 0 3%;
+  font-weight: bold;
+}
+
+.outter-profile .inner-profile .content button.remove-card {
+  background: white;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info {
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info label {
+  font-size: 14px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input {
+  width: 100%;
+  border: 1px solid #d1d8e0;
+  border-radius: 20px;
+  margin-bottom: 5%;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input input {
+  height: 45px;
+  border: none;
+  border-radius: 18px;
+  color: #a5b1c2;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input input::-webkit-input-placeholder {
+  color: #a5b1c2;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input input:-ms-input-placeholder {
+  color: #a5b1c2;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input input::-ms-input-placeholder {
+  color: #a5b1c2;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .input input::placeholder {
+  color: #a5b1c2;
+  font-size: 18px;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info .nice-select {
+  border-radius: 20px;
+  margin-bottom: 5%;
+}
+
+.outter-profile .inner-profile .content .edit-profile-info input#submit {
+  margin-top: 5%;
+}
+
+.outter-profile .inner-profile .content .all-information h6.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.outter-profile .inner-profile .content .all-information .nav-pills .nav-link.active {
+  background-color: white;
+  color: #0042ff;
+}
+
+.outter-profile .inner-profile .content .all-information article {
+  margin-bottom: 3%;
+}
+
+.outter-profile .inner-profile .content .all-information article label {
+  display: block;
+}
+
+.outter-profile .inner-profile .content .all-information article .upload-file {
+  position: relative;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 2%;
+}
+
+.outter-profile .inner-profile .content .all-information article .upload-file label {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 50px;
+  overflow: hidden;
+  /*padding: 0 0.5rem;*/
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.outter-profile .inner-profile .content .all-information article .upload-file label p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px 50px;
+  margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: white;
+  background: #0042ff;
+  border-radius: 23px;
+}
+
+.outter-profile .inner-profile .content .all-information article .upload-file label img {
+  width: 20px;
+  margin: 5px auto 10px;
+}
+
+.outter-profile .inner-profile .content .all-information article .upload-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.outter-profile .inner-profile .content .all-information #result1, .outter-profile .inner-profile .content .all-information #result2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.outter-profile .inner-profile .content .all-information #result1 div, .outter-profile .inner-profile .content .all-information #result2 div {
+  margin-right: 10px;
+}
+
+.outter-profile .inner-profile .content .all-information #result1 img, .outter-profile .inner-profile .content .all-information #result2 img {
+  width: 100px;
+  display: inline-block;
+}
+
+.outter-profile .inner-profile .content .all-information button.remove-card {
+  color: black;
+  border: 2px solid #0042ff;
+}
+
+@media all and (max-width: 1522px) {
+  .outter-profile {
+    padding: 2% 8%;
+  }
+}
+
+@media all and (max-width: 1400px) {
+  .outter-profile {
+    padding: 2% 5%;
   }
 }
