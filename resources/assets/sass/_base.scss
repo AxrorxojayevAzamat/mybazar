@@ -77,7 +77,7 @@ h6.title{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size:20px;
+    font-size:18px;
     text-align: start;
     width:100%;
     color:$item_title_color;
@@ -130,13 +130,15 @@ p.sub-title{
     font-size:15px;
 }
 span.sale.big{
+    width:75%;
     position:absolute;
-    bottom:5px;
-    padding:8px 30px;
+    bottom:20px;
+    padding:3px 0;
     right:0;
     color:white;
-    border-radius:15px;
-    font-size:20px;
+    border-radius:25px;
+    font-size:18px;
+    font-weight: 900;
     text-transform:uppercase;
     text-align: center;
     background:$bg_discount;

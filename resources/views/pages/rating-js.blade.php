@@ -10,7 +10,7 @@
                 starWidth: "24px",
                 normalFill: "#ddd",
                 ratedFill: "#f1b145",
-                spacing: "7px"
+                spacing: "4px"
             });
         }
         if (productsIterator) {
