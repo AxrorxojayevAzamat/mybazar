@@ -3,10 +3,12 @@
 .catalog-banner{
     width: 80%;
     margin:1% auto;
-    height:200px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    min-height:100px;
+    img{
+        width:100%;
+        height:auto;
+        object-fit:cover;
+    }
 }
 
 .catalog-banner{
@@ -23,9 +25,8 @@
     }
 }
 @media all and (max-width:700px){
-    .full-banner1{
-        .right{
-            display: none;
-        }
+    .full-banner1,
+    .full-banner2{
+        display: none;
     }
 }
