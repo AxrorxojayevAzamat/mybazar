@@ -20,6 +20,7 @@ class FilterService
 {
     public function groupModificationByCategoryId(array $categoryIds): array
     {
+//        dd($categoryIds);
         $groupModifications = null;
 
         $characteristicIds = CharacteristicCategory::whereIn('category_id', $categoryIds)
