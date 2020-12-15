@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Router\ProductsPath;
+use App\Http\Router\PagePath;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
         Route::model('products_path', ProductsPath::class);
+        Route::model('page_path', PagePath::class);
 
         parent::boot();
     }

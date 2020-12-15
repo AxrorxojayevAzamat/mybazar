@@ -29,7 +29,6 @@ $(document).ready(function () {
             this.setRequestHeader('X-CSRF-Token', token);
             return send.apply(this, arguments);
         };
-        // console.
         if (cart_product !== null) {
             console.log(cart_product);
             let cart_product_check = cart_product.split(',');
@@ -40,6 +39,7 @@ $(document).ready(function () {
                     continue;
                 }
             }
+            let counter = cart_product_check.length;
             let data = {};
             data.product_id = [];
             data.product_id = cart_product_check;
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
 
             $.ajax({
-                url: 'add-cart',
+                url: '/add-cart',
                 method: 'POST',
                 data: data,
                 dataType: 'json',
@@ -57,6 +57,8 @@ $(document).ready(function () {
                         console.log(data.message);
 
                     } else {
+                        $('.mbcart span').addClass('counter');
+                        $('.counter').html(counter);
                         console.log(data.message);
                     }
                 }
@@ -81,6 +83,8 @@ $(document).ready(function () {
 
     }
     writeProductsId();
+
+
 
     $("#dropdownComparison").on("click", function () {
         $(".cart-items").fadeOut();
@@ -111,7 +115,7 @@ $(document).ready(function () {
         }
     });
 
-    // main search select 
+    // main search select
     $('.select-main-search').niceSelect();
 
     // edit profile info's select
@@ -122,7 +126,7 @@ $(document).ready(function () {
     var text= ['Скрыть', 'Показать еще'];
     $('.panel .custom-control').each(function(){
         var item = $(this).find('a');
-        
+
         if(item.length > showDefault){
             //show only 5 items
             for(var i=0; i<showDefault; i++){
@@ -140,13 +144,13 @@ $(document).ready(function () {
             }).appendTo(this)
         }else{
             $(item).show();
-        }  
+        }
     });
 
     // display filter items with checkbox tag and show-more btn
     $('.panel').each(function(){
         var item = $(this).find('.custom-control');
-        
+
         if(item.length > showDefault){
             //show only 5 items
             for(var i=0; i<showDefault; i++){
@@ -164,14 +168,16 @@ $(document).ready(function () {
             }).appendTo(this)
         }else{
             $(item).show();
-        }  
+            $('.show-more').hide();
+
+        }
     });
-    
+
     // выбрать все в фильтре чекбокс
     $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
         if($(this).is(':checked')){
            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
-        }else{        
+        }else{
             $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
         }
     });
@@ -331,41 +337,41 @@ $(document).ready(function () {
             }
         }
     });
-    $('.one-row-brands').owlCarousel({
-        nav: true,
-        margin: 10,
-        items: 12,
-        dots: false,
-        responsive: {
-            0: {
-                items: 2
-            },
-            300: {
-                items: 2
-            },
-            400: {
-                items: 2
-            },
-            500: {
-                items: 3,
-            },
-            600: {
-                items: 4,
-            },
-            700: {
-                items: 5,
-            },
-            800: {
-                items: 6,
-            },
-            1001: {
-                items: 10,
-            },
-            1251: {
-                items: 12
-            }
-        }
-    });
+    // $('.one-row-brands').owlCarousel({
+    //     nav: true,
+    //     margin: 10,
+    //     items: 12,
+    //     dots: false,
+    //     responsive: {
+    //         0: {
+    //             items: 2
+    //         },
+    //         300: {
+    //             items: 2
+    //         },
+    //         400: {
+    //             items: 2
+    //         },
+    //         500: {
+    //             items: 3,
+    //         },
+    //         600: {
+    //             items: 4,
+    //         },
+    //         700: {
+    //             items: 5,
+    //         },
+    //         800: {
+    //             items: 6,
+    //         },
+    //         1001: {
+    //             items: 10,
+    //         },
+    //         1251: {
+    //             items: 12
+    //         }
+    //     }
+    // });
     $('.shops-fr').owlCarousel({
         nav: false,
         dots: false,

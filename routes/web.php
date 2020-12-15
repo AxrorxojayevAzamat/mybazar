@@ -20,6 +20,10 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');// TOD
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');// TODO duplicate
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');// TODO duplicate
 
+Route::get('get-compare', 'CompareController@show')->name('getCompare');
+Route::get('compare', 'CompareController@compare')->name('compare');
+Route::get('check-compare/{id}/{compare}', 'CompareController@check')->name('compare.check');
+
 Route::post('add-cart', 'CartController@add');
 Route::post('remove-cart', 'CartController@remove');
 Route::get('admin',function (){
@@ -109,6 +113,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::delete('remove-from-cart', 'ProductController@remove')->name('remove');
         });
         Route::get('{product}/compare-with/{comparingProduct}', 'ProductController@compare')->name('compare');
+        Route::get('new-products', 'ProductController@newProducts')->name('new-products');
     });
 
     Route::get('add-to-cart/{id}', 'ProductController@addToCart')->name('addCard');

@@ -16,9 +16,13 @@ $(document).ready(function () {
 
     searchInput.keyup(function (e) {
         e.preventDefault();
+        let inputValue = $('#search-input').val();
+            console.log(inputValue);
 
-        let inputValue = searchInput.val();
-
+        if(inputValue === '' && e.which === 13){
+            console.log(inputValue);
+            location.reload();
+        }
         let data = {};
         data.search = inputValue;
 
@@ -87,87 +91,22 @@ $(document).ready(function () {
     function link(data) {
         console.log(data)
     }
-    cart.click(function (e) {
-        console.log('loging')
-        e.preventDefault();
-        let cart_product = localStorage.getItem('product_id');
-        if (cart_product !== null || cart_product == '') {
-            console.log(cart_product);
-            let cart_product_check = cart_product.split(',');
-            for (let i = 0; i <= cart_product_check.length; i++) {
-                if (cart_product_check[i] == '') {
-                    cart_product_check.splice(i, 1);
-                } else {
-                    continue;
-                }
-            }
-            let data = {};
-            data.product_id = [];
-            data.product_id = cart_product_check;
 
-            $.ajax({
-                url: '/cart-header',
-                method: 'GET',
-                data: data,
-                dataType: 'json',
-                success: function (data) {
-                    $('#goToCart').show();
-                    $('#cart_none').hide();
-                    $('#card_body').show();
-                    let body_cart = '';
-                    console.log(data.products.length);
-                    for (let i = 0; i < data.products.length; i++) {
-                        body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
-                            '<img src=""></a></div><div class="description">' +
-                            '<a href="#"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
-                            '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
-                            '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
-                            '<i class="mbexit_mobile"></i></button> </li>';
-                    }
-
-
-                    $('#card_body').html(body_cart);
-                    console.log(data);
-                }, error: function (data) {
-                    console.log(data);
-                }
-            });
-        }else{
-            $.ajax({
-                url: '/cart-header',
-                method: 'GET',
-                success: function (data) {
-                    let body_cart = '';
-                    console.log(data.data)
-                    if (data.data == 'error' || data.products.length == 0){
-                        $('#goToCart').hide();
-                        $('#cart_none').show();
-                        $('#card_body').hide();
-                    }
-                    else{
-                        $('#goToCart').show();
-                        $('#cart_none').hide();
-                        $('#card_body').show();
-                        for (let i = 0; i < data.products.length; i++) {
-                            body_cart += '<li class="item" id="header'+ data.products[i].id + '" ><div class="product-img"><a href="#">' +
-                                '<img src=""></a></div><div class="description">' +
-                                '<a href="#"><h5 class="title">' + data.products[i].name_uz + '</h5></a>' +
-                                '<p class="price">' + data.products[i].price_uzs + '</p> </div> ' +
-                                '<button class="btn delete-btn" onclick="removing(' + data.products[i].id + ')">' +
-                                '<i class="mbexit_mobile"></i></button> </li>';
-                        }
-                    }
-                    $('#card_body').html(body_cart);
-                    console.log(data);
-                }, error: function (data) {
-                    console.log(data);
-                }
-            });
-        }
-    });
     function removing(id){
 
     }
+
+    function colmRow(){
+        if (localStorage.getItem('col-row-view') === 'column') {
+            $('.all-filtered-items').addClass('column');
+            $('.item-action-icons').addClass('list');
+            $('.column-view').addClass('view-blue-bg');
+            $('.list-view').removeClass('view-blue-bg');
+        }else{
+            return  0;
+        }
+    }
+    colmRow();
 
 
 

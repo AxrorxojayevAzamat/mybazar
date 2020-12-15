@@ -146,6 +146,8 @@ return [
         'add' => 'Add Brand',
         'name' => 'Brand',
         'choose' => 'Choose brand',
+        'short' => 'Short',
+        'long' => 'Long',
     ],
 
     'store' => [
@@ -185,6 +187,7 @@ return [
         'add' => 'Add Product',
         'name' => 'Product',
         'discount' => 'Discount',
+        'discounts_list' => 'Discounts list',
         'discount_ends_at' => 'Discount ends at',
         'moderation' => 'Moderation',
         'active' => 'Active',
@@ -216,6 +219,7 @@ return [
         'choose' => 'Choose Characteristic',
         'variants' => 'Variants',
         'hide_in_filters' => 'Hide in filters',
+        'main_param' => 'Main param',
         'group_name' => 'Characteristic group',
         'add_group' => 'Add characteristic group',
     ],

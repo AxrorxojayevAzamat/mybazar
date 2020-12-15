@@ -55,7 +55,7 @@
                 span.sale{
                     position:absolute;
                     left:-5%;
-                    bottom:0;
+                    bottom:20px;
                 }
             }
             .description{
@@ -68,7 +68,9 @@
                 flex-flow:column;
                 text-align: start;
                 .rate{
-                    justify-content: space-around;
+                    padding: 5px 0;
+                    justify-content: space-between;
+                    font-size: 20px;
                 }
             }
         }

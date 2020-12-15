@@ -7,27 +7,133 @@
             <div class="products owl-carousel owl-theme">
                 @foreach ($products as $product)
                     @include('layouts.product-item')
-
                 @endforeach
             </div>
         </div>
     </div>
 </section>
 <script>
-    function addToFavorite(id){
+    function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
         $.ajax({
-            url: 'add-to-favorite/'+ id,
+            url: 'add-to-favorite/' + id,
             method: 'GET',
-            success: function (data){
+            success: function (data) {
                 console.log(data);
-            },error: function (data){
+            }, error: function (data) {
                 console.log(data);
             }
         })
     }
 
+    function addToCompare(id) {
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                if (cart_product_check.length < 1){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
+
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
+    }
+
+    function addCart(id) {
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+
+                if (data.message == 'success') {
+                    localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber += 1;
+                    containerCounter.text(counterCartNumber);
+                    console.log('exists');
+                } else {
+                    nonRegisteredUsersCart(id);
+                    console.log($.ajaxSettings.headers);
+                    console.log('isnotexists');
+                }
+            }, error: function (data) {
+
+            }
+        })
+
+    }
+
+    function nonRegisteredUsersCart(id) {
+        if (localStorage.getItem('product_id')) {
+            let cart_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('product_id')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                console.log('hello')
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                } else {
+                    console.log('loging')
+                }
+            }
+            if (!exist) {
+                cart_products += product_id;
+                cart_products += id + ',';
+                localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
+            } else {
+                console.log('exist');
+            }
+        } else {
+            localStorage.setItem('product_id', id + ',');
+        }
+    }
 
 
 </script>

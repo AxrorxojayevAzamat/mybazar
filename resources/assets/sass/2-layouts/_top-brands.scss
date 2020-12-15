@@ -1,16 +1,16 @@
 .top-brands{
     width:100%;
-    min-height:120px;
     padding:1% 10%;
     box-sizing:border-box;
     background:white;
     text-align:left;
     .one-row-brands{
-        height:45px;
         display: flex;
+        flex-wrap: wrap;
         .item{
-            width:33%;
+            width:8.333%;
             height:45px;
+            margin: .5em 0;
             @include displayFlex(center, row, center);
             a{
                 height:100%;

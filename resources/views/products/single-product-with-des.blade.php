@@ -5,26 +5,20 @@
             <div class="images">
                 @if ($product->mainPhoto)
                     <div class="big-image">
-                        <img src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%">
+                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%">
                     </div>
                 @endif
 
-                @foreach($product->photos as $photo)
-                    <div class="big-image">
-                        <img src="{{ $photo->fileOriginal }}" style="width:100%">
-                    </div>
-                @endforeach
 
                 <div class="several-images owl-theme owl-carousel">
                     @php($currentSlide = 1)
                     @if ($product->mainPhoto)
-                        <img class="demo cursor" src="{{ $product->mainPhoto->fileOriginal }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
                              onclick="currentSlide({{ $currentSlide }})">
                         @php($currentSlide++)
                     @endif
-{{--                    {{dd($product)}}--}}
                     @foreach($product->photos as $photo)
-                        <img class="demo cursor" src="{{ $photo->photoOriginal }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $photo->fileOriginal }}" style="width:100%"
                              onclick="currentSlide({{ $currentSlide }})">
                         @php($currentSlide++)
                     @endforeach
@@ -34,46 +28,49 @@
                 <div class="text-description">
                     <div class="rate">
                         <div id="rateYo_one0"></div>
-{{--                        <div class="rating stars">--}}
-{{--                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>--}}
-{{--                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>--}}
-{{--                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>--}}
-{{--                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>--}}
-{{--                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>--}}
-{{--                        </div>--}}
                         <div class="comment">
                             <i class="mbcomment"></i>
                             <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
 
-{{--                    <p>ID товара: <span> 1666559495</span></p>--}}
+                    {{--                    <p>ID товара: <span> 1666559495</span></p>--}}
                     <p class="title">@lang('frontend.product.characteristics')</p>
-                    @foreach($product->mainValues as $value)
-                        <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
+                    @foreach($product->allCharacteristics as $characteristics)
+                        @if($characteristics->characteristic->main)
+                            <p>{!! $characteristics->characteristic->name !!}:
+                                <span>
+                                    @foreach($product->modificationsForProduct($characteristics->characteristic_id) as $modifications) {{ $modifications->value }} @endforeach
+                                </span>
+                            </p>
+                        @endif
                     @endforeach
                     <a href="#pills-characteristics">@lang('frontend.product.all_characteristics')</a>
                 </div>
                 <div class="color-delivery-des">
                     <form action="#">
-                        @php($valueModifications = $product->valueModifications)
-                        @foreach($valueModifications as $modification)
-                            <p>{{ $modification->name }}: <span>{{ $modification->value }}</span></p>
-                            <div class="pr-des-radio-buttons">
-                                <div class="value-modification" id="value-modification"
-                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
-                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}">
-                                    {{ $modification->value }}
-                                </div>
-                            </div>
-                        @endforeach
-                        @if ($product->colorModifications()->exists())
-                            @php($colorModifications = $product->colorModifications)
-                            <p>@lang('frontend.color'): <span id="color-modification-name">{{ $colorModifications[0]->name }}</span></p>
+                        @foreach($product->allCharacteristics as $modification)
+                           @if($modification->characteristic->main == false && $modification->characteristic->type != \App\Entity\Shop\Characteristic::TYPE_COLOR)
+                                   @if(!empty($modification->modifications->value))
+                                        <p>{{ $modification->characteristic->name }}:</p>
+                                   @endif
+                                    @foreach($product->modificationsForProduct($modification->characteristic_id) as $modifications)
+                                            <span class="pr-des-radio-buttons">
+                                                <div class="value-modification" id="value-modification"
+                                                     data-actual-price="{{ trans('frontend.product.price', ['price' => $modifications->price_uzs]) }}"
+                                                     data-final-price="{{ trans('frontend.product.price', ['price' => $modifications->currentPriceUzs]) }}">
+                                                    {{ $modifications->value }}
+                                                </div>
+                                            </span>
+                                    @endforeach
+                           @endif
+                        @if($modification->characteristic->main == false && $modification->characteristic->type == \App\Entity\Shop\Characteristic::TYPE_COLOR)
+                            <p>@lang('frontend.color'): <span
+                                    id="color-modification-name">{{ $modification->characteristic->name }}</span></p>
                             <div class="colors pr-des-radio-buttons3">
-                                @foreach($colorModifications as $modification)
+                                @foreach($product->colorModifications($modification->characteristic_id) as $modification)
                                     <div class="color color-modification" id="color-modification">
-                                        <div style="background-color: {{ $modification->color }}"
+                                        <div style="background-color: {{ $modification->value }}"
                                              data-name="{{ $modification->name }}"
                                              data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
                                              data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"
@@ -82,10 +79,13 @@
                                 @endforeach
                             </div>
                         @endif
+                        @endforeach
                     </form>
                     <div class="current-old-price horizontal">
-                        <h5 class="price" id="final-product-price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
-                        <h6 class="old-price" id="actual-product-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
+                        <h5 class="price"
+                            id="final-product-price">@lang('frontend.product.price', ['price' => $product->currentPriceUzs])</h5>
+                        <h6 class="old-price"
+                            id="actual-product-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
                     </div>
                     <div class="item-action-icons">
                         <div class="cart" id="cart-button"
@@ -95,10 +95,7 @@
                              onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" data-name="{{ $product->name }}"
-                             data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
-                             data-price="{{ $product->currentPriceUzs }}"
-                        >
+                        <div class="libra" onclick="addToComparing({{ $product->id }})">
                             <i class="mbtocompare"></i>
                         </div>
                         <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
@@ -107,12 +104,13 @@
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
                         <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
                     </div>
-                    <div class="first-item">
+                    <div class="sub-title bottom">
                         <div class="shop-name-logo">
-                            <a href="{{ route('shops.show',['store' => $product->store]) }}"><img src="{{ $product->store->fileThumbnail ?? null }}" alt=""></a>
+                            <a href="{{ route('stores.view',['store' => $product->store]) }}"><img
+                                    src="{{ $product->store->logoThumbnail ?? null }}" alt="" class="img-rounded"></a>
                             <div>
-                                <p class="sub-title">{!! $product->name !!}</p>
-                                <b class="title"><a href="{{ route('categories.show', products_path($product->mainCategory)) }}">{!! $product->mainCategory->name !!}</a></b>
+                                <b class="title"><a
+                                        href="{{ route('stores.view',['store' => $product->store]) }}">{!! $product->store->name !!}</a></b>
                             </div>
                         </div>
                     </div>
@@ -124,19 +122,68 @@
 @include('pages.rating-js', ['products' => $product, 'type' => '"one"'])
 
 <script>
-    function addToFavorite(id){
+
+    function addToComparing(id) {
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                if (cart_product_check.length < 1){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
+
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
+    }
+    function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
         $.ajax({
-            url: '{{ route('user.favorites.add',$product) }}',
+            url: '{{ route('user.add-to-favorite',$product) }}',
             method: 'GET',
-            success: function (data){
+            success: function (data) {
                 console.log(data);
-            },error: function (data){
+            }, error: function (data) {
                 console.log(data);
             }
         })
     }
+
     function addCart(id) {
         let product_id = {};
         product_id.data = [];
@@ -148,10 +195,15 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
-                if (data.message == 'success'){
+
+                if (data.message == 'success') {
                     localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber += 1;
+                    containerCounter.text(counterCartNumber);
                     console.log('exists');
-                }else{
+                } else {
                     nonRegisteredUsersCart(id);
                     console.log($.ajaxSettings.headers);
                     console.log('isnotexists');
@@ -162,7 +214,8 @@
         })
 
     }
-    function nonRegisteredUsersCart(id){
+
+    function nonRegisteredUsersCart(id) {
         if (localStorage.getItem('product_id')) {
             let cart_products = '';
             let exist = false;
@@ -181,6 +234,8 @@
                 cart_products += product_id;
                 cart_products += id + ',';
                 localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
             } else {
                 console.log('exist');
             }

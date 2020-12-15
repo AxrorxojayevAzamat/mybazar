@@ -13,7 +13,9 @@ body{
     text-align: center;
     color: black;
     font-size: 22px;
-    margin-top: 50%;
+    //margin-top: 50%;
+    min-height: 100px;
+    padding-top: 36px;
 }
 
 a{
@@ -75,7 +77,7 @@ h6.title{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size:20px;
+    font-size:18px;
     text-align: start;
     width:100%;
     color:$item_title_color;
@@ -143,13 +145,15 @@ input#submit{
     font-size:15px;
 }
 span.sale.big{
+    width:75%;
     position:absolute;
-    bottom:5px;
-    padding:8px 30px;
+    bottom:20px;
+    padding:3px 0;
     right:0;
     color:white;
-    border-radius:15px;
-    font-size:20px;
+    border-radius:25px;
+    font-size:18px;
+    font-weight: 900;
     text-transform:uppercase;
     text-align: center;
     background:$bg_discount;
@@ -408,7 +412,7 @@ nav ol.breadcrumb{
 }
 .outter-catalog-view, .outter-brand-view-body,
 .outter-list-of-shops, .outter-list-of-blogs{
-    min-height:500px;
+    min-height:200px;
     width:80%;
     padding:1% 0;
     margin:0 auto;
@@ -417,7 +421,7 @@ nav ol.breadcrumb{
     .wrapper-filtered-blogs,
     .wrapper-filtered-shops{
         width:80%;
-        min-height:500px;
+        min-height:200px;
         @include displayFlex(flex-start, column, flex-start);
         nav.sort-types{
             justify-content: flex-end;
@@ -544,7 +548,7 @@ nav ol.breadcrumb{
 }
 .all-filtered-items{
     width:100%;
-    min-height:500px;
+    min-height:200px;
     background:white;
     // @include displayFlex(flex-start,row, flex-start);
     flex-wrap:wrap;
@@ -1022,7 +1026,7 @@ form.big-filter-without-title-checkbox{
 //             margin-top:1%;
 //             text-decoration: underline;
 //         }
-       
+
 //     }
 //     .filter-item{
 //         position:relative;
@@ -1038,7 +1042,7 @@ form.big-filter-without-title-checkbox{
 //                 left:-5px;
 //             }
 //         }
-        
+
 //     }
 // }
 form.big-filter-with-listof-checkbox{
@@ -1122,6 +1126,22 @@ form.small-filter{
         width:100%;
         height:100%;
     }
+}
+.category-btn {
+    color: #0042ff;
+    font-size: 22px;
+}
+.custom-checkbox {
+    ul {
+        padding-left: 0;
+        li.category-list {
+            list-style-type: none;
+            margin: 5px;
+        }
+    }
+}
+.padding-1-10 {
+    padding: 1% 10%;
 }
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{

@@ -14,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         SocialiteWasCalled::class => [
             // ... other providers
-            'SocialiteProviders\\Telegram\\TelegramExtendSocialite@handle',
+            'App\\Services\\User\\TelegramExtendSocialite@handle',
         ],
 //        Registered::class => [
 //            SendEmailVerificationNotification::class,

@@ -147,6 +147,8 @@ return [
         'add' => 'Brend qo`shmoq',
         'name' => 'Brend',
         'choose' => 'Brend tanlamoq',
+        'short' => 'Kalta',
+        'long' => 'Uzun',
     ],
 
     'store' => [
@@ -186,6 +188,7 @@ return [
         'add' => 'Mahsulot qo`shmoq',
         'name' => 'Mahsulot',
         'discount' => 'Chegirma',
+        'discounts_list' => 'Chegirmalar ro`yxati',
         'discount_ends_at' => 'Chegirma tugaydi',
         'moderation' => 'Modeatsiyani kutmoqda',
         'active' => 'Faol',
@@ -217,6 +220,7 @@ return [
         'choose' => 'Xarakteristika tanlamoq',
         'variants' => 'Variantlar',
         'hide_in_filters' => 'Filtrlarda berkitish',
+        'main_param' => 'Asosiy parametr',
         'group_name' => 'Xarakteristika guruhi',
         'add_group' => 'Xarakteristika guruhi qo`shmoq',
     ],

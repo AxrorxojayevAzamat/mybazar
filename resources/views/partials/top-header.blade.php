@@ -1,7 +1,7 @@
 <div class="top-header">
     <div>
         <a href="tel:+998921234567" class="bold tel">+998 92 123 45 67</a>
-        <a href="#" class="email">info@mybazar.com</a>
+        <a href="mailto:info@mybazar.com" class="email" target="_blank">info@mybazar.com</a>
     </div>
     <div class="hot-news owl-carousel owl-theme">
         @foreach($discountProducts as $product)

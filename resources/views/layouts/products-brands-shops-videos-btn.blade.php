@@ -9,7 +9,7 @@
     <a class="nav-link" id="pills-shops-tab" data-toggle="pill" href="#pills-shops" role="tab" aria-controls="pills-shops" aria-selected="false">@lang('frontend.stores')</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-blogs-tab" data-toggle="pill" href="#pills-blogs" role="tab" aria-controls="pills-blogs" aria-selected="false">@lang('frontend.title.blogs')</a>
+    <a class="nav-link" id="pills-blogs-tab" data-toggle="pill" href="#pills-blogs" role="tab" aria-controls="pills-blogs" aria-selected="false">@lang('frontend.blogs')</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-video-tab" data-toggle="pill" href="#pills-videos" role="tab" aria-controls="pills-videos" aria-selected="false">@lang('menu.videos')</a>

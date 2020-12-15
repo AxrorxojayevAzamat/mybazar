@@ -1,14 +1,14 @@
 <div class="all-filtered-catalog-section">
     <div class="types-of-media">
-        @foreach($children as $category)
-        <a href="{{ route('categories.show', products_path($category)) }}">
-            <div class="item">
-                <div class="image">
-                    <img src="{{ $category->photoOriginal }}" alt="">
+        @foreach($categories as $category)
+            <a href="{{ route('categories.show', products_path($category)) }}">
+                <div class="item">
+                    <div class="image">
+                        <img src="{{ $category->photoThumbnail }}" alt="">
+                    </div>
+                    <h6 class="title">{{ $category->name }}</h6>
                 </div>
-                <h6 class="title">{{ $category->name }}</h6>
-            </div>
-        </a>
+            </a>
         @endforeach
     </div>
     <div class="all-filtered-blogs">
@@ -29,8 +29,8 @@
     </div>
 
     <div>
-        @if ($banner)
-            <img src="{{ $banner->fileOriginal }}" alt="">
+        @if (isset($banner))
+            <img src="{{ $banner->fileCustom }}" alt="">
         @endif
     </div>
 </div>

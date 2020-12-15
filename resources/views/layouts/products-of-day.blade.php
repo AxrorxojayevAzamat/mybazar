@@ -21,7 +21,7 @@
                 <div class="product-info">
                     <div class="product-image">
                         @if ($product->mainPhoto)
-                            <a href="{{ route('products.show', $product) }}"><img src="{{ $product->mainPhoto->fileOriginal }}" alt=""></a>
+                            <a href="{{ route('products.show', $product) }}"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
                         @endif
                         <span class="sale big">
                             <span class="number">-{{ $product->discount * 100 }}% @lang('frontend.discount_upper')</span>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="item-action-icons">
                             <div class="cart" data-name="{{ $product->name }}" onclick="addCart({{ $product->id }})" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
-                            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbtocompare"></i></div>
+                            <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
                             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
                         </div>
                     </div>
@@ -84,8 +84,13 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
+
                 if (data.message == 'success'){
                     localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber+=1;
+                    containerCounter.text(counterCartNumber);
                     console.log('exists');
                 }else{
                     nonRegisteredUsersCart(id);
@@ -117,11 +122,26 @@
                 cart_products += product_id;
                 cart_products += id + ',';
                 localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
+                goToCartInAdd();
             } else {
                 console.log('exist');
             }
         } else {
             localStorage.setItem('product_id', id + ',');
+            goToCartInAdd();
+        }
+    }
+
+    function goToCartInAdd(){
+        let cart_products_id = $('#cart_products_id');
+        let saved_carts = localStorage.getItem('product_id');
+        if (saved_carts !== null){
+            saved_carts = saved_carts.slice(0, -1);
+            cart_products_id.val(saved_carts);
+        }else {
+            console.log('error');
         }
     }
 </script>

@@ -8,7 +8,7 @@ if ($product->classFavorite($product->id)) {
 <div class="item">
     <div class="product-img">
         @if ($product->mainPhoto)
-            <a href="{{ route('products.show',$product) }}"><img src="{{ $product->mainPhoto->fileOriginal }}" alt=""></a>
+            <a href="{{ route('products.show',$product) }}"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
         @endif
     </div>
     <!-- description -->
@@ -27,8 +27,16 @@ if ($product->classFavorite($product->id)) {
             </div>
         </div>
         <div class="list-full-des">
-            @foreach($product->mainValues as $value)
-                <p>{{ $value->characteristic->name }}: <span>{{ $value->value }}</span></p>
+            @foreach($product->allCharacteristics as $characteristics)
+                @if($characteristics->characteristic->main)
+                    <p>{!! $characteristics->characteristic->name !!}:
+                        <span>
+                              @foreach($product->modificationsForProduct($characteristics->characteristic_id) as $modifications)
+                                {{ $modifications->value }}
+                              @endforeach
+                        </span>
+                    </p>
+                @endif
             @endforeach
         </div>
         <div class="current-old-price horizontal">
@@ -38,8 +46,7 @@ if ($product->classFavorite($product->id)) {
         <div class="item-action-icons">
             <div class="cart" onclick="addCart({{ $product->id }})" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
-            <div class="libra" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
-                 data-price="741640"><i class="mbtocompare"></i></div>
+            <div class="libra" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
@@ -52,21 +59,54 @@ if ($product->classFavorite($product->id)) {
 </div>
 
 <script>
-    // function addCart(id){
-    //     let product_id = {};
-    //     product_id.id = id;
-    //     $.ajax({
-    //         url: '/add-cart',
-    //         method: 'POST',
-    //         data: product_id,
-    //         dataType: 'json',
-    //         success: function (data){
-    //             console.log(data);
-    //         },error: function (data){
-    //             console.log(data);
-    //         }
-    //     })
-    // }
+
+    function addToCompare(id) {
+        if (localStorage.getItem('compare_product')) {
+            let compare_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('compare_product')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                if (cart_product_check.length < 1){
+                    compare_products += product_id;
+                    compare_products += id + ',';
+                    localStorage.setItem('compare_product', compare_products + '');
+                    let containerCounter = $('.counter');
+                    containerCounter.text(cart_product_check.length);
+                }
+                if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
+                    $.ajax({
+                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        method: 'GET',
+                        success: function (data) {
+                            if (data === "success"){
+                                compare_products += product_id;
+                                compare_products += id + ',';
+                                localStorage.setItem('compare_product', compare_products + '');
+                                let containerCounter = $('.counter');
+                                containerCounter.text(cart_product_check.length);
+                            }else{
+                                alert('{{ trans('frontend.compare_not_fit') }}')
+                            }
+                        }, error: function (data) {
+                            // console.log(data);
+                        }
+                    });
+                } else {
+                    alert('{{ trans('frontend.compare_full') }}')
+                }
+
+            }
+        } else {
+            localStorage.setItem('compare_product', id + ',');
+        }
+    }
     function addToFavorite(id){
         let product_id = {};
         product_id.id = id;
@@ -80,4 +120,65 @@ if ($product->classFavorite($product->id)) {
             }
         })
     }
+
+    function addCart(id) {
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/add-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+
+                if (data.message == 'success') {
+                    localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber += 1;
+                    containerCounter.text(counterCartNumber);
+                    console.log('exists');
+                } else {
+                    nonRegisteredUsersCart(id);
+                    console.log($.ajaxSettings.headers);
+                    console.log('isnotexists');
+                }
+            }, error: function (data) {
+
+            }
+        })
+
+    }
+
+    function nonRegisteredUsersCart(id) {
+        if (localStorage.getItem('product_id')) {
+            let cart_products = '';
+            let exist = false;
+            let product_id = localStorage.getItem('product_id')
+            let cart_product_check = product_id.split(',');
+            for (let i = 0; i <= cart_product_check.length; i++) {
+                console.log('hello')
+                if (cart_product_check[i] == id) {
+                    console.log('exists')
+                    exist = true;
+                } else {
+                    console.log('loging')
+                }
+            }
+            if (!exist) {
+                cart_products += product_id;
+                cart_products += id + ',';
+                localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
+            } else {
+                console.log('exist');
+            }
+        } else {
+            localStorage.setItem('product_id', id + ',');
+        }
+    }
+
 </script>

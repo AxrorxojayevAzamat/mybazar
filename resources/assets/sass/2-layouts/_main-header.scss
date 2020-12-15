@@ -10,7 +10,7 @@
             width:100%;
             height:100%;
         }
-    } 
+    }
     form.search-bar{
         width:45%;
         height:45px;
@@ -46,7 +46,7 @@
                     line-height:35px;
                     color: white;
                     margin-left: 5px;
-                } 
+                }
             }
             input{
                 width:100%;
@@ -106,7 +106,7 @@
                 }
                 i.mbsearch_resulticon{
                     font-size:20px;
-                    margin-right:10px; 
+                    margin-right:10px;
                     line-height:40px;
                     padding:0 5px;
                 }
@@ -168,7 +168,7 @@
                 margin-top:1px;
                 &:hover{
                     color:#000 !important;
-                } 
+                }
             }
         }
         button.search{
@@ -239,6 +239,7 @@
                                 right:-21px;
                                 transition: .2s linear;
                                 transform: scale(1);
+                                text-align: center;
                             }
                         }
                     }
@@ -246,7 +247,7 @@
                 .compare-items,
                 .cart-items{
                     width:300px;
-                    height:400px;
+                    height:auto;
                     border:none;
                     border-radius:0;
                     padding:0;
@@ -260,7 +261,9 @@
                     display: none;
                     ul{
                         padding:0;
-                        height:85%;
+                        min-height: 80px;
+                        max-height: 320px;
+                        //height:85%;
                         overflow:hidden;
                         li.item{
                             position:relative;
@@ -280,7 +283,7 @@
                                 }
                             }
                             .product-img{
-                                width:25%; 
+                                width:25%;
                                 height:65px;
                                 margin-right:10px;
                                 a{
@@ -289,7 +292,7 @@
                                         height:100%;
                                     }
                                 }
-                            }                            
+                            }
                             .description{
                                 width:70%;
                                 a{
@@ -314,7 +317,7 @@
                                     display:block;
                                     border-bottom: 1px solid #DFDFDF;
                                 }
-                            }                                
+                            }
                             .delete-btn {
                                 width: 20px;
                                 height: 20px;
@@ -339,7 +342,7 @@
                                     padding:0;
                                     margin:0;
                                 }
-                            } 
+                            }
                         }
                     }
                 }
@@ -349,9 +352,11 @@
 }
 .bottom-btn{
     @include displayFlex(center, row, center);
-    position: absolute;
-    bottom:10px;
+    //position: absolute;
+    //bottom:0px;
+    padding:10px 0;
     width:100%;
+    background-color: #fff;
     .switch-to-compare, .switch-to-cart{
         background:$item_price_color;
         color:white;
@@ -371,20 +376,20 @@
         }
     }
 }
-.show-drop { 
-    display:block; 
-} 
+.show-drop {
+    display:block;
+}
 .display-none{
     display: none;
 }
 .cd-cart__product--deleted { // this class is added to an item when it is removed form the cart
     position: absolute;
     left: 0;
-    width: 100%; 
+    width: 100%;
     opacity: 0;
     animation: cd-item-slide-out .3s forwards;
   }
-  
+
   @keyframes cd-item-slide-out {
     0% {
       transform: translateX(0);

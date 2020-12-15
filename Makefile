@@ -7,11 +7,21 @@ dup: memory
 dd:
 	docker-compose down
 
+dr:
+	docker-compose down
+	sudo rm -Rf docker/psql/db-cache/data
+
 db: memory
 	docker-compose up --build -d
 
 de:
 	docker exec -it magazin-php sh
+
+den:
+	docker-compose exec node sh
+
+den-run-dev:
+	docker-compose exec node npm run dev
 
 ds:
 	docker-compose stop

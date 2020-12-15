@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}"></script>
+
 
     <title> @yield('title')</title>
-
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate-3.7.2.min.css') }}">
@@ -19,7 +20,6 @@
     @yield('styles')
 
 </head>
-
 <body>
 <!-- page loader -->
 <div class="wrapper-loader">
@@ -69,13 +69,72 @@
     </div>
 </div>
 
-<script src="{{asset('js/jquery-3.4.1.slim.min.js')}}"></script>
 <script>
+    function deleteFromCompare(id) {
+        let product_id_local = localStorage.getItem('compare_product');
+        product_id_local = product_id_local.replace(id + ',', '');
+        let counter = product_id_local.split(',');
+        for (let i = 0; i <= counter.length; i++) {
+            if (counter[i] == '') {
+                counter.splice(i, 1);
+            } else {
+                continue;
+            }
+        }
+        counter = counter.length;
+        localStorage.removeItem('compare_product');
+        localStorage.setItem('compare_product',product_id_local);
+
+    }
     $(document).ready(function () {
+        $('#compareCard').on('click', function () {
+            let elem = localStorage.getItem('compare_product');
+            $.ajax({
+                url: '{{ route('getCompare')}}' + '?data=' + localStorage.getItem('compare_product'),
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    element = '';
+                    let origin = window.location.origin;
+                    if (data.data.length >= 1) {
+                        $('#dropdownComparison i span').addClass('counter');
+                        $('#dropdownComparison i span').html(data.data.length);
+                        for (let i = 0; i < data.data.length; i++) {
+                            element += '<li class="item" >' +
+                                '<div class="product-img">' +
+                                ' <a href="products/show/' + data.data[i].id + '">' + '<img src="' + origin + data.data[i].main_photo + '"></a>' +
+                                '</div>' +
+                                '<div class="description">' +
+                                '<a href="products/show/' + data.data[i].id + '">' + '<h5 class="title">' + data.data[i].name + '</h5></a>' +
+                                '<p class="price">' + data.data[i].price_uzs + '</p>' +
+                                '</div>' +
+                                '<button class="btn delete-btn" onclick="deleteFromCompare(' + data.data[i].id + ')" >' + '<i class="mbexit_mobile">' + '</i></button>'
+                                + '</li>';
+                        }
+                        $('#compareBtn').show();
+                    } else {
+                        $('#compareBtn').hide();
+                        element = " <div id='cart_none' class='cart-none-text'>{{ trans('frontend.compare_none') }}</div>";
+                    }
+
+                    $('#compareSuccessItems').html(element);
+                }, error: function (data) {
+                    console.log(data);
+                }
+            })
+        });
+
+        $('#compareBtn button').on('click',function (){
+            let elem = localStorage.getItem('compare_product');
+            window.location = '{{ route('compare') }}?data=' + elem;
+        });
+
         $(".wrapper-loader").fadeOut("slow");
     })
     let a = document.querySelectorAll("img");
-    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
+    a.forEach((img) => {
+        img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz"))
+    });
 </script>
 <script src="{{ asset('js/mmenu.js') }}"></script>
 <script src="{{asset('js/mmenu-index.js')}}"></script>
@@ -98,10 +157,6 @@
 @yield ('script')
 @stack('script')
 
-<script>
-    let a = document.querySelectorAll("img");
-    a.forEach((img)=>{console.log(img.setAttribute('src', img.src.replace("localhost:5500", "shop.sec.uz")))});
-</script>
 
 </body>
 </html>

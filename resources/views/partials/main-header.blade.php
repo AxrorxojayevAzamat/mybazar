@@ -6,7 +6,7 @@
     </div>
     <form action="/search" id="search-bar" class="search-bar form-control" method="GET">
             <div class="input-with-tags">
-                <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}" do-not-use-data-role="tagsinput">
+                <input name="search" id="search-input" autocomplete="off" class="main-search-bordered-input" type="search" placeholder="{{ trans('frontend.search_placeholder') }}">
             </div>
             <div class="autocomplete-tags" id="droping">
 
@@ -21,55 +21,15 @@
     </form>
     <div class="from-statistics-to-account">
         <ul class="navbar-right">
-            <li>
-                <a href="#" id="dropdownComparison" class="dropdownToggle"> <i class="mbcompare"><span></span></i> @lang('menu.compare')</a>
-                <div class="compare-items" id="compareItems">
-                    <ul class="selected-items">
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
-                        <li class="item" >
-                            <div class='product-img'>
-                                <a href="#"><img src="{{asset('images/popular1.png')}}"></a>
-                            </div>
-                            <div class='description'>
-                                <a href="#"><h5 class='title'>LEGO Ninjago Movie 70620, 5041 дет.</h5></a>
-                                <p class='price'> 968 0000</p>
-                            </div>
-                            <button class="btn delete-btn"><i class="mbexit_mobile"></i></button>
-                        </li>
+            <li id="compareCard">
+                <a href="#" id="dropdownComparison" class="dropdownToggle" > <i class="mbcompare"><span class=""></span></i> @lang('menu.compare')</a>
+                <div class="compare-items" id="compareItems" >
+                    <ul class="selected-items overflow-auto" id="compareSuccessItems">
 
                     </ul>
-                    <div class="bottom-btn">
+                    <div class="bottom-btn" id="compareBtn">
                         <button class="btn bold switch-to-compare">
-                            @lang('frontend.compare_products')
+                                @lang('frontend.compare_products')
                         </button>
                     </div>
                 </div>
@@ -78,16 +38,15 @@
             <li>
                 @include('cart.header-show')
             </li>
-
+            <li>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ Auth::user()->favorites()->count() }}@endif</span></i> @lang('menu.favorites')</a>
+            </li>
 
             @guest
             <li>
                 <a href="{{ route('login') }}" class="account bold dropdownToggle"><i class="mbaccount"></i>@lang('menu.account')</a>
             </li>
             @else
-                <li>
-                    <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">{{ Auth::user()->favorites()->count() }}</span></i> @lang('menu.favorites')</a>
-                </li>
 
                 <li>
                 <a id="navbarDropdown" class="nav-link dropdown-toggle bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,11 +56,11 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('user.profile') }}">
 
-                        {{ __('Profile') }}
+                        {{ trans('auth.profile') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('user.favorites') }}">
 
-                        {{ __('Favorites') }}
+                        {{ trans('auth.favorites') }}
                     </a>
 
                     @if(Auth::user()->isUser() && Auth::user()->isManagerRoleRequested())
@@ -119,7 +78,7 @@
                     <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        {{ trans('auth.logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

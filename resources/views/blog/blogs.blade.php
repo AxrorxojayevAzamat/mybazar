@@ -5,7 +5,10 @@
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/blog-news.css')}}"> --}}
 @endsection
-
+@section('banner')
+    <!-- Slide banner -->
+    @include ('layouts.slide-banner-catalog')
+@endsection
 @section('body')
     <!-- blog-news btn -->
     @include('blog._blog-news-btn')

@@ -43,9 +43,9 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\'`‘]+$/u'],
-            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/u'],
-            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d]+$/'],
+            'name_uz' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s\'`‘]+$/u'],
+            'name_ru' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/u'],
+            'name_en' => ['required', 'string', 'max:255', 'regex:/^[\w\d\s]+$/'],
             'description_uz' => 'nullable|string',
             'description_ru' => 'nullable|string',
             'description_en' => 'nullable|string',

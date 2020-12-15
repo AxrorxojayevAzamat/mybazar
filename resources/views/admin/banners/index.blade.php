@@ -14,7 +14,6 @@
                         <tr>
                             <th>{{ trans('adminlte.image') }}</th>
                             <th>{{ trans('adminlte.title') }}</th>
-                            <th>{{ trans('adminlte.description') }}</th>
                             <th>{{ trans('adminlte.url') }}</th>
                             <th>{{ trans('adminlte.slug') }}</th>
                             <th>{{ trans('adminlte.author') }}</th>
@@ -32,7 +31,6 @@
                                 @endif
                             </td>
                             <td><a href="{{ route('admin.banners.show', $banner) }}">{{ $banner->title }}</a></td>
-                            <td>{{ $banner->description }}</td>
                             <td>{{ $banner->url }}</td>
                             <td>{{ $banner->slug }}</td>
                             <td>

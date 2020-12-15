@@ -1,5 +1,7 @@
 <section>
     <div class="full-banner2">
-        <img src="{{asset('images/fullbanner2.jpg')}}" alt="">
+        @if ($longBanner2)
+            <a href="{{ $longBanner2->url }}"><img src="{{ $longBanner2->fileCustom }}" alt=""></a>
+        @endif
     </div>
 </section>

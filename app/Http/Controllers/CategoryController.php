@@ -6,8 +6,10 @@ use App\Entity\Banner;
 use App\Entity\Blog\Post;
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Shop\CategoryBrand;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
+use App\Entity\StoreCategory;
 use App\Http\Router\ProductsPath;
 use Illuminate\Http\Request;
 use App\Services\Manage\FilterService;
@@ -25,19 +27,27 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $rootCategories = Category::where(['parent_id' => null])->get();
+        $categories = Category::where(['parent_id' => null])->get();
+        $query = Product::orderByDesc('created_at');
+        $parentCategory = null;
+        $rootCategoryShow = false;
+        $posts = Post::published()->orderByDesc('updated_by')->get();
+        $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
+        $banner = $banners->isNotEmpty() ? $banners->random() : null;
+        $brands = Brand::orderByDesc('created_at')->limit(24)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
+        $newProducts = $query->limit(12)->where(['new' => true])->get();
 
-        $brands = Brand::all();
-        $stores = Store::all();
 
+        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'rootCategoryShow', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts'));
 
-        return view('catalog.catalog-section', compact('rootCategories', 'brands', 'stores'));
     }
 
     public function show(Request $request, ProductsPath $path)
     {
         $category = $path->category;
-        if (!$category->children->isEmpty()) {
+        if ($category->children->isEmpty()) {
             return $this->childCategoryShow($request, $category);
         }
 
@@ -46,38 +56,95 @@ class CategoryController extends Controller
 
     private function parentCategoryShow(Request $request, Category $category)
     {
-        $children = $category->children()->get()->toTree();
-
+        $categories = $category->children()->get()->toTree();
+        $parentCategory = $category->parent;
+        $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
-        $banners = Banner::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
+        $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
         $banner = $banners->isNotEmpty() ? $banners->random() : null;
-        unset($banners);
+        $brands = Brand::orderByDesc('created_at')->limit(24)->get();
+        $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
+        $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
+        $newProducts = $query->limit(12)->where(['new' => true])->get();
+        $rootCategoryShow = true;
 
-        return view('catalog.catalog-section', compact('category', 'children', 'posts', 'banner'));
+
+        return view('catalog.catalog-section', compact('categories', 'parentCategory', 'rootCategoryShow', 'category', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
+
     }
 
     private function childCategoryShow(Request $request, Category $category)
     {
-        $categoryIds = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
 
-        $brands = $this->filterService->brandByCategoryId($categoryIds);
-        $stores = $this->filterService->storeByCategoryId($categoryIds);
-        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryIds);
+        $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
+        $parentCategory = $category->parent()->get()->toTree();
+//        dd($parentCategory);
+        $products = Product::whereIn('main_category_id', $categoryId)->get();
+        $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
 
-        $query = $this->filterService->productByCategoryId($categoryIds, $request);
+        if($request->has('brands') and $request->brands !== null){
+            $products = $products->whereIn('brand_id', $request->brands);
+        }
 
-        $products = $query->paginate(20);
-        $min_price = Product::select('price_uzs')->min('price_uzs');
-        $max_price = Product::select('price_uzs')->max('price_uzs');
+        if ($request->has('stores') and $request->stores !== null){
+            $products = $products->whereIn('store_id', $request->stores);
+        }
+
+        if ($request->has('min_price') and $request->min_price !== null){
+            $products = $products->where('price_uzs', '>=', $request->min_price);
+        }
+
+        if ($request->has('max_price') and $request->max_price !== null){
+            $products = $products->where('price_uzs', '<=', $request->max_price);
+        }
+
+        if (isset($request->order)){
+            if (session()->has('order_catalog') and session('order_catalog') == 'desc'){
+                $products = $products->whereIn('main_category_id', $categoryId)->sortBy($request->order, SORT_NATURAL, false);
+                session(['order_catalog' => 'asc']);
+            }else{
+                $products = $products->whereIn('main_category_id', $categoryId)->sortBy($request->order, SORT_NATURAL, true);
+                session(['order_catalog' => 'desc']);
+            }
+        }
+        $min_price = 0;
+        $max_price = 1;
         $ratings = [];
-        foreach($products as $i => $product) {
+        $products_id = [];
+
+        foreach ($products as $i => $product){
+            if ($min_price === 0) {
+                $min_price = $product->price_uzs;
+            } elseif ($min_price > $product->price_uzs) {
+                $min_price = $product->price_uzs;
+            } elseif ($max_price < $product->price_uzs) {
+                $max_price = $product->price_uzs;
+            }
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
             ];
+
+            $products_id[$i] = $product->id;
+
         }
 
-        return view('catalog.catalog', compact('category', 'products', 'brands', 'stores', 'groupModifications', 'min_price', 'max_price', 'ratings'));
+        $brandIds = $products->pluck('brand_id')->toArray();
+        $brands = Brand::whereIn('id', $brandIds)->get();
+
+        $storeIds = $products->pluck('store_id')->toArray();
+        $stores = Store::whereIn('id', $storeIds)->get();
+//        dd($min_price);
+
+        $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
+
+//        dd($groupModifications);
+
+
+
+
+        return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1'));
     }
 
 }

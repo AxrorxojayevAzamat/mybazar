@@ -10,6 +10,9 @@ return [
     'clear_list' => 'Clear list',
     'go_to_cart' => 'Go to cart',
     'cart_none' => 'You have not saved anything to your cart yet',
+    'compare_none' => 'You have not saved anything in your compare cart yet',
+    'compare_full' => 'You can compare only 3 products',
+    'compare_not_fit' => 'For comparing products categories must be the same',
 
     'color' => 'Color',
     'price' => 'Price',
@@ -27,9 +30,9 @@ return [
     'number_found_product' => 'For << :query >> query found :result results in :category categories',
 
     'brand' => 'Brand',
-    'stores' => [
-        'index' =>'stores page',
-        'show' =>'store'
+    'store' => [
+        'index' =>'Stores page',
+        'show' =>'Store'
     ],
     'all_categories' => 'All categories',
     'discount_upper' => 'DISCOUNT',
@@ -70,7 +73,7 @@ return [
         'auth' => 'Login or register',
         'mail' => 'Login or register',
         'sms' => 'Login or register',
-        'blogs' => 'Blogs',
+        'blogs' => 'Blog',
         'brands' => 'Brands',
         'cart' => 'Cart',
         'checkout' => 'Checkout',
@@ -82,7 +85,7 @@ return [
         'popular' => 'Popular',
         'newest' => 'New products',
         'discounts' => 'Sales',
-        'shops' => 'Shops',
+        'shops' => 'Stores',
         'videos' => 'Video Blog',
         'search' => 'Search',
     ],
@@ -93,11 +96,11 @@ return [
         'discount' => 'Discount',
         'discount_stock' => 'Discount and Stock',
         'top_brands' => 'Top brands',
-        'blogs' => 'Blogs',
+        'blogs' => 'Blog',
         'videos' => 'Video Blog',
         'delivery' => 'Delivery',
         'business' => 'For Business',
-        'shops' => 'Shops',
+        'shops' => 'Stores',
         'pay' => 'Payment',
     ],
 
@@ -164,7 +167,7 @@ return [
         'payment' => 'Payment',
         'btn1' => 'Courier delivery',
         'p1' => 'As Michael Mescon points out, community incentives are reversing complex rankings',
-        'btn2' => 'Delivery to shops',
+        'btn2' => 'Delivery to stores',
         'p2' => 'The product life cycle induces a corporate identity. <br>
                                  The competitor is competitive. PR, to summarize the above examples, neutralizes activity monitoring.',
         'btn3' => 'JSC "Post of Uzbekistan"',
@@ -219,7 +222,7 @@ return [
     'title' => [
         'single_blog_page' => 'Single blog page',
         'dashboard' => 'Dashboard',
-        'blogs_page' => 'Blogs page',
+        'blogs_page' => 'Blog page',
         'single_news_page' => 'Single news page',
         'brands' => 'Brands',
         'brand_view' => 'Brand view',
@@ -233,8 +236,8 @@ return [
         'sms_page' => 'SMS page',
         'sales_page' => 'Sales page',
         'sales_view' => 'Sales view',
-        'shop_view' => 'Shop view',
-        'shops_page' => 'Shops page',
+        'shop_view' => 'Store view',
+        'shops_page' => 'Stores page',
         'delivery_page' => 'Delivery page',
         'home_page' => 'Home page',
         'auth_page' => 'Auth page',
@@ -245,9 +248,10 @@ return [
         'video_blog' => 'Video blog',
     ],
 
-    'blogs' => 'Blogs',
+    'blogs' => 'Blog',
     'videos' => 'Videos',
-    'search_blogs' => 'Search blogs',
+    'stores' => 'Stores',
+    'search_blogs' => 'Search blog',
     'search_videos' => 'Search videos',
     'show_more' => 'Show more',
 
@@ -263,5 +267,6 @@ return [
     'profile' => 'Profile',
 
     'products' => 'Products',
+    'ltd' => 'LTD',
 
 ];

@@ -92,7 +92,7 @@
                     <div class="form-group">
                         {!! Form::label('category_id', trans('adminlte.category.name'), ['class' => 'col-form-label']); !!}
                         {!! Form::select('category_id', $categories, old('category_id', $banner ? $banner->category_id : null),
-                        ['class'=>'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        ['class'=>'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => '', 'required' => true]) !!}
                         @if ($errors->has('category_id'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                         @endif
@@ -106,6 +106,17 @@
                         ['class'=>'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'required' => true]) !!}
                         @if ($errors->has('status'))
                             <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                        {!! Form::label('type', trans('adminlte.type'), ['class' => 'control-label']) !!}
+                        {!! Form::select('type', \App\Entity\Banner::typeList(), old('type', $banner ? $banner->type : null),
+                        ['class'=>'form-control' . ($errors->has('type') ? ' is-invalid' : ''), 'required' => true]) !!}
+                        @if ($errors->has('type'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('type') }}</strong></span>
                         @endif
                     </div>
                 </div>

@@ -270,7 +270,10 @@ class Product extends BaseModel
     {
         return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
-
+    public function modificationsForProduct($id)
+    {
+        return Modification::where(['product_id' => $this->id])->where(['characteristic_id' => $id ])->get();
+    }
     ###########################################
 
 
@@ -317,37 +320,34 @@ class Product extends BaseModel
         return $this->hasMany(Photo::class, 'product_id', 'id')->orderBy('sort');
     }
 
-    public function mainValues()
+    public function allCharacteristics()
     {
-        return $this->values()->where('main', true);
+        return $this->characteristics();
     }
 
-    public function values()
+    public function characteristics()
     {
-        return $this->hasMany(Value::class, 'product_id', 'id')->orderBy('sort');
+        return $this->hasMany(CharacteristicCategory::class, 'category_id', 'main_category_id');
     }
 
     public function modifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')->orderBy('sort');
+        return $this->hasMany(Modification::class,'product_id','id')->orderBy('sort');
     }
 
     public function valueModifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_VALUE)->orderBy('sort');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id')->orderBy('sort');
     }
 
-    public function colorModifications()
+    public function colorModifications($id)
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_COLOR)->orderBy('sort');
+        return Modification::where(['product_id' => $this->id])->where(['characteristic_id' => $id ])->get();
     }
 
     public function photoModifications()
     {
-        return $this->hasMany(Modification::class, 'product_id', 'id')
-            ->where('type', Modification::TYPE_PHOTO)->orderBy('sort');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id')->orderBy('sort');
     }
 
     public function productCategories()

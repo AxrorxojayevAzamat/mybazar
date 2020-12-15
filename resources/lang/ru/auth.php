@@ -78,4 +78,8 @@ return [
     'phone_already_verified' => 'Ваш номер телефона уже подтвержден.',
     'email_already_added' => 'Электронный адрес уже добавлен.',
     'phone_already_added' => 'Номер телефона уже добавлен.',
+
+    'profile' => 'Профиль',
+    'favorites' => 'Избранное',
+    'logout' => 'Выйти',
 ];

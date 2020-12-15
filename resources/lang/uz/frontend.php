@@ -10,6 +10,9 @@ return [
     'clear_list' => 'Ro`yxatni tozalamoq',
     'go_to_cart' => 'Savatga o`tish',
     'cart_none' => 'Siz hali savatingizga hech narsa saqlamadingiz',
+    'compare_none' => 'Siz hali solishtiruv savatchasiga hech narsa saqlamagansiz',
+    'compare_full' => 'Sizda faqat 3 ta mahsulotni solishtirish imkoniyati bor',
+    'compare_not_fit' => 'Solishtirish uchun maxsulotlarning kategoriyasi bir xil bo`lishi kerak',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -62,18 +65,23 @@ return [
         'write' => 'Sharh yozmoq',
     ],
 
+    'store' => [
+        'index' =>'Do\'konlar sahifasi',
+        'show' =>'Do\'kon'
+    ],
+
     'breadcrumb' => [
         'home' => 'Bosh sahifa',
         'auth' => 'Kirish yoki ro‘yxatdan o‘tish',
         'mail' => 'Kirish yoki ro‘yxatdan o‘tish',
         'sms' => 'Kirish yoki ro‘yxatdan o‘tish',
-        'blogs' => 'Bloglar',
+        'blogs' => 'Blog',
         'brands' => 'Brendlar',
         'cart' => 'Savat',
         'checkout' => 'Buyurtma',
         'pay' => 'To‘lov usuli',
         'categories' => 'Turkumlar',
-        'compare' => 'Solishtirish',
+        'compare' => 'Taqqoslash',
         'delivery' => 'Yetkazib berish usullari',
         'favorites' => 'Sevimlilar',
         'popular' => 'Mashxurlar',
@@ -90,7 +98,7 @@ return [
         'discount' => 'Chegirmalar',
         'discount_stock' => 'Chegirma va Aksiya',
         'top_brands' => 'Top brandlar',
-        'blogs' => 'Bloglar',
+        'blogs' => 'Blog',
         'videos' => 'Videolar',
         'delivery' => 'Yetkazib berish',
         'business' => 'Biznes uchun',
@@ -226,7 +234,7 @@ return [
         'pay_page' => 'Tekshirish sahifasi',
         'catalog_page' => 'Katalog sahifasi',
         'catalog_section_page' => 'Katalog bo\'limi sahifasi',
-        'compare_page' => 'Solishtirish sahifasi',
+        'compare_page' => 'Taqqoslash sahifasi',
         'sms_page' => 'SMS sahifasi',
         'sales_page' => 'Sotish sahifasi',
         'sales_view' => 'Sotishni ko\'rish',
@@ -242,7 +250,7 @@ return [
         'video_blog' =>  'Video blog',
     ],
 
-    'blogs' => 'Bloglar',
+    'blogs' => 'Blog',
     'videos' => 'Videolar',
     'search_blogs' => 'Bloglarni qidirish',
     'search_videos' => 'Videolarni qidirish',
@@ -260,5 +268,6 @@ return [
     'profile' => 'Profil',
 
     'products' => 'Tovarlar',
+    'ltd' => 'MChJ',
 
 ];

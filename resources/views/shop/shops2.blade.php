@@ -11,7 +11,13 @@
                     </div>
                 </div>
                 <div class="single-img">
-                    <a href="#"><img src="{{ $shop->mainPhoto }}" alt=""></a>
+                    <a href="#">
+                        @if ($shop->mainPhoto)
+                            <div class="big-image">
+                                <img src="{{ $shop->mainPhoto->fileOriginal }}" style="width:100%">
+                            </div>
+                        @endif</a>
+                    </a>
                 </div>
             </div>
         @endforeach
@@ -28,7 +34,11 @@
                 ?>
                 <div class="palette-items">
                     <div class="product-img">
-                        <img src="{{ $shop->mainPhoto }}" alt="">
+                        @if ($shops2ThreeItem->mainPhoto)
+                            <div class="big-image">
+                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
+                            </div>
+                        @endif
                         <span class="sale small">
                     <span class="number">-29</span>
                     % СКИДКА
@@ -49,7 +59,7 @@
                             <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
                         </div>
                         <div class="item-action-icons">
-                            <div class="libra"><i class="mbtocompare"></i></div>
+                            <div class="libra" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
                             <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
                             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                         </div>
@@ -84,8 +94,13 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
+
                 if (data.message == 'success'){
                     localStorage.removeItem('product_id');
+                    let containerCounter = $('.counter');
+                    console.log(counterCartNumber)
+                    counterCartNumber+=1;
+                    containerCounter.text(counterCartNumber);
                     console.log('exists');
                 }else{
                     nonRegisteredUsersCart(id);
@@ -117,6 +132,8 @@
                 cart_products += product_id;
                 cart_products += id + ',';
                 localStorage.setItem('product_id', cart_products + '');
+                let containerCounter = $('.counter');
+                containerCounter.text(cart_product_check.length);
             } else {
                 console.log('exist');
             }
