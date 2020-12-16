@@ -259,6 +259,7 @@ button.owl-next span{
             margin:0;
             height:600px;
             padding:10px 20px 5px;
+            cursor: pointer;
             @include border(1px, $item_border_color, 0);
             background:white;
             .product-img{
@@ -534,6 +535,7 @@ nav ol.breadcrumb{
     .item{
         height:390px;
         width:100%;
+        cursor: pointer;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $item_border_color, 0);
         background:white;

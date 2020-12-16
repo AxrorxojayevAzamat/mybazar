@@ -7,6 +7,7 @@
     margin:2% 0;
 }
 .all-filtered-catalog-section{
+    width: 100%;
     .types-of-media{
         @include displayFlex(space-between, row, space-between);
         flex-wrap:wrap;
@@ -37,7 +38,7 @@
                         min-width:100px;
                         margin:auto 0;
                     }
-                }  
+                }
                 h6.title{
                     @include fontBold;
                     font-size:24px;
@@ -48,10 +49,15 @@
             }
         }
     }
+    div {
+        img {
+            width: 100%;
+        }
+    }
     .all-filtered-blogs{
         @include displayFlex(flex-start, column, flex-start);
         a{
-            width:100%; 
+            width:100%;
             margin:1% 0;
             &:hover{
                 cursor:pointer;
@@ -111,6 +117,16 @@
                 }
             }
         }
-        
+
+    }
+}
+@media all and (max-width: 800px) {
+    .all-filtered-catalog-section {
+        .types-of-media {
+            a {
+                width: 49%;
+                height: 240px;
+            }
+        }
     }
 }
