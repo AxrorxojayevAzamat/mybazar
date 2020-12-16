@@ -1176,6 +1176,19 @@ form#search-bar.search-bar{
         }
     }
 }
+.registration, .reset {
+    input {
+        border-radius: 25px;
+    }
+    button {
+        border-radius: 25px;
+        background-color: #0042ff;
+        border-color: #0042ff;
+    }
+    .align-item-center {
+        align-items: center;
+    }
+}
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{

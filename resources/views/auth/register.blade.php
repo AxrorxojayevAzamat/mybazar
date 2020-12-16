@@ -6,7 +6,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center my-5">
-            <div class="col-md-10">
+            <div class="registration col-md-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group row">
@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label for="email_or_phone"
                                class="col-md-4 col-form-label text-md-right">@lang('auth.email_or_phone')</label>
-                        <div class="col-md-6">
+                        <div class="col-md-6 d-flex align-item-center">
                             <input id="email_or_phone"
                                    class="form-control @error('email_or_phone') is-invalid @enderror"
                                    name="email_or_phone" value="{{ old('email_or_phone') }}" required
