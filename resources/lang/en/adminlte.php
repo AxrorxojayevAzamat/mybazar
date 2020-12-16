@@ -105,9 +105,14 @@ return [
     'birth_date' => 'Birth date',
     'gender' => 'Gender',
     'address' => 'Address',
+    'region' => 'Region',
     'male' => 'Male',
     'female' => 'Female',
     'icon' => 'Icon',
+    'change_personal_info' => 'Change personal data',
+    'personal_info' => 'Personal data',
+    'passport_info' => 'Passport data',
+    'cart_info' => 'Card data',
 
     'photo' => [
         'plural' => 'Photos',
@@ -245,4 +250,21 @@ return [
         'parent' => 'Parent page',
         'children' => 'Child pages',
     ],
+
+    'regions' => [
+        'tashkent_city' => 'Tashkent City',
+        'karakalpak' => 'The Republic of Karakalpakstan',
+        'andijan' => 'Andijan region',
+        'bukhara' => 'Bukhara region',
+        'djizzakh' => 'Djizzakh region',
+        'kashkadarya' => 'Kashkadarya region',
+        'navoiy' => 'Navoiy region',
+        'namangan' => 'Namangan region',
+        'samarkand' => 'Samarkand region',
+        'surkhandarya' => 'Surkhandarya region',
+        'sirdarya' => 'Sirdarya region',
+        'tashkent' => 'Tashkent region',
+        'fergana' => 'Fergana region',
+        'khorezm' => 'Khorezm region',
+    ]
 ];
