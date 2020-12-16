@@ -21,7 +21,11 @@
                         </div>
                     </div>
                     <input type="submit" id="submit" value="@lang('frontend.pages.get_sms_code')">
+                    <div class="login_by_password">
+                        <a href="#">@lang('frontend.pages.login_by_password')</a>
+                    </div>
                 </form>
+
                 <div class="sign-in-through">
                     <label for="social-accounts">@lang('frontend.pages.login_by')</label>
                     <div class="social-app-icons" id="social-accounts">
@@ -33,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            <a href="#">@lang('frontend.pages.login_by_password')</a>
         </div>
     </section>
 @endsection

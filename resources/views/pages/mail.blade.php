@@ -34,6 +34,9 @@
                             <label class="form-check-label" for="exampleCheck1">@lang('frontend.pages.remember')</label>
                         </div>
                     </div>
+                    <div class="login_by_password">
+                        <a href="#">@lang('frontend.pages.login_by_password')</a>
+                    </div>
                 </form>
                 <div class="sign-in-through">
                     <label for="social-accounts">@lang('frontend.pages.login_by')</label>
@@ -46,7 +49,6 @@
                     </div>
                 </div>
             </div>
-            <a href="#">@lang('frontend.pages.login_by_password')</a>
         </div>
     </section>
 @endsection
