@@ -8,12 +8,14 @@
 
 @section('body')
 @section('banner')
-    @if(empty($longBanner1))
-        @include ('layouts.full-banner1', ['longBanner1' => $banner])
-    @else
-        @include ('layouts.full-banner1')
+{{--    @if(empty($longBanner1))--}}
+{{--        @include ('layouts.full-banner1', ['longBanner1' => $banner])--}}
+{{--    @else--}}
+{{--        @include ('layouts.full-banner1')--}}
 
-    @endif
+{{--    @endif--}}
+    @include ('layouts.slide-banner-catalog')
+
 @endsection
 
 <section>

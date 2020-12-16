@@ -6,7 +6,7 @@
         <div class="outter-products">
             <div class="similar-p owl-carousel owl-theme">
                 @foreach($similarProducts as $product)
-                    <div class="item" >
+                    <div class="item">
                         <div class="product-img">
                             @if ($product->main_photo_id)
                                 <a href="{{ route('products.show', $product) }}">

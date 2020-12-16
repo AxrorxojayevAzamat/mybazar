@@ -20,8 +20,10 @@ class BlogController extends Controller
 //        $categories = \App\Entity\Category::get();
 //        $news = News::orderByDesc('created_at')->where(['is_published' => true])->with(['category'])->paginate(20);
         $categories = Category::get();
+        $parentCategory = null;
+        $rootCategoryShow = false;
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
-        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts'));
+        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts', 'parentCategory', 'rootCategoryShow'));
     }
 
     public function show(Post $blog)

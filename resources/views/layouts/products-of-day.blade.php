@@ -8,7 +8,8 @@
                 $className = '';
             }
             ?>
-            <div class="product-item" >
+{{--                onclick="location.href='{{ route('products.show', $product) }}'"--}}
+            <div class="product-item">
                 <div class="top">
                     <h5 class="bold title">@lang('frontend.product.day_product')</h5>
                     <div class="time">
