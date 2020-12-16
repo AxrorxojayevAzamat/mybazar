@@ -129,8 +129,7 @@
                     </div>
 
                     <!-- information -->
-                    <div class="all-information" id="additionalInfo">
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <div class="all-information" id="additionalInfo"><ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="pills-personal-info-tab" data-toggle="pill"
                                    href="#pills-personal" role="tab" aria-controls="pills-home"
