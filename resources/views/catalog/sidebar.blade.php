@@ -36,19 +36,18 @@
     @if (!empty($groupModifications))
         @php($modificationArray = request('modification'))
         @foreach($groupModifications as $i => $modifications)
-            @php($modificationValues = explode(',', $modificationArray[$modifications[0]->characteristic_id]))
             <button type="button" class="btn accordion active">{{ $modifications[0]->characteristic->name }}</button>
             <div id="filter2" class="panel">
                 @foreach ($modifications as $j => $modification)
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input modifications-checkbox-{{ $i }}" id="modifications-checkbox-{{ $i }}-{{ $j }}"
-                               value="{{ $modification->value }}" @if (in_array($modification->value, $modificationValues)) checked @endif>
+                               value="{{ $modification->value }}" name="modification[]" @if (request('modification') !== null and in_array($modification->value, request('modification'))) checked @endif>
                         <label class="custom-control-label" for="modifications-checkbox-{{ $i }}-{{ $j }}">{{ $modification->value }}</label>
                     </div>
                 @endforeach
                 <a class="show-more" href="#">@lang('frontend.show_more')</a>
             </div>
-            <input type="hidden" name="modification[{{ $modification->characteristic_id }}]" id="modifications-{{ $i }}-hidden-input">
+{{--            <input type="hidden" name="modification[{{ $modification->characteristic_id }}]" id="modifications-{{ $i }}-hidden-input">--}}
         @endforeach
     @endif
 

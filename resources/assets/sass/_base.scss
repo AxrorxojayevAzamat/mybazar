@@ -61,7 +61,7 @@ h4.title{
     &.video-blog, &.catalog-view, &.pay-body,
      &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
      &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
-     &.compare{
+     &.compare, &.profile, &.profile{
         padding:1% 10%;
     }
 }
@@ -103,6 +103,21 @@ p.sub-title{
             color:$link_hover_color;
         }
     }
+}
+input#submit{
+    background:$item_price_color;
+    color:white;
+    font-size:16px;
+    padding:15px 0;
+    width:100%;
+    white-space:nowrap;
+    text-align:center;
+    border-radius:23px;
+    margin:15% auto 0;
+    font-weight:bold;
+}
+.nice-select ul.list{
+    width:100%;
 }
 .btn-yellow{
     border-radius:23px;
@@ -226,6 +241,7 @@ button.owl-next, .owl-carousel .owl-nav button.owl-next{
 .owl-carousel{
     .owl-stage-outer{
         height:100%;
+        padding:2% 0;
     }
     .owl-stage{
         height:100%;
@@ -242,7 +258,7 @@ button.owl-next span{
     font-size:45px;
     line-height:15px;
     height:22px;
-}
+} 
 .outter-products{
     width:100%;
     height:610px;
@@ -254,14 +270,19 @@ button.owl-next span{
         margin:0 auto;
         position:absolute;
         left:10%;
-        top:-3%;
+        top:-6%;
         .item{
             margin:0;
-            height:600px;
+            height:100%;
             padding:10px 20px 5px;
             cursor: pointer;
             @include border(1px, $item_border_color, 0);
             background:white;
+            z-index:2;
+            &:hover{
+                transform: scale(1.05);
+                transition:0.4s ease;
+            }
             .product-img{
                 height:45%;
                 position:relative;
@@ -1009,18 +1030,6 @@ form.big-filter-without-title-checkbox{
 //         }
 
 //     }
-//     input#submit{
-//         background:$item_price_color;
-//         color:white;
-//         font-size:16px;
-//         padding:15px 0;
-//         width:100%;
-//         white-space:nowrap;
-//         text-align:center;
-//         border-radius:23px;
-//         margin:15% auto 0;
-//         font-weight:bold;
-//     }
 //     .filter-item{
 //         position:relative;
 //         width:100%;
@@ -1043,18 +1052,6 @@ form.big-filter-with-listof-checkbox{
     margin-top:5%;
     text-align: start;
     @include displayFlex(flex-start, column, flex-start);
-    input#submit{
-        background:$item_price_color;
-        color:white;
-        font-size:16px;
-        padding:15px 0;
-        width:100%;
-        white-space:nowrap;
-        text-align:center;
-        border-radius:23px;
-        margin:15% auto 0;
-        font-weight:bold;
-    }
     .custom-control{
         margin:2% 0;
     }
@@ -1211,7 +1208,7 @@ form.small-filter{
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
          &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
-         &.brand-view, &.compare{
+         &.brand-view, &.compare, &.profile{
             padding:1% 8%;
         }
     }
@@ -1225,7 +1222,7 @@ form.small-filter{
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
          &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
-         &.compare, &.brand-view{
+         &.compare, &.brand-view, &.profile{
             padding:1% 5%;
         }
     }
@@ -1346,7 +1343,7 @@ form.small-filter{
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
          &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
-         &.compare, &.brand-view{
+         &.compare, &.brand-view , &.profile{
             padding:1.5% 5%;
         }
     }
@@ -1387,7 +1384,7 @@ form.small-filter{
         &.video-blog, &.catalog-view, &.pay-body,
          &.sales-body, &.recently-viewed, &.brands-alphabet, &.shops-body,
          &.u-will-also-like, &.other-products-of-this-seller, &.similar-products,
-         &.compare, &.brand-view{
+         &.compare, &.brand-view, &.profile{
             padding:2% 5%;
         }
     }

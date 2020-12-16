@@ -1,0 +1,168 @@
+.outter-profile{
+    background:white;
+    padding:2% 10%;
+    .inner-profile{
+        .side-menu{
+            ul{
+                li{
+                    list-style: none;
+                    padding:10px 0;
+                    font-size:18px;
+
+                }
+            }
+        }
+        .content{
+            .profile-info{
+                font-size:18px;
+                p{
+                    margin:10px 0;
+                }
+                span{
+                    margin:10px 0;
+                }
+                input#submit{
+                    padding:10px 40px;
+                    width:inherit;
+                    margin:0 0 2% 0;
+                    font-size:18px;
+                }
+            }
+            button.add-card, button.remove-card, button.edit-personal-information {
+                background:$item_price_color;
+                color:white;
+                font-size:16px;
+                padding:10px 60px;
+                white-space:nowrap;
+                text-align:center;
+                border-radius:23px;
+                margin:0 0 3%;
+                font-weight:bold;
+
+            }
+            button.remove-card{
+                background:white;
+            }
+            .edit-profile-info{
+                font-size:18px;
+                label{
+                    font-size:14px;
+                }
+                .input{
+                    width:100%; 
+                    @include border(1px,$link_hover_color, 20px );
+                    margin-bottom:5%;
+                    input{
+                        height:45px;
+                        border:none;
+                        border-radius:18px;
+                        color:$grey_text2;
+                        font-size:18px;
+                        &::placeholder{
+                            color:$grey_text2;
+                            font-size:18px;
+                        }
+                    }
+                }
+                .nice-select{
+                    border-radius:20px;
+                    margin-bottom:5%;
+                }
+                input#submit{
+                    margin-top:5%;
+                }
+            }
+            .all-information{
+                h6.title{
+                    font-size:24px;
+                    font-weight:700;
+                }
+                .nav-pills .nav-link.active{
+                    background-color:white;
+                    color:$item_price_color;
+                }
+                article{
+                    margin-bottom:3%;
+                    label{
+                        display:block;
+                    }
+                    .upload-file{
+                        position:relative;
+                        width:100%;
+                        min-height:50px;
+                        margin-bottom:2%;
+                        label{
+                            z-index: 1;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            width: fit-content;
+                            height:50px;
+                            overflow: hidden;
+                            /*padding: 0 0.5rem;*/
+                            cursor: pointer;
+                            transition: transform 0.4s;
+                            p{
+                                font-weight: 600;
+                                font-size: 16px ;
+                                line-height: 30px;
+                                padding:10px 50px;
+                                margin:0;
+                                align-items: center;
+                                text-align: center;
+                                color: white;
+                                background:$item_price_color;
+                                border-radius:23px;
+                            }
+                            img{
+                                width:20px;
+	                            margin:5px auto 10px;
+                            }
+                        }
+                        input[type="file"]{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 2px;
+                            height: 2px;
+                            overflow: hidden;
+                            opacity: 0;
+                        }
+                    }
+                }
+                #result1, #result2{
+                    display:flex;
+                    align-items: flex-end;
+                    div{
+                        margin-right:10px;
+                    }
+                    img{
+                        width:100px;
+                        display:inline-block;
+                    }
+                }
+                button.remove-card{
+                    color:black;
+                    border:2px solid $item_price_color;
+
+                }
+            }
+        }
+    }
+}
+
+
+@media all and (max-width:1522px){
+    .outter-profile{
+        padding:2% 8%;
+    }
+}
+@media all and (max-width:1400px){
+    .outter-profile{
+        padding:2% 5%;
+    }
+}
+
+

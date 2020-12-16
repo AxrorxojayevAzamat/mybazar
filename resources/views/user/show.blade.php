@@ -2,6 +2,221 @@
 
 @section('body')
 
+<section>
+    <div class="h4-title profile">
+        <h4 class="title">Персональный кабинет</h4>
+    </div>
+</section>
+<div class="outter-profile container-fluid">
+        <div class="d-flex flex-row inner-profile">
+            <div class="col-3 justify-content-start side-menu">
+                <ul>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Персональные данные
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Личные данные
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Мои заказы
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Корзина
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Избранные товары
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class=""></i>
+                            Выйти из аккаунта
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 content">
+                <!-- profile info -->
+                <div class="profile-info">
+                <button class="btn edit-personal-information">Изменить личные данные</button>
+                    <div class="row">
+                        <div class="col-3 d-flex flex-column">
+                            <p class="sub-title">Фамилия:</p>
+                            <p class="sub-title">Имя:</p>
+                            <p class="sub-title">Пол:</p>
+                            <p class="sub-title">Дата рождения:</p>
+                            <p class="sub-title">Номер телефона:</p>
+                            <p class="sub-title">Email:</p>
+                        </div>
+                        <div class="col-9 d-flex flex-column">
+                            <span>Абдураззаков</span>
+                            <span>Абдурашид</span>
+                            <span>Мужской</span>
+                            <span>11.02.1992</span>
+                            <span>+998 99 812 34 56</span>
+                            <span>example@mail.uz</span>
+                        </div>
+                    </div>
+
+                    <!-- edit profile info -->
+                    <div class="edit-profile-info">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-5 d-flex flex-column">
+                                    
+                                        <label for="last-name">Фамилия</label>
+                                        <div class="input">
+                                            <input type="text" id="last-name" class="form-control bordered-input"  required placeholder="" >
+                                        </div>
+                                    <label for="first-name">Имя</label>
+                                    <div class="input">
+                                        <input type="text" id="first-name" class="form-control bordered-input"  required placeholder="" >
+                                    </div>
+
+                                    <label for="gender">Пол</label>
+                                    <select id="gender" class="form-select" aria-label="Default select example">
+                                        <option selected>Выберите пол</option>
+                                        <option value="1">Жен</option>
+                                        <option value="2">Муж</option>
+                                    </select>
+                                    <input type="submit" value="Сохранить" id="submit">
+                                </div>
+                                <div class="col-5 d-flex flex-column">
+
+                                    <label class="control-label" for="date">Дата рождения</label>
+                                    <div class="input">
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYY" type="text"/>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+
+                                    <label for="phone-number">Номер телефона</label>
+                                    <div class="input">
+                                        <input type="tel" id="phone-number" class="form-control bordered-input"  required placeholder="" >
+                                    </div>
+
+                                    <label for="email">Email address</label>
+                                    <div class="input">
+                                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- information -->
+                    <div class="all-information">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-personal-info-tab" data-toggle="pill" href="#pills-personal" role="tab" aria-controls="pills-home" aria-selected="true">Личные данные</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-pasport-info-tab" data-toggle="pill" href="#pills-pasport" role="tab" aria-controls="pills-profile" aria-selected="false">Парспортные данные</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-card-info-tab" data-toggle="pill" href="#pills-card" role="tab" aria-controls="pills-contact" aria-selected="false">Данные о карте</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- personal information -->
+                            <div class="tab-pane fade show active" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-info-tab">
+                            <button class="btn edit-personal-information">Изменить личные данные</button>
+                                <div class="row">
+                                    <div class="col-6 d-flex flex-column">
+                                        <div class="row">
+                                            <div class="col-4 d-flex flex-column">
+                                                <p class="sub-title">Регион:</p>
+                                                <p class="sub-title">Город:</p>
+                                                <p class="sub-title">Район:</p>
+                                                <p class="sub-title">Улица:</p>
+                                                <p class="sub-title">Дом/квЖ:</p>
+                                            </div>
+                                            <div class="col-8 d-flex flex-column">
+                                                <span>Ташкентская область</span>
+                                                <span>г. Ташкент</span>
+                                                <span>Юнусабадский</span>
+                                                <span>Амир Темур</span>
+                                                <span>дом 5, кв 42</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 d-flex flex-column">
+                                        <div class="row">
+                                            <div class="col-4 d-flex flex-column">
+                                                <p class="sub-title">Место работы:</p>
+                                                <p class="sub-title">Должность:</p>
+                                                <p class="sub-title">Зарплата:</p>
+                                            </div>
+                                            <div class="col-8 d-flex flex-column">
+                                                <span>Evos</span>
+                                                <span>Оператор</span>
+                                                <span>4 500 000 сум</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- pasport information -->
+                            <div class="tab-pane fade" id="pills-pasport" role="tabpanel" aria-labelledby="pills-pasport-info-tab">
+                                <h6 class="title">Подтвердите личность</h6>
+                                <p>Необходимо, для осуществления покупок в рассрочку в будущем. Информация из паспорта и фото, должны быть читабельны</p>
+                                <br>
+                                <article>
+                                    <p>Фото паспорта с личными данными и прописки </p>
+                                    <div class="upload-file">
+                                        <label  for="files1">
+                                            <p>Нажмите для загрузки</p>
+                                        </label>
+                                        <input id="files1" type="file" multiple/>
+                                    </div>
+                                    <output id="result1" />
+                                </article>
+                                <article>
+                                    <p>Загрузите фото лица на фоне паспорта </p>
+                                    <div class="upload-file">
+                                        <label  for="files2">
+                                            <p>Нажмите для загрузки</p>
+                                        </label>
+                                        <input id="files2" type="file" multiple/>
+                                    </div>
+                                    <output id="result2" />
+                                </article>
+                                <br>
+                            </div>
+                            <!-- card information -->
+                            <div class="tab-pane fade" id="pills-card" role="tabpanel" aria-labelledby="pills-card-info-tab">
+                                <button class="btn add-card">Добавить карту</button>
+                                <div class="row">
+                                    <div class="col-4 d-flex flex-column">
+                                        <p class="sub-title">Тип карты:</p>
+                                        <p class="sub-title">Номер карты:</p>
+                                        <p class="sub-title">Срок действия:</p>
+                                        <p class="sub-title">Банк:</p>
+                                    </div>
+                                    <div class="col-8 d-flex flex-column">
+                                        <span>UZCARD</span>
+                                        <span>8600 0123 4567 8901</span>
+                                        <span>06/24</span>
+                                        <span>Aloqa Bank</span>
+                                    </div>
+                                </div>
+                                <button class="btn remove-card">Удалить карту</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 <div class="d-flex flex-row mb-3">
     <a href="{{ route('user.setting', $user) }}" class="btn btn-primary mr-1">{{ trans('adminlte.edit') }}</a>
     @if (!$user->email || !$user->isEmailVerified())
@@ -135,5 +350,89 @@
     </div>
 </div>
 @endif
+
+<script>
+    window.onload = function(){
+        
+        //Check File API support
+        if(window.File && window.FileList && window.FileReader)
+        {
+            var filesInput1 = document.getElementById("files1");
+            var filesInput2 = document.getElementById("files2");
+            
+            filesInput1.addEventListener("change", function(event){
+                
+                var files = event.target.files; //FileList object
+                var output = document.getElementById("result1");
+                
+                for(var i = 0; i< files.length; i++)
+                {
+                    var file = files[i];
+                    
+                    //Only pics
+                    if(!file.type.match('image'))
+                      continue;
+                    
+                    var picReader = new FileReader();
+                    
+                    picReader.addEventListener("load",function(event){
+                        
+                        var picFile = event.target;
+                        
+                        var div = document.createElement("div");
+                        
+                        div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                "title='" + picFile.name + "'/>";
+                        
+                        output.insertBefore(div,null);            
+                    
+                    });
+                    
+                     //Read the image
+                    picReader.readAsDataURL(file);
+                }                               
+               
+            });
+            filesInput2.addEventListener("change", function(event){
+                
+                var files = event.target.files; //FileList object
+                var output = document.getElementById("result2");
+                
+                for(var i = 0; i< files.length; i++)
+                {
+                    var file = files[i];
+                    
+                    //Only pics
+                    if(!file.type.match('image'))
+                      continue;
+                    
+                    var picReader = new FileReader();
+                    
+                    picReader.addEventListener("load",function(event){
+                        
+                        var picFile = event.target;
+                        
+                        var div = document.createElement("div");
+                        
+                        div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                "title='" + picFile.name + "'/>";
+                        
+                        output.insertBefore(div,null);            
+                    
+                    });
+                    
+                     //Read the image
+                    picReader.readAsDataURL(file);
+                }                               
+               
+            });
+        }
+        else
+        {
+            console.log("Your browser does not support File API");
+        }
+    }
+        
+</script>
 
 @endsection
