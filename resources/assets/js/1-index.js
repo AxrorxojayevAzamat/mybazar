@@ -87,12 +87,11 @@ $(document).ready(function () {
 
 
     $("#dropdownComparison").on("click", function () {
-        $(".cart-items").fadeOut();
-        $(".compare-items").fadeToggle().toggleClass('in');
+        $(".compare-items").fadeIn().addClass('in');
+        
     });
     $("#dropdownCart").on("click", function () {
-        $(".cart-items").fadeToggle().toggleClass('in');
-        $(".compare-items").fadeOut();
+        $(".cart-items").fadeIn().addClass('in');
     });
 
     // click outside compare items
