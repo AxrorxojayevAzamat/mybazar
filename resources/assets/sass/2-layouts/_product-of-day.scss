@@ -81,6 +81,15 @@
                 }
             }
         }
+        div.product-of-day-item {
+            height: 100%;
+        }
+        .item-action-icons {
+            position: absolute;
+            float: right;
+            right: 110px;
+            bottom: 50px;
+        }
     }
     .owl-theme .owl-nav.disabled+.owl-dots{
         display:none;

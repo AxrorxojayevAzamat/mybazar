@@ -33,7 +33,7 @@
 }
 .item-action-icons{
     @include displayFlex(flex-start, row, center);
-    width: 100%;
+    width: min-content;
     //padding: 10px 0;
     // position:absolute;
     bottom:0;
