@@ -5,6 +5,12 @@
     @include displayFlex(space-between, row, center);
     background:white;
     margin-top:30px;
+    .owl-dots{
+        position:absolute;
+        right:10%;
+        top:-2%;
+        margin-top:0;
+    }
     .product-item{
         padding:10px 20px;
         width:100%;
@@ -103,11 +109,17 @@
 @media all and (max-width:1522px){
     #products-of-day{
         padding:0 8%;
+        .owl-dots{
+            right:8%;
+        }
     }
 }
 @media all and (max-width:1400px){
     #products-of-day{
         padding:0 5%;
+        .owl-dots{
+            right:5%;
+        }
         .product-item{
             .product-info{
                     .description{
@@ -146,11 +158,6 @@
                 }
             }
         }
-        .owl-dots{
-            display: block;
-            top:-10px;
-            right:65px;
-        }
     }
 }
 @media all and (max-width:1000px){
@@ -164,7 +171,8 @@
             }
         }
         .owl-dots{
-            right:30px;
+            top:-4%;
+            right:0;
         }
     }
 }
@@ -196,9 +204,6 @@
 
         }
     }
-    .owl-dots{
-        right:20px;
-    }
 }
 @media all and (max-width:500px){
     #products-of-day{
@@ -213,9 +218,9 @@
                 }
             }
         }
-        .owl-dots{
-            right:10px;
-        }
+        // .owl-dots{
+        //     right:10px;
+        // }
     }
 }
 @media all and (max-width:400px){

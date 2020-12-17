@@ -226,17 +226,3 @@
   display: block;
   padding: 6px;
 }
-s__option--highlighted[aria-selected] {
-  background-color: #3875d7;
-  color: white;
-}
-
-.select2-container--classic .select2-results__group {
-  cursor: default;
-  display: block;
-  padding: 6px;
-}
-
-.select2-container--classic.select2-container--open .select2-dropdown {
-  border-color: #5897fb;
-}
