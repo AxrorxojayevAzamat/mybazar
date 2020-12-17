@@ -5,7 +5,7 @@
             <div class="images">
                 @if ($product->mainPhoto)
                     <div class="big-image">
-                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%">
+                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"  id="productMainPhoto">
                     </div>
                 @endif
 
@@ -14,12 +14,12 @@
                     @php($currentSlide = 1)
                     @if ($product->mainPhoto)
                         <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
-                             onclick="currentSlide({{ $currentSlide }})">
+                             onclick='currentSlide({{ $currentSlide }}, "{{ $product->mainPhoto->fileThumbnail }}")'>
                         @php($currentSlide++)
                     @endif
                     @foreach($product->photos as $photo)
                         <img class="demo cursor" src="{{ $photo->fileOriginal }}" style="width:100%"
-                             onclick="currentSlide({{ $currentSlide }})">
+                             onclick='currentSlide({{ $currentSlide }}, "{{ $photo->fileOriginal }}")'>
                         @php($currentSlide++)
                     @endforeach
                 </div>
@@ -242,5 +242,43 @@
         } else {
             localStorage.setItem('product_id', id + ',');
         }
+    }
+
+    //SLIDER
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n, url) {
+        showSlides(slideIndex = n);
+        setImage(url)
+    }
+
+    function setImage(imageUrl) {
+        $('#productMainPhoto').attr('src', `https://shop.sec.uz${imageUrl}`)
+        console.log(`https://shop.sec.uz/${imageUrl}`)
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("big-image");
+        var dots = document.getElementsByClassName("demo");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
     }
 </script>
