@@ -250,11 +250,10 @@ $(document).ready(function () {
                 items: 1
             },
             800: {
-                items: 1,
+                items: 1
             },
             1001: {
-                nav: true,
-                items: 2,
+                items: 2
             },
             1251: {
                 items: 3

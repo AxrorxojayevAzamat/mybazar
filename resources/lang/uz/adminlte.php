@@ -93,7 +93,7 @@ return [
     'date_to' => 'Ohirgi sana',
     'image' => 'Tasviri',
     'poster' => 'Poster',
-    'video' => 'Video fayli',
+    'video' => 'VideoChange personal data fayli',
     'logo' => 'Logotip',
     'files' => 'Fayllar',
     'url' => 'Url',
@@ -105,9 +105,14 @@ return [
     'birth_date' => 'Tug`ilgan sana',
     'gender' => 'Jinsi',
     'address' => 'Manzil',
+    'region' => 'Viloyat',
     'male' => 'Erkak',
     'female' => 'Ayol',
     'icon' => 'Belgi',
+    'change_personal_info' => 'Shaxsiy ma`lumotlarni o`zgartirish',
+    'personal_info' => 'Shaxsiy ma`lumotlar',
+    'passport_info' => 'Passport ma`lumotlari',
+    'cart_info' => 'Karta raqami ma`lumotlari',
 
     'photo' => [
         'plural' => 'Rasm',
@@ -246,4 +251,21 @@ return [
         'parent' => 'Ajdod sahifa',
         'children' => 'Avlod sahifalar',
     ],
+
+    'regions' => [
+        'tashkent_city' => 'Toshkent',
+        'karakalpak' => 'Qoraqalpog’iston Respublikasi',
+        'andijan' => 'Andijon viloyati',
+        'bukhara' => 'Buxoro viloyati',
+        'djizzakh' => 'Jizzax viloyati',
+        'kashkadarya' => 'Qashqadaryo viloyati',
+        'navoiy' => 'Navoiy viloyati',
+        'namangan' => 'Namangan viloyati',
+        'samarkand' => 'Samarqand viloyati',
+        'surkhandarya' => 'Surxondaryo viloyati',
+        'sirdarya' => 'Sirdaryo viloyati',
+        'tashkent' => 'Toshkent viloyati',
+        'fergana' => 'Farg’ona viloyati',
+        'khorezm' => 'Xorazm viloyati',
+    ]
 ];

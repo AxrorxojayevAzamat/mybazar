@@ -188,6 +188,11 @@ Breadcrumbs::register('user.favorites', function (Crumbs $crumbs) {
     $crumbs->push(trans('frontend.breadcrumb.favorites'), route('user.favorites'));
 });
 
+Breadcrumbs::register('profile.change-password', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('frontend.pages.password'), route('profile.change-password'));
+});
+
 // Categories
 Breadcrumbs::register('categories.inner_category', function (Crumbs $crumbs, ProductsPath $path, ProductsPath $orig) {
     if ($path->category && $parent = $path->category->parent) {

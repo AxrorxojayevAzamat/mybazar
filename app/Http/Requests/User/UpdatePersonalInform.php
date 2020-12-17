@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
  * @property string $current_password
  * @property string $new_password
  */
-class UpdateRequest extends FormRequest
+class UpdatePersonalInform extends FormRequest
 {
     public function authorize(): bool
     {
@@ -21,12 +21,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'gender' => ['nullable', 'numeric', Rule::in(array_keys(Profile::gendersList()))],
             'address' => 'nullable|string',
-            'region' => 'nullable|integer',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'nullable|integer',
         ];
     }
 

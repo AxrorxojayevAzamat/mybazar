@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEmailVerifiedToUsersTable extends Migration
+class AddPassportToProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddEmailVerifiedToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('email_verified')->default(false);
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->string('passport')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddEmailVerifiedToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email_verified');
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->dropColumn('passport');
         });
     }
 }
