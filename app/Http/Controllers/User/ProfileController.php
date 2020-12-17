@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Requests\Auth\VerifyPhoneRequest;
+use App\Http\Requests\User\UpdatePersonalInform;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Entity\User\Profile;
@@ -25,7 +26,7 @@ class ProfileController extends Controller
 
     public function __construct(SmsSender $sms, UserService $service)
     {
-        $this->middleware('can:manage-profile');
+//        $this->middleware('can:manage-profile');
         $this->sms = $sms;
         $this->service = $service;
     }
@@ -41,7 +42,9 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('user.show', compact('user'));
+        $genders = Profile::gendersList();
+        $regions = Profile::regionsList();
+        return view('user.show', compact('user','genders', 'regions'));
     }
 
     public function update(UpdateRequest $request)
@@ -51,6 +54,13 @@ class ProfileController extends Controller
 
         return redirect()->route('user.profile');
     }
+
+    public function changePasswordPage()
+    {
+        $user = Auth::user();
+       return view('user.change-password',compact('user'));
+    }
+
 
     public function changePassword(PasswordRequest $request)
     {
@@ -201,6 +211,5 @@ class ProfileController extends Controller
             return redirect('/')->with('error', $e->getMessage());
         }
     }
-
 
 }

@@ -29,9 +29,12 @@
     </div>
 
     <div>
-        @if (isset($banner))
-            <img src="{{ $banner->fileCustom }}" alt="">
+        @if ($longBanner)
+            <img src="{{ $longBanner->fileCustom }}" alt="">
         @endif
+{{--        @if (isset($banner))--}}
+{{--            <img src="{{ $banner->fileCustom }}" alt="">--}}
+{{--        @endif--}}
     </div>
 </div>
 

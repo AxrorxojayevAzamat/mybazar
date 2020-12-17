@@ -72,9 +72,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('verify/phone', 'ProfileController@phone')->name('phone.verification');
         Route::get('verify/email/{token}', 'ProfileController@verifyEmail')->name('verify.email');
         Route::post('verify/phone', 'ProfileController@verifyPhone')->name('verify.phone');
+        Route::post('add-inform', 'ProfileController@update')->name('add-inform');
 
         Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
 
+        Route::get('add-photo', 'ProfileController@add-photo')->name('add-photo');
+
+        Route::get('change-password', 'ProfileController@changePasswordPage')->name('change-password');
         Route::post('change-password', 'ProfileController@changePassword')->name('change-password');
     });
 

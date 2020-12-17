@@ -7,6 +7,7 @@ use App\Entity\Blog\Post;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
+use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
@@ -79,7 +80,6 @@ class CategoryController extends Controller
 
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $parentCategory = $category->parent()->get()->toTree();
-//        dd($parentCategory);
         $products = Product::whereIn('main_category_id', $categoryId)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
 
@@ -108,6 +108,12 @@ class CategoryController extends Controller
                 session(['order_catalog' => 'desc']);
             }
         }
+
+        if ($request->has('modification') and $request->modification !== null){
+            $productsIdModification = Modification::whereIn('value', $request->modification)->pluck('product_id')->toArray();
+            $products = $products->whereIn('id', $productsIdModification);
+        }
+
         $min_price = 0;
         $max_price = 1;
         $ratings = [];
@@ -135,16 +141,11 @@ class CategoryController extends Controller
 
         $storeIds = $products->pluck('store_id')->toArray();
         $stores = Store::whereIn('id', $storeIds)->get();
-//        dd($min_price);
 
         $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
 
-//        dd($groupModifications);
 
-
-
-
-        return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1'));
+        return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1', 'groupModifications'));
     }
 
 }

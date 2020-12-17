@@ -15,6 +15,8 @@ class VideosController extends Controller
 
         $videos = Video::orderByDesc('created_at')->with(['category'])->paginate(20);
         $categories = Category::orderByDesc('created_at')->get();
+        $parentCategory = null;
+        $rootCategoryShow = false;
 //        $parentIds = [];
 //        foreach($categories as $i => $category) {
 //            $parentIds[$i] = [
@@ -22,7 +24,7 @@ class VideosController extends Controller
 //            ];
 //        }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
-        return view('videoblog.videoblog', compact('videos', 'categories', 'recentProducts'));
+        return view('videoblog.videoblog', compact('videos', 'categories', 'recentProducts', 'parentCategory', 'rootCategoryShow'));
     }
 
     public function show(Video $video)
