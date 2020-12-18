@@ -25,7 +25,7 @@
 {{--            @endforeach--}}
 {{--        </ul>--}}
         <div class="wrapper-filtered-items">
-            <form id="search-bar" class="search-bar form-control" method="get">
+            <form id="search-bar" class="w-100 search-bar form-control" method="get">
                 <div class="input-with-tags">
                     <input id="search-input" class="main-search-bordered-input" type="text" placeholder="{{ trans('frontend.breadcrumb.search') }}" name="shopName">
                 </div>

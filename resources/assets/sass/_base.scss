@@ -1160,7 +1160,7 @@ form.small-filter{
     padding: 1% 10%;
 }
 form#search-bar.search-bar{
-    width:100%;
+    width:50%;
     height:45px;
     padding-right:2px;
     @include displayFlex(space-between, row, center);
