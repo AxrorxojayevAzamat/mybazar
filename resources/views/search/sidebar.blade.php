@@ -6,7 +6,7 @@
 
     @endif
 
-    @include('filters.category-blog-filter')
+    @include('filters.category-filter')
 
     @if($sidebar_is != 'Brands')
         @include('filters.price-filter')

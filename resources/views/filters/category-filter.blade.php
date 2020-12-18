@@ -4,13 +4,13 @@
 
         <div class="custom-control custom-checkbox">
             <ul>
-                @if($parentCategory)
+                @if(isset($parentCategory) || $parentCategory)
                     @foreach($parentCategory as $i => $category)
                         <li class="category-list">
                             <a href="{{ route('categories.show', products_path($category)) }}"><-{{ $category->name }}</a>
                         </li>
                     @endforeach
-                @elseif($rootCategoryShow)
+                @elseif(isset($rootCategoryShow) || $rootCategoryShow)
                     <li class="category-list">
                         <a href="/categories"><-@lang('menu.whole_catalog')</a>
                     </li>
