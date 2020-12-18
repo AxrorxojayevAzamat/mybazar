@@ -39,19 +39,27 @@ class ProfileController extends Controller
         return view('user.setting', compact('user', 'genders'));
     }
 
-    public function show()
+    public function show(Request $request)
     {
+        $type = 'personal';
+        if(Auth::guest()){
+            abort(404);
+        }
+        if ($request->get('type')){
+            if ($request->get('type') == 'additional'){
+                $type = 'additional';
+            }
+        }
         $user = Auth::user();
         $genders = Profile::gendersList();
         $regions = Profile::regionsList();
-        return view('user.show', compact('user','genders', 'regions'));
+        return view('user.show', compact('user','genders', 'regions','type'));
     }
 
     public function update(UpdateRequest $request)
     {
         $user = Auth::user();
         $user = $this->service->updateProfile($user->id, $request);
-
         return redirect()->route('user.profile');
     }
 
@@ -132,6 +140,14 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
 
+    }
+    public function addPhoto()
+    {
+        if (Auth::guest()){
+            abort(404);
+        }
+        $user = Auth::user();
+        return view('user.add-photo',compact('user'));
     }
 
     public function addPhone(Request $request)
