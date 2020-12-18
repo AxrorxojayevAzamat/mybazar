@@ -78,6 +78,7 @@
                     <p>@lang('adminlte.foto_with_registration') </p>
                     @if(!empty($user->profile->passport))
                         <img src="{{ $user->profile->passportThumbnail }}" alt="">
+                        <br>
                     @endif
                     <div class="upload-file">
                         <label for="files1">
@@ -91,6 +92,7 @@
                     <p>@lang('adminlte.upload_avatar') </p>
                     @if(!empty($user->profile->avatar))
                         <img src="{{ $user->profile->avatarThumbnail }}" alt="">
+                        <br>
                     @endif
                     <div class="upload-file">
                         <label for="files2">
