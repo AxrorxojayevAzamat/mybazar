@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Entity\Category;
 use App\Entity\Blog\Video;
 use App\Entity\Shop\Product;
-use App\Helpers\LanguageHelper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -34,7 +33,7 @@ class VideosController extends Controller
 //            ];
 //        }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
-        return view('videoblog.videoblog', compact('videos', 'categories', 'recentProducts'));
+        return view('videoblog.videoblog', compact('videos', 'categories', 'recentProducts', 'parentCategory', 'rootCategoryShow'));
     }
 
     public function show(Video $video, Request $request)

@@ -5,21 +5,21 @@
             <div class="images">
                 @if ($product->mainPhoto)
                     <div class="big-image">
-                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%">
+                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"  id="productMainPhoto">
                     </div>
                 @endif
 
 
                 <div class="several-images owl-theme owl-carousel">
-                    @php($currentSlide = 1)
+                    @php($currentSlide = 0)
                     @if ($product->mainPhoto)
                         <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
-                             onclick="currentSlide({{ $currentSlide }})">
+                             onclick='currentSlide({{ $currentSlide }}, "{{ $product->mainPhoto->fileThumbnail }}")'>
                         @php($currentSlide++)
                     @endif
                     @foreach($product->photos as $photo)
                         <img class="demo cursor" src="{{ $photo->fileOriginal }}" style="width:100%"
-                             onclick="currentSlide({{ $currentSlide }})">
+                             onclick='currentSlide({{ $currentSlide }}, "{{ $photo->fileOriginal }}")'>
                         @php($currentSlide++)
                     @endforeach
                 </div>
@@ -50,6 +50,7 @@
                 <div class="color-delivery-des">
                     <form action="#">
                         @foreach($product->allCharacteristics as $modification)
+
                            @if($modification->characteristic->main == false && $modification->characteristic->type != \App\Entity\Shop\Characteristic::TYPE_COLOR)
                                    @if(!empty($modification->modifications->value))
                                         <p>{{ $modification->characteristic->name }}:</p>
@@ -243,4 +244,56 @@
             localStorage.setItem('product_id', id + ',');
         }
     }
+
+    //SLIDER
+    var slideIndex = 0;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n, url) {
+        showSlides(n);
+        setImage(url)
+    }
+
+    function setImage(imageUrl) {
+        $('#productMainPhoto').attr('src', `https://shop.sec.uz${imageUrl}`)
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("big-image");
+        var dots = document.getElementsByClassName("demo");
+        // debugger
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        // for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        // }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+
+        for(let j = 0; j < dots.length; j++) {
+            if(j === n) {
+                dots[j].classList.add('active')
+            } else {
+                dots[j].classList.remove('active')
+            }
+        }
+    }
+    // let modification = document.getElementsByClassName('value-modification')
+    // let modifics = $('.value-modification')
+    // function setPrice() {
+    //     console.log(this)
+    // }
+    // debugger
 </script>

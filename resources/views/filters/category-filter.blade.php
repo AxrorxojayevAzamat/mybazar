@@ -15,6 +15,7 @@
                         <a href="/categories"><-@lang('menu.whole_catalog')</a>
                     </li>
                 @endif
+{{--                {{dd($categories)}}--}}
                 @if(isset($categories))
                     @foreach($categories as $i => $category)
                         <li class="category-list">

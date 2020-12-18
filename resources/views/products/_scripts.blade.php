@@ -1,4 +1,4 @@
-@section('script')
+@push('script')
     <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
     <script src="{{asset('js/jquery.rateyo.js')}}"></script>
@@ -12,7 +12,6 @@
         let cartButton = $('#cart-button');
         let reviewButton = $('#submit-review');
         let reviewForm = $('#review-form');
-
         $(document).ready(function () {
             colorModification.click(function (e) {
                 e.preventDefault();
@@ -51,8 +50,10 @@
             // reviewButton.click(function (e) {
             //     e.preventDefault();
             //
-            //     console.log(reviewForm);
+            //     console.log(reviewForm)
             // });
+
         });
+
     </script>
-@endsection
+@endpush

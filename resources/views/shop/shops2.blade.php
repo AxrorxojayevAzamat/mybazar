@@ -33,36 +33,39 @@
                 }
                 ?>
                 <div class="palette-items">
-                    <div class="product-img">
-                        @if ($shops2ThreeItem->mainPhoto)
-                            <div class="big-image">
-                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
+                    <div class="item" onclick="location.href = '{{ route('products.show', $shop) }}'">
+                        <div class="product-img">
+                            @if ($shops2ThreeItem->mainPhoto)
+                                <div class="big-image">
+                                    <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
+                                </div>
+                            @endif
+                            <span class="sale small">
+                                <span class="number">-29</span>
+                                % СКИДКА
+                            </span>
+                        </div>
+                        <div class="description">
+                            <h6 class="title"><a href="{{ route('products.show', $shop) }}">{!! $shops2ThreeItem->name !!}</a></h6>
+                            <div class="rate">
+                                <div class="rating stars">
+                                    <div id="rateYo_{{$rate_for['html']}}{{ $loop->index }}"></div>
+                                </div>
+                                <div class="comment">
+                                    <i class="mbcomment"></i>
+                                    <span>75</span>
+                                </div>
                             </div>
-                        @endif
-                        <span class="sale small">
-                    <span class="number">-29</span>
-                    % СКИДКА
-                </span>
+                            <div class="current-old-price horizontal">
+                                <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="description">
-                        <h6 class="title"><a href="{{ route('products.show', $shop) }}">{!! $shops2ThreeItem->name !!}</a></h6>
-                        <div class="rate">
-                            <div class="rating stars">
-                                <div id="rateYo_{{$rate_for['html']}}{{ $loop->index }}"></div>
-                            </div>
-                            <div class="comment">
-                                <i class="mbcomment"></i>
-                                <span>75</span>
-                            </div>
-                        </div>
-                        <div class="current-old-price horizontal">
-                            <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
-                        </div>
-                        <div class="item-action-icons">
-                            <div class="libra" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
-                            <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
-                            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
-                        </div>
+                    <div class="item-action-icons">
+                        <div class="libra" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
+                        <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
+                        <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                     </div>
                 </div>
             @endforeach

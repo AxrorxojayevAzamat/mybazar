@@ -1,10 +1,11 @@
 .similar-products{
     .outter-products{
-        height:355px;
+        height:380px;
         .similar-p{
-            height:355px;
+            height:380px;
             .item{
                 height:340px;
+                cursor: pointer;
                 .product-img{
                     height:54%;
                     span.sale.small{
@@ -22,21 +23,25 @@
                             font-size:22px;
                         }
                     }
-                    .item-action-icons{
-                        bottom:0;
-                        div{
-                            width:35px;
-                            height:35px;
-                            i{
-                                font-size:18px;
-                                line-height:35px;
-                            }
-                        }
-                    }
+
                     .rate{
                         .rating:not(:checked) > label{
                             font-size:160%;
                             width:1.3rem;
+                        }
+                    }
+                }
+                div.product-item{
+                    height: 100%;
+                }
+                .item-action-icons{
+                    bottom:-12px;
+                    div{
+                        width:35px;
+                        height:35px;
+                        i{
+                            font-size:18px;
+                            line-height:35px;
                         }
                     }
                 }

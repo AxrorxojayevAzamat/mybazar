@@ -34,7 +34,7 @@ class BlogController extends Controller
 
         }
         $recentProducts = Product::orderByDesc('created_at')->limit(8)->get();
-        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts'));
+        return view('blog.blogs', compact('blogs', 'categories', 'recentProducts', 'parentCategory', 'rootCategoryShow'));
     }
 
     public function show(Post $blog)

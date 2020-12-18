@@ -157,12 +157,12 @@ class UserService
         }
 
         if (!$request->avatar) {
-            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address);
+            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address,null, $request->region);
         } else {
             Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PROFILES . '/' . $user->id);
 
             $imageName = ImageHelper::getRandomName($request->avatar);
-            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName);
+            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName, $request->region);
 
             $this->uploadAvatar($user->id, $request->avatar, $imageName);
         }

@@ -258,7 +258,7 @@ button.owl-next span{
     font-size:45px;
     line-height:15px;
     height:22px;
-} 
+}
 .outter-products{
     width:100%;
     height:610px;
@@ -275,6 +275,7 @@ button.owl-next span{
             margin:0;
             height:100%;
             padding:10px 20px 5px;
+            cursor: pointer;
             @include border(1px, $item_border_color, 0);
             background:white;
             z-index:2;
@@ -305,15 +306,20 @@ button.owl-next span{
                 height:50%;
                 margin-top:5%;
             }
-            .item-action-icons{
-                bottom:35px;
-            }
+
             p.sub-title.bottom{
                 position:absolute;
                 bottom:0;
                 margin:0;
             }
         }
+    }
+    div.product-item {
+        height: 100%;
+    }
+    .item-action-icons{
+        position: absolute;
+        bottom:55px;
     }
 }
 
@@ -555,6 +561,7 @@ nav ol.breadcrumb{
     .item{
         height:390px;
         width:100%;
+        cursor: pointer;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $item_border_color, 0);
         background:white;
@@ -699,10 +706,13 @@ nav ol.breadcrumb{
         .shop-name-logo{
             width:100%;
             @include displayFlex(flex-start, row, center);
-            padding:15px 0 0 15px;
+            padding:15px;
             img{
                 margin-right:15px;
-                width:30px;
+                width:50px;
+                height: 50px;
+                border: 1px solid #aaa;
+                border-radius: 50%;
             }
             h6,p{
                 margin:0;
@@ -714,12 +724,18 @@ nav ol.breadcrumb{
         .product-images{
             width:100%;
             height:340px;
-            @include displayFlex(space-between, row, space-between);
+            @include displayFlex(flex-start, row, space-between);
             flex-wrap:wrap;
-            img{
-                width:48%;
-                height:160px;
+            a {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                img{
+                    width:85%;
+                    height:160px;
+                }
             }
+
         }
     }
 }
@@ -1143,6 +1159,41 @@ form.small-filter{
 .padding-1-10 {
     padding: 1% 10%;
 }
+form#search-bar.search-bar{
+    width:100%;
+    height:45px;
+    padding-right:2px;
+    @include displayFlex(space-between, row, center);
+    @include border(1px, $link_hover_color, 23px);
+    input{
+        width:100%;
+    }
+    button.search{
+        width:50px;
+        height:40px;
+        padding:0;
+        background:$item_price_color;
+        @include border(1px, $item_price_color,23px);
+        i.fa-search::before{
+            color:#ffffff;
+            font-size:20px;
+            line-height:28px;
+        }
+    }
+}
+.registration, .reset {
+    input {
+        border-radius: 25px;
+    }
+    button {
+        border-radius: 25px;
+        background-color: #0042ff;
+        border-color: #0042ff;
+    }
+    .align-item-center {
+        align-items: center;
+    }
+}
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
@@ -1215,6 +1266,20 @@ form.small-filter{
     }
 }
 @media all and (max-width:1400px){
+    .outter-list-of-shops {
+        .wrapper-filtered-items {
+            .all-filtered-shops {
+                .item {
+                    width: 49%;
+                    .shop-name-logo {
+                        h6 {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     .h4-title{
         padding:2% 5%;
         &.video-blog, &.catalog-view, &.pay-body,
@@ -1324,6 +1389,15 @@ form.small-filter{
     }
 }
 @media all and (max-width:1000px){
+    .outter-list-of-shops {
+        .wrapper-filtered-items {
+            .all-filtered-shops {
+                .item {
+                    width: 100%;
+                }
+            }
+        }
+    }
     .outter-products{
         .products, .all-filtered-items{
             .item{
@@ -1361,6 +1435,19 @@ form.small-filter{
     }
 }
 @media all and (max-width:800px){
+    .outter-list-of-shops {
+        .big-filter {
+            display: none;
+        }
+        .wrapper-filtered-items {
+            width: 100%;
+            .all-filtered-shops {
+                .item {
+                    width: 100%;
+                }
+            }
+        }
+    }
     .outter-products{
         .products, .all-filtered-items{
             .item{
