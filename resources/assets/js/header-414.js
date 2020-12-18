@@ -62,10 +62,10 @@ $(document).ready(function () {
                     console.log(dropData);
                 }
                 for (let i = 0; i < data.products.data.length; i++) {
-                    dropData += `<a href="#">
+                    dropData += `<a href="/products/show/${data.products.data[i].id}">
                                     <div class="item product">
                                         <div class="image">
-                                            <img src="{{asset('images/mi_brand.png')}}" alt="">
+                                            <img src="${data.products.data[i].main_photo}" alt="">
                                         </div>
                                         <div class="description">
                                             <h6 class="title">${data.products.data[i].name}</h6>
