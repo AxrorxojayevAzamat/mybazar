@@ -87,12 +87,11 @@ $(document).ready(function () {
 
 
     $("#dropdownComparison").on("click", function () {
-        $(".cart-items").fadeOut();
-        $(".compare-items").fadeToggle().toggleClass('in');
+        $(".compare-items").fadeIn().addClass('in');
+        
     });
     $("#dropdownCart").on("click", function () {
-        $(".cart-items").fadeToggle().toggleClass('in');
-        $(".compare-items").fadeOut();
+        $(".cart-items").fadeIn().addClass('in');
     });
 
     // click outside compare items
@@ -250,11 +249,10 @@ $(document).ready(function () {
                 items: 1
             },
             800: {
-                items: 1,
+                items: 1
             },
             1001: {
-                nav: true,
-                items: 2,
+                items: 2
             },
             1251: {
                 items: 3

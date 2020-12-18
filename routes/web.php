@@ -88,6 +88,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('search', 'SearchResultsController@searchResults')->name('search');
     Route::get('search-product-filter', 'SearchResultsController@SearchFilter')->name('search-product-filter');
 
+
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
     Route::get('sms', 'SmsController@sms')->name('sms');

@@ -4495,7 +4495,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 
 #carouselIndex {
   width: 100%;
-  height: 400px;
+  height: 330px;
   background: rgba(117, 0, 255, 0);
   margin-top: 4px;
 }
@@ -4568,6 +4568,13 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
           align-items: center;
   background: white;
   margin-top: 30px;
+}
+
+#products-of-day .owl-dots {
+  position: absolute;
+  right: 10%;
+  top: -2%;
+  margin-top: 0;
 }
 
 #products-of-day .product-item {
@@ -4717,11 +4724,17 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   #products-of-day {
     padding: 0 8%;
   }
+  #products-of-day .owl-dots {
+    right: 8%;
+  }
 }
 
 @media all and (max-width: 1400px) {
   #products-of-day {
     padding: 0 5%;
+  }
+  #products-of-day .owl-dots {
+    right: 5%;
   }
   #products-of-day .product-item .product-info .description {
     width: 50%;
@@ -4771,11 +4784,6 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   #products-of-day .product-item .product-info .product-image img {
     height: 100%;
   }
-  #products-of-day .owl-dots {
-    display: block;
-    top: -10px;
-    right: 65px;
-  }
 }
 
 @media all and (max-width: 1000px) {
@@ -4788,7 +4796,8 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
     font-size: 22px;
   }
   #products-of-day .owl-dots {
-    right: 30px;
+    top: -4%;
+    right: 0;
   }
 }
 
@@ -4817,9 +4826,6 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
         -ms-flex-flow: column;
             flex-flow: column;
   }
-  .owl-dots {
-    right: 20px;
-  }
 }
 
 @media all and (max-width: 500px) {
@@ -4831,9 +4837,6 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   }
   #products-of-day .product-item .product-info .product-image img {
     height: 80%;
-  }
-  #products-of-day .owl-dots {
-    right: 10px;
   }
 }
 
@@ -9795,7 +9798,7 @@ nav.products-pagination ul li a i:before {
 }
 
 .outter-sales .sales-banners .banner-item {
-  width: 23%;
+  width: 31%;
   margin: 1%;
   height: auto;
   position: relative;
