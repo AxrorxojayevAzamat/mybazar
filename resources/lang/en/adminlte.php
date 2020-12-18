@@ -110,9 +110,18 @@ return [
     'female' => 'Female',
     'icon' => 'Icon',
     'change_personal_info' => 'Change personal data',
+    'change_additional_info' => 'Change personal data',
     'personal_info' => 'Personal data',
+    'additional_info' => 'Additional data',
     'passport_info' => 'Passport data',
     'cart_info' => 'Card data',
+    'user_cabinet' => 'Personal cabinet',
+    'verify_identity' => 'Shaxsingizni tasdiqlang',
+    'for_necessary_passport' => 'Necessary to make purchases in installments in the future. Information from the passport and photo must be readable',
+    'foto_with_registration' => 'Photo of a passport with personal data and registration',
+    'pres_for_upload' =>'Press for Upload',
+    'upload_avatar' =>'Upload a photo of a face with a passport background',
+
 
     'photo' => [
         'plural' => 'Photos',

@@ -25,6 +25,7 @@ class ImageHelper
     const FOLDER_VIDEOS = 'videos';
     const FOLDER_DISCOUNTS = 'discounts';
     const FOLDER_PROFILES = 'profiles';
+    const FOLDER_PASSPORT = 'passport';
 
     const TYPE_THUMBNAIL = 'thumbs';
     const TYPE_CUSTOM = 'custom';
