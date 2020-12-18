@@ -35,7 +35,7 @@ $(document).ready(function () {
                 droping.show();
                 let dropData = '';
                 dropData += `
-                        <a href="#">
+                        <a href="/search?search=${inputValue}">
                             <div class="item with-icon">
                                 <i class="mbsearch_resulticon"></i>
                                 <h6 class="title">${inputValue}</h6>
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 for (let i = 0; i < data.brands.data.length; i++) {
                     if (data.brands.data[i].name !== undefined) {
                         dropData += `
-                        <a href="http://localhost:5500/brands/${data.brands.data[i].id}">
+                        <a href="/brands/${data.brands.data[i].id}">
                             <div class="item brand">
                                 <div class="image">
                                     <img src="${data.brands.data[i].logo}" alt="">
