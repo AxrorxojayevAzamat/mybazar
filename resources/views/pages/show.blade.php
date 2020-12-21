@@ -21,7 +21,7 @@
                 <h5>{{$page->description}}</h5>
             </div>
             <div class="body">
-                {{$page->body}}
+                {!!$page->body!!}
             </div>
         </div>
     </div>
