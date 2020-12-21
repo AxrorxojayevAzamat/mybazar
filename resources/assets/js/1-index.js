@@ -20,7 +20,8 @@ $(document).ready(function () {
     };
     date_input.datepicker(options);
 
-    
+    checkCart();
+
     // CART FUNCTIONS
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
@@ -69,7 +70,7 @@ $(document).ready(function () {
         }
     }
 
-    checkCart();
+
 
     function writeProductsId(){
         let cart_products_id = $('#cart_products_id');
@@ -88,7 +89,7 @@ $(document).ready(function () {
 
     $("#dropdownComparison").on("click", function () {
         $(".compare-items").fadeIn().addClass('in');
-        
+
     });
     $("#dropdownCart").on("click", function () {
         $(".cart-items").fadeIn().addClass('in');

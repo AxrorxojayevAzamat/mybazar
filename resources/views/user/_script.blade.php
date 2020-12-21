@@ -2,9 +2,9 @@
 
 //////////// changePassword Auth User
     $(document).ready(function () {
-        
+
         $('#changePassword').on('click', function () {
-        
+
             let currentPassword = $('#currentPassword').val();
             let newPassword = $('#newPassword').val();
             $.ajax({
@@ -15,11 +15,11 @@
                         new_password: newPassword
                     },
                     dataType: 'json',
-                    
+
                     success: function (data) {
                         alert(data['message']);
                     },
-        
+
                     error: function (data) {
                         let errors = data.responseJSON;
                         alert(errors['message']);
@@ -28,27 +28,27 @@
             });
         });
     });
-        
-        
+
+
 //////////// changePhone with confirm code
     $(document).ready(function () {
-        
+
         $('#changePhone').on('click', function () {
             let userPhone = $('#userPhone').val();
-            
+
             $.ajax({
                 url: '/phone',
                 type: 'POST',
-                data: { 
+                data: {
                     phone: userPhone,
-                    
+
                 },
                 dataType: 'json',
-                    
+
                 success: function (data) {
                         alert(data['message']);
                     },
-        
+
                     error: function (data) {
                         let errors = data.responseJSON;
                         alert(errors['message']);
@@ -57,13 +57,13 @@
                     });
             });
         });
-        
+
     $(document).ready(function () {
-        
+
         $('#confirmPhone').on('click', function () {
             let confirmCode = $('#confirmCode').val();
             let userPhone = $('#userPhone').val();
-            
+
             $.ajax({
                 url: '/phone-verify',
                 type: 'PUT',
@@ -75,7 +75,7 @@
                 success: function (data) {
                         alert(data['message']);
                     },
-        
+
                     error: function (data) {
                         let errors = data.responseJSON;
                         alert(errors['message']);
@@ -84,8 +84,8 @@
                     });
             });
         });
-        
-        
+
+
 let avatarInput = $("#avatar-input");
 let avatarUrl = '{{ $user ? ($user->profile ? ($user->profile->avatar ? $user->profile->avatarOriginal : null) : null ): null }}';
 
