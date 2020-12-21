@@ -191,7 +191,7 @@
             @include displayFlex(space-between,row,center);
             margin:0;
             padding:0;
-            cursor: pointer;
+            //cursor: pointer;
             li{
                 list-style: none;
                 a.dropdownToggle{
