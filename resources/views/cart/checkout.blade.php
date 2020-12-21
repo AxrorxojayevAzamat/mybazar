@@ -11,16 +11,8 @@
             <h4 class="title">@lang('frontend.cart.checkout_order')</h4>
         </div>
         <div class="outter-checkout">
-            <div class="ur-cart">
-                <button class="btn back-to-address">@lang('frontend.cart.back_to_cart')</button>
-                <h6>@lang('frontend.cart.your_cart')</h6>
-                <p> @lang('frontend.cart.in_cart')<span> 2 @lang('frontend.cart.item').</span></p>
-                <p> @lang('frontend.cart.total_weight_of_goods')<span> 16 570 @lang('frontend.cart.gr').</span></p>
-                <p> @lang('frontend.cart.discount')<span class="sale"> 25%</span></p>
-                <p> @lang('frontend.cart.sum_of_discount')<span class="sale"> -564 500 @lang('frontend.cart.sum')</span></p>
-                <p class="overall"> @lang('frontend.cart.all_to_pay')</p>
-                <p class="total-checkout">10 231 749 <span>@lang('frontend.cart.sum')</span></p>
-            </div>
+            @include('cart.side-calculation', ['method' => 'checkout'])
+
             <div class="inner-pay-checkout-cart">
                 <h6 class="title">@lang('frontend.cart.present_datas_for_get_order')</h6>
 
@@ -47,7 +39,7 @@
                             <select id="city" class="form-control">
                                 <option value="" disabled selected>@lang('frontend.cart.select')</option>
                                 <option value="">Ташкент</option>
-                                <<option value="">Ташкент</option>
+                                <option value="">Ташкент</option>
                                 <option value="">Ташкент</option>
                                 <option value="">Ташкент</option>
                                 <option value="">Ташкент</option>
