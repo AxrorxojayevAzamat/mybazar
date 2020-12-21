@@ -148,7 +148,7 @@ span.sale.big{
     width:75%;
     position:absolute;
     bottom:20px;
-    padding:3px 0;
+    padding:3px 8px;
     right:0;
     color:white;
     border-radius:25px;
@@ -650,7 +650,7 @@ nav ol.breadcrumb{
                     }
                     &.cart{
                         @include displayFlex(space-between,row, center);
-                        width:auto;
+                        width:max-content;
                         padding:0px 30px;
                         border-radius: 25px;
                         font-size:18px;
@@ -821,7 +821,7 @@ nav ol.breadcrumb{
 }
 // column view styles
 .column{
-    @include displayFlex(center, row, flex-start);
+    @include displayFlex(flex-start, row, flex-start);
     flex-wrap:wrap;
     .item{
         width:33.3%;
@@ -966,7 +966,7 @@ form.big-filter-without-title-checkbox{
         }
 
     }
-    input#submit{
+    input#catalog-filter-button{
         background:$item_price_color;
         color:white;
         font-size:16px;
@@ -1210,7 +1210,7 @@ form#search-bar.search-bar{
 @media all and (max-width:1695px){
     span.sale.big{
         font-size:18px;
-        padding:5px 20px;
+        padding:5px 10px;
     }
     span.sale.small{
         font-size:16px;

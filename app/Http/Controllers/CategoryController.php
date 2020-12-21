@@ -144,7 +144,6 @@ class CategoryController extends Controller
 
         $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
 
-
         return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1', 'groupModifications'));
     }
 

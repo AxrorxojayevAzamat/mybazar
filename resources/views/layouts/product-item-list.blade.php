@@ -6,9 +6,9 @@ if ($product->classFavorite($product->id)) {
 }
 ?>
 <div class="item">
-    <div class="product-img">
+    <div class="product-img d-flex justify-content-center">
         @if ($product->mainPhoto)
-            <a href="{{ route('products.show',$product) }}"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt=""></a>
+            <a href="{{ route('products.show',$product) }}" class="w-100"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt="" class="d-block"></a>
         @endif
     </div>
     <!-- description -->
