@@ -70,8 +70,6 @@ $(document).ready(function () {
         }
     }
 
-
-
     function writeProductsId(){
         let cart_products_id = $('#cart_products_id');
         let saved_carts = localStorage.getItem('product_id');
@@ -317,19 +315,19 @@ $(document).ready(function () {
         dots: false,
         responsive: {
             0: {
-                items: 3
+                items: 1
             },
             600: {
-                items: 4
+                items: 2
             },
             800: {
-                items: 5
+                items: 3
             },
-            1000: {
-                items: 5
+            1100: {
+                items: 4
             },
             1251: {
-                items: 6
+                items: 5
             },
             1400: {
                 items: 6
