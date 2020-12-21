@@ -20,6 +20,7 @@ $(document).ready(function () {
     };
     date_input.datepicker(options);
 
+    checkCart();
 
     // CART FUNCTIONS
     function checkCart() {
@@ -68,8 +69,6 @@ $(document).ready(function () {
             return false;
         }
     }
-
-    checkCart();
 
     function writeProductsId(){
         let cart_products_id = $('#cart_products_id');
