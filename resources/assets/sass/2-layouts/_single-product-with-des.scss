@@ -175,7 +175,7 @@
                         }
                         &.cart{
                             @include displayFlex(space-between,row, center);
-                            width:auto;
+                            width:max-content;
                             padding:0px 30px;
                             border-radius: 25px;
                             font-size:18px;
@@ -414,7 +414,7 @@
                     resize: none;
                 }
             }
-            input#submit{
+            input#submit-review{
                 margin:0 0 0 auto;
                 color:white;
                 background:$item_price_color;
