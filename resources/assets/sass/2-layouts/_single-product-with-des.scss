@@ -17,13 +17,13 @@
                 margin-bottom:2%;
                 img{
                     width:auto;
-                    height:100%;                            
+                    height:100%;
                 }
             }
             .several-images{
                 width:100%;
-                height:100px;
-                position:relative; 
+                height:min-content;
+                position:relative;
                 img{
                     &.demo {
                         opacity: 0.6;
@@ -80,8 +80,8 @@
                 }
                 a{
                     font-size:14px;
-                    color:$item_price_color;                    
-                    
+                    color:$item_price_color;
+
                 }
             }
             .color-delivery-des{
@@ -105,8 +105,9 @@
                     margin:1% 0;
                     div{
                         margin-right:10px;
-                        padding:15px 0;
-                        width:18%;
+                        padding:15px 5px;
+                        width:max-content;
+                        min-width:18%;
                         display: inline-block;
                         color:black;
                         text-align:center;
@@ -151,7 +152,7 @@
                                 background:white;
                                 border:2px solid $comment_color;
                             }
-                        }  
+                        }
                     }
                 }
                 .current-old-price{
@@ -196,6 +197,20 @@
                             margin-right:10px;
                             font-size:26px;
                         }
+                    }
+                }
+                .shop-name-logo {
+                    display: flex;
+                    a {
+                        img {
+                            border: 1px solid #aaa;
+                            border-radius: 50%;
+                            width: 75px;
+                            height: 75px;
+                        }
+                    }
+                    div {
+                        padding: 10px 20px;
                     }
                 }
             }
@@ -267,8 +282,8 @@
                     z-index:3;
                     // background:no-repeat center url(../images/play.png);
                     .arrow-right{
-                        width: 0; 
-                        height: 0; 
+                        width: 0;
+                        height: 0;
                         border-top: 15px solid transparent;
                         border-bottom: 15px solid transparent;
                         border-left: 20px solid #09118E;
@@ -486,6 +501,30 @@
                     }
                 }
             }
+        }
+    }
+}
+@media all and (max-width: 900px){
+    .outter-single-product-with-des {
+        .inner-single-product-with-des {
+            flex-flow: column;
+            .images {
+                width: 100%;
+            }
+            .description {
+                width: 100%;
+            }
+        }
+    }
+    .outter-full-comments {
+        flex-flow: column;
+        .comments {
+            width: 100%;
+            border-bottom: 1px solid #0042ff;
+        }
+        .leave-comment {
+            width: 100%;
+            margin-top: 15px;
         }
     }
 }

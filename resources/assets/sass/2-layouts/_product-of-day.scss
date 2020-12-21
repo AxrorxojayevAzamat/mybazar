@@ -63,6 +63,7 @@
                     position:absolute;
                     left:-5%;
                     bottom:20px;
+                    width: max-content;
                 }
             }
             .description{
@@ -87,7 +88,7 @@
         .item-action-icons {
             position: absolute;
             float: right;
-            right: 110px;
+            right: 18%;
             bottom: 50px;
         }
     }

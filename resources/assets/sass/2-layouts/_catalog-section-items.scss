@@ -9,7 +9,7 @@
 .all-filtered-catalog-section{
     width: 100%;
     .types-of-media{
-        @include displayFlex(space-between, row, space-between);
+        @include displayFlex(flex-start, row, space-between);
         flex-wrap:wrap;
         a{
             width:32%;
@@ -125,7 +125,7 @@
     .all-filtered-catalog-section {
         .types-of-media {
             a {
-                width: 49%;
+                width: 48%;
                 height: 240px;
             }
         }

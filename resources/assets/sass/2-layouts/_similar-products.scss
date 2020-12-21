@@ -35,7 +35,7 @@
                     height: 100%;
                 }
                 .item-action-icons{
-                    bottom:-12px;
+                    bottom:-6px;
                     div{
                         width:35px;
                         height:35px;
@@ -43,6 +43,13 @@
                             font-size:18px;
                             line-height:35px;
                         }
+                    }
+                }
+                &:hover {
+                    transform: scale(1.05);
+                    transition:0.4s ease;
+                    .item-action-icons {
+                        padding-bottom: 16px;
                     }
                 }
             }

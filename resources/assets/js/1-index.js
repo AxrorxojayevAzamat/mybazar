@@ -20,7 +20,7 @@ $(document).ready(function () {
     };
     date_input.datepicker(options);
 
-    
+
     // CART FUNCTIONS
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     $("#dropdownComparison").on("click", function () {
         $(".compare-items").fadeIn().addClass('in');
-        
+
     });
     $("#dropdownCart").on("click", function () {
         $(".cart-items").fadeIn().addClass('in');
@@ -316,19 +316,19 @@ $(document).ready(function () {
         dots: false,
         responsive: {
             0: {
-                items: 3
+                items: 1
             },
             600: {
-                items: 4
+                items: 2
             },
             800: {
-                items: 5
+                items: 3
             },
-            1000: {
-                items: 5
+            1100: {
+                items: 4
             },
             1251: {
-                items: 6
+                items: 5
             },
             1400: {
                 items: 6
