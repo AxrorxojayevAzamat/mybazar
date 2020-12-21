@@ -8,31 +8,7 @@
             <h4 class="title">@lang('frontend.cart.cart')</h4>
         </div>
         <div class="outter-cart">
-            <div class="ur-cart">
-                <h6>@lang('frontend.cart.your_cart')</h6>
-                @if(isset($cart_product_count))
-                    <p class="first"> @lang('frontend.cart.in_cart')<span> {{ $cart_product_count }} @lang('frontend.cart.items').</span></p>
-                @endif
-                @if(isset($cart_product_weight))
-                    <p> @lang('frontend.cart.total_weight_of_goods')<span> {{ $cart_product_weight }} @lang('frontend.cart.gr').</span></p>
-                @endif
-                @if(isset($cart_product_discount))
-                    <p> @lang('frontend.cart.discount')<span class="sale"> {{ $cart_product_discount * 100 }}%</span></p>
-                @endif
-                @if(isset($cart_product_discount_amount))
-                    <p> @lang('frontend.cart.sum_of_discount')<span class="sale"> -{{ $cart_product_discount_amount }} @lang('frontend.cart.sum')</span>
-                    </p>
-                @endif
-                <div class="go-to-checkout-page-buttons">
-                    <div>
-                        <p class="overall"> @lang('frontend.cart.all_to_pay')</p>
-                        @if(isset($cart_product_total))
-                            <p class="total-checkout">{{ $cart_product_total }} <span>@lang('frontend.cart.sum')</span></p>
-                        @endif
-                    </div>
-                    <button class="btn make-order">@lang('frontend.cart.checkout_order')</button>
-                </div>
-            </div>
+            @include('cart.side-calculation', ['method' => 'cart'])
 {{--            {{ dd($cart_product_id) }}--}}
 {{--            @foreach($cart_product_id as $i => $idid)--}}
 {{--                <input type="hidden" value="{{ $idid[$i] }}" class="cart_all_products_id">--}}
