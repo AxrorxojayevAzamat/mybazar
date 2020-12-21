@@ -58,7 +58,7 @@ class Profile extends Model
         'birth_date' => 'datetime',
     ];
 
-    public static function new($userId, $firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null, $region = null): self
+    public static function new($userId, $firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null, $region = null,$passport = null): self
     {
         return static::create([
             'user_id' => $userId,
@@ -68,11 +68,12 @@ class Profile extends Model
             'gender' => $gender,
             'address' => $address,
             'avatar' => $avatar,
-            'region' => $region
+            'region' => $region,
+            'passport' => $passport
         ]);
     }
 
-    public function edit($firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null , $region = null)
+    public function edit($firstName = null, $lastName = null, $birthDate = null, $gender = null, $address = null, $avatar = null , $region = null,$passport = null)
     {
         $this->update([
             'first_name' => $firstName ?? $this->first_name,
@@ -82,6 +83,7 @@ class Profile extends Model
             'address' => $address ?? $this->address,
             'avatar' => $avatar ?? $this->avatar,
             'region' => $region ?? $this->region,
+            'passport' => $passport ?? $this->passport,
         ]);
     }
 
@@ -144,6 +146,16 @@ class Profile extends Model
     public function getAvatarOriginalAttribute(): string
     {
         return '/storage/files/' . ImageHelper::FOLDER_PROFILES . '/' . $this->user_id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->avatar;
+    }
+
+    public function getPassportThumbnailAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_PASSPORT . '/' . $this->user_id . '/' . ImageHelper::TYPE_THUMBNAIL . '/' . $this->passport;
+    }
+
+    public function getPassportriginalAttribute(): string
+    {
+        return '/storage/files/' . ImageHelper::FOLDER_PASSPORT . '/' . $this->user_id . '/' . ImageHelper::TYPE_ORIGINAL . '/' . $this->passport;
     }
 
     public function getFullNameAttribute(): string

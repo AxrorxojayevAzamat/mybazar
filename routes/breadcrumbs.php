@@ -173,6 +173,11 @@ Breadcrumbs::register('profile.add-phone-show', function (Crumbs $crumbs) {
     $crumbs->push(trans('auth.add_phone'), route('profile.add-phone-show'));
 });
 
+Breadcrumbs::register('profile.add-photo', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_photo'), route('profile.add-photo'));
+});
+
 Breadcrumbs::register('profile.email.verification', function (Crumbs $crumbs) {
     $crumbs->parent('user.profile', Auth::user());
     $crumbs->push(trans('auth.email_verification'), route('profile.email.verification'));

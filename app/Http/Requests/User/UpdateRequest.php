@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
             'address' => 'nullable|string',
             'region' => 'nullable|integer',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'passport' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 

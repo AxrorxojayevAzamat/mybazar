@@ -110,9 +110,18 @@ return [
     'female' => 'Ayol',
     'icon' => 'Belgi',
     'change_personal_info' => 'Shaxsiy ma`lumotlarni o`zgartirish',
+    'change_additional_info' => 'Qo`shimcha ma`lumotlarni o`zgartirish',
     'personal_info' => 'Shaxsiy ma`lumotlar',
+    'additional_info' => 'Qo`shimcha ma`lumotlar',
     'passport_info' => 'Passport ma`lumotlari',
     'cart_info' => 'Karta raqami ma`lumotlari',
+    'user_cabinet' => 'Shaxsiy kabinet',
+    'verify_identity' => 'Shaxsingizni tasdiqlang',
+    'for_necessary_passport' => 'Keyinchalik o`qishga qiyin bo`lmasligi uchun tiniqroq rasm joylang',
+    'foto_with_registration' => 'Pasport shaxsiy ma`lumotlari va yashash joy ma`lumotlari bilan',
+    'pres_for_upload' =>'Yuklash uchun bosing',
+    'upload_avatar' =>'Shaxsingizni tasdiqlovchi rasmingizni yuklang',
+
 
     'photo' => [
         'plural' => 'Rasm',

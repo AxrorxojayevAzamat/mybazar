@@ -76,7 +76,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
 
-        Route::get('add-photo', 'ProfileController@add-photo')->name('add-photo');
+        Route::get('add-photo', 'ProfileController@addPhoto')->name('add-photo');
 
         Route::get('change-password', 'ProfileController@changePasswordPage')->name('change-password');
         Route::post('change-password', 'ProfileController@changePassword')->name('change-password');
