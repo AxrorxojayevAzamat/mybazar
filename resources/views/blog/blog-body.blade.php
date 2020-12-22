@@ -21,7 +21,7 @@
                 <i class="navbar-toggler-icon mbcompare"></i>
                 </button>
 
-                <form method="GET" id="search-bar" class="search-bar form-control">
+                <form method="GET" id="search-bar" class="w-100 search-bar form-control">
                     <input id="search-input" name="blogName" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
                     <button class="search btn" type="submit"><i class="mbsearch"></i></button>
                 </form>
