@@ -1,45 +1,47 @@
 <section>
     <div class="outter-full-comments">
-        <div class="comments">
-            <div class="sort-by">
-                @if($product->reviews()->count() > 0)
-                    <button class="btn sort-by-btn by-price">@lang('frontend.by_date')<i></i></button>
-                    <button class="btn sort-by-btn by-rating">@lang('frontend.by_rating')<i></i></button>
-                @endif
-            </div>
-            @foreach($product->reviews()->limit(5)->orderByDesc('created_at')->get() as $review)
-                <div class="item">
-                    <div class="user-with-rating">
-                        <div class="user">
-                            <div class="user-ava">
-                                <img src="{{ asset('images/username-default-ava.png') }}" alt="">
-                            </div>
-                            <div class="user-name">
-                                @php($user = $review->user)
-                                <h6>{{ $user->name }}</h6>
-                                @if ($user->haveBoughtProduct($product->id))
-                                    <p class="green">@lang('frontend.product.have_bought')</p>
-                                @else
-                                    <p class="red">@lang('frontend.product.have_not_bought')</p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="voted-rate">
-                            <div id="rateYo_U{{ $loop->index }}"></div>
-                        </div>
-                    </div>
-                    <p class="date">{{ $review->created_at }}</p>
-                    <h6>@lang('frontend.review.advantages')</h6>
-                    <p>{{ $review->advantages }}</p>
-
-                    <h6>@lang('frontend.review.disadvantages')</h6>
-                    <p>{{ $review->disadvantages }}</p>
-
-                    <h6>{{ trans('frontend.product.comments') }}</h6>
-                    <p>{{ $review->comment }}</p>
+        @if (!Auth::guest())
+            <div class="comments">
+                <div class="sort-by">
+                    @if($product->reviews()->count() > 0)
+                        <button class="btn sort-by-btn by-price">@lang('frontend.by_date')<i></i></button>
+                        <button class="btn sort-by-btn by-rating">@lang('frontend.by_rating')<i></i></button>
+                    @endif
                 </div>
-            @endforeach
-        </div>
+                @foreach($product->reviews()->limit(5)->orderByDesc('created_at')->get() as $review)
+                    <div class="item">
+                        <div class="user-with-rating">
+                            <div class="user">
+                                <div class="user-ava">
+                                    <img src="{{ asset('images/username-default-ava.png') }}" alt="">
+                                </div>
+                                <div class="user-name">
+                                    @php($user = $review->user)
+                                    <h6>{{ $user->name }}</h6>
+                                    @if ($user->haveBoughtProduct($product->id))
+                                        <p class="green">@lang('frontend.product.have_bought')</p>
+                                    @else
+                                        <p class="red">@lang('frontend.product.have_not_bought')</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="voted-rate">
+                                <div id="rateYo_U{{ $loop->index }}"></div>
+                            </div>
+                        </div>
+                        <p class="date">{{ $review->created_at }}</p>
+                        <h6>@lang('frontend.review.advantages')</h6>
+                        <p>{{ $review->advantages }}</p>
+
+                        <h6>@lang('frontend.review.disadvantages')</h6>
+                        <p>{{ $review->disadvantages }}</p>
+
+                        <h6>{{ trans('frontend.product.comments') }}</h6>
+                        <p>{{ $review->comment }}</p>
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <div class="leave-comment">
             @if (!Auth::guest())
                 <h6 class="title">@lang('frontend.review.write')</h6>
