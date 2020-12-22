@@ -3,6 +3,7 @@
 namespace App\Entity\User;
 
 use App\Entity\Shop\Cart;
+use App\Entity\Shop\Order;
 use App\Helpers\UserHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -453,6 +454,12 @@ class User extends Authenticatable
     public function carts()
     {
         return $this->hasMany(Cart::class, 'user_id', 'id');
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+
     }
 
     public function networks()

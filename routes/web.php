@@ -100,7 +100,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('cart', 'CartController@cart')->name('cart');
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
-    Route::get('pay', 'PayController@pay')->name('pay');
+    Route::post('pay', 'PayController@pay')->name('pay');
     Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function () {
         Route::get('', 'CatalogController@catalog')->name('list');
     });

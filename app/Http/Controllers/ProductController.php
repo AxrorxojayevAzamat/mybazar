@@ -192,9 +192,13 @@ class ProductController extends Controller
         return view('compare.compare', compact('product', 'comparingProduct', 'groupValues', 'comparingGroupValues'));
     }
 
-    public function newProducts(Category $category)
+    public function newProducts(Request $request,Category $category)
     {
-        $newProducts = Product::where('new', true)->paginate(20);
+        $newProducts = Product::where('new', true);
+        if ($request->categoryName and $request->categoryName !== 'all'){
+            $newProducts = $newProducts->where('main_category_id', $request->categoryName);
+        }
+
         $ratings = [];
         $min_price = 0;
         $max_price = 1;
@@ -211,8 +215,15 @@ class ProductController extends Controller
                 'rating' => $product->rating,
             ];
         }
-        $categories = Category::where('parent_id', null)->get();
+        $newProducts = $newProducts->paginate(12);
+        $newProductIds = $newProducts->pluck('main_category_id')->toArray();
+
+
+        $categories = Category::whereIn('id', $newProductIds)->get();
+
         $parentCategory =  $category->parent()->get()->toTree();
-        return view('products.new-products', compact('newProducts', 'ratings', 'min_price', 'max_price', 'parentCategory', 'categories'));
+        $rootCategoryShow = true;
+
+        return view('products.new-products', compact('newProducts', 'ratings', 'min_price', 'max_price', 'parentCategory', 'categories', 'rootCategoryShow'));
     }
 }

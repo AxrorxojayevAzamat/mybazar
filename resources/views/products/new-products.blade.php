@@ -10,7 +10,9 @@
     <!-- Casousel -->
     <div class="outter-catalog-view">
         <!-- big filter without title checkbox -->
-        @include('catalog.sidebar')
+        <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+            @include('filters.category-blog-filter')
+        </form>
 
 {{--        <div class="wrapper-filtered-items d-flex justify-content-center">--}}
 
