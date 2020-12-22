@@ -2,7 +2,7 @@
     <a href="#page" class="mm-btn mm-btn_close mm-navbar__btn" id="close-menu-btn"></a>
     <ul>
         <li>
-            <span>Язык</span>
+            <span>@lang('frontend.language')</span>
             <ul>
                 @foreach(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalesOrder() as $localeCode => $properties)
                     <li>
@@ -21,7 +21,7 @@
                     <li>
                         <span>
                             <a href="{{ route('categories.show', products_path($category)) }}">
-                                <img class="menu-discount-icon" src="{{asset('images/discount.svg')}}">{{$category->name}}
+                                <img class="menu-discount-icon" src="{{$category->iconOriginal}}">{{$category->name}}
                             </a>
 
                         </span>
@@ -37,27 +37,29 @@
 
         <li><a href="#">{{ trans('frontend.nav.stock') }} </a></li>
         <li><a href="#">{{ trans('frontend.nav.discount') }}</a></li>
-        <li>
-            <span>{{trans('frontend.products')}}</span>
-            <ul>
-                <li><a href="#about/history">{{trans('frontend.history')}}</a></li>
-                <li>
-                    <span>{{trans('menu.the_team')}}</span>
-                    <ul>
-                        <li><a href="#about/team/management">{{trans('menu.the_team')}}</a></li>
-                        <li><a href="#about/team/sales">{{trans('menu.sales')}}</a></li>
-                        <li><a href="#about/team/development">{{trans('menu.development')}}</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about/address">{{trans('menu.our_address')}}</a></li>
-            </ul>
-        </li>
+{{--        <li>--}}
+{{--            <span>{{trans('frontend.products')}}</span>--}}
+{{--            <ul>--}}
+{{--                <li><a href="#about/history">{{trans('frontend.history')}}</a></li>--}}
+{{--                <li>--}}
+{{--                    <span>{{trans('menu.the_team')}}</span>--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="#about/team/management">{{trans('menu.the_team')}}</a></li>--}}
+{{--                        <li><a href="#about/team/sales">{{trans('menu.sales')}}</a></li>--}}
+{{--                        <li><a href="#about/team/development">{{trans('menu.development')}}</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li><a href="#about/address">{{trans('menu.our_address')}}</a></li>--}}
+{{--            </ul>--}}
+{{--        </li>--}}
         <li><a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a></li>
+        <li><a href="{{ route('products.new-products') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a></li>
         <li><a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a></li>
         <li><a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a></li>
         <li><a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a></li>
-        <li><a href="{{ route('shops.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a></li>
+        <li><a href="{{ route('stores.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a></li>
         <li><a href="{{ route('pay') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a></li>
+        <li><a href="{{ route('delivery') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a></li>
 
 {{--        <li><a href="#">{{ trans('frontend.nav.top_brands') }}</a></li>--}}
 {{--        <li><a href="#">{{ trans('frontend.nav.blogs') }}</a></li>--}}

@@ -70,7 +70,7 @@
 </nav>
 <script>
     function setBanner(photo, slug, brands) {
-        console.log(brands)
+        // console.log(brands)
         $(`#full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
         $(`#full-image-banner_${slug} img`).css('display', 'inline')
         $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
-    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.css') }}">
     @yield('styles')
 
 </head>
