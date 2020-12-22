@@ -109,5 +109,5 @@
     </script>
 @endpush
 
-@include('pages.rating-js', ['products' => $product->reviews()->limit(5)->orderByDesc('created_at')->get(), 'type' => '"U"'])
+{{--@include('pages.rating-js', ['products' => $product->reviews()->limit(5)->orderByDesc('created_at')->get(), 'type' => '"U"'])--}}
 
