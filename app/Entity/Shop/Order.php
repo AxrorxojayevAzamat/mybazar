@@ -46,7 +46,7 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', 'delivery_method_id', 'delivery_method_name_uz', 'delivery_method_name_ru', 'delivery_method_name_en', 'delivery_cost',
-        'payment_type_id', 'total_cost', 'note', 'status', 'cancel_reason', 'phone', 'name', 'delivery_index', 'delivery_address',
+        'payment_type_id', 'total_cost', 'statuses_json', 'note', 'status', 'cancel_reason', 'phone', 'name', 'delivery_index', 'delivery_address',
     ];
 
     protected $casts = [
