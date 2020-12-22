@@ -318,8 +318,8 @@ button.owl-next span{
         height: 100%;
     }
     .item-action-icons{
-        position: absolute;
-        bottom:55px;
+        position: relative;
+        bottom:85px;
     }
 }
 
@@ -561,7 +561,7 @@ nav ol.breadcrumb{
     .item{
         height:390px;
         width:100%;
-        cursor: pointer;
+        //cursor: pointer;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $item_border_color, 0);
         background:white;

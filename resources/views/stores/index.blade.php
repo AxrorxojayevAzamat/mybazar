@@ -49,4 +49,6 @@
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"V"', 'html' => 'V']])
 @endsection
 
-
+@section('script')
+    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+@endsection
