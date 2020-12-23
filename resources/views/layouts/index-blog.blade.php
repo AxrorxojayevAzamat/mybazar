@@ -1,4 +1,7 @@
 <section>
+    <div class="h4-title">
+        <h4><a href="{{ route('blogs') }}" style="color: #07108f">@lang('frontend.nav.blogs')</a></h4>
+    </div>
     <div class="outter-blogs owl-carousel owl-theme">
         @foreach($posts as $post)
         <a href="{{route('blogs.show', $post)}}">

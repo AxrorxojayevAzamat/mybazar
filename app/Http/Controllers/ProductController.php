@@ -202,6 +202,10 @@ class ProductController extends Controller
         $ratings = [];
         $min_price = 0;
         $max_price = 1;
+
+        $newProducts = $newProducts->paginate(12);
+        $newProductIds = $newProducts->pluck('main_category_id')->toArray();
+
         foreach ($newProducts as $i => $product) {
             if ($min_price === 0) {
                 $min_price = $product->price_uzs;
@@ -215,10 +219,6 @@ class ProductController extends Controller
                 'rating' => $product->rating,
             ];
         }
-        $newProducts = $newProducts->paginate(12);
-        $newProductIds = $newProducts->pluck('main_category_id')->toArray();
-
-
         $categories = Category::whereIn('id', $newProductIds)->get();
 
         $parentCategory =  $category->parent()->get()->toTree();

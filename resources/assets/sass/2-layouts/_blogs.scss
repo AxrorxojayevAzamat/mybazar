@@ -1,6 +1,6 @@
 .outter-blogs{
     width:80%;
-    margin:1% auto;
+    margin:0 auto;
     @include displayFlex(flex-start, row, flex-start);
     .item{
         height:310px;
