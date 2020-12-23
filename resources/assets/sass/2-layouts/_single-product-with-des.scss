@@ -311,7 +311,7 @@
 
 }
 .outter-full-comments{
-    @include displayFlex(space-between, row, flex-start);
+    @include displayFlex(center, row, flex-start);
     width:100%;
     padding:2% 10%;
     height:auto;

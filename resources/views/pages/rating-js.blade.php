@@ -4,7 +4,7 @@
         var products = <?php echo json_encode($products); ?>;
         var productsIterator = products.data ? products.data.entries() : (products.length ? products.entries() : null);
         function ratingProduct(type, element, num) {
-            console.log(`${type} ${element.name_uz}: ${element.rating}`)
+            // console.log(`${type} ${element.name_uz}: ${element.rating}`)
             $('#rateYo_' + type + num).rateYo({
                 rating: element.rating || 0.1,
                 readOnly: true,

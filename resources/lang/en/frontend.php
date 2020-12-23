@@ -13,6 +13,8 @@ return [
     'compare_none' => 'You have not saved anything in your compare cart yet',
     'compare_full' => 'You can compare only 3 products',
     'compare_not_fit' => 'For comparing products categories must be the same',
+    'language' => 'Language',
+    'search_on_mybazar' => 'Searching on myBazar ...',
 
     'color' => 'Color',
     'price' => 'Price',

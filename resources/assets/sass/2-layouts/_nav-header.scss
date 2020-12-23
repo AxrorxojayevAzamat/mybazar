@@ -6,9 +6,9 @@ nav#main_navbar{
 
   .dropdown:after{
     content:'';
-    width:84%;
+    width:100%;
     display: inherit;
-    margin: auto auto auto 16%;
+    //margin: auto auto auto 16%;
     border-top: 1px solid #DFDFDF;
   }
   .dropdown:last-child::after{

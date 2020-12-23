@@ -8,14 +8,7 @@
 
 @section('body')
 @section('banner')
-{{--    @if(empty($longBanner1))--}}
-{{--        @include ('layouts.full-banner1', ['longBanner1' => $banner])--}}
-{{--    @else--}}
-{{--        @include ('layouts.full-banner1')--}}
-
-{{--    @endif--}}
     @include ('layouts.slide-banner-catalog')
-
 @endsection
 
 <section>
@@ -59,10 +52,7 @@
 
 @include ('layouts.carousel-products',
 ['products' => $newProducts, "title" => trans('frontend.novelty_upper'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
-{{-- @include ('layouts.new-products')   CHANGEABLE --}}
 
-<!-- TOP sales  -->
-{{--    @include ('layouts.top-sales')--}}
 @endsection
 
 

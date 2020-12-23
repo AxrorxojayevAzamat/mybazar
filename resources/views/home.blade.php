@@ -19,20 +19,13 @@
     <!-- POPULAR PRODUCTS -->
     @include ('layouts.carousel-products',
         ['products' => $bestsellerProducts, "title" => trans('frontend.popular'), 'rate_for' => ['js' => '"B"', 'html' => 'B']])   {{--CHANGEABLE--}}
-    {{-- @include ('popular.popular-products')   CHANGEABLE --}}
 
     <!-- NEW PRODUCTS -->
     @include ('layouts.carousel-products',
         ['products' => $newProducts, "title" => trans('frontend.novelty'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
-    {{-- @include ('layouts.new-products')   CHANGEABLE --}}
 
     <!-- 3 small banners -->
     @include ('layouts.three-small-banners')
-
-    <!-- RECOMMENDED PRODUCTS-->
-    @include ('layouts.carousel-products',
-        ['products' => $recommended, "title" => trans('frontend.recommend'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])   {{--CHANGEABLE--}}
-    {{-- @include ('layouts.recommended-products')   CHANGEABLE   TODO: fix --}}
 
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')

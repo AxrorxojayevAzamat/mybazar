@@ -8,12 +8,12 @@
                     @foreach($parentCategory as $i => $category)
 
                         <li class="category-list">
-                            <a href="?categoryName={{ $category->id }}"><-{{ $category->name }}</a>
+                            <a href="?categoryName={{ $category->id }}"><b>{{ $category->name }}</b></a>
                         </li>
                     @endforeach
                 @elseif(isset($rootCategoryShow))
                     <li class="category-list">
-                        <a href="?categoryName=all"><-@lang('menu.whole_catalog')</a>
+                        <a href="?categoryName=all"><b>@lang('menu.whole_catalog')</b></a>
                     </li>
                 @endif
                 @if(isset($categories))

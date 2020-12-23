@@ -7,12 +7,12 @@
                 @if(isset($parentCategory) || $parentCategory)
                     @foreach($parentCategory as $i => $category)
                         <li class="category-list">
-                            <a href="{{ route('categories.show', products_path($category)) }}"><-{{ $category->name }}</a>
+                            <a href="{{ route('categories.show', products_path($category)) }}"><b>{{ $category->name }}</b></a>
                         </li>
                     @endforeach
                 @elseif(isset($rootCategoryShow) || $rootCategoryShow)
                     <li class="category-list">
-                        <a href="/categories"><-@lang('menu.whole_catalog')</a>
+                        <a href="/categories"><b>@lang('menu.whole_catalog')</b></a>
                     </li>
                 @endif
 {{--                {{dd($categories)}}--}}
