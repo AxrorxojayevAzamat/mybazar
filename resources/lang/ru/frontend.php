@@ -91,6 +91,7 @@ return [
         'shops' => 'Магазины',
         'videos' => 'Видеоролики',
         'search' => 'Искать',
+        'final_order' => 'Заказ создан',
     ],
 
     'nav' => [
@@ -163,6 +164,12 @@ return [
         'hours' => 'часов',
         'due_to_that_we_deliver_some_goods_via_courier_services' => 'Связи с тем, некоторые товары мы доставляем через курьерскими службами.',
         'in_detail' => 'Подробно',
+        'take_in_delivery' => 'Возьмите рядом с собой',
+        'delivery_to_house' => 'Доставка к вам',
+        'no_delivery' => 'Взять откуда угодно',
+        'index' => 'Почтовый индекс',
+        'delivery_price' => 'Стоимость доставки',
+        'success_order' => 'Вы успешно создали заказ, и ваш идентификатор заказа',
     ],
 
     'delivery' => [

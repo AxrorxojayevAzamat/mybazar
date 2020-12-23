@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\DeliveryMethod;
 use App\Entity\Shop\Cart;
+use App\Http\Controllers\Admin\DeliveryController;
 use Illuminate\Http\Request;
 use App\Entity\Shop\Product;
 
@@ -29,7 +31,6 @@ class CheckoutController extends Controller
             $cart_product_total = 0;
 
             foreach ($products as $i => $product) {
-//            dd($product);
                 $cart_product_weight += $product->weight;
                 $cart_product_total += $product->price_uzs;
                 $cart_product_discount += $product->discount;
@@ -38,10 +39,9 @@ class CheckoutController extends Controller
             $cart_product_discount_amount = $cart_product_total * $cart_product_discount;
             $cart_product_total = $cart_product_total - $cart_product_discount_amount;
 
-//            return view('cart.cart', compact('products', 'cart_product_total',
-//                'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
-//                'cart_product_id'));
-            return view('cart.checkout', compact('cart_product_total', 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount', 'cart_product_id'));
+            $delivery = DeliveryMethod::get();
+
+            return view('cart.checkout', compact('cart_product_total', 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount', 'cart_product_id', 'delivery'));
         }
     }
 }
