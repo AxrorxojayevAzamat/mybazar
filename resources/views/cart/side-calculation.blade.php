@@ -18,6 +18,10 @@
         <p> @lang('frontend.cart.sum_of_discount')<span class="sale"> -{{ $cart_product_discount_amount }} @lang('frontend.cart.sum')</span>
         </p>
     @endif
+    @if(isset($delivery_price))
+        <p> @lang('frontend.cart.delivery_price')<span class="sale"> -{{ $delivery_price }} @lang('frontend.cart.sum')</span>
+        </p>
+    @endif
 
     <div class="go-to-checkout-page-buttons">
         <div>

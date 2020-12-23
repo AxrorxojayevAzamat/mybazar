@@ -121,7 +121,7 @@ Breadcrumbs::register('checkout', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('pay', function (Crumbs $crumbs) {
     $crumbs->parent('checkout');
-    $crumbs->push(trans('frontend.breadcrumb.delivery'), route('pay'));
+    $crumbs->push(trans('frontend.breadcrumb.final_order'), route('pay'));
 });
 
 Breadcrumbs::register('catalog.list', function (Crumbs $crumbs) {

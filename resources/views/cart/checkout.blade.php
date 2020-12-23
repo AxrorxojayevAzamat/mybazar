@@ -107,6 +107,23 @@
                         </div>
 
                     </div>
+                    <div class="form-group">
+                        <div>
+                            <label for="delivery">@lang('frontend.delivery.delivery')</label>
+                            <select id="city" name="delivery" class="form-control">
+                                <option value="" disabled selected>@lang('frontend.cart.select')</option>
+                                @foreach($delivery as $i => $deliveryMethod)
+                                    <option value="{{ $deliveryMethod->id }}, {{ $deliveryMethod->name }}">{{ $deliveryMethod->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="fname">@lang('frontend.cart.index')</label>
+                            <div class="input">
+                                <input type="text" name="index" id="name"  class="form-control bordered-input" required placeholder="" >
+                            </div>
+                        </div>
+                    </div>
 
                     <h6 class="sub-title">@lang('frontend.cart.contacts')</h6>
 
@@ -133,6 +150,11 @@
                         </div>
                     </div>
                     <input type="hidden" name="total_cost" value="{{$cart_product_total}}">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">@lang('frontend.cart.in_cash')</label>
+                    </div>
 
                     <input type="submit" id="submit" value="Заказать">
                 </form>

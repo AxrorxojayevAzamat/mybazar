@@ -90,6 +90,7 @@ return [
         'shops' => 'Do‘konlar',
         'videos' => 'Videolar',
         'search' => 'Qidiruv',
+        'final_order' => 'Buyurtma yaratildi',
     ],
 
     'nav' => [
@@ -162,6 +163,14 @@ return [
         'hours' => 'soat',
         'due_to_that_we_deliver_some_goods_via_courier_services' => 'Shu sababli biz ba\'zi tovarlarni kurerlik xizmatlari orqali etkazib beramiz.',
         'in_detail' => 'Batafsil',
+        'take_in_delivery' => 'Uyingizga yaqin shaxobchadan olib ketish',
+        'delivery_to_house' => 'Uyingizgacha eltib berish',
+        'no_delivery' => 'O\'zi olib ketish',
+        'index' => 'Pochta indeksi',
+        'delivery_price' => 'Yetkazib berish narxi',
+        'success_order' => 'Siz buyurtmani muvaffaqiyatli yaratdingiz va sizning buyurtma identifikatoringiz',
+
+
     ],
 
     'delivery' => [

@@ -37,7 +37,6 @@ class CartController extends Controller
             return view('cart.cart', compact('products', 'cart_product_total',
                 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
                 'cart_product_id'));
-            return view('cart.cart');
         } else {
 
             $cart_product = Cart::where('user_id', $user->id)->get();

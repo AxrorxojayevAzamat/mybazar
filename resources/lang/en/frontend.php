@@ -88,6 +88,7 @@ return [
         'shops' => 'Stores',
         'videos' => 'Video Blog',
         'search' => 'Search',
+        'final_order' => 'Order Created',
     ],
 
     'nav' => [
@@ -160,6 +161,12 @@ return [
         'hours' => 'hours',
         'due_to_that_we_deliver_some_goods_via_courier_services' => 'Due to that, we deliver some goods via courier services.',
         'in_detail' => 'In detail',
+        'take_in_delivery' => 'Take from near you',
+        'delivery_to_house' => 'Delivery to your location',
+        'no_delivery' => 'Take from wherever',
+        'index' => 'Mail index',
+        'delivery_price' => 'Delivery price',
+        'success_order' => 'You have successfully created an order and your order id is',
     ],
 
     'delivery' => [
