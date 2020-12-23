@@ -15,7 +15,7 @@
         <input type="hidden" name="brands" id="brands-hidden-input">
     @endif
 
-    <button type="button" class="btn accordion active">Цена</button>
+    <button type="button" class="btn accordion active">@lang('frontend.price')</button>
     <div id="filter3" class="panel">
         <div class="outter-range-slider">
             <div class="form-group">

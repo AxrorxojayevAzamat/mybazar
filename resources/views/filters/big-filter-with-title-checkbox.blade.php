@@ -59,7 +59,7 @@
     <div class="filter-item custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input checkAll" id="smallcustomCheck3-0">
         <label  class="custom-control-label checkAll-first-label" for="smallcustomCheck3-0"></label>
-        <button type="button" class="btn checkAll-label  active " >Цена</button>
+        <button type="button" class="btn checkAll-label  active " >@lang('frontend.price')</button>
         <div id="filter3"  class="panel">
             <div class="outter-range-slider">
                 <div class="form-group">

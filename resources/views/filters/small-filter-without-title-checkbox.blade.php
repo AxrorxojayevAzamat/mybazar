@@ -73,7 +73,7 @@
                 <div class="card-header" id="filterThree">
                     <h2 class="mb-0">
                         <button class="btn filter-title" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="filterThree">
-                        Цена
+                            @lang('frontend.price')
                         </button>
                     </h2>
                 </div>
