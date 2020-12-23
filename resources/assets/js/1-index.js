@@ -341,31 +341,31 @@ $(document).ready(function () {
         dots: false,
         responsive: {
             0: {
-                items: 2
+                items: 3
             },
             300: {
-                items: 2
+                items: 3
             },
             400: {
-                items: 2
+                items: 4
             },
             500: {
-                items: 3,
-            },
-            600: {
-                items: 4,
-            },
-            700: {
                 items: 5,
             },
-            800: {
+            600: {
                 items: 6,
             },
+            700: {
+                items: 7,
+            },
+            800: {
+                items: 8,
+            },
             1001: {
-                items: 10,
+                items: 12,
             },
             1251: {
-                items: 12
+                items: 14
             }
         }
     });

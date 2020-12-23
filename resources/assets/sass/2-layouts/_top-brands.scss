@@ -39,33 +39,33 @@
         }
     }
 }
-@media all and (max-width: 1000px) {
-    .top-brands{
-        .one-row-brands {
-            max-height: 65px;
-            overflow-y: hidden;
-            .item {
-                width:20%;
-            }
-        }
-    }
-}
-
-@media all and (max-width: 800px) {
-    .top-brands{
-        .one-row-brands {
-            .item {
-                width:25%;
-            }
-        }
-    }
-}
-@media all and (max-width: 400px) {
-    .top-brands{
-        .one-row-brands {
-            .item {
-                width:33.33%;
-            }
-        }
-    }
-}
+//@media all and (max-width: 1000px) {
+//    .top-brands{
+//        .one-row-brands {
+//            max-height: 65px;
+//            overflow-y: hidden;
+//            .item {
+//                width:20%;
+//            }
+//        }
+//    }
+//}
+//
+//@media all and (max-width: 800px) {
+//    .top-brands{
+//        .one-row-brands {
+//            .item {
+//                width:25%;
+//            }
+//        }
+//    }
+//}
+//@media all and (max-width: 400px) {
+//    .top-brands{
+//        .one-row-brands {
+//            .item {
+//                width:33.33%;
+//            }
+//        }
+//    }
+//}
