@@ -63,14 +63,24 @@ class BrandsController extends Controller
         $product = $query->paginate(12); //paginate() {{$products->links()}} render qlish uchun kere.
         $products = $query->paginate(12); // boshqa payt, get() ni ishlatsayam boladi
 
+        $min_price = 0;
+        $max_price = 1;
+
         $ratings = [];
         foreach ($products as $i => $product) {
+            if ($min_price === 0) {
+                $min_price = $product->price_uzs;
+            } elseif ($min_price > $product->price_uzs) {
+                $min_price = $product->price_uzs;
+            } elseif ($max_price < $product->price_uzs) {
+                $max_price = $product->price_uzs;
+            }
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
             ];
         }
-
-        return view('brand.show', compact('product', 'products', 'ratings'));
+//        dd($brand);
+        return view('brand.show', compact('product', 'products', 'ratings', 'min_price', 'max_price', 'brand'));
     }
 }
