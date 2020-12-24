@@ -18,7 +18,9 @@
 
         <div class="outter-brand-view-body">
             <!-- big filter without title checkbox -->
-            @include('filters.big-filter-without-title-checkbox')
+            <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+                @include('filters.category-blog-filter')
+            </form>
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">

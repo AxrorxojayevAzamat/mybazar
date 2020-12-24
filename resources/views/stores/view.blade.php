@@ -16,8 +16,11 @@
 
     <div class="outter-catalog-view">
         <!-- big filter without title checkbox -->
-        @include('catalog.sidebar')
-{{--        @include('shop.big-filter-without-title-checkbox')--}}
+        <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+            @include('filters.category-blog-filter')
+        </form>
+
+        {{--        @include('shop.big-filter-without-title-checkbox')--}}
 
         <div class="wrapper-filtered-items">
             <nav class=" navbar navbar-expand-custom sort-types">

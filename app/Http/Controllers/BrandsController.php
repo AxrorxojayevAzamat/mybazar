@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Category;
 use App\Helpers\BrandHelper;
 use Illuminate\Http\Request;
 use App\Entity\Brand;
@@ -57,11 +58,17 @@ class BrandsController extends Controller
         return view('brand.brands', compact('groupsEn','groupsRu'));
     }
 
-    public function show(Brand $brand)
+    public function show(Brand $brand, Request $request, Category $category)
     {
         $query = Product::orderByDesc('created_at')->where('brand_id', $brand->id);
+        if ($request->categoryName and $request->categoryName !== 'all'){
+            $query = $query->where('main_category_id', $request->categoryName);
+        }
         $product = $query->paginate(12); //paginate() {{$products->links()}} render qlish uchun kere.
         $products = $query->paginate(12); // boshqa payt, get() ni ishlatsayam boladi
+        $productIds = $query->pluck('main_category_id')->toArray();
+
+
 
         $min_price = 0;
         $max_price = 1;
@@ -80,7 +87,10 @@ class BrandsController extends Controller
                 'rating' => $product->rating,
             ];
         }
-//        dd($brand);
-        return view('brand.show', compact('product', 'products', 'ratings', 'min_price', 'max_price', 'brand'));
+        $rootCategoryShow = true;
+        $parentCategory = $category->parent()->get()->toTree();
+        $categories = Category::whereIn('id', $productIds)->get();
+
+        return view('brand.show', compact('product', 'products', 'ratings', 'min_price', 'max_price', 'brand', 'rootCategoryShow', 'parentCategory', 'categories'));
     }
 }
