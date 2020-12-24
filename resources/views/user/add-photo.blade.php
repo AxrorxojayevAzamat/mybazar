@@ -55,7 +55,7 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{ mix('js/1-index.js', 'build') }}"></script>
 
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>

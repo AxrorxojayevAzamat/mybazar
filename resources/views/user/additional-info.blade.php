@@ -10,11 +10,6 @@
                role="tab" aria-controls="pills-profile"
                aria-selected="false">@lang('adminlte.passport_info')</a>
         </li>
-        {{--                            <li class="nav-item">--}}
-        {{--                                <a class="nav-link" id="pills-card-info-tab" data-toggle="pill" href="#pills-card"--}}
-        {{--                                   role="tab" aria-controls="pills-contact"--}}
-        {{--                                   aria-selected="false">@lang('adminlte.cart_info')</a>--}}
-        {{--                            </li>--}}
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <!-- personal information -->
@@ -26,18 +21,10 @@
                 <div class="col-4 d-flex flex-column">
                     <p class="sub-title">@lang('adminlte.region'):</p>
                     <p class="sub-title">@lang('adminlte.address'):</p>
-                    {{--                                                <p class="sub-title">Город:</p>--}}
-                    {{--                                                <p class="sub-title">Район:</p>--}}
-                    {{--                                                <p class="sub-title">Улица:</p>--}}
-                    {{--                                                <p class="sub-title">Дом/квЖ:</p>--}}
                 </div>
                 <div class="col-8 d-flex flex-column">
                     <span>{{ $user->profile->getRegionName($user->profile->region) ?? trans('adminlte.no') }}</span>
                     <span>{{ $user->profile->address ?? trans('adminlte.no') }}</span>
-                    {{--                                                <span>г. Ташкент</span>--}}
-                    {{--                                                <span>Юнусабадский</span>--}}
-                    {{--                                                <span>Амир Темур</span>--}}
-                    {{--                                                <span>дом 5, кв 42</span>--}}
                 </div>
             </div>
 
@@ -106,25 +93,5 @@
             </form>
             <br>
         </div>
-        <!-- card information -->
-        {{--                            <div class="tab-pane fade" id="pills-card" role="tabpanel"--}}
-        {{--                                 aria-labelledby="pills-card-info-tab">--}}
-        {{--                                <button class="btn add-card">Добавить карту</button>--}}
-        {{--                                <div class="row">--}}
-        {{--                                    <div class="col-4 d-flex flex-column">--}}
-        {{--                                        <p class="sub-title">Тип карты:</p>--}}
-        {{--                                        <p class="sub-title">Номер карты:</p>--}}
-        {{--                                        <p class="sub-title">Срок действия:</p>--}}
-        {{--                                        <p class="sub-title">Банк:</p>--}}
-        {{--                                    </div>--}}
-        {{--                                    <div class="col-8 d-flex flex-column">--}}
-        {{--                                        <span>UZCARD</span>--}}
-        {{--                                        <span>8600 0123 4567 8901</span>--}}
-        {{--                                        <span>06/24</span>--}}
-        {{--                                        <span>Aloqa Bank</span>--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-        {{--                                <button class="btn remove-card">Удалить карту</button>--}}
-        {{--                            </div>--}}
     </div>
 </div>

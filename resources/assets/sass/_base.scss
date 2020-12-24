@@ -126,6 +126,9 @@ input#submit{
     color:white;
     border:none;
     text-align:center;
+    &:hover {
+        background-color: #f7b32b;
+    }
 }
 .btn-red{
     border-radius:23px;
