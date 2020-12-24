@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             $gBrands = Brand::get();
             $discountProducts = Product::where('discount', '>', 0.5 )->limit(3)->get();
             $pages = Page::get();
-            $longBanner = Banner::published()->where('type', Banner::TYPE_LONG)->get()->random();
+            $longBanner = Banner::published()->where('type', Banner::TYPE_LONG)->get();
 
 //            dd($pages[0]->children);
             if ($gUserExists !== null){
