@@ -1,7 +1,9 @@
 <div id="header-2" class="header">
     <div class="menu-logo">
         <a href="#menu" id="open-menu-btn"><i class="mbcatalog"></i></a>
-        <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
+        <a href="/">
+            <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
+        </a>
     </div>
 
     <div class="other-icons">

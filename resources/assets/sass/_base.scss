@@ -104,6 +104,17 @@ p.sub-title{
         }
     }
 }
+p.blog-title{
+    color: #eaecef;
+    font-size:18px;
+    text-align: left;
+    a{
+        color: $comment_color;
+        &:hover, &.active{
+            color:$link_hover_color;
+        }
+    }
+}
 input#submit{
     background:$item_price_color;
     color:white;
@@ -126,6 +137,9 @@ input#submit{
     color:white;
     border:none;
     text-align:center;
+    &:hover {
+        background-color: #f7b32b;
+    }
 }
 .btn-red{
     border-radius:23px;

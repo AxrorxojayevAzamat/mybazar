@@ -23,7 +23,6 @@
                             <a href="{{ route('categories.show', products_path($category)) }}">
                                 <img class="menu-discount-icon" src="{{$category->iconOriginal}}">{{$category->name}}
                             </a>
-
                         </span>
                         @if(count($category->children))
                             <ul>
@@ -36,16 +35,10 @@
         </li>
 
         <li><a href="{{ route('brands') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.top_brands') }}</a></li>
-        <li>
-            <a href="{{ route('products.new-products') }}"
-               class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a>
-        </li>
+        <li><a href="{{ route('products.new-products') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.new_products') }}</a></li>
         <li><a href="{{ route('blogs') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.blogs') }}</a></li>
-        <li>
-            <a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a></li>
-        <li>
-            <a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a>
-        </li>
+        <li><a href="{{ route('videos.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.videos') }}</a></li>
+        <li><a href="{{ route('discounts.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.discount') }}</a></li>
         <li><a href="{{ route('stores.index') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.shops') }}</a></li>
         <li><a href="{{ route('pay') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.pay') }}</a></li>
         <li><a href="{{ route('delivery') }}" class="pn-ProductNav_Link">{{ trans('frontend.nav.delivery') }}</a></li>

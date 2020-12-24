@@ -18,7 +18,7 @@ class ImageHelper
     const FOLDER_CATEGORIES = 'categories';
     const FOLDER_PRODUCTS = 'products';
     const FOLDER_MODIFICATIONS = 'modifications';
-    const FOLDER_BANNERS = 'banners';
+    const FOLDER_BANNERS = 'bannrs';
     const FOLDER_SLIDERS = 'sliders';
     const FOLDER_NEWS = 'news';
     const FOLDER_POSTS = 'posters';
