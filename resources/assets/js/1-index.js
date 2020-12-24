@@ -366,6 +366,15 @@ $(document).ready(function () {
             },
             1251: {
                 items: 14
+            },
+            1400: {
+                items: 15
+            },
+            1600: {
+                items: 16
+            },
+            1800: {
+                items: 18
             }
         }
     });
