@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">@lang('auth.phone_verification')</div>
-                    <div class="card-body">
+                    <div class="card-body">The password
                         <form method="POST" action="{{ isset($user) && $user->exists ? route('profile.verify.phone') : route('verify.phone') }}">
                             @csrf
                             <div class="form-group">
