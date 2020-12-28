@@ -45,8 +45,8 @@
                         background-color:rgba(9,17,142, 0.7);
                         button.play{
                             position:absolute;
-                            left:45%;
-                            top:45%;
+                            left:42%;
+                            top:40%;
                             width:65px;
                             height:65px;
                             border:none;
@@ -86,10 +86,67 @@
         right:1%;
     }
 }
-@media all and (max-width:1150px){
-    .outter-players{
-        .all-players{
-            top:-2%;
+@media (min-width: 320px) {
+    .videos{
+        height:370px;
+        .outter-players{
+            height:310px;
+            .all-players{
+                top:-5%;
+            }
+        }
+    }
+}
+@media (min-width: 576px) {
+    .videos{
+        .outter-players{
+            height:295px;
+            .all-players{
+                top:-8%;
+            }
+        }
+    }
+}
+@media (min-width: 800px) {
+    .videos{
+        .outter-players{
+            height:295px;
+        }
+    }
+}
+@media (min-width: 1000px) {
+    .videos{
+        .outter-players{
+            height:280px;
+            .all-players{
+                top:-10%;
+            }
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .videos{
+        .outter-players{
+            height:280px;
+            .all-players{
+                top:-13%;
+            }
+        }
+        .owl-dots{
+            top:-10%;
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .videos{
+        .outter-players{
+            height:280px;
+            .all-players{
+                top:-13%;
+            }
+        }
+        .owl-dots{
+            top:-10%;
         }
     }
 }

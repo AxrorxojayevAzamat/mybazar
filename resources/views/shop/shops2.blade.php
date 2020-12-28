@@ -13,9 +13,7 @@
                 <div class="single-img">
                     <a href="#">
                         @if ($shop->mainPhoto)
-                            <div class="big-image">
-                                <img src="{{ $shop->mainPhoto->fileOriginal }}" style="width:100%">
-                            </div>
+                            <img src="{{ $shop->mainPhoto->fileOriginal }}" >
                         @endif</a>
                     </a>
                 </div>
@@ -35,9 +33,7 @@
                 <div class="palette-items">
                     <div class="product-img">
                         @if ($shops2ThreeItem->mainPhoto)
-                            <div class="big-image">
-                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
-                            </div>
+                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" >
                         @endif
                         <span class="sale small">
                     <span class="number">-29</span>

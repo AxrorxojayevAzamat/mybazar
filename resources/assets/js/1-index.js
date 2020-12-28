@@ -243,20 +243,33 @@ $(document).ready(function () {
         dots: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                dots:false,
+                nav: true
             },
             600: {
-                items: 1
+                items: 2,
+                dots:false,
+                nav: true
             },
             800: {
-                items: 1
+                items: 3,
+                dots:false,
+                nav: true
             },
             1001: {
                 items: 2
             },
             1251: {
+                items: 2
+            },
+            1400: {
                 items: 3
+            },
+            2500: {
+                items: 4
             }
+
         }
     });
     $('.several-images').owlCarousel({
@@ -308,7 +321,11 @@ $(document).ready(function () {
             },
             1400: {
                 items: 4
+            },
+            2000: {
+                items: 5
             }
+
         }
     });
     $('.similar-p').owlCarousel({
@@ -409,88 +426,91 @@ $(document).ready(function () {
                 items: 1,
                 nav: false
             },
-            400: {
-                items: 2,
-                nav: true
-            },
-            525: {
-                items: 2,
-                nav: true
-            },
             601: {
-                items: 1,
-                nav: true
-            },
-            800: {
-                items: 1,
+                items: 2,
                 nav: true
             },
             900: {
                 items: 2,
                 nav: true
             },
-            1251: {
-                items: 3,
-                nav: true
-            },
             1400: {
                 items: 4,
+                nav: true
+            },
+            2000: {
+                items: 5,
                 nav: true
             }
         }
     });
     $('.all-players').owlCarousel({
         nav: false,
-        dots: false,
+        dots: true,
         margin: 20,
         items: 3,
         responsive: {
             0: {
                 items: 1,
-                dots: true
+                dots:false,
+                nav: true
             },
             600: {
                 items: 1,
-                dots: true
+                dots:false,
+                nav: true
             },
             800: {
                 items: 2,
-                dots: true
+                dots:false,
+                nav: true
+            },
+            1001: {
+                items: 2
             },
             1251: {
-                items: 2,
-                dots: true
+                items: 2
             },
             1400: {
-                items: 3,
-                dots: false
+                items: 3
+            }
+            ,
+            2000: {
+                items: 4
             }
         }
     });
     $('.outter-blogs').owlCarousel({
         nav: false,
-        dots: false,
+        dots: true,
         items: 3,
         responsive: {
             0: {
                 items: 1,
-                dots: true
+                dots:false,
+                nav: true
             },
             600: {
                 items: 1,
-                dots: true
+                dots:false,
+                nav: true
             },
             800: {
                 items: 2,
-                dots: true
+                dots:false,
+                nav: true
+            },
+            1001: {
+                items: 2
             },
             1251: {
-                items: 2,
-                dots: true
+                items: 2
             },
             1400: {
-                items: 3,
-                dots: false
+                items: 3
+            },
+            2500: {
+                items: 4
             }
         }
     });

@@ -1,6 +1,6 @@
 .outter-blogs{
     width:80%;
-    margin:1% auto;
+    margin:2% auto 0;
     @include displayFlex(flex-start, row, flex-start);
     .item{
         height:310px;
@@ -35,10 +35,16 @@
         }
     }
     .owl-dots{
-        top:-30px;
-        right:10px;
-        margin:0;
+        position:absolute;
+        right:0%;
+        top:-2%;
+        margin-top:0;
+        span{
+            width:15px;
+            height:15px;
+        }
     }
+    
 }
 @media all and (max-width:400px){
     .outter-blogs{
