@@ -64,6 +64,7 @@
             })
         }
         function addCart(id) {
+            console.log('compare')
             let product_id = {};
             product_id.data = [];
             product_id.product_id = id;

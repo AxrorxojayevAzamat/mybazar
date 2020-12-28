@@ -59,6 +59,8 @@
                                             <span class="pr-des-radio-buttons">
                                                 <div class="value-modification" id="value-modification"
                                                      data-actual-price="{{ trans('frontend.product.price', ['price' => $modifications->price_uzs]) }}"
+                                                     data-actual-modification-id="{{ $modifications->id }}"
+                                                     data-actual-product-id="{{ $product->id }}"
                                                      data-final-price="{{ trans('frontend.product.price', ['price' => $modifications->currentPriceUzs]) }}">
                                                     {{ $modifications->value }}
                                                 </div>

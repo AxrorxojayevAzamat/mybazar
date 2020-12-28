@@ -87,6 +87,7 @@
         })
     }
     function addCart(id) {
+        console.log('shop')
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;

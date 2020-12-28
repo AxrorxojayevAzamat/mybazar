@@ -78,6 +78,7 @@
     }
 
     function addCart(id) {
+        console.log('product-of-day')
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;

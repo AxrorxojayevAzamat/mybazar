@@ -28,7 +28,12 @@
                 e.preventDefault();
 
                 let modification = $(this);
-
+                let data = {
+                    'product_id': modification.data('actual-product-id'),
+                    'modification_id': modification.data('actual-modification-id')
+                }
+                sessionStorage.setItem('product_modification', JSON.stringify(data))
+                console.log(sessionStorage.getItem('product_modification'));
                 actualProductPrice.html(modification.data('actual-price'));
                 finalProductPrice.html(modification.data('final-price'));
             });
