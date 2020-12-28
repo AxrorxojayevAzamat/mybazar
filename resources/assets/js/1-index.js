@@ -184,12 +184,13 @@ $(document).ready(function () {
     var title_with_checkbox = document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
-            var panel = this.nextElementSibling;
-            if (this.classList.contains('active')) {
-                $(panel).slideUp();
-            } else {
-                $(panel).slideDown();
-            }
+            // var panel = this.nextElementSibling;
+            // console.log(panel)
+            // if (this.classList.contains('active')) {
+            //     $(panel).slideUp();
+            // } else {
+            //     $(panel).slideDown();
+            // }
             this.classList.toggle("active");
         });
     }
@@ -587,8 +588,8 @@ $(document).ready(function () {
         } else {
             navBig.removeClass('shadow');
         }
-        $(".compare-items").fadeOut("fast");
-        $(".cart-items").fadeOut("fast");
+        // $(".compare-items").fadeOut("fast");
+        // $(".cart-items").fadeOut("fast");
         navBig.toggleClass('hidden', scrollTop > prev);
         navDropdown.removeClass('show');
         prev = scrollTop;
