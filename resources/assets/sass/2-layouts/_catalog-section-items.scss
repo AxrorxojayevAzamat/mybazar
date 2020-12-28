@@ -9,12 +9,13 @@
 .all-filtered-catalog-section{
     width: 100%;
     .types-of-media{
-        @include displayFlex(space-between, row, space-between);
+        @include displayFlex(flex-start, row, space-between);
         flex-wrap:wrap;
         a{
             width:32%;
             height:300px;
             margin-bottom:2%;
+            margin-right: 1%;
             .item{
                 @include displayFlex(center, column, center);
                 text-align:center;
@@ -125,7 +126,7 @@
     .all-filtered-catalog-section {
         .types-of-media {
             a {
-                width: 49%;
+                width: 48%;
                 height: 240px;
             }
         }

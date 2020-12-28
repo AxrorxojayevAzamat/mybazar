@@ -47,16 +47,17 @@ class StoresController extends Controller
         return view('stores.index', compact('stores', 'categories'));
     }
 
-    public function view(Request $request, Store $store)
+    public function view(Request $request, Store $store, Category $category)
     {
         $query = Product::where(['status' => Product::STATUS_ACTIVE])->where(['store_id' => $store->id]);
-//        dd($request->get('order'));
-        if (!empty($value = $request->get('brands'))) {
-            $value = explode(',', $value);
-            $brandIds = Brand::whereIn('slug', $value)->pluck('id')->toArray();
-            $query->whereIn('brand_id', $brandIds);
+
+        if ($request->categoryName and $request->categoryName !== 'all'){
+            $query = $query->where('main_category_id', $request->categoryName);
         }
 
+        if (!empty($value = $request->get('brands'))) {
+            $query->whereIn('brand_id', $value);
+        }
         if (!empty($value = $request->get('min_price'))) {
             $query->where('price_uzs', '>=', $value);
         }
@@ -67,6 +68,7 @@ class StoresController extends Controller
 
         if (empty($request->get('order'))) {
             $query->orderByDesc('updated_at');
+
         }
 
         if (!empty($request->get('order')) && $request->get('order') == 'price') {
@@ -81,11 +83,24 @@ class StoresController extends Controller
             $query->orderByDesc('new');
         }
 
-        $brands = Brand::all();
+        $brandsId = $query->pluck('brand_id')->toArray();
+//        dd($brandsId);
+        $brands = Brand::whereIn('id', $brandsId)->get();
+        $newProductIds = $query->pluck('main_category_id')->toArray();
+
 
         $products = $query->paginate(10);
         $ratings = [];
+        $min_price = 0;
+        $max_price = 1;
         foreach ($products as $i => $product) {
+            if ($min_price === 0) {
+                $min_price = $product->price_uzs;
+            } elseif ($min_price > $product->price_uzs) {
+                $min_price = $product->price_uzs;
+            } elseif ($max_price < $product->price_uzs) {
+                $max_price = $product->price_uzs;
+            }
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
@@ -94,8 +109,12 @@ class StoresController extends Controller
         $dayProducts = Product::where(['bestseller' => true, 'status' => Product::STATUS_ACTIVE])
             ->where('discount', '>', 0)->where('discount_ends_at', '>', date('Y-m-d H:i:s'))
             ->orderByDesc('discount')->limit(9)->get();
-        $categories = Category::where('parent_id', null)->get();
-        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store','categories'));
+        $categories = Category::whereIn('id', $newProductIds)->get();
+
+        $rootCategoryShow = true;
+        $parentCategory = $category->parent()->get()->toTree();
+
+        return view('stores.view', compact('products', 'brands', 'ratings', 'dayProducts', 'store','categories', 'parentCategory', 'min_price', 'max_price', 'parentCategory', 'rootCategoryShow'));
 
     }
 }

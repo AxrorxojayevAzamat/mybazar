@@ -20,7 +20,8 @@ $(document).ready(function () {
     };
     date_input.datepicker(options);
 
-    
+    checkCart();
+
     // CART FUNCTIONS
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
@@ -69,8 +70,6 @@ $(document).ready(function () {
         }
     }
 
-    checkCart();
-
     function writeProductsId(){
         let cart_products_id = $('#cart_products_id');
         let saved_carts = localStorage.getItem('product_id');
@@ -88,7 +87,7 @@ $(document).ready(function () {
 
     $("#dropdownComparison").on("click", function () {
         $(".compare-items").fadeIn().addClass('in');
-        
+
     });
     $("#dropdownCart").on("click", function () {
         $(".cart-items").fadeIn().addClass('in');
@@ -333,60 +332,69 @@ $(document).ready(function () {
         dots: false,
         responsive: {
             0: {
-                items: 3
+                items: 1
             },
             600: {
-                items: 4
+                items: 2
             },
             800: {
-                items: 5
+                items: 3
             },
-            1000: {
-                items: 5
+            1100: {
+                items: 4
             },
             1251: {
-                items: 6
+                items: 5
             },
             1400: {
                 items: 6
             }
         }
     });
-    // $('.one-row-brands').owlCarousel({
-    //     nav: true,
-    //     margin: 10,
-    //     items: 12,
-    //     dots: false,
-    //     responsive: {
-    //         0: {
-    //             items: 2
-    //         },
-    //         300: {
-    //             items: 2
-    //         },
-    //         400: {
-    //             items: 2
-    //         },
-    //         500: {
-    //             items: 3,
-    //         },
-    //         600: {
-    //             items: 4,
-    //         },
-    //         700: {
-    //             items: 5,
-    //         },
-    //         800: {
-    //             items: 6,
-    //         },
-    //         1001: {
-    //             items: 10,
-    //         },
-    //         1251: {
-    //             items: 12
-    //         }
-    //     }
-    // });
+    $('.one-row-brands').owlCarousel({
+        nav: true,
+        margin: 10,
+        items: 12,
+        dots: false,
+        responsive: {
+            0: {
+                items: 3
+            },
+            300: {
+                items: 3
+            },
+            400: {
+                items: 4
+            },
+            500: {
+                items: 5,
+            },
+            600: {
+                items: 6,
+            },
+            700: {
+                items: 7,
+            },
+            800: {
+                items: 8,
+            },
+            1001: {
+                items: 12,
+            },
+            1251: {
+                items: 14
+            },
+            1400: {
+                items: 15
+            },
+            1600: {
+                items: 16
+            },
+            1800: {
+                items: 18
+            }
+        }
+    });
     $('.shops-fr').owlCarousel({
         nav: false,
         dots: false,

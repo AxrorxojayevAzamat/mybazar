@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Entity\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Shop\Value;
 use App\Http\Requests\Products\ReviewRequest;
@@ -191,16 +192,38 @@ class ProductController extends Controller
         return view('compare.compare', compact('product', 'comparingProduct', 'groupValues', 'comparingGroupValues'));
     }
 
-    public function newProducts()
+    public function newProducts(Request $request,Category $category)
     {
-        $newProducts = Product::where('new', true)->paginate(20);
+        $newProducts = Product::where('new', true);
+        if ($request->categoryName and $request->categoryName !== 'all'){
+            $newProducts = $newProducts->where('main_category_id', $request->categoryName);
+        }
+
         $ratings = [];
+        $min_price = 0;
+        $max_price = 1;
+
+        $newProducts = $newProducts->paginate(12);
+        $newProductIds = $newProducts->pluck('main_category_id')->toArray();
+
         foreach ($newProducts as $i => $product) {
+            if ($min_price === 0) {
+                $min_price = $product->price_uzs;
+            } elseif ($min_price > $product->price_uzs) {
+                $min_price = $product->price_uzs;
+            } elseif ($max_price < $product->price_uzs) {
+                $max_price = $product->price_uzs;
+            }
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
             ];
         }
-        return view('products.new-products', compact('newProducts', 'ratings'));
+        $categories = Category::whereIn('id', $newProductIds)->get();
+
+        $parentCategory =  $category->parent()->get()->toTree();
+        $rootCategoryShow = true;
+
+        return view('products.new-products', compact('newProducts', 'ratings', 'min_price', 'max_price', 'parentCategory', 'categories', 'rootCategoryShow'));
     }
 }

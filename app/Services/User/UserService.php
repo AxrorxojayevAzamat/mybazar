@@ -156,15 +156,28 @@ class UserService
             $user->profile()->create();
         }
 
-        if (!$request->avatar) {
+        if (!$request->avatar || !$request->passport) {
             $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address,null, $request->region);
         } else {
-            Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PROFILES . '/' . $user->id);
+            $passportName = null;
+            $imageName = null;
+            if ($request->avatar){
+                Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PROFILES . '/' . $user->id);
+                $imageName = ImageHelper::getRandomName($request->avatar);
 
-            $imageName = ImageHelper::getRandomName($request->avatar);
-            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName, $request->region);
+                $this->uploadAvatar($user->id, $request->avatar, $imageName);
+            }
+            if ($request->passport){
+                Storage::disk('public')->deleteDirectory('/files/' . ImageHelper::FOLDER_PASSPORT . '/' . $user->id);
+                $passportName = ImageHelper::getRandomName($request->passport);
 
-            $this->uploadAvatar($user->id, $request->avatar, $imageName);
+                $this->uploadPassport($user->id, $request->passport, $passportName);
+
+            }
+
+            $user->profile->edit($request->first_name, $request->last_name, $request->birth_date, $request->gender, $request->address, $imageName, $request->region,$passportName);
+
+
         }
 
         return $user;
@@ -198,6 +211,13 @@ class UserService
         ImageHelper::saveThumbnail($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
         ImageHelper::saveOriginal($userId, ImageHelper::FOLDER_PROFILES, $file, $imageName);
     }
+
+    private function uploadPassport(int $userId, UploadedFile $file, string $passportName): void
+    {
+        ImageHelper::saveThumbnail($userId, ImageHelper::FOLDER_PASSPORT, $file, $passportName);
+        ImageHelper::saveOriginal($userId, ImageHelper::FOLDER_PASSPORT, $file, $passportName);
+    }
+
 
     private function isProfile(CreateRequest $request): bool
     {

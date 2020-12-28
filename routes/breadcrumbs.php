@@ -121,7 +121,7 @@ Breadcrumbs::register('checkout', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('pay', function (Crumbs $crumbs) {
     $crumbs->parent('checkout');
-    $crumbs->push(trans('frontend.breadcrumb.delivery'), route('pay'));
+    $crumbs->push(trans('frontend.breadcrumb.final_order'), route('pay'));
 });
 
 Breadcrumbs::register('catalog.list', function (Crumbs $crumbs) {
@@ -171,6 +171,11 @@ Breadcrumbs::register('profile.add-email-show', function (Crumbs $crumbs) {
 Breadcrumbs::register('profile.add-phone-show', function (Crumbs $crumbs) {
     $crumbs->parent('user.profile', Auth::user());
     $crumbs->push(trans('auth.add_phone'), route('profile.add-phone-show'));
+});
+
+Breadcrumbs::register('profile.add-photo', function (Crumbs $crumbs) {
+    $crumbs->parent('user.profile', Auth::user());
+    $crumbs->push(trans('auth.add_photo'), route('profile.add-photo'));
 });
 
 Breadcrumbs::register('profile.email.verification', function (Crumbs $crumbs) {

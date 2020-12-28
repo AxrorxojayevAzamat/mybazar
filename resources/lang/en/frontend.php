@@ -13,6 +13,8 @@ return [
     'compare_none' => 'You have not saved anything in your compare cart yet',
     'compare_full' => 'You can compare only 3 products',
     'compare_not_fit' => 'For comparing products categories must be the same',
+    'language' => 'Language',
+    'search_on_mybazar' => 'Searching on myBazar ...',
 
     'color' => 'Color',
     'price' => 'Price',
@@ -88,6 +90,7 @@ return [
         'shops' => 'Stores',
         'videos' => 'Video Blog',
         'search' => 'Search',
+        'final_order' => 'Order Created',
     ],
 
     'nav' => [
@@ -136,10 +139,11 @@ return [
         'present_datas_for_get_order' => 'Provide information to receive your order ',
         'country' => 'Country',
         'city' => 'City',
+        'region' => 'Region',
         'select' => 'Please select',
         'locality' => 'Locality',
         'district' => 'District',
-        'street' => 'Street',
+        'street' => 'City and Street',
         'house' => 'House',
         'apartment' => 'Apartment',
         'contacts' => 'Contacts',
@@ -159,6 +163,12 @@ return [
         'hours' => 'hours',
         'due_to_that_we_deliver_some_goods_via_courier_services' => 'Due to that, we deliver some goods via courier services.',
         'in_detail' => 'In detail',
+        'take_in_delivery' => 'Take from near you',
+        'delivery_to_house' => 'Delivery to your location',
+        'no_delivery' => 'Take from wherever',
+        'index' => 'Mail index',
+        'delivery_price' => 'Delivery price',
+        'success_order' => 'You have successfully created an order and your order id is',
     ],
 
     'delivery' => [

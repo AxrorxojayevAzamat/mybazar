@@ -4,22 +4,22 @@
 
         <div class="custom-control custom-checkbox">
             <ul>
-                @if(isset($parentCategory) || $parentCategory)
+                @if(isset($parentCategory) and !$parentCategory->isEmpty())
                     @foreach($parentCategory as $i => $category)
+
                         <li class="category-list">
-                            <a href="{{ route('categories.show', products_path($category)) }}"><b>{{ $category->name }}</b></a>
+                            <a href="?categoryName={{ $category->id }}"><b>{{ $category->name }}</b></a>
                         </li>
                     @endforeach
-                @elseif(isset($rootCategoryShow) || $rootCategoryShow)
+                @elseif(isset($rootCategoryShow))
                     <li class="category-list">
-                        <a href="/categories"><b>@lang('menu.whole_catalog')</b></a>
+                        <a href="?categoryName=all"><b>@lang('menu.whole_catalog')</b></a>
                     </li>
                 @endif
-{{--                {{dd($categories)}}--}}
                 @if(isset($categories))
                     @foreach($categories as $i => $category)
                         <li class="category-list">
-                            <a href="{{ route('categories.show', products_path($category)) }}">{{ $category->name }}</a>
+                            <a href="?categoryName={{ $category->id }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
                 @endif
@@ -28,3 +28,5 @@
     </div>
     <input type="hidden" name="brands" id="brands-hidden-input">
 @endif
+
+

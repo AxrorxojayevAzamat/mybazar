@@ -46,7 +46,7 @@
         </div>
         <a class="show-more" href="#">@lang('frontend.show_more')</a>
     </div>
-    <button type="button" class="btn accordion active " >Цена</button>
+    <button type="button" class="btn accordion active " >@lang('frontend.price')</button>
     <div id="filter3"  class="panel">
         <div class="outter-range-slider">
             <div class="form-group">

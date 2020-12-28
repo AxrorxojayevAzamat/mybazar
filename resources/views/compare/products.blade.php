@@ -19,7 +19,7 @@ if ($product->classFavorite($product->id)) {
     <div id="rateYo_P{{ $loop->index }}"></div>
     </div>
     <div class="item-action-icons">
-        <div class="cart"><i class="mbcart"></i></div>
+        <div id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" class="cart"><i class="mbcart"></i></div>
         <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
     </div>
 </div>

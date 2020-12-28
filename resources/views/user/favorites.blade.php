@@ -15,11 +15,9 @@
     </div>
     <div class="outter-catalog-view">
         <!-- big filter without title checkbox -->
-        <ul class="list-group">
-            @foreach($categorys as $category)
-                <li class="list-group-item"><a href="?categoryId={{ $category->id }}">{!! $category->name !!}</a></li>
-            @endforeach
-        </ul>
+        <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+            @include('filters.category-blog-filter')
+        </form>
 
 
         <div class="wrapper-filtered-items">
@@ -48,6 +46,6 @@
 @endsection
 
 @section('script')
-<script src="{{mix('js/1-index.js', 'build')}}"></script>
-<script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
+<script src="{{ mix('js/1-index.js', 'build') }}"></script>
+<script src="{{ mix('js/2-catalog-page.js', 'build') }}"></script>
 @endsection

@@ -8,7 +8,8 @@
                href="{{route('categories.show', products_path($child))}}"
                onmouseover="setBanner('{{$child->photoOriginal}}', '{{$child->slug}}', {{$child->brands}})"
                onmouseout="removeBanner('{{$child->slug}}')">
-                <img class="menu-discount-icon" src="{{$child->iconOriginal}}">{{ $child->name }}
+{{--                <img class="menu-discount-icon" src="{{$child->iconOriginal}}">--}}
+                {{ $child->name }}
             </a>
 
             @if(count($child->children))

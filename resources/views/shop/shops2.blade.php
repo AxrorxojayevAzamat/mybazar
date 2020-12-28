@@ -31,34 +31,39 @@
                 }
                 ?>
                 <div class="palette-items">
-                    <div class="product-img">
-                        @if ($shops2ThreeItem->mainPhoto)
-                                <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" >
-                        @endif
-                        <span class="sale small">
-                    <span class="number">-29</span>
-                    % СКИДКА
-                </span>
+                    <div class="item" onclick="location.href = '{{ route('products.show', $shop) }}'">
+                        <div class="product-img">
+                            @if ($shops2ThreeItem->mainPhoto)
+                                <div class="big-image">
+                                    <img src="{{ $shops2ThreeItem->mainPhoto->fileOriginal }}" style="width:100%">
+                                </div>
+                            @endif
+                            <span class="sale small">
+                                <span class="number">-29</span>
+                                % СКИДКА
+                            </span>
+                        </div>
+                        <div class="description">
+                            <h6 class="title"><a href="{{ route('products.show', $shop) }}">{!! $shops2ThreeItem->name !!}</a></h6>
+                            <div class="rate">
+                                <div class="rating stars">
+                                    <div id="rateYo_{{$rate_for['html']}}{{ $loop->index }}"></div>
+                                </div>
+                                <div class="comment">
+                                    <i class="mbcomment"></i>
+                                    <span>75</span>
+                                </div>
+                            </div>
+                            <div class="current-old-price horizontal">
+                                <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="description">
-                        <h6 class="title"><a href="{{ route('products.show', $shop) }}">{!! $shops2ThreeItem->name !!}</a></h6>
-                        <div class="rate">
-                            <div class="rating stars">
-                                <div id="rateYo_{{$rate_for['html']}}{{ $loop->index }}"></div>
-                            </div>
-                            <div class="comment">
-                                <i class="mbcomment"></i>
-                                <span>75</span>
-                            </div>
-                        </div>
-                        <div class="current-old-price horizontal">
-                            <h5 class="price">{{ $shops2ThreeItem->price_uzs }} <span>@lang('frontend.cart.sum')</span></h5>
-                        </div>
-                        <div class="item-action-icons">
-                            <div class="libra" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
-                            <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
-                            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
-                        </div>
+                    <div class="item-action-icons">
+                        <div class="libra" id="cartActive{{ $shops2ThreeItem->id }}" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
+                        <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
+                        <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                     </div>
                 </div>
             @endforeach
@@ -91,14 +96,15 @@
             dataType: 'json',
             success: function (data) {
 
-                if (data.message == 'success'){
+                if (data.message == 'success') {
                     localStorage.removeItem('product_id');
                     let containerCounter = $('.counter');
                     console.log(counterCartNumber)
-                    counterCartNumber+=1;
+                    counterCartNumber += 1;
                     containerCounter.text(counterCartNumber);
-                    console.log('exists');
-                }else{
+                } else if(data.message == 'exists'){
+                    removeCartList(id);
+                } else {
                     nonRegisteredUsersCart(id);
                     console.log($.ajaxSettings.headers);
                     console.log('isnotexists');
@@ -109,7 +115,8 @@
         })
 
     }
-    function nonRegisteredUsersCart(id){
+
+    function nonRegisteredUsersCart(id) {
         if (localStorage.getItem('product_id')) {
             let cart_products = '';
             let exist = false;
@@ -131,11 +138,52 @@
                 let containerCounter = $('.counter');
                 containerCounter.text(cart_product_check.length);
             } else {
+                removeCartList(id);
                 console.log('exist');
             }
         } else {
             localStorage.setItem('product_id', id + ',');
         }
+    }
+
+    function removeCartList(id){
+        console.log('working')
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/remove-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.data == 'success'){
+                    let ids = 'cartActive' + id;
+                    console.log($('#' + ids));
+                    $('#' + ids).removeClass('selected_cart');
+                }else{
+                    let product_id_local = localStorage.getItem('product_id');
+                    product_id_local = product_id_local.replace(id + ',', '');
+                    localStorage.removeItem('product_id');
+                    localStorage.setItem('product_id',product_id_local);
+                    let productID_carts = product_id_local;
+
+                    if (productID_carts !== null){
+                        productID_carts = productID_carts.slice(0, -1);
+                    }else {
+                        console.log('error');
+                    }
+                    window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
+                    $('#' + id).hide();
+
+
+                }
+
+            }, error: function (data) {
+                console.log(data);
+            }
+        })
     }
 </script>
 

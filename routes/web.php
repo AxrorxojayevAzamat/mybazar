@@ -76,7 +76,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         Route::post('request-manager-role', 'ProfileController@requestManagerRole')->name('manager.request');
 
-        Route::get('add-photo', 'ProfileController@add-photo')->name('add-photo');
+        Route::get('add-photo', 'ProfileController@addPhoto')->name('add-photo');
 
         Route::get('change-password', 'ProfileController@changePasswordPage')->name('change-password');
         Route::post('change-password', 'ProfileController@changePassword')->name('change-password');
@@ -87,6 +87,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('search', 'SearchResultsController@searchResults')->name('search');
     Route::get('search-product-filter', 'SearchResultsController@SearchFilter')->name('search-product-filter');
+
 
     Route::get('auth', 'AuthController@auth')->name('auth');
     Route::get('mail', 'MailController@mail')->name('mail');
@@ -99,7 +100,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('cart', 'CartController@cart')->name('cart');
     Route::get('checkout', 'CheckoutController@checkout')->name('checkout');
-    Route::get('pay', 'PayController@pay')->name('pay');
+    Route::post('pay', 'PayController@pay')->name('pay');
+    Route::post('finalStep', 'PayController@finalStep')->name('finalStep');
     Route::group(['prefix' => 'catalog', 'as' => 'catalog.'], function () {
         Route::get('', 'CatalogController@catalog')->name('list');
     });

@@ -104,6 +104,17 @@ p.sub-title{
         }
     }
 }
+p.blog-title{
+    color: #eaecef;
+    font-size:18px;
+    text-align: left;
+    a{
+        color: $comment_color;
+        &:hover, &.active{
+            color:$link_hover_color;
+        }
+    }
+}
 input#submit{
     background:$item_price_color;
     color:white;
@@ -126,6 +137,9 @@ input#submit{
     color:white;
     border:none;
     text-align:center;
+    &:hover {
+        background-color: #f7b32b;
+    }
 }
 .btn-red{
     border-radius:23px;
@@ -148,7 +162,7 @@ span.sale.big{
     width:75%;
     position:absolute;
     bottom:20px;
-    padding:3px 0;
+    padding:3px 8px;
     right:0;
     color:white;
     border-radius:25px;
@@ -306,15 +320,20 @@ button.owl-next span{
                 height:50%;
                 margin-top:5%;
             }
-            .item-action-icons{
-                bottom:35px;
-            }
+
             p.sub-title.bottom{
                 position:absolute;
                 bottom:0;
                 margin:0;
             }
         }
+    }
+    div.product-item {
+        height: 100%;
+    }
+    .item-action-icons{
+        position: relative;
+        bottom:85px;
     }
 }
 
@@ -556,7 +575,7 @@ nav ol.breadcrumb{
     .item{
         height:390px;
         width:100%;
-        cursor: pointer;
+        //cursor: pointer;
         @include displayFlex(flex-start, row, center);
         @include border(1px, $item_border_color, 0);
         background:white;
@@ -645,7 +664,7 @@ nav ol.breadcrumb{
                     }
                     &.cart{
                         @include displayFlex(space-between,row, center);
-                        width:auto;
+                        width:max-content;
                         padding:0px 30px;
                         border-radius: 25px;
                         font-size:18px;
@@ -816,7 +835,7 @@ nav ol.breadcrumb{
 }
 // column view styles
 .column{
-    @include displayFlex(center, row, flex-start);
+    @include displayFlex(flex-start, row, flex-start);
     flex-wrap:wrap;
     .item{
         width:33.3%;
@@ -961,7 +980,7 @@ form.big-filter-without-title-checkbox{
         }
 
     }
-    input#submit{
+    input#catalog-filter-button{
         background:$item_price_color;
         color:white;
         font-size:16px;
@@ -1155,7 +1174,7 @@ form.small-filter{
     padding: 1% 10%;
 }
 form#search-bar.search-bar{
-    width:100%;
+    width:50%;
     height:45px;
     padding-right:2px;
     @include displayFlex(space-between, row, center);
@@ -1205,7 +1224,7 @@ form#search-bar.search-bar{
 @media all and (max-width:1695px){
     span.sale.big{
         font-size:18px;
-        padding:5px 20px;
+        padding:5px 10px;
     }
     span.sale.small{
         font-size:16px;

@@ -35,7 +35,7 @@ $(document).ready(function () {
                 droping.show();
                 let dropData = '';
                 dropData += `
-                        <a href="#">
+                        <a href="/search?search=${inputValue}">
                             <div class="item with-icon">
                                 <i class="mbsearch_resulticon"></i>
                                 <h6 class="title">${inputValue}</h6>
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 for (let i = 0; i < data.brands.data.length; i++) {
                     if (data.brands.data[i].name !== undefined) {
                         dropData += `
-                        <a href="http://localhost:5500/brands/${data.brands.data[i].id}">
+                        <a href="/brands/${data.brands.data[i].id}">
                             <div class="item brand">
                                 <div class="image">
                                     <img src="${data.brands.data[i].logo}" alt="">
@@ -62,10 +62,10 @@ $(document).ready(function () {
                     console.log(dropData);
                 }
                 for (let i = 0; i < data.products.data.length; i++) {
-                    dropData += `<a href="#">
+                    dropData += `<a href="/products/show/${data.products.data[i].id}">
                                     <div class="item product">
                                         <div class="image">
-                                            <img src="{{asset('images/mi_brand.png')}}" alt="">
+                                            <img src="${data.products.data[i].main_photo}" alt="">
                                         </div>
                                         <div class="description">
                                             <h6 class="title">${data.products.data[i].name}</h6>

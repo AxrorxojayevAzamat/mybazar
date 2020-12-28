@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card" style="margin-bottom: 20px;">
-                    <div class="card-header">@lang('auth.phone_verification')</div>
+                    <div class="card-header">@lang('adminlte.photo.add')</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                             @csrf
@@ -55,7 +55,7 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{ mix('js/1-index.js', 'build') }}"></script>
 
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>

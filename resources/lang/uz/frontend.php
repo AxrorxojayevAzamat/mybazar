@@ -13,6 +13,8 @@ return [
     'compare_none' => 'Siz hali solishtiruv savatchasiga hech narsa saqlamagansiz',
     'compare_full' => 'Sizda faqat 3 ta mahsulotni solishtirish imkoniyati bor',
     'compare_not_fit' => 'Solishtirish uchun maxsulotlarning kategoriyasi bir xil bo`lishi kerak',
+    'language' => 'Til',
+    'search_on_mybazar' => 'MyBazar-dan qidirilmoqda...',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -90,6 +92,7 @@ return [
         'shops' => 'Do‘konlar',
         'videos' => 'Videolar',
         'search' => 'Qidiruv',
+        'final_order' => 'Buyurtma yaratildi',
     ],
 
     'nav' => [
@@ -138,10 +141,11 @@ return [
         'present_datas_for_get_order' => 'Buyurtmani qabul qilish uchun ma\'lumot bering',
         'country' => 'Mamlakat',
         'city' => 'Shahar',
+        'region' => 'Viloyat',
         'select' => 'Iltimos tanlang',
         'locality' => 'Aholi punkti',
         'district' => 'Tuman',
-        'street' => 'Ko\'cha',
+        'street' => 'Shahar va Ko\'cha',
         'house' => 'Uy',
         'apartment' => 'Kvartira',
         'contacts' => 'Kontaktlar',
@@ -161,6 +165,14 @@ return [
         'hours' => 'soat',
         'due_to_that_we_deliver_some_goods_via_courier_services' => 'Shu sababli biz ba\'zi tovarlarni kurerlik xizmatlari orqali etkazib beramiz.',
         'in_detail' => 'Batafsil',
+        'take_in_delivery' => 'Uyingizga yaqin shaxobchadan olib ketish',
+        'delivery_to_house' => 'Uyingizgacha eltib berish',
+        'no_delivery' => 'O\'zi olib ketish',
+        'index' => 'Pochta indeksi',
+        'delivery_price' => 'Yetkazib berish narxi',
+        'success_order' => 'Siz buyurtmani muvaffaqiyatli yaratdingiz va sizning buyurtma identifikatoringiz',
+
+
     ],
 
     'delivery' => [

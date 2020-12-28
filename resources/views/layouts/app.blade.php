@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css', 'build') }}">
-    <link rel="stylesheet" href="{{asset('css/jquery.rateyo.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.css') }}">
     @yield('styles')
 
 </head>
@@ -141,7 +141,7 @@
 <script src="{{asset('js/popper1.16.min.js')}}"></script>
 <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
 <script src="{{mix('js/header-414.js', 'build')}}"></script>
-<script src="{{mix('js/1-index.js', 'build')}}"></script>
+{{--<script src="{{mix('js/1-index.js', 'build')}}"></script>--}}
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootnavbar.js')}}"></script>
 <script src="{{mix('js/search-bar.js', 'build')}}"></script>

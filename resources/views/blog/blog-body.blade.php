@@ -8,7 +8,7 @@
                         <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
                     </div>
                 @endforeach --}}
-                @include('filters.category-filter')
+                @include('filters.category-blog-filter')
 
             </div>
         </form>
@@ -21,10 +21,10 @@
                 <i class="navbar-toggler-icon mbcompare"></i>
                 </button>
 
-                <div id="search-bar" class="search-bar form-control">
-                    <input id="search-input" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
+                <form method="GET" id="search-bar" class="w-100 search-bar form-control">
+                    <input id="search-input" name="blogName" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
                     <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-                </div>
+                </form>
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <form action="get" class="accordion small-filter filter" id="catalogFilter">

@@ -7,7 +7,7 @@
     div{
         width:32%;
         height:300px;
-        @include displayFlex(center, column, flex-end);
+        @include displayFlex(flex-end, column, flex-end);
         padding:2%;
         text-align:end;
         color:white;
@@ -32,11 +32,14 @@
             width:100%;
             height:100%;
             z-index:0;
-            
+
         }
         &.first{
             align-items:flex-start;
             text-align:start;
+            a {
+                z-index: 2;
+            }
         }
         &.third{
             button{

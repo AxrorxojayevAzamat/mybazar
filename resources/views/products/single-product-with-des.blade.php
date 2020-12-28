@@ -11,7 +11,7 @@
 
 
                 <div class="several-images owl-theme owl-carousel">
-                    @php($currentSlide = 1)
+                    @php($currentSlide = 0)
                     @if ($product->mainPhoto)
                         <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
                              onclick='currentSlide({{ $currentSlide }}, "{{ $product->mainPhoto->fileThumbnail }}")'>
@@ -50,6 +50,7 @@
                 <div class="color-delivery-des">
                     <form action="#">
                         @foreach($product->allCharacteristics as $modification)
+
                            @if($modification->characteristic->main == false && $modification->characteristic->type != \App\Entity\Shop\Characteristic::TYPE_COLOR)
                                    @if(!empty($modification->modifications->value))
                                         <p>{{ $modification->characteristic->name }}:</p>
@@ -95,7 +96,7 @@
                              onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" onclick="addToComparing({{ $product->id }})">
+                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})">
                             <i class="mbtocompare"></i>
                         </div>
                         <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
@@ -202,7 +203,8 @@
                     console.log(counterCartNumber)
                     counterCartNumber += 1;
                     containerCounter.text(counterCartNumber);
-                    console.log('exists');
+                } else if(data.message == 'exists'){
+                    removeCartList(id);
                 } else {
                     nonRegisteredUsersCart(id);
                     console.log($.ajaxSettings.headers);
@@ -237,6 +239,7 @@
                 let containerCounter = $('.counter');
                 containerCounter.text(cart_product_check.length);
             } else {
+                removeCartList(id);
                 console.log('exist');
             }
         } else {
@@ -244,8 +247,48 @@
         }
     }
 
+    function removeCartList(id){
+        console.log('working')
+        let product_id = {};
+        product_id.data = [];
+        product_id.product_id = id;
+
+        $.ajax({
+            url: '/remove-cart',
+            method: 'POST',
+            data: product_id,
+            dataType: 'json',
+            success: function (data) {
+                if (data.data == 'success'){
+                    let ids = 'cartActive' + id;
+                    console.log($('#' + ids));
+                    $('#' + ids).removeClass('selected_cart');
+                }else{
+                    let product_id_local = localStorage.getItem('product_id');
+                    product_id_local = product_id_local.replace(id + ',', '');
+                    localStorage.removeItem('product_id');
+                    localStorage.setItem('product_id',product_id_local);
+                    let productID_carts = product_id_local;
+
+                    if (productID_carts !== null){
+                        productID_carts = productID_carts.slice(0, -1);
+                    }else {
+                        console.log('error');
+                    }
+                    window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
+                    $('#' + id).hide();
+
+
+                }
+
+            }, error: function (data) {
+                console.log(data);
+            }
+        })
+    }
+
     //SLIDER
-    var slideIndex = 1;
+    var slideIndex = 0;
     showSlides(slideIndex);
 
     function plusSlides(n) {
@@ -253,19 +296,19 @@
     }
 
     function currentSlide(n, url) {
-        showSlides(slideIndex = n);
+        showSlides(n);
         setImage(url)
     }
 
     function setImage(imageUrl) {
         $('#productMainPhoto').attr('src', `https://shop.sec.uz${imageUrl}`)
-        console.log(`https://shop.sec.uz/${imageUrl}`)
     }
 
     function showSlides(n) {
         var i;
         var slides = document.getElementsByClassName("big-image");
         var dots = document.getElementsByClassName("demo");
+        // debugger
         if (n > slides.length) {
             slideIndex = 1
         }
@@ -275,10 +318,24 @@
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
+        // for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        // }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
+
+        for(let j = 0; j < dots.length; j++) {
+            if(j === n) {
+                dots[j].classList.add('active')
+            } else {
+                dots[j].classList.remove('active')
+            }
+        }
     }
+    // let modification = document.getElementsByClassName('value-modification')
+    // let modifics = $('.value-modification')
+    // function setPrice() {
+    //     console.log(this)
+    // }
+    // debugger
 </script>
