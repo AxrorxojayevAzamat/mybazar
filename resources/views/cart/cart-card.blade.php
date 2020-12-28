@@ -1,6 +1,6 @@
 <div class="item" id="{{ $product->id }}">
     <div class="product-img">
-        <img src="{{asset('images/tv6.png')}}" alt="">
+        <img src="{{ $product->mainPhoto->fileThumbnail }}" alt="">
     </div>
     <!-- description -->
     <div class="description ">
