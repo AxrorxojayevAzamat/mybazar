@@ -4,8 +4,6 @@
 
 @section('styles')
     <link href="{{asset('css/video-js.css')}}" rel="stylesheet"/>
-
-    {{-- <link rel="stylesheet" href="{{asset('css/videoblog-view.css')}}"> --}}
 @endsection
 
 @section('body')
@@ -68,7 +66,6 @@
 </section>
 
 <!-- recently viewed -->
-{{--@include('layouts.recently-viewed')--}}
 
 @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
@@ -84,6 +81,5 @@
             $(".player-overlay").show();
         }
     </script>
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/video.js')}}"></script>
 @endsection

@@ -36,7 +36,6 @@
 
 
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script>
         function removeCartList(id){
             console.log('working')

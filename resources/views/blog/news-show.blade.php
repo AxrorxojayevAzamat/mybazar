@@ -25,5 +25,4 @@
 @section('script')
     <script src="{{mix('js/shopping-cart.js', 'build')}}"></script>
     <script src="{{mix('js/compare-items.js', 'build')}}"></script>
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

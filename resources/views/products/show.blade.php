@@ -53,7 +53,6 @@
 
 @endsection
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 @endsection
 @include('products._scripts')

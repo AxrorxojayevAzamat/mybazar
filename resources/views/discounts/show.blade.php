@@ -44,6 +44,5 @@
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 @endsection
 @section('script')
-    <script src="{{ mix('js/1-index.js', 'build') }}"></script>
     <script src="{{ asset('js/jquery.rateyo.js') }}"></script>
 @endsection

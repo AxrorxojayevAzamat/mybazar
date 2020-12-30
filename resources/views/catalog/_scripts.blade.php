@@ -2,7 +2,6 @@
     <script src="{{asset('js/autoNumeric-2.0-BETA.js', 'build')}}"></script>
     <script src="{{asset('js/autoNumeric.js', 'build')}}"></script>
 
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
 
     <script>
