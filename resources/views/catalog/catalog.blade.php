@@ -2,10 +2,6 @@
 
 @section('title', trans('frontend.title.catalog_page'))
 
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/catalog-page.css')}}"> --}}
-@endsection
-
 @section('body')
     @section('banner')
         <!-- Slide banner -->
@@ -21,7 +17,6 @@
 
             <!-- big filter without title checkbox -->
             @include('catalog.sidebar')
-
 
             <div class="wrapper-filtered-items">
                 <nav class=" navbar navbar-expand-custom sort-types">
@@ -70,7 +65,6 @@
                     prettify_separator: ".",
                     values_separator: " - ",
                     force_edges: true,
-
 
                 });
 

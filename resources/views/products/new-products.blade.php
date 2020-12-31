@@ -14,21 +14,6 @@
             @include('filters.category-blog-filter')
         </form>
 
-{{--        <div class="wrapper-filtered-items d-flex justify-content-center">--}}
-
-{{--            <nav class=" navbar navbar-expand-custom sort-types">--}}
-
-{{--                <!--sort-by options  -->--}}
-{{--            @include('catalog.sort')--}}
-
-{{--            <!-- small filter without title checkbox -->--}}
-{{--                @include('layouts.small-filter-without-title-checkbox')--}}
-{{--            </nav>--}}
-
-{{--            <!-- list mosaic catalog items -->--}}
-{{--            @include('layouts.products-list-grid', ['products' => $newProducts])--}}
-
-{{--        </div>--}}
         <div class="wrapper-filtered-items">
             <nav class=" navbar navbar-expand-custom sort-types">
                 @include('catalog.sort')
@@ -79,7 +64,6 @@
                     prettify_separator: ".",
                     values_separator: " - ",
                     force_edges: true,
-
 
                 });
 

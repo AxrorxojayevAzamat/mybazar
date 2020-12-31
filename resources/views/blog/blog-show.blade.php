@@ -2,10 +2,6 @@
 
 @section('title', trans('frontend.title.single_blog_page'))
 
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/single-blog.css')}}"> --}}
-@endsection
-
 @section('body')
     @section('banner')
         <!-- Slide banner -->

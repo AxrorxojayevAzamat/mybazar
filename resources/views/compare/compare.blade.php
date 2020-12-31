@@ -2,9 +2,6 @@
 
 @section('title', trans('frontend.title.compare_page'))
 
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/compare.css')}}"> --}}
-@endsection
 @section('body')
     <section>
         <div class="h4-title compare">
@@ -155,7 +152,6 @@
                         }
                         window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
                         $('#' + id).hide();
-
 
                     }
 
