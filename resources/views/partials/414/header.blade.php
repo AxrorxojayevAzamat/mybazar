@@ -65,6 +65,11 @@
         @endguest
     </div>
     <form action="" class="search-box">
-        <input type="text" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>
+        <input type="text" id="search-input" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>
     </form>
+    <div class="autocomplete-tags" id="droping">
+
+
+    </div>
 </div>
+
