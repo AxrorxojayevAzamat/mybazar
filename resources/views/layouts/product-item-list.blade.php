@@ -44,7 +44,7 @@ if ($product->classFavorite($product->id)) {
             <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
         </div>
         <div class="item-action-icons">
-            <div class="cart" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
+            <div class="cart" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-id="{{ $product->id }}" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
             <div class="libra" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>

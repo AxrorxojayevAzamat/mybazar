@@ -83,6 +83,7 @@ class CartController extends Controller
                 } else {
                     $cart = $user->carts()->create([
                         'product_id' => $request->product_id,
+                        'modification_id' => $request->modification_id,
                         'quantity' => $request->quantity ?? 1,
                     ]);
                 }
@@ -101,7 +102,7 @@ class CartController extends Controller
             }
 
 
-            return ['message' => 'success'];;
+            return ['message' => 'success'];
         } else {
             return ['message' => 'error'];
         }

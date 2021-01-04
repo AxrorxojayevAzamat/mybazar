@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-let js_files = ['1-index', '2-catalog-page', 'compare-items', 'header-414', 'main', 'search-bar', 'shopping-cart'];
+let js_files = ['1-index', '2-catalog-page', 'compare-items', 'header-414', 'main', 'search-bar', 'shopping-cart', 'cart'];
 let css_files = ['app','colorpicker','fileinput'];
 let r_path = 'resources/assets/';
 let p_path = 'public/build/';

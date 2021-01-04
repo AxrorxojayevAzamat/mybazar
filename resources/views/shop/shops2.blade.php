@@ -64,7 +64,7 @@
                     </div>
                     <div class="item-action-icons">
                         <div class="libra" id="cartActive{{ $shops2ThreeItem->id }}" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
-                        <div class="cart" onclick="addCart({{ $shops2ThreeItem->id }})"><i class="mbcart"></i></div>
+                        <div class="cart" data-id="{{ $shops2ThreeItem->id }}"><i class="mbcart"></i></div>
                         <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                     </div>
                 </div>

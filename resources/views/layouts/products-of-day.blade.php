@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="item-action-icons">
-                    <div class="cart" data-name="{{ $product->name }}" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
+                    <div class="cart" data-name="{{ $product->name }}" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
                     <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
                     <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
                 </div>
