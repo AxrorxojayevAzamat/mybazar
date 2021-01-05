@@ -133,7 +133,6 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ mix('js/1-index.js', 'build') }}"></script>
 
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
@@ -144,8 +143,6 @@
     <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/uz.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/ru.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/LANG.js') }}"></script>
-    {{--    <script src="{{ mix('js/fileinput.js', 'build') }}"></script>--}}-->
-
 
     @include('user._script')
 

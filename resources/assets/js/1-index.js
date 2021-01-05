@@ -10,13 +10,13 @@ $(window).on("load, resize", function () {
 $(document).ready(function () {
 
     // date picker
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    var options={
-    format: 'dd/mm/yyyy',
-    container: container,
-    todayHighlight: true,
-    autoclose: true,
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
     };
     date_input.datepicker(options);
 
@@ -26,6 +26,10 @@ $(document).ready(function () {
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
         cart_product = JSON.parse(cart_product);
+        let counter = 0;
+        if (cart_product) {
+            counter = cart_product.length;
+        }
         let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
         XMLHttpRequest.prototype.send = function (data) {
             this.setRequestHeader('X-CSRF-Token', token);
@@ -55,20 +59,20 @@ $(document).ready(function () {
         }
     }
 
-    function writeProductsId(){
-        let cart_products_id = $('#cart_products_id');
+    function writeProductsId() {
+        let cart_products_id = $('.cart_products_id');
         let saved_carts = localStorage.getItem('product_id');
-        if (saved_carts !== null){
+        if (saved_carts !== null) {
             let values = '';
             console.log(saved_carts);
             cart_products_id.val(saved_carts);
-        }else {
+        } else {
             console.log('error');
         }
 
     }
-    writeProductsId();
 
+    writeProductsId();
 
 
     $("#dropdownComparison").on("click", function () {
@@ -107,50 +111,50 @@ $(document).ready(function () {
 
     // display filter items with <a> tag and show-more btn
     var showDefault = 5;
-    var text= ['Скрыть', 'Показать еще'];
-    $('.panel .custom-control').each(function(){
+    var text = ['Скрыть', 'Показать еще'];
+    $('.panel .custom-control').each(function () {
         var item = $(this).find('a');
 
-        if(item.length > showDefault){
+        if (item.length > showDefault) {
             //show only 5 items
-            for(var i=0; i<showDefault; i++){
+            for (var i = 0; i < showDefault; i++) {
                 $(item[i]).show().addClass('show');
             }
             //if items more than 5, then insert button show-more
-            var btn =$("<div>", {
-                text:text[1],
-                "class":"btn show-more",
-                click:function(){
-                    item.not('.show').stop().slideToggle(500, function() {
+            var btn = $("<div>", {
+                text: text[1],
+                "class": "btn show-more",
+                click: function () {
+                    item.not('.show').stop().slideToggle(500, function () {
                         btn.text(text[+$(this).is(":hidden")])
                     })
                 }
             }).appendTo(this)
-        }else{
+        } else {
             $(item).show();
         }
     });
 
     // display filter items with checkbox tag and show-more btn
-    $('.panel').each(function(){
+    $('.panel').each(function () {
         var item = $(this).find('.custom-control');
 
-        if(item.length > showDefault){
+        if (item.length > showDefault) {
             //show only 5 items
-            for(var i=0; i<showDefault; i++){
+            for (var i = 0; i < showDefault; i++) {
                 $(item[i]).show().addClass('show');
             }
             //if items more than 5, then insert button show-more
-            var btn =$("<div>", {
-                text:text[1],
-                "class":"btn show-more",
-                click:function(){
-                    item.not('.show').stop().slideToggle(500, function() {
+            var btn = $("<div>", {
+                text: text[1],
+                "class": "btn show-more",
+                click: function () {
+                    item.not('.show').stop().slideToggle(500, function () {
                         btn.text(text[+$(this).is(":hidden")])
                     })
                 }
             }).appendTo(this)
-        }else{
+        } else {
             $(item).show();
             $('.show-more').hide();
 
@@ -158,11 +162,11 @@ $(document).ready(function () {
     });
 
     // выбрать все в фильтре чекбокс
-    $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
-        if($(this).is(':checked')){
-           $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
-        }else{
-            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
+    $('.big-filter-with-title-checkbox div input.checkAll').on('click', function () {
+        if ($(this).is(':checked')) {
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', 'checked');
+        } else {
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', '');
         }
     });
 
@@ -170,12 +174,13 @@ $(document).ready(function () {
     var title_with_checkbox = document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
-            var panel = this.nextElementSibling;
-            if (this.classList.contains('active')) {
-                $(panel).slideUp();
-            } else {
-                $(panel).slideDown();
-            }
+            // var panel = this.nextElementSibling;
+            // console.log(panel)
+            // if (this.classList.contains('active')) {
+            //     $(panel).slideUp();
+            // } else {
+            //     $(panel).slideDown();
+            // }
             this.classList.toggle("active");
         });
     }
@@ -228,20 +233,33 @@ $(document).ready(function () {
         dots: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                dots: false,
+                nav: true
             },
             600: {
-                items: 1
+                items: 2,
+                dots: false,
+                nav: true
             },
             800: {
-                items: 1
+                items: 3,
+                dots: false,
+                nav: true
             },
             1001: {
                 items: 2
             },
             1251: {
+                items: 2
+            },
+            1400: {
                 items: 3
+            },
+            2500: {
+                items: 4
             }
+
         }
     });
     $('.several-images').owlCarousel({
@@ -293,7 +311,11 @@ $(document).ready(function () {
             },
             1400: {
                 items: 4
+            },
+            2000: {
+                items: 5
             }
+
         }
     });
     $('.similar-p').owlCarousel({
@@ -403,88 +425,91 @@ $(document).ready(function () {
                 items: 1,
                 nav: false
             },
-            400: {
-                items: 2,
-                nav: true
-            },
-            525: {
-                items: 2,
-                nav: true
-            },
             601: {
-                items: 1,
-                nav: true
-            },
-            800: {
-                items: 1,
+                items: 2,
                 nav: true
             },
             900: {
                 items: 2,
                 nav: true
             },
-            1251: {
-                items: 3,
-                nav: true
-            },
             1400: {
                 items: 4,
+                nav: true
+            },
+            2000: {
+                items: 5,
                 nav: true
             }
         }
     });
     $('.all-players').owlCarousel({
         nav: false,
-        dots: false,
+        dots: true,
         margin: 20,
         items: 3,
         responsive: {
             0: {
                 items: 1,
-                dots: true
+                dots: false,
+                nav: true
             },
             600: {
                 items: 1,
-                dots: true
+                dots: false,
+                nav: true
             },
             800: {
                 items: 2,
-                dots: true
+                dots: false,
+                nav: true
+            },
+            1001: {
+                items: 2
             },
             1251: {
-                items: 2,
-                dots: true
+                items: 2
             },
             1400: {
-                items: 3,
-                dots: false
+                items: 3
+            }
+            ,
+            2000: {
+                items: 4
             }
         }
     });
     $('.outter-blogs').owlCarousel({
         nav: false,
-        dots: false,
+        dots: true,
         items: 3,
         responsive: {
             0: {
                 items: 1,
-                dots: true
+                dots: false,
+                nav: true
             },
             600: {
                 items: 1,
-                dots: true
+                dots: false,
+                nav: true
             },
             800: {
                 items: 2,
-                dots: true
+                dots: false,
+                nav: true
+            },
+            1001: {
+                items: 2
             },
             1251: {
-                items: 2,
-                dots: true
+                items: 2
             },
             1400: {
-                items: 3,
-                dots: false
+                items: 3
+            },
+            2500: {
+                items: 4
             }
         }
     });
@@ -553,8 +578,8 @@ $(document).ready(function () {
         } else {
             navBig.removeClass('shadow');
         }
-        $(".compare-items").fadeOut("fast");
-        $(".cart-items").fadeOut("fast");
+        // $(".compare-items").fadeOut("fast");
+        // $(".cart-items").fadeOut("fast");
         navBig.toggleClass('hidden', scrollTop > prev);
         navDropdown.removeClass('show');
         prev = scrollTop;

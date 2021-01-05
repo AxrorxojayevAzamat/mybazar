@@ -74,19 +74,3 @@
         </div>
     </section>
 @endsection
-
-@section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
-    <script>
-        // $('#paymentFinal').submit(function (e){
-        //     e.preventDefault();
-        //
-        //     let formData = new FormData(this);
-        //     console.log(formData.getAll('inlineRadioOptions'));
-        //
-        // })
-
-    </script>
-@endsection
-
-

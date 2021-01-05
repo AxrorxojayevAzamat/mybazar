@@ -14,20 +14,11 @@
 <!-- list of videos -->
 <section>
     @include('blog._blog-news-btn')
-{{--    <div class="h4-title video-blog">--}}
-{{--        <h4 class="title">Видеоролики</h4>--}}
-{{--    </div>--}}
+
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
                 @include('filters.category-blog-filter')
-
-                {{-- @foreach($categories as $category)
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="smallcustomCheck1-{{$category->id}}" value="{{$category->id}}">
-                    <label  class="custom-control-label" for="smallcustomCheck1-{{$category->id}}">{{$category->name}}</label>
-                </div>
-                @endforeach --}}
             </div>
         </form>
 
@@ -65,7 +56,6 @@
             </nav>
 
             <div class="all-filtered-videos">
-{{--                {{dd($videos)}}}--}}
                 @foreach($videos as $video)
                 <a href="{{ route('videos.show', $video) }}">
                     <div class="video-item">
@@ -81,7 +71,6 @@
                 @endforeach
             </div>
 
-
         </div>
     </div>
 </section>
@@ -89,9 +78,5 @@
 <!-- recently viewed -->
 @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
-{{--@include('layouts.recently-viewed')--}}
 @endsection
 
-@section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
-@endsection

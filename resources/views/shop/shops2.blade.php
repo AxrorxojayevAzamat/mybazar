@@ -13,9 +13,7 @@
                 <div class="single-img">
                     <a href="#">
                         @if ($shop->mainPhoto)
-                            <div class="big-image">
-                                <img src="{{ $shop->mainPhoto->fileOriginal }}" style="width:100%">
-                            </div>
+                            <img src="{{ $shop->mainPhoto->fileOriginal }}" >
                         @endif</a>
                     </a>
                 </div>

@@ -2,18 +2,18 @@
     <div class="footer-outter">
         <div class="footer-414">
             <div class="accordion" id="footerCollapse">
-                @foreach($pages as $page)
+                @foreach($pages as $i => $page)
                     @if(count($page->children))
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapseOne"
+                                    <button class="btn " type="button" data-toggle="collapse" data-target="#collapse{{$i}}"
                                             aria-expanded="true" aria-controls="collapseOne">
                                         <a href="{{route('pages.show', $page)}}">{{$page->menu_title}}</a>
                                     </button>
                                 </h2>
                             </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            <div id="collapse{{$i}}" class="collapse" aria-labelledby="headingOne"
                                  data-parent="#footerCollapse">
                                 <div class="card-body">
                                     @foreach($page->children as $child)

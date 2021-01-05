@@ -101,7 +101,7 @@ function removeCartList(cartProduct) {
                 }
 
                 if (window.location.href.includes('/cart-list')) {
-                    window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
+                    window.location.href = window.location.origin + '/cart-list?product_id=' + product_id_local;
                     $('#' + cartProduct.product_id).hide();
                 }
             }

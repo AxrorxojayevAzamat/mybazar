@@ -23,7 +23,8 @@
         "matchish/laravel-scout-elasticsearch": "^4.0",
         "mcamara/laravel-localization": "^1.6",
         "rennokki/laravel-eloquent-query-cache": "^2.4",
-        "socialiteproviders/telegram": "^4.0"
+        "socialiteproviders/telegram": "^4.0",
+      "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

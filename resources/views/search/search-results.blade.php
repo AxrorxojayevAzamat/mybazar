@@ -170,7 +170,6 @@
         <div>
 
             <!-- NEWS LETTER -->
-            {{--    @include ('layouts.news-letter')--}}
             @if(isset($newProducts))
                 @include ('layouts.carousel-products',
 ['products' => $newProducts, "title" => trans('frontend.novelty_upper'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])
@@ -178,8 +177,6 @@
             @endsection
 
             @section('script')
-{{--                @include('catalog._scripts')--}}
-                <script src="{{mix('js/1-index.js', 'build')}}"></script>
                 <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
                 <script src="{{asset('js/jquery.rateyo.js')}}"></script>
                 <script src="{{asset('js/range-slider.js')}}"></script>

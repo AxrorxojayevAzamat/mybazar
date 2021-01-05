@@ -13,7 +13,13 @@
             </button>
         </a>
         <a href="{{ route('compare') }}" class="comparison"><i class="mbcompare"><span></span></i> </a>
-        <a href="{{ route('cart') }}" class="cart"><i class="mbcart"><span></span></i></a>
+        <form action="/cart-list" method="GET" id="goToCart">
+            <input type="hidden" id="cart_products_id" name="product_id" class="cart_products_id">
+            <button class="btn p-0 bold switch-to-compare">
+                <a href="/cart-list" class="cart"><i class="mbcart"><span></span></i></a>
+            </button>
+        </form>
+
         <a href="{{ route('user.favorites') }}" class="wish-list"><i class="mbfavorite"><span></span></i></a>
         @guest
             <a href="{{ route('login') }}" class="account"><i class="mbaccount" style="margin: 0"></i></a>
@@ -59,6 +65,11 @@
         @endguest
     </div>
     <form action="" class="search-box">
-        <input type="text" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>
+        <input type="text" id="search-input" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>
     </form>
+    <div class="autocomplete-tags" id="droping">
+
+
+    </div>
 </div>
+

@@ -1,6 +1,6 @@
 #carouselIndex{
     width:100%;
-    height:330px;
+    height:400px;
     background:rgba(117, 0, 255, 0);
     margin-top: 4px;
     .carousel-control-prev-icon {
@@ -25,6 +25,100 @@
     .carousel-inner{
         height:100%;
         width:100%;
+        .carousel-item{
+            height:100%;
+            img{
+                height:100%;
+            }
+        }
+    }
+}
+@media all and (max-width: 500px) {
+    #carouselIndex{
+        display: none;
+    }
+}
+@media (min-width: 500px) {
+    #carouselIndex{
+        height:250px;
+        .carousel-indicators li{
+            width:8px;
+            height:8px;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:15px;
+            height:15px;
+        }
+        
+    }
+}
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    #carouselIndex{
+        height:300px;
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:20px;
+            height:20px;
+        }
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:25px;
+            height:25px;
+        }
+}
+@media (min-width: 1500px) {
+    #carouselIndex{
+        height:400px;
+        .carousel-indicators li{
+            width:10px;
+            height:10px;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:30px;
+            height:30px;
+        }
+    }
+}
+@media (min-width: 2000px) {
+    #carouselIndex{
+        height:500px;
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:35px;
+            height:35px;
+        }
+        .carousel-indicators li{
+            width:15px;
+            height:15px;
+        }
+    }
+}
+@media (min-width: 2500px) {
+    #carouselIndex{
+        height:600px;
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            width:40px;
+            height:40px;
+        }
+        .carousel-indicators li{
+            width:18px;
+            height:18px;
+            margin-right:5px;
+            margin-left:5px;
+        }
     }
 }
 

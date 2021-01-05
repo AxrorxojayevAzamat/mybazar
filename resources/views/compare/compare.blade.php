@@ -2,36 +2,33 @@
 
 @section('title', trans('frontend.title.compare_page'))
 
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/compare.css')}}"> --}}
-@endsection
 @section('body')
     <section>
         <div class="h4-title compare">
             <h4 class="title">@lang('frontend.compare_products')</h4>
         </div>
         <div class="outter-compare-body">
-            @foreach($products as $product)
-            <div class="compare-items">
-                <div class="items-view">
+            @foreach($products as $i => $product)
+                <div class="compare-items">
+                    <div class="items-view">
                         @include('compare.products')
-                </div>
-                <div class="accordion" id="fullCharacteristicsCollapse">
-                    <div class="row w-100">
+                    </div>
+                    <div class="accordion" id="fullCharacteristicsCollapse{{$i}}">
+                        <div class="row w-100">
                             @foreach($product->allCharacteristics as $i => $values)
-
                                 @include('compare.characteristics')
                             @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </section>
 @endsection
 
 
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
+    <script src="{{ mix('js/compare-items.js', 'build') }}"></script>
     <script>
         function deleteFromCompare(id) {
             let product_id_local = localStorage.getItem('compare_product');
@@ -156,7 +153,6 @@
                         }
                         window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
                         $('#' + id).hide();
-
 
                     }
 

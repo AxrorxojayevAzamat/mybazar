@@ -14,12 +14,14 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-
         $user = Auth::user();
         if ($user == null) {
-//            dd($request->product_id);
-            $products_id = preg_split("/\,/", $request->product_id);
-            $products = Product::whereIn('id', $products_id)->get();
+            $cartProductIds = json_decode($request->product_id);
+            $products = collect();
+            foreach ($cartProductIds as $i => $product_id) {
+                $currentProduct = Product::where('id', $product_id->product_id)->first();
+                $products->push($currentProduct);
+            }
             $cart_product_count = count($products);
             $cart_product_weight = 0;
             $cart_product_discount = 0;
@@ -40,7 +42,6 @@ class CartController extends Controller
         } else {
 
             $cart_product = Cart::where('user_id', $user->id)->get();
-
             $cart_product_id = [];
             foreach ($cart_product as $i => $product_id) {
                 $cart_product_id[$i] = $product_id->product_id;
@@ -144,11 +145,15 @@ class CartController extends Controller
         }
 
         if ($request->has('product_id')) {
-            return CartResource::collection(Product::whereIn('id', $request->product_id)->get());
+            $products = collect();
+            foreach ($request->product_id as $i => $product_id) {
+                $currentProduct = CartResource::collection(Product::where('id', $product_id["product_id"])->get());
+                $products->push($currentProduct);
+            }
+            return $products;
+
         }
 
         return ['data' => 'error'];
     }
-
-
 }
