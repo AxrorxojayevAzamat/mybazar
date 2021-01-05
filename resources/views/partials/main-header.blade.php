@@ -12,9 +12,9 @@
 
 
             </div>
-            <select class="form-control select-main-search">
+            <select class="form-control select-main-search" name="category_id" id="categoryIdInSearch">
                 @foreach ($gCategories as $category)
-                    <option>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button class="search btn" type="submit"><i class="mbsearch"></i></button>

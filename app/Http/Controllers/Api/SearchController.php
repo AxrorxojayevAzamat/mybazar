@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Entity\Brand;
+use App\Entity\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
+use App\Helpers\PaginateHelper;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Http\Resources\StoreResource;
@@ -20,9 +22,17 @@ class SearchController
             $categoryId = $request->get('category_id');
 
             $length = 10;
+            $getCategories = Category::where('id', $categoryId)->first();
+            $getCategories = $getCategories->children()->get();
+            $productCategoryIds = [];
+            foreach ($getCategories as $i => $category){
+                $productCategoryIds[$i] = $category->id;
+            }
             if ($categoryId) {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
-                    ->where('category_id', $categoryId)->paginate(10);
+                    ->get();
+                $products = $products->whereIn('main_category_id', $productCategoryIds);
+                $products = PaginateHelper::paginate($products, 10);
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
             }

@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Shop\CategoryBrand;
 use App\Entity\Store;
 use App\Entity\StoreCategory;
+use App\Helpers\PaginateHelper;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Http\Resources\StoreResource;
@@ -31,21 +32,25 @@ class SearchResultsController extends Controller
         $min_price = 0;
         $max_price = 1;
         $brandFilter = [];
-//        dd($request->get('search'));
+
         if (!empty($value = $request->get('search'))) {
-//            dd('working');
             $request->session()->flash('search', $request->get('search'));
 
             $categoryId = $request->get('category_id');
-
             $length = 10;
+            $getCategories = Category::where('id', $categoryId)->first();
+            $getCategories = $getCategories->children()->get();
+            $productCategoryIds = [];
+            foreach ($getCategories as $i => $category){
+                $productCategoryIds[$i] = $category->id;
+            }
             if ($categoryId) {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
-                    ->where('category_id', $categoryId)->paginate(10);
-
+                    ->get();
+                $products = $products->whereIn('main_category_id', $productCategoryIds);
+                $products = PaginateHelper::paginate($products, 10);
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
-
 
             }
 
