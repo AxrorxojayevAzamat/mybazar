@@ -1208,6 +1208,12 @@ form#search-bar.search-bar{
         align-items: center;
     }
 }
+.left-100 {
+    left: 100%!important;
+}
+.left-200 {
+    left: 200%!important;
+}
 @media all and(max-width:1800px){
     .outter-catalog-view, .outter-brand-view-body{
         .wrapper-filtered-items{
