@@ -7,14 +7,6 @@
                 <a class="nav-link dropdown-toggle main-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     <div class="center-icon">
-                        <!-- <div class="round">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div> -->
                         <i class="mbcatalog"></i>
                     </div>
                     @lang('menu.whole_catalog')
@@ -24,24 +16,21 @@
                 <ul class="dropdown-menu all-dropdowns" aria-labelledby="navbarDropdown">
                     <!-- 1 -->
                     @foreach($gCategories as $category)
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}"
-                           href="{{ route('categories.show', products_path($category)) }}"
-                           onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{$category->brands}})"
-                           onmouseout="removeBanner('{{$category->slug}}')"
-                        >
-                            <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
-                        </a>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-item{{ count($category->children) ? ' first-dropdown' : '' }}"
+                               href="{{ route('categories.show', products_path($category)) }}"
+                               onmouseover="setBanner('{{$category->photoOriginal}}', '{{$category->slug}}', {{$category->brands}})"
+                               onmouseout="removeBanner('{{$category->slug}}')"
+                            >
+                                <img class="menu-discount-icon" src="{{$category->iconOriginal}}"> {{$category->name}}
+                            </a>
 
-                        @if(count($category->children))
-                            @php($banner = false)
-                            @include('layouts.menusub', ['children' => $category->children])
-                        @endif
-                    </li>
+                            @if(count($category->children))
+                                @php($banner = false)
+                                @include('layouts.menusub', ['children' => $category->children])
+                            @endif
+                        </li>
                     @endforeach
-{{--                    <li class="full-image-banner" >--}}
-{{--                        <img id="category_banner" alt="">--}}
-{{--                    </li>--}}
                 </ul>
             </li>
         </ul>
@@ -69,21 +58,30 @@
     </div>
 </nav>
 <script>
+    let index = 10;
     function setBanner(photo, slug, brands) {
-        // console.log(brands)
-        $(`#full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
-        $(`#full-image-banner_${slug} img`).css('display', 'inline')
-        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
-        $(`#banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff'})
+        console.log(brands)
+        ++index;
+        $(`.full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
+        $(`.full-image-banner_${slug}`).css('display', 'block')
+        $(`.banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{ trans("menu.all_brands") }}</a></div>')
+        $(`.banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff', 'z-index': index, 'box-shadow': '0px 2px 7px -5px black'})
         for(let i=0; i < 4; i++) {
             if(brands[i]) {
-                $(`#banner2_${slug}`).append(`<img src="http://shop.sec.uz/storage/files/brands/${brands[i].id}/original/${brands[i].logo}" alt="">`)
+                $(`.banner2_${slug}`)
+                    .append(`<a href="/brands/${brands[i].id}"><img src="http://shop.sec.uz/storage/files/brands/${brands[i].id}/original/${brands[i].logo}" alt=""></a>`)
             }
         }
     }
     function removeBanner(slug) {
-        $(`#full-image-banner_${slug} img`).css('display', 'none')
-        $(`#banner2_${slug}`).css('display', 'none')
-        $(`#banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{trans("menu.all_brands")}}</a></div>')
+        $(`.full-image-banner_${slug}`).css('display', 'none')
+        if(!$(`.banner2_${slug}`).hasClass('left-100')) {
+            $(`.banner2_${slug}`).css('display', 'none')
+        }
     }
+    $(`.full-image-banner2`).each( function () {
+        $(this).hover( function () {
+            $(this).css('box-shadow', '0px 2px 7px -5px black')
+        })
+    })
 </script>
