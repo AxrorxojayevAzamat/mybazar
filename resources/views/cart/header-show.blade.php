@@ -9,8 +9,8 @@
     </ul>
     <div id="cart_none" class="cart-none-text">{{ trans('frontend.cart_none') }}</div>
     <div class="bottom-btn">
-        <form action="/cart-list" method="GET" id="goToCart">
-            <input type="hidden" id="cart_products_id" name="product_id">
+        <form action="/cart-list" method="GET" id="goToCart" class="cartHeaderGoToCart">
+            <input type="hidden" id="cart_products_id" name="product_id" class="cart_products_id">
             <button class="btn bold switch-to-compare">
                 @lang('frontend.go_to_cart')
             </button>
@@ -27,22 +27,14 @@
     let searchInput = $('#search-input');
 
     cart.click(function (e) {
-        console.log('loging')
         e.preventDefault();
         let cart_product = localStorage.getItem('product_id');
-        if (cart_product !== null || cart_product == '') {
-            console.log(cart_product);
-            let cart_product_check = cart_product.split(',');
-            for (let i = 0; i <= cart_product_check.length; i++) {
-                if (cart_product_check[i] == '') {
-                    cart_product_check.splice(i, 1);
-                } else {
-                    continue;
-                }
-            }
+        cart_product = JSON.parse(cart_product);
+        console.log(cart_product);
+        if (cart_product !== null || cart_product === '') {
             let data = {};
             data.product_id = [];
-            data.product_id = cart_product_check;
+            data.product_id = cart_product;
 
             $.ajax({
                 url: '/cart-header',
@@ -50,18 +42,19 @@
                 data: data,
                 dataType: 'json',
                 success: function (data) {
-                    $('#goToCart').show();
+                    $('.cartHeaderGoToCart').show();
                     $('#cart_none').hide();
                     $('#card_body').show();
                     let body_cart = '';
-                    console.log(data.data.length);
+                    console.log(data.length);
                     let origin = window.location.origin;
-                    for (let i = 0; i < data.data.length; i++) {
-                        body_cart += '<li class="item" id="header'+ data.data[i].id + '" ><div class="product-img"><a href="#">' +
-                            '<img src="'+ origin + data.data[i].main_photo +'"></a></div><div class="description">' +
-                            '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
-                            '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
-                            '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
+                    for (let i = 0; i < data.length; i++) {
+                        console.log(data[i][0].id)
+                        body_cart += '<li class="item" id="header'+ data[i][0].id + '" ><div class="product-img"><a href="#">' +
+                            '<img src="'+ origin + data[i][0].main_photo +'"></a></div><div class="description">' +
+                            '<a href="/products/show/' + data[i][0].id + '"><h5 class="title">' + data[i][0].name + '</h5></a>' +
+                            '<p class="price">' + data[i][0].price_uzs + '</p> </div> ' +
+                            '<button class="btn delete-btn" onclick="removeCartListInHeader(' + data[i][0].id + ')">' +
                             '<i class="mbexit_mobile"></i></button> </li>';
                     }
 
@@ -82,12 +75,12 @@
                     if (data.data == 'error'){
                         console.log('wpringngjsd');
 
-                        $('#goToCart').hide();
+                        $('.cartHeaderGoToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
                     }
                     else{
-                        $('#goToCart').show();
+                        $('.cartHeaderGoToCart').show();
                         $('#cart_none').hide();
                         $('#card_body').show();
                         console.log(data.data.length);
@@ -97,7 +90,7 @@
                                 '<img src="' + origin + data.data[i].main_photo + '"></a></div><div class="description">' +
                                 '<a href="/products/show/' + data.data[i].id + '"><h5 class="title">' + data.data[i].name + '</h5></a>' +
                                 '<p class="price">' + data.data[i].price_uzs + '</p> </div> ' +
-                                '<button class="btn delete-btn" onclick="removing(' + data.data[i].id + ')">' +
+                                '<button class="btn delete-btn" onclick="removeCartListInHeader(' + data.data[i].id + ')">' +
                                 '<i class="mbexit_mobile"></i></button> </li>';
                         }
                     }
@@ -110,9 +103,8 @@
         }
     });
 
-    function removing(id){
+    function removeCartListInHeader(id){
         let product_id = {};
-        product_id.data = [];
         product_id.product_id = id;
 
         $.ajax({
@@ -122,13 +114,13 @@
             dataType: 'json',
             success: function (data) {
                 let counterCart = $('.counter');
-                if (data.data == 'success'){
+                if (data.data === 'success'){
                     $('#header' + id).hide();
                     if (counterCartNumber > 0){
                         counterCartNumber = counterCartNumber - 1;
                         counterCart.text(counterCartNumber);
                         if(counterCartNumber === 0){
-                            $('#goToCart').hide();
+                            $('.cartHeaderGoToCart').hide();
                             $('#cart_none').show();
                             $('#card_body').hide();
                             $('.mbcart span').removeClass('counter')
@@ -136,31 +128,24 @@
                             return true;
                         }
                     }else{
-                        $('#goToCart').hide();
+                        $('.cartHeaderGoToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
                         $('.mbcart span').removeClass('counter')
                     }
                 }else{
                     let product_id_local = localStorage.getItem('product_id');
-                    product_id_local = product_id_local.replace(id + ',', '');
-                    let counter = product_id_local.split(',');
-                    for (let i = 0; i <= counter.length; i++) {
-                        if (counter[i] == '') {
-                            counter.splice(i, 1);
-                        } else {
-                            continue;
-                        }
-                    }
-                    counter = counter.length;
+                    product_id_local = JSON.parse(product_id_local);
+                    product_id_local = product_id_local.filter(item => item.product_id !== product_id.product_id);
+                    console.log(product_id_local);
                     localStorage.removeItem('product_id');
-                    localStorage.setItem('product_id',product_id_local);
+                    counterCart.html(product_id_local.length);
 
+                    localStorage.setItem('product_id', JSON.stringify(product_id_local));
                     counterCart.html('')
-                    counterCart.html(counter);
-                    if (localStorage.getItem('product_id') == ''){
+                    if (localStorage.getItem('product_id') === '[]'){
                         localStorage.clear();
-                        $('#goToCart').hide();
+                        $('.cartHeaderGoToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
                         $('.mbcart span').removeClass('counter')

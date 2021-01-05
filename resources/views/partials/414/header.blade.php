@@ -14,7 +14,7 @@
         </a>
         <a href="{{ route('compare') }}" class="comparison"><i class="mbcompare"><span></span></i> </a>
         <form action="/cart-list" method="GET" id="goToCart">
-            <input type="hidden" id="cart_products_id" name="product_id">
+            <input type="hidden" id="cart_products_id" name="product_id" class="cart_products_id">
             <button class="btn p-0 bold switch-to-compare">
                 <a href="/cart-list" class="cart"><i class="mbcart"><span></span></i></a>
             </button>

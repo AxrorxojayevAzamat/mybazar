@@ -37,36 +37,38 @@
 
 @section('script')
     <script>
-        function removeCartList(id){
-            console.log('working')
+        function removeCartListInCart(cartProduct) {
             let product_id = {};
-            product_id.data = [];
-            product_id.product_id = id;
-
+            product_id.product_id = cartProduct;
             $.ajax({
                 url: '/remove-cart',
                 method: 'POST',
                 data: product_id,
                 dataType: 'json',
                 success: function (data) {
-                    if (data.data == 'success'){
-                        location.reload();
-                    }else{
+                    if (data.data === 'success') {
+                        let ids = 'cartActive' + cartProduct.product_id;
+                        console.log($('#' + ids));
+                        $('#' + ids).removeClass('selected_cart');
+                    } else {
+                        console.log('loging')
                         let product_id_local = localStorage.getItem('product_id');
-                        product_id_local = product_id_local.replace(id + ',', '');
+                        product_id_local = JSON.parse(product_id_local);
+                        product_id_local = product_id_local.filter(item => item.product_id !== product_id.product_id);
+                        console.log(product_id_local);
                         localStorage.removeItem('product_id');
-                        localStorage.setItem('product_id',product_id_local);
-                        let productID_carts = product_id_local;
+                        localStorage.setItem('product_id', JSON.stringify(product_id_local));
+                        let productID_carts = '';
 
-                        if (productID_carts !== null){
-                            productID_carts = productID_carts.slice(0, -1);
-                        }else {
-                            console.log('error');
+                        for (let i = 0; i < product_id_local.length; i++) {
+                            productID_carts += product_id_local[i].product_id;
                         }
-                        window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
-                        $('#' + id).hide();
 
-
+                        if (window.location.href.includes('/cart-list')) {
+                            product_id_local = JSON.stringify(product_id_local);
+                            window.location.href = window.location.origin + '/cart-list?product_id=' + product_id_local;
+                            $('#' + cartProduct.product_id).hide();
+                        }
                     }
 
                 }, error: function (data) {

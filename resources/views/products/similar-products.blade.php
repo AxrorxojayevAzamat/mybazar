@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="item-action-icons">
-                            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
+                            <div class="cart" data-name="{{ $product->name }}" data-id="{{ $product->id }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
                             <div class="libra"  data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
                             <div class="like"><i class="mbfavorite"></i></div>
                         </div>

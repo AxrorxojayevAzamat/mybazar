@@ -10,13 +10,13 @@ $(window).on("load, resize", function () {
 $(document).ready(function () {
 
     // date picker
-    var date_input=$('input[name="date"]'); //our date input has the name "date"
-    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-    var options={
-    format: 'dd/mm/yyyy',
-    container: container,
-    todayHighlight: true,
-    autoclose: true,
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
     };
     date_input.datepicker(options);
 
@@ -25,35 +25,24 @@ $(document).ready(function () {
     // CART FUNCTIONS
     function checkCart() {
         let cart_product = localStorage.getItem('product_id');
+        cart_product = JSON.parse(cart_product);
+        let counter = 0;
+        if (cart_product) {
+            counter = cart_product.length;
+        }
         let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
         XMLHttpRequest.prototype.send = function (data) {
             this.setRequestHeader('X-CSRF-Token', token);
             return send.apply(this, arguments);
         };
         if (cart_product !== null) {
-            console.log(cart_product);
-            let cart_product_check = cart_product.split(',');
-            for (let i = 0; i <= cart_product_check.length; i++) {
-                if (cart_product_check[i] == '') {
-                    cart_product_check.splice(i, 1);
-                } else {
-                    continue;
-                }
-            }
-            let counter = cart_product_check.length;
-            let data = {};
-            data.product_id = [];
-            data.product_id = cart_product_check;
-
-
-
             $.ajax({
                 url: '/add-cart',
                 method: 'POST',
-                data: data,
+                data: cart_product,
                 dataType: 'json',
                 success: function (data) {
-                    if (data.message == 'success') {
+                    if (data.message === 'success') {
                         localStorage.removeItem('product_id');
                         console.log(data.message);
 
@@ -70,19 +59,20 @@ $(document).ready(function () {
         }
     }
 
-    function writeProductsId(){
-        let cart_products_id = $('#cart_products_id');
+    function writeProductsId() {
+        let cart_products_id = $('.cart_products_id');
         let saved_carts = localStorage.getItem('product_id');
-        if (saved_carts !== null){
-            saved_carts = saved_carts.slice(0, -1);
+        if (saved_carts !== null) {
+            let values = '';
+            console.log(saved_carts);
             cart_products_id.val(saved_carts);
-        }else {
+        } else {
             console.log('error');
         }
 
     }
-    writeProductsId();
 
+    writeProductsId();
 
 
     $("#dropdownComparison").on("click", function () {
@@ -121,50 +111,50 @@ $(document).ready(function () {
 
     // display filter items with <a> tag and show-more btn
     var showDefault = 5;
-    var text= ['Скрыть', 'Показать еще'];
-    $('.panel .custom-control').each(function(){
+    var text = ['Скрыть', 'Показать еще'];
+    $('.panel .custom-control').each(function () {
         var item = $(this).find('a');
 
-        if(item.length > showDefault){
+        if (item.length > showDefault) {
             //show only 5 items
-            for(var i=0; i<showDefault; i++){
+            for (var i = 0; i < showDefault; i++) {
                 $(item[i]).show().addClass('show');
             }
             //if items more than 5, then insert button show-more
-            var btn =$("<div>", {
-                text:text[1],
-                "class":"btn show-more",
-                click:function(){
-                    item.not('.show').stop().slideToggle(500, function() {
+            var btn = $("<div>", {
+                text: text[1],
+                "class": "btn show-more",
+                click: function () {
+                    item.not('.show').stop().slideToggle(500, function () {
                         btn.text(text[+$(this).is(":hidden")])
                     })
                 }
             }).appendTo(this)
-        }else{
+        } else {
             $(item).show();
         }
     });
 
     // display filter items with checkbox tag and show-more btn
-    $('.panel').each(function(){
+    $('.panel').each(function () {
         var item = $(this).find('.custom-control');
 
-        if(item.length > showDefault){
+        if (item.length > showDefault) {
             //show only 5 items
-            for(var i=0; i<showDefault; i++){
+            for (var i = 0; i < showDefault; i++) {
                 $(item[i]).show().addClass('show');
             }
             //if items more than 5, then insert button show-more
-            var btn =$("<div>", {
-                text:text[1],
-                "class":"btn show-more",
-                click:function(){
-                    item.not('.show').stop().slideToggle(500, function() {
+            var btn = $("<div>", {
+                text: text[1],
+                "class": "btn show-more",
+                click: function () {
+                    item.not('.show').stop().slideToggle(500, function () {
                         btn.text(text[+$(this).is(":hidden")])
                     })
                 }
             }).appendTo(this)
-        }else{
+        } else {
             $(item).show();
             $('.show-more').hide();
 
@@ -172,11 +162,11 @@ $(document).ready(function () {
     });
 
     // выбрать все в фильтре чекбокс
-    $('.big-filter-with-title-checkbox div input.checkAll').on('click',function(){
-        if($(this).is(':checked')){
-           $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','checked');
-        }else{
-            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked','');
+    $('.big-filter-with-title-checkbox div input.checkAll').on('click', function () {
+        if ($(this).is(':checked')) {
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', 'checked');
+        } else {
+            $(this).parent().find('.custom-control input[type="checkbox"]').prop('checked', '');
         }
     });
 
@@ -244,17 +234,17 @@ $(document).ready(function () {
         responsive: {
             0: {
                 items: 1,
-                dots:false,
+                dots: false,
                 nav: true
             },
             600: {
                 items: 2,
-                dots:false,
+                dots: false,
                 nav: true
             },
             800: {
                 items: 3,
-                dots:false,
+                dots: false,
                 nav: true
             },
             1001: {
@@ -461,17 +451,17 @@ $(document).ready(function () {
         responsive: {
             0: {
                 items: 1,
-                dots:false,
+                dots: false,
                 nav: true
             },
             600: {
                 items: 1,
-                dots:false,
+                dots: false,
                 nav: true
             },
             800: {
                 items: 2,
-                dots:false,
+                dots: false,
                 nav: true
             },
             1001: {
@@ -496,17 +486,17 @@ $(document).ready(function () {
         responsive: {
             0: {
                 items: 1,
-                dots:false,
+                dots: false,
                 nav: true
             },
             600: {
                 items: 1,
-                dots:false,
+                dots: false,
                 nav: true
             },
             800: {
                 items: 2,
-                dots:false,
+                dots: false,
                 nav: true
             },
             1001: {

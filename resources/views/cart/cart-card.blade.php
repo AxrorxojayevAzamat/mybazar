@@ -27,5 +27,5 @@
         <p class="sub-title bottom">{{ $product->store->name }}</p>
     </div>
     <!-- end description -->
-    <button class="btn delete-btn" onclick="removeCartList({{ $product->id }})"><i class="mbexit_mobile"></i></button>
+    <button class="btn delete-btn" onclick="removeCartListInCart({{ $product->id }})"><i class="mbexit_mobile"></i></button>
 </div>

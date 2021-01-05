@@ -38,7 +38,7 @@ if ($product->classFavorite($product->id)) {
             </div>
         </div>
     <div class="item-action-icons">
-        <div class="cart" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-name="{{ $product->name }}"
+        <div class="cart" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
              data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
                 class="mbcart"></i></div>
         <div class="libra" onclick="addToCompare({{ $product->id }})" data-name="{{ $product->name }}"

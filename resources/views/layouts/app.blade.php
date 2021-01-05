@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}"></script>
-
+    <script src="{{mix('js/cart.js', 'build')}}"></script>
 
     <title> @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">

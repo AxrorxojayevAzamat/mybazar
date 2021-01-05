@@ -76,9 +76,15 @@
     }
 
     function addCart(id) {
+        console.log('carousel');
+        let modification_id = sessionStorage.getItem('product_modification');
+        JSON.parse(modification_id);
+        console.log(modification_id.product_id)
+
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;
+        product_id.modification_id = id;
 
         $.ajax({
             url: '/add-cart',
