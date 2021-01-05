@@ -58,8 +58,13 @@ class CategoryController extends Controller
     private function parentCategoryShow(Request $request, Category $category)
     {
         $categories = $category->children()->get()->toTree();
+//        dd($categories);
         $parentCategory = $category->parent;
-        $query = Product::where('main_category_id', $category->id)->orderByDesc('created_at');
+        $productCategoryIds = [];
+        foreach ($categories as $i => $category){
+            $productCategoryIds[$i] = $category->id;
+        }
+        $query = Product::whereIn('main_category_id', $productCategoryIds)->orderByDesc('created_at');
         $posts = Post::where('category_id', $category->id)->published()->orderByDesc('updated_by')->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
         $banners = Banner::where('type', Banner::TYPE_LONG)->published()->orderByDesc('updated_by')->get();
@@ -69,6 +74,7 @@ class CategoryController extends Controller
         $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
         $rootCategoryShow = true;
+//        dd($shops2ThreeItems);
 
 
         return view('catalog.catalog-section', compact('categories', 'parentCategory', 'rootCategoryShow', 'category', 'posts', 'brands', 'banner', 'shops2', 'shops2ThreeItems','newProducts', 'longBanner1'));
