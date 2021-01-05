@@ -62,7 +62,7 @@
     function setBanner(photo, slug, brands) {
         console.log(brands)
         ++index;
-        $(`.full-image-banner_${slug}`).html(`<img src="https://shop.sec.uz${photo}" id="categoryBanner" alt="">`)
+        $(`.full-image-banner_${slug}`).html(`<div class="full-banner"><img src="https://shop.sec.uz${photo}" id="categoryBanner" alt=""></div>`)
         $(`.full-image-banner_${slug}`).css('display', 'block')
         $(`.banner2_${slug}`).html('<div class="all-brands"><a href="{{ route('brands') }}">{{ trans("menu.all_brands") }}</a></div>')
         $(`.banner2_${slug}`).css({'display': 'list-item', 'background-color': '#fff', 'z-index': index, 'box-shadow': '0px 2px 7px -5px black'})
