@@ -86,7 +86,9 @@ class CategoryController extends Controller
 
         $categoryId = array_merge($category->descendants()->pluck('id')->toArray(), [$category->id]);
         $parentCategory = $category->parent()->get()->toTree();
-        $products = Product::whereIn('main_category_id', $categoryId)->get();
+        $products = Product::whereIn('main_category_id', $categoryId);
+        $productMinMax = Product::whereIn('main_category_id', $categoryId)->selectRaw("MIN(price_uzs) As min_price, MAX(price_uzs) As max_price")->get();
+//        dd($productMinMax);
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->where('category_id', $category->id)->first();
 
         if($request->has('brands') and $request->brands !== null){
@@ -126,13 +128,15 @@ class CategoryController extends Controller
         $products_id = [];
 
         foreach ($products as $i => $product){
-            if ($min_price === 0) {
+
+            if ($min_price == 0) {
                 $min_price = $product->price_uzs;
             } elseif ($min_price > $product->price_uzs) {
                 $min_price = $product->price_uzs;
             } elseif ($max_price < $product->price_uzs) {
                 $max_price = $product->price_uzs;
             }
+
             $ratings[$i] = [
                 'id' => $product->id,
                 'rating' => $product->rating,
@@ -142,15 +146,21 @@ class CategoryController extends Controller
 
         }
 
+        foreach ($productMinMax as $i => $miningmaxing){
+            $min_price = $miningmaxing->min_price;
+            $max_price = $miningmaxing->max_price;
+        }
+
         $brandIds = $products->pluck('brand_id')->toArray();
         $brands = Brand::whereIn('id', $brandIds)->get();
 
         $storeIds = $products->pluck('store_id')->toArray();
         $stores = Store::whereIn('id', $storeIds)->get();
+        $products = $products->paginate(9);
 
         $groupModifications = $this->filterService->groupModificationByCategoryId($categoryId);
 
-        return view('catalog.catalog', compact('category', 'parentCategory', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1', 'groupModifications'));
+        return view('catalog.catalog', compact('category', 'parentCategory', 'productMinMax', 'products', 'brands', 'stores', 'min_price', 'max_price', 'ratings', 'longBanner1', 'groupModifications'));
     }
 
 }

@@ -48,7 +48,7 @@ class SearchResultsController extends Controller
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->get();
                 $products = $products->whereIn('main_category_id', $productCategoryIds);
-                $products = PaginateHelper::paginate($products, 10);
+                $products = PaginateHelper::paginate($products, 9);
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
 
@@ -123,7 +123,7 @@ class SearchResultsController extends Controller
             $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                 ->where('category_id', $categoryId)->where('brand_id', $brandSearch)->paginate(10);
         } else {
-            $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate();
+            $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
             $product_id = [];
             if ($max_priceSearch || $min_priceSearch) {
                 foreach ($products as $i => $product) {

@@ -5,4 +5,5 @@
 {{--    <div class="catalog-banner"></div>--}}
 </div>
 
+
 @include('pages.rating-js', ['products' =>$ratings, 'type' => '"P"'])
