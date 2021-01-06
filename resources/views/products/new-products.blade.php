@@ -23,7 +23,7 @@
 
             @include('layouts.products-list-grid', ['products' => $newProducts])
 
-            @include('layouts.pagination')
+            @include('layouts.pagination', ['products' => $newProducts])
 
         </div>
     </div>
