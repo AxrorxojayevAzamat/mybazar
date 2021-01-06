@@ -33,7 +33,7 @@
 
     @include('filters.price-filter')
 
-    @if (!empty($groupModifications) /*&& !in_array($groupModifications['data'])*/)
+    @if (!empty($groupModifications))
         @php($modificationArray = request('modification'))
         @foreach($groupModifications as $i => $modifications)
             <button type="button" class="btn accordion active">{{ $modifications[0]->characteristic->name }}</button>
