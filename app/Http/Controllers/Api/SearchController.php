@@ -36,20 +36,19 @@ class SearchController
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->get();
                 $products = $products->whereIn('main_category_id', $productCategoryIds)->take(10);
-//                $products = array_values($products);
-
-
 
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
+//                dd($products);
             }
+            ProductResource::collection($products);
+
             $products->each(function ($product) use ($arrayProducts) {
                 $arrayProducts->push($product);
             });
-            ProductResource::collection($products);
-            if (($length -= $products->count()) <= 0) {
+            if (($length -= $arrayProducts->count()) <= 0) {
                 return response()->json([
-                    'products' => $products->toArray(),
+                    'products' => $arrayProducts->toArray(),
                     'brands' => null,
                     'stores' => null,
                 ]);
@@ -63,7 +62,7 @@ class SearchController
             BrandResource::collection($brands);
             if (($length -= $brands->count()) <= 0) {
                 return response()->json([
-                    'products' => $products->toArray(),
+                    'products' => $arrayProducts->toArray(),
                     'brands' => $brands->toArray(),
                     'stores' => null,
                 ]);

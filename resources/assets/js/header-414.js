@@ -71,7 +71,7 @@ $(document).ready(function () {
                                             <img src="${data.products[i].main_photo}" alt="">
                                         </div>
                                         <div class="description">
-                                            <h6 class="title">${data.products[i].name_uz}</h6>
+                                            <h6 class="title">${data.products[i].name}</h6>
                                             <p class="sub-title price">${data.products[i].price_uzs} <span>сум</span></p>
                                         </div>
                                         <i class="mbgotoresults_searchresulticon"></i>
