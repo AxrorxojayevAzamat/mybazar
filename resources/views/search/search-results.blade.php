@@ -61,54 +61,13 @@
                         {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => count($brandFilter)])  !!}
                     </h6>
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="filtered-brands">
-                                <!--                --><?php //dd($groups); ?>
-                                @foreach($groupsEn as $letter => $group)
-                                    <div class="letter-item">
-                                        <h6 class="title">
-                                            {{ $letter }}
-                                        </h6>
-                                        @foreach($group as $brand)
-                                            <div class="brands-by-letter">
-                                                <div><a href="{{ route('brands.show', $brand)}}">{{ $brand['name_en'] }}</a></div>
-
-                                            <!--<div><a href="#" class="all-brands-by-this-letter">Ве бренды на {{ $letter }}</a></div>-->
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="filtered-brands">
-                                <!--                --><?php //dd($groups); ?>
-                                @foreach($groupsRu as $letter => $group)
-                                    <div class="letter-item">
-                                        <h6 class="title">
-                                            {{ $letter }}
-                                        </h6>
-                                        @foreach($group as $brand)
-                                            <div class="brands-by-letter">
-                                                <div><a href="{{ route('brands.show', $brand)}}">{{ $brand['name_ru'] }}</a></div>
-
-                                            <!--<div><a href="#" class="all-brands-by-this-letter">Ве бренды на {{ $letter }}</a></div>-->
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endforeach
-                            </div>
+                    <div class="brands-by-letter">
+                        <div>
+                            @foreach($brandFilter as $brand)
+                                <a href="brands/{{$brand->id}}">{{ $brand->name }}</a>
+                            @endforeach
                         </div>
                     </div>
-
-                {{--                    <div class="brands-by-letter">--}}
-{{--                        <div>--}}
-{{--                            @foreach($brandFilter as $brand)--}}
-{{--                                <a href="brands/{{$brand->id}}">{{ $brand->name }}</a>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
 
                     <!-- list mosaic catalog items -->
 {{--                    @include('brand.brands', )--}}
