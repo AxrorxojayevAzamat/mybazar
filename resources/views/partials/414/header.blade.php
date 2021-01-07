@@ -2,7 +2,7 @@
     <div class="menu-logo">
         <a href="#menu" id="open-menu-btn"><i class="mbcatalog"></i></a>
         <a href="/">
-            <img src="{{asset('images/mybazar_logo.svg')}}" alt="">
+            <img src="{{ asset('images/mybazar_logo.svg') }}" alt="">
         </a>
     </div>
 
@@ -64,7 +64,7 @@
             </div>
         @endguest
     </div>
-    <form action="" class="search-box d-flex align-center">
+    <form action="/search" class="search-box form-control" method="GET">
         <input type="text" id="search-input-mobile" class="text" placeholder="@lang('frontend.search_on_mybazar')"/>
     </form>
     <div class="autocomplete-tags" id="droping-mobile">
