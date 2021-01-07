@@ -61,12 +61,13 @@
                         {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => count($brandFilter)])  !!}
                     </h6>
 
-                    <div class="brands-by-letter">
-                        <div>
-                            @foreach($brandFilter as $brand)
-                                <a href="brands/{{$brand->id}}">{{ $brand->name }}</a>
-                            @endforeach
-                        </div>
+                    <div class="brands-by-letter w-100">
+                        @foreach($brandFilter as $brand)
+                            <div class="col-4">
+                                <div class="col-5"><img src="{{ $brand->logoOriginal }}" alt="" class="img-thumbnail w-auto"></div>
+                                <div class="col-7"><a href="brands/{{$brand->id}}">{{ $brand->name }}</a></div>
+                            </div>
+                        @endforeach
                     </div>
 
                     <!-- list mosaic catalog items -->
