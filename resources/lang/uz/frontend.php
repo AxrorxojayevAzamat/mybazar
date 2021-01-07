@@ -281,5 +281,6 @@ return [
 
     'products' => 'Tovarlar',
     'ltd' => 'MChJ',
+    'all' => 'Hammasi',
 
 ];

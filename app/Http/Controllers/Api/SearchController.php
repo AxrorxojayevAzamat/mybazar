@@ -23,25 +23,29 @@ class SearchController
             $arrayProducts = collect();
 
             $length = 10;
-            $getCategories = Category::where('id', $categoryId)->first();
-            $getCategories = $getCategories->children()->get();
             $productCategoryIds = [];
-            foreach ($getCategories as $i => $category){
-                $productCategoryIds[$i] = $category->id;
+            if ($categoryId !== "all"){
+                $getCategories = Category::where('id', $categoryId)->first();
+                $getCategories = $getCategories->children()->get();
+
+                foreach ($getCategories as $i => $category){
+                    $productCategoryIds[$i] = $category->id;
+                }
             }
-            if ($categoryId) {
+            if ($categoryId && $categoryId !== "all") {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->get();
                 $products = $products->whereIn('main_category_id', $productCategoryIds)->take(10);
 //                $products = array_values($products);
 
 
-                $products->each(function ($product) use ($arrayProducts) {
-                    $arrayProducts->push($product);
-                });
+
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
             }
+            $products->each(function ($product) use ($arrayProducts) {
+                $arrayProducts->push($product);
+            });
             ProductResource::collection($products);
             if (($length -= $products->count()) <= 0) {
                 return response()->json([

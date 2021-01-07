@@ -278,5 +278,6 @@ return [
 
     'products' => 'Products',
     'ltd' => 'LTD',
+    'all' => 'All',
 
 ];

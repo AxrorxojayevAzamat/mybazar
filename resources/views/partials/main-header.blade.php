@@ -13,6 +13,7 @@
 
             </div>
             <select class="form-control select-main-search" name="category_id" id="categoryIdInSearch">
+                <option value="all">@lang('frontend.all')</option>
                 @foreach ($gCategories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach

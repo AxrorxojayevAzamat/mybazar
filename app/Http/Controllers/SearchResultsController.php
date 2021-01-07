@@ -44,7 +44,7 @@ class SearchResultsController extends Controller
             foreach ($getCategories as $i => $category){
                 $productCategoryIds[$i] = $category->id;
             }
-            if ($categoryId) {
+            if ($categoryId && $categoryId !== 'all') {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->get();
                 $products = $products->whereIn('main_category_id', $productCategoryIds);
