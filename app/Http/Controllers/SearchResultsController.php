@@ -92,6 +92,24 @@ class SearchResultsController extends Controller
 
             $brandsCategory = Category::whereIn('id', $brandsCategoriesId)->get();
 
+            $brands = Brand::orderBy('name_en', 'asc');
+            if ($value = $request->get('brand') == null) {
+                $brands->get();
+            }
+
+            if (!empty($value = $request->get('brand-latin'))) {
+                $brands->where(function ($query) use ($value) {
+                    $query->where('name_en', 'LIKE', $value . '%')
+                        ->orWhere('name_uz', 'LIKE',$value . '%');
+                });
+            }
+
+            if (!empty($value = $request->get('brand-cyrill'))) {
+                $brands->where(function ($query) use ($value) {
+                    $query->where('name_ru', 'LIKE', $value . '%');
+                });
+            }
+
             $groupsEn = $brands->get()->reduce(function ($carry, $brand) {
 
                 $first_letter = $brand['name_en'][0];
@@ -122,7 +140,7 @@ class SearchResultsController extends Controller
             $newProducts = Product::limit(12)->where(['new' => true])->get();
             return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
                 'categories', 'max_price', 'min_price', 'brandFilter', 'blogs', 'blogsCategory', 'videosCategory',
-                'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory', 'groupsEn', 'groupsRu'));
+                'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory', 'groupsEn', 'groupsRu' ));
         }
 
     }
