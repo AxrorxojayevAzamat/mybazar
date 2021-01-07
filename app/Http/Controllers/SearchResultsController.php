@@ -92,10 +92,37 @@ class SearchResultsController extends Controller
 
             $brandsCategory = Category::whereIn('id', $brandsCategoriesId)->get();
 
+            $groupsEn = $brands->get()->reduce(function ($carry, $brand) {
+
+                $first_letter = $brand['name_en'][0];
+
+                if (!isset($carry[$first_letter])) {
+                    $carry[$first_letter] = [];
+                }
+
+                $carry[$first_letter][] = $brand;
+
+                return $carry;
+            }, []);
+
+            $groupsRu = $brands->get()->reduce(function ($carry, $brand) {
+
+                $first_letter = substr($brand['name_ru'],0,2);
+
+                if (!isset($carry[$first_letter])) {
+                    $carry[$first_letter] = [];
+                }
+
+                $carry[$first_letter][] = $brand;
+
+                return $carry;
+            }, []);
+
+
             $newProducts = Product::limit(12)->where(['new' => true])->get();
             return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
                 'categories', 'max_price', 'min_price', 'brandFilter', 'blogs', 'blogsCategory', 'videosCategory',
-                'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory'));
+                'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory', 'groupsEn', 'groupsRu'));
         }
 
     }
