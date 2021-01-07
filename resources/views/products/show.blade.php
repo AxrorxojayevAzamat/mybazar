@@ -37,12 +37,10 @@
     <!-- u will also like -->
     @include ('layouts.carousel-products',
         ['products' => $interestingProducts, "title" => trans('frontend.product.interesting_products'), 'rate_for' => ['js' => '"I"', 'html' => 'I']])
-            @include('products.u-will-also-like')
 
     <!-- other products of this seller -->
     @include ('layouts.carousel-products',
         ['products' => $otherProducts, "title" => trans('frontend.product.similar_products'), 'rate_for' => ['js' => '"O"', 'html' => 'O']])
-     @include('products.other-products-of-this-seller')
 
     @include ('layouts.carousel-products',
     ['products' => $shopProducts, "title" => trans('frontend.product.shop_product'), 'rate_for' => ['js' => '"P"', 'html' => 'P']])

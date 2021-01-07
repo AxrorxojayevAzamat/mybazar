@@ -9,34 +9,34 @@ $('.header').on('click', '.search-toggle', function (e) {
 
 $(document).ready(function () {
     $('#cart_none').hide();
-    let droping = $('#droping');
+    let droping = [$('#droping'), $('#droping-mobile')];
     let cart = $('#dropdownCart');
-    droping.hide();
-    let searchInput = $('#search-input');
+    droping.forEach(el => { el.hide() });
+    let searchInput = [$('#search-input'), $('#search-input-mobile')];
 
-    searchInput.keyup(function (e) {
-        e.preventDefault();
-        let inputValue = $('#search-input').val();
-        console.log(inputValue);
-        let categoeyId = $('#categoryIdInSearch').val();
-        if(inputValue === '' && e.which === 13){
-            console.log(inputValue);
-            location.reload();
-        }
-        let data = {};
-        data.search = inputValue;
-        data.category_id = categoeyId;
+    searchInput.forEach( (el, i) => {
+        el.keyup(function (e) {
+            e.preventDefault();
+            let inputValue = el.val();
+            let categoeyId = $('#categoryIdInSearch').val();
+            console.log(categoeyId);
+            if(inputValue === '' && e.which === 13){
+                console.log(inputValue);
+                location.reload();
+            }
+            let data = {};
+            data.search = inputValue;
+            data.category_id = categoeyId;
 
-        $.ajax({
-            url: '/api/search',
-            method: 'GET',
-            data: data,
-            dataType: 'json',
-            success: function (data) {
-                // console.log(data)
-                droping.show();
-                let dropData = '';
-                dropData += `
+            $.ajax({
+                url: '/api/search',
+                method: 'GET',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    droping[i].show();
+                    let dropData = '';
+                    dropData += `
                         <a href="/search?search=${inputValue}">
                             <div class="item with-icon">
                                 <i class="mbsearch_resulticon"></i>
@@ -46,7 +46,6 @@ $(document).ready(function () {
                         </a>
                 `;
                 for (let i = 0; i < data.brands.data.length; i++) {
-                    console.log(data.brands.data[i].name);
                     if (data.brands.data[i].name !== undefined) {
                         dropData += `
                         <a href="/brands/${data.brands.data[i].id}">
@@ -78,19 +77,21 @@ $(document).ready(function () {
                                         <i class="mbgotoresults_searchresulticon"></i>
                                     </div>
                                 </a>`;
+                    }
+
+                    droping[i].html(dropData);
+
+
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
                 }
+            })
+            console.log(inputValue);
+        });
+    })
 
-                $('#droping').html(dropData);
-
-
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        })
-        console.log(inputValue);
-    });
 
     function link(data) {
         console.log(data)
