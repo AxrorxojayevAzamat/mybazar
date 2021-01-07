@@ -35,15 +35,17 @@ class SearchResultsController extends Controller
 
         if (!empty($value = $request->get('search'))) {
             $request->session()->flash('search', $request->get('search'));
-
-            $categoryId = $request->get('category_id');
             $length = 10;
-            $getCategories = Category::where('id', $categoryId)->first();
-            $getCategories = $getCategories->children()->get();
-            $productCategoryIds = [];
-            foreach ($getCategories as $i => $category){
-                $productCategoryIds[$i] = $category->id;
+            $categoryId = $request->get('category_id');
+            if ($categoryId && $categoryId !== 'all'){
+                $getCategories = Category::where('id', $categoryId)->first();
+                $getCategories = $getCategories->children()->get();
+                $productCategoryIds = [];
+                foreach ($getCategories as $i => $category){
+                    $productCategoryIds[$i] = $category->id;
+                }
             }
+
             if ($categoryId && $categoryId !== 'all') {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
                     ->get();
