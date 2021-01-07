@@ -33,6 +33,7 @@ $(document).ready(function () {
             data: data,
             dataType: 'json',
             success: function (data) {
+                // console.log(data)
                 droping.show();
                 let dropData = '';
                 dropData += `
@@ -45,6 +46,7 @@ $(document).ready(function () {
                         </a>
                 `;
                 for (let i = 0; i < data.brands.data.length; i++) {
+                    console.log(data.brands.data[i].name);
                     if (data.brands.data[i].name !== undefined) {
                         dropData += `
                         <a href="/brands/${data.brands.data[i].id}">
@@ -62,15 +64,16 @@ $(document).ready(function () {
                     }
                     console.log(dropData);
                 }
-                for (let i = 0; i < data.products.data.length; i++) {
-                    dropData += `<a href="/products/show/${data.products.data[i].id}">
+                console.log(data.products);
+                for (let i = 0; i < data.products.length; i++) {
+                    dropData += `<a href="/products/show/${data.products[i].id}">
                                     <div class="item product">
                                         <div class="image">
-                                            <img src="${data.products.data[i].main_photo}" alt="">
+                                            <img src="${data.products[i].main_photo}" alt="">
                                         </div>
                                         <div class="description">
-                                            <h6 class="title">${data.products.data[i].name}</h6>
-                                            <p class="sub-title price">${data.products.data[i].price_uzs} <span>сум</span></p>
+                                            <h6 class="title">${data.products[i].name_uz}</h6>
+                                            <p class="sub-title price">${data.products[i].price_uzs} <span>сум</span></p>
                                         </div>
                                         <i class="mbgotoresults_searchresulticon"></i>
                                     </div>

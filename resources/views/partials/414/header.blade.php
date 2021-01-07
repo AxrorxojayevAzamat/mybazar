@@ -64,12 +64,12 @@
             </div>
         @endguest
     </div>
-    <form action="" class="search-box">
-        <input type="text" id="search-input" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>
-    </form>
-    <div class="autocomplete-tags" id="droping">
+{{--    <form action="" class="search-box">--}}
+{{--        <input type="text" id="search-input" class="text search-input" placeholder="@lang('frontend.search_on_mybazar')"/>--}}
+{{--    </form>--}}
+{{--    <div class="autocomplete-tags" id="droping">--}}
 
 
-    </div>
+{{--    </div>--}}
 </div>
 
