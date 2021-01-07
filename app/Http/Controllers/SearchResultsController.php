@@ -87,13 +87,11 @@ class SearchResultsController extends Controller
             $categories = Category::whereIn('id', $categoryIds)->get();
             $brandIds = $products->pluck('brand_id')->toArray();
             $brandFilter = Brand::whereIn('id', $brandIds)->get();
-//            dd($brandFilter);
             $brandCategoryIds = $brandFilter->pluck('id')->toArray();
-//            dd($brandCategoryIds);
             $brandsCategoriesId = CategoryBrand::whereIn('brand_id', $brandCategoryIds)->pluck('category_id')->toArray();
-//            dd($brandsCategoriesId);
+
             $brandsCategory = Category::whereIn('id', $brandsCategoriesId)->get();
-//            dd($brandsCategory);
+
             $newProducts = Product::limit(12)->where(['new' => true])->get();
             return view('search.search-results', compact('stores', 'brands', 'products', 'ratings',
                 'categories', 'max_price', 'min_price', 'brandFilter', 'blogs', 'blogsCategory', 'videosCategory',
@@ -109,7 +107,10 @@ class SearchResultsController extends Controller
         $max_priceSearch = $request->get('max_price');
         $min_priceSearch = $request->get('min_price');
         $request->session()->flash('search', $request->get('search'));
+        $videos = Video::search($value)->where('status', Video::PUBLISHED)->paginate(10);
 
+        $videoIds = $videos->pluck('category_id')->toArray();
+        $videosCategory = Category::whereIn('id', $videoIds)->get();
         $categoryId = $request->get('category_id');
 
         $length = 10;
@@ -136,6 +137,9 @@ class SearchResultsController extends Controller
                     ->where('price_uzs', '<=', $max_priceSearch)->paginate(10);
             }
         }
+        $blogs = Post::search($value)->where('status', Post::PUBLISHED)->paginate(10);
+
+
         $ratings = [];
         $categories = [];
         $min_price = 0;
@@ -146,20 +150,33 @@ class SearchResultsController extends Controller
                 'id' => $product->id,
                 'rating' => $product->rating,
             ];
-            $categories[$i] = [
-                'id' => $product->mainCategory->id,
-                'name' => $product->mainCategory->name,
-            ];
-            $brandFilter[$i] = [
-                'id' => $product->id,
-                'name' => $product->name
-            ];
+//            $categories[$i] = [
+//                'id' => $product->mainCategory->id,
+//                'name' => $product->mainCategory->name,
+//            ];
+//            $brandFilter[$i] = [
+//                'id' => $product->id,
+//                'name' => $product->name
+//            ];
 
         }
         $min_price = $min_priceSearch;
         $max_price = $max_priceSearch;
+        $categoryIds = $products->pluck('main_category_id')->toArray();
+        $categories = Category::whereIn('id', $categoryIds)->get();
+        $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate(10);
+        $storeIds = $stores->pluck('id')->toArray();
+        $storesCategoryIds = StoreCategory::whereIn('store_id', $storeIds)->pluck('category_id')->toArray();
+        $blogIds = $blogs->pluck('category_id')->toArray();
+        $blogsCategory = Category::whereIn('id', $blogIds)->get();
+        $storesCategory = Category::whereIn('id', $storesCategoryIds)->get();
+        $brandIds = $products->pluck('brand_id')->toArray();
+        $brandFilter = Brand::whereIn('id', $brandIds)->get();
+        $brandCategoryIds = $brandFilter->pluck('id')->toArray();
+        $brandsCategoriesId = CategoryBrand::whereIn('brand_id', $brandCategoryIds)->pluck('category_id')->toArray();
 
-        return view('search.search-results', compact('products', 'ratings', 'categories', 'max_price', 'min_price', 'brandFilter'));
+        $brandsCategory = Category::whereIn('id', $brandsCategoriesId)->get();
+        return view('search.search-results', compact('products', 'blogsCategory', 'videos', 'storesCategory', 'blogs', 'ratings', 'brandsCategory', 'categories', 'max_price', 'min_price', 'brandFilter', 'stores', 'videosCategory'));
 
     }
 
