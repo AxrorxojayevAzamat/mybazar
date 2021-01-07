@@ -2129,7 +2129,10 @@ COPY public.shop_marks (id, name_uz, name_ru, name_en, slug, photo, meta_json, c
 --
 
 COPY public.shop_modifications (id, product_id, name_uz, name_ru, name_en, code, characteristic_id, price_uzs, price_usd, value, photo, sort, created_by, updated_by, created_at, updated_at) FROM stdin;
-33	3	RTX	RTX	RTX	3070	30	13396032	1293	RTX-3070	\N	2	1	1	2020-12-15 15:19:01	2020-12-15 15:19:01
+19	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	1564564	32	25449930	2410	512 SSD	\N	3	1	1	2020-12-14 16:49:43	2020-12-14 16:55:00
+20	2	Displey o'lchamlari	Разрешение дисплея	Display resolution	3123	29	25442000	2450	2560x1600	\N	4	1	1	2020-12-14 16:51:08	2020-12-14 16:55:00
+21	2	Diagonalni ko'rsatish	Диагональ дисплея	Display diagonal	365462	26	25442000	2450	13.3"	\N	5	1	1	2020-12-14 16:53:01	2020-12-14 16:55:00
+22	2	Protsessor	Процессор	Processor	74235	31	25442000	2450	Intel Core i7	\N	6	1	1	2020-12-14 16:55:00	2020-12-14 16:55:00
 9	23	Garantiya	Гарантия	Warranty	0123	18	14500600	1350	1	\N	1	1	1	2020-12-14 10:23:20	2020-12-14 16:11:29
 14	23	Diagonal	Диагональ	Diagonal	132	19	14358000	1400	55"	\N	2	1	1	2020-12-14 16:05:14	2020-12-14 16:11:29
 15	23	Matritsa	Матрица	Matrix	186	20	14358000	1400	IPS	\N	3	1	1	2020-12-14 16:07:59	2020-12-14 16:11:29
@@ -2143,15 +2146,9 @@ COPY public.shop_modifications (id, product_id, name_uz, name_ru, name_en, code,
 12	34	Lenovo Laptop	Lenovo Laptop	Lenovo Laptop	0145	31	15000000	1450	core i5-7700HQ	\N	1	1	1	2020-12-14 14:29:01	2020-12-14 14:29:01
 13	32	Realme 6i smartphone red	Realme 6i smartphone red	Realme 6i smartphone red	1	34	7500000	750	#fc0000	\N	1	1	1	2020-12-14 14:38:56	2020-12-14 14:38:56
 30	24	Ichki xotira	Объем встроенной памяти	Built-in memory	3254	9	12576000	1200	256GB	\N	8	1	1	2020-12-15 10:23:48	2020-12-15 10:23:48
-17	2	O'lchamlari	Размеры	Dimensions	49489	33	25449930	2400	304.1x212.4x16.1 mm	\N	1	1	1	2020-12-14 16:42:32	2020-12-15 15:14:13
-18	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	41654	32	24428000	2400	256 SSD	\N	2	1	1	2020-12-14 16:48:12	2020-12-15 15:14:13
-19	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	1564564	32	25449930	2410	512 SSD	\N	3	1	1	2020-12-14 16:49:43	2020-12-15 15:14:13
-20	2	Displey o'lchamlari	Разрешение дисплея	Display resolution	3123	29	25442000	2450	2560x1600	\N	4	1	1	2020-12-14 16:51:08	2020-12-15 15:14:13
-21	2	Diagonalni ko'rsatish	Диагональ дисплея	Display diagonal	365462	26	25442000	2450	13.3"	\N	5	1	1	2020-12-14 16:53:01	2020-12-15 15:14:13
-22	2	Protsessor	Процессор	Processor	74235	31	25442000	2450	Intel Core i7	\N	6	1	1	2020-12-14 16:55:00	2020-12-15 15:14:13
-31	2	RTX	RTX	RTX	111	30	26449930	2553	RTX-2060	\N	7	1	1	2020-12-15 15:14:13	2020-12-15 15:14:13
+17	2	O'lchamlari	Размеры	Dimensions	49489	33	25449930	2400	304.1x212.4x16.1 mm	\N	1	1	1	2020-12-14 16:42:32	2020-12-14 16:55:00
+18	2	Umumiy saqlash hajmi	Общий объем накопителей	Total storage capacity	41654	32	24428000	2400	256 SSD	\N	2	1	1	2020-12-14 16:48:12	2020-12-14 16:55:00
 23	24	Asosiy kamera	Основная камера	Main camera	98465	14	12576000	1200	108MP+12MP+12MP	\N	1	1	1	2020-12-15 09:46:59	2020-12-15 10:23:48
-32	3	RTX	RTX	RTX	3090	30	13801740	1332	RTX-3090	\N	1	1	1	2020-12-15 15:15:58	2020-12-15 15:19:01
 \.
 
 
@@ -2768,7 +2765,7 @@ SELECT pg_catalog.setval('public.shop_marks_id_seq', 20, true);
 -- Name: shop_modifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dev_shop
 --
 
-SELECT pg_catalog.setval('public.shop_modifications_id_seq', 33, true);
+SELECT pg_catalog.setval('public.shop_modifications_id_seq', 30, true);
 
 
 --
