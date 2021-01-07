@@ -25,7 +25,7 @@
         ['products' => $newProducts, "title" => trans('frontend.novelty'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
 
     <!-- 3 small banners -->
-    @include ('layouts.three-small-banners')
+    @include ('layouts.three-small-discounts')
 
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')

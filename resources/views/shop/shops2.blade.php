@@ -4,14 +4,14 @@
         @foreach($shops2 as $shop)
             <div class="first-item">
                 <div class="shop-name-logo">
-                    <a href="#"><img src="{{ $shop->store->logoOriginal }}" alt=""></a>
+                    <a href="{{ route('stores.view', $shop->store) }}"><img src="{{ $shop->store->logoOriginal }}" alt=""></a>
                     <div>
-                        <h6 class="title"><a href="#">{!! $shop->store->name !!}"</a></h6>
+                        <h6 class="title"><a href="{{ route('stores.view',['store'=>$shop->store]) }}">{!! $shop->store->name !!}</a></h6>
                         <p class="sub-title"><a href="{{ route('categories.show', products_path($shop->mainCategory)) }}">{!! $shop->maincategory->name !!}</a></p>
                     </div>
                 </div>
                 <div class="single-img">
-                    <a href="#">
+                    <a href="{{ route('stores.view', $shop->store) }}">
                         @if ($shop->mainPhoto)
                             <img src="{{ $shop->mainPhoto->fileOriginal }}" >
                         @endif</a>

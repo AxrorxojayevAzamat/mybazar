@@ -50,8 +50,8 @@ if ($product->classFavorite($product->id)) {
             <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
-            <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
-            <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+            <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])</div>
+            <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => date("d.m.Y", strtotime($product->discount_ends_at))])</div>
         </div>
         <p class="sub-title bottom">{{$product->store->name}}</p>
     </div>

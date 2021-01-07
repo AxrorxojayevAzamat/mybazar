@@ -42,7 +42,7 @@ return [
 
     'product' => [
         'price' => ':price <span>сум</span>',
-        'delivery_time' => 'Доставка в течении сутки',
+        'delivery_time' => 'Доставка в течении :hour часов',
         'pickup_time' => 'Самовывоз, с :date',
         'to_cart' => 'В корзину',
         'characteristics' => 'Характеристики',

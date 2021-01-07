@@ -1,7 +1,7 @@
 
-<a href="order=price_uzs">@lang('frontend.by_price') <i></i></a> &nbsp;
+<a href="?order=price_uzs">@lang('frontend.by_price') <i></i></a> &nbsp;
 
-<a href="order=rating">@lang('frontend.by_rating') <i></i></a> &nbsp;
+<a href="?order=rating">@lang('frontend.by_rating') <i></i></a> &nbsp;
 
 @include('layouts.sort-by-options')
 

@@ -108,8 +108,8 @@
                     </div>
                     <input type="hidden" id="productModification{{ $product->id }}">
                     <div class="delivery-options">
-                        <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
-                        <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+                        <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])</div>
+                        <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => date("d.m.Y", strtotime($product->discount_ends_at))])</div>
                     </div>
                     <div class="sub-title bottom">
                         <div class="shop-name-logo">

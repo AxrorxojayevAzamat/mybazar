@@ -44,7 +44,7 @@ return [
 
     'product' => [
         'price' => ':price <span>sums</span>',
-        'delivery_time' => 'Delivery within 24 hours',
+        'delivery_time' => 'Delivery within :hour hours',
         'pickup_time' => 'Pickup available from :date',
         'to_cart' => 'To cart',
         'characteristics' => 'Specifications',
