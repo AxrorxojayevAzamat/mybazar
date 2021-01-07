@@ -102,7 +102,7 @@ $(document).ready(function () {
     }
 
     function colmRow(){
-        if (localStorage.getItem('col-row-view') === 'column') {
+        if (localStorage.getItem('col-row-view') === 'column' || $(window).width() <= 1300) {
             $('.all-filtered-items').addClass('column');
             $('.item-action-icons').addClass('list');
             $('.column-view').addClass('view-blue-bg');
@@ -112,6 +112,7 @@ $(document).ready(function () {
         }
     }
     colmRow();
+
 
 
 
