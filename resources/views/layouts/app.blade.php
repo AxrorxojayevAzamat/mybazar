@@ -7,6 +7,8 @@
     <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}"></script>
     <script src="{{mix('js/cart.js', 'build')}}"></script>
 
+    <link rel="icon" href="{{ asset('mybazar_logo.ico') }}" type="image/x-icon"/>
+
     <title> @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mmenu.css') }}">
