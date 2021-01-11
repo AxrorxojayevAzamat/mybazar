@@ -1,5 +1,5 @@
 @if (isset($categories) || $parentCategory)
-    <button type="button" class="btn accordion active category-btn">@lang('frontend.breadcrumb.categories')</button>
+    <button type="button" class="btn accordion_filter active category-btn">@lang('frontend.breadcrumb.categories')</button>
     <div id="filter2" class="panel">
 
         <div class="custom-control custom-checkbox">

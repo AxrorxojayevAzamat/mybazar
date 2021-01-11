@@ -170,17 +170,17 @@ $(document).ready(function () {
         }
     });
 
-    var acc = document.getElementsByClassName("accordion");
+    var acc = document.getElementsByClassName("accordion_filter");
     var title_with_checkbox = document.getElementsByClassName("checkAll-label");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
-            // var panel = this.nextElementSibling;
-            // console.log(panel)
-            // if (this.classList.contains('active')) {
-            //     $(panel).slideUp();
-            // } else {
-            //     $(panel).slideDown();
-            // }
+            var panel = this.nextElementSibling;
+            console.log(panel)
+            if (this.classList.contains('active')) {
+                $(panel).slideUp();
+            } else {
+                $(panel).slideDown();
+            }
             this.classList.toggle("active");
         });
     }
