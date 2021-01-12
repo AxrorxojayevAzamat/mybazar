@@ -1,6 +1,6 @@
 <div class="item" id="{{ $product->id }}">
     <div class="product-img">
-        <img src="{{ $product->mainPhoto->fileThumbnail }}" alt="">
+        <img src="{{ $product->mainPhoto->fileThumbnail }}" class="h-100 w-auto" alt="">
     </div>
     <!-- description -->
     <div class="description ">

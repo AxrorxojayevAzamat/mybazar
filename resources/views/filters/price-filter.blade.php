@@ -11,7 +11,6 @@
         <div class="range-slider">
             <input type="text" class="js-range-slider" value="">
         </div>
-
     </div>
 </div>
 
