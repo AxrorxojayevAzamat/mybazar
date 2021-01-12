@@ -14,10 +14,8 @@
         <h4 class="title">{{ trans('frontend.breadcrumb.shops') }}</h4>
     </div>
     <div class="outter-list-of-shops">
-        <form action="get" class="accordion big-filter filter" id="catalogFilter">
-            <div class="filter-item">
-                @include('filters.category-filter', ['parentCategory' => null, 'rootCategoryShow' => false])
-            </div>
+        <form class="big-filter-without-title-checkbox" id="shop-filter-form">
+            @include('filters.category-blog-filter', ['search'=>'shopName'])
         </form>
 {{--        <ul class="list-group">--}}
 {{--            @foreach($categories as $category)--}}

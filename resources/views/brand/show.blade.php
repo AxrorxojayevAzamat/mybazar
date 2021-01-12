@@ -19,7 +19,7 @@
         <div class="outter-brand-view-body">
             <!-- big filter without title checkbox -->
             <form class="big-filter-without-title-checkbox" id="shop-filter-form">
-                @include('filters.category-blog-filter')
+                @include('filters.category-blog-filter', ['search'=>'order'])
             </form>
 
             <div class="wrapper-filtered-items">

@@ -18,7 +18,7 @@
     <div class="outter-list-of-videos">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
-                @include('filters.category-blog-filter')
+                @include('filters.category-blog-filter', ['search'=>'videoName'])
             </div>
         </form>
 

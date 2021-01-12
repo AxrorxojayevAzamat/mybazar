@@ -2,7 +2,7 @@
     <div class="outter-list-of-blogs">
         <form action="get" class="accordion big-filter filter" id="catalogFilter">
             <div class="filter-item">
-                @include('filters.category-blog-filter')
+                @include('filters.category-blog-filter', ['search'=>'blogName'])
             </div>
         </form>
 
