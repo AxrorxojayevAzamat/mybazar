@@ -9,10 +9,6 @@
         </div>
         <div class="outter-cart">
             @include('cart.side-calculation', ['method' => 'cart'])
-{{--            {{ dd($cart_product_id) }}--}}
-{{--            @foreach($cart_product_id as $i => $idid)--}}
-{{--                <input type="hidden" value="{{ $idid[$i] }}" class="cart_all_products_id">--}}
-{{--            @endforeach--}}
             <div class="inner-pay-checkout-cart">
                 @if(isset($cart_product_id))
                     <button class="clear-list" onclick="clearAll(@json($cart_product_id))">@lang('frontend.cart.clear_list')</button>
@@ -23,15 +19,12 @@
                             @include('cart.cart-card')
                         @endforeach
                     @else
-                        <h3>Please create account fist</h3>
+                        <h3>@lang('frontend.please_firstfullly_create_account')</h3>
                     @endif
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- u might also like -->
-
 @endsection
 
 
