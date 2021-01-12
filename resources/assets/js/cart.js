@@ -25,9 +25,13 @@ function addCart(id, modificationId) {
 
             if (data.message === 'success') {
                 localStorage.removeItem('product_id');
-                let containerCounter = $('.counter');
+                let containerCounter = $('#counterCartRed');
+                let counterCartNumber = $('#counterCartItems').val();
+                counterCartNumber = parseInt(counterCartNumber, 10);
+                console.log(typeof counterCartNumber);
                 counterCartNumber += 1;
                 containerCounter.text(counterCartNumber);
+                $('#counterCartItems').val(counterCartNumber);
             } else if (data.message === 'exists') {
                 removeCartList(product_id);
             } else {
@@ -82,9 +86,29 @@ function removeCartList(cartProduct) {
         dataType: 'json',
         success: function (data) {
             if (data.data == 'success') {
+                let containerCounter = $('#counterCartRed');
                 let ids = 'cartActive' + cartProduct.product_id;
                 console.log($('#' + ids));
                 $('#' + ids).removeClass('selected_cart');
+                let counterCartNumber = $('#counterCartItems').val();
+                if (counterCartNumber > 0){
+                    counterCartNumber = counterCartNumber - 1;
+                    containerCounter.text(counterCartNumber);
+                    $('#counterCartItems').val(counterCartNumber);
+                    if(counterCartNumber === 0){
+                        $('.cartHeaderGoToCart').hide();
+                        $('#cart_none').show();
+                        $('#card_body').hide();
+                        $('.mbcart span').removeClass('counter')
+                    }else{
+                        return true;
+                    }
+                }else{
+                    $('.cartHeaderGoToCart').hide();
+                    $('#cart_none').show();
+                    $('#card_body').hide();
+                    $('.mbcart span').removeClass('counter')
+                }
             } else {
                 console.log('loging')
                 let product_id_local = localStorage.getItem('product_id');

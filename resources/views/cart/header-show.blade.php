@@ -1,7 +1,7 @@
 {{--@if(session('cart'))--}}
 
 
-<a href="#" id="dropdownCart" class="dropdownToggle"><i class="mbcart"><span class="{{isset($gCartCount) ? count($gCartCount) > 0 ? 'counter' : '' : ''}}">{{ isset($gCartCount) ? count($gCartCount) : '' }}</span></i> @lang('menu.carts')</a>
+<a href="#" id="dropdownCart" class="dropdownToggle"><i class="mbcart"><span id="counterCartRed" class="{{isset($gCartCount) ? count($gCartCount) > 0 ? 'counter' : '' : ''}}">{{ isset($gCartCount) ? count($gCartCount) : '' }}</span></i> @lang('menu.carts')</a>
 <div class="cart-items" id="cartItems">
     <ul class="selected-items" id="card_body">
 
@@ -17,10 +17,11 @@
         </form>
     </div>
 </div>
+<input type="hidden" value="{{ isset($gCartCount) ? count($gCartCount) : '0' }}" id="counterCartItems">
 
 <script>
 
-    let counterCartNumber = {!! isset($gCartCount) ? count($gCartCount) : '0' !!}
+
     let droping = $('#droping');
     let cart = $('#dropdownCart');
     droping.hide();
@@ -113,12 +114,14 @@
             data: product_id,
             dataType: 'json',
             success: function (data) {
-                let counterCart = $('.counter');
+                let counterCart = $('#counterCartRed');
                 if (data.data === 'success'){
                     $('#header' + id).hide();
+                    let counterCartNumber = $('#counterCartItems').val();
                     if (counterCartNumber > 0){
                         counterCartNumber = counterCartNumber - 1;
                         counterCart.text(counterCartNumber);
+                        $('#counterCartItems').val(counterCartNumber);
                         if(counterCartNumber === 0){
                             $('.cartHeaderGoToCart').hide();
                             $('#cart_none').show();
@@ -139,16 +142,17 @@
                     product_id_local = product_id_local.filter(item => item.product_id !== product_id.product_id);
                     console.log(product_id_local);
                     localStorage.removeItem('product_id');
-                    counterCart.html(product_id_local.length);
+                    console.log(product_id_local.length);
+                    counterCart.text(product_id_local.length);
 
                     localStorage.setItem('product_id', JSON.stringify(product_id_local));
-                    counterCart.html('')
                     if (localStorage.getItem('product_id') === '[]'){
                         localStorage.clear();
                         $('.cartHeaderGoToCart').hide();
                         $('#cart_none').show();
                         $('#card_body').hide();
                         $('.mbcart span').removeClass('counter')
+                        counterCart.html('')
                     }
                     $('#header' + id).hide();
                 }
