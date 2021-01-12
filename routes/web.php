@@ -35,6 +35,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
     Route::post('add-to-favorite', 'FavoriteController@addToFavorite')->name('add-to-favorite');
     Route::delete('remove-from-favorite', 'FavoriteController@removeFromFavorite')->name('remove-from-favorite');
+    Route::get('count-favorite', 'FavoriteController@countUserFavorites')->name('count-favorite');
 });
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {

@@ -524,15 +524,26 @@ $(document).ready(function () {
     });
 
     // add to wishlist script
-    var wishlist_count = 0;
+
+    let wishlist_count = 0;
+    $.ajax({
+        url: '/count-favorite',
+        method: 'GET',
+        success: function (data) {
+            wishlist_count = data.products.count;
+        },
+        error: function(e) {
+            throw new Error(e.message)
+        }
+    });
     $("div.like").click(function (event) {
         if ($(this).hasClass("selected_like")) {
-            wishlist_count -= 1;
+            wishlist_count--;
             $("a.wish-list > i > span.counter").text(wishlist_count);
             $(this).removeClass('selected_like');
         } else {
             $(this).addClass('selected_like');
-            wishlist_count += 1;
+            wishlist_count++;
             setTimeout(function () {
                 $("a.wish-list > i > span").addClass("counter");
                 $("a.wish-list > i > span.counter").text(wishlist_count);
