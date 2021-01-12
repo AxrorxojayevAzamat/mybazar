@@ -15,7 +15,7 @@ return [
     'compare_not_fit' => 'Для сравнения категории товаров должны совпадать',
     'language' => 'Язык',
     'search_on_mybazar' => 'Поиск на myBazar...',
-
+    'please_firstfullly_create_account' => 'Пожалуйста, сначала создайте профиль',
 
     'color' => 'Цвет',
     'price' => 'Цена',

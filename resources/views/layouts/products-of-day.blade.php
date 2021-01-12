@@ -3,9 +3,15 @@
         @foreach($dayProducts as $product)
             <?php
             if ($product->classFavorite($product->id)) {
-                $className = "selected_like";
-            }else{
-                $className = '';
+                $favoriteClass = "selected_like";
+            } else {
+                $favoriteClass = '';
+            }
+
+            if ($product->classCart($product->id)) {
+                $cartClass = "selected_cart";
+            } else {
+                $cartClass = '';
             }
             ?>
             <div class="product-item">
@@ -42,13 +48,22 @@
                                 <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
                             </div>
                             <div class="item-action-icons">
-                                <div class="cart" data-name="{{ $product->name }}" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
+                                <div class="cart <?php echo $cartClass ?>" data-name="{{ $product->name }}" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}"><i class="mbcart"></i></div>
                                 <div class="libra" data-name="{{ $product->name }}" data-price="{{ $product->currentPriceUzs }}" data-url="{{asset('images/laptop.png')}}" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
-                                <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
+                                <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @guest
+                    <script>
+                        JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                            if (el.product_id === {{$product->id}}) {
+                                $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
+                            }
+                        })
+                    </script>
+                @endguest
             </div>
         @endforeach
     </div>

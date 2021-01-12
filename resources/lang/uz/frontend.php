@@ -15,6 +15,7 @@ return [
     'compare_not_fit' => 'Solishtirish uchun maxsulotlarning kategoriyasi bir xil bo`lishi kerak',
     'language' => 'Til',
     'search_on_mybazar' => 'MyBazar-dan qidirilmoqda...',
+    'please_firstfullly_create_account' => 'Please create account fist',
 
     'color' => 'Rangi',
     'price' => 'Narxi',

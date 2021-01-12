@@ -15,6 +15,7 @@ return [
     'compare_not_fit' => 'For comparing products categories must be the same',
     'language' => 'Language',
     'search_on_mybazar' => 'Searching on myBazar ...',
+    'please_firstfullly_create_account' => 'Please create account first',
 
     'color' => 'Color',
     'price' => 'Price',

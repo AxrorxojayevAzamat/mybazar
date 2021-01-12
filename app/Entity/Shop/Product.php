@@ -270,6 +270,12 @@ class Product extends BaseModel
     {
         return Auth::user() && UserFavorite::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
     }
+
+    public function classCart($id): bool
+    {
+        return Auth::user() && Cart::where('user_id', Auth::user()->id)->where(['product_id' => $id])->exists();
+    }
+
     public function modificationsForProduct($id)
     {
         return Modification::where(['product_id' => $this->id])->where(['characteristic_id' => $id ])->get();

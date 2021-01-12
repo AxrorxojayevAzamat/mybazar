@@ -1,8 +1,14 @@
 <?php
 if ($product->classFavorite($product->id)) {
-    $className = "selected_like";
-}else{
-    $className = '';
+    $favoriteClass = "selected_like";
+} else {
+    $favoriteClass = '';
+}
+
+if ($product->classCart($product->id)) {
+    $cartClass = "selected_cart";
+} else {
+    $cartClass = '';
 }
 ?>
 <div class="item">
@@ -44,10 +50,10 @@ if ($product->classFavorite($product->id)) {
             <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
         </div>
         <div class="item-action-icons">
-            <div class="cart" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-id="{{ $product->id }}" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
+            <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-id="{{ $product->id }}" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
                  data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
             <div class="libra" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
-            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
+            <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
             <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])</div>
@@ -56,6 +62,15 @@ if ($product->classFavorite($product->id)) {
         <p class="sub-title bottom">{{$product->store->name}}</p>
     </div>
     <!-- end description -->
+    @guest
+        <script>
+            JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                if (el.product_id === {{$product->id}}) {
+                    $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
+                }
+            })
+        </script>
+    @endguest
 </div>
 
 <script>

@@ -1,5 +1,5 @@
 @if (isset($brandFilter))
-    <button type="button" class="btn accordion active">@lang('frontend.brand')</button>
+    <button type="button" class="btn accordion_filter active">@lang('frontend.brand')</button>
     <div id="filter1" class="panel">
         @foreach($brandFilter as $i => $brand)
             <div class="custom-control custom-checkbox">
