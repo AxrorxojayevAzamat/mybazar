@@ -11,6 +11,6 @@
     @if($sidebar_is != 'Brands')
         @include('filters.price-filter')
     @endif
-    <input type="submit" id="shop-filter-button" value="{{ trans('frontend.apply_filter') }}">
+    <input type="submit" id="catalog-filter-button" value="{{ trans('frontend.apply_filter') }}">
     <input type="hidden" name="order_by" id="sort-hidden-input">
 </form>
