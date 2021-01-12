@@ -33,14 +33,11 @@ class AppServiceProvider extends ServiceProvider
             $discountProducts = Product::where('discount', '>', 0.5 )->limit(3)->get();
             $pages = Page::get();
             $longBanner = Banner::published()->where('type', Banner::TYPE_LONG)->get()->random();
-            if(!Auth::guest()) {
-                $productIds = \App\Entity\UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
-                $countFavorites = count($productIds);
-            }
             if ($gUserExists !== null){
                 $gCartCount = Cart::where('user_id', $gUserExists->id)->get();
+                $favoriteProductIds = \App\Entity\UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
             }
-            $view->with(compact(['gCategories', 'gBrands', 'discountProducts', 'gCartCount', 'pages', 'longBanner', 'countFavorites']));
+            $view->with(compact(['gCategories', 'gBrands', 'discountProducts', 'gCartCount', 'pages', 'longBanner', 'favoriteProductIds']));
         });
     }
 }

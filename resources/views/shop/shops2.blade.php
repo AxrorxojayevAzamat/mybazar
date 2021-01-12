@@ -25,9 +25,15 @@
             @foreach($shops2ThreeItems as $shops2ThreeItem)
                 <?php
                 if ($shops2ThreeItem->classFavorite($shops2ThreeItem->id)) {
-                    $className = "selected_like";
-                }else{
-                    $className = '';
+                    $favoriteClass = "selected_like";
+                } else {
+                    $favoriteClass = '';
+                }
+
+                if ($shops2ThreeItem->classCart($shops2ThreeItem->id)) {
+                    $cartClass = "selected_cart";
+                } else {
+                    $cartClass = '';
                 }
                 ?>
                 <div class="palette-items">
@@ -62,8 +68,8 @@
                     </div>
                     <div class="item-action-icons">
                         <div class="libra" id="cartActive{{ $shops2ThreeItem->id }}" onclick="addToCompare({{ $shops2ThreeItem->id }})"><i class="mbtocompare"></i></div>
-                        <div class="cart" data-id="{{ $shops2ThreeItem->id }}"><i class="mbcart"></i></div>
-                        <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
+                        <div class="cart <?php echo $cartClass ?>" data-id="{{ $shops2ThreeItem->id }}"><i class="mbcart"></i></div>
+                        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                     </div>
                 </div>
             @endforeach

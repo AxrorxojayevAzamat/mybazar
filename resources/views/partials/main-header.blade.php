@@ -40,7 +40,7 @@
                 @include('cart.header-show')
             </li>
             <li>
-                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ $countFavorites }}@endif</span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ count($favoriteProductIds) }}@endif</span></i> @lang('menu.favorites')</a>
             </li>
 
             @guest

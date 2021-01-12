@@ -1,8 +1,14 @@
 <?php
 if ($product->classFavorite($product->id)) {
-    $className = "selected_like";
+    $favoriteClass = "selected_like";
 } else {
-    $className = '';
+    $favoriteClass = '';
+}
+
+if ($product->classCart($product->id)) {
+    $cartClass = "selected_cart";
+} else {
+    $cartClass = '';
 }
 ?>
 <div class="item">
@@ -38,13 +44,13 @@ if ($product->classFavorite($product->id)) {
             </div>
         </div>
     <div class="item-action-icons">
-        <div class="cart" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+        <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
              data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
                 class="mbcart"></i></div>
         <div class="libra" onclick="addToCompare({{ $product->id }})" data-name="{{ $product->name }}"
              data-price="{{ $product->price_uzs }}"
              data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
-        <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})"><i
+        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i
                 class="mbfavorite"></i></div>
     </div>
 </div>
