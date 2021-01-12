@@ -71,6 +71,15 @@
                         <div class="cart <?php echo $cartClass ?>" data-id="{{ $shops2ThreeItem->id }}"><i class="mbcart"></i></div>
                         <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $shops2ThreeItem->id }})"><i class="mbfavorite"></i></div>
                     </div>
+                    @guest
+                        <script>
+                            JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                                if (el.product_id === {{$shops2ThreeItem->id}}) {
+                                    $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
+                                }
+                            })
+                        </script>
+                    @endguest
                 </div>
             @endforeach
         </div>

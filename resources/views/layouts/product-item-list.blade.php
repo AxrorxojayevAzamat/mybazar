@@ -62,6 +62,15 @@ if ($product->classCart($product->id)) {
         <p class="sub-title bottom">{{$product->store->name}}</p>
     </div>
     <!-- end description -->
+    @guest
+        <script>
+            JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                if (el.product_id === {{$product->id}}) {
+                    $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
+                }
+            })
+        </script>
+    @endguest
 </div>
 
 <script>

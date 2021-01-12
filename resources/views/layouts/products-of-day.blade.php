@@ -55,6 +55,15 @@
                         </div>
                     </div>
                 </div>
+                @guest
+                    <script>
+                        JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                            if (el.product_id === {{$product->id}}) {
+                                $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
+                            }
+                        })
+                    </script>
+                @endguest
             </div>
         @endforeach
     </div>
