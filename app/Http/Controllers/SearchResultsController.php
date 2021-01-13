@@ -104,7 +104,7 @@ class SearchResultsController extends Controller
 
     public function SearchFilter(Request $request)
     {
-        $value = $request->get('search') ?? '';
+        $value = $request->get('search');
         $brandSearch = $request->get('brands');
         $max_priceSearch = $request->get('max_price');
         $min_priceSearch = $request->get('min_price');
