@@ -96,7 +96,7 @@
                 method: 'GET',
                 dataType: 'json',
                 success: function (data) {
-                    element = '';
+                    let element = '';
                     let origin = window.location.origin;
                     if (data.data.length >= 1) {
                         $('#dropdownComparison i span').addClass('counter');

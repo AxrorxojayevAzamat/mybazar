@@ -16,6 +16,8 @@ return [
     'language' => 'Язык',
     'search_on_mybazar' => 'Поиск на myBazar...',
     'please_firstfullly_create_account' => 'Пожалуйста, сначала создайте профиль',
+    'to_order' => 'Заказать',
+    'uzb' => 'Узбекистан',
 
     'color' => 'Цвет',
     'price' => 'Цена',

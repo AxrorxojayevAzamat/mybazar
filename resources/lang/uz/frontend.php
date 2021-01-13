@@ -16,6 +16,8 @@ return [
     'language' => 'Til',
     'search_on_mybazar' => 'MyBazar-dan qidirilmoqda...',
     'please_firstfullly_create_account' => 'Please create account fist',
+    'to_order' => 'Buyurtma bermoq',
+    'uzb' => 'O\'zbekiston',
 
     'color' => 'Rangi',
     'price' => 'Narxi',

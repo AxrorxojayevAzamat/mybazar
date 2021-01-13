@@ -16,6 +16,8 @@ return [
     'language' => 'Language',
     'search_on_mybazar' => 'Searching on myBazar ...',
     'please_firstfullly_create_account' => 'Please create account first',
+    'to_order' => 'To order',
+    'uzb' => 'Uzbekistan',
 
     'color' => 'Color',
     'price' => 'Price',

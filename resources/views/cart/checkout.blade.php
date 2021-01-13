@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('title', trans('frontend.title.checkout_page'))
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/pay.css')}}"> --}}
-@endsection
 
 @section('body')
     <section>
@@ -21,15 +18,15 @@
                     <div class="form-group">
                         <div>
                             <label for="country">@lang('frontend.cart.country')</label>
-                            <select name="country" id="country"  class="form-control">
+                            <select name="country" id="country" class="form-control">
                                 <option value="" disabled selected>@lang('frontend.cart.select')</option>
-                                <option value="uzb">Узбекистан</option>
+                                <option value="uzb">@lang('frontend.uzb')</option>
                             </select>
                             <span class="isselected"></span>
                         </div>
                         <div>
                             <label for="city">@lang('frontend.cart.region')</label>
-                            <select id="city" name="city" class="form-control">
+                            <select id="city" name="city" class="form-select form-control">
                                 <option value="" disabled selected>@lang('frontend.cart.select')</option>
                                 <option value="@lang('region.andijan')">@lang('region.andijan')</option>
                                 <option value="@lang('region.bukhara')">@lang('region.bukhara')</option>
@@ -47,61 +44,24 @@
                         </div>
                     </div>
 
-{{--                    <div class="form-group">--}}
-{{--                        <div>--}}
-{{--                            <label for="district">@lang('frontend.cart.district')</label>--}}
-{{--                            <select id="district" class="form-control">--}}
-{{--                                <option value="" disabled selected>@lang('frontend.cart.select')</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                                <option value="">Узбекистан</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <label for="">@lang('frontend.cart.locality')</label>--}}
-{{--                            <select id="city" class="form-control">--}}
-{{--                                <option value="" disabled selected>@lang('frontend.cart.select')</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                                <option value="">Ташкент</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <div class="form-group three-inputs">
                         <div class="street">
                             <label for="street">@lang('frontend.cart.street')</label>
                             <div class="input">
-                                <input type="text" name="address" id="street" class="form-control bordered-input"  required placeholder="" >
+                                <input type="text" name="address" id="street" class="form-control bordered-input" required placeholder="">
                             </div>
                         </div>
                         <div class="house-number">
                             <div class="outter">
                                 <label for="house">@lang('frontend.cart.house')</label>
                                 <div class="input">
-                                    <input type="text" name="house" id="house"class="form-control bordered-input" required placeholder="" >
+                                    <input type="text" name="house" id="house" class="form-control bordered-input" required placeholder="">
                                 </div>
                             </div>
                             <div class="outter">
                                 <label for="flat">@lang('frontend.cart.apartment')</label>
                                 <div class="input">
-                                    <input type="text" name="flat" id="flat" class="form-control bordered-input" required placeholder="" >
+                                    <input type="text" name="flat" id="flat" class="form-control bordered-input" required placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -120,7 +80,7 @@
                         <div>
                             <label for="fname">@lang('frontend.cart.index')</label>
                             <div class="input">
-                                <input type="text" name="index" id="name"  class="form-control bordered-input" required placeholder="" >
+                                <input type="text" name="index" id="name" class="form-control bordered-input" required placeholder="">
                             </div>
                         </div>
                     </div>
@@ -129,15 +89,15 @@
 
                     <div class="form-group">
                         <div>
-                                <label for="fname">@lang('frontend.cart.name')</label>
+                            <label for="fname">@lang('frontend.cart.name')</label>
                             <div class="input">
-                                <input type="text" name="userName" id="name"  class="form-control bordered-input" required placeholder="" >
+                                <input type="text" name="userName" id="name" class="form-control bordered-input" required placeholder="">
                             </div>
                         </div>
                         <div>
                             <label for="phone-number">@lang('frontend.cart.number_of_phone')</label>
                             <div class="input">
-                                <input type="text" name="phone" id="phone-number"  class="form-control bordered-input" required placeholder="" >
+                                <input type="text" name="phone" id="phone-number" class="form-control bordered-input" required placeholder="">
                             </div>
                         </div>
                     </div>
@@ -145,18 +105,18 @@
                         <div>
                             <label for="wishes">@lang('frontend.cart.wishlist_optional')</label>
                             <div class="input">
-                                <input type="text" name="wishes" id="wishes"  class="form-control bordered-input" required placeholder="" >
+                                <input type="text" name="wishes" id="wishes" class="form-control bordered-input" required placeholder="">
                             </div>
                         </div>
                     </div>
                     <input type="hidden" name="total_cost" value="{{$cart_product_total}}">
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                         <label class="form-check-label" for="inlineRadio2">@lang('frontend.cart.in_cash')</label>
                     </div>
 
-                    <input type="submit" id="submit" value="Заказать">
+                    <input type="submit" id="submit" value="{{trans('frontend.to_order')}}">
                 </form>
             </div>
         </div>
@@ -164,6 +124,9 @@
             <button class="btn">@lang('frontend.cart.back_to_products')</button>
         </div>
     </section>
+@endsection
+@section('script')
+    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 @endsection
 
 
