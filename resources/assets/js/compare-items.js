@@ -12,10 +12,11 @@
 });
 
  $("div.libra").click(function(event) {
-
-     $(this).addClass('selected_libra');
+    if (localStorage.get('compare_product').split(',').length <= 3) {
+        $(this).addClass('selected_libra');
+    }
      event.preventDefault();
-     
+
      var name = $(this).attr('data-name');
      var price = Number($(this).attr('data-price'));
      var url = $(this).attr('data-url');
@@ -23,7 +24,7 @@
      compareCart.addItemToCart(name, price, 1,url);
      displayCompareCart();
  });
- 
+
 // $('.clear-compare-cart').click(function(event){
 //     compareCart.clearCart();
 //     displayCompareCart();
@@ -34,7 +35,7 @@ function displayCompareCart(){
     var output = "";
     var dropdown_output ="";
     for (var i in cartArray){
-        // my cart page display 
+        // my cart page display
         output += `
         <div class='selected-items'>
             <div class='product-img'>
@@ -49,7 +50,7 @@ function displayCompareCart(){
                 <button class="delete-product" data-name='${cartArray[i].name}'>x</button>
             </div>
         </div>`;
-        
+
         // dropdown cart display
         dropdown_output += `
         <a class='dropdown-item animated fadeInDown' href="#">
@@ -68,10 +69,10 @@ function displayCompareCart(){
     // $('#show-cart span').html(compareCart.totalCart());
 }
 
- //  Prevents menu from closing when clicked inside 
- $(".from-statistics-to-account .dropdown-menu .selected-items").click( function (event) { 
-    event.stopPropagation(); 
-}); 
+ //  Prevents menu from closing when clicked inside
+ $(".from-statistics-to-account .dropdown-menu .selected-items").click( function (event) {
+    event.stopPropagation();
+});
 
 // cart dropdown delete button
 $('.compare-dropdown .dropdown-menu .selected-items').on("click", ".delete-btn", function(event){
@@ -216,10 +217,10 @@ compareCart.listCart = function(){
      }
      return cartCopy;
 }
- 
+
 // saveCart()
 compareCart.saveCart= function(){
-    localStorage.setItem("compareCart", JSON.stringify(ccart));  
+    localStorage.setItem("compareCart", JSON.stringify(ccart));
 }
 
 // loadCart()

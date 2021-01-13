@@ -569,7 +569,9 @@ $(document).ready(function () {
     // add to compare script
     var compare_count = 0;
     $("div.libra").click(function (event) {
-        $(this).addClass('selected_libra');
+        if (localStorage.getItem('compare_product').split(',').length <= 3) {
+            $(this).addClass('selected_libra');
+        }
         compare_count += 1;
         setTimeout(function () {
             $("a#dropdownComparison > i > span").addClass("counter");
