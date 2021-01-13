@@ -20,6 +20,7 @@ $(document).ready(function () {
     };
     date_input.datepicker(options);
 
+
     checkCart();
 
     // CART FUNCTIONS
@@ -597,6 +598,8 @@ $(document).ready(function () {
     });
 
 });
+
+
 
 
 

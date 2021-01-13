@@ -25,8 +25,8 @@ class StoresController extends Controller
             $selector = $query->orderBy('name_' . LanguageHelper::getCurrentLanguagePrefix());
             $stores = $selector->paginate(12);
         }
-        if (!empty($request->get('category_id'))) {
-            $storesList = StoreCategory::where(['category_id' => $request->get('category_id')])->pluck('store_id');
+        if (!empty($request->get('categoryName'))) {
+            $storesList = StoreCategory::where(['category_id' => $request->get('categoryName')])->pluck('store_id');
             $selector = $query->whereIn('id',$storesList);
             $stores = $selector->paginate(12);
         }
