@@ -98,10 +98,11 @@
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
                              data-price="{{ $product->currentPriceUzs }}"
                              data-id="{{ $product->id }}"
-                             {{--onclick="checking({{ $product->id }})"--}}>
+                             onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})">
+                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})"
+                             data-id="{{ $product->id }}">
                             <i class="mbtocompare"></i>
                         </div>
                         <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
@@ -163,6 +164,7 @@
                                 containerCounter.text(cart_product_check.length);
                             }else{
                                 alert('{{ trans('frontend.compare_not_fit') }}')
+                                $(`[data-id="l${id}"]`).removeClass('selected_libra')
                             }
                         }, error: function (data) {
                             // console.log(data);
@@ -170,6 +172,7 @@
                     });
                 } else {
                     alert('{{ trans('frontend.compare_full') }}')
+                    $(`[data-id="l${id}"]`).removeClass('selected_libra')
                 }
 
             }
@@ -224,9 +227,7 @@
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        // for (i = 0; i < dots.length; i++) {
-        //     dots[i].className = dots[i].className.replace(" active", "");
-        // }
+
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
 
@@ -238,10 +239,4 @@
             }
         }
     }
-    // let modification = document.getElementsByClassName('value-modification')
-    // let modifics = $('.value-modification')
-    // function setPrice() {
-    //     console.log(this)
-    // }
-    // debugger
 </script>

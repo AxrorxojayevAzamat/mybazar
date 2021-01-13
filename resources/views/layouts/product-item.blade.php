@@ -43,24 +43,30 @@ if ($product->classCart($product->id)) {
         </div>
     </div>
     <div class="item-action-icons">
-        <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" data-id="{{ $product->id }}"
+        <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" data-id="c{{ $product->id }}"
              data-name="{{ $product->name }}"
-             data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
-                class="mbcart"></i></div>
+             data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}">
+            <i class="mbcart"></i></div>
         <div class="libra" onclick="addToCompare({{ $product->id }})" data-name="{{ $product->name }}"
+             data-id="l{{ $product->id }}"
              data-price="{{ $product->price_uzs }}"
              data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
         <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i
                 class="mbfavorite"></i></div>
     </div>
-    @guest
-        <script>
-            JSON.parse(localStorage.getItem('product_id')).forEach(el => {
-                if (el.product_id === {{$product->id}}) {
-                    $(`[data-id="${el.product_id}"]`).addClass('selected_cart');
-                }
-            })
-        </script>
-    @endguest
+    <script>
+        localStorage.getItem('compare_product').split(',').forEach(el => {
+            if (el === "{{$product->id}}") {
+                $(`[data-id="l${el}"]`).addClass('selected_libra');
+            }
+        })
+        @guest
+        JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+            if (el.product_id === {{$product->id}}) {
+                $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
+            }
+        })
+        @endguest
+    </script>
 </div>
 

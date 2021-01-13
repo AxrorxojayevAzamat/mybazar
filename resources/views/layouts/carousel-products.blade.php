@@ -60,6 +60,7 @@
                                 containerCounter.text(cart_product_check.length);
                             }else{
                                 alert('{{ trans('frontend.compare_not_fit') }}')
+                                $(`[data-id="l${id}"]`).removeClass('selected_libra')
                             }
                         }, error: function (data) {
                             // console.log(data);
@@ -67,6 +68,7 @@
                     });
                 } else {
                     alert('{{ trans('frontend.compare_full') }}')
+                    $(`[data-id="l${id}"]`).removeClass('selected_libra')
                 }
 
             }
