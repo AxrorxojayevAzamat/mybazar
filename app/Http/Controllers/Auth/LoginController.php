@@ -30,6 +30,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
         return view('admin.auth.login');
     }
 
@@ -50,10 +54,10 @@ class LoginController extends Controller
                 session(['url.intended' => route('admin.home')]);
                 $this->redirectTo = route('admin.home');
             }
-            if (Auth::user()->isUser()) {
-                session(['url.intended' => route('front-home')]);
-                $this->redirectTo = route('admin.home');
-            }
+//            if (Auth::user()->isUser()) {
+//                session(['url.intended' => url()->previous()]);
+//                $this->redirectTo = url()->previous();
+//            }
 
             return $this->sendLoginResponse($request);
         }
