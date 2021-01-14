@@ -5,7 +5,7 @@
             <div class="images">
                 @if ($product->mainPhoto)
                     <div class="big-image">
-                        <img src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"  id="productMainPhoto">
+                        <img src="{{ $product->mainPhoto->fileThumbnail }}"  id="productMainPhoto">
                     </div>
                 @endif
 
@@ -13,12 +13,12 @@
                 <div class="several-images owl-theme owl-carousel">
                     @php($currentSlide = 0)
                     @if ($product->mainPhoto)
-                        <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $product->mainPhoto->fileThumbnail }}"
                              onclick='currentSlide({{ $currentSlide }}, "{{ $product->mainPhoto->fileThumbnail }}")'>
                         @php($currentSlide++)
                     @endif
                     @foreach($product->photos as $photo)
-                        <img class="demo cursor" src="{{ $photo->fileOriginal }}" style="width:100%"
+                        <img class="demo cursor" src="{{ $photo->fileOriginal }}"
                              onclick='currentSlide({{ $currentSlide }}, "{{ $photo->fileOriginal }}")'>
                         @php($currentSlide++)
                     @endforeach
@@ -26,14 +26,15 @@
             </div>
             <div class="description">
                 <div class="text-description">
-                    <div class="rate">
-                        <div id="rateYo_one0"></div>
+                    <div class="rating-des">
+                        <div class="rate">
+                            <div id="rateYo_one0"></div>
+                        </div>
                         <div class="comment">
                             <i class="mbcomment"></i>
                             <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
-
                     {{--                    <p>ID товара: <span> 1666559495</span></p>--}}
                     <p class="title">@lang('frontend.product.characteristics')</p>
                     @foreach($product->allCharacteristics as $characteristics)
@@ -224,7 +225,7 @@
         if (n < 1) {
             slideIndex = slides.length
         }
-        for (i = 0; i < slides.length; i++) {
+        for (i = 0; i < slides.length; i++) {git 
             slides[i].style.display = "none";
         }
 
