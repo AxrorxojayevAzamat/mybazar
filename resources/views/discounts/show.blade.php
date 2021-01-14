@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('frontend.title.sales_view'))
+@section('title', trans('frontend.cart.discount'))
 
 @section('styles')
     {{-- <link rel="stylesheet" href="{{asset('css/sales.css')}}"> --}}
@@ -34,16 +34,15 @@
         </div>
     </div>
 </section>
-<nav class="products-pagination" aria-label="Page navigation example">
-    <ul class="pagination">
-        {!! $product->links() !!}
-    </ul>
-</nav>
+{{--<nav class="products-pagination" aria-label="Page navigation example">--}}
+{{--    <ul class="pagination">--}}
+{{--        {!! $product->links() !!}--}}
+{{--    </ul>--}}
+{{--</nav>--}}
 <!-- recently viewed -->
 @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
 @endsection
 @section('script')
-    <script src="{{ mix('js/1-index.js', 'build') }}"></script>
     <script src="{{ asset('js/jquery.rateyo.js') }}"></script>
 @endsection

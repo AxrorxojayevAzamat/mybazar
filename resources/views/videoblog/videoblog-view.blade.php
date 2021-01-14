@@ -4,8 +4,6 @@
 
 @section('styles')
     <link href="{{asset('css/video-js.css')}}" rel="stylesheet"/>
-
-    {{-- <link rel="stylesheet" href="{{asset('css/videoblog-view.css')}}"> --}}
 @endsection
 
 @section('body')
@@ -19,13 +17,7 @@
     <div class="h4-title video-blog">
         <h4 class="title">@lang('frontend.videos')</h4>
     </div>
-    <div class="outter-videoview">
-        <form action="#" method="GET">
-            <div id="search-bar" class="search-bar form-control">
-                <input id="search-input" class="bordered-input" type="search" placeholder="@lang('frontend.search_videos')">
-                <button class="search btn" type="submit"><i class="mbsearch"></i></button>
-            </div>
-        </form>
+    <div class="outter-videoview d-flex justify-content-center">
         <div class="inner-videoview">
             <div class="video-player">
                 <video
@@ -68,7 +60,6 @@
 </section>
 
 <!-- recently viewed -->
-{{--@include('layouts.recently-viewed')--}}
 
 @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
@@ -84,6 +75,5 @@
             $(".player-overlay").show();
         }
     </script>
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/video.js')}}"></script>
 @endsection

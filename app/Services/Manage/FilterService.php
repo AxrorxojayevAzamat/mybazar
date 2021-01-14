@@ -47,7 +47,7 @@ class FilterService
             unset($modifications);
             return $groupModifications;
         }
-        return ['data' => false];
+        return [];
 
     }
 

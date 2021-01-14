@@ -1,6 +1,6 @@
 <div class="item" id="{{ $product->id }}">
     <div class="product-img">
-        <img src="{{asset('images/tv6.png')}}" alt="">
+        <img src="{{ $product->mainPhoto->fileThumbnail }}" class="h-100 w-auto" alt="">
     </div>
     <!-- description -->
     <div class="description ">
@@ -16,16 +16,16 @@
             <i class="mbaddone" onclick="quantityCounter({{ $product->id }}, 'add')"></i>
         </div>
         <div class="item-action-icons">
-            <div class="libra" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
-                 data-price="741640"><i class="mbtocompare"></i></div>
+            <div class="libra" data-name="{{ $product->name }}" data-url="{{ route('products.show', $product) }}"
+                 data-price="{{ $product->price_uzs }}"><i class="mbtocompare"></i></div>
             <div class="like"><i class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
             <div><i class="mbdelievery"></i> @lang('frontend.cart.delivery_in_day')</div>
             <div><i class="mbbox"></i>@lang('frontend.cart.callback_until_8_april')</div>
         </div>
-        <p class="sub-title bottom">{{ $product->store->name }}</p>
+        <p class="sub-title bottom mb-0">{{ $product->store->name }}</p>
     </div>
     <!-- end description -->
-    <button class="btn delete-btn" onclick="removeCartList({{ $product->id }})"><i class="mbexit_mobile"></i></button>
+    <button class="btn delete-btn" onclick="removeCartListInCart({{ $product->id }})"><i class="mbexit_mobile"></i></button>
 </div>

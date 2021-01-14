@@ -16,7 +16,6 @@
         width:100%;
         height:300px;
         margin:0 10px;
-        cursor: pointer;
         @include border(2px, $title_color, 0);
         background:$bg_grey_color;
         &:last-child{
@@ -213,11 +212,11 @@
             .product-info{
                 .description{
                     width:57%;
-                }                    
+                }
             }
         }
     }
-    
+
 }
 @media (min-width: 1400px) {
     #products-of-day{
@@ -228,7 +227,7 @@
                 }
                 .description{
                     width:48%;
-                }                    
+                }
             }
         }
     }
@@ -251,5 +250,5 @@
             }
         }
     }
-    
+
 }

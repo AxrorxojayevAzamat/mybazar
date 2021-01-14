@@ -61,12 +61,15 @@
                         {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => count($brandFilter)])  !!}
                     </h6>
 
-                    <div class="brands-by-letter">
-                        <div>
-                            @foreach($brandFilter as $brand)
-                                <a href="brands/{{$brand->id}}">{{ $brand->name }}</a>
-                            @endforeach
-                        </div>
+                    <div class="brands-by-letter row w-100">
+                        @foreach($brandFilter as $brand)
+                            <div class="row col-3">
+                                <div class="col-5">
+                                    <a href="brands/{{$brand->id}}"><img src="{{ $brand->logoOriginal }}" alt="" class="img-thumbnail w-auto"></a>
+                                </div>
+                                <div class="col-7"><a href="brands/{{$brand->id}}" class="d-block mt-2">{{ $brand->name }}</a></div>
+                            </div>
+                        @endforeach
                     </div>
 
                     <!-- list mosaic catalog items -->
@@ -170,7 +173,6 @@
         <div>
 
             <!-- NEWS LETTER -->
-            {{--    @include ('layouts.news-letter')--}}
             @if(isset($newProducts))
                 @include ('layouts.carousel-products',
 ['products' => $newProducts, "title" => trans('frontend.novelty_upper'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])
@@ -178,8 +180,6 @@
             @endsection
 
             @section('script')
-{{--                @include('catalog._scripts')--}}
-                <script src="{{mix('js/1-index.js', 'build')}}"></script>
                 <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
                 <script src="{{asset('js/jquery.rateyo.js')}}"></script>
                 <script src="{{asset('js/range-slider.js')}}"></script>

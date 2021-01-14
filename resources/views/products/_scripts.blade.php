@@ -1,5 +1,4 @@
 @push('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{mix('js/2-catalog-page.js', 'build')}}"></script>
     <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 
@@ -18,33 +17,20 @@
 
                 let modification = $(this).children();
                 const name = modification.data('name');
-
                 colorModificationName.html(name);
                 actualProductPrice.html(modification.data('actual-price'));
                 finalProductPrice.html(modification.data('final-price'));
+
             });
 
             valueModification.click(function (e) {
                 e.preventDefault();
 
                 let modification = $(this);
-
+                $('#productModification'+modification.data('actual-product-id')).val(modification.data('actual-modification-id'));
+                console.log(sessionStorage.getItem('product_modification'));
                 actualProductPrice.html(modification.data('actual-price'));
                 finalProductPrice.html(modification.data('final-price'));
-            });
-
-            cartButton.click(function (e) {
-                e.preventDefault();
-
-                let send = XMLHttpRequest.prototype.send, token = $('meta[name="csrf-token"]').attr('content');
-                XMLHttpRequest.prototype.send = function (data) {
-                    this.setRequestHeader('X-CSRF-Token', token);
-                    return send.apply(this, arguments);
-                };
-
-                $.ajax({
-                    url: '',
-                });
             });
 
             // reviewButton.click(function (e) {

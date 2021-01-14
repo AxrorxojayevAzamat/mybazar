@@ -1,14 +1,21 @@
 <?php
 if ($product->classFavorite($product->id)) {
-    $className = "selected_like";
-}else{
-    $className = '';
+    $favoriteClass = "selected_like";
+} else {
+    $favoriteClass = '';
+}
+
+if ($product->classCart($product->id)) {
+    $cartClass = "selected_cart";
+} else {
+    $cartClass = '';
 }
 ?>
 <div class="item">
     <div class="product-img d-flex justify-content-center">
         @if ($product->mainPhoto)
-            <a href="{{ route('products.show',$product) }}" class="w-100"><img src="{{ $product->mainPhoto->fileThumbnail }}" alt="" class="d-block"></a>
+            <a href="{{ route('products.show',$product) }}" class="w-100"><img
+                    src="{{ $product->mainPhoto->fileThumbnail }}" alt="" class="d-block"></a>
         @endif
     </div>
     <!-- description -->
@@ -33,7 +40,7 @@ if ($product->classFavorite($product->id)) {
                         <span>
                               @foreach($product->modificationsForProduct($characteristics->characteristic_id) as $modifications)
                                 {{ $modifications->value }}
-                              @endforeach
+                            @endforeach
                         </span>
                     </p>
                 @endif
@@ -44,18 +51,41 @@ if ($product->classFavorite($product->id)) {
             <h6 class="old-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
         </div>
         <div class="item-action-icons">
-            <div class="cart" id="cartActive{{ $product->id }}" onclick="addCart({{ $product->id }})" data-name="Телевизор Samsung QE55Q77RAU" data-url="{{asset('images/tv6.png')}}"
-                 data-price="741640"><i class="mbcart"></i>@lang('frontend.product.to_cart')</div>
-            <div class="libra" onclick="addToCompare({{ $product->id }})"><i class="mbtocompare"></i></div>
-            <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})" ><i class="mbfavorite"></i></div>
+            <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}"
+                 onclick="addCart({{ $product->id }})"
+                 data-id="c{{ $product->id }}" data-url="{{asset('images/tv6.png')}}">
+                <i class="mbcart"></i>@lang('frontend.product.to_cart')
+            </div>
+            <div class="libra" onclick="addToCompare({{ $product->id }})" data-id="l{{ $product->id }}"><i
+                    class="mbtocompare"></i></div>
+            <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i
+                    class="mbfavorite"></i></div>
         </div>
         <div class="delivery-options">
-            <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
-            <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+            <div>
+                <i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])
+            </div>
+            <div>
+                <i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => date("d.m.Y", strtotime($product->discount_ends_at))])
+            </div>
         </div>
         <p class="sub-title bottom">{{$product->store->name}}</p>
     </div>
     <!-- end description -->
+    <script>
+        localStorage.getItem('compare_product').split(',').forEach(el => {
+            if (el === "{{$product->id}}") {
+                $(`[data-id="l${el}"]`).addClass('selected_libra');
+            }
+        })
+        @guest
+        JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+            if (el.product_id === {{$product->id}}) {
+                $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
+            }
+        })
+        @endguest
+    </script>
 </div>
 
 <script>
@@ -73,7 +103,7 @@ if ($product->classFavorite($product->id)) {
                 }
             }
             if (!exist) {
-                if (cart_product_check.length < 1){
+                if (cart_product_check.length < 1) {
                     compare_products += product_id;
                     compare_products += id + ',';
                     localStorage.setItem('compare_product', compare_products + '');
@@ -82,17 +112,18 @@ if ($product->classFavorite($product->id)) {
                 }
                 if (cart_product_check.length <= 3 && cart_product_check.length >= 1) {
                     $.ajax({
-                        url: '/check-compare/' + id+'/' + cart_product_check[0] ,
+                        url: '/check-compare/' + id + '/' + cart_product_check[0],
                         method: 'GET',
                         success: function (data) {
-                            if (data === "success"){
+                            if (data === "success") {
                                 compare_products += product_id;
                                 compare_products += id + ',';
                                 localStorage.setItem('compare_product', compare_products + '');
                                 let containerCounter = $('.counter');
                                 containerCounter.text(cart_product_check.length);
-                            }else{
+                            } else {
                                 alert('{{ trans('frontend.compare_not_fit') }}')
+                                $(`[data-id="l${id}"]`).removeClass('selected_libra')
                             }
                         }, error: function (data) {
                             // console.log(data);
@@ -100,6 +131,7 @@ if ($product->classFavorite($product->id)) {
                     });
                 } else {
                     alert('{{ trans('frontend.compare_full') }}')
+                    $(`[data-id="l${id}"]`).removeClass('selected_libra')
                 }
 
             }
@@ -107,15 +139,16 @@ if ($product->classFavorite($product->id)) {
             localStorage.setItem('compare_product', id + ',');
         }
     }
-    function addToFavorite(id){
+
+    function addToFavorite(id) {
         let product_id = {};
         product_id.id = id;
         $.ajax({
             url: '{{ route('user.favorites.add',$product) }}',
             method: 'GET',
-            success: function (data){
+            success: function (data) {
                 console.log(data);
-            },error: function (data){
+            }, error: function (data) {
                 console.log(data);
             }
         })
@@ -123,6 +156,7 @@ if ($product->classFavorite($product->id)) {
 
 
     function addCart(id) {
+        console.log('item-list')
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;
@@ -140,7 +174,7 @@ if ($product->classFavorite($product->id)) {
                     console.log(counterCartNumber)
                     counterCartNumber += 1;
                     containerCounter.text(counterCartNumber);
-                } else if(data.message == 'exists'){
+                } else if (data.message == 'exists') {
                     removeCartList(id);
                 } else {
                     nonRegisteredUsersCart(id);
@@ -184,7 +218,7 @@ if ($product->classFavorite($product->id)) {
         }
     }
 
-    function removeCartList(id){
+    function removeCartList(id) {
         console.log('working')
         let product_id = {};
         product_id.data = [];
@@ -196,20 +230,20 @@ if ($product->classFavorite($product->id)) {
             data: product_id,
             dataType: 'json',
             success: function (data) {
-                if (data.data == 'success'){
+                if (data.data == 'success') {
                     let ids = 'cartActive' + id;
                     console.log($('#' + ids));
                     $('#' + ids).removeClass('selected_cart');
-                }else{
+                } else {
                     let product_id_local = localStorage.getItem('product_id');
                     product_id_local = product_id_local.replace(id + ',', '');
                     localStorage.removeItem('product_id');
-                    localStorage.setItem('product_id',product_id_local);
+                    localStorage.setItem('product_id', product_id_local);
                     let productID_carts = product_id_local;
 
-                    if (productID_carts !== null){
+                    if (productID_carts !== null) {
                         productID_carts = productID_carts.slice(0, -1);
-                    }else {
+                    } else {
                         console.log('error');
                     }
                     window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;

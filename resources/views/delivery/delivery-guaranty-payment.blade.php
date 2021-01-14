@@ -2,10 +2,6 @@
 
 @section('title', trans('frontend.title.delivery_page'))
 
-@section('styles')
-    {{-- <link rel="stylesheet" href="{{asset('css/delivery-guaranty-payment.css')}}"> --}}
-@endsection
-
 @section('body')
     <!-- blog-news btn -->
     @include('delivery.delivery-g-p-btn')
@@ -26,9 +22,4 @@
             @include('delivery.payment-body')
         </div>
     </div>
-@endsection
-
-
-@section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
 @endsection

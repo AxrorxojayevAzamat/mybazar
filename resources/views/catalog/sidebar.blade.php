@@ -2,7 +2,7 @@
     @include('filters.category-filter')
     @if (isset($brands))
 
-        <button type="button" class="btn accordion active">@lang('frontend.brand')</button>
+        <button type="button" class="btn accordion_filter active">@lang('frontend.brand')</button>
         <div id="filter1" class="panel">
             @foreach($brands as $i => $brand)
                 <div class="custom-control custom-checkbox">
@@ -17,7 +17,7 @@
     @endif
 
     @if (isset($stores))
-        <button type="button" class="btn accordion active">@lang('frontend.stores')</button>
+        <button type="button" class="btn accordion_filter active">@lang('frontend.stores')</button>
         <div id="filter2" class="panel">
             @foreach ($stores as $i => $store)
                 <div class="custom-control custom-checkbox">

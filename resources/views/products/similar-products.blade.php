@@ -6,6 +6,19 @@
         <div class="outter-products">
             <div class="similar-p owl-carousel owl-theme">
                 @foreach($similarProducts as $product)
+                    <?php
+                    if ($product->classFavorite($product->id)) {
+                        $favoriteClass = "selected_like";
+                    } else {
+                        $favoriteClass = '';
+                    }
+
+                    if ($product->classCart($product->id)) {
+                        $cartClass = "selected_cart";
+                    } else {
+                        $cartClass = '';
+                    }
+                    ?>
                     <div class="item">
                         <div class="product-item" onclick="location.href = '{{ route('products.show', $product) }}'">
                             <div class="product-img">
@@ -16,17 +29,11 @@
                                 @endif
                             </div>
                             <div class="description">
-                                <h6 class="title"><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h6>
+                                <h6 class="title"><a
+                                        href="{{ route('products.show', $product) }}">{{ $product->name }}</a></h6>
                                 <p class="sub-title">{{ $product->mainCategory->name }}</p>
                                 <div class="rate">
                                     <div id="rateYo_S{{ $loop->index }}"></div>
-                                    {{--                                <div class="rating stars">--}}
-                                    {{--                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Meh">5 stars</label>--}}
-                                    {{--                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Kinda bad">4 stars</label>--}}
-                                    {{--                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Kinda bad">3 stars</label>--}}
-                                    {{--                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Sucks big tim">2 stars</label>--}}
-                                    {{--                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>--}}
-                                    {{--                                </div>--}}
                                     <div class="comment">
                                         <i class="mbcomment"></i>
                                         <span>{{ $product->number_of_reviews }}</span>
@@ -40,11 +47,29 @@
                             </div>
                         </div>
                         <div class="item-action-icons">
-                            <div class="cart" data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbcart"></i></div>
-                            <div class="libra"  data-name="{{ $product->name }}" data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
-                            <div class="like"><i class="mbfavorite"></i></div>
+                            <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}"
+                                 data-id="c{{ $product->id }}" data-name="{{ $product->name }}"
+                                 data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
+                                    class="mbcart"></i></div>
+                            <div class="libra" data-id="l{{ $product->id }}" data-name="{{ $product->name }}"
+                                 data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}"><i
+                                    class="mbtocompare"></i></div>
+                            <div class="like <?php echo $favoriteClass ?>"><i class="mbfavorite"></i></div>
                         </div>
-
+                        <script>
+                            localStorage.getItem('compare_product').split(',').forEach(el => {
+                                if (el === "{{$product->id}}") {
+                                    $(`[data-id="l${el}"].libra`).addClass('selected_libra');
+                                }
+                            })
+                            @guest
+                            JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                                if (el.product_id === {{$product->id}}) {
+                                    $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
+                                }
+                            })
+                            @endguest
+                        </script>
                     </div>
                 @endforeach
             </div>

@@ -31,7 +31,3 @@
     </div>
 </div>
 @endsection
-
-@section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
-@endsection

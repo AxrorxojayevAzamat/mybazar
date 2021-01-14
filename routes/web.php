@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //Auth::routes(); - custom (POST)
 Route::post('login', 'Auth\LoginController@login'); // TODO duplicate
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');// TODO duplicate
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');// TODO duplicate
 Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');// TODO duplicate
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');// TODO duplicate
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');// TODO duplicate
@@ -35,6 +35,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::put('/phone-verify', 'ProfileController@verify')->name('phone.verify');
     Route::post('add-to-favorite', 'FavoriteController@addToFavorite')->name('add-to-favorite');
     Route::delete('remove-from-favorite', 'FavoriteController@removeFromFavorite')->name('remove-from-favorite');
+    Route::get('count-favorite', 'FavoriteController@countUserFavorites')->name('count-favorite');
 });
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {

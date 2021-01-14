@@ -1,9 +1,9 @@
 @if($product)
     @foreach($product as $item)
         @include('pages.rating-js', ['products' => $product, 'type' => $rate_for['js']])
-        <div class="description">
-            {!! $item->description !!}
-        </div>
+{{--        <div class="description">--}}
+{{--            {!! $item->description !!}--}}
+{{--        </div>--}}
         <div class="item">
             <div class="product-img">
                 <a href="{{ route('products.show',['product' => $item->id]) }}"><img src="{{ $item->mainPhoto->fileThumbnail ?? '' }}" alt=""></a>

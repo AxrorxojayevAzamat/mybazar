@@ -15,6 +15,9 @@ return [
     'compare_not_fit' => 'For comparing products categories must be the same',
     'language' => 'Language',
     'search_on_mybazar' => 'Searching on myBazar ...',
+    'please_firstfullly_create_account' => 'Please create account first',
+    'to_order' => 'To order',
+    'uzb' => 'Uzbekistan',
 
     'color' => 'Color',
     'price' => 'Price',
@@ -44,7 +47,7 @@ return [
 
     'product' => [
         'price' => ':price <span>sums</span>',
-        'delivery_time' => 'Delivery within 24 hours',
+        'delivery_time' => 'Delivery within :hour hours',
         'pickup_time' => 'Pickup available from :date',
         'to_cart' => 'To cart',
         'characteristics' => 'Specifications',
@@ -278,5 +281,6 @@ return [
 
     'products' => 'Products',
     'ltd' => 'LTD',
+    'all' => 'All',
 
 ];

@@ -9,32 +9,34 @@ $('.header').on('click', '.search-toggle', function (e) {
 
 $(document).ready(function () {
     $('#cart_none').hide();
-    let droping = $('#droping');
+    let droping = [$('#droping'), $('#droping-mobile')];
     let cart = $('#dropdownCart');
-    droping.hide();
-    let searchInput = $('#search-input');
+    droping.forEach(el => { el.hide() });
+    let searchInput = [$('#search-input'), $('#search-input-mobile')];
 
-    searchInput.keyup(function (e) {
-        e.preventDefault();
-        let inputValue = $('#search-input').val();
-            console.log(inputValue);
+    searchInput.forEach( (el, i) => {
+        el.keyup(function (e) {
+            e.preventDefault();
+            let inputValue = el.val();
+            let categoeyId = $('#categoryIdInSearch').val();
+            console.log(categoeyId);
+            if(inputValue === '' && e.which === 13){
+                console.log(inputValue);
+                location.reload();
+            }
+            let data = {};
+            data.search = inputValue;
+            data.category_id = categoeyId;
 
-        if(inputValue === '' && e.which === 13){
-            console.log(inputValue);
-            location.reload();
-        }
-        let data = {};
-        data.search = inputValue;
-
-        $.ajax({
-            url: '/api/search',
-            method: 'GET',
-            data: data,
-            dataType: 'json',
-            success: function (data) {
-                droping.show();
-                let dropData = '';
-                dropData += `
+            $.ajax({
+                url: '/api/search',
+                method: 'GET',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    droping[i].show();
+                    let dropData = '';
+                    dropData += `
                         <a href="/search?search=${inputValue}">
                             <div class="item with-icon">
                                 <i class="mbsearch_resulticon"></i>
@@ -61,32 +63,35 @@ $(document).ready(function () {
                     }
                     console.log(dropData);
                 }
-                for (let i = 0; i < data.products.data.length; i++) {
-                    dropData += `<a href="/products/show/${data.products.data[i].id}">
+                console.log(data.products);
+                for (let i = 0; i < data.products.length; i++) {
+                    dropData += `<a href="/products/show/${data.products[i].id}">
                                     <div class="item product">
                                         <div class="image">
-                                            <img src="${data.products.data[i].main_photo}" alt="">
+                                            <img src="${data.products[i].main_photo}" alt="">
                                         </div>
                                         <div class="description">
-                                            <h6 class="title">${data.products.data[i].name}</h6>
-                                            <p class="sub-title price">${data.products.data[i].price_uzs} <span>сум</span></p>
+                                            <h6 class="title">${data.products[i].name}</h6>
+                                            <p class="sub-title price">${data.products[i].price_uzs} <span>сум</span></p>
                                         </div>
                                         <i class="mbgotoresults_searchresulticon"></i>
                                     </div>
                                 </a>`;
+                    }
+
+                    droping[i].html(dropData);
+
+
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
                 }
+            })
+            console.log(inputValue);
+        });
+    })
 
-                $('#droping').html(dropData);
-
-
-                console.log(data);
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        })
-        console.log(inputValue);
-    });
 
     function link(data) {
         console.log(data)
@@ -97,7 +102,7 @@ $(document).ready(function () {
     }
 
     function colmRow(){
-        if (localStorage.getItem('col-row-view') === 'column') {
+        if (localStorage.getItem('col-row-view') === 'column' || $(window).width() <= 1300) {
             $('.all-filtered-items').addClass('column');
             $('.item-action-icons').addClass('list');
             $('.column-view').addClass('view-blue-bg');
@@ -107,6 +112,7 @@ $(document).ready(function () {
         }
     }
     colmRow();
+
 
 
 

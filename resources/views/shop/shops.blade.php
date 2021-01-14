@@ -58,7 +58,6 @@
 @endsection
 
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/3-popular-page.js')}}"></script>
 
     <script>
@@ -81,7 +80,6 @@
             let filter = '';
             $('.' + className + ':checked').each(function() {
                 filter += $(this).val() + ',';
-                // filter.push($(this).val());
             });
             return filter.slice(0, -1);
         }

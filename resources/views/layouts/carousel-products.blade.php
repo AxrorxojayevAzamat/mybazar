@@ -60,6 +60,7 @@
                                 containerCounter.text(cart_product_check.length);
                             }else{
                                 alert('{{ trans('frontend.compare_not_fit') }}')
+                                $(`[data-id="l${id}"]`).removeClass('selected_libra')
                             }
                         }, error: function (data) {
                             // console.log(data);
@@ -67,6 +68,7 @@
                     });
                 } else {
                     alert('{{ trans('frontend.compare_full') }}')
+                    $(`[data-id="l${id}"]`).removeClass('selected_libra')
                 }
 
             }
@@ -76,9 +78,15 @@
     }
 
     function addCart(id) {
+        console.log('carousel');
+        let modification_id = sessionStorage.getItem('product_modification');
+        JSON.parse(modification_id);
+        console.log(modification_id.product_id)
+
         let product_id = {};
         product_id.data = [];
         product_id.product_id = id;
+        product_id.modification_id = id;
 
         $.ajax({
             url: '/add-cart',

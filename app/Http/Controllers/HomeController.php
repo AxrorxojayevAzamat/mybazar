@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Entity\Banner;
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Discount;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
 use App\Helpers\LanguageHelper;
@@ -38,7 +39,7 @@ class HomeController extends Controller
             ->get();
         $newProducts = $query->limit(12)->where(['new' => true])->get();
         $recommended = Product::limit(12)->where('number_of_reviews','>=',30)->get();
-        $threeBanners = Banner::published()->where('type', Banner::TYPE_SHORT)->inRandomOrder()->limit(3)->get();
+//        $threeBanners = Banner::published()->where('type', Banner::TYPE_SHORT)->inRandomOrder()->limit(3)->get();
         $longBanner1 = Banner::published()->where('type', Banner::TYPE_LONG)->inRandomOrder()->first();
         $longBanner2 = Banner::published()->where('type', Banner::TYPE_LONG)
             ->where('id', '!=', $longBanner1 ? $longBanner1->id : 0)->inRandomOrder()->first();
@@ -50,10 +51,11 @@ class HomeController extends Controller
         $shops1 = $query->where(['status' => Product::STATUS_ACTIVE])->limit(3)->get();
         $shops2 = $query->where(['status' => Product::STATUS_ACTIVE])->inRandomOrder()->limit(1)->get();
         $shops2ThreeItems = $query->where(['status' => Product::STATUS_ACTIVE])->limit(10)->get();
+        $threeDiscounts = Discount::orderByDesc('created_at')->limit(3)->get();
 
         return view('home', compact('newProducts', 'brands', 'bestsellerProducts',
             'posts', 'videos', 'sliders', 'slidersCount', 'dayProducts' ,'threeBanners','shops1','shops2','shops2ThreeItems',
-            'longBanner1', 'longBanner2', 'recommended'));
+            'longBanner1', 'longBanner2', 'recommended', 'threeDiscounts'));
     }
 
 }

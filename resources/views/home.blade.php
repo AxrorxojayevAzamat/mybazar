@@ -25,7 +25,7 @@
         ['products' => $newProducts, "title" => trans('frontend.novelty'), 'rate_for' => ['js' => '"N"', 'html' => 'N']])   {{--CHANGEABLE--}}
 
     <!-- 3 small banners -->
-    @include ('layouts.three-small-banners')
+    @include ('layouts.three-small-discounts')
 
     <!--INDEX BLOG-->
     @include ('layouts.index-blog')
@@ -48,6 +48,5 @@
 
 
 @section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
     <script src="{{asset('js/jquery.rateyo.js')}}"></script>
 @endsection

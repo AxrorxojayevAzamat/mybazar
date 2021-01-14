@@ -15,7 +15,9 @@ return [
     'compare_not_fit' => 'Для сравнения категории товаров должны совпадать',
     'language' => 'Язык',
     'search_on_mybazar' => 'Поиск на myBazar...',
-
+    'please_firstfullly_create_account' => 'Пожалуйста, сначала создайте профиль',
+    'to_order' => 'Заказать',
+    'uzb' => 'Узбекистан',
 
     'color' => 'Цвет',
     'price' => 'Цена',
@@ -42,7 +44,7 @@ return [
 
     'product' => [
         'price' => ':price <span>сум</span>',
-        'delivery_time' => 'Доставка в течении сутки',
+        'delivery_time' => 'Доставка в течении :hour часов',
         'pickup_time' => 'Самовывоз, с :date',
         'to_cart' => 'В корзину',
         'characteristics' => 'Характеристики',
@@ -276,4 +278,5 @@ return [
 
     'products' => 'Товары',
     'ltd' => 'СП',
+    'all' => 'Все',
 ];

@@ -18,12 +18,12 @@
     <div class="outter-sales">
         <div class="sales-banners">
             @foreach($discounts as $discount)
-            @if ($discount->photo)
-            <div class="banner-item">
-                <a href="{{ route('discounts.show', $discount) }}"><img src="{{ $discount->photoThumbnail }}" alt=""></a>
-                <span> @lang('adminlte.date_to') {{\Carbon\Carbon::parse($discount->end_date)->format('Y-m-d')}}</span>
-            </div>
-            @endif
+                @if ($discount->photo)
+                    <div class="banner-item">
+                        <a href="{{ route('discounts.show', $discount) }}"><img src="{{ $discount->photoThumbnail }}" alt=""></a>
+                        <span> @lang('adminlte.date_to') {{\Carbon\Carbon::parse($discount->end_date)->format('Y-m-d')}}</span>
+                    </div>
+                @endif
             @endforeach
         </div>
 
@@ -39,9 +39,4 @@
 <!-- recently viewed -->
 @include ('layouts.carousel-products',
         ['products' => $recentProducts, "title" => trans('frontend.product.you_watched'), 'rate_for' => ['js' => '"R"', 'html' => 'R']])
-@endsection
-
-@section('script')
-    <script src="{{mix('js/1-index.js', 'build')}}"></script>
-
 @endsection

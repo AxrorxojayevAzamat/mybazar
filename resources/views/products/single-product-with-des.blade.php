@@ -60,6 +60,8 @@
                                             <span class="pr-des-radio-buttons">
                                                 <div class="value-modification" id="value-modification"
                                                      data-actual-price="{{ trans('frontend.product.price', ['price' => $modifications->price_uzs]) }}"
+                                                     data-actual-modification-id="{{ $modifications->id }}"
+                                                     data-actual-product-id="{{ $product->id }}"
                                                      data-final-price="{{ trans('frontend.product.price', ['price' => $modifications->currentPriceUzs]) }}">
                                                     {{ $modifications->value }}
                                                 </div>
@@ -74,6 +76,8 @@
                                     <div class="color color-modification" id="color-modification">
                                         <div style="background-color: {{ $modification->value }}"
                                              data-name="{{ $modification->name }}"
+                                             data-actual-modification-id="{{ $modifications->id }}"
+                                             data-actual-product-id ="{{ $product->id }}"
                                              data-actual-price="{{ trans('frontend.product.price', ['price' => $modification->price_uzs]) }}"
                                              data-final-price="{{ trans('frontend.product.price', ['price' => $modification->currentPriceUzs]) }}"
                                         ></div>
@@ -94,17 +98,20 @@
                              data-name="{{ $product->name }}"
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
                              data-price="{{ $product->currentPriceUzs }}"
+                             data-id="{{ $product->id }}"
                              onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})">
+                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})"
+                             data-id="{{ $product->id }}">
                             <i class="mbtocompare"></i>
                         </div>
                         <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
                     </div>
+                    <input type="hidden" id="productModification{{ $product->id }}">
                     <div class="delivery-options">
-                        <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time')</div>
-                        <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => '8 апреля'])</div>
+                        <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])</div>
+                        <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => date("d.m.Y", strtotime($product->discount_ends_at))])</div>
                     </div>
                     <div class="sub-title bottom">
                         <div class="shop-name-logo">
@@ -158,6 +165,7 @@
                                 containerCounter.text(cart_product_check.length);
                             }else{
                                 alert('{{ trans('frontend.compare_not_fit') }}')
+                                $(`[data-id="l${id}"]`).removeClass('selected_libra')
                             }
                         }, error: function (data) {
                             // console.log(data);
@@ -165,6 +173,7 @@
                     });
                 } else {
                     alert('{{ trans('frontend.compare_full') }}')
+                    $(`[data-id="l${id}"]`).removeClass('selected_libra')
                 }
 
             }
@@ -186,107 +195,7 @@
         })
     }
 
-    function addCart(id) {
-        let product_id = {};
-        product_id.data = [];
-        product_id.product_id = id;
 
-        $.ajax({
-            url: '/add-cart',
-            method: 'POST',
-            data: product_id,
-            dataType: 'json',
-            success: function (data) {
-
-                if (data.message == 'success') {
-                    localStorage.removeItem('product_id');
-                    let containerCounter = $('.counter');
-                    console.log(counterCartNumber)
-                    counterCartNumber += 1;
-                    containerCounter.text(counterCartNumber);
-                } else if(data.message == 'exists'){
-                    removeCartList(id);
-                } else {
-                    nonRegisteredUsersCart(id);
-                    console.log($.ajaxSettings.headers);
-                    console.log('isnotexists');
-                }
-            }, error: function (data) {
-
-            }
-        })
-
-    }
-
-    function nonRegisteredUsersCart(id) {
-        if (localStorage.getItem('product_id')) {
-            let cart_products = '';
-            let exist = false;
-            let product_id = localStorage.getItem('product_id')
-            let cart_product_check = product_id.split(',');
-            for (let i = 0; i <= cart_product_check.length; i++) {
-                console.log('hello')
-                if (cart_product_check[i] == id) {
-                    console.log('exists')
-                    exist = true;
-                } else {
-                    console.log('loging')
-                }
-            }
-            if (!exist) {
-                cart_products += product_id;
-                cart_products += id + ',';
-                localStorage.setItem('product_id', cart_products + '');
-                let containerCounter = $('.counter');
-                containerCounter.text(cart_product_check.length);
-            } else {
-                removeCartList(id);
-                console.log('exist');
-            }
-        } else {
-            localStorage.setItem('product_id', id + ',');
-        }
-    }
-
-    function removeCartList(id){
-        console.log('working')
-        let product_id = {};
-        product_id.data = [];
-        product_id.product_id = id;
-
-        $.ajax({
-            url: '/remove-cart',
-            method: 'POST',
-            data: product_id,
-            dataType: 'json',
-            success: function (data) {
-                if (data.data == 'success'){
-                    let ids = 'cartActive' + id;
-                    console.log($('#' + ids));
-                    $('#' + ids).removeClass('selected_cart');
-                }else{
-                    let product_id_local = localStorage.getItem('product_id');
-                    product_id_local = product_id_local.replace(id + ',', '');
-                    localStorage.removeItem('product_id');
-                    localStorage.setItem('product_id',product_id_local);
-                    let productID_carts = product_id_local;
-
-                    if (productID_carts !== null){
-                        productID_carts = productID_carts.slice(0, -1);
-                    }else {
-                        console.log('error');
-                    }
-                    window.location.href = window.location.origin + '/cart-list?product_id=' + productID_carts;
-                    $('#' + id).hide();
-
-
-                }
-
-            }, error: function (data) {
-                console.log(data);
-            }
-        })
-    }
 
     //SLIDER
     var slideIndex = 0;
@@ -319,10 +228,8 @@
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        // for (i = 0; i < dots.length; i++) {
-        //     dots[i].className = dots[i].className.replace(" active", "");
-        // }
-        slides[slideIndex - 1].style.display = "flex";
+
+        slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
 
         for(let j = 0; j < dots.length; j++) {
@@ -333,10 +240,4 @@
             }
         }
     }
-    // let modification = document.getElementsByClassName('value-modification')
-    // let modifics = $('.value-modification')
-    // function setPrice() {
-    //     console.log(this)
-    // }
-    // debugger
 </script>

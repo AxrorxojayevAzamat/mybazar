@@ -1,15 +1,15 @@
-<div class="accordion" id="fullCharacteristicsCollapse{{$i}}">
+<div class="accordion" id="fullCharacteristicsCollapse{{$i . $product->id}}">
     <div class="card">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="heading-{{ $i . $product->id }}">
             <h2 class="mb-0">
-                <button class="btn " type="button" data-toggle="collapse" data-target="#collapse-{{ $i }}"
-                        aria-expanded="true" aria-controls="collapseOne" title="{{ $product->id }}">
+                <button class="btn " type="button" data-toggle="collapse" data-target="#collapse-{{ $i . $product->id }}"
+                        aria-expanded="true" aria-controls="collapse-{{ $i . $product->id }}" title="{{ $product->id }}">
                     {!! $values->characteristic->name !!}
                 </button>
             </h2>
         </div>
-        <div id="collapse-{{ $i }}" class="collapse show" aria-labelledby="heading-{{ $i }}"
-             data-parent="#fullCharacteristicsCollapse{{$i}}">
+        <div id="collapse-{{ $i . $product->id }}" class="collapse show" aria-labelledby="heading-{{ $i . $product->id }}"
+             data-parent="#fullCharacteristicsCollapse{{$i . $product->id}}">
             <div class="card-body">
                 @if(empty(json_decode($product->modificationsForProduct($values->characteristic_id))))
                     <div class="item">

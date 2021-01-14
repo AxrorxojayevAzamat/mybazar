@@ -12,9 +12,10 @@
 
 
             </div>
-            <select class="form-control select-main-search">
+            <select class="form-control select-main-search" name="category_id" id="categoryIdInSearch">
+                <option value="all">@lang('frontend.all')</option>
                 @foreach ($gCategories as $category)
-                    <option>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button class="search btn" type="submit"><i class="mbsearch"></i></button>
@@ -39,7 +40,7 @@
                 @include('cart.header-show')
             </li>
             <li>
-                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ Auth::user()->favorites()->count() }}@endif</span></i> @lang('menu.favorites')</a>
+                <a href="{{ route('user.favorites') }}" class="wish-list dropdownToggle"> <i class="mbfavorite"><span class="@if(!Auth::guest() && Auth::user()->favorites()->exists()) <?php echo 'counter'?> @endif">@if(!Auth::guest()){{ count($favoriteProductIds) }}@endif</span></i> @lang('menu.favorites')</a>
             </li>
 
             @guest

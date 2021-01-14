@@ -15,6 +15,9 @@ return [
     'compare_not_fit' => 'Solishtirish uchun maxsulotlarning kategoriyasi bir xil bo`lishi kerak',
     'language' => 'Til',
     'search_on_mybazar' => 'MyBazar-dan qidirilmoqda...',
+    'please_firstfullly_create_account' => 'Please create account fist',
+    'to_order' => 'Buyurtma bermoq',
+    'uzb' => 'O\'zbekiston',
 
     'color' => 'Rangi',
     'price' => 'Narxi',
@@ -41,7 +44,7 @@ return [
 
     'product' => [
         'price' => ':price <span>so`m</span>',
-        'delivery_time' => '24 soat ichida etkazib beramiz',
+        'delivery_time' => ':hour soat ichida etkazib beramiz',
         'pickup_time' => 'Olib ketish :date dan',
         'to_cart' => 'Savatga',
         'characteristics' => 'Xususiyatlari',
@@ -100,7 +103,7 @@ return [
         'stock' => 'Aksiyalar',
         'discount' => 'Chegirmalar',
         'discount_stock' => 'Chegirma va Aksiya',
-        'top_brands' => 'Top brandlar',
+        'top_brands' => 'Top brendlar',
         'blogs' => 'Blog',
         'videos' => 'Videolar',
         'delivery' => 'Yetkazib berish',
@@ -281,5 +284,6 @@ return [
 
     'products' => 'Tovarlar',
     'ltd' => 'MChJ',
+    'all' => 'Hammasi',
 
 ];

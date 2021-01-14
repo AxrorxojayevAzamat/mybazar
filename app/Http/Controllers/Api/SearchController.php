@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Entity\Brand;
+use App\Entity\Category;
 use App\Entity\Shop\Product;
 use App\Entity\Store;
+use App\Helpers\PaginateHelper;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Http\Resources\StoreResource;
@@ -18,46 +20,63 @@ class SearchController
     {
         if (!empty($value = $request->get('search'))) {
             $categoryId = $request->get('category_id');
+            $arrayProducts = collect();
 
             $length = 10;
-            if ($categoryId) {
+            $productCategoryIds = [];
+            if ($categoryId !== "all"){
+                $getCategories = Category::where('id', $categoryId)->first();
+                $getCategories = $getCategories->children()->get();
+
+                foreach ($getCategories as $i => $category){
+                    $productCategoryIds[$i] = $category->id;
+                }
+            }
+            if ($categoryId && $categoryId !== "all") {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)
-                    ->where('category_id', $categoryId)->paginate(10);
+                    ->get();
+                $products = $products->whereIn('main_category_id', $productCategoryIds)->take(10);
+
             } else {
                 $products = Product::search($value)->where('status', Product::STATUS_ACTIVE)->paginate(10);
+//                dd($products);
             }
             ProductResource::collection($products);
-            if (($length -= $products->count()) <= 0) {
+
+            $products->each(function ($product) use ($arrayProducts) {
+                $arrayProducts->push($product);
+            });
+            if (($length -= $arrayProducts->count()) <= 0) {
                 return response()->json([
-                    'products' => $products->toArray(),
+                    'products' => $arrayProducts->toArray(),
                     'brands' => null,
                     'stores' => null,
                 ]);
             }
 
-            if ($categoryId) {
-                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
-            } else {
+//            if ($categoryId) {
+//                $brands = Brand::search($value)->where('categories', $categoryId)->paginate($length);
+//            } else {
                 $brands = Brand::search($value)->paginate($length);
-            }
+//            }
             BrandResource::collection($brands);
             if (($length -= $brands->count()) <= 0) {
                 return response()->json([
-                    'products' => $products->toArray(),
+                    'products' => $arrayProducts->toArray(),
                     'brands' => $brands->toArray(),
                     'stores' => null,
                 ]);
             }
 
-            if ($categoryId) {
-                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)
-                    ->where('categories', $categoryId)->paginate($length);
-            } else {
+//            if ($categoryId) {
+//                $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)
+//                    ->where('categories', $categoryId)->paginate($length);
+//            } else {
                 $stores = Store::search($value)->where('status', Store::STATUS_ACTIVE)->paginate($length);
-            }
+//            }
             StoreResource::collection($stores);
             return response()->json([
-                'products' => $products->toArray(),
+                'products' => $arrayProducts->toArray(),
                 'brands' => $brands->toArray(),
                 'stores' => $stores->toArray(),
             ]);
