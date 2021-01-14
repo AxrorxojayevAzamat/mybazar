@@ -441,6 +441,11 @@ a:hover, a.active {
   color: #d1d8e0;
 }
 
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
 .text-left {
   text-align: left;
 }
@@ -4876,7 +4881,7 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
+  height: auto;
 }
 
 #products-of-day .product-item .product-info .product-image {
@@ -4910,10 +4915,9 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 }
 
 #products-of-day .product-item .product-info .description {
-  height: 100%;
   width: 55%;
   padding: 0 0 0 2%;
-  height: 100%;
+  height: 200px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4942,9 +4946,8 @@ nav#main_navbar .collapse .navbar-nav .dropdown:hover .round span:nth-child(6) {
 
 #products-of-day .product-item .product-info .description .item-action-icons {
   position: absolute;
-  float: right;
   left: 0;
-  bottom: 15%;
+  bottom: 5%;
 }
 
 #products-of-day .product-item div.product-of-day-item {
@@ -8833,6 +8836,7 @@ nav.products-pagination ul li a i:before {
   text-align: start;
   width: 100%;
   padding: 2% 10%;
+  min-height: 480px;
 }
 
 .outter-single-product-with-des h4.title {
@@ -8855,21 +8859,27 @@ nav.products-pagination ul li a i:before {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  height: 100%;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images {
   width: 34%;
+  height: 300px;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images .big-image {
-  width: 100%;
-  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  height: 100%;
   margin-bottom: 2%;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images .big-image img {
   width: auto;
   height: 100%;
+  margin: 0 auto;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .images .several-images {
@@ -8910,7 +8920,8 @@ nav.products-pagination ul li a i:before {
   text-align: start;
   width: 64%;
   padding: 2% 0;
-  height: auto;
+  height: 100%;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8926,17 +8937,41 @@ nav.products-pagination ul li a i:before {
           align-items: flex-start;
 }
 
+.outter-single-product-with-des .inner-single-product-with-des .description .bottom {
+  bottom: 30px;
+}
+
 .outter-single-product-with-des .inner-single-product-with-des .description .text-description {
   width: 49%;
   text-align: start;
+  border-right: 1px solid #d1d8e0;
+  height: 100%;
+  padding-right: 15px;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .text-description .rate {
-  width: 80%;
+.outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2%;
 }
 
-.outter-single-product-with-des .inner-single-product-with-des .description .text-description .rate .comment span {
+.outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des .comment span {
   color: #a4b0be;
+}
+
+.outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des .rate {
+  width: 80%;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .description .text-description p {
@@ -9159,8 +9194,8 @@ nav.products-pagination ul li a i:before {
 .outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .shop-name-logo a img {
   border: 1px solid #aaa;
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 }
 
 .outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .shop-name-logo div {
@@ -9580,7 +9615,7 @@ nav.products-pagination ul li a i:before {
   background: #636363;
 }
 
-@media all and (max-width: 900px) {
+@media (min-width: 320px) {
   .outter-single-product-with-des .inner-single-product-with-des {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -9589,22 +9624,73 @@ nav.products-pagination ul li a i:before {
   }
   .outter-single-product-with-des .inner-single-product-with-des .images {
     width: 100%;
+    height: auto;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .images .big-image {
+    height: 70%;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .images .several-images {
+    height: 100px;
   }
   .outter-single-product-with-des .inner-single-product-with-des .description {
     width: 100%;
-  }
-  .outter-full-comments {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-flow: column;
             flex-flow: column;
   }
-  .outter-full-comments .comments {
+  .outter-single-product-with-des .inner-single-product-with-des .description .text-description {
+    width: 100%;
+    border: none;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des .rate {
+    width: 100%;
+    margin: 5% 0 2%;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .text-description .rating-des .comment {
+    margin: 5% 0;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des {
     width: 100%;
   }
-  .outter-full-comments .leave-comment {
+  .outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .current-old-price {
     width: 100%;
-    margin-top: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .color-delivery-des .delivery-options {
+    width: 100%;
+  }
+  .outter-single-product-with-des .inner-single-product-with-des .description .bottom {
+    display: block;
+    position: initial;
+  }
+}
+
+@media (min-width: 3000px) {
+  .outter-single-product-with-des {
+    height: 700px;
+  }
+  .outter-single-product-with-des .owl-carousel .owl-item img {
+    height: 80px;
+    width: 80px;
   }
 }
 
