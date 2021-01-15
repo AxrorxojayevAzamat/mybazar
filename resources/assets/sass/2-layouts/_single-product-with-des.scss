@@ -87,7 +87,7 @@
                     font-size:16px;
                     margin-bottom:10px;
                     &.title{
-                        font-size:16.5px  
+                        font-size:16.5px
                         ;
                         @include fontBold;
                     }
@@ -570,7 +570,7 @@
                         align-items: flex-start;
                         .rate{
                             width:100%;
-                            margin:5% 0 2%; 
+                            margin:5% 0 2%;
                         }
                         .comment{
                             margin:5% 0;
@@ -595,7 +595,6 @@
                             justify-content: center;
                             i{
                                 margin-right:0px;
-                                ''
                             }
                         }
                     }
