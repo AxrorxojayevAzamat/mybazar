@@ -2,7 +2,8 @@ $(document).ready(function () {
     $('.cart').click(function (e) {
         e.preventDefault();
         let product = $(this);
-        let product_id = product.data('id');
+        let product_id = product.data('id').slice(1);
+        console.log(product_id)
         let modification_id = $("#productModification" + product_id).val();
         addCart(product_id, modification_id);
     });
