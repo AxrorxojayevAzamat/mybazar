@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Shop\Cart;
+use App\Entity\Shop\Modification;
 use App\Entity\Shop\Product;
 use App\Helpers\ImageHelper;
 use App\Http\Resources\Shop\CartResource;
@@ -18,23 +19,37 @@ class CartController extends Controller
         if ($user == null) {
             $cartProductIds = json_decode($request->product_id);
             $products = collect();
+            $modificationPrice = collect();
             foreach ($cartProductIds as $i => $product_id) {
                 $currentProduct = Product::where('id', $product_id->product_id)->first();
+                if (isset($product_id->modification_id)){
+                    $getModificationPrice = Modification::where('id', $product_id->modification_id)->first();
+                    $modificationPrice->push($getModificationPrice);
+                }
                 $products->push($currentProduct);
             }
+
             $cart_product_count = count($products);
             $cart_product_weight = 0;
             $cart_product_discount = 0;
             $cart_product_total = 0;
+            $total_modifications_price = 0;
+            $modificationsId = [];
 
+            foreach ($modificationPrice as $i => $modificationsPrice){
+                $total_modifications_price += $modificationsPrice->price_uzs;
+                $modificationsId[$i] = $modificationsPrice->product_id;
+            }
             foreach ($products as $i => $product) {
                 $cart_product_weight += $product->weight;
-                $cart_product_total += $product->price_uzs;
+                if (in_array($product->id, $modificationsId)){
+                    $cart_product_total += $product->price_uzs;
+                }
                 $cart_product_discount += $product->discount;
             }
 
             $cart_product_discount_amount = $cart_product_total * $cart_product_discount;
-            $cart_product_total = $cart_product_total - $cart_product_discount_amount;
+            $cart_product_total = $cart_product_total - $cart_product_discount_amount + $total_modifications_price;
 
             return view('cart.cart', compact('products', 'cart_product_total',
                 'cart_product_count', 'cart_product_weight', 'cart_product_discount', 'cart_product_discount_amount',
