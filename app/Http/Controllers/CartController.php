@@ -42,7 +42,7 @@ class CartController extends Controller
             }
             foreach ($products as $i => $product) {
                 $cart_product_weight += $product->weight;
-                if (in_array($product->id, $modificationsId)){
+                if (!in_array($product->id, $modificationsId)){
                     $cart_product_total += $product->price_uzs;
                 }
                 $cart_product_discount += $product->discount;
