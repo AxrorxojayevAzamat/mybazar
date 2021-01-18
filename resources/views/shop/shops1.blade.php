@@ -1,6 +1,9 @@
 @if($shops1)
     <div class="shops-fr owl-carousel owl-theme">
         @foreach($shops1 as $shop)
+            @foreach($shop->categories() as $sh)
+{{--            {{dd($sh)}}--}}
+            @endforeach
             <?php
             $products = \App\Helpers\ProductHelper::getTwoProduct($shop->main_category_id);
             ?>
@@ -9,7 +12,7 @@
                     <a href="{{ route('stores.view',['store'=>$shop->store]) }}"><img src="{{ $shop->store->logoThumbnail }}" alt=""></a>
                     <div>
                         <h6 class="title"><a href="{{ route('stores.view',['store'=>$shop->store]) }}">{!! $shop->store->name !!}</a></h6>
-                        <p class="sub-title"><a href="#">{!! $shop->maincategory->name !!}</a></p>
+                        <p class="sub-title"><a href="{{route('categories.show', products_path($shop->maincategory))}}">{!! $shop->maincategory->name !!}</a></p>
                     </div>
                 </div>
                 <div class="product-images">
