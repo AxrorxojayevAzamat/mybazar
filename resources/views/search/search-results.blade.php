@@ -61,13 +61,13 @@
                         {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => count($brandFilter)])  !!}
                     </h6>
 
-                    <div class="brands-by-letter row w-100">
+                    <div class="brands-by-letter row w-100 mt-4">
                         @foreach($brandFilter as $brand)
-                            <div class="row col-3">
-                                <div class="col-5">
+                            <div class="row col-2">
+                                <div class="col-8 h-75 align-items-center d-flex">
                                     <a href="brands/{{$brand->id}}"><img src="{{ $brand->logoOriginal }}" alt="" class="img-thumbnail w-auto"></a>
                                 </div>
-                                <div class="col-7"><a href="brands/{{$brand->id}}" class="d-block mt-2">{{ $brand->name }}</a></div>
+                                <div class="col-8"><a href="brands/{{$brand->id}}" class="d-block mt-2">{{ $brand->name }}</a></div>
                             </div>
                         @endforeach
                     </div>
