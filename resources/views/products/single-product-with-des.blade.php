@@ -1,5 +1,18 @@
 <section>
     <div class="outter-single-product-with-des">
+        <?php
+        if ($product->classFavorite($product->id)) {
+            $favoriteClass = "selected_like";
+        } else {
+            $favoriteClass = '';
+        }
+
+        if ($product->classCart($product->id)) {
+            $cartClass = "selected_cart";
+        } else {
+            $cartClass = '';
+        }
+        ?>
         <h4 class="title">{{ $product->name }}</h4>
         <div class="inner-single-product-with-des">
             <div class="images">
@@ -94,19 +107,21 @@
                             id="actual-product-price">@lang('frontend.product.price', ['price' => $product->price_uzs])</h6>
                     </div>
                     <div class="item-action-icons">
-                        <div class="cart" id="cart-button"
+                        <div class="cart <?php echo $cartClass ?>" id="cart-button"
                              data-name="{{ $product->name }}"
                              data-url="{{ $product->mainPhoto ? $product->mainPhoto->fileOriginal : asset('images/tv6.png') }}"
                              data-price="{{ $product->currentPriceUzs }}"
-                             data-id="{{ $product->id }}"
+                             data-id="c{{ $product->id }}"
                              onclick="addCart({{ $product->id }})">
                             <i class="mbcart"></i>@lang('frontend.product.to_cart')
                         </div>
-                        <div class="libra" id="cartActive{{ $product->id }}" onclick="addToComparing({{ $product->id }})"
-                             data-id="{{ $product->id }}">
+                        <div class="libra" id="cartActive{{ $product->id }}"
+                             onclick="addToComparing({{ $product->id }})"
+                             data-id="l{{ $product->id }}">
                             <i class="mbtocompare"></i>
                         </div>
-                        <div class="like" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
+                        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i
+                                class="mbfavorite"></i></div>
                     </div>
                     <input type="hidden" id="productModification{{ $product->id }}">
                     <div class="delivery-options">
@@ -124,6 +139,20 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    localStorage.getItem('compare_product').split(',').forEach(el => {
+                        if (el === "{{$product->id}}") {
+                            $(`[data-id="l${el}"]`).addClass('selected_libra');
+                        }
+                    })
+                    @guest
+                    JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+                        if (el.product_id === "{{$product->id}}") {
+                            $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
+                        }
+                    })
+                    @endguest
+                </script>
             </div>
         </div>
     </div>

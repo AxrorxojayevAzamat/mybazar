@@ -23,6 +23,7 @@ if ($product->classFavorite($product->id)) {
         </div>
         <div class="item-action-icons">
             <div class="libra" data-name="{{ $product->name }}"
+                 data-id="l{{ $product->id }}"
                  data-url="{{ route('products.show', $product) }}"
                  data-price="{{ $product->price_uzs }}"><i class="mbtocompare"></i></div>
             <div class="like <?php echo $favoriteClass ?>"><i class="mbfavorite"></i></div>
