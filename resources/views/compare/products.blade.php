@@ -1,8 +1,14 @@
 <?php
 if ($product->classFavorite($product->id)) {
-    $className = "selected_like";
-}else{
-    $className = '';
+    $favoriteClass = "selected_like";
+} else {
+    $favoriteClass = '';
+}
+
+if ($product->classCart($product->id)) {
+    $cartClass = "selected_cart";
+} else {
+    $cartClass = '';
 }
 ?>
 <?php $name = $product->name  ?>
@@ -19,7 +25,25 @@ if ($product->classFavorite($product->id)) {
     <div id="rateYo_P{{ $loop->index }}"></div>
     </div>
     <div class="item-action-icons">
-        <div id="cartActive{{ $product->id }}" data-id="{{ $product->id }}" class="cart"><i class="mbcart"></i></div>
-        <div class="like <?php echo $className ?>" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
+        <div id="cartActive{{ $product->id }}" data-id="c{{ $product->id }}" class="cart <?php echo $cartClass ?>">
+            <i class="mbcart"></i>
+        </div>
+        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i class="mbfavorite"></i></div>
     </div>
+    <script>
+        localStorage.getItem('compare_product').split(',').forEach(el => {
+            if (el === "{{$product->id}}") {
+                $(`[data-id="l${el}"]`).addClass('selected_libra');
+            }
+        })
+        @guest
+        JSON.parse(localStorage.getItem('product_id')).forEach(el => {
+            console.log(el)
+            if (el.product_id === "{{$product->id}}") {
+                console.log(el)
+                $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
+            }
+        })
+        @endguest
+    </script>
 </div>

@@ -115,6 +115,9 @@ function removeCartList(cartProduct) {
                 let product_id_local = localStorage.getItem('product_id');
                 product_id_local = JSON.parse(product_id_local);
                 console.log(cartProduct.product_id);
+                let ids = 'cartActive' + cartProduct.product_id;
+                console.log($('#' + ids));
+                $('#' + ids).removeClass('selected_cart');
                 product_id_local = product_id_local.filter(item => item.product_id !== cartProduct.product_id);
                 console.log(product_id_local);
                 localStorage.removeItem('product_id');
