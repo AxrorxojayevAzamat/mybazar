@@ -65,7 +65,7 @@
         @endguest
     </div>
     <form action="/search" class="search-box form-control" method="GET">
-        <input type="text" id="search-input-mobile" class="text" placeholder="@lang('frontend.search_on_mybazar')"/>
+        <input type="text" name="search" id="search-input-mobile" class="text" placeholder="@lang('frontend.search_on_mybazar')"/>
     </form>
     <div class="autocomplete-tags" id="droping-mobile">
 
