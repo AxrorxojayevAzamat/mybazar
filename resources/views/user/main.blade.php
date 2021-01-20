@@ -21,11 +21,11 @@
                             {{ trans('adminlte.additional_info') }}
                         </a>
                     </li>
-                    <li><a href="#">
-                            <i class="mbbox"></i>
-                            {{ trans('menu.orders') }}
-                        </a>
-                    </li>
+{{--                    <li><a href="#">--}}
+{{--                            <i class="mbbox"></i>--}}
+{{--                            {{ trans('menu.orders') }}--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li><a href="{{ route('cart') }}">
                             <i class="mbcart"></i>
                             {{ trans('frontend.cart.cart') }}

@@ -90,6 +90,9 @@ $(document).ready(function () {
             })
             console.log(inputValue);
         });
+        el.blur( function() {
+            droping[i].hide();
+        })
     })
 
 

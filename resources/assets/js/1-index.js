@@ -534,7 +534,7 @@ $(document).ready(function () {
             wishlist_count = data.products.count;
         },
         error: function(e) {
-            throw new Error(e.message)
+            console.log(e.message)
         }
     });
     $("div.like").click(function (event) {

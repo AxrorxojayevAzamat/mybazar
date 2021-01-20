@@ -5,7 +5,7 @@ use App\Services\Manage\StoreService;
     @foreach($stores as $store)
         <div class="item">
             <div class="shop-name-logo">
-                <img src="{{ $store->logoThumbnail }}" alt="">
+                <a href="{{ route('stores.view',$store) }}"><img src="{{ $store->logoThumbnail }}" alt=""></a>
                 <div>
                     <h6 class="title"><a href="{{ route('stores.view',$store) }}">{!! $store->name !!}</a></h6>
                 </div>

@@ -147,7 +147,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootnavbar.js')}}"></script>
 <script src="{{mix('js/search-bar.js', 'build')}}"></script>
-<script src="{{asset('js/scroll-xNav.js')}}"></script>
+{{--<script src="{{asset('js/scroll-xNav.js')}}"></script>--}}
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
 <script src="{{asset('js/jquery.rateyo.js')}}"></script>

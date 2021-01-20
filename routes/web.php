@@ -21,7 +21,6 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');// TODO duplicate
 
 Route::get('get-compare', 'CompareController@show')->name('getCompare');
-Route::get('compare', 'CompareController@compare')->name('compare');
 Route::get('check-compare/{id}/{compare}', 'CompareController@check')->name('compare.check');
 
 Route::post('add-cart', 'CartController@add');
@@ -167,6 +166,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('cart-list', 'CartController@index')->name('cart');
     Route::get('cart-header', 'CartController@showHeader');
+
+    Route::get('compare', 'CompareController@compare')->name('compare');
 
 });
 
