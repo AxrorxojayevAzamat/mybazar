@@ -81,9 +81,7 @@ if ($product->classCart($product->id)) {
         })
         @guest
         JSON.parse(localStorage.getItem('product_id')).forEach(el => {
-            console.log(el)
             if (el.product_id === "{{$product->id}}") {
-                console.log(el)
                 $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
             }
         })

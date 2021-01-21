@@ -531,8 +531,10 @@ $(document).ready(function () {
         url: '/count-favorite',
         method: 'GET',
         success: function (data) {
-            wishlist_count = data.products.count;
-            $("a.wish-list > i > span.counter").text(wishlist_count);
+            if (data.products) {
+                wishlist_count = data.products.count;
+                $("a.wish-list > i > span.counter").text(wishlist_count);
+            }
         },
         error: function(e) {
             console.log(e.message)

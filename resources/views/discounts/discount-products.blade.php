@@ -37,10 +37,10 @@
                     <h5 class="price">@lang('frontend.product.price', ['price' => $item->currentPriceUzs])</h5>
                     <h6 class="old-price">@lang('frontend.product.price', ['price' => $item->price_uzs])</h6>
                 </div>
-                <div class="item-action-icons">
+                <div class="item-action-icons w-100">
                     <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $item->id }}"
                          data-id="c{{ $item->id }}">
-                        <i class="mbcart"></i>
+                        <i class="mbcart"></i>@lang('frontend.product.to_cart')
                     </div>
                     <div class="libra" onclick="addToCompare({{ $item->id }})"
                          data-id="l{{ $item->id }}">
@@ -64,9 +64,7 @@
                 })
                 @guest
                 JSON.parse(localStorage.getItem('product_id')).forEach(el => {
-                    console.log(el)
                     if (el.product_id === "{{$item->id}}") {
-                        console.log(el)
                         $(`[data-id="c${el.product_id}"]`).addClass('selected_cart');
                     }
                 })
