@@ -48,7 +48,6 @@
                             <span>{{ $product->number_of_reviews }} @lang('frontend.reviews')</span>
                         </div>
                     </div>
-                    {{--                    <p>ID товара: <span> 1666559495</span></p>--}}
                     <p class="title">@lang('frontend.product.characteristics')</p>
                     @foreach($product->allCharacteristics as $characteristics)
                         @if($characteristics->characteristic->main)
@@ -59,7 +58,7 @@
                             </p>
                         @endif
                     @endforeach
-                    <a href="#pills-characteristics">@lang('frontend.product.all_characteristics')</a>
+{{--                    <a href="#pills-characteristics">@lang('frontend.product.all_characteristics')</a>--}}
                 </div>
                 <div class="color-delivery-des">
                     <form action="#">
