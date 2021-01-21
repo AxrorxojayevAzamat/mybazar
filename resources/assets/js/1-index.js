@@ -532,11 +532,13 @@ $(document).ready(function () {
         method: 'GET',
         success: function (data) {
             wishlist_count = data.products.count;
+            $("a.wish-list > i > span.counter").text(wishlist_count);
         },
         error: function(e) {
             console.log(e.message)
         }
     });
+
     $("div.like").click(function (event) {
         if ($(this).hasClass("selected_like")) {
             wishlist_count--;

@@ -3,7 +3,6 @@
         @include('pages.rating-js', ['products' => $product, 'type' => $rate_for['js']])
         <?php
         if ($item->classFavorite($item->id)) {
-            dd($item->classFavorite($item->id));
             $favoriteClass = "selected_like";
         } else {
             $favoriteClass = '';
