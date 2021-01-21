@@ -52,7 +52,7 @@ if ($product->classCart($product->id)) {
         </div>
         <div class="item-action-icons">
             <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}"
-                 data-id="c{{ $product->id }}" data-url="{{asset('images/tv6.png')}}">
+                 data-id="c{{ $product->id }}">
                 <i class="mbcart"></i>@lang('frontend.product.to_cart')
             </div>
             <div class="libra" onclick="addToCompare({{ $product->id }})" data-id="l{{ $product->id }}">

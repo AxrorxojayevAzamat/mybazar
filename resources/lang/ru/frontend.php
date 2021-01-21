@@ -128,7 +128,7 @@ return [
         'items' => 'шт',
         'total_weight_of_goods' => 'Общий вес товаров:',
         'gr' => 'гр',
-        'discount' => 'Скидка:',
+        'discount' => 'Скидка',
         'sum_of_discount' => 'Сумма скидки',
         'sum' => 'сум',
         'all_to_pay' => 'Всего к оплате',

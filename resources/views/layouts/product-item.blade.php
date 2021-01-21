@@ -43,16 +43,16 @@ if ($product->classCart($product->id)) {
         </div>
     </div>
     <div class="item-action-icons">
-        <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" data-id="c{{ $product->id }}"
-             data-name="{{ $product->name }}"
-             data-price="{{ $product->price_uzs }}" data-url="{{asset('images/popular1.png')}}">
-            <i class="mbcart"></i></div>
-        <div class="libra" onclick="addToCompare({{ $product->id }})" data-name="{{ $product->name }}"
-             data-id="l{{ $product->id }}"
-             data-price="{{ $product->price_uzs }}"
-             data-url="{{asset('images/popular1.png')}}"><i class="mbtocompare"></i></div>
-        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})"><i
-                class="mbfavorite"></i></div>
+        <div class="cart <?php echo $cartClass ?>" id="cartActive{{ $product->id }}" data-id="c{{ $product->id }}">
+            <i class="mbcart"></i>
+        </div>
+        <div class="libra" onclick="addToCompare({{ $product->id }})"
+             data-id="l{{ $product->id }}">
+            <i class="mbtocompare"></i>
+        </div>
+        <div class="like <?php echo $favoriteClass ?>" onclick="addToFavorite({{ $product->id }})">
+            <i class="mbfavorite"></i>
+        </div>
     </div>
     <script>
         localStorage.getItem('compare_product').split(',').forEach(el => {

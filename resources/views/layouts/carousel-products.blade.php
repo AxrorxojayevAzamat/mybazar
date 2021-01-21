@@ -17,7 +17,7 @@
         let product_id = {};
         product_id.id = id;
         $.ajax({
-            url: 'add-to-favorite/' + id,
+            url: '/add-to-favorite/' + id,
             method: 'GET',
             success: function (data) {
                 console.log(data);

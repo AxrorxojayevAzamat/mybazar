@@ -82,14 +82,16 @@ class FavoriteController extends Controller
 
     public function countUserFavorites()
     {
-        try {
-            $productIds = UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
-            $count = count($productIds);
-            return ['products' => [
-                'count' => $count
-            ]];
-        } catch (\Exception $e) {
-            return JsonHelper::exceptionResponse($e->getMessage());
+        if (Auth::user()) {
+            try {
+                $productIds = UserFavorite::where('user_id', Auth::user()->id)->pluck('product_id')->toArray();
+                $count = count($productIds);
+                return ['products' => [
+                    'count' => $count
+                ]];
+            } catch (\Exception $e) {
+                return JsonHelper::exceptionResponse($e->getMessage());
+            }
         }
     }
 }
