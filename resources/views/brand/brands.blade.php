@@ -17,7 +17,7 @@
             <div class="filter-by-alphabet">
                 <div class="first-row">
                     <div class="pn-ProductNav_Wrapper">
-                        <nav id="pnProductNav" class="pn-ProductNav" style="overflow-x: visible">
+                        <nav id="pnProductNav" class="pn-ProductNav w-100 overflow-hidden">
                             <div id="pnProductNavContents" class="pn-ProductNav_Contents alphabets-padding">
                                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                                 <a href="{{ route('brands') . '?brand=' }}" class="pn-ProductNav_Link <?php if (isset($_GET['brand']))if($_GET['brand'] === '') { echo 'active';} ?>">Все</a>
