@@ -15,7 +15,7 @@ $(document).ready(function () {
     let searchInput = [$('#search-input'), $('#search-input-mobile')];
 
     searchInput.forEach( (el, i) => {
-        el.keyup(function (e) {
+        el.on('keyup focus', function (e) {
             e.preventDefault();
             let inputValue = el.val();
             let categoeyId = $('#categoryIdInSearch').val();
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 for (let i = 0; i < data.brands.data.length; i++) {
                     if (data.brands.data[i].name !== undefined) {
                         dropData += `
-                        <a href="/brands/${data.brands.data[i].id}">
+                        <a href="brands/${data.brands.data[i].id}">
                             <div class="item brand">
                                 <div class="image">
                                     <img src="${data.brands.data[i].logo}" alt="">
@@ -65,7 +65,7 @@ $(document).ready(function () {
                 }
                 console.log(data.products);
                 for (let i = 0; i < data.products.length; i++) {
-                    dropData += `<a href="/products/show/${data.products[i].id}">
+                    dropData += `<a href="products/show/${data.products[i].id}">
                                     <div class="item product">
                                         <div class="image">
                                             <img src="${data.products[i].main_photo}" alt="">

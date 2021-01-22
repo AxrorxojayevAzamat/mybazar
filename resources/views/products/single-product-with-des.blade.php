@@ -128,7 +128,7 @@
                         <div><i class="mbdelievery"></i>@lang('frontend.product.delivery_time', ['hour' => date('g', $product->discountExpiresAt)])</div>
                         <div><i class="mbbox"></i>@lang('frontend.product.pickup_time', ['date' => date("d.m.Y", strtotime($product->discount_ends_at))])</div>
                     </div>
-                    <div class="sub-title bottom">
+                    <div class="sub-title bottom position-static">
                         <div class="shop-name-logo">
                             <a href="{{ route('stores.view',['store' => $product->store]) }}"><img
                                     src="{{ $product->store->logoThumbnail ?? null }}" alt="" class="img-rounded"></a>

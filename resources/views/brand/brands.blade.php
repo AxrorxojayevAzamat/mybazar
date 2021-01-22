@@ -16,8 +16,8 @@
         <div class="list-of-brands">
             <div class="filter-by-alphabet">
                 <div class="first-row">
-                    <div class="pn-ProductNav_Wrapper">
-                        <nav id="pnProductNav" class="pn-ProductNav w-100 overflow-hidden">
+                    <div class="pn-ProductNav_Wrapper w-100">
+                        <nav id="pnProductNav" class="pn-ProductNav overflow-hidden">
                             <div id="pnProductNavContents" class="pn-ProductNav_Contents alphabets-padding">
                                 <a href="#" class="pn-ProductNav_Link chairs" aria-selected="true">Chairs</a>
                                 <a href="{{ route('brands') . '?brand=' }}" class="pn-ProductNav_Link <?php if (isset($_GET['brand']))if($_GET['brand'] === '') { echo 'active';} ?>">Все</a>
@@ -66,8 +66,6 @@
                               @foreach($group as $brand)
                                   <div class="brands-by-letter">
                                       <div><a href="{{ route('brands.show', $brand)}}">{{ $brand['name_en'] }}</a></div>
-
-                                  <!--<div><a href="#" class="all-brands-by-this-letter">Ве бренды на {{ $letter }}</a></div>-->
                                   </div>
                               @endforeach
                           </div>
