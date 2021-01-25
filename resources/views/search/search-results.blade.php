@@ -18,16 +18,15 @@
             <!-- products body -->
             <div class="outter-catalog-view">
                 <!-- big filter without title checkbox -->
-                @if(!$products->isEmpty())
+                @if(isset($products) && !$products->isEmpty())
                     @include('search.sidebar', ['sidebar_is' => 'products'])
                 @endif
-
-                <div class="wrapper-filtered-items">
-
+                <div
+                    class="wrapper-filtered-items">
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$products->isEmpty() ? count($products->items()) : 0, 'category' => count($categories)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => isset($products) && !$products->isEmpty() ? count($products->items()) : 0, 'category' => isset($categories) && !$categories->isEmpty() ? count($categories) : 0])  !!}
                     </h6>
-                    @if(!$products->isEmpty())
+                    @if(isset($products) && !$products->isEmpty())
                         <nav class=" navbar navbar-expand-custom sort-types">
                             <!--sort-by options  -->
                         @include('layouts.sort-by-options')
@@ -36,13 +35,14 @@
 
                             @include('filters.small-filter-with-title-checkbox')
                         </nav>
-                    @endif
+
 
                 <!-- list mosaic catalog items -->
-                    @include('layouts.products-list-grid')
+                        @include('layouts.products-list-grid')
 
-                <!-- pagination -->
-                    @include('layouts.pagination')
+                    <!-- pagination -->
+                        @include('layouts.pagination')
+                    @endif
 
                 </div>
             </div>
@@ -51,26 +51,27 @@
             <!-- brands body -->
             <div class="outter-catalog-view">
                 <!-- big filter without title checkbox -->
-                @if(!$products->isEmpty())
+                @if(isset($products) && !$products->isEmpty())
                     @include('search.sidebar', ['sidebar_is' => 'Brands', 'categories' => $brandsCategory])
                 @endif
 
                 <div class="wrapper-filtered-items">
 
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => count($brandFilter)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => isset($brandFilter) && !$brandFilter->isEmpty() ? count($brandFilter) : 0, 'category' => isset($brandFilter) && !$brandFilter->isEmpty() ? count($brandFilter) : 0])  !!}
                     </h6>
-
-                    <div class="brands-by-letter row w-100 mt-4">
-                        @foreach($brandFilter as $brand)
-                            <div class="row col-2">
-                                <div class="col-8 h-75 align-items-center d-flex">
-                                    <a href="brands/{{$brand->id}}"><img src="{{ $brand->logoOriginal }}" alt="" class="img-thumbnail w-auto"></a>
+                    @if(isset($brandFilter))
+                        <div class="brands-by-letter row w-100 mt-4">
+                            @foreach($brandFilter as $brand)
+                                <div class="row col-2">
+                                    <div class="col-8 h-75 align-items-center d-flex">
+                                        <a href="brands/{{$brand->id}}"><img src="{{ $brand->logoOriginal }}" alt="" class="img-thumbnail w-auto"></a>
+                                    </div>
+                                    <div class="col-8"><a href="brands/{{$brand->id}}" class="d-block mt-2">{{ $brand->name }}</a></div>
                                 </div>
-                                <div class="col-8"><a href="brands/{{$brand->id}}" class="d-block mt-2">{{ $brand->name }}</a></div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    @endif
 
                     <!-- list mosaic catalog items -->
 {{--                    @include('brand.brands', )--}}
@@ -83,19 +84,20 @@
             <!-- shops body -->
             <div class="outter-list-of-shops">
                 <!-- big filter without title checkbox -->
-                @if(!$stores->isEmpty())
+                @if(isset($stores) && !$stores->isEmpty())
                     @include('search.sidebar', ['sidebar_is' => 'Brands', 'categories' => $storesCategory])
                 @endif
 
                 <div class="wrapper-filtered-items">
 
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$stores->isEmpty() ? count($stores->items()) : 0, 'category' => count($storesCategory)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => isset($stores) &&  !$stores->isEmpty() ?  count($stores->items()) : 0, 'category' => isset($storesCategory) && !$storesCategory->isEmpty() ? count($storesCategory) : 0])  !!}
                     </h6>
 
                     <!-- shop items -->
-                    @include('stores.storesList')
-
+                    @if(isset($stores))
+                        @include('stores.storesList')
+                    @endif
                 </div>
             </div>
 
@@ -104,34 +106,36 @@
             <!-- blogs body -->
             <div class="outter-catalog-view">
                 <!-- big filter without title checkbox -->
-                @if(!$blogs->isEmpty())
+                @if(isset($blogs) && !$blogs->isEmpty())
                     @include('search.sidebar', ['sidebar_is' => 'Brands', 'categories' => $blogsCategory])
                 @endif
 
                 <div class="wrapper-filtered-items">
 
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$blogs->isEmpty() ? count($blogs->items()) : 0, 'category' => count($blogsCategory)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => isset($blogs) && !$blogs->isEmpty() ? count($blogs->items()) : 0, 'category' => isset($blogs) &&  isset($blogs) && !$blogs->isEmpty() ? ($blogsCategory) : 0])  !!}
                     </h6>
 
                     <!-- blog items -->
-                    <div class="all-filtered-blogs">
-                        @foreach($blogs as $blog)
-                            <a href="{{ route('blogs.show', $blog) }}">
-                                <div class="blog-item">
-                                    <div class="image">
-                                        <img src="{{$blog->fileOriginal}}" alt="">
-                                        <div class="image-overlay"></div>
+                    @if(isset($blogs))
+                        <div class="all-filtered-blogs">
+                            @foreach($blogs as $blog)
+                                <a href="{{ route('blogs.show', $blog) }}">
+                                    <div class="blog-item">
+                                        <div class="image">
+                                            <img src="{{$blog->fileOriginal}}" alt="">
+                                            <div class="image-overlay"></div>
+                                        </div>
+                                        <div class="description">
+                                            <h6 class="title">{{$blog->title}}</h6>
+                                            <p>{{$blog->description}}</p>
+                                        </div>
                                     </div>
-                                    <div class="description">
-                                        <h6 class="title">{{$blog->title}}</h6>
-                                        <p>{{$blog->description}}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                        {{ $blogs->links() }}
-                    </div>
+                                </a>
+                            @endforeach
+                            {{ $blogs->links() }}
+                        </div>
+                    @endif
 
                 </div>
             </div>
@@ -140,31 +144,32 @@
             <!-- videos body -->
             <div class="outter-list-of-videos">
                 <!-- big filter without title checkbox -->
-                @if(!$blogs->isEmpty())
+                @if(isset($videos) && !$videos->isEmpty())
                     @include('search.sidebar', ['sidebar_is' => 'Brands', 'categories' => $videosCategory])
                 @endif
 
                 <div class="wrapper-filtered-videos">
 
                     <h6>
-                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => !$videos->isEmpty() ? count($videos->items()) : 0, 'category' => count($videosCategory)])  !!}
+                        {!! trans('frontend.number_found_product', ['query' => session('search'), 'result' => isset($videos) && !$videos->isEmpty() ? count($videos->items()) : 0, 'category' => isset($videosCategory) && !$videosCategory->isEmpty() ? count($videosCategory) : 0])  !!}
                     </h6>
-
-                    <div class="all-filtered-videos">
-                        @foreach($videos as $video)
-                            <a href="{{ route('videos.show', $video) }}">
-                                <div class="video-item">
-                                    <img src="{{$video->posterThumbnail}}" alt="" class="poster">
-                                    <div class="video-overlay">
-                                        <h6>{{$video->title}}</h6>
-                                        <button class="btn play">
-                                            <div class="arrow-right"></div>
-                                        </button>
+                    @if(isset($videos))
+                        <div class="all-filtered-videos">
+                            @foreach($videos as $video)
+                                <a href="{{ route('videos.show', $video) }}">
+                                    <div class="video-item">
+                                        <img src="{{$video->posterThumbnail}}" alt="" class="poster">
+                                        <div class="video-overlay">
+                                            <h6>{{$video->title}}</h6>
+                                            <button class="btn play">
+                                                <div class="arrow-right"></div>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
 
 
                 </div>

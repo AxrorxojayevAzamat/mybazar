@@ -155,6 +155,11 @@ class SearchResultsController extends Controller
                 'categories', 'max_price', 'min_price', 'brandFilter', 'blogs', 'blogsCategory', 'videosCategory',
                 'videos', 'storesCategory', 'stores', 'newProducts', 'brandsCategory', 'groupsEn', 'groupsRu'));
 
+        }else{
+            $min_price = 0;
+            $max_price = 0;
+
+            return view('search.search-results', compact('max_price', 'min_price'));
         }
 
     }
