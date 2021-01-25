@@ -1,4 +1,4 @@
-@if (isset($categories) || $parentCategory)
+@if (isset($categories) || isset($parentCategory))
     <button type="button" class="btn accordion_filter active category-btn">@lang('frontend.breadcrumb.categories')</button>
     <div id="filter2" class="panel">
 
