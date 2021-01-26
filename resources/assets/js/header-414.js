@@ -93,7 +93,7 @@ $(document).ready(function () {
         el.blur( function() {
             setTimeout(function () {
                 droping[i].hide();
-            }, 0)
+            }, 100)
         })
     })
 
